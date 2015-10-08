@@ -1,0 +1,7 @@
+< en_US.lang - English localization file for the mod Tutorial >
+tile.BlockVillageBoxSmall.name=Small Village Box
+tile.BlockVillageBoxMedium.name=Medium Village Box
+tile.BlockVillageBoxLarge.name=Large Village Box
+this.BlockVillageViewer.name=Village Viewer
+tile.BlockBuildingScanner.name=Building Scanner
+tile.BlockBuildingSmallHouse.name=Building:Small House
