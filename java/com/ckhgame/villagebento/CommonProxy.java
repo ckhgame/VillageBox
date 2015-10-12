@@ -1,6 +1,7 @@
 package com.ckhgame.villagebento;
 
 import com.ckhgame.villagebento.blocks.ModBlocks;
+import com.ckhgame.villagebento.items.ModItems;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -10,6 +11,7 @@ public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent e) {
 		ModBlocks.init();
+		ModItems.init();
 	}
 
 	public void init(FMLInitializationEvent e) {

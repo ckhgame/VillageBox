@@ -34,7 +34,6 @@ public class Main {
     @EventHandler
     public void init(FMLInitializationEvent e) {
         proxy.init(e);
-        MinecraftForge.EVENT_BUS.register(ColoredCubeRenderer.getInstance());
     }
 
     @EventHandler

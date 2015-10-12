@@ -19,7 +19,12 @@ public class BuildingData {
 	
 	
 	//building types
-	public static final int Type_GroundworkSmall = 0;
-	public static final int Type_GroundworkMedium = 1;
-	public static final int Type_GroundworkLarge = 2;
+	public static final int Type_GroundworkSmall = 1;
+	public static final int Type_GroundworkMedium = 2;
+	public static final int Type_GroundworkLarge = 3;
+	
+	public static final int Type_VillageCenter = 10;
+	public static final int Type_MiningHouse = 11;
+	public static final int Type_BlackSmithsShop = 12;
+	public static final int Type_Bakery = 13;
 }

@@ -94,7 +94,7 @@ public class BlockVillageBoxLarge extends Block {
 			
 			//make it
 			if(addedsuccess)
-				BaseBuilder.buildGroundwork(world, bd);;
+				BaseBuilder.buildGroundwork(world, bd);
 			
 			return true;
 		}

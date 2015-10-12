@@ -63,7 +63,7 @@ public class BlockBuildingScanner extends Block {
 		prefab = null;		
 		
 		//get building data
-		BuildingData bd = villageBentoData.findBuildingData(x, z, y);
+		BuildingData bd = villageBentoData.findBuildingData(x, y, z);
 		int gwDepth = BuildingConfig.GroundWorkDepth;
 		int gwTop = world.getHeight();
 		Block b;
@@ -87,6 +87,9 @@ public class BlockBuildingScanner extends Block {
 				}
 			}			
 		}
+		else{
+			System.out.println("Can not find the building data");
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -98,8 +101,10 @@ public class BlockBuildingScanner extends Block {
 			System.out.println("===================================");
 			for(BlockTypePos b:prefab.blocks){
 				System.out.println("Block:" + b.block + ",X:" + b.x + ",Y:" + b.y + ",Z:" + b.z);
-			}
-			
+			}	
+		}
+		else{
+			System.out.println("Prefab is null!");
 		}
 		
 	}

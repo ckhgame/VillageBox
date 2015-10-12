@@ -14,20 +14,24 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockBuildingSmallHouse extends Block {
+public class BlockVillageBuilding extends Block {
 
-    protected BlockBuildingSmallHouse() {
+    protected BlockVillageBuilding(int buildingType,String name) {
         super(Material.wood);
-        this.setBlockName("BlockBuildingSmallHouse");
+        this.setBlockName(name);
         this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setBlockTextureName(Main.MODID + ":BlockBuildingSmallHouse");
+        this.setBlockTextureName(Main.MODID + ":"+name);
       //  this.setHardness(2.0F);
        // this.setResistance(6.0F);
         this.setLightLevel(1.0F);
         //this.setHarvestLevel("pickaxe", 3);
         this.setStepSound(soundTypeWood);
+        
+        this.buildingType = buildingType;
     }
 
+    private final int buildingType;
+    
     @SideOnly(Side.CLIENT)
     private VillageBentoData villageBentoData = null;
     
@@ -42,8 +46,7 @@ public class BlockBuildingSmallHouse extends Block {
 			//destroy the village block
 			world.func_147480_a(x, y, z, false);
 			
-			BuildingData bd = VillageBentoData.get(world).findBuildingData(x, z, y);
-
+			BuildingBuilder.build(world, player, x, y-1, z, this.buildingType);
 			
 			return true;
 		}	

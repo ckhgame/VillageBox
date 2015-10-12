@@ -69,8 +69,8 @@ public class VillageBentoData extends WorldSavedData{
 		}
 	}
 	
-	public BuildingData findBuildingData(int x, int z, int y){
-		if(!villageBoundary.isVecInside(Vec3.createVectorHelper(x,y,z)))
+	public BuildingData findBuildingData(int x, int y, int z){
+		if(villageBoundary == null || !villageBoundary.isVecInside(Vec3.createVectorHelper(x,y,z)))
 			return null;
 		
 		for(BuildingData bd:this.buildings){
