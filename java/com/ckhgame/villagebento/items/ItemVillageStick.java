@@ -1,10 +1,11 @@
 package com.ckhgame.villagebento.items;
 
 import com.ckhgame.villagebento.Main;
-import com.ckhgame.villagebento.data.BuildingData;
-import com.ckhgame.villagebento.data.VillageBentoData;
+import com.ckhgame.villagebento.data.DataBuilding;
+import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.rendering.VillageOutlines;
 
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,12 +26,12 @@ public class ItemVillageStick extends Item {
 	private static boolean villageOutlinesEnabled = false;
 	
 	@Override
-	public ItemStack onItemRightClick(ItemStack p_77659_1_, World world, EntityPlayer p_77659_3_) {
+	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer p_77659_3_) {
 				
 		if(!world.isRemote){		
 		
 			//enable or disable outlines
-			VillageBentoData villageBentoData = VillageBentoData.get(world);
+			DataVillageBento villageBentoData = DataVillageBento.get(world);
 			VillageOutlines.getInstance().setVillageBentoData(villageOutlinesEnabled?null:villageBentoData);
 			villageOutlinesEnabled = !villageOutlinesEnabled;
 			
@@ -46,10 +47,9 @@ public class ItemVillageStick extends Item {
 				System.out.println("T:"+bd.type);
 			}
 			*/
-		
+
 		}
 		
-		// TODO Auto-generated method stub
-		return p_77659_1_;
+		return itemStack;
 	}	
 }

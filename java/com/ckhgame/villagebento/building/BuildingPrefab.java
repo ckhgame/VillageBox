@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.builders;
+package com.ckhgame.villagebento.building;
 
 import java.util.ArrayList;
 

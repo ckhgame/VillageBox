@@ -1,8 +1,6 @@
 package com.ckhgame.villagebento.items;
 
 
-import com.ckhgame.villagebento.blocks.BlockVillageBoxSmall;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 

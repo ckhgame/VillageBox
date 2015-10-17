@@ -2,8 +2,10 @@ package com.ckhgame.villagebento.rendering;
 
 import org.lwjgl.opengl.GL11;
 
-import com.ckhgame.villagebento.data.BuildingData;
-import com.ckhgame.villagebento.data.VillageBentoData;
+import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.data.DataBuilding;
+import com.ckhgame.villagebento.data.DataVillage;
+import com.ckhgame.villagebento.data.DataVillageBento;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
@@ -22,9 +24,9 @@ public class VillageOutlines {
 	}
 	
 	private double px,py,pz;
-	private VillageBentoData villageBentoData = null;
+	private DataVillageBento villageBentoData = null;
 	
-	public void setVillageBentoData(VillageBentoData vbData){ //if set vbData to null, no outlines will be display
+	public void setVillageBentoData(DataVillageBento vbData){ //if set vbData to null, no outlines will be display
 		villageBentoData = vbData;
 	}
 	
@@ -43,7 +45,6 @@ public class VillageOutlines {
 	
 private void renderOutlines() {
         
-
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glLineWidth(3.0f);
         GL11.glDisable(GL11.GL_TEXTURE_2D);
@@ -51,14 +52,17 @@ private void renderOutlines() {
         
         //render
         //outlines of buildings
-        for(BuildingData bd: villageBentoData.buildings){
-        	renderOutline(AxisAlignedBB.getBoundingBox(bd.x - bd.sizeX, bd.y, bd.z - bd.sizeZ, bd.x + bd.sizeX + 1, bd.y + 10, bd.z + bd.sizeZ + 1)
-        								.expand(0.1, 0.1, 0.1)
-        								.getOffsetBoundingBox(-px, -py, -pz),0.2f,0.7f,0.2f,0.7f);
+        for(DataVillage dv:villageBentoData.mapDataVillage.values()){       	
+        	 for(DataBuilding bd: dv.mapDataBuilding.values()){
+             	renderOutline(AxisAlignedBB.getBoundingBox(bd.x - bd.sizeX, bd.y - ConfigBuilding.BuildingGroundWorkDepth, bd.z - bd.sizeZ, 
+             											   bd.x + bd.sizeX + 1, bd.y + ConfigBuilding.BuildingMaxHeight, bd.z + bd.sizeZ + 1)
+             								.expand(0.1, 0, 0.1)
+             								.getOffsetBoundingBox(-px, -py, -pz),0.2f,0.7f,0.2f,0.7f);
+             }
+             //outlines of the village
+             if(dv.cacheVillageBoundary != null)
+             	renderOutline(dv.cacheVillageBoundary.getOffsetBoundingBox(1-px, -py, 1-pz),0.7f,0.7f,0.1f,0.7f);        	
         }
-        //outlines of the village
-        if(villageBentoData.villageBoundary != null)
-        	renderOutline(villageBentoData.villageBoundary.getOffsetBoundingBox(-px, -py, -pz),0.7f,0.7f,0.1f,0.7f);
 
         GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
         GL11.glEnable(GL11.GL_CULL_FACE);

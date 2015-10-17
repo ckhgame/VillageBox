@@ -1,6 +1,6 @@
 package com.ckhgame.villagebento;
 
-import com.ckhgame.villagebento.data.VillageBentoData;
+import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.rendering.ModRenderers;
 import com.ckhgame.villagebento.rendering.VillageOutlines;
 

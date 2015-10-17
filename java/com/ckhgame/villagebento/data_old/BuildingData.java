@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.data;
+package com.ckhgame.villagebento.data_old;
 
 public class BuildingData {
 	public final int x;

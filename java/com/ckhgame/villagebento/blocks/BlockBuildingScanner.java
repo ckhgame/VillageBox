@@ -6,11 +6,9 @@ import java.lang.reflect.Modifier;
 import org.apache.commons.lang3.ObjectUtils;
 
 import com.ckhgame.villagebento.Main;
-import com.ckhgame.villagebento.builders.BlockTypePos;
-import com.ckhgame.villagebento.builders.BuildingConfig;
-import com.ckhgame.villagebento.builders.BuildingPrefab;
-import com.ckhgame.villagebento.data.BuildingData;
-import com.ckhgame.villagebento.data.VillageBentoData;
+import com.ckhgame.villagebento.building.BlockTypePos;
+import com.ckhgame.villagebento.building.BuildingPrefab;
+import com.ckhgame.villagebento.data.DataVillageBento;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -36,7 +34,7 @@ public class BlockBuildingScanner extends Block {
     }
     
     @SideOnly(Side.CLIENT)
-    private VillageBentoData villageBentoData = null;
+    private DataVillageBento villageBentoData = null;
     
     
 	@Override
@@ -44,7 +42,7 @@ public class BlockBuildingScanner extends Block {
 		
 		if(world.isRemote) return true;
 		else{
-			villageBentoData = VillageBentoData.get(world);
+			villageBentoData = DataVillageBento.get(world);
 			
 			scanBuilding(world,x,y,z);		
 			outputScanResults();
@@ -61,9 +59,9 @@ public class BlockBuildingScanner extends Block {
 	private void scanBuilding(World world,int x, int y,int z){
 		
 		prefab = null;		
-		
+		/*
 		//get building data
-		BuildingData bd = villageBentoData.findBuildingData(x, y, z);
+		DataBuilding bd = villageBentoData.findBuildingData(x, y, z);
 		int gwDepth = BuildingConfig.GroundWorkDepth;
 		int gwTop = world.getHeight();
 		Block b;
@@ -90,6 +88,8 @@ public class BlockBuildingScanner extends Block {
 		else{
 			System.out.println("Can not find the building data");
 		}
+		
+		*/
 	}
 	
 	@SideOnly(Side.CLIENT)
