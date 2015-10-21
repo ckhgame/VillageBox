@@ -55,13 +55,18 @@ private void renderOutlines() {
         for(DataVillage dv:villageBentoData.mapDataVillage.values()){       	
         	 for(DataBuilding bd: dv.mapDataBuilding.values()){
              	renderOutline(AxisAlignedBB.getBoundingBox(bd.x - bd.sizeX, bd.y - ConfigBuilding.BuildingGroundWorkDepth, bd.z - bd.sizeZ, 
-             											   bd.x + bd.sizeX + 1, bd.y + ConfigBuilding.BuildingMaxHeight, bd.z + bd.sizeZ + 1)
+             											   bd.x + bd.sizeX + 1, bd.y + ConfigBuilding.BuildingMaxHeight + 1, bd.z + bd.sizeZ + 1)
              								.expand(0.1, 0, 0.1)
              								.getOffsetBoundingBox(-px, -py, -pz),0.2f,0.7f,0.2f,0.7f);
              }
              //outlines of the village
-             if(dv.cacheVillageBoundary != null)
-             	renderOutline(dv.cacheVillageBoundary.getOffsetBoundingBox(1-px, -py, 1-pz),0.7f,0.7f,0.1f,0.7f);        	
+             if(dv.cacheVillageBoundary != null){
+            	 AxisAlignedBB vb = dv.cacheVillageBoundary.copy();
+            	 vb.maxX += 1;
+            	 vb.maxY += 1;
+            	 vb.maxZ += 1;
+            	 renderOutline(vb.getOffsetBoundingBox(-px, -py, -pz),0.7f,0.7f,0.1f,0.7f);  
+             }
         }
 
         GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);

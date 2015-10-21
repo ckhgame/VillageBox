@@ -10,6 +10,10 @@ public final class ModBlocks {
     
     
     //buildings
+    public static BlockVillageBuilding blockGroundworkOnlySmall;
+    public static BlockVillageBuilding blockGroundworkOnlyMedium;
+    public static BlockVillageBuilding blockGroundworkOnlyLarge;
+    
     public static BlockVillageBuilding blockVillageCenter;
     public static BlockVillageBuilding blockMiningHouse;
     public static BlockVillageBuilding blockBlackSmithsShop;
@@ -21,6 +25,10 @@ public final class ModBlocks {
               
         
         //buildings
+        GameRegistry.registerBlock(blockGroundworkOnlySmall = new BlockVillageBuilding(BuildingTypes.GroundWorkOnlySmall,"BlockGroundworkOnlySmall"),"BlockGroundworkOnlySmall");
+        GameRegistry.registerBlock(blockGroundworkOnlyMedium = new BlockVillageBuilding(BuildingTypes.GroundWorkOnlyMedium,"BlockGroundworkOnlyMedium"),"BlockGroundworkOnlyMedium");
+        GameRegistry.registerBlock(blockGroundworkOnlyLarge = new BlockVillageBuilding(BuildingTypes.GroundWorkOnlyLarge,"BlockGroundworkOnlyLarge"),"BlockGroundworkOnlyLarge");
+        
         GameRegistry.registerBlock(blockVillageCenter = new BlockVillageBuilding(BuildingTypes.VillageCenter,"BlockVillageCenter"),"BlockVillageCenter");
         GameRegistry.registerBlock(blockMiningHouse = new BlockVillageBuilding(BuildingTypes.MiningHouse,"BlockMiningHouse"),"BlockMiningHouse");
         GameRegistry.registerBlock(blockBlackSmithsShop = new BlockVillageBuilding(BuildingTypes.BlackSmithsShop,"BlockBlackSmithsShop"),"BlockBlackSmithsShop");

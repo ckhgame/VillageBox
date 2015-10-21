@@ -9,17 +9,16 @@ public class ConfigData {
 	public static final String KeyDataBuildingSizeX 	= "dbsx";
 	public static final String KeyDataBuildingSizeZ 	= "dbsz";
 	public static final String KeyDataBuildingType 		= "dbt";
-	public static final String KeyDataBuildingVillagerID= "dbvid";
 	
 	//villager
 	public static final String KeyDataVillagerID		= "dvrid";
 	public static final String KeyDataVillagerName		= "dvrn";
+	public static final String KeyDataVillagerSkin		= "dvrs";
 	public static final String KeyDataVillagerProfession= "dvrp";
 	public static final String KeyDataVillagerBuildingID= "dvrbid";
 	
 	//village
 	public static final String KeyDataVillageID			= "dvid";
-	public static final String KeyDataVillageName		= "dvn";
 	public static final String KeyDataVillageVillagerMapSize		= "dvvrs";
 	public static final String KeyDataVillageBuildingMapSize 		= "dvbs";
 	public static final String KeyDataVillageVillagerMapPrefix		= "dvvr_";
@@ -35,4 +34,10 @@ public class ConfigData {
 	public static final String KeyDataVillageBentoVillageMapSize	= "dvbvs";
 	public static final String KeyDataVillageBentoVillageMapPrefix	= "dvbv_";
 	public static final String KeyDataVillageBentoIDs				= "dvbids";
+	
+	//villager entity
+	public static final String KeyVillagerEntityDataVillagerID		= "vedvid";
+	public static final String KeyVillagerEntityName				= "ven";
+	public static final String KeyVillagerEntitySkin				= "ves";
+	public static final String KeyVillagerEntityProfession			= "vep";
 }

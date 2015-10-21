@@ -3,8 +3,9 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helpers.HelperBuildingData;
-import com.ckhgame.villagebento.data.helpers.HelperVillageData;
+import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.villager.VillagerGenerator;
+import com.ckhgame.villagebento.villager.VillagerProfessions;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,8 +36,8 @@ public class BuilderBuilding {
 		dataBuilding = null;
 		
 		//check if there is a building exists on the current location
-		DataBuilding db = HelperBuildingData.createDataBuilding(x,y,z,type,sizeType);
-		if(HelperVillageData.addBuildingData(villageBentoData, db)){
+		DataBuilding db = HelperDataVB.createDataBuilding(x,y,z,type,sizeType);
+		if(HelperDataVB.addBuildingData(villageBentoData, db)){
 			
 			dataBuilding = db;
 			villageBentoData.markDirty();
@@ -49,6 +50,16 @@ public class BuilderBuilding {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * add villagers after completing building
+	 */
+	private static void addBuildingVillager(int profession, String name, String skin, int dx, int dz){
+		VillagerGenerator.generate(	world, 
+									dataBuilding.x + dx, dataBuilding.y, dataBuilding.z + dz,
+									profession, name, skin, 
+									dataBuilding.id);
 	}
 	
 	private static void buildOneBlock(int dx,int dy,int dz,Block block){
@@ -91,6 +102,9 @@ public class BuilderBuilding {
 		BuilderBuilding.z = z;
 		
 		switch(type){
+		case BuildingTypes.GroundWorkOnlySmall:buildGroundworkOnlySmall();break;
+		case BuildingTypes.GroundWorkOnlyMedium:buildGroundworkOnlyMedium();break;
+		case BuildingTypes.GroundWorkOnlyLarge:buildGroundworkOnlyLarge();break;
 		case BuildingTypes.VillageCenter:buildVillageCenter();break;
 		case BuildingTypes.MiningHouse:buildMiningHouse();break;
 		case BuildingTypes.BlackSmithsShop:buildBlackSmithsShop();break;
@@ -103,49 +117,50 @@ public class BuilderBuilding {
 		if(preBuild(BuildingTypes.VillageCenter,ConfigBuilding.SizeType_Small)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
 			
-			buildOneBlock(-2,0,-1,Blocks.planks);buildOneBlock(-2,0,0,Blocks.planks);buildOneBlock(-1,0,-1,Blocks.planks);
-			buildOneBlock(-1,0,0,Blocks.planks);buildOneBlock(-1,0,1,Blocks.planks);buildOneBlock(0,0,-2,Blocks.planks);
-			buildOneBlock(0,0,-1,Blocks.planks);buildOneBlock(0,0,0,Blocks.planks);buildOneBlock(0,0,1,Blocks.planks);
-			buildOneBlock(0,0,2,Blocks.planks);buildOneBlock(1,0,-2,Blocks.planks);buildOneBlock(1,0,-1,Blocks.planks);
-			buildOneBlock(1,0,0,Blocks.planks);buildOneBlock(1,0,1,Blocks.planks);buildOneBlock(1,0,2,Blocks.planks);
-			buildOneBlock(2,0,0,Blocks.planks);buildOneBlock(2,0,1,Blocks.planks);buildOneBlock(-3,1,-3,Blocks.stonebrick);
-			buildOneBlock(-3,1,-2,Blocks.stonebrick);buildOneBlock(-3,1,-1,Blocks.stonebrick);buildOneBlock(-3,1,0,Blocks.stonebrick);
-			buildOneBlock(-3,1,1,Blocks.stonebrick);buildOneBlock(-3,1,2,Blocks.stonebrick);buildOneBlock(-3,1,3,Blocks.stonebrick);
-			buildOneBlock(-2,1,-3,Blocks.stonebrick);buildOneBlock(-2,1,-2,Blocks.oak_stairs);buildOneBlock(-2,1,1,Blocks.oak_stairs);
-			buildOneBlock(-2,1,2,Blocks.oak_stairs);buildOneBlock(-2,1,3,Blocks.stonebrick);buildOneBlock(-1,1,-3,Blocks.stonebrick);
-			buildOneBlock(-1,1,-2,Blocks.oak_stairs);buildOneBlock(-1,1,2,Blocks.oak_stairs);buildOneBlock(-1,1,3,Blocks.stonebrick);
-			buildOneBlock(0,1,-3,Blocks.stonebrick);buildOneBlock(0,1,3,Blocks.stonebrick);buildOneBlock(1,1,-3,Blocks.stonebrick);
-			buildOneBlock(1,1,3,Blocks.stonebrick);buildOneBlock(2,1,-3,Blocks.stonebrick);buildOneBlock(2,1,-2,Blocks.stonebrick);
-			buildOneBlock(2,1,-1,Blocks.stonebrick);buildOneBlock(2,1,0,Blocks.wooden_door);buildOneBlock(2,1,1,Blocks.wooden_door);
-			buildOneBlock(2,1,2,Blocks.stonebrick);buildOneBlock(2,1,3,Blocks.stonebrick);buildOneBlock(3,1,-3,Blocks.fence);
-			buildOneBlock(3,1,-2,Blocks.fence);buildOneBlock(3,1,-1,Blocks.fence);buildOneBlock(3,1,2,Blocks.fence);
-			buildOneBlock(3,1,3,Blocks.fence);buildOneBlock(-3,2,-3,Blocks.planks);buildOneBlock(-3,2,-2,Blocks.glass_pane);
-			buildOneBlock(-3,2,-1,Blocks.glass_pane);buildOneBlock(-3,2,0,Blocks.planks);buildOneBlock(-3,2,1,Blocks.planks);
-			buildOneBlock(-3,2,2,Blocks.planks);buildOneBlock(-3,2,3,Blocks.planks);buildOneBlock(-2,2,-3,Blocks.planks);
-			buildOneBlock(-2,2,3,Blocks.glass_pane);buildOneBlock(-1,2,-3,Blocks.planks);buildOneBlock(-1,2,3,Blocks.glass_pane);
-			buildOneBlock(0,2,-3,Blocks.glass_pane);buildOneBlock(0,2,3,Blocks.planks);buildOneBlock(1,2,-3,Blocks.glass_pane);
-			buildOneBlock(1,2,3,Blocks.planks);buildOneBlock(2,2,-3,Blocks.planks);buildOneBlock(2,2,-2,Blocks.planks);
-			buildOneBlock(2,2,-1,Blocks.planks);buildOneBlock(2,2,0,Blocks.wooden_door);buildOneBlock(2,2,1,Blocks.wooden_door);
-			buildOneBlock(2,2,2,Blocks.planks);buildOneBlock(2,2,3,Blocks.planks);buildOneBlock(-3,3,-3,Blocks.planks);
-			buildOneBlock(-3,3,-2,Blocks.planks);buildOneBlock(-3,3,-1,Blocks.planks);buildOneBlock(-3,3,0,Blocks.planks);
-			buildOneBlock(-3,3,1,Blocks.planks);buildOneBlock(-3,3,2,Blocks.planks);buildOneBlock(-3,3,3,Blocks.planks);
-			buildOneBlock(-2,3,-3,Blocks.planks);buildOneBlock(-2,3,1,Blocks.torch);buildOneBlock(-2,3,3,Blocks.planks);
-			buildOneBlock(-1,3,-3,Blocks.planks);buildOneBlock(-1,3,3,Blocks.planks);buildOneBlock(0,3,-3,Blocks.planks);
-			buildOneBlock(0,3,3,Blocks.planks);buildOneBlock(1,3,-3,Blocks.planks);buildOneBlock(1,3,3,Blocks.planks);
-			buildOneBlock(2,3,-3,Blocks.planks);buildOneBlock(2,3,-2,Blocks.planks);buildOneBlock(2,3,-1,Blocks.planks);
-			buildOneBlock(2,3,0,Blocks.planks);buildOneBlock(2,3,1,Blocks.planks);buildOneBlock(2,3,2,Blocks.planks);
-			buildOneBlock(2,3,3,Blocks.planks);buildOneBlock(-3,4,-2,Blocks.planks);buildOneBlock(-3,4,0,Blocks.planks);
-			buildOneBlock(-3,4,2,Blocks.planks);buildOneBlock(-2,4,-2,Blocks.planks);buildOneBlock(-2,4,-1,Blocks.planks);
-			buildOneBlock(-2,4,0,Blocks.planks);buildOneBlock(-2,4,1,Blocks.planks);buildOneBlock(-2,4,2,Blocks.planks);
-			buildOneBlock(-1,4,-2,Blocks.planks);buildOneBlock(-1,4,2,Blocks.planks);buildOneBlock(0,4,-2,Blocks.planks);
-			buildOneBlock(0,4,2,Blocks.planks);buildOneBlock(1,4,-2,Blocks.planks);buildOneBlock(1,4,-1,Blocks.planks);
-			buildOneBlock(1,4,0,Blocks.planks);buildOneBlock(1,4,1,Blocks.planks);buildOneBlock(1,4,2,Blocks.planks);
-			buildOneBlock(2,4,-2,Blocks.planks);buildOneBlock(2,4,0,Blocks.planks);buildOneBlock(2,4,2,Blocks.planks);
-			buildOneBlock(-2,5,-1,Blocks.planks);buildOneBlock(-2,5,0,Blocks.planks);buildOneBlock(-2,5,1,Blocks.planks);
-			buildOneBlock(-1,5,-1,Blocks.planks);buildOneBlock(-1,5,0,Blocks.planks);buildOneBlock(-1,5,1,Blocks.planks);
-			buildOneBlock(0,5,-1,Blocks.planks);buildOneBlock(0,5,0,Blocks.planks);buildOneBlock(0,5,1,Blocks.planks);
-			buildOneBlock(1,5,-1,Blocks.planks);buildOneBlock(1,5,0,Blocks.planks);buildOneBlock(1,5,1,Blocks.planks);
-			buildOneBlock(-2,6,0,Blocks.planks);buildOneBlock(1,6,0,Blocks.planks);
+			buildOneBlock(0,-3,0,Blocks.air);buildOneBlock(1,-3,0,Blocks.air);buildOneBlock(0,-2,-1,Blocks.planks);
+			buildOneBlock(0,-2,0,Blocks.air);buildOneBlock(0,-2,1,Blocks.planks);buildOneBlock(1,-2,-1,Blocks.planks);
+			buildOneBlock(1,-2,0,Blocks.air);buildOneBlock(1,-2,1,Blocks.planks);buildOneBlock(0,-1,-1,Blocks.planks);
+			buildOneBlock(0,-1,0,Blocks.planks);buildOneBlock(0,-1,1,Blocks.planks);buildOneBlock(1,-1,-1,Blocks.planks);
+			buildOneBlock(1,-1,0,Blocks.planks);buildOneBlock(1,-1,1,Blocks.planks);buildOneBlock(-3,0,-3,Blocks.log);
+			buildOneBlock(-3,0,-2,Blocks.planks);buildOneBlock(-3,0,-1,Blocks.planks);buildOneBlock(-3,0,0,Blocks.planks);
+			buildOneBlock(-3,0,1,Blocks.planks);buildOneBlock(-3,0,2,Blocks.planks);buildOneBlock(-3,0,3,Blocks.log);
+			buildOneBlock(-2,0,-3,Blocks.planks);buildOneBlock(-2,0,-2,Blocks.planks);buildOneBlock(-2,0,2,Blocks.planks);
+			buildOneBlock(-2,0,3,Blocks.planks);buildOneBlock(-1,0,-3,Blocks.planks);buildOneBlock(-1,0,3,Blocks.planks);
+			buildOneBlock(0,0,-3,Blocks.planks);buildOneBlock(0,0,3,Blocks.planks);buildOneBlock(1,0,-3,Blocks.planks);
+			buildOneBlock(1,0,3,Blocks.planks);buildOneBlock(2,0,-3,Blocks.log);buildOneBlock(2,0,-2,Blocks.planks);
+			buildOneBlock(2,0,2,Blocks.planks);buildOneBlock(2,0,3,Blocks.log);buildOneBlock(-3,1,-3,Blocks.log);
+			buildOneBlock(-3,1,-2,Blocks.planks);buildOneBlock(-3,1,2,Blocks.planks);buildOneBlock(-3,1,3,Blocks.log);
+			buildOneBlock(-2,1,-3,Blocks.planks);buildOneBlock(-2,1,-2,Blocks.planks);buildOneBlock(-2,1,2,Blocks.planks);
+			buildOneBlock(-2,1,3,Blocks.planks);buildOneBlock(1,1,-3,Blocks.planks);buildOneBlock(1,1,3,Blocks.planks);
+			buildOneBlock(2,1,-3,Blocks.log);buildOneBlock(2,1,-2,Blocks.planks);buildOneBlock(2,1,2,Blocks.planks);
+			buildOneBlock(2,1,3,Blocks.log);buildOneBlock(-3,2,-3,Blocks.log);buildOneBlock(-3,2,-2,Blocks.planks);
+			buildOneBlock(-3,2,2,Blocks.planks);buildOneBlock(-3,2,3,Blocks.log);buildOneBlock(-2,2,-3,Blocks.planks);
+			buildOneBlock(-2,2,3,Blocks.planks);buildOneBlock(1,2,-3,Blocks.planks);buildOneBlock(1,2,3,Blocks.planks);
+			buildOneBlock(2,2,-3,Blocks.log);buildOneBlock(2,2,-2,Blocks.planks);buildOneBlock(2,2,2,Blocks.planks);
+			buildOneBlock(2,2,3,Blocks.log);buildOneBlock(-3,3,-3,Blocks.log);buildOneBlock(-3,3,-2,Blocks.planks);
+			buildOneBlock(-3,3,-1,Blocks.planks);buildOneBlock(-3,3,0,Blocks.planks);buildOneBlock(-3,3,1,Blocks.planks);
+			buildOneBlock(-3,3,2,Blocks.planks);buildOneBlock(-3,3,3,Blocks.log);buildOneBlock(-2,3,-3,Blocks.planks);
+			buildOneBlock(-2,3,-2,Blocks.glass);buildOneBlock(-2,3,-1,Blocks.glass);buildOneBlock(-2,3,0,Blocks.glass);
+			buildOneBlock(-2,3,1,Blocks.glass);buildOneBlock(-2,3,2,Blocks.glass);buildOneBlock(-2,3,3,Blocks.planks);
+			buildOneBlock(-1,3,-3,Blocks.planks);buildOneBlock(-1,3,-2,Blocks.glass);buildOneBlock(-1,3,-1,Blocks.glass);
+			buildOneBlock(-1,3,0,Blocks.planks);buildOneBlock(-1,3,1,Blocks.glass);buildOneBlock(-1,3,2,Blocks.glass);
+			buildOneBlock(-1,3,3,Blocks.planks);buildOneBlock(0,3,-3,Blocks.planks);buildOneBlock(0,3,-2,Blocks.glass);
+			buildOneBlock(0,3,-1,Blocks.glass);buildOneBlock(0,3,0,Blocks.planks);buildOneBlock(0,3,1,Blocks.glass);
+			buildOneBlock(0,3,2,Blocks.glass);buildOneBlock(0,3,3,Blocks.planks);buildOneBlock(1,3,-3,Blocks.planks);
+			buildOneBlock(1,3,-2,Blocks.glass);buildOneBlock(1,3,-1,Blocks.glass);buildOneBlock(1,3,0,Blocks.glass);
+			buildOneBlock(1,3,1,Blocks.glass);buildOneBlock(1,3,2,Blocks.glass);buildOneBlock(1,3,3,Blocks.planks);
+			buildOneBlock(2,3,-3,Blocks.log);buildOneBlock(2,3,-2,Blocks.planks);buildOneBlock(2,3,-1,Blocks.log);
+			buildOneBlock(2,3,0,Blocks.log);buildOneBlock(2,3,1,Blocks.log);buildOneBlock(2,3,2,Blocks.planks);
+			buildOneBlock(2,3,3,Blocks.log);buildOneBlock(-3,4,-2,Blocks.log);buildOneBlock(-3,4,-1,Blocks.log);
+			buildOneBlock(-3,4,0,Blocks.log);buildOneBlock(-3,4,1,Blocks.log);buildOneBlock(-3,4,2,Blocks.log);
+			buildOneBlock(-2,4,-3,Blocks.log);buildOneBlock(-2,4,3,Blocks.log);buildOneBlock(-1,4,-3,Blocks.log);
+			buildOneBlock(-1,4,3,Blocks.log);buildOneBlock(0,4,-3,Blocks.log);buildOneBlock(0,4,3,Blocks.log);
+			buildOneBlock(1,4,-3,Blocks.log);buildOneBlock(1,4,3,Blocks.log);buildOneBlock(2,4,-2,Blocks.log);
+			buildOneBlock(2,4,-1,Blocks.log);buildOneBlock(2,4,0,Blocks.log);buildOneBlock(2,4,1,Blocks.log);
+			buildOneBlock(2,4,2,Blocks.log);
+			
+			//add villager
+			addBuildingVillager(VillagerProfessions.VillageAssistant,"VillagerAssistant","VillagerAssistant",0,0);
 		}
 	}
 
@@ -191,6 +206,10 @@ public class BuilderBuilding {
 			buildOneBlock(0,5,-2,Blocks.stonebrick);buildOneBlock(0,5,2,Blocks.stonebrick);buildOneBlock(1,5,-2,Blocks.stonebrick);
 			buildOneBlock(1,5,2,Blocks.stonebrick);buildOneBlock(2,5,-2,Blocks.stonebrick);buildOneBlock(2,5,-1,Blocks.stonebrick);
 			buildOneBlock(2,5,0,Blocks.stonebrick);buildOneBlock(2,5,1,Blocks.stonebrick);buildOneBlock(2,5,2,Blocks.stonebrick);
+			
+			//add villager
+			addBuildingVillager(VillagerProfessions.Miner,"Miner1","Miner",1,0);
+			addBuildingVillager(VillagerProfessions.Miner,"Miner2","Miner",-1,0);
 		}
 	}
 	
@@ -227,51 +246,89 @@ public class BuilderBuilding {
 			buildOneBlock(0,4,3,Blocks.stonebrick);buildOneBlock(1,4,1,Blocks.stonebrick);buildOneBlock(1,4,2,Blocks.stonebrick);
 			buildOneBlock(1,4,3,Blocks.stonebrick);buildOneBlock(2,4,1,Blocks.stonebrick);buildOneBlock(2,4,2,Blocks.stonebrick);
 			buildOneBlock(2,4,3,Blocks.stonebrick);
+			
+			//add villager
+			addBuildingVillager(VillagerProfessions.Blacksmith,"Blacksmith","Blacksmith",1,0);
+			addBuildingVillager(VillagerProfessions.BlacksmithAssistant,"BlacksmithAssistant","BlacksmithAssistant",-1,0);
 		}
 	}
 	
 	private static void buildBakery(){
-		if(preBuild(BuildingTypes.Bakery,ConfigBuilding.SizeType_Small)){
+		if(preBuild(BuildingTypes.Bakery,ConfigBuilding.SizeType_Medium)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
-			buildOneBlock(-2,0,-1,Blocks.planks);buildOneBlock(-2,0,0,Blocks.planks);buildOneBlock(-2,0,1,Blocks.planks);
-			buildOneBlock(-2,0,2,Blocks.planks);buildOneBlock(-1,0,-2,Blocks.planks);buildOneBlock(-1,0,-1,Blocks.planks);
-			buildOneBlock(-1,0,0,Blocks.planks);buildOneBlock(-1,0,1,Blocks.planks);buildOneBlock(-1,0,2,Blocks.planks);
-			buildOneBlock(0,0,-2,Blocks.planks);buildOneBlock(0,0,-1,Blocks.wool);buildOneBlock(1,0,-2,Blocks.planks);
-			buildOneBlock(1,0,-1,Blocks.wool);buildOneBlock(1,0,0,Blocks.wool);buildOneBlock(1,0,1,Blocks.wool);
-			buildOneBlock(1,0,2,Blocks.planks);buildOneBlock(2,0,-2,Blocks.planks);buildOneBlock(2,0,-1,Blocks.wool);
-			buildOneBlock(2,0,0,Blocks.wool);buildOneBlock(2,0,1,Blocks.wool);buildOneBlock(2,0,2,Blocks.planks);
-			buildOneBlock(3,0,-1,Blocks.wool);buildOneBlock(3,0,0,Blocks.wool);buildOneBlock(3,0,1,Blocks.wool);
-			buildOneBlock(-3,1,-3,Blocks.stonebrick);buildOneBlock(-3,1,-2,Blocks.stonebrick);buildOneBlock(-3,1,-1,Blocks.stonebrick);
-			buildOneBlock(-3,1,0,Blocks.stonebrick);buildOneBlock(-3,1,1,Blocks.stonebrick);buildOneBlock(-3,1,2,Blocks.stonebrick);
-			buildOneBlock(-3,1,3,Blocks.stonebrick);buildOneBlock(-2,1,-3,Blocks.stonebrick);buildOneBlock(-2,1,-2,Blocks.stonebrick);
-			buildOneBlock(-2,1,3,Blocks.stonebrick);buildOneBlock(-1,1,-3,Blocks.stonebrick);buildOneBlock(-1,1,3,Blocks.stonebrick);
-			buildOneBlock(0,1,-3,Blocks.stonebrick);buildOneBlock(0,1,0,Blocks.planks);buildOneBlock(0,1,1,Blocks.planks);
-			buildOneBlock(0,1,2,Blocks.planks);buildOneBlock(0,1,3,Blocks.stonebrick);buildOneBlock(1,1,-3,Blocks.stonebrick);
-			buildOneBlock(1,1,3,Blocks.stonebrick);buildOneBlock(2,1,-3,Blocks.fence);buildOneBlock(2,1,3,Blocks.fence);
-			buildOneBlock(3,1,-3,Blocks.fence);buildOneBlock(3,1,-2,Blocks.fence);buildOneBlock(3,1,2,Blocks.fence);
-			buildOneBlock(3,1,3,Blocks.fence);buildOneBlock(-3,2,-3,Blocks.planks);buildOneBlock(-3,2,-2,Blocks.planks);
-			buildOneBlock(-3,2,-1,Blocks.planks);buildOneBlock(-3,2,0,Blocks.planks);buildOneBlock(-3,2,1,Blocks.planks);
-			buildOneBlock(-3,2,2,Blocks.planks);buildOneBlock(-3,2,3,Blocks.planks);buildOneBlock(-2,2,-3,Blocks.planks);
-			buildOneBlock(-2,2,-2,Blocks.furnace);buildOneBlock(-2,2,3,Blocks.planks);buildOneBlock(-1,2,-3,Blocks.planks);
-			buildOneBlock(-1,2,3,Blocks.planks);buildOneBlock(0,2,-3,Blocks.planks);buildOneBlock(0,2,0,Blocks.glass);
-			buildOneBlock(0,2,1,Blocks.glass);buildOneBlock(0,2,2,Blocks.glass);buildOneBlock(0,2,3,Blocks.planks);
-			buildOneBlock(1,2,-3,Blocks.planks);buildOneBlock(1,2,3,Blocks.planks);buildOneBlock(-3,3,-3,Blocks.planks);
-			buildOneBlock(-3,3,-2,Blocks.planks);buildOneBlock(-3,3,-1,Blocks.planks);buildOneBlock(-3,3,0,Blocks.planks);
-			buildOneBlock(-3,3,1,Blocks.planks);buildOneBlock(-3,3,2,Blocks.planks);buildOneBlock(-3,3,3,Blocks.planks);
-			buildOneBlock(-2,3,-3,Blocks.planks);buildOneBlock(-2,3,3,Blocks.planks);buildOneBlock(-1,3,-3,Blocks.planks);
-			buildOneBlock(-1,3,3,Blocks.planks);buildOneBlock(0,3,-3,Blocks.planks);buildOneBlock(0,3,3,Blocks.planks);
-			buildOneBlock(1,3,-3,Blocks.planks);buildOneBlock(1,3,3,Blocks.planks);buildOneBlock(-3,4,-3,Blocks.planks);
-			buildOneBlock(-3,4,-2,Blocks.planks);buildOneBlock(-3,4,-1,Blocks.planks);buildOneBlock(-3,4,0,Blocks.planks);
-			buildOneBlock(-3,4,1,Blocks.planks);buildOneBlock(-3,4,2,Blocks.planks);buildOneBlock(-3,4,3,Blocks.planks);
-			buildOneBlock(-2,4,-3,Blocks.planks);buildOneBlock(-2,4,3,Blocks.planks);buildOneBlock(-1,4,-3,Blocks.planks);
-			buildOneBlock(-1,4,3,Blocks.planks);buildOneBlock(0,4,-3,Blocks.planks);buildOneBlock(0,4,3,Blocks.planks);
-			buildOneBlock(1,4,3,Blocks.planks);buildOneBlock(-2,5,-2,Blocks.planks);buildOneBlock(-2,5,-1,Blocks.planks);
-			buildOneBlock(-2,5,0,Blocks.planks);buildOneBlock(-2,5,1,Blocks.planks);buildOneBlock(-2,5,2,Blocks.planks);
-			buildOneBlock(-1,5,-2,Blocks.planks);buildOneBlock(-1,5,-1,Blocks.planks);buildOneBlock(-1,5,0,Blocks.planks);
-			buildOneBlock(-1,5,1,Blocks.planks);buildOneBlock(-1,5,2,Blocks.planks);buildOneBlock(0,5,-2,Blocks.planks);
-			buildOneBlock(0,5,-1,Blocks.planks);buildOneBlock(0,5,0,Blocks.planks);buildOneBlock(0,5,1,Blocks.planks);
-			buildOneBlock(0,5,2,Blocks.planks);buildOneBlock(1,5,-1,Blocks.planks);buildOneBlock(1,5,0,Blocks.planks);
-			buildOneBlock(1,5,1,Blocks.planks);buildOneBlock(1,5,2,Blocks.planks);
+			
+			buildOneBlock(-5,0,-5,Blocks.wool);buildOneBlock(-5,0,-4,Blocks.planks);buildOneBlock(-5,0,-3,Blocks.planks);
+			buildOneBlock(-5,0,-2,Blocks.planks);buildOneBlock(-5,0,-1,Blocks.planks);buildOneBlock(-5,0,0,Blocks.planks);
+			buildOneBlock(-5,0,1,Blocks.planks);buildOneBlock(-5,0,2,Blocks.wool);buildOneBlock(-4,0,-5,Blocks.planks);
+			buildOneBlock(-4,0,-1,Blocks.planks);buildOneBlock(-4,0,2,Blocks.planks);buildOneBlock(-4,0,3,Blocks.hay_block);
+			buildOneBlock(-4,0,4,Blocks.hay_block);buildOneBlock(-3,0,-5,Blocks.planks);buildOneBlock(-3,0,-1,Blocks.planks);
+			buildOneBlock(-3,0,2,Blocks.planks);buildOneBlock(-3,0,3,Blocks.hay_block);buildOneBlock(-2,0,-5,Blocks.planks);
+			buildOneBlock(-2,0,-1,Blocks.planks);buildOneBlock(-1,0,-5,Blocks.planks);buildOneBlock(-1,0,-1,Blocks.planks);
+			buildOneBlock(0,0,-5,Blocks.planks);buildOneBlock(0,0,-1,Blocks.planks);buildOneBlock(1,0,-5,Blocks.planks);
+			buildOneBlock(2,0,-5,Blocks.planks);buildOneBlock(3,0,-5,Blocks.planks);buildOneBlock(3,0,2,Blocks.planks);
+			buildOneBlock(4,0,-5,Blocks.planks);buildOneBlock(4,0,2,Blocks.planks);buildOneBlock(5,0,-5,Blocks.wool);
+			buildOneBlock(5,0,-4,Blocks.planks);buildOneBlock(5,0,-3,Blocks.planks);buildOneBlock(5,0,-2,Blocks.planks);
+			buildOneBlock(5,0,-1,Blocks.planks);buildOneBlock(5,0,0,Blocks.planks);buildOneBlock(5,0,1,Blocks.planks);
+			buildOneBlock(5,0,2,Blocks.wool);buildOneBlock(-5,1,-5,Blocks.wool);buildOneBlock(-5,1,2,Blocks.wool);
+			buildOneBlock(-4,1,-1,Blocks.glass);buildOneBlock(-4,1,2,Blocks.planks);buildOneBlock(-4,1,3,Blocks.hay_block);
+			buildOneBlock(-3,1,-1,Blocks.glass);buildOneBlock(-3,1,2,Blocks.planks);buildOneBlock(-2,1,-1,Blocks.glass);
+			buildOneBlock(-1,1,-1,Blocks.glass);buildOneBlock(0,1,-1,Blocks.glass);buildOneBlock(3,1,2,Blocks.planks);
+			buildOneBlock(4,1,2,Blocks.planks);buildOneBlock(5,1,-5,Blocks.wool);buildOneBlock(5,1,2,Blocks.wool);
+			buildOneBlock(-5,2,-5,Blocks.wool);buildOneBlock(-5,2,-4,Blocks.planks);buildOneBlock(-5,2,-3,Blocks.planks);
+			buildOneBlock(-5,2,-2,Blocks.planks);buildOneBlock(-5,2,-1,Blocks.planks);buildOneBlock(-5,2,0,Blocks.planks);
+			buildOneBlock(-5,2,1,Blocks.planks);buildOneBlock(-5,2,2,Blocks.wool);buildOneBlock(-4,2,-5,Blocks.planks);
+			buildOneBlock(-4,2,2,Blocks.planks);buildOneBlock(-3,2,-5,Blocks.planks);buildOneBlock(-3,2,2,Blocks.planks);
+			buildOneBlock(-2,2,-5,Blocks.planks);buildOneBlock(-2,2,2,Blocks.planks);buildOneBlock(-1,2,-5,Blocks.planks);
+			buildOneBlock(0,2,-5,Blocks.planks);buildOneBlock(1,2,-5,Blocks.planks);buildOneBlock(2,2,-5,Blocks.planks);
+			buildOneBlock(2,2,2,Blocks.planks);buildOneBlock(3,2,-5,Blocks.planks);buildOneBlock(3,2,2,Blocks.planks);
+			buildOneBlock(4,2,-5,Blocks.planks);buildOneBlock(4,2,2,Blocks.planks);buildOneBlock(5,2,-5,Blocks.wool);
+			buildOneBlock(5,2,-4,Blocks.planks);buildOneBlock(5,2,-3,Blocks.planks);buildOneBlock(5,2,-2,Blocks.planks);
+			buildOneBlock(5,2,-1,Blocks.planks);buildOneBlock(5,2,0,Blocks.planks);buildOneBlock(5,2,1,Blocks.planks);
+			buildOneBlock(5,2,2,Blocks.wool);buildOneBlock(-4,3,-5,Blocks.planks);buildOneBlock(-4,3,-4,Blocks.planks);
+			buildOneBlock(-4,3,-3,Blocks.planks);buildOneBlock(-4,3,-2,Blocks.planks);buildOneBlock(-4,3,-1,Blocks.planks);
+			buildOneBlock(-4,3,0,Blocks.planks);buildOneBlock(-4,3,1,Blocks.planks);buildOneBlock(-4,3,2,Blocks.planks);
+			buildOneBlock(-3,3,-4,Blocks.planks);buildOneBlock(-3,3,1,Blocks.planks);buildOneBlock(-2,3,-4,Blocks.planks);
+			buildOneBlock(-2,3,1,Blocks.planks);buildOneBlock(-2,3,2,Blocks.planks);buildOneBlock(-1,3,-4,Blocks.planks);
+			buildOneBlock(-1,3,1,Blocks.planks);buildOneBlock(-1,3,2,Blocks.planks);buildOneBlock(0,3,-4,Blocks.planks);
+			buildOneBlock(0,3,1,Blocks.planks);buildOneBlock(0,3,2,Blocks.planks);buildOneBlock(1,3,-4,Blocks.planks);
+			buildOneBlock(1,3,1,Blocks.planks);buildOneBlock(1,3,2,Blocks.planks);buildOneBlock(2,3,-4,Blocks.planks);
+			buildOneBlock(2,3,1,Blocks.planks);buildOneBlock(2,3,2,Blocks.planks);buildOneBlock(3,3,-4,Blocks.planks);
+			buildOneBlock(3,3,1,Blocks.planks);buildOneBlock(4,3,-5,Blocks.planks);buildOneBlock(4,3,-4,Blocks.planks);
+			buildOneBlock(4,3,-3,Blocks.planks);buildOneBlock(4,3,-2,Blocks.planks);buildOneBlock(4,3,-1,Blocks.planks);
+			buildOneBlock(4,3,0,Blocks.planks);buildOneBlock(4,3,1,Blocks.planks);buildOneBlock(4,3,2,Blocks.planks);
+			buildOneBlock(-3,4,-4,Blocks.planks);buildOneBlock(-3,4,-3,Blocks.planks);buildOneBlock(-3,4,-2,Blocks.planks);
+			buildOneBlock(-3,4,-1,Blocks.planks);buildOneBlock(-3,4,0,Blocks.planks);buildOneBlock(-3,4,1,Blocks.planks);
+			buildOneBlock(-2,4,-3,Blocks.wool);buildOneBlock(-2,4,-2,Blocks.wool);buildOneBlock(-2,4,-1,Blocks.wool);
+			buildOneBlock(-2,4,0,Blocks.wool);buildOneBlock(-1,4,-3,Blocks.wool);buildOneBlock(-1,4,-2,Blocks.wool);
+			buildOneBlock(-1,4,-1,Blocks.wool);buildOneBlock(-1,4,0,Blocks.wool);buildOneBlock(0,4,-3,Blocks.wool);
+			buildOneBlock(0,4,-2,Blocks.wool);buildOneBlock(0,4,-1,Blocks.wool);buildOneBlock(0,4,0,Blocks.wool);
+			buildOneBlock(1,4,-3,Blocks.wool);buildOneBlock(1,4,-2,Blocks.wool);buildOneBlock(1,4,-1,Blocks.wool);
+			buildOneBlock(1,4,0,Blocks.wool);buildOneBlock(2,4,-3,Blocks.wool);buildOneBlock(2,4,-2,Blocks.wool);
+			buildOneBlock(2,4,-1,Blocks.wool);buildOneBlock(2,4,0,Blocks.wool);buildOneBlock(3,4,-4,Blocks.planks);
+			buildOneBlock(3,4,-3,Blocks.planks);buildOneBlock(3,4,-2,Blocks.planks);buildOneBlock(3,4,-1,Blocks.planks);
+			buildOneBlock(3,4,0,Blocks.planks);buildOneBlock(3,4,1,Blocks.planks);
+			
+			//add villager
+			addBuildingVillager(VillagerProfessions.Baker,"Baker","Baker",1,0);
+			addBuildingVillager(VillagerProfessions.BakerApprentice,"BakerApprentice","BakerApprentice",-1,0);
+		}
+	}
+	
+	private static void buildGroundworkOnlySmall(){
+		if(preBuild(BuildingTypes.GroundWorkOnlySmall,ConfigBuilding.SizeType_Small)){
+			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
+		}
+	}
+	
+	private static void buildGroundworkOnlyMedium(){
+		if(preBuild(BuildingTypes.GroundWorkOnlyMedium,ConfigBuilding.SizeType_Medium)){
+			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
+		}
+	}
+	
+	private static void buildGroundworkOnlyLarge(){
+		if(preBuild(BuildingTypes.GroundWorkOnlyLarge,ConfigBuilding.SizeType_Large)){
+			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
 		}
 	}
 	

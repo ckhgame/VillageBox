@@ -8,7 +8,10 @@ import org.apache.commons.lang3.ObjectUtils;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.BlockTypePos;
 import com.ckhgame.villagebento.building.BuildingPrefab;
+import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
+import com.ckhgame.villagebento.data.helpers.HelperDataVB;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -59,25 +62,27 @@ public class BlockBuildingScanner extends Block {
 	private void scanBuilding(World world,int x, int y,int z){
 		
 		prefab = null;		
-		/*
+		
+		DataVillageBento dataVB = DataVillageBento.get(world);
+		
 		//get building data
-		DataBuilding bd = villageBentoData.findBuildingData(x, y, z);
-		int gwDepth = BuildingConfig.GroundWorkDepth;
-		int gwTop = world.getHeight();
+		DataBuilding bd = HelperDataVB.findBuildingByPos(dataVB,x,z);
+		int d = ConfigBuilding.BuildingGroundWorkDepth;
+		int h = ConfigBuilding.BuildingMaxHeight;
 		Block b;
 		if(bd != null){
 			prefab = new BuildingPrefab();
-			for(int dy = -gwDepth + 1;dy <= gwTop - bd.y;dy++){
+			for(int dy = -d;dy <= h;dy++){
 				for(int dx= -bd.sizeX;dx<= bd.sizeX;dx++){
 					for(int dz= -bd.sizeZ;dz<= bd.sizeZ;dz++){
 						b = world.getBlock(bd.x + dx, bd.y + dy, bd.z + dz);
 						
-						if(dy > 0){ //scan blocks above  groundwork
+						if(dy >= 0){ //scan blocks above groundwork
 							if(b != Blocks.air && b != ModBlocks.blockBuildingScanner)
 								prefab.addblock(new BlockTypePos(b,dx,dy,dz));
 						}					
-						else{ //scan blocks below (includes) groundwork
-							if(b != BuildingConfig.GroundWorkBlock  && b != ModBlocks.blockBuildingScanner)
+						else{ //under center y,in other words inside of groundwork
+							if(b != ConfigBuilding.GroundWorkBlock  && b != ModBlocks.blockBuildingScanner)
 								prefab.addblock(new BlockTypePos(b,dx,dy,dz));
 						}
 						
@@ -89,7 +94,7 @@ public class BlockBuildingScanner extends Block {
 			System.out.println("Can not find the building data");
 		}
 		
-		*/
+		
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -5,7 +5,7 @@ import java.util.Random;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.BuilderBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.entities.EntityVBVillager;
+import com.ckhgame.villagebento.entity.EntityVBVillager;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -47,20 +47,7 @@ public class BlockVillageBuilding extends Block {
 			//destroy the village block
 			world.func_147480_a(x, y, z, false);
 			
-			BuilderBuilding.build(world, player, x, y-1, z, this.buildingType);
-			
-			//test spawn a villager
-			String[] before = new String[]{"AAA","BBB","CCCC","DDDd"};
-			String[] after = new String[]{"EE","FFFFF","GG","HHHHHH"};
-			Random rand = new Random();
-			String name = before[(rand).nextInt(before.length)] + after[rand.nextInt(after.length)];
-						
-			EntityVBVillager entityvbvillager = new EntityVBVillager(world);
-			
-			entityvbvillager.setName(name);
-			
-			entityvbvillager.setLocationAndAngles((double)x,(double)y,(double)z, 0.0F, 0.0F);
-            world.spawnEntityInWorld(entityvbvillager);
+			BuilderBuilding.build(world, player, x, y, z, this.buildingType);
 			 
 			return true;
 		}	

@@ -2,7 +2,7 @@ package com.ckhgame.villagebento.rendering;
 
 import org.lwjgl.opengl.GL11;
 
-import com.ckhgame.villagebento.entities.EntityVBVillager;
+import com.ckhgame.villagebento.entity.EntityVBVillager;
 
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.relauncher.Side;

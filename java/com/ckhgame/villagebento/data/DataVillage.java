@@ -3,7 +3,7 @@ package com.ckhgame.villagebento.data;
 import java.util.HashMap;
 
 import com.ckhgame.villagebento.config.ConfigData;
-import com.ckhgame.villagebento.data.helpers.HelperVillageData;
+import com.ckhgame.villagebento.data.helpers.HelperDataVB;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -11,7 +11,6 @@ import net.minecraft.util.AxisAlignedBB;
 public class DataVillage extends Data{
 	
 	public int id;
-	public String name;
 	public HashMap<Integer,DataBuilding> mapDataBuilding = new HashMap<Integer,DataBuilding>();
 	public HashMap<Integer,DataVillager> mapDataVillager = new HashMap<Integer,DataVillager>();
 	
@@ -22,7 +21,6 @@ public class DataVillage extends Data{
 	public void writeToNBT(NBTTagCompound compound) {
 		
 		compound.setInteger(ConfigData.KeyDataVillageID,this.id);
-		compound.setString(ConfigData.KeyDataVillageName,this.name);
 		
 		//building Map
 		int idx = 0;
@@ -47,7 +45,6 @@ public class DataVillage extends Data{
 	public void readFromNBT(NBTTagCompound compound) {
 
 		this.id = compound.getInteger(ConfigData.KeyDataVillageID);
-		this.name = compound.getString(ConfigData.KeyDataVillageName);
 		
 		//building Map
 		mapDataBuilding.clear();
@@ -68,7 +65,7 @@ public class DataVillage extends Data{
 		}
 		
 		//refresh cache
-		HelperVillageData.refreshCacheVillageBoundary(this);
+		HelperDataVB.refreshCacheVillageBoundary(this);
 	}
 	
 }

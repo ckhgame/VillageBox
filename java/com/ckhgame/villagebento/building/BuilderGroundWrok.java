@@ -18,7 +18,8 @@ public class BuilderGroundWrok {
 		int zto = db.z + db.sizeZ;
 		int y = db.y;
 		int depth = ConfigBuilding.BuildingGroundWorkDepth;
-		int height = ConfigBuilding.BuildingMaxHeight;
+		int height = ConfigBuilding.BuildingMaxHeight; // building center includes in height
+		
 		
 		for(int x = xfrom;x <= xto;x++){
 			for(int z = zfrom;z<= zto;z++){	

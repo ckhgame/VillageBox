@@ -1,8 +1,7 @@
 < zh_CN.lang - English localization file for the mod Tutorial >
-tile.BlockVillageBoxSmall.name=小型村庄盒子
-tile.BlockVillageBoxMedium.name=中型村庄盒子
-tile.BlockVillageBoxLarge.name=大型村庄盒子
-tile.BlockVillageViewer.name=村庄观察器
+tile.BlockGroundworkOnlySmall.name=建筑:小型地基
+tile.BlockGroundworkOnlyMedium.name=建筑:中型地基
+tile.BlockGroundworkOnlyLarge.name=建筑：大型地基
 tile.BlockBuildingScanner.name=建筑扫描器
 tile.BlockBuildingSmallHouse.name=建筑:小房子
 tile.BlockVillageCenter.name=建筑:村庄中心

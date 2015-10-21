@@ -12,7 +12,6 @@ public class DataBuilding extends Data{
 	public int sizeZ; // similar as sizeX
 	public int y;
 	public int type;
-	public int villagerID;
 	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
@@ -23,7 +22,6 @@ public class DataBuilding extends Data{
 		compound.setInteger(ConfigData.KeyDataBuildingSizeX, this.sizeX);
 		compound.setInteger(ConfigData.KeyDataBuildingSizeZ, this.sizeZ);
 		compound.setInteger(ConfigData.KeyDataBuildingType, this.type);
-		compound.setInteger(ConfigData.KeyDataBuildingVillagerID, this.villagerID);
 	}
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
@@ -34,6 +32,5 @@ public class DataBuilding extends Data{
 		this.sizeX = compound.getInteger(ConfigData.KeyDataBuildingSizeX);
 		this.sizeZ = compound.getInteger(ConfigData.KeyDataBuildingSizeZ);
 		this.type = compound.getInteger(ConfigData.KeyDataBuildingType);
-		this.villagerID = compound.getInteger(ConfigData.KeyDataBuildingVillagerID);
 	}
 }

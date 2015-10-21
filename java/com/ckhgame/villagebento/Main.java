@@ -1,7 +1,5 @@
 package com.ckhgame.villagebento;
 
-import com.ckhgame.villagebento.rendering.ColoredCubeRenderer;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;

@@ -1,8 +1,8 @@
 package com.ckhgame.villagebento;
 
 import com.ckhgame.villagebento.blocks.ModBlocks;
-import com.ckhgame.villagebento.entities.ModEntities;
-import com.ckhgame.villagebento.items.ModItems;
+import com.ckhgame.villagebento.entity.ModEntities;
+import com.ckhgame.villagebento.item.ModItems;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;

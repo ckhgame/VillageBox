@@ -1,6 +1,6 @@
 package com.ckhgame.villagebento.rendering;
 
-import com.ckhgame.villagebento.entities.EntityVBVillager;
+import com.ckhgame.villagebento.entity.EntityVBVillager;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 

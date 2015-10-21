@@ -1,8 +1,7 @@
 < en_US.lang - English localization file for the mod Tutorial >
-tile.BlockVillageBoxSmall.name=Small Village Box
-tile.BlockVillageBoxMedium.name=Medium Village Box
-tile.BlockVillageBoxLarge.name=Large Village Box
-tile.BlockVillageViewer.name=Village Viewer
+tile.BlockGroundworkOnlySmall.name=Building:Small Base
+tile.BlockGroundworkOnlyMedium.name=Building:Medium Base
+tile.BlockGroundworkOnlyLarge.name=Building:Large Base
 tile.BlockBuildingScanner.name=Building Scanner
 tile.BlockBuildingSmallHouse.name=Building:Small House
 tile.BlockVillageCenter.name=Building:Village Center

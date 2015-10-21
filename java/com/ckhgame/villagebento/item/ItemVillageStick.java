@@ -1,8 +1,10 @@
-package com.ckhgame.villagebento.items;
+package com.ckhgame.villagebento.item;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.data.DataBuilding;
+import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
+import com.ckhgame.villagebento.data.helpers.HelperDataVB;
 import com.ckhgame.villagebento.rendering.VillageOutlines;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -26,7 +28,7 @@ public class ItemVillageStick extends Item {
 	private static boolean villageOutlinesEnabled = false;
 	
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer p_77659_3_) {
+	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer p) {
 				
 		if(!world.isRemote){		
 		
@@ -34,6 +36,11 @@ public class ItemVillageStick extends Item {
 			DataVillageBento villageBentoData = DataVillageBento.get(world);
 			VillageOutlines.getInstance().setVillageBentoData(villageOutlinesEnabled?null:villageBentoData);
 			villageOutlinesEnabled = !villageOutlinesEnabled;
+			
+			//temp
+			DataVillage dv = HelperDataVB.findVillageByPos(villageBentoData, (int)p.posX, (int)p.posZ);
+			if(dv != null)
+				HelperDataVB.displayVillageInfo(dv);
 			
 			/*
 			System.out.println("Current Buildings:");

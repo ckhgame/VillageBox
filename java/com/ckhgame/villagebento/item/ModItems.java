@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.items;
+package com.ckhgame.villagebento.item;
 
 
 import cpw.mods.fml.common.registry.GameRegistry;
