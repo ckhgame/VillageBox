@@ -93,7 +93,7 @@ public class BuilderBuilding {
 						block);
 	}
 	
-	public static void build(World w,EntityPlayer p,int x, int y, int z,int type){
+	public static boolean build(World w,EntityPlayer p,int x, int y, int z,int type){
 		
 		BuilderBuilding.world = w;
 		BuilderBuilding.player = p;
@@ -101,19 +101,23 @@ public class BuilderBuilding {
 		BuilderBuilding.y = y;
 		BuilderBuilding.z = z;
 		
+		boolean success = false;
+		
 		switch(type){
-		case BuildingTypes.GroundWorkOnlySmall:buildGroundworkOnlySmall();break;
-		case BuildingTypes.GroundWorkOnlyMedium:buildGroundworkOnlyMedium();break;
-		case BuildingTypes.GroundWorkOnlyLarge:buildGroundworkOnlyLarge();break;
-		case BuildingTypes.VillageCenter:buildVillageCenter();break;
-		case BuildingTypes.MiningHouse:buildMiningHouse();break;
-		case BuildingTypes.BlackSmithsShop:buildBlackSmithsShop();break;
-		case BuildingTypes.Bakery:buildBakery();break;
+		case BuildingTypes.GroundWorkOnlySmall:success = buildGroundworkOnlySmall();break;
+		case BuildingTypes.GroundWorkOnlyMedium:success = buildGroundworkOnlyMedium();break;
+		case BuildingTypes.GroundWorkOnlyLarge:success = buildGroundworkOnlyLarge();break;
+		case BuildingTypes.VillageCenter:success = buildVillageCenter();break;
+		case BuildingTypes.MiningHouse:success = buildMiningHouse();break;
+		case BuildingTypes.BlackSmithsShop:success = buildBlackSmithsShop();break;
+		case BuildingTypes.Bakery:success = buildBakery();break;
 		default:break;
 		}
+		
+		return success;
 	}
 	
-	private static void buildVillageCenter(){	
+	private static boolean buildVillageCenter(){	
 		if(preBuild(BuildingTypes.VillageCenter,ConfigBuilding.SizeType_Small)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
 			
@@ -161,10 +165,13 @@ public class BuilderBuilding {
 			
 			//add villager
 			addBuildingVillager(VillagerProfessions.VillageAssistant,"VillagerAssistant","VillagerAssistant",0,0);
+			
+			return true;
 		}
+		return false;
 	}
 
-	private static void buildMiningHouse(){
+	private static boolean buildMiningHouse(){
 		if(preBuild(BuildingTypes.MiningHouse,ConfigBuilding.SizeType_Small)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
 			buildOneBlock(-2,1,-2,Blocks.stonebrick);buildOneBlock(-2,1,-1,Blocks.planks);buildOneBlock(-2,1,0,Blocks.planks);
@@ -210,10 +217,13 @@ public class BuilderBuilding {
 			//add villager
 			addBuildingVillager(VillagerProfessions.Miner,"Miner1","Miner",1,0);
 			addBuildingVillager(VillagerProfessions.Miner,"Miner2","Miner",-1,0);
+			
+			return true;
 		}
+		return false;
 	}
 	
-	private static void buildBlackSmithsShop(){
+	private static boolean buildBlackSmithsShop(){
 		if(preBuild(BuildingTypes.BlackSmithsShop,ConfigBuilding.SizeType_Small)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
 			buildOneBlock(-3,1,-3,Blocks.stonebrick);buildOneBlock(-3,1,-2,Blocks.stonebrick);buildOneBlock(-3,1,-1,Blocks.stonebrick);
@@ -250,10 +260,13 @@ public class BuilderBuilding {
 			//add villager
 			addBuildingVillager(VillagerProfessions.Blacksmith,"Blacksmith","Blacksmith",1,0);
 			addBuildingVillager(VillagerProfessions.BlacksmithAssistant,"BlacksmithAssistant","BlacksmithAssistant",-1,0);
+			
+			return true;
 		}
+		return false;
 	}
 	
-	private static void buildBakery(){
+	private static boolean buildBakery(){
 		if(preBuild(BuildingTypes.Bakery,ConfigBuilding.SizeType_Medium)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
 			
@@ -311,31 +324,42 @@ public class BuilderBuilding {
 			//add villager
 			addBuildingVillager(VillagerProfessions.Baker,"Baker","Baker",1,0);
 			addBuildingVillager(VillagerProfessions.BakerApprentice,"BakerApprentice","BakerApprentice",-1,0);
+			
+			return true;
 		}
+		return false;
 	}
 	
-	private static void buildGroundworkOnlySmall(){
+	private static boolean buildGroundworkOnlySmall(){
 		if(preBuild(BuildingTypes.GroundWorkOnlySmall,ConfigBuilding.SizeType_Small)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
+			return true;
 		}
+		return false;
 	}
 	
-	private static void buildGroundworkOnlyMedium(){
+	private static boolean buildGroundworkOnlyMedium(){
 		if(preBuild(BuildingTypes.GroundWorkOnlyMedium,ConfigBuilding.SizeType_Medium)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
+			return true;
 		}
+		return false;
 	}
 	
-	private static void buildGroundworkOnlyLarge(){
+	private static boolean buildGroundworkOnlyLarge(){
 		if(preBuild(BuildingTypes.GroundWorkOnlyLarge,ConfigBuilding.SizeType_Large)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
+			return true;
 		}
+		return false;
 	}
 	
-	private static void buildXXXXXX(){
+	private static boolean buildXXXXXX(){
 		if(preBuild(BuildingTypes.VillageCenter,ConfigBuilding.SizeType_Small)){
 			BuilderGroundWrok.buildGroundwork(world,dataBuilding);
+			return true;
 		}
+		return false;
 	}
 	
 }

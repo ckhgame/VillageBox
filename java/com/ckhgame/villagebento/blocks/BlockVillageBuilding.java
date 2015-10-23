@@ -5,14 +5,15 @@ import java.util.Random;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.BuilderBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.entity.EntityVBVillager;
+import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.network.VBNetwork;
+import com.ckhgame.villagebento.network.message.MessageVillageOutlinesChanged;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 
 public class BlockVillageBuilding extends Block {
@@ -33,21 +34,25 @@ public class BlockVillageBuilding extends Block {
 
     private final int buildingType;
     
-    @SideOnly(Side.CLIENT)
     private DataVillageBento villageBentoData = null;
     
-    @SideOnly(Side.CLIENT)
     private boolean villageOutlinesEnabled = false;
     
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z,EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
 		
-		if(world.isRemote) return true;
+		if(world.isRemote || world.provider.dimensionId !=0) return true;
 		else{
 			//destroy the village block
 			world.func_147480_a(x, y, z, false);
 			
-			BuilderBuilding.build(world, player, x, y, z, this.buildingType);
+			if(BuilderBuilding.build(world, player, x, y, z, this.buildingType)){
+				//refresh village outlines
+				DataVillageBento dataVB = DataVillageBento.get(world);			
+				MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
+				msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB);			
+				VBNetwork.networkWrapper.sendToAll(msg);
+			}
 			 
 			return true;
 		}	

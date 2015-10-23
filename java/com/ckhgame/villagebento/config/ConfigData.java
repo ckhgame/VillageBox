@@ -16,13 +16,14 @@ public class ConfigData {
 	public static final String KeyDataVillagerSkin		= "dvrs";
 	public static final String KeyDataVillagerProfession= "dvrp";
 	public static final String KeyDataVillagerBuildingID= "dvrbid";
+	public static final String KeyDataVillagerDeath		= "dvrd";
 	
 	//village
 	public static final String KeyDataVillageID			= "dvid";
 	public static final String KeyDataVillageVillagerMapSize		= "dvvrs";
 	public static final String KeyDataVillageBuildingMapSize 		= "dvbs";
 	public static final String KeyDataVillageVillagerMapPrefix		= "dvvr_";
-	public static final String KeyDataVillageBuildingMapPrefix 	= "dvb_";
+	public static final String KeyDataVillageBuildingMapPrefix 		= "dvb_";
 	
 	//id
 	public static final String KeyDataIDLastVillage		= "didlv";

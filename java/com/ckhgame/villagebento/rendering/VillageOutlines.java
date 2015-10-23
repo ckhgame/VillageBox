@@ -1,11 +1,14 @@
 package com.ckhgame.villagebento.rendering;
 
+import java.util.ArrayList;
+
 import org.lwjgl.opengl.GL11;
 
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
+import com.ckhgame.villagebento.util.BoxWithColor;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
@@ -23,18 +26,40 @@ public class VillageOutlines {
 		return instance;
 	}
 	
-	private double px,py,pz;
-	private DataVillageBento villageBentoData = null;
+	private boolean enabled = false;
 	
-	public void setVillageBentoData(DataVillageBento vbData){ //if set vbData to null, no outlines will be display
-		villageBentoData = vbData;
+	public boolean getEnabled(){
+		return enabled;
 	}
+	
+	public void setEnabled(boolean enabled){
+		this.enabled = enabled;
+	}
+	
+	private double px,py,pz;
+	private ArrayList<BoxWithColor> villageOutlines = null;
+	
+	public void setVillageOutlines(ArrayList<BoxWithColor> villageOutlines){ //if set vbData to null, no outlines will be display
+		this.villageOutlines = villageOutlines;
+	}
+	
+	int count = 0;
 	
 	@SubscribeEvent
 	public void renderWorldLastEvent(RenderWorldLastEvent event) {
-		
-		if(villageBentoData != null){
+				
+		/*count++;
+		if(count > 300){
+			count = 0;
+			System.out.println(Minecraft.getMinecraft().thePlayer.getDisplayName() + ": <==");
+			if(villageBentoData == null)
+				System.out.println("dataVB is null!");
+			System.out.println(Minecraft.getMinecraft().thePlayer.getDisplayName() + ": ==>");
+		}*/
+
+		if(enabled && this.villageOutlines != null){
 			EntityPlayer p = Minecraft.getMinecraft().thePlayer;
+			
 			px = p.lastTickPosX + (p.posX - p.lastTickPosX) * (double) event.partialTicks;
 			py = p.lastTickPosY + (p.posY - p.lastTickPosY) * (double) event.partialTicks;
 			pz = p.lastTickPosZ + (p.posZ - p.lastTickPosZ) * (double) event.partialTicks;
@@ -51,23 +76,10 @@ private void renderOutlines() {
         GL11.glDisable(GL11.GL_CULL_FACE);
         
         //render
-        //outlines of buildings
-        for(DataVillage dv:villageBentoData.mapDataVillage.values()){       	
-        	 for(DataBuilding bd: dv.mapDataBuilding.values()){
-             	renderOutline(AxisAlignedBB.getBoundingBox(bd.x - bd.sizeX, bd.y - ConfigBuilding.BuildingGroundWorkDepth, bd.z - bd.sizeZ, 
-             											   bd.x + bd.sizeX + 1, bd.y + ConfigBuilding.BuildingMaxHeight + 1, bd.z + bd.sizeZ + 1)
-             								.expand(0.1, 0, 0.1)
-             								.getOffsetBoundingBox(-px, -py, -pz),0.2f,0.7f,0.2f,0.7f);
-             }
-             //outlines of the village
-             if(dv.cacheVillageBoundary != null){
-            	 AxisAlignedBB vb = dv.cacheVillageBoundary.copy();
-            	 vb.maxX += 1;
-            	 vb.maxY += 1;
-            	 vb.maxZ += 1;
-            	 renderOutline(vb.getOffsetBoundingBox(-px, -py, -pz),0.7f,0.7f,0.1f,0.7f);  
-             }
-        }
+        for(BoxWithColor b:villageOutlines)
+        	renderOutline(b);
+        
+       
 
         GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
         GL11.glEnable(GL11.GL_CULL_FACE);
@@ -75,58 +87,65 @@ private void renderOutlines() {
         GL11.glDisable(GL11.GL_BLEND);
     }
 
-    private void renderOutline(AxisAlignedBB bb,float colorR,float colorG,float colorB,float colorA) {
-        
-    	Tessellator tessellator = Tessellator.instance;
-        
-        /*
-        tessellator.startDrawing(GL11.GL_QUADS);
-        tessellator.setColorRGBA_F(colorR, colorG, colorB, colorA);
-        tessellator.addVertex(bb.minX, bb.minY, bb.minZ);
-        tessellator.addVertex(bb.maxX, bb.minY, bb.minZ);
-        tessellator.addVertex(bb.maxX, bb.minY, bb.maxZ);
-        tessellator.addVertex(bb.minX, bb.minY, bb.maxZ);
-        tessellator.draw();
-        
-        tessellator.startDrawing(GL11.GL_QUADS);
-        tessellator.setColorRGBA_F(colorR, colorG, colorB, colorA);
-        tessellator.addVertex(bb.minX, bb.maxY, bb.minZ);
-        tessellator.addVertex(bb.maxX, bb.maxY, bb.minZ);
-        tessellator.addVertex(bb.maxX, bb.maxY, bb.maxZ);
-        tessellator.addVertex(bb.minX, bb.maxY, bb.maxZ);
-        tessellator.draw();
-     	*/
-        
-        tessellator.startDrawing(GL11.GL_LINE_LOOP);
-        tessellator.setColorRGBA_F(colorR, colorG, colorB, colorA);
-        tessellator.addVertex(bb.minX, bb.maxY, bb.maxZ);
-        tessellator.addVertex(bb.maxX, bb.maxY, bb.maxZ);
-        tessellator.addVertex(bb.maxX, bb.minY, bb.maxZ);
-        tessellator.addVertex(bb.minX, bb.minY, bb.maxZ);
-        tessellator.draw();
-        
-        tessellator.startDrawing(GL11.GL_LINE_LOOP);
-        tessellator.setColorRGBA_F(colorR, colorG, colorB, colorA);
-        tessellator.addVertex(bb.minX, bb.minY, bb.minZ);
-        tessellator.addVertex(bb.minX, bb.maxY, bb.minZ);
-        tessellator.addVertex(bb.maxX, bb.maxY, bb.minZ);
-        tessellator.addVertex(bb.maxX, bb.minY, bb.minZ);
-        tessellator.draw();
-        
-        tessellator.startDrawing(GL11.GL_LINE_LOOP);
-        tessellator.setColorRGBA_F(colorR, colorG, colorB, colorA);
-        tessellator.addVertex(bb.minX,bb.minY, bb.minZ);
-        tessellator.addVertex(bb.minX,bb.minY, bb.maxZ);
-        tessellator.addVertex(bb.minX,bb.maxY, bb.maxZ);
-        tessellator.addVertex(bb.minX,bb.maxY, bb.minZ);
-        tessellator.draw();
-        
-        tessellator.startDrawing(GL11.GL_LINE_LOOP);
-        tessellator.setColorRGBA_F(colorR, colorG, colorB, colorA);
-        tessellator.addVertex(bb.maxX,bb.minY, bb.minZ);
-        tessellator.addVertex(bb.maxX,bb.minY, bb.maxZ);
-        tessellator.addVertex(bb.maxX,bb.maxY, bb.maxZ);
-        tessellator.addVertex(bb.maxX,bb.maxY, bb.minZ);
-        tessellator.draw();
-    }
+private void renderOutline(BoxWithColor b) {
+    
+	Tessellator tessellator = Tessellator.instance;
+    
+	double minx = b.minX - px;
+	double miny = b.minY - py;
+	double minz = b.minZ - pz;
+	double maxx = b.maxX - px;
+	double maxy = b.maxY - py;
+	double maxz = b.maxZ - pz;
+	
+    /*
+    tessellator.startDrawing(GL11.GL_QUADS);
+    tessellator.setColorRGBA_F(colorR, colorG, colorB, colorA);
+    tessellator.addVertex(b.minX, b.minY, b.minZ);
+    tessellator.addVertex(b.maxX, b.minY, b.minZ);
+    tessellator.addVertex(b.maxX, b.minY, b.maxZ);
+    tessellator.addVertex(b.minX, b.minY, b.maxZ);
+    tessellator.draw();
+    
+    tessellator.startDrawing(GL11.GL_QUADS);
+    tessellator.setColorRGBA_F(colorR, colorG, colorB, colorA);
+    tessellator.addVertex(b.minX, b.maxY, b.minZ);
+    tessellator.addVertex(b.maxX, b.maxY, b.minZ);
+    tessellator.addVertex(b.maxX, b.maxY, b.maxZ);
+    tessellator.addVertex(b.minX, b.maxY, b.maxZ);
+    tessellator.draw();
+ 	*/
+    
+	tessellator.startDrawing(GL11.GL_LINE_LOOP);
+    tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+    tessellator.addVertex(minx, maxy, maxz);
+    tessellator.addVertex(maxx, maxy, maxz);
+    tessellator.addVertex(maxx, miny, maxz);
+    tessellator.addVertex(minx, miny, maxz);
+    tessellator.draw();
+    
+    tessellator.startDrawing(GL11.GL_LINE_LOOP);
+    tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+    tessellator.addVertex(minx, miny, minz);
+    tessellator.addVertex(minx, maxy, minz);
+    tessellator.addVertex(maxx, maxy, minz);
+    tessellator.addVertex(maxx, miny, minz);
+    tessellator.draw();
+    
+    tessellator.startDrawing(GL11.GL_LINE_LOOP);
+    tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+    tessellator.addVertex(minx,miny, minz);
+    tessellator.addVertex(minx,miny, maxz);
+    tessellator.addVertex(minx,maxy, maxz);
+    tessellator.addVertex(minx,maxy, minz);
+    tessellator.draw();
+    
+    tessellator.startDrawing(GL11.GL_LINE_LOOP);
+    tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+    tessellator.addVertex(maxx,miny, minz);
+    tessellator.addVertex(maxx,miny, maxz);
+    tessellator.addVertex(maxx,maxy, maxz);
+    tessellator.addVertex(maxx,maxy, minz);
+    tessellator.draw();
+}
 }

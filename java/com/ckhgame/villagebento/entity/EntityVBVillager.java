@@ -1,13 +1,15 @@
 package com.ckhgame.villagebento.entity;
 
 import com.ckhgame.villagebento.config.ConfigData;
+import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
+import com.ckhgame.villagebento.data.helpers.HelperDataVB;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable{
@@ -75,6 +77,17 @@ public class EntityVBVillager extends EntityAgeable{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void onDeath(DamageSource p_70645_1_) {
+		super.onDeath(p_70645_1_);
+		
+		//when the villager is dead, we should tell the DataVillager he is dead, and he will be revive on next noon
+		DataVillageBento dataVB = DataVillageBento.get(this.worldObj);
+		HelperDataVB.setVillageDeath(dataVB, this.dataVillagerID);
+	}
+	
+	
     
 	
     

@@ -12,6 +12,7 @@ public class DataVillageBento extends WorldSavedData{
 	
 	public HashMap<Integer,DataVillage> mapDataVillage = new HashMap<Integer,DataVillage>();
 	public DataID dataID = new DataID();
+	public World world;
 	
 	public DataVillageBento(String tagName) {
 		super(tagName);
@@ -53,6 +54,9 @@ public class DataVillageBento extends WorldSavedData{
 	
 	public static DataVillageBento get(World world){
 
+		if(world.provider.dimensionId != 0) // only overworld
+			return null;
+		
 		if(world.mapStorage == null)
 			return null;
 		
@@ -63,6 +67,8 @@ public class DataVillageBento extends WorldSavedData{
 			data.markDirty();
 			world.mapStorage.setData(ConfigData.KeyDataVillageBentoMapStorage, data);
 		}
+		
+		data.world = world;
 		
 		return data;
 	}

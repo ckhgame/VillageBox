@@ -1,17 +1,15 @@
 package com.ckhgame.villagebento.item;
 
 import com.ckhgame.villagebento.Main;
-import com.ckhgame.villagebento.data.DataBuilding;
-import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.network.VBNetwork;
+import com.ckhgame.villagebento.network.message.MessageVillageOutlinesChanged;
 import com.ckhgame.villagebento.rendering.VillageOutlines;
 
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -23,38 +21,25 @@ public class ItemVillageStick extends Item {
 		this.setTextureName(Main.MODID + ":itemvillagestick");
 		this.setCreativeTab(CreativeTabs.tabTools);
 	}
-
-	@SideOnly(Side.CLIENT)
-	private static boolean villageOutlinesEnabled = false;
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer p) {
-				
-		if(!world.isRemote){		
 		
-			//enable or disable outlines
-			DataVillageBento villageBentoData = DataVillageBento.get(world);
-			VillageOutlines.getInstance().setVillageBentoData(villageOutlinesEnabled?null:villageBentoData);
-			villageOutlinesEnabled = !villageOutlinesEnabled;
-			
-			//temp
-			DataVillage dv = HelperDataVB.findVillageByPos(villageBentoData, (int)p.posX, (int)p.posZ);
-			if(dv != null)
-				HelperDataVB.displayVillageInfo(dv);
-			
-			/*
-			System.out.println("Current Buildings:");
-			for(BuildingData bd:villageBentoData.buildings){
-				System.out.println("===========");
-				System.out.println("X:"+bd.x);
-				System.out.println("Z:"+bd.z);
-				System.out.println("W:"+(bd.sizeX * 2 + 1));
-				System.out.println("H:"+(bd.sizeZ * 2 + 1));
-				System.out.println("Y:"+bd.y);
-				System.out.println("T:"+bd.type);
+		if(world.provider.dimensionId == 0){
+			if(world.isRemote){
+				//client
+				VillageOutlines.getInstance().setEnabled(!VillageOutlines.getInstance().getEnabled());
 			}
-			*/
-
+			else{
+				//server				
+				
+				DataVillageBento dataVB = DataVillageBento.get(world);
+				
+				MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
+				msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB);
+				
+				VBNetwork.networkWrapper.sendTo(msg, (EntityPlayerMP)p);
+			}
 		}
 		
 		return itemStack;

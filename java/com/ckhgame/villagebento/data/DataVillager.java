@@ -11,6 +11,7 @@ public class DataVillager extends Data{
 	public String skin;
 	public int profession;
 	public int buildingID;
+	public int death;	// > 0 means the villager has to wait for [death] days to revive again, <=0 means the villager is alive now.
 	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
@@ -19,6 +20,7 @@ public class DataVillager extends Data{
 		compound.setString(ConfigData.KeyDataVillagerSkin, this.skin);
 		compound.setInteger(ConfigData.KeyDataVillagerProfession, this.profession);
 		compound.setInteger(ConfigData.KeyDataVillagerBuildingID, this.buildingID);
+		compound.setInteger(ConfigData.KeyDataVillagerDeath, this.death);
 	}
 
 	@Override
@@ -28,6 +30,7 @@ public class DataVillager extends Data{
 		this.skin = compound.getString(ConfigData.KeyDataVillagerSkin);
 		this.profession = compound.getInteger(ConfigData.KeyDataVillagerProfession);
 		this.buildingID = compound.getInteger(ConfigData.KeyDataVillagerBuildingID);	
+		this.death = compound.getInteger(ConfigData.KeyDataVillagerDeath);	
 	}
 	
 }

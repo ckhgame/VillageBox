@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.building.BuildingTypes;
 import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.config.ConfigRendering;
 import com.ckhgame.villagebento.config.ConfigVillage;
+import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
+import com.ckhgame.villagebento.util.BoxWithColor;
+import com.ckhgame.villagebento.villager.VillagerGenerator;
 
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
@@ -67,6 +71,7 @@ public class HelperDataVB {
 				//if we find the building id, we are in the right village for the new villager
 				dvr.id = generateNextVillagerID(dataVB);
 				dv.mapDataVillager.put(dvr.id, dvr);
+				dataVB.markDirty();
 				return true;
 			}
 		}
@@ -206,6 +211,13 @@ public class HelperDataVB {
 		return null;
 	}
 	
+	public static DataVillager findVillagerByID(DataVillageBento dataVB, int id){
+		for(DataVillage dv : dataVB.mapDataVillage.values()){
+			if(dv.mapDataVillager.containsKey(id))
+				return dv.mapDataVillager.get(id);
+		}
+		return null;
+	}
 	
 	public static int generateNextBuildingID(DataVillageBento dataVB){
 		dataVB.dataID.idLastBuilding += 1;
@@ -261,6 +273,73 @@ public class HelperDataVB {
 		dvr.buildingID = buildingID;
 		
 		return dvr;
+	}
+	
+	public static void setVillageDeath(DataVillageBento dataVB, int id){
+		DataVillager dvr = findVillagerByID(dataVB,id);
+		if(dvr != null){
+			dvr.death = ConfigVillager.VillagerRevivingDurationByDay;
+			dataVB.markDirty();
+		}
+	}
+	
+	public static void stepDeadVillages(DataVillageBento dataVB){
+		
+		System.out.println("look at those poor dead people...");
+		
+		//step all dead villages' reviving counting (1 day)
+		boolean changed = false;
+		for(DataVillage dv:dataVB.mapDataVillage.values()){
+			for(DataVillager dvr:dv.mapDataVillager.values()){
+				if(dvr.death > 0){
+					dvr.death-=1;
+					changed = true;
+					//if the village is available for reviving, respawn the villager
+					if(dvr.death == 0){
+						DataBuilding db = findBuildingByID(dataVB,dvr.buildingID);
+						if(db != null){
+							//respawn on the position of the villager's building
+							VillagerGenerator.generateEntity(dataVB.world,db.x, db.y, db.z, dvr);
+						}
+					}
+				}
+			}
+		}
+		
+		if(changed)
+			dataVB.markDirty();
+	}
+	
+	public static ArrayList<BoxWithColor> getVillageOutlines(DataVillageBento dataVB){
+		
+		ArrayList<BoxWithColor> bs = new ArrayList<BoxWithColor>();
+		
+		BoxWithColor b = null;
+		AxisAlignedBB aabb = null;
+		
+		int[] cb = ConfigRendering.ColorVillageBuildingOutlines;
+		int[] cv = ConfigRendering.ColorVillageOutlines;
+		
+		for(DataVillage dv : dataVB.mapDataVillage.values()){
+			//village
+			aabb = dv.cacheVillageBoundary;
+			b = new BoxWithColor(	(int)aabb.minX,(int)aabb.minY,(int)aabb.minZ,
+									(int)aabb.maxX + 1,(int)aabb.maxY + 1,(int)aabb.maxZ + 1,
+									cv[0],cv[1],cv[2],cv[3]);
+			bs.add(b);
+			
+			//buildings
+			for(DataBuilding db : dv.mapDataBuilding.values()){
+				b = new BoxWithColor(
+						db.x - db.sizeX, db.y - ConfigBuilding.BuildingGroundWorkDepth, db.z - db.sizeZ, 
+						db.x + db.sizeX + 1, db.y + ConfigBuilding.BuildingMaxHeight + 1, db.z + db.sizeZ + 1,
+						cb[0], cb[1], cb[2], cb[3]
+						);
+				bs.add(b);
+			}
+		}
+		
+		return bs;
 	}
 
 }

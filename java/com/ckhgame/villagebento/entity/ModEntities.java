@@ -2,10 +2,8 @@ package com.ckhgame.villagebento.entity;
 
 
 import com.ckhgame.villagebento.Main;
-import com.ckhgame.villagebento.item.ItemVillageStick;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.Entity;
 
 public class ModEntities {

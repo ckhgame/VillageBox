@@ -3,8 +3,6 @@ package com.ckhgame.villagebento.blocks;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import org.apache.commons.lang3.ObjectUtils;
-
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.BlockTypePos;
 import com.ckhgame.villagebento.building.BuildingPrefab;
@@ -13,8 +11,6 @@ import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.helpers.HelperDataVB;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -36,14 +32,12 @@ public class BlockBuildingScanner extends Block {
         this.setStepSound(soundTypeWood);
     }
     
-    @SideOnly(Side.CLIENT)
-    private DataVillageBento villageBentoData = null;
-    
+    private DataVillageBento villageBentoData = null; 
     
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z,EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
 		
-		if(world.isRemote) return true;
+		if(world.isRemote || world.provider.dimensionId !=0) return true;
 		else{
 			villageBentoData = DataVillageBento.get(world);
 			
@@ -55,10 +49,8 @@ public class BlockBuildingScanner extends Block {
 		}	
 	}
 	
-	@SideOnly(Side.CLIENT)
 	private BuildingPrefab prefab;
 	
-	@SideOnly(Side.CLIENT)
 	private void scanBuilding(World world,int x, int y,int z){
 		
 		prefab = null;		
@@ -97,7 +89,6 @@ public class BlockBuildingScanner extends Block {
 		
 	}
 	
-	@SideOnly(Side.CLIENT)
 	private void outputScanResults(){
 		
 		if(prefab != null){
@@ -114,7 +105,6 @@ public class BlockBuildingScanner extends Block {
 		
 	}
 	
-	@SideOnly(Side.CLIENT)
 	private void outputCodes(){
 		
 		if(prefab != null){
@@ -130,7 +120,6 @@ public class BlockBuildingScanner extends Block {
 		
 	}
 	
-	@SideOnly(Side.CLIENT)
 	private String getBlockVariable(Block b){
 		Field[] fs = Blocks.class.getFields();
 		for(Field f: fs){
