@@ -3,10 +3,10 @@ package com.ckhgame.villagebento;
 import com.ckhgame.villagebento.blocks.ModBlocks;
 import com.ckhgame.villagebento.entity.ModEntities;
 import com.ckhgame.villagebento.event.EventVillageBentoTick;
+import com.ckhgame.villagebento.event.EventRenderVillageOutlines;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.ModMessages;
-import com.ckhgame.villagebento.rendering.ModRenderers;
-import com.ckhgame.villagebento.rendering.VillageOutlines;
+import com.ckhgame.villagebento.renderer.ModRenderers;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -27,7 +27,7 @@ public class CommonProxy {
 	public void init(FMLInitializationEvent e) {
 		
 		 FMLCommonHandler.instance().bus().register(EventVillageBentoTick.getInstance());
-		 MinecraftForge.EVENT_BUS.register(VillageOutlines.getInstance());
+		 MinecraftForge.EVENT_BUS.register(EventRenderVillageOutlines.getInstance());
 	}
 	
 

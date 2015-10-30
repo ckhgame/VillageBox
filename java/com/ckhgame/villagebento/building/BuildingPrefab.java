@@ -6,13 +6,13 @@ import net.minecraft.world.World;
 
 public class BuildingPrefab {
 	
-	public ArrayList<BlockTypePos> blocks = new ArrayList<BlockTypePos>();
+	public ArrayList<BlockTypePosMetadata> blocks = new ArrayList<BlockTypePosMetadata>();
 	
 	public void build(World world,int x, int y,int z){
 		
 	}
 	
-	public void addblock(BlockTypePos b){
+	public void addblock(BlockTypePosMetadata b){
 		blocks.add(b);
 	}
 }

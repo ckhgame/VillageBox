@@ -1,8 +1,8 @@
-package com.ckhgame.villagebento.rendering;
+package com.ckhgame.villagebento.renderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.ckhgame.villagebento.entity.EntityVBVillager;
+import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
 import net.minecraft.client.model.ModelVillager;
 import net.minecraft.client.renderer.entity.RenderLiving;

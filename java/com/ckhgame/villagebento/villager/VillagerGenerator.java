@@ -3,7 +3,7 @@ package com.ckhgame.villagebento.villager;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helpers.HelperDataVB;
-import com.ckhgame.villagebento.entity.EntityVBVillager;
+import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
 import net.minecraft.world.World;
 

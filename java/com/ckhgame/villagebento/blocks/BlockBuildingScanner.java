@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import com.ckhgame.villagebento.Main;
-import com.ckhgame.villagebento.building.BlockTypePos;
+import com.ckhgame.villagebento.building.BlockTypePosMetadata;
 import com.ckhgame.villagebento.building.BuildingPrefab;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -62,20 +62,22 @@ public class BlockBuildingScanner extends Block {
 		int d = ConfigBuilding.BuildingGroundWorkDepth;
 		int h = ConfigBuilding.BuildingMaxHeight;
 		Block b;
+		int mt;
+
 		if(bd != null){
 			prefab = new BuildingPrefab();
 			for(int dy = -d;dy <= h;dy++){
 				for(int dx= -bd.sizeX;dx<= bd.sizeX;dx++){
 					for(int dz= -bd.sizeZ;dz<= bd.sizeZ;dz++){
 						b = world.getBlock(bd.x + dx, bd.y + dy, bd.z + dz);
-						
+						mt = world.getBlockMetadata(bd.x + dx, bd.y + dy, bd.z + dz);
 						if(dy >= 0){ //scan blocks above groundwork
 							if(b != Blocks.air && b != ModBlocks.blockBuildingScanner)
-								prefab.addblock(new BlockTypePos(b,dx,dy,dz));
+								prefab.addblock(new BlockTypePosMetadata(b,dx,dy,dz,mt));
 						}					
 						else{ //under center y,in other words inside of groundwork
 							if(b != ConfigBuilding.GroundWorkBlock  && b != ModBlocks.blockBuildingScanner)
-								prefab.addblock(new BlockTypePos(b,dx,dy,dz));
+								prefab.addblock(new BlockTypePosMetadata(b,dx,dy,dz,mt));
 						}
 						
 					}
@@ -95,8 +97,8 @@ public class BlockBuildingScanner extends Block {
 			
 			System.out.println("Blocks of the current Building.....");
 			System.out.println("===================================");
-			for(BlockTypePos b:prefab.blocks){
-				System.out.println("Block:" + b.block + ",X:" + b.x + ",Y:" + b.y + ",Z:" + b.z);
+			for(BlockTypePosMetadata b:prefab.blocks){
+				System.out.println("Block:" + b.block + ",X:" + b.x + ",Y:" + b.y + ",Z:" + b.z + ",Metadata:" + b.metadata);
 			}	
 		}
 		else{
@@ -112,8 +114,8 @@ public class BlockBuildingScanner extends Block {
 			System.out.println("Codes of the current Building.....");
 			System.out.println("===================================");
 			int ln = 0;
-			for(BlockTypePos b:prefab.blocks){
-				System.out.format("buildOneBlock(%d,%d,%d,%s);" + (ln++%3 == 2?"\n":""), b.x,b.y,b.z, getBlockVariable(b.block));
+			for(BlockTypePosMetadata b:prefab.blocks){
+				System.out.format("buildOneBlock(%d,%d,%d,%s,%d);" + (ln++%3 == 2?"\n":""), b.x,b.y,b.z, getBlockVariable(b.block),b.metadata);
 			}
 			
 		}

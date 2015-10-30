@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.entity;
+package com.ckhgame.villagebento.entity.villager;
 
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.DataVillageBento;

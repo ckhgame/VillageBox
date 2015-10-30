@@ -3,9 +3,9 @@ package com.ckhgame.villagebento.item;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.event.EventRenderVillageOutlines;
 import com.ckhgame.villagebento.network.VBNetwork;
 import com.ckhgame.villagebento.network.message.MessageVillageOutlinesChanged;
-import com.ckhgame.villagebento.rendering.VillageOutlines;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +28,7 @@ public class ItemVillageStick extends Item {
 		if(world.provider.dimensionId == 0){
 			if(world.isRemote){
 				//client
-				VillageOutlines.getInstance().setEnabled(!VillageOutlines.getInstance().getEnabled());
+				EventRenderVillageOutlines.getInstance().setEnabled(!EventRenderVillageOutlines.getInstance().getEnabled());
 			}
 			else{
 				//server				

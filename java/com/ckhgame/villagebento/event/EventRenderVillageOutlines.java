@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.rendering;
+package com.ckhgame.villagebento.event;
 
 import java.util.ArrayList;
 
@@ -17,12 +17,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 
-public class VillageOutlines {
+public class EventRenderVillageOutlines {
 	
-	private static VillageOutlines instance = null;
-	public static VillageOutlines getInstance(){
+	private static EventRenderVillageOutlines instance = null;
+	public static EventRenderVillageOutlines getInstance(){
 		if(instance == null)
-			instance = new VillageOutlines();
+			instance = new EventRenderVillageOutlines();
 		return instance;
 	}
 	
