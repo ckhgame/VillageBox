@@ -1,8 +1,7 @@
-package com.ckhgame.villagebento.data.helpers;
+package com.ckhgame.villagebento.data.helper;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.building.BuildingTypes;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.config.ConfigRendering;
 import com.ckhgame.villagebento.config.ConfigVillage;
@@ -93,7 +92,7 @@ public class HelperDataVB {
 		
 		//if no existed village found and the type of the building is Village Center, then we need to create a new one
 		if(dv == null){
-			if(db.type == BuildingTypes.VillageCenter){
+			if(db.type == 10){//10 is the type of village center!
 			
 				//before we create a new village, we have to check if it will be collide with other villages
 				for(DataVillage tdv : dataVB.mapDataVillage.values()){

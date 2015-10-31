@@ -3,7 +3,7 @@ package com.ckhgame.villagebento.data;
 import java.util.HashMap;
 
 import com.ckhgame.villagebento.config.ConfigData;
-import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.data.helper.HelperDataVB;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;

@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.building;
+package com.ckhgame.villagebento.building.scanning;
 
 import net.minecraft.block.Block;
 

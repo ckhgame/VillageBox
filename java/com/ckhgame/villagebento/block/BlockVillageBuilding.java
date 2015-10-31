@@ -1,11 +1,11 @@
-package com.ckhgame.villagebento.blocks;
+package com.ckhgame.villagebento.block;
 
 import java.util.Random;
 
 import com.ckhgame.villagebento.Main;
-import com.ckhgame.villagebento.building.BuilderBuilding;
+import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.network.VBNetwork;
 import com.ckhgame.villagebento.network.message.MessageVillageOutlinesChanged;
 
@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 public class BlockVillageBuilding extends Block {
 
-    protected BlockVillageBuilding(int buildingType,String name) {
+    protected BlockVillageBuilding(Class<? extends Building> bc,String name) {
         super(Material.wood);
         this.setBlockName(name);
         this.setCreativeTab(CreativeTabs.tabBlock);
@@ -29,10 +29,10 @@ public class BlockVillageBuilding extends Block {
         //this.setHarvestLevel("pickaxe", 3);
         this.setStepSound(soundTypeWood);
         
-        this.buildingType = buildingType;
+        this.buildingClass = bc;
     }
 
-    private final int buildingType;
+    private final Class<? extends Building> buildingClass;
     
     private DataVillageBento villageBentoData = null;
     
@@ -46,7 +46,7 @@ public class BlockVillageBuilding extends Block {
 			//destroy the village block
 			world.func_147480_a(x, y, z, false);
 			
-			if(BuilderBuilding.build(world, player, x, y, z, this.buildingType)){
+			if(Building.build(world, player, x, y, z, this.buildingClass)){
 				//refresh village outlines
 				DataVillageBento dataVB = DataVillageBento.get(world);			
 				MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();

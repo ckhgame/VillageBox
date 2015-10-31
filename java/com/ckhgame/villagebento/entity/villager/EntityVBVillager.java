@@ -3,7 +3,7 @@ package com.ckhgame.villagebento.entity.villager;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
-import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.data.helper.HelperDataVB;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
@@ -57,7 +57,6 @@ public class EntityVBVillager extends EntityAgeable{
 		p_70014_1_.setString(ConfigData.KeyVillagerEntityName, name);
 		p_70014_1_.setString(ConfigData.KeyVillagerEntitySkin, skin);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerEntityProfession, profession);
-		System.out.println("Writing......");
 	}
 
 	@Override
@@ -69,7 +68,6 @@ public class EntityVBVillager extends EntityAgeable{
 		name = p_70037_1_.getString(ConfigData.KeyVillagerEntityName);
 		skin = p_70037_1_.getString(ConfigData.KeyVillagerEntitySkin);
 		profession = p_70037_1_.getInteger(ConfigData.KeyVillagerEntityProfession);
-		System.out.println("Reading......");
 	}
 
 	@Override

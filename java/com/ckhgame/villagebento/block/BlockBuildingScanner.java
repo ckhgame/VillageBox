@@ -1,15 +1,15 @@
-package com.ckhgame.villagebento.blocks;
+package com.ckhgame.villagebento.block;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import com.ckhgame.villagebento.Main;
-import com.ckhgame.villagebento.building.BlockTypePosMetadata;
-import com.ckhgame.villagebento.building.BuildingPrefab;
+import com.ckhgame.villagebento.building.scanning.BlockTypePosMetadata;
+import com.ckhgame.villagebento.building.scanning.BuildingPrefab;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.data.helper.HelperDataVB;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -115,7 +115,7 @@ public class BlockBuildingScanner extends Block {
 			System.out.println("===================================");
 			int ln = 0;
 			for(BlockTypePosMetadata b:prefab.blocks){
-				System.out.format("buildOneBlock(%d,%d,%d,%s,%d);" + (ln++%3 == 2?"\n":""), b.x,b.y,b.z, getBlockVariable(b.block),b.metadata);
+				System.out.format("bb.buildBlock(%d,%d,%d,%s,%d);" + (ln++%3 == 2?"\n":""), b.x,b.y,b.z, getBlockVariable(b.block),b.metadata);
 			}
 			
 		}

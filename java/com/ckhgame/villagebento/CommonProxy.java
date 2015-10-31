@@ -1,6 +1,8 @@
 package com.ckhgame.villagebento;
 
-import com.ckhgame.villagebento.blocks.ModBlocks;
+import com.ckhgame.villagebento.block.ModBlocks;
+import com.ckhgame.villagebento.building.Building;
+import com.ckhgame.villagebento.building.ModBuildings;
 import com.ckhgame.villagebento.entity.ModEntities;
 import com.ckhgame.villagebento.event.EventVillageBentoTick;
 import com.ckhgame.villagebento.event.EventRenderVillageOutlines;
@@ -22,6 +24,8 @@ public class CommonProxy {
 		ModEntities.init();
 		ModRenderers.init();
 		ModMessages.init();
+		
+		ModBuildings.init();
 	}
 
 	public void init(FMLInitializationEvent e) {

@@ -1,7 +1,7 @@
 package com.ckhgame.villagebento.event;
 
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helpers.HelperDataVB;
+import com.ckhgame.villagebento.data.helper.HelperDataVB;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
