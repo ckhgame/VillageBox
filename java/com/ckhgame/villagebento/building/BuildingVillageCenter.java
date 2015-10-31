@@ -27,8 +27,8 @@ public class BuildingVillageCenter extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerProfessions.Miner,"Miner1","Miner",1,0);
-		bb.addBuildingVillager(VillagerProfessions.Miner,"Miner2","Miner",-1,0);
+		bb.addBuildingVillager(VillagerProfessions.Miner,"Miner1","Miner",0,-1);
+		bb.addBuildingVillager(VillagerProfessions.Miner,"Miner2","Miner",0,0);
 	}
 
 	@Override
@@ -55,10 +55,9 @@ public class BuildingVillageCenter extends Building {
 		bb.buildBlock(3,1,-1,Blocks.planks,0);bb.buildBlock(3,1,0,Blocks.wooden_door,8);bb.buildBlock(3,1,1,Blocks.planks,0);
 		bb.buildBlock(3,1,2,Blocks.planks,0);bb.buildBlock(-2,2,-2,Blocks.planks,0);bb.buildBlock(-2,2,-1,Blocks.planks,0);
 		bb.buildBlock(-2,2,0,Blocks.planks,0);bb.buildBlock(-2,2,1,Blocks.planks,0);bb.buildBlock(-2,2,2,Blocks.planks,0);
-		bb.buildBlock(-1,2,-2,Blocks.planks,0);bb.buildBlock(-1,2,1,Blocks.torch,1);bb.buildBlock(-1,2,2,Blocks.planks,0);
-		bb.buildBlock(0,2,-2,Blocks.planks,0);bb.buildBlock(0,2,2,Blocks.planks,0);bb.buildBlock(1,2,-2,Blocks.planks,0);
-		bb.buildBlock(1,2,2,Blocks.planks,0);bb.buildBlock(2,2,-2,Blocks.planks,0);bb.buildBlock(2,2,-1,Blocks.torch,3);
-		bb.buildBlock(2,2,1,Blocks.torch,4);bb.buildBlock(2,2,2,Blocks.planks,0);bb.buildBlock(3,2,-2,Blocks.planks,0);
+		bb.buildBlock(-1,2,-2,Blocks.planks,0);bb.buildBlock(-1,2,2,Blocks.planks,0);bb.buildBlock(0,2,-2,Blocks.planks,0);
+		bb.buildBlock(0,2,2,Blocks.planks,0);bb.buildBlock(1,2,-2,Blocks.planks,0);bb.buildBlock(1,2,2,Blocks.planks,0);
+		bb.buildBlock(2,2,-2,Blocks.planks,0);bb.buildBlock(2,2,2,Blocks.planks,0);bb.buildBlock(3,2,-2,Blocks.planks,0);
 		bb.buildBlock(3,2,-1,Blocks.planks,0);bb.buildBlock(3,2,0,Blocks.planks,0);bb.buildBlock(3,2,1,Blocks.planks,0);
 		bb.buildBlock(3,2,2,Blocks.planks,0);bb.buildBlock(-1,3,-2,Blocks.planks,0);bb.buildBlock(-1,3,-1,Blocks.planks,0);
 		bb.buildBlock(-1,3,0,Blocks.planks,0);bb.buildBlock(-1,3,1,Blocks.planks,0);bb.buildBlock(-1,3,2,Blocks.planks,0);
@@ -67,6 +66,7 @@ public class BuildingVillageCenter extends Building {
 		bb.buildBlock(1,3,-1,Blocks.planks,0);bb.buildBlock(1,3,0,Blocks.planks,0);bb.buildBlock(1,3,1,Blocks.planks,0);
 		bb.buildBlock(1,3,2,Blocks.planks,0);bb.buildBlock(2,3,-2,Blocks.planks,0);bb.buildBlock(2,3,-1,Blocks.planks,0);
 		bb.buildBlock(2,3,0,Blocks.planks,0);bb.buildBlock(2,3,1,Blocks.planks,0);bb.buildBlock(2,3,2,Blocks.planks,0);
+		bb.buildBlock(-1,2,1,Blocks.torch,1);bb.buildBlock(2,2,-1,Blocks.torch,3);bb.buildBlock(2,2,1,Blocks.torch,4);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.building.fixdirection;
 import java.util.HashMap;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.init.Blocks;
 
@@ -44,16 +45,13 @@ public class BlockDirection {
 				idx = (idx + offset) % datas[state].length;			
 				convertedMetadata = datas[state][idx];
 				System.out.println(b.getClass().getName() + "," + metadata + "=>" + convertedMetadata);
-				System.out.println("1");
 			}
 			else{
 				//not find the direction, it's probably because the block is facing top or bottom, so we just return the original metadata 
-				System.out.println("2");
 				convertedMetadata = metadata;
 			}
 		}
 		else{
-			System.out.println("3");
 			convertedMetadata = metadata;
 		}
 		

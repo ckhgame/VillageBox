@@ -82,7 +82,8 @@ public class BlockBuildingScanner extends Block {
 						
 					}
 				}
-			}			
+			}
+			prefab.sort();
 		}
 		else{
 			System.out.println("Can not find the building data");

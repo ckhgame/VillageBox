@@ -91,9 +91,13 @@ public class BuildingBuilder {
 		world.setBlock(	data.x+fx,
 						data.y+fy,
 						data.z+fz,
-						block,
-						BlockDirection.fix(block, metadata, facing),
-						3);
+						block,0,2);
+		
+		world.setBlockMetadataWithNotify(	data.x+fx,
+											data.y+fy,
+											data.z+fz,
+											BlockDirection.fix(block, metadata, facing),
+											2);
 	}
 
 	//groundworks
@@ -132,8 +136,31 @@ public class BuildingBuilder {
 	
 	//villagers
 	public void addBuildingVillager(int profession, String name, String skin, int dx, int dz){
+		
+		int fx = dx;
+		int fz = dz;
+		
+		switch(facing){
+		case 1://South
+			fx = -dz;
+			fz = dx;
+			break;
+		case 2://West
+			fx = -dx;
+			fz = -dz;
+			break;
+		case 3://North
+			fx = dz;
+			fz = -dx;
+		case 0://East
+			break;
+			default://East
+				break;
+		}
+		
+		
 		VillagerGenerator.generate(	world, 
-									data.x + dx, data.y, data.z + dz,
+									data.x + fx, data.y, data.z + fz,
 									profession, name, skin, 
 									data.id);
 	}

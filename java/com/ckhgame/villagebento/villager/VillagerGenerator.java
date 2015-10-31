@@ -25,7 +25,7 @@ public class VillagerGenerator {
 	public static void generateEntity(World w, int x ,int y, int z , DataVillager dv){
 		EntityVBVillager entityvbvillager = new EntityVBVillager(w);	
 		entityvbvillager.setVillagerData(dv);
-		entityvbvillager.setLocationAndAngles((double)x,(double)y,(double)z, 0.0F, 0.0F);
+		entityvbvillager.setLocationAndAngles((double)x + 0.5,(double)y + 0.1,(double)z + 0.5, 0.0F, 0.0F);
         w.spawnEntityInWorld(entityvbvillager);
 	}
 }
