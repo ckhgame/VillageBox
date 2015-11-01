@@ -5,7 +5,7 @@ import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.villager.VillagerGenerator;
+import com.ckhgame.villagebento.villager.Villager;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -135,7 +135,7 @@ public class BuildingBuilder {
 	}
 	
 	//villagers
-	public void addBuildingVillager(int profession, String name, String skin, int dx, int dz){
+	public void addBuildingVillager(Class<? extends Villager> c, String name, String skin, int dx, int dz){
 		
 		int fx = dx;
 		int fz = dz;
@@ -158,10 +158,8 @@ public class BuildingBuilder {
 				break;
 		}
 		
-		
-		VillagerGenerator.generate(	world, 
-									data.x + fx, data.y, data.z + fz,
-									profession, name, skin, 
-									data.id);
+		Villager.spawn(	world,
+						data.x + fx, data.y, data.z + fz, 
+						c, name, skin, data.id);
 	}
 }

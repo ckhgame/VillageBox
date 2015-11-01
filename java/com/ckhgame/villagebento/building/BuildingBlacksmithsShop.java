@@ -27,8 +27,8 @@ public class BuildingBlacksmithsShop extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerProfessions.Miner,"Miner1","Miner",1,0);
-		bb.addBuildingVillager(VillagerProfessions.Miner,"Miner2","Miner",-1,0);
+	//	bb.addBuildingVillager(VillagerProfessions.Miner,"Miner1","Miner",1,0);
+		//bb.addBuildingVillager(VillagerProfessions.Miner,"Miner2","Miner",-1,0);
 	}
 
 	@Override

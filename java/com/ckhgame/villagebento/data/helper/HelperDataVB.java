@@ -11,7 +11,7 @@ import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.util.BoxWithColor;
-import com.ckhgame.villagebento.villager.VillagerGenerator;
+import com.ckhgame.villagebento.villager.Villager;
 
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
@@ -298,7 +298,7 @@ public class HelperDataVB {
 						DataBuilding db = findBuildingByID(dataVB,dvr.buildingID);
 						if(db != null){
 							//respawn on the position of the villager's building
-							VillagerGenerator.generateEntity(dataVB.world,db.x, db.y, db.z, dvr);
+							Villager.spawn(dataVB.world,db.x, db.y, db.z, dvr);
 						}
 					}
 				}

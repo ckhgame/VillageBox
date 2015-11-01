@@ -2,7 +2,9 @@ package com.ckhgame.villagebento.building;
 
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.villager.VillagerMiner;
 import com.ckhgame.villagebento.villager.VillagerProfessions;
+import com.ckhgame.villagebento.villager.VillagerVillageElder;
 
 import net.minecraft.init.Blocks;
 
@@ -27,8 +29,8 @@ public class BuildingVillageCenter extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerProfessions.Miner,"Miner1","Miner",0,-1);
-		bb.addBuildingVillager(VillagerProfessions.Miner,"Miner2","Miner",0,0);
+		bb.addBuildingVillager(VillagerVillageElder.class,"Village Elder","Village Elder",0,0);
+		bb.addBuildingVillager(VillagerMiner.class,"Jack","Jack",0,-1);
 	}
 
 	@Override

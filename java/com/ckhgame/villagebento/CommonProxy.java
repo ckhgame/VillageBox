@@ -9,6 +9,7 @@ import com.ckhgame.villagebento.event.EventRenderVillageOutlines;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.ModMessages;
 import com.ckhgame.villagebento.renderer.ModRenderers;
+import com.ckhgame.villagebento.villager.ModVillagers;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -26,6 +27,7 @@ public class CommonProxy {
 		ModMessages.init();
 		
 		ModBuildings.init();
+		ModVillagers.init();
 	}
 
 	public void init(FMLInitializationEvent e) {
