@@ -9,5 +9,4 @@ public class VillagerCompAbout extends VillagerComponent {
 		super(new GuiVillagerAbout());
 		// TODO Auto-generated constructor stub
 	}
-
 }

@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import com.ckhgame.villagebento.network.action.Action;
+import com.ckhgame.villagebento.network.action.ActionGetVillagerName;
+
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLabel;
@@ -31,6 +34,7 @@ public class GuiVillagerTrade extends GuiVillager {
 	@Override
 	public void onInitGui() {
 		// TODO Auto-generated method stub
+		Action.send(ActionGetVillagerName.class, new Object[]{this.entityVillager.getDataVillagerID()});
 		
 	}
 

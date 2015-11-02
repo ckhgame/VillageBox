@@ -2,8 +2,8 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompChat;
+import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompTrade;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 

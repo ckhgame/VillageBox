@@ -34,14 +34,7 @@ public class ItemVillageStick extends Item {
 				//client
 				EventRenderVillageOutlines.getInstance().setEnabled(!EventRenderVillageOutlines.getInstance().getEnabled());
 				//temp
-				MovingObjectPosition pp = Minecraft.getMinecraft().objectMouseOver;
-				Block bbb = world.getBlock(pp.blockX, pp.blockY,pp.blockZ);
-				int metadata = world.getBlockMetadata(pp.blockX, pp.blockY,pp.blockZ);
-				System.out.println(bbb.getClass().getName() + ":" + metadata);
 				
-				int l = MathHelper.floor_double((double)(p.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-				int facing = (l + 1)%4;
-				System.out.println("facing" + ":" + facing);
 			}
 			else{
 				//server				

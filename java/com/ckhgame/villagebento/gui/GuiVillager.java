@@ -48,7 +48,7 @@ public abstract class GuiVillager extends GuiScreen {
 	@Override
 	protected void actionPerformed(GuiButton button) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("!!!!!!!!!!!");
 		//leave
 		if(button.id == 99999){
 			this.mc.displayGuiScreen((GuiScreen)null);

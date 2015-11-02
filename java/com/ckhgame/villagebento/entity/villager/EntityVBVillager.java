@@ -8,9 +8,6 @@ import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.gui.GuiVillagerChat;
 import com.ckhgame.villagebento.villager.Villager;
-import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
-import com.ckhgame.villagebento.villager.component.VillagerCompChat;
-import com.ckhgame.villagebento.villager.component.VillagerCompTrade;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.client.Minecraft;
@@ -45,6 +42,10 @@ public class EntityVBVillager extends EntityAgeable{
 	private String skin;
 	private int profession;
 	private ArrayList<VillagerComponent> components;
+	
+	public int getDataVillagerID(){
+		return this.dataVillagerID;
+	}
 	
 	public String getName(){
 		return name;

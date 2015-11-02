@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.ckhgame.villagebento.config.ConfigData;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSavedData;
@@ -50,6 +51,11 @@ public class DataVillageBento extends WorldSavedData{
 		NBTTagCompound c = new NBTTagCompound();
 		dataID.writeToNBT(c);
 		compound.setTag(ConfigData.KeyDataVillageBentoIDs, c);
+	}
+	
+	public static DataVillageBento get(){		
+		World w = net.minecraft.server.MinecraftServer.getServer().worldServerForDimension(0);
+		return get(w);
 	}
 	
 	public static DataVillageBento get(World world){

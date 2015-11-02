@@ -17,6 +17,8 @@ public class ConfigData {
 	public static final String KeyDataVillagerProfession= "dvrp";
 	public static final String KeyDataVillagerBuildingID= "dvrbid";
 	public static final String KeyDataVillagerDeath		= "dvrd";
+	public static final String KeyDataVillagerLevel		= "dvrl";
+	public static final String KeyDataVillagerExp		= "dvre";
 	
 	//village
 	public static final String KeyDataVillageID			= "dvid";
@@ -41,4 +43,10 @@ public class ConfigData {
 	public static final String KeyVillagerEntityName				= "ven";
 	public static final String KeyVillagerEntitySkin				= "ves";
 	public static final String KeyVillagerEntityProfession			= "vep";
+	
+	//villager component
+	public static final String KeyVillagerCompType					= "vct";
+	
+	//villager component general
+	public static final String KeyVillagerCompGeneralRelationship	= "vcgr";
 }

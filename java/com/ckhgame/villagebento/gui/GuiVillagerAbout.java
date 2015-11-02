@@ -13,7 +13,7 @@ public class GuiVillagerAbout extends GuiVillager {
 	@Override
 	public String getButtonText() {
 		// TODO Auto-generated method stub
-		return "About";
+		return "General";
 	}
 
 	@Override
