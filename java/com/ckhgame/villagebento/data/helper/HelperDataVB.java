@@ -212,6 +212,10 @@ public class HelperDataVB {
 	
 	public static DataVillager findVillagerByID(DataVillageBento dataVB, int id){
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
+			System.out.println("-Village:" + dv.id);
+			for(DataVillager dvr : dv.mapDataVillager.values()){
+				System.out.println("--Villager:" + dvr.id);
+			}
 			if(dv.mapDataVillager.containsKey(id))
 				return dv.mapDataVillager.get(id);
 		}

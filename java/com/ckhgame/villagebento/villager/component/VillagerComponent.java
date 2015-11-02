@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.villager.component;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
 import com.ckhgame.villagebento.gui.GuiVillager;
 import com.ckhgame.villagebento.util.registry.IRegistrable;
+import com.ckhgame.villagebento.util.registry.Registry;
 
 public class VillagerComponent implements IRegistrable {
 	
@@ -35,4 +36,7 @@ public class VillagerComponent implements IRegistrable {
 	public GuiVillager getGui(){
 		return guiVillager;
 	}
+	
+	
+	public static Registry<VillagerComponent> registry = new Registry<VillagerComponent>();
 }

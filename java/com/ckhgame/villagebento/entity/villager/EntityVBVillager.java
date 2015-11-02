@@ -7,6 +7,9 @@ import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.gui.GuiVillagerChat;
+import com.ckhgame.villagebento.network.action.Action;
+import com.ckhgame.villagebento.network.action.ActionDoVillagerChat;
+import com.ckhgame.villagebento.network.action.ActionInitVillager;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
@@ -37,23 +40,14 @@ import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable{
 
-	private int dataVillagerID;
-	private String name;
-	private String skin;
-	private int profession;
+	public int dataVillagerID;
+	public String name;
+	public String skin;
+	public int profession;
+	public int level;
+	public int exp;
 	private ArrayList<VillagerComponent> components;
 	
-	public int getDataVillagerID(){
-		return this.dataVillagerID;
-	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public int getProfession(){
-		return profession;
-	}
 	
 	public void setVillagerComponents(ArrayList<VillagerComponent> components){
 		this.components = components;
@@ -66,11 +60,13 @@ public class EntityVBVillager extends EntityAgeable{
 		return this.components;
 	}
 	
-	public void setVillagerData(DataVillager dv){
-		this.dataVillagerID = dv.id;
-		this.name = dv.name;
-		this.skin = dv.skin;
-		this.profession = dv.profession;
+	public void initVillager(int villagerID,String name, String skin, int profession){
+		this.dataVillagerID = villagerID;
+		this.name = name;
+		this.skin = skin;
+		this.profession = profession;
+		//load components
+		this.setVillagerComponents(Villager.registry.get(this.profession).createComponents());
 	}
 	
 	public EntityVBVillager(World p_i1578_1_) {
@@ -98,16 +94,19 @@ public class EntityVBVillager extends EntityAgeable{
         return entityvillager;
 	}
 	
-    public boolean interact(EntityPlayer p_70085_1_)
+	public boolean interact(EntityPlayer p_70085_1_)
     {
-    	if(!this.worldObj.isRemote){
+    	if(this.worldObj.isRemote){
+    		
+    		if(this.dataVillagerID == 0)Action.send(ActionInitVillager.class, new Object[]{this.getEntityId()});
+    		
     		
     		//guiChat.setChat(name, "Nice to meet you! Nice to meet you! Nice to meet you! Nice to meet you! Nice to meet you!");
     		if(components != null && components.size() > 0){
     			Minecraft.getMinecraft().displayGuiScreen(components.get(0).getGui());
     		}   		
     		
-    		System.out.println("Hi! My name is " + name);
+    		
     	}
         return true;
     }
@@ -119,9 +118,6 @@ public class EntityVBVillager extends EntityAgeable{
 		// TODO Auto-generated method stub
 		super.writeEntityToNBT(p_70014_1_);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerEntityDataVillagerID, dataVillagerID);
-		p_70014_1_.setString(ConfigData.KeyVillagerEntityName, name);
-		p_70014_1_.setString(ConfigData.KeyVillagerEntitySkin, skin);
-		p_70014_1_.setInteger(ConfigData.KeyVillagerEntityProfession, profession);
 		
 	}
 
@@ -131,15 +127,6 @@ public class EntityVBVillager extends EntityAgeable{
 		super.readEntityFromNBT(p_70037_1_);
 		
 		dataVillagerID = p_70037_1_.getInteger(ConfigData.KeyVillagerEntityDataVillagerID);
-		name = p_70037_1_.getString(ConfigData.KeyVillagerEntityName);
-		skin = p_70037_1_.getString(ConfigData.KeyVillagerEntitySkin);
-		profession = p_70037_1_.getInteger(ConfigData.KeyVillagerEntityProfession);
-		
-		//add components
-		Villager v = Villager.registry.get(profession);
-		if(v!=null){
-			this.setVillagerComponents(v.createComponents());
-		}
 	}
 
 	@Override

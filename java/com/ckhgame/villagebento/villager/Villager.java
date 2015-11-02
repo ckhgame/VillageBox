@@ -50,9 +50,9 @@ public abstract class Villager implements IRegistrable {
 		if(v != null && v.canSpawn()){
 			//generate villager data
 			DataVillager dv = HelperDataVB.createDataVillager(v.profession, name, skin, buildingID);
-			HelperDataVB.addVillagerData(DataVillageBento.get(w), dv);
-			
-			return spawn(w,x,y,z,dv,v);
+			if(HelperDataVB.addVillagerData(DataVillageBento.get(w), dv)){
+				return spawn(w,x,y,z,dv,v);
+			}
 		}
 		
 		return false;
@@ -79,11 +79,8 @@ public abstract class Villager implements IRegistrable {
 		
 		//create entity
 		EntityVBVillager entityvbvillager = new EntityVBVillager(w);	
-		entityvbvillager.setVillagerData(dv);
+		entityvbvillager.dataVillagerID = dv.id;
 		entityvbvillager.setLocationAndAngles((double)x + 0.5,(double)y + 0.1,(double)z + 0.5, 0.0F, 0.0F);
-		
-		//set components
-		entityvbvillager.setVillagerComponents(v.createComponents());
 		
 		//add to world
         return w.spawnEntityInWorld(entityvbvillager);

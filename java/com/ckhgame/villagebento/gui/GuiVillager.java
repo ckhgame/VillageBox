@@ -15,6 +15,14 @@ import net.minecraft.client.gui.GuiScreen;
 
 public abstract class GuiVillager extends GuiScreen {
 
+	public static boolean isWaitingForActionResult = true; 
+	public static void ActionStart(){
+		isWaitingForActionResult = true;
+	}
+	public static void ActionCompleted(){
+		isWaitingForActionResult = false;
+	}
+	
 	protected VillagerComponent villagerComponent;
 	protected EntityVBVillager entityVillager;
 	protected int buttonID;
@@ -38,7 +46,7 @@ public abstract class GuiVillager extends GuiScreen {
 	public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
 		// TODO Auto-generated method stub
 		this.drawDefaultBackground();
-		this.fontRendererObj.drawString(this.entityVillager.getName() + ":", this.width / 2 - 97,this.height /2 - 60, 0xFFAAAAAA,true);
+		this.fontRendererObj.drawString(this.entityVillager.name + ":", this.width / 2 - 97,this.height /2 - 60, 0xFFAAAAAA,true);
 		
 		onDrawScreen();
 		
@@ -86,8 +94,8 @@ public abstract class GuiVillager extends GuiScreen {
 			for(VillagerComponent c : carr){
 				c.getGui().buttonID = id++;
 				btn = new GuiButton(c.getGui().buttonID, 
-						this.width /2 - 150,this.height /2 - 50 + 25 * (count++),
-						40,20,	
+						this.width /2 - 130,this.height /2 - 50 + 20 * (count++),
+						36,16,	
 						c.getGui().getButtonText());
 				if(c == villagerComponent)
 					btn.enabled = false;
@@ -96,7 +104,7 @@ public abstract class GuiVillager extends GuiScreen {
 		}
 
 		//leave button
-		this.buttonList.add(new GuiButton(99999, this.width /2 - 150,this.height /2 - 50 + 25 * count,40,20,"Leave"));
+		this.buttonList.add(new GuiButton(99999, this.width /2 - 130,this.height /2 - 50 + 20 * count,36,16,"Leave"));
 		
 		onInitGui();
 		
