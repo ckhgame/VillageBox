@@ -11,6 +11,7 @@ import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.registry.IRegistrable;
 import com.ckhgame.villagebento.util.registry.Registry;
+import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,10 +33,36 @@ public abstract class Villager implements IRegistrable {
 		profession = regID;
 	}
 	
+	//level & exp
+	private int expBase;
+	private int expE;
+	
+	protected void setExpBase(){
+		expBase = 10;
+		expE = 2;
+	}
+	
+	public int getNextLevelExp(int currentLevel){
+		return (int)(expBase * Math.pow(expE, currentLevel));
+	}
+	
+	//villager chat
+	private VillagerChat villagerChat = new VillagerChat();
+	public VillagerChat getVillagerChat(){
+		return villagerChat;
+	}
+	
 	public abstract String getProfessionName();
 	public abstract String getProfessionDescription();
 	public abstract boolean canSpawn();
 	public abstract ArrayList<VillagerComponent> createComponents();
+	protected abstract void initVillagerChat(VillagerChat villagerChat);
+	
+	public Villager(){
+		initVillagerChat(villagerChat);
+		setExpBase();
+	}
+	
 	
 	//---------------------------------
 	public static Registry<Villager> registry = new Registry<Villager>();

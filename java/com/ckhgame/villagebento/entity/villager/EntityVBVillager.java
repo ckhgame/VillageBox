@@ -4,11 +4,8 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.gui.GuiVillagerChat;
 import com.ckhgame.villagebento.network.action.Action;
-import com.ckhgame.villagebento.network.action.ActionDoVillagerChat;
 import com.ckhgame.villagebento.network.action.ActionInitVillager;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -18,16 +15,11 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAIFollowGolem;
-import net.minecraft.entity.ai.EntityAILookAtTradePlayer;
 import net.minecraft.entity.ai.EntityAIMoveIndoors;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
-import net.minecraft.entity.ai.EntityAIPlay;
 import net.minecraft.entity.ai.EntityAIRestrictOpenDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITradePlayer;
-import net.minecraft.entity.ai.EntityAIVillagerMate;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityAIWatchClosest2;
@@ -48,6 +40,7 @@ public class EntityVBVillager extends EntityAgeable{
 	public int exp;
 	private ArrayList<VillagerComponent> components;
 	
+	private boolean firstTimeUpdateVBVillager = true;
 	
 	public void setVillagerComponents(ArrayList<VillagerComponent> components){
 		this.components = components;
@@ -69,6 +62,20 @@ public class EntityVBVillager extends EntityAgeable{
 		this.setVillagerComponents(Villager.registry.get(this.profession).createComponents());
 	}
 	
+	private void updateVBVillager(){
+		if(firstTimeUpdateVBVillager){
+			Action.send(ActionInitVillager.class, new Object[]{this.getEntityId()});
+			firstTimeUpdateVBVillager = false;
+		}
+	}
+	
+	@Override
+	public void onUpdate() {
+		// TODO Auto-generated method stub
+		super.onUpdate();
+		updateVBVillager();
+	}
+
 	public EntityVBVillager(World p_i1578_1_) {
 		super(p_i1578_1_);
 
@@ -98,7 +105,7 @@ public class EntityVBVillager extends EntityAgeable{
     {
     	if(this.worldObj.isRemote){
     		
-    		if(this.dataVillagerID == 0)Action.send(ActionInitVillager.class, new Object[]{this.getEntityId()});
+    	
     		
     		
     		//guiChat.setChat(name, "Nice to meet you! Nice to meet you! Nice to meet you! Nice to meet you! Nice to meet you!");

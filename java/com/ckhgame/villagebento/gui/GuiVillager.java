@@ -3,14 +3,12 @@ package com.ckhgame.villagebento.gui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.GuiScreen;
 
 public abstract class GuiVillager extends GuiScreen {
@@ -25,7 +23,21 @@ public abstract class GuiVillager extends GuiScreen {
 	
 	protected VillagerComponent villagerComponent;
 	protected EntityVBVillager entityVillager;
+	protected Villager villager;
 	protected int buttonID;
+	protected String chatContent = "......";
+	protected String chatContentDisplay = "";
+	
+	//filed locations
+	protected int fieldChatLeft;
+	protected int fieldChatTop;
+	protected int fieldCompLeft;
+	protected int fieldCompTop;
+	
+	protected void setChatContent(String chatContent){
+		this.chatContent = chatContent;
+		chatContentDisplay = "";
+	}
 	
 	public void setVillageComponent(VillagerComponent villagerComponent){
 		this.villagerComponent = villagerComponent;
@@ -33,6 +45,7 @@ public abstract class GuiVillager extends GuiScreen {
 	
 	public void setEntityVillager(EntityVBVillager entityVillager){
 		this.entityVillager = entityVillager;
+		this.villager = Villager.registry.get(this.entityVillager.profession);
 	}
 	
 	protected void drawWrappedString(FontRenderer renderer, String drawing, int x, int y, int color, int wrap)
@@ -42,11 +55,37 @@ public abstract class GuiVillager extends GuiScreen {
             renderer.drawString(lines.get(i), x, y + (i * 9), color, false);
     }
 	
+	private void drawFieldBackground(int left,int top,int width,int height){
+		
+		drawRect(left - 2, top - 2, left + width + 2, top + height + 2, 0xFF333333);
+		drawRect(left - 1, top - 1, left + width + 1, top + height + 1, 0xFF111111);
+		drawRect(left, top, left + width, top + height, 0xFF555555);
+	}
+	
 	@Override
 	public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
-		// TODO Auto-generated method stub
+		
 		this.drawDefaultBackground();
-		this.fontRendererObj.drawString(this.entityVillager.name + ":", this.width / 2 - 97,this.height /2 - 60, 0xFFAAAAAA,true);
+		
+		//GUI LAYOUT: Right Top Chat Field
+		fieldChatLeft = this.width / 2 - 80;
+		fieldChatTop = this.height /2 - 60;
+		drawFieldBackground(fieldChatLeft,fieldChatTop,200,30);
+		//display name and chat content
+		String name = this.entityVillager.name + ":";
+
+		this.fontRendererObj.drawString(name, fieldChatLeft + 1,fieldChatTop + 1, 0xFFFFFF00,true);
+		
+		//chat anim
+		if(chatContentDisplay.length() < chatContent.length()){
+			chatContentDisplay = chatContent.substring(0, chatContentDisplay.length() + 1);
+		}
+		this.fontRendererObj.drawString(chatContentDisplay, fieldChatLeft + 6,fieldChatTop + 13, 0xFFFFFFEE,true);
+		
+		//GUI LAYOUT: Right Top Component Field
+		fieldCompLeft = this.width / 2 - 80;
+		fieldCompTop = this.height /2 - 20;
+		drawFieldBackground(fieldCompLeft,fieldCompTop,200,100);
 		
 		onDrawScreen();
 		
@@ -55,8 +94,7 @@ public abstract class GuiVillager extends GuiScreen {
 
 	@Override
 	protected void actionPerformed(GuiButton button) {
-		// TODO Auto-generated method stub
-		System.out.println("!!!!!!!!!!!");
+
 		//leave
 		if(button.id == 99999){
 			this.mc.displayGuiScreen((GuiScreen)null);
@@ -89,6 +127,9 @@ public abstract class GuiVillager extends GuiScreen {
 		if(entityVillager != null){
 			carr = entityVillager.getVillagerComponents();
 		}
+		
+		//GUI LAYOUT
+		//left buttons field
 		
 		if(carr != null){
 			for(VillagerComponent c : carr){

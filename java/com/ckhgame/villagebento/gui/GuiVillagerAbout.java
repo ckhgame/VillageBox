@@ -21,29 +21,29 @@ public class GuiVillagerAbout extends GuiVillager {
 		// TODO Auto-generated method stub
 		return "General";
 	}
-	float pos;
 	@Override
-	public void onDrawScreen() {
+	public void onDrawScreen() {		
 
-		drawRect(this.width / 2 - 83, this.height / 2 - 53, this.width / 2 + 123, this.height / 2 + 53, 0xFF333333);
-		drawRect(this.width / 2 - 81, this.height / 2 - 51, this.width / 2 + 121, this.height / 2 + 51, 0xFF111111);
-		drawRect(this.width / 2 - 80, this.height / 2 - 50, this.width / 2 + 120, this.height / 2 + 50, 0xFF555555);
+		String infoProfession = "Profession: " + this.villager.getProfessionName();
+		String infoLevel = "Level: " + this.entityVillager.level;
+		String infoExp = "Exp: " + this.entityVillager.exp + " / " + this.villager.getNextLevelExp(this.entityVillager.level);
+		String infoProDesction = this.villager.getProfessionDescription();
 		
-		if(pos > 0) pos -= pos * 0.1f;
+		this.fontRendererObj.drawString(infoProfession, fieldCompLeft + 4,fieldCompTop + 2, 0xFFFFFFFF);
+		this.fontRendererObj.drawString(infoLevel, fieldCompLeft + 4,fieldCompTop + 17, 0xFFFFFFFF);
+		this.fontRendererObj.drawString(infoExp, fieldCompLeft + 4,fieldCompTop + 32, 0xFFFFFFFF);
 		
-		//if(!isWaitingForActionResult)
-			this.drawWrappedString(	this.fontRendererObj,
-									"this is a villager, level:" + this.entityVillager.level + ", exp:" + this.entityVillager.exp,
-									this.width / 2 - 74,this.height /2 - 45 + (int)pos,0xFFFFFF66,188);
+		this.fontRendererObj.drawString("-------", fieldCompLeft + 4,fieldCompTop + 47, 0xFFAAAAAA);		
+		this.drawWrappedString(	this.fontRendererObj,infoProDesction,
+								fieldCompLeft+4,fieldCompTop+62,0xFFFFFF66,196);
 		
 	}
 
 	@Override
 	public void onInitGui() {
 		// TODO Auto-generated method stub
-		pos = 20;
-		GuiVillager.ActionStart();
 		Action.send(ActionGetVillagerLevel.class, new Object[]{this.entityVillager.dataVillagerID,this.entityVillager.getEntityId()});
+		setChatContent(this.villager.getVillagerChat().getRandom(this.entityVillager.level));
 	}
 
 	@Override

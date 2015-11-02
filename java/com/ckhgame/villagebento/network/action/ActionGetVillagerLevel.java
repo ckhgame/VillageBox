@@ -82,8 +82,6 @@ public class ActionGetVillagerLevel extends Action {
 		EntityVBVillager evr = (EntityVBVillager)Minecraft.getMinecraft().theWorld.getEntityByID(villagerEntityID);
 		evr.level = villagerLevel;
 		evr.exp = villageExp;
-		
-		GuiVillager.ActionCompleted();
 	}
 
 }
