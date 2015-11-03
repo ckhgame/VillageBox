@@ -8,6 +8,9 @@ import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
 public class VillagerVillageElder extends Villager {
 
 	@Override
@@ -32,7 +35,18 @@ public class VillagerVillageElder extends Villager {
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
-        components.add(new VillagerCompBuy());
+        
+        VillagerCompBuy compBuy = new VillagerCompBuy();
+        compBuy.addItemBuy(Items.apple, 1, 5, 0);
+        compBuy.addItemBuy(Items.beef, 2, 10, 0);
+        compBuy.addItemBuy(Items.blaze_rod, 1, 2, 0);
+        compBuy.addItemBuy(Items.bone, 10, 20, 0);
+        compBuy.addItemBuy(Blocks.stonebrick, 1, 3, 0);
+        compBuy.addItemBuy(Blocks.stone, 20, 50, 0);
+        compBuy.addItemBuy(Blocks.log, 20, 50, 0);
+        compBuy.addItemBuy(Blocks.log, 20, 50, 0,1);
+        components.add(compBuy);
+        
         components.add(new VillagerCompSell());
 
 	}

@@ -3,8 +3,10 @@ package com.ckhgame.villagebento.gui;
 import org.lwjgl.opengl.GL11;
 
 import com.ckhgame.villagebento.network.action.Action;
+import com.ckhgame.villagebento.network.action.ActionDoVillagerBuy;
 import com.ckhgame.villagebento.network.action.ActionGetVillagerBuy;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 
@@ -70,7 +72,7 @@ public class GuiVillagerBuy extends GuiVillager {
 		
 		//current row index
 		GL11.glDisable(GL11.GL_LIGHTING);
-		String idx = (currentIdx + 1) + "/" + (buyList == null?0:buyList.length);
+		String idx = (buyList == null || buyList.length == 0)?"0/0":(currentIdx + 1) + "/" + buyList.length;
 		this.drawCenteredString(fontRendererObj, idx, fieldCompLeft + 184, fieldCompTop + 46, 0xFFFFFFFF);
 	}
 
@@ -103,6 +105,20 @@ public class GuiVillagerBuy extends GuiVillager {
 		else if(button.id == buttonDown.id){
 			int max = buyList == null?0:Math.max(0,buyList.length - 1);
 			currentIdx = Math.min(max, ++currentIdx);
+		}
+		
+		for(int i = 0;i<rowSize;i++){
+			if(button.id == buttonRows[i].id){
+				int stackIdx = currentIdx + i;
+				if(buyList != null && stackIdx >= 0 && stackIdx < buyList.length){
+					ItemStack itemBuy = buyList[stackIdx].copy();
+					itemBuy.stackSize = 1;
+					
+					Action.send(ActionDoVillagerBuy.class, new Object[]{this.entityVillager.dataVillagerID,
+																		Minecraft.getMinecraft().thePlayer.getEntityId(),
+																		itemBuy});
+				}
+			}
 		}
 		
 	}

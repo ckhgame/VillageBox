@@ -3,6 +3,8 @@ package com.ckhgame.villagebento.network.action;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
+import com.ckhgame.villagebento.data.helper.HelperDataVgrComp;
+import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompBuy;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.gui.GuiVillagerBuy;
 import com.ckhgame.villagebento.villager.Villager;
@@ -42,16 +44,16 @@ public class ActionGetVillagerBuy extends Action {
 
 		int villagerID = (int)info[0];
 		
-		ItemStack[] itemStacks = new ItemStack[]{
-			new ItemStack(Items.apple,5),
-			//new ItemStack(Items.bed,3),
-			//new ItemStack(Items.stick,12),
-			//new ItemStack(Items.coal,9),
-			//new ItemStack(Items.clock,7),
-			//new ItemStack(Items.boat,15),
-			new ItemStack(Items.fish,8)
-		};
+		ItemStack[] itemStacks = null;
 		
+		DataVillager dvr = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID);
+		DataVillagerCompBuy dataCompBuy = (DataVillagerCompBuy)HelperDataVgrComp.findDataVillagerComp(dvr, DataVillagerCompBuy.class);
+		if(dataCompBuy != null){
+			itemStacks = dataCompBuy.buyList;
+		}
+		
+		if(itemStacks == null)
+			itemStacks = new ItemStack[0];
 		
 		return new Object[]{villagerID,itemStacks};
 	}
@@ -61,7 +63,6 @@ public class ActionGetVillagerBuy extends Action {
 		
 		int villagerID = (int)info[0];
 		ItemStack[] itemStacks = (ItemStack[])info[1];	
-		
 		
 		buf.writeInt(villagerID);
 		buf.writeInt(itemStacks.length);

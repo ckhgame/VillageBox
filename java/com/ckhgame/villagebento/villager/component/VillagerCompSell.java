@@ -11,7 +11,7 @@ public class VillagerCompSell extends VillagerComponent {
 	}
 
 	@Override
-	public Class<? extends DataVillagerComp> getDataClass() {
+	public DataVillagerComp getNewDataInstance() {
 		return null;
 	}
 

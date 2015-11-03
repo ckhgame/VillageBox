@@ -12,7 +12,7 @@ public class VillagerCompAbout extends VillagerComponent {
 	}
 
 	@Override
-	public Class<? extends DataVillagerComp> getDataClass() {
+	public DataVillagerComp getNewDataInstance() {
 		return null;
 	}
 }

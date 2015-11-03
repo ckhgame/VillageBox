@@ -24,5 +24,5 @@ public abstract class VillagerComponent {
 	/**
 	 * return null means this component doesn't need data...
 	 */
-	public abstract Class<? extends DataVillagerComp> getDataClass();
+	public abstract DataVillagerComp getNewDataInstance();
 }

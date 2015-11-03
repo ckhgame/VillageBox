@@ -30,8 +30,7 @@ public class DataVillagerCompBuy extends DataVillagerComp{
 			}
 		}
 		
-		compound.setTag(ConfigData.KeyVillagerCompBuyItemStackList, tagList);
-		
+		compound.setTag(ConfigData.KeyVillagerCompBuyItemStackList, tagList);	
 	}
 
 	@Override

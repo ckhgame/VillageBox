@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.data.helper;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigRendering;
 import com.ckhgame.villagebento.config.ConfigVillage;
 import com.ckhgame.villagebento.config.ConfigVillager;
@@ -10,11 +11,16 @@ import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
+import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
 import com.ckhgame.villagebento.util.BoxWithColor;
 import com.ckhgame.villagebento.villager.Villager;
+import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
+import net.minecraftforge.common.util.Constants;
 
 public class HelperDataVB {
 	
@@ -273,9 +279,19 @@ public class HelperDataVB {
 		dvr.skin = skin;
 		dvr.buildingID = buildingID;
 		
-		//villager components
-		Villager v = Villager.registry.get(dvr.profession);
+		//villager components data
+		Villager vr = Villager.registry.get(dvr.profession);
+		DataVillagerComp dataComp;
+		dvr.dataComponents.clear();
+		for(VillagerComponent comp : vr.getVillagerComponents()){
+			dataComp = comp.getNewDataInstance();
+			if(dataComp != null){//needs data for the current component				
+				dvr.dataComponents.add(dataComp);
+			}
+		}
 		
+		//refresh if needed
+		HelperDataVgrComp.refreshBuyList(dvr);
 		
 		return dvr;
 	}

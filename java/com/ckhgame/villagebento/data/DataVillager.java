@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
 import com.ckhgame.villagebento.villager.Villager;
+import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.common.util.Constants;
 
 public class DataVillager extends Data{
 
@@ -32,8 +35,15 @@ public class DataVillager extends Data{
 		compound.setInteger(ConfigData.KeyDataVillagerLevel,this.level);
 		compound.setInteger(ConfigData.KeyDataVillagerExp,this.exp);
 		
-		//Villager v = Villager.registry.get(profession);
-		//for(VillagerComponent vc : v.
+		//save components
+		NBTTagList tagList = new NBTTagList();
+		NBTTagCompound tag = null;
+		for(DataVillagerComp dataComp : dataComponents){
+			tag = new NBTTagCompound();
+			dataComp.writeToNBT(tag);		
+			tagList.appendTag(tag);
+		}
+		compound.setTag(ConfigData.KeyVillagerComps, tagList);
 	}
 
 	@Override
@@ -46,6 +56,21 @@ public class DataVillager extends Data{
 		this.death = compound.getInteger(ConfigData.KeyDataVillagerDeath);	
 		this.level = compound.getInteger(ConfigData.KeyDataVillagerLevel);
 		this.exp = compound.getInteger(ConfigData.KeyDataVillagerExp);
+		
+		//load components
+		NBTTagList tagList = compound.getTagList(ConfigData.KeyVillagerComps, Constants.NBT.TAG_COMPOUND);
+		Villager v = Villager.registry.get(profession);
+		DataVillagerComp dataComp;
+		dataComponents.clear();
+		int idx = 0;
+		for(VillagerComponent comp : v.getVillagerComponents()){
+			dataComp = comp.getNewDataInstance();
+			if(dataComp != null){//needs data for the current component				
+				NBTTagCompound tag = tagList.getCompoundTagAt(idx++);
+				dataComp.readFromNBT(tag);
+				dataComponents.add(dataComp);
+			}
+		}
 	}
 	
 }
