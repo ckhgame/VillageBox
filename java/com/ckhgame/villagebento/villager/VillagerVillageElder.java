@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
-import com.ckhgame.villagebento.villager.component.VillagerCompTrade;
+import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
+import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 public class VillagerVillageElder extends Villager {
@@ -33,7 +34,8 @@ public class VillagerVillageElder extends Villager {
 		 //test
         ArrayList<VillagerComponent> components = new ArrayList<VillagerComponent>();
         components.add(new VillagerCompAbout());
-        components.add(new VillagerCompTrade());
+        components.add(new VillagerCompBuy());
+        components.add(new VillagerCompSell());
         
         return components;
 	}

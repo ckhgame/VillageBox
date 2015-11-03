@@ -5,6 +5,7 @@ import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.building.ModBuildings;
 import com.ckhgame.villagebento.entity.ModEntities;
 import com.ckhgame.villagebento.event.EventVillageBentoTick;
+import com.ckhgame.villagebento.event.EventEntityPlayerConstructing;
 import com.ckhgame.villagebento.event.EventRenderVillageOutlines;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.ModMessages;
@@ -37,6 +38,7 @@ public class CommonProxy {
 	public void init(FMLInitializationEvent e) {
 		
 		 FMLCommonHandler.instance().bus().register(EventVillageBentoTick.getInstance());
+		 MinecraftForge.EVENT_BUS.register(new EventEntityPlayerConstructing());
 		 MinecraftForge.EVENT_BUS.register(EventRenderVillageOutlines.getInstance());
 	}
 	

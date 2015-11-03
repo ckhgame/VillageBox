@@ -8,6 +8,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
 
 /**
  * 

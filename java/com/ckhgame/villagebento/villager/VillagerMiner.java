@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
-import com.ckhgame.villagebento.villager.component.VillagerCompTrade;
+import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 public class VillagerMiner extends Villager {

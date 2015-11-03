@@ -12,11 +12,11 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.GuiScreen;
 
-public class GuiVillagerTrade extends GuiVillager {
+public class GuiVillagerSell extends GuiVillager {
 	@Override
 	public String getButtonText() {
 		// TODO Auto-generated method stub
-		return "Trade";
+		return "Sell";
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class GuiVillagerTrade extends GuiVillager {
 	public void onInitGui() {
 		// TODO Auto-generated method stub
 		Action.send(ActionGetVillagerName.class, new Object[]{this.entityVillager.dataVillagerID});
-		setChatContent("Want to trade with me?");
+		setChatContent("Do you have any of these?");
 	}
 
 	@Override

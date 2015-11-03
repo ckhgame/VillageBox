@@ -3,6 +3,8 @@ package com.ckhgame.villagebento.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.lwjgl.opengl.GL11;
+
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -33,6 +35,9 @@ public abstract class GuiVillager extends GuiScreen {
 	protected int fieldChatTop;
 	protected int fieldCompLeft;
 	protected int fieldCompTop;
+	
+	//component button id start
+	protected int compStartButtonID = 100;
 	
 	protected void setChatContent(String chatContent){
 		this.chatContent = chatContent;
@@ -68,8 +73,7 @@ public abstract class GuiVillager extends GuiScreen {
 		this.drawDefaultBackground();
 		
 		//GUI LAYOUT: Right Top Chat Field
-		fieldChatLeft = this.width / 2 - 80;
-		fieldChatTop = this.height /2 - 60;
+		
 		drawFieldBackground(fieldChatLeft,fieldChatTop,200,30);
 		//display name and chat content
 		String name = this.entityVillager.name + ":";
@@ -83,13 +87,13 @@ public abstract class GuiVillager extends GuiScreen {
 		this.fontRendererObj.drawString(chatContentDisplay, fieldChatLeft + 6,fieldChatTop + 13, 0xFFFFFFEE,true);
 		
 		//GUI LAYOUT: Right Top Component Field
-		fieldCompLeft = this.width / 2 - 80;
-		fieldCompTop = this.height /2 - 20;
 		drawFieldBackground(fieldCompLeft,fieldCompTop,200,100);
 		
 		onDrawScreen();
 		
-		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);	
+        GL11.glEnable(GL11.GL_LIGHTING);
 	}
 
 	@Override
@@ -136,7 +140,7 @@ public abstract class GuiVillager extends GuiScreen {
 				c.getGui().buttonID = id++;
 				btn = new GuiButton(c.getGui().buttonID, 
 						this.width /2 - 130,this.height /2 - 50 + 20 * (count++),
-						36,16,	
+						36,20,	
 						c.getGui().getButtonText());
 				if(c == villagerComponent)
 					btn.enabled = false;
@@ -145,7 +149,12 @@ public abstract class GuiVillager extends GuiScreen {
 		}
 
 		//leave button
-		this.buttonList.add(new GuiButton(99999, this.width /2 - 130,this.height /2 - 50 + 20 * count,36,16,"Leave"));
+		this.buttonList.add(new GuiButton(99999, this.width /2 - 130,this.height /2 + 64,36,20,"Leave"));
+		
+		fieldChatLeft = this.width / 2 - 80;
+		fieldChatTop = this.height /2 - 60;
+		fieldCompLeft = this.width / 2 - 80;
+		fieldCompTop = this.height /2 - 20;
 		
 		onInitGui();
 		

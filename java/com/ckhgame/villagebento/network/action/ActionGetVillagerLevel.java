@@ -5,6 +5,7 @@ import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.gui.GuiVillager;
+import com.ckhgame.villagebento.player.PlayerVBProperty;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
