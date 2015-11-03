@@ -3,18 +3,13 @@ package com.ckhgame.villagebento.network.action;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.data.helper.HelperDataVgrComp;
-import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompBuy;
-import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.data.helper.HelperDataVrComp;
 import com.ckhgame.villagebento.gui.GuiVillagerBuy;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -44,16 +39,9 @@ public class ActionGetVillagerBuy extends Action {
 
 		int villagerID = (int)info[0];
 		
-		ItemStack[] itemStacks = null;
-		
 		DataVillager dvr = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID);
-		DataVillagerCompBuy dataCompBuy = (DataVillagerCompBuy)HelperDataVgrComp.findDataVillagerComp(dvr, DataVillagerCompBuy.class);
-		if(dataCompBuy != null){
-			itemStacks = dataCompBuy.buyList;
-		}
 		
-		if(itemStacks == null)
-			itemStacks = new ItemStack[0];
+		ItemStack[] itemStacks = HelperDataVrComp.getBuyList(dvr);
 		
 		return new Object[]{villagerID,itemStacks};
 	}

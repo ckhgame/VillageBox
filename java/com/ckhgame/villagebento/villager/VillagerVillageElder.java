@@ -47,7 +47,10 @@ public class VillagerVillageElder extends Villager {
         compBuy.addItemBuy(Blocks.log, 20, 50, 0,1);
         components.add(compBuy);
         
-        components.add(new VillagerCompSell());
+        VillagerCompSell compSell = new VillagerCompSell();
+        compSell.addItemSell(Items.bed, 1, 5, 0);
+        compSell.addItemSell(Items.beef, 2, 10, 0);
+        components.add(compSell);
 
 	}
 	

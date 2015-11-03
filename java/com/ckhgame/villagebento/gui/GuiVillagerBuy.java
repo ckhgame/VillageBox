@@ -43,7 +43,7 @@ public class GuiVillagerBuy extends GuiVillager {
 			//item name
 			fontRendererObj.drawString(itemStack.getDisplayName(), left + 28, top + 4, 0xFFFFFFFF,true);
 			//item price and how many items left
-			String priceAndNum = "Price:" + price + ", left:" + itemStack.stackSize;
+			String priceAndNum = "price:" + price + ", left:" + itemStack.stackSize;
 			fontRendererObj.drawString(priceAndNum, left + 28, top + 14, 0xFFFFFFDD,true);
 			//item icon
 			drawRect(left + 3, top + 3, left + 21, top + 21, 0xFF333333);

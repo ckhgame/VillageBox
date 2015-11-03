@@ -53,6 +53,7 @@ public class ConfigData {
 	
 	//villager component sell
 	public static final String KeyVillagerCompSell					= "vcs";
+	public static final String KeyVillagerCompSellItemStackList		= "vcsisl";
 	
 	//villager component work
 	public static final String KeyVillagerCompWork					= "vcw";

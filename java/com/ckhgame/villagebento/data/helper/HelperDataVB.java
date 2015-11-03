@@ -3,7 +3,6 @@ package com.ckhgame.villagebento.data.helper;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigRendering;
 import com.ckhgame.villagebento.config.ConfigVillage;
 import com.ckhgame.villagebento.config.ConfigVillager;
@@ -16,11 +15,8 @@ import com.ckhgame.villagebento.util.BoxWithColor;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
-import net.minecraftforge.common.util.Constants;
 
 public class HelperDataVB {
 	
@@ -291,7 +287,9 @@ public class HelperDataVB {
 		}
 		
 		//refresh if needed
-		HelperDataVgrComp.refreshBuyList(dvr);
+		HelperDataVrComp.refreshBuyList(dvr);
+		HelperDataVrComp.refreshSellList(dvr);
+		HelperDataVrComp.refreshWork(dvr);
 		
 		return dvr;
 	}

@@ -4,9 +4,9 @@ import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.data.helper.HelperDataVrComp;
-import com.ckhgame.villagebento.gui.GuiVillagerBuy;
+import com.ckhgame.villagebento.gui.GuiVillagerSell;
 import com.ckhgame.villagebento.villager.Villager;
-import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
+import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
@@ -20,12 +20,12 @@ import net.minecraft.server.MinecraftServer;
  * params:
  * 1.villagerID (int)
  * 2.EntiryPlayerID (int)
- * 3.itemBuy (ItemStack)
+ * 3.itemSell (ItemStack)
  * 
  *  result:
  * 1. ItemStack[]
  */
-public class ActionDoVillagerBuy extends Action {
+public class ActionDoVillagerSell extends Action {
 	
 	@Override
 	public void onClientSend(ByteBuf buf, Object[] info) {
@@ -51,16 +51,15 @@ public class ActionDoVillagerBuy extends Action {
 
 		int villagerID = (int)info[0];
 		int entityPlayerID = (int)info[1];
-		ItemStack itemBuy = (ItemStack)info[2];
+		ItemStack itemSell = (ItemStack)info[2];
 		
 		EntityPlayer entityPlayer = (EntityPlayer)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(entityPlayerID);
 		DataVillageBento dataVB = DataVillageBento.get();
 		DataVillager dvr = HelperDataVB.findVillagerByID(dataVB, villagerID);
 
-		if(HelperDataVrComp.buyItem(dvr, entityPlayer, itemBuy)){
+		if(HelperDataVrComp.sellItem(dvr, entityPlayer, itemSell))
 			dataVB.markDirty();
-		}
-		ItemStack[] itemStacks = HelperDataVrComp.getBuyList(dvr);
+		ItemStack[] itemStacks = HelperDataVrComp.getSellList(dvr);
 		
 		return new Object[]{villagerID,itemStacks};
 	}
@@ -101,9 +100,9 @@ public class ActionDoVillagerBuy extends Action {
 		
 		DataVillager dvr = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID); 
 		Villager vr = Villager.registry.get(dvr.profession);
-		VillagerCompBuy vcBuy = (VillagerCompBuy)vr.findVillagerComponentByClass(VillagerCompBuy.class);
-		if(vcBuy != null){
-			((GuiVillagerBuy)vcBuy.getGui()).setBuyList(itemStacks);
+		VillagerCompSell vcSell = (VillagerCompSell)vr.findVillagerComponentByClass(VillagerCompSell.class);
+		if(vcSell != null){
+			((GuiVillagerSell)vcSell.getGui()).setSellList(itemStacks);
 		}
 	}
 
