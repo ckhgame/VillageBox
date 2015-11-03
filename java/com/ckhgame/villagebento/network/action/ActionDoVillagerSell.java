@@ -5,6 +5,7 @@ import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.data.helper.HelperDataVrComp;
 import com.ckhgame.villagebento.gui.GuiVillagerSell;
+import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 
@@ -57,11 +58,13 @@ public class ActionDoVillagerSell extends Action {
 		DataVillageBento dataVB = DataVillageBento.get();
 		DataVillager dvr = HelperDataVB.findVillagerByID(dataVB, villagerID);
 
-		if(HelperDataVrComp.sellItem(dvr, entityPlayer, itemSell))
+		int sellResult = HelperDataVrComp.sellItem(dvr, entityPlayer, itemSell);
+		
+		if(sellResult == VBResult.SUCCESS)
 			dataVB.markDirty();
 		ItemStack[] itemStacks = HelperDataVrComp.getSellList(dvr);
 		
-		return new Object[]{villagerID,itemStacks};
+		return new Object[]{villagerID,itemStacks,sellResult};
 	}
 	
 	@Override
@@ -69,12 +72,14 @@ public class ActionDoVillagerSell extends Action {
 		
 		int villagerID = (int)info[0];
 		ItemStack[] itemStacks = (ItemStack[])info[1];	
+		int sellResult = (int)info[2];
 		
 		buf.writeInt(villagerID);
 		buf.writeInt(itemStacks.length);
 		for(int i =0;i<itemStacks.length;i++){
 			ByteBufUtils.writeItemStack(buf, itemStacks[i]);
 		}
+		buf.writeInt(sellResult);
 	}
 
 	@Override
@@ -86,8 +91,10 @@ public class ActionDoVillagerSell extends Action {
 		for(int i =0;i<l;i++){
 			itemStacks[i] = ByteBufUtils.readItemStack(buf);
 		}
+		int sellResult = buf.readInt();
 		
-		return new Object[]{villagerID,itemStacks};
+		
+		return new Object[]{villagerID,itemStacks,sellResult};
 	}
 
 
@@ -97,12 +104,15 @@ public class ActionDoVillagerSell extends Action {
 
 		int villagerID = (int)result[0];	
 		ItemStack[] itemStacks = (ItemStack[])result[1];	
+		int sellResult = (int)result[2];
 		
 		DataVillager dvr = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID); 
 		Villager vr = Villager.registry.get(dvr.profession);
 		VillagerCompSell vcSell = (VillagerCompSell)vr.findVillagerComponentByClass(VillagerCompSell.class);
 		if(vcSell != null){
-			((GuiVillagerSell)vcSell.getGui()).setSellList(itemStacks);
+			GuiVillagerSell gui = (GuiVillagerSell)vcSell.getGui();
+			gui.setSellList(itemStacks);
+			gui.updateWithData(sellResult);
 		}
 	}
 

@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.gui;
 import org.lwjgl.opengl.GL11;
 
 import com.ckhgame.villagebento.misc.ItemPrice;
+import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerBuy;
 import com.ckhgame.villagebento.network.action.ActionGetVillagerBuy;
@@ -126,6 +127,18 @@ public class GuiVillagerBuy extends GuiVillager {
 		
 	}
 	
+	@Override
+	public void updateWithData(int data) {
+		if(data == VBResult.SUCCESS)
+			setChatContent("Thank you!");
+		else if(data == VBResult.FALLED_RUNOUT)
+			setChatContent("That one is sold out...");
+		else if(data == VBResult.FAILED_UNAFFORDABLE)
+			setChatContent("Hmmm... it's too expensive for you...");
+		else if(data == VBResult.FAILED)
+			setChatContent("Something is not right...");
+		
+	}
 	
 	
 }

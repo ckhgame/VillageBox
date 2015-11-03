@@ -7,6 +7,7 @@ import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompBuy;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompSell;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.misc.ItemPrice;
+import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
@@ -99,47 +100,50 @@ public class HelperDataVrComp {
 		return itemStacks;
 	}
 	
-	public static boolean buyItem(DataVillager dvr,EntityPlayer entityPlayer,ItemStack itemBuy){
+	public static int buyItem(DataVillager dvr,EntityPlayer entityPlayer,ItemStack itemBuy){
 		DataVillagerCompBuy dataCompBuy = (DataVillagerCompBuy)HelperDataVrComp.findDataVillagerComp(dvr, DataVillagerCompBuy.class);
 		if(dataCompBuy == null)
-			return false;
+			return VBResult.FAILED;
 		
 		ItemStack[] itemStacks = dataCompBuy.buyList;
 		if(itemStacks == null)
-			return false;
+			return VBResult.FAILED;
 
 		if(entityPlayer == null)
-			return false;
+			return VBResult.FAILED;
 		
 		//buy process			
 		for(ItemStack itemStack : itemStacks ){
 			if(itemStack.isItemEqual(itemBuy)){
-				if(HelperDataVrComp.addCurrency(entityPlayer,-ItemPrice.getBuyPrice(itemBuy.getItem()))){
-					if(itemStack.stackSize >= itemBuy.stackSize){
+				if(itemStack.stackSize >= itemBuy.stackSize){
+					if(HelperDataVrComp.addCurrency(entityPlayer,-ItemPrice.getBuyPrice(itemBuy.getItem()))){
 						itemStack.stackSize -= itemBuy.stackSize;
 						entityPlayer.inventory.addItemStackToInventory(itemBuy);
 						HelperDataVrComp.addExp(dvr, ConfigVillager.TradingExp);						
-						return true;
+						return VBResult.SUCCESS;
 					}
+					else
+						return VBResult.FAILED_UNAFFORDABLE;
 				}
-				return false;
+				else
+					return VBResult.FALLED_RUNOUT;
 			}							
 		}
 		
-		return false;
+		return VBResult.FAILED;
 	}
 	
-	public static boolean sellItem(DataVillager dvr, EntityPlayer entityPlayer,ItemStack itemSell){
+	public static int sellItem(DataVillager dvr, EntityPlayer entityPlayer,ItemStack itemSell){
 		DataVillagerCompSell dataCompSell = (DataVillagerCompSell)HelperDataVrComp.findDataVillagerComp(dvr, DataVillagerCompSell.class);
 		if(dataCompSell == null)
-			return false;
+			return VBResult.FAILED;
 		
 		ItemStack[] itemStacks = dataCompSell.sellList;
 		if(itemStacks == null)
-			return false;
+			return VBResult.FAILED;
 
 		if(entityPlayer == null)
-			return false;
+			return VBResult.FAILED;
 		
 		//sell process			
 		for(ItemStack itemStack : itemStacks ){
@@ -151,13 +155,17 @@ public class HelperDataVrComp {
 						HelperDataVrComp.addCurrency(entityPlayer,ItemPrice.getSellPrice(itemSell.getItem()));
 						HelperDataVrComp.addExp(dvr, ConfigVillager.TradingExp);
 					
-						return true;
+						return VBResult.SUCCESS;
 					}
+					else
+						return VBResult.FAILED_NOITEM;
 				}
+				else
+					return VBResult.FALLED_RUNOUT;
 			}							
 		}
 		
-		return false;
+		return VBResult.FAILED;
 	}
 	
 	private static boolean playerHasItemStack(EntityPlayer entityPlayer,ItemStack itemStack){

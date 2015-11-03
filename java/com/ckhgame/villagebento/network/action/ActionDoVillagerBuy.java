@@ -5,6 +5,7 @@ import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.data.helper.HelperDataVrComp;
 import com.ckhgame.villagebento.gui.GuiVillagerBuy;
+import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 
@@ -57,12 +58,13 @@ public class ActionDoVillagerBuy extends Action {
 		DataVillageBento dataVB = DataVillageBento.get();
 		DataVillager dvr = HelperDataVB.findVillagerByID(dataVB, villagerID);
 
-		if(HelperDataVrComp.buyItem(dvr, entityPlayer, itemBuy)){
+		int buyResult = HelperDataVrComp.buyItem(dvr, entityPlayer, itemBuy);
+		if(buyResult == VBResult.SUCCESS){
 			dataVB.markDirty();
 		}
 		ItemStack[] itemStacks = HelperDataVrComp.getBuyList(dvr);
 		
-		return new Object[]{villagerID,itemStacks};
+		return new Object[]{villagerID,itemStacks,buyResult};
 	}
 	
 	@Override
@@ -70,12 +72,14 @@ public class ActionDoVillagerBuy extends Action {
 		
 		int villagerID = (int)info[0];
 		ItemStack[] itemStacks = (ItemStack[])info[1];	
+		int buyResult = (int)info[2];
 		
 		buf.writeInt(villagerID);
 		buf.writeInt(itemStacks.length);
 		for(int i =0;i<itemStacks.length;i++){
 			ByteBufUtils.writeItemStack(buf, itemStacks[i]);
 		}
+		buf.writeInt(buyResult);
 	}
 
 	@Override
@@ -87,8 +91,9 @@ public class ActionDoVillagerBuy extends Action {
 		for(int i =0;i<l;i++){
 			itemStacks[i] = ByteBufUtils.readItemStack(buf);
 		}
+		int buyResult = buf.readInt();
 		
-		return new Object[]{villagerID,itemStacks};
+		return new Object[]{villagerID,itemStacks,buyResult};
 	}
 
 
@@ -98,12 +103,15 @@ public class ActionDoVillagerBuy extends Action {
 
 		int villagerID = (int)result[0];	
 		ItemStack[] itemStacks = (ItemStack[])result[1];	
+		int buyResult = (int)result[2];
 		
 		DataVillager dvr = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID); 
 		Villager vr = Villager.registry.get(dvr.profession);
 		VillagerCompBuy vcBuy = (VillagerCompBuy)vr.findVillagerComponentByClass(VillagerCompBuy.class);
 		if(vcBuy != null){
-			((GuiVillagerBuy)vcBuy.getGui()).setBuyList(itemStacks);
+			GuiVillagerBuy gui = (GuiVillagerBuy)vcBuy.getGui();
+			gui.setBuyList(itemStacks);
+			gui.updateWithData(buyResult);
 		}
 	}
 

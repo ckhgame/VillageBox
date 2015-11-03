@@ -52,6 +52,11 @@ public class GuiVillagerAbout extends GuiVillager {
 		
 	}
 	
+	@Override
+	public void updateWithData(int data) {
+		
+	}
+	
 	
 	
 }

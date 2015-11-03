@@ -171,5 +171,6 @@ public abstract class GuiVillager extends GuiScreen {
 	public abstract void onDrawScreen();
 	public abstract void onInitGui();
 	public abstract void onActionPerformed(GuiButton button);
+	public abstract void updateWithData(int data);
 	
 }
