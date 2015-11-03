@@ -28,6 +28,7 @@ public class EventVillageBentoTick {
 	
 	
 	
+	//--------------------------------------
 	//update dead villagers
 	
 	private boolean deadVillagersUpdated = false;
@@ -41,6 +42,14 @@ public class EventVillageBentoTick {
 		else if(deadVillagersUpdated){
 			deadVillagersUpdated = false;
 		}
-
 	}
+	
+	//--------------------------------------
+	//update villagers' buy list
+	private void updateVillagerBuyList(){
+		
+	}
+	
+	//--------------------------------------
+	//update villagers' sell list
 }

@@ -33,7 +33,7 @@ public class GuiVillagerSell extends GuiVillager {
 	}
 
 	@Override
-	public void onActionPerformed() {
+	public void onActionPerformed(GuiButton button) {
 		// TODO Auto-generated method stub
 		
 	}

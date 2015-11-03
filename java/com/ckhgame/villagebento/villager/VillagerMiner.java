@@ -30,13 +30,10 @@ public class VillagerMiner extends Villager {
 	
 	
 	@Override
-	public ArrayList<VillagerComponent> createComponents() {
-		// TODO Auto-generated method stub
-		 //test
-        ArrayList<VillagerComponent> components = new ArrayList<VillagerComponent>();
+	public void createComponents(ArrayList<VillagerComponent> components) {
+
         components.add(new VillagerCompAbout());
-        
-        return components;
+
 	}
 
 	@Override

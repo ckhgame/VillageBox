@@ -29,15 +29,12 @@ public class VillagerVillageElder extends Villager {
 	}
 
 	@Override
-	public ArrayList<VillagerComponent> createComponents() {
-		// TODO Auto-generated method stub
-		 //test
-        ArrayList<VillagerComponent> components = new ArrayList<VillagerComponent>();
+	public void createComponents(ArrayList<VillagerComponent> components) {
+
         components.add(new VillagerCompAbout());
         components.add(new VillagerCompBuy());
         components.add(new VillagerCompSell());
-        
-        return components;
+
 	}
 	
 	@Override

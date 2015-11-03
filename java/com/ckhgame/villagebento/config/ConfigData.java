@@ -45,8 +45,15 @@ public class ConfigData {
 	public static final String KeyVillagerEntityProfession			= "vep";
 	
 	//villager component
-	public static final String KeyVillagerCompType					= "vct";
+	public static final String KeyVillagerComps						= "vc";
 	
-	//villager component general
-	public static final String KeyVillagerCompGeneralRelationship	= "vcgr";
+	//villager component buy
+	public static final String KeyVillagerCompBuy					= "vcb";
+	public static final String KeyVillagerCompBuyItemStackList		= "vcbisl";
+	
+	//villager component sell
+	public static final String KeyVillagerCompSell					= "vcs";
+	
+	//villager component work
+	public static final String KeyVillagerCompWork					= "vcw";
 }

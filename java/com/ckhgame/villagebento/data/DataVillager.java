@@ -1,6 +1,10 @@
 package com.ckhgame.villagebento.data;
 
+import java.util.ArrayList;
+
 import com.ckhgame.villagebento.config.ConfigData;
+import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
+import com.ckhgame.villagebento.villager.Villager;
 
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -15,6 +19,8 @@ public class DataVillager extends Data{
 	public int level;
 	public int exp;
 	
+	public ArrayList<DataVillagerComp> dataComponents = new ArrayList<DataVillagerComp>();
+	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		compound.setInteger(ConfigData.KeyDataVillagerID, this.id);
@@ -25,6 +31,9 @@ public class DataVillager extends Data{
 		compound.setInteger(ConfigData.KeyDataVillagerDeath, this.death);
 		compound.setInteger(ConfigData.KeyDataVillagerLevel,this.level);
 		compound.setInteger(ConfigData.KeyDataVillagerExp,this.exp);
+		
+		//Villager v = Villager.registry.get(profession);
+		//for(VillagerComponent vc : v.
 	}
 
 	@Override

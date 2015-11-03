@@ -33,6 +33,22 @@ public abstract class Villager implements IRegistrable {
 		profession = regID;
 	}
 	
+	//components
+	private ArrayList<VillagerComponent> components = new ArrayList<VillagerComponent>();
+	
+	public ArrayList<VillagerComponent> getVillagerComponents(){
+		return this.components;
+	}
+	
+	public VillagerComponent findVillagerComponentByClass(Class<? extends VillagerComponent> vcc){
+		for(VillagerComponent c : this.components){
+			if(c.getClass() == vcc)
+				return c;
+		}
+		return null;
+	}
+	
+	
 	//level & exp
 	private int expBase;
 	private int expE;
@@ -55,12 +71,13 @@ public abstract class Villager implements IRegistrable {
 	public abstract String getProfessionName();
 	public abstract String getProfessionDescription();
 	public abstract boolean canSpawn();
-	public abstract ArrayList<VillagerComponent> createComponents();
+	protected abstract void createComponents(ArrayList<VillagerComponent> components);
 	protected abstract void initVillagerChat(VillagerChat villagerChat);
 	
 	public Villager(){
 		initVillagerChat(villagerChat);
 		setExpBase();
+		createComponents(components);
 	}
 	
 	

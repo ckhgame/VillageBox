@@ -6,5 +6,6 @@ public class ModActions {
 		Action.registry.register(1, new ActionGetVillagerLevel());
 		Action.registry.register(2, new ActionDoVillagerChat());
 		Action.registry.register(3, new ActionInitVillager());
+		Action.registry.register(4, new ActionGetVillagerBuy());
 	}
 }

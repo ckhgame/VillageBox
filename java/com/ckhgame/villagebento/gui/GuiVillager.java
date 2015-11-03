@@ -106,7 +106,7 @@ public abstract class GuiVillager extends GuiScreen {
             return;
 		}
 		
-		ArrayList<VillagerComponent> carr = entityVillager.getVillagerComponents();
+		ArrayList<VillagerComponent> carr = villager.getVillagerComponents();
 		for(VillagerComponent c : carr){
 			if(c.getGui().buttonID == button.id){
 				this.mc.displayGuiScreen(c.getGui());
@@ -114,7 +114,7 @@ public abstract class GuiVillager extends GuiScreen {
 			}
 		}
 		
-        onActionPerformed();
+        onActionPerformed(button);
         
 		super.actionPerformed(button);
 	}
@@ -129,7 +129,7 @@ public abstract class GuiVillager extends GuiScreen {
 		GuiButton btn;
 		ArrayList<VillagerComponent> carr = null;
 		if(entityVillager != null){
-			carr = entityVillager.getVillagerComponents();
+			carr = villager.getVillagerComponents();
 		}
 		
 		//GUI LAYOUT
@@ -170,6 +170,6 @@ public abstract class GuiVillager extends GuiScreen {
 	public abstract String getButtonText();
 	public abstract void onDrawScreen();
 	public abstract void onInitGui();
-	public abstract void onActionPerformed();
+	public abstract void onActionPerformed(GuiButton button);
 	
 }

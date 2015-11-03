@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
+import com.ckhgame.villagebento.gui.GuiVillager;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionInitVillager;
 import com.ckhgame.villagebento.villager.Villager;
+import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.client.Minecraft;
@@ -38,28 +40,14 @@ public class EntityVBVillager extends EntityAgeable{
 	public int profession;
 	public int level;
 	public int exp;
-	private ArrayList<VillagerComponent> components;
 	
 	private boolean firstTimeUpdateVBVillager = true;
-	
-	public void setVillagerComponents(ArrayList<VillagerComponent> components){
-		this.components = components;
-		for(VillagerComponent c : this.components){
-			c.getGui().setEntityVillager(this);
-		}
-	}
-	
-	public ArrayList<VillagerComponent> getVillagerComponents(){
-		return this.components;
-	}
 	
 	public void initVillager(int villagerID,String name, String skin, int profession){
 		this.dataVillagerID = villagerID;
 		this.name = name;
 		this.skin = skin;
 		this.profession = profession;
-		//load components
-		this.setVillagerComponents(Villager.registry.get(this.profession).createComponents());
 	}
 	
 	private void updateVBVillager(){
@@ -105,15 +93,19 @@ public class EntityVBVillager extends EntityAgeable{
     {
     	if(this.worldObj.isRemote){
     		
-    	
+    		Villager vr = Villager.registry.get(profession);
     		
+    		GuiVillager startGUI = null;
     		
-    		//guiChat.setChat(name, "Nice to meet you! Nice to meet you! Nice to meet you! Nice to meet you! Nice to meet you!");
-    		if(components != null && components.size() > 0){
-    			Minecraft.getMinecraft().displayGuiScreen(components.get(0).getGui());
-    		}   		
+    		for(VillagerComponent comp : vr.getVillagerComponents()){
+    			comp.getGui().setEntityVillager(this);
+    			if(comp.getClass() == VillagerCompAbout.class)
+    				startGUI = comp.getGui();
+    		}
     		
-    		
+    		if(startGUI != null)
+    			Minecraft.getMinecraft().displayGuiScreen(startGUI);
+    		   		
     	}
         return true;
     }

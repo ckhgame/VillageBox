@@ -3,24 +3,8 @@ package com.ckhgame.villagebento.villager.component;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
 import com.ckhgame.villagebento.gui.GuiVillager;
 import com.ckhgame.villagebento.util.registry.IRegistrable;
-import com.ckhgame.villagebento.util.registry.Registry;
 
-public class VillagerComponent implements IRegistrable {
-	
-	private int type;
-	
-	public int getType(){
-		return type;
-	}
-	
-	public int getRegID() {
-		return type;
-	}
-
-	public void setRegID(int regID) {
-		this.type = regID;
-		
-	}
+public abstract class VillagerComponent {
 	
 	private GuiVillager guiVillager;
 	
@@ -37,6 +21,8 @@ public class VillagerComponent implements IRegistrable {
 		return guiVillager;
 	}
 	
-	
-	public static Registry<VillagerComponent> registry = new Registry<VillagerComponent>();
+	/**
+	 * return null means this component doesn't need data...
+	 */
+	public abstract Class<? extends DataVillagerComp> getDataClass();
 }

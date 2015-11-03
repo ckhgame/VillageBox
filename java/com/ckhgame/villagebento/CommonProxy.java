@@ -1,18 +1,16 @@
 package com.ckhgame.villagebento;
 
 import com.ckhgame.villagebento.block.ModBlocks;
-import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.building.ModBuildings;
 import com.ckhgame.villagebento.entity.ModEntities;
-import com.ckhgame.villagebento.event.EventVillageBentoTick;
 import com.ckhgame.villagebento.event.EventEntityPlayerConstructing;
 import com.ckhgame.villagebento.event.EventRenderVillageOutlines;
+import com.ckhgame.villagebento.event.EventVillageBentoTick;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.ModMessages;
 import com.ckhgame.villagebento.network.action.ModActions;
 import com.ckhgame.villagebento.renderer.ModRenderers;
 import com.ckhgame.villagebento.villager.ModVillagers;
-import com.ckhgame.villagebento.villager.component.ModVillagerComps;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -31,7 +29,6 @@ public class CommonProxy {
 		
 		ModBuildings.init();
 		ModVillagers.init();
-		ModVillagerComps.init();
 		ModActions.init();
 	}
 

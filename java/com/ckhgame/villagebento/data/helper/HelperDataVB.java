@@ -273,6 +273,10 @@ public class HelperDataVB {
 		dvr.skin = skin;
 		dvr.buildingID = buildingID;
 		
+		//villager components
+		Villager v = Villager.registry.get(dvr.profession);
+		
+		
 		return dvr;
 	}
 	
