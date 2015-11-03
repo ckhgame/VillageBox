@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.gui;
 
 import org.lwjgl.opengl.GL11;
 
+import com.ckhgame.villagebento.misc.ItemPrice;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerSell;
 import com.ckhgame.villagebento.network.action.ActionGetVillagerSell;
@@ -64,9 +65,11 @@ public class GuiVillagerSell extends GuiVillager {
 	public void onDrawScreen() {
 		//this.drawWrappedString(this.fontRendererObj,"Nothing to trade with you now :(",this.width / 2 - 74,this.height /2 - 45,0xFFFFFFFF,188);
 		ItemStack itemStack;
+		int price;
 		for(int i = 0;i<rowSize;i++){
 			itemStack = (sellList == null || currentIdx + i >= sellList.length)? null : sellList[currentIdx + i];
-			drawItemRow(fieldCompLeft + 4,fieldCompTop + 6 + 32 * i,itemStack, 100,i);
+			price = (itemStack == null?0:ItemPrice.getSellPrice(itemStack.getItem()));
+			drawItemRow(fieldCompLeft + 4,fieldCompTop + 6 + 32 * i,itemStack,price,i);
 		}
 			
 		

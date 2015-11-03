@@ -9,3 +9,4 @@ tile.BlockMiningHouse.name=建筑:矿工小屋
 tile.BlockBlackSmithsShop.name=建筑:铁匠铺
 tile.BlockBakery.name=Building:建筑:面包房
 item.ItemVillageStick.name=村庄短杖
+item.ItemVillageCurrency.name=村庄货币

@@ -9,3 +9,4 @@ tile.BlockMiningHouse.name=Building:Mining House
 tile.BlockBlackSmithsShop.name=Building:Blacksmith's Shop
 tile.BlockBakery.name=Building:Bakery
 item.ItemVillageStick.name=Village Stick
+item.ItemVillageCurrency.name=Village Coins

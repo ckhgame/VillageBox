@@ -1,10 +1,12 @@
 package com.ckhgame.villagebento.data.helper;
 
+import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompBuy;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompSell;
 import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.misc.ItemPrice;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
@@ -112,16 +114,15 @@ public class HelperDataVrComp {
 		//buy process			
 		for(ItemStack itemStack : itemStacks ){
 			if(itemStack.isItemEqual(itemBuy)){
-				if(itemStack.stackSize >= itemBuy.stackSize){
-					itemStack.stackSize -= itemBuy.stackSize;
-					entityPlayer.inventory.addItemStackToInventory(itemBuy);
-					HelperDataVrComp.addExp(dvr, 3);
-					
-					//change currency
-					HelperDataVrComp.addCurrency(entityPlayer, 50);
-					
-					return true;
+				if(HelperDataVrComp.addCurrency(entityPlayer,-ItemPrice.getBuyPrice(itemBuy.getItem()))){
+					if(itemStack.stackSize >= itemBuy.stackSize){
+						itemStack.stackSize -= itemBuy.stackSize;
+						entityPlayer.inventory.addItemStackToInventory(itemBuy);
+						HelperDataVrComp.addExp(dvr, ConfigVillager.TradingExp);						
+						return true;
+					}
 				}
+				return false;
 			}							
 		}
 		
@@ -129,32 +130,74 @@ public class HelperDataVrComp {
 	}
 	
 	public static boolean sellItem(DataVillager dvr, EntityPlayer entityPlayer,ItemStack itemSell){
-		DataVillagerCompBuy dataCompBuy = (DataVillagerCompBuy)HelperDataVrComp.findDataVillagerComp(dvr, DataVillagerCompBuy.class);
-		if(dataCompBuy == null)
+		DataVillagerCompSell dataCompSell = (DataVillagerCompSell)HelperDataVrComp.findDataVillagerComp(dvr, DataVillagerCompSell.class);
+		if(dataCompSell == null)
 			return false;
 		
-		ItemStack[] itemStacks = dataCompBuy.buyList;
+		ItemStack[] itemStacks = dataCompSell.sellList;
 		if(itemStacks == null)
 			return false;
 
 		if(entityPlayer == null)
 			return false;
 		
-		//buy process			
+		//sell process			
 		for(ItemStack itemStack : itemStacks ){
 			if(itemStack.isItemEqual(itemSell)){
 				if(itemStack.stackSize >= itemSell.stackSize){
-					itemStack.stackSize -= itemSell.stackSize;
-					entityPlayer.inventory.addItemStackToInventory(itemSell);
-					HelperDataVrComp.addExp(dvr, 3);
-				
-					return true;
+					if(HelperDataVrComp.playerHasItemStack(entityPlayer, itemSell)){
+						itemStack.stackSize -= itemSell.stackSize;
+						playerRemoveItemStack(entityPlayer, itemSell);
+						HelperDataVrComp.addCurrency(entityPlayer,ItemPrice.getSellPrice(itemSell.getItem()));
+						HelperDataVrComp.addExp(dvr, ConfigVillager.TradingExp);
+					
+						return true;
+					}
 				}
 			}							
 		}
 		
 		return false;
 	}
+	
+	private static boolean playerHasItemStack(EntityPlayer entityPlayer,ItemStack itemStack){
+		
+		int i;
+		InventoryPlayer ip = entityPlayer.inventory;
+
+        for (i = 0; i < ip.mainInventory.length; ++i)
+        {
+            if (ip.mainInventory[i] != null && ip.mainInventory[i].isItemEqual(itemStack)
+            		&&ip.mainInventory[i].stackSize >= itemStack.stackSize)
+            {
+                return true;
+            }
+        }
+
+        return false;
+	}
+	
+private static boolean playerRemoveItemStack(EntityPlayer entityPlayer,ItemStack itemStack){
+		
+		int i;
+		InventoryPlayer ip = entityPlayer.inventory;
+
+        for (i = 0; i < ip.mainInventory.length; ++i)
+        {
+            if (ip.mainInventory[i] != null && ip.mainInventory[i].isItemEqual(itemStack)
+            		&&ip.mainInventory[i].stackSize >= itemStack.stackSize)
+            {
+            	ip.mainInventory[i].stackSize -= itemStack.stackSize;
+            	if(ip.mainInventory[i].stackSize == 0)
+            		ip.mainInventory[i] = null;
+            	
+                return true;
+            }
+        }
+
+        return false;
+	}
+	
 	
 	public static boolean addExp(DataVillager dvr,int exp){
 		
