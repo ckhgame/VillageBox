@@ -28,7 +28,7 @@ public class BuildingVillageCenter extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerVillageElder.class,"Bob","Bob",0,0);
+		bb.addBuildingVillager(VillagerVillageElder.class,"Bob","villageelder",0,0);
 	}
 
 	@Override

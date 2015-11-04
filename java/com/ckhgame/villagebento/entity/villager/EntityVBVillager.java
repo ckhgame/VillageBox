@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.entity.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
@@ -31,6 +32,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
@@ -43,6 +45,11 @@ public class EntityVBVillager extends EntityAgeable{
 	public int level;
 	public int exp;
 	
+	private ResourceLocation skinTexture = null;
+	public ResourceLocation getSkinTexture(){
+		return skinTexture;
+	}
+	
 	private boolean firstTimeUpdateVBVillager = true;
 	
 	public void initVillager(int villagerID,String name, String skin, int profession){
@@ -53,6 +60,8 @@ public class EntityVBVillager extends EntityAgeable{
 		
 		Villager vr = Villager.registry.get(this.profession);
 		this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
+		
+		skinTexture = new ResourceLocation(Main.MODID + ":" + "textures/entity/villager/"+this.skin+".png");
 	}
 	
 	private void updateVBVillager(){

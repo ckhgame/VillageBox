@@ -14,8 +14,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderVBVillager extends RendererLivingEntity
 {
-   private static final ResourceLocation villagerTextures = new ResourceLocation(Main.MODID + ":" + "textures/entities/villagers/villageelder.png");
-   // private static final ResourceLocation villagerTextures = new ResourceLocation("textures/entity/steve.png");
     /** Model of the villager. */
     protected ModelBiped villagerModel;
 
@@ -47,9 +45,9 @@ public class RenderVBVillager extends RendererLivingEntity
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityVBVillager p_110775_1_)
+    protected ResourceLocation getEntityTexture(EntityVBVillager p)
     {
-    	return villagerTextures;
+    	return p.getSkinTexture();
     }
 
     protected void renderEquippedItems(EntityVBVillager p_77029_1_, float p_77029_2_)
