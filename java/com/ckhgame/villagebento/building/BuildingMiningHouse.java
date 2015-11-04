@@ -28,8 +28,8 @@ public class BuildingMiningHouse extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerMiner.class,"Tylor","Tylor",0,0);
-		bb.addBuildingVillager(VillagerMiner.class,"Chris","Chris",0,-1);
+		bb.addBuildingVillager(VillagerMiner.class,"Tylor",0,0);
+		bb.addBuildingVillager(VillagerMiner.class,"Chris",0,-1);
 	}
 
 	@Override

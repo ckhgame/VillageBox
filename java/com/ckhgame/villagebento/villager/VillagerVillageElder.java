@@ -62,5 +62,10 @@ public class VillagerVillageElder extends Villager {
 		villagerChat.add(0, "zzz...zzz...!");
 		
 	}
+	
+	@Override
+	public String getSkinName() {
+		return "villageelder";
+	}
 
 }

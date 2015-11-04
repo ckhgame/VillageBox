@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.villager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.data.DataVillageBento;
@@ -15,6 +16,7 @@ import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public abstract class Villager implements IRegistrable {
@@ -48,6 +50,15 @@ public abstract class Villager implements IRegistrable {
 		return null;
 	}
 	
+	//skin
+	private ResourceLocation skinTexture;
+	private void setSkin(String skin){
+		skinTexture = new ResourceLocation(Main.MODID + ":" + "textures/entity/villager/"+skin+".png");
+	}
+	public ResourceLocation getSkin(){
+		return skinTexture;
+	}
+	
 	
 	//level & exp
 	private int expBase;
@@ -70,6 +81,7 @@ public abstract class Villager implements IRegistrable {
 	
 	public abstract String getProfessionName();
 	public abstract String getProfessionDescription();
+	public abstract String getSkinName();
 	public abstract boolean canSpawn();
 	protected abstract void createComponents(ArrayList<VillagerComponent> components);
 	protected abstract void initVillagerChat(VillagerChat villagerChat);
@@ -77,6 +89,7 @@ public abstract class Villager implements IRegistrable {
 	public Villager(){
 		initVillagerChat(villagerChat);
 		setExpBase();
+		setSkin(this.getSkinName());
 		createComponents(components);
 	}
 	
@@ -87,13 +100,13 @@ public abstract class Villager implements IRegistrable {
 	/**
 	 * spawn villager and create villager data
 	 */
-	public static boolean spawn(World w,int x, int y,int z, Class<? extends Villager> c,String name, String skin, int buildingID){
+	public static boolean spawn(World w,int x, int y,int z, Class<? extends Villager> c,String name, int buildingID){
 				
 		Villager v = registry.get(c);
 
 		if(v != null && v.canSpawn()){
 			//generate villager data
-			DataVillager dv = HelperDataVB.createDataVillager(v.profession, name, skin, buildingID);
+			DataVillager dv = HelperDataVB.createDataVillager(v.profession, name, buildingID);
 			if(HelperDataVB.addVillagerData(DataVillageBento.get(w), dv)){
 				return spawn(w,x,y,z,dv,v);
 			}

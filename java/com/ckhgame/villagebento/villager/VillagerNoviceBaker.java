@@ -52,4 +52,9 @@ public class VillagerNoviceBaker extends Villager {
 		
 	}
 
+	@Override
+	public String getSkinName() {
+		return "novicebaker";
+	}
+	
 }

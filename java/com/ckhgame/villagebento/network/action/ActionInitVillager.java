@@ -44,9 +44,8 @@ public class ActionInitVillager extends Action {
 		DataVillager dvr = HelperDataVB.findVillagerByID(dataVB, villagerID);
 		int villagerProfession = dvr.profession;
 		String villagerName = dvr.name;
-		String villagerSkin = dvr.skin;
 		
-		return new Object[]{villagerID,villagerProfession,villagerName,villagerSkin,villagerEntityID};
+		return new Object[]{villagerID,villagerProfession,villagerName,villagerEntityID};
 	}
 
 	@Override
@@ -55,13 +54,11 @@ public class ActionInitVillager extends Action {
 		int villagerID = (int)info[0];
 		int villagerProfession = (int)info[1];
 		String villagerName = (String)info[2];
-		String villagerSkin = (String)info[3];
-		int villagerEntityID = (int)info[4];
+		int villagerEntityID = (int)info[3];
 		
 		buf.writeInt(villagerID);
 		buf.writeInt(villagerProfession);
 		ByteBufUtils.writeUTF8String(buf,villagerName);
-		ByteBufUtils.writeUTF8String(buf,villagerSkin);
 		buf.writeInt(villagerEntityID);
 
 	}
@@ -72,10 +69,9 @@ public class ActionInitVillager extends Action {
 		int villagerID = buf.readInt();
 		int villagerProfession = buf.readInt();
 		String villagerName = ByteBufUtils.readUTF8String(buf);
-		String villagerSkin = ByteBufUtils.readUTF8String(buf);
 		int villagerEntityID = buf.readInt();
 		
-		return new Object[]{villagerID,villagerProfession,villagerName,villagerSkin,villagerEntityID};
+		return new Object[]{villagerID,villagerProfession,villagerName,villagerEntityID};
 	}
 
 
@@ -86,12 +82,11 @@ public class ActionInitVillager extends Action {
 		int villagerID = (int)result[0];
 		int villagerProfession = (int)result[1];
 		String villagerName = (String)result[2];
-		String villagerSkin = (String)result[3];
-		int villagerEntityID = (int)result[4];
+		int villagerEntityID = (int)result[3];
 		
 		EntityVBVillager evr = (EntityVBVillager)Minecraft.getMinecraft().theWorld.getEntityByID(villagerEntityID);
 		
-		evr.initVillager(villagerID,villagerName, villagerSkin, villagerProfession);
+		evr.initVillager(villagerID,villagerName, villagerProfession);
 	}
 
 }

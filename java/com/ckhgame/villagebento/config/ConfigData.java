@@ -13,7 +13,6 @@ public class ConfigData {
 	//villager
 	public static final String KeyDataVillagerID		= "dvrid";
 	public static final String KeyDataVillagerName		= "dvrn";
-	public static final String KeyDataVillagerSkin		= "dvrs";
 	public static final String KeyDataVillagerProfession= "dvrp";
 	public static final String KeyDataVillagerBuildingID= "dvrbid";
 	public static final String KeyDataVillagerDeath		= "dvrd";

@@ -135,7 +135,7 @@ public class BuildingBuilder {
 	}
 	
 	//villagers
-	public void addBuildingVillager(Class<? extends Villager> c, String name, String skin, int dx, int dz){
+	public void addBuildingVillager(Class<? extends Villager> c, String name, int dx, int dz){
 		
 		int fx = dx;
 		int fz = dz;
@@ -160,6 +160,6 @@ public class BuildingBuilder {
 		
 		Villager.spawn(	world,
 						data.x + fx, data.y, data.z + fz, 
-						c, name, skin, data.id);
+						c, name, data.id);
 	}
 }

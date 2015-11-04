@@ -44,5 +44,10 @@ public class VillagerMiner extends Villager {
 		villagerChat.add(0, "Hello there!");
 		
 	}
+	
+	@Override
+	public String getSkinName() {
+		return "miner";
+	}
 
 }

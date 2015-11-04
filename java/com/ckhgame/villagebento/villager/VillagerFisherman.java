@@ -61,4 +61,9 @@ public class VillagerFisherman extends Villager {
 		
 	}
 
+	@Override
+	public String getSkinName() {
+		return "fisherman";
+	}
+	
 }

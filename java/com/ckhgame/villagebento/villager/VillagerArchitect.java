@@ -45,4 +45,9 @@ public class VillagerArchitect extends Villager {
 		
 	}
 
+	@Override
+	public String getSkinName() {
+		return "architect";
+	}
+
 }

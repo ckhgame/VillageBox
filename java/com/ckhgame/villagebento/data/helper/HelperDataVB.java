@@ -266,13 +266,12 @@ public class HelperDataVB {
 		return db;
 	}
 	
-	public static DataVillager createDataVillager(int profession, String name, String skin, int buildingID){
+	public static DataVillager createDataVillager(int profession, String name, int buildingID){
 		
 		DataVillager dvr = new DataVillager();
 		dvr.id = -1; //the id will be automatially generated when adding to the village data
 		dvr.name = name;
 		dvr.profession = profession;
-		dvr.skin = skin;
 		dvr.buildingID = buildingID;
 		
 		//villager components data

@@ -40,7 +40,6 @@ public class EntityVBVillager extends EntityAgeable{
 
 	public int dataVillagerID;
 	public String name;
-	public String skin;
 	public int profession;
 	public int level;
 	public int exp;
@@ -52,16 +51,15 @@ public class EntityVBVillager extends EntityAgeable{
 	
 	private boolean firstTimeUpdateVBVillager = true;
 	
-	public void initVillager(int villagerID,String name, String skin, int profession){
+	public void initVillager(int villagerID,String name, int profession){
 		this.dataVillagerID = villagerID;
 		this.name = name;
-		this.skin = skin;
 		this.profession = profession;
 		
 		Villager vr = Villager.registry.get(this.profession);
 		this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
 		
-		skinTexture = new ResourceLocation(Main.MODID + ":" + "textures/entity/villager/"+this.skin+".png");
+		this.skinTexture = vr.getSkin();
 	}
 	
 	private void updateVBVillager(){
@@ -123,7 +121,8 @@ public class EntityVBVillager extends EntityAgeable{
     		
     		if(startGUI != null)
     			Minecraft.getMinecraft().displayGuiScreen(startGUI);
-    		   		
+    		 
+    		System.out.println(this.profession);
     	}
         return true;
     }
