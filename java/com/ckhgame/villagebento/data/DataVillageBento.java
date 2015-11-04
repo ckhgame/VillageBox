@@ -53,7 +53,12 @@ public class DataVillageBento extends WorldSavedData{
 		compound.setTag(ConfigData.KeyDataVillageBentoIDs, c);
 	}
 	
+	private static DataVillageBento instanceCache = null;
+	
 	public static DataVillageBento get(){		
+		if(instanceCache != null)
+			return instanceCache;
+		
 		World w = net.minecraft.server.MinecraftServer.getServer().worldServerForDimension(0);
 		return get(w);
 	}
@@ -75,6 +80,8 @@ public class DataVillageBento extends WorldSavedData{
 		}
 		
 		data.world = world;
+		
+		instanceCache = data;
 		
 		return data;
 	}

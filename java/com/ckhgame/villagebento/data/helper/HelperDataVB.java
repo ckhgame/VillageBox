@@ -351,7 +351,7 @@ public class HelperDataVB {
 			for(DataBuilding db : dv.mapDataBuilding.values()){
 				b = new BoxWithColor(
 						db.x - db.sizeX, db.y - ConfigBuilding.BuildingGroundWorkDepth, db.z - db.sizeZ, 
-						db.x + db.sizeX + 1, db.y + ConfigBuilding.BuildingMaxHeight + 1, db.z + db.sizeZ + 1,
+						db.x + db.sizeX + 1, db.y + ConfigBuilding.BuildingMaxHeight, db.z + db.sizeZ + 1,
 						cb[0], cb[1], cb[2], cb[3]
 						);
 				bs.add(b);
