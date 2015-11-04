@@ -14,6 +14,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderVBVillager extends RendererLivingEntity
 {
+	private static final ResourceLocation defaultTextures = new ResourceLocation("textures/entity/steve.png");
+	
     /** Model of the villager. */
     protected ModelBiped villagerModel;
 
@@ -47,7 +49,10 @@ public class RenderVBVillager extends RendererLivingEntity
      */
     protected ResourceLocation getEntityTexture(EntityVBVillager p)
     {
-    	return p.getSkinTexture();
+    	ResourceLocation t = p.getSkinTexture();
+    	if(t == null)
+    		t = defaultTextures;
+    	return t;
     }
 
     protected void renderEquippedItems(EntityVBVillager p_77029_1_, float p_77029_2_)
