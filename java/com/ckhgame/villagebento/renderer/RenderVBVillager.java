@@ -6,12 +6,13 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
 import net.minecraft.client.model.ModelVillager;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderVBVillager extends RenderLiving
+public class RenderVBVillager extends RendererLivingEntity
 {
     private static final ResourceLocation villagerTextures = new ResourceLocation("textures/entity/villager/villager.png");
     private static final ResourceLocation farmerVillagerTextures = new ResourceLocation("textures/entity/villager/farmer.png");
@@ -66,19 +67,19 @@ public class RenderVBVillager extends RenderLiving
      */
     protected void preRenderCallback(EntityVBVillager p_77041_1_, float p_77041_2_)
     {
-        float f1 = 0.9375F - 0.3F;
+    	 float f1 = 0.9375F;
 
-        if (p_77041_1_.getGrowingAge() < 0)
-        {
-            f1 = (float)((double)f1 * 0.5D);
-            this.shadowSize = 0.25F;
-        }
-        else
-        {
-            this.shadowSize = 0.5F;
-        }
+         if (p_77041_1_.getGrowingAge() < 0)
+         {
+             f1 = (float)((double)f1 * 0.5D);
+             this.shadowSize = 0.25F;
+         }
+         else
+         {
+             this.shadowSize = 0.5F;
+         }
 
-        GL11.glScalef(f1, f1, f1);
+         GL11.glScalef(f1, f1, f1);
     }
 
     /**

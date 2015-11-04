@@ -14,6 +14,7 @@ import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -30,6 +31,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable{
@@ -48,6 +50,9 @@ public class EntityVBVillager extends EntityAgeable{
 		this.name = name;
 		this.skin = skin;
 		this.profession = profession;
+		
+		Villager vr = Villager.registry.get(this.profession);
+		this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
 	}
 	
 	private void updateVBVillager(){
@@ -55,6 +60,10 @@ public class EntityVBVillager extends EntityAgeable{
 			Action.send(ActionInitVillager.class, new Object[]{this.getEntityId()});
 			firstTimeUpdateVBVillager = false;
 		}
+	}
+	
+	public String getDisplayName(){
+		return name;
 	}
 	
 	@Override
@@ -143,6 +152,8 @@ public class EntityVBVillager extends EntityAgeable{
 		HelperDataVB.setVillageDeath(dataVB, this.dataVillagerID);
 	}
 	
+
+
 	
     
 	
