@@ -3,20 +3,21 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerMiner;
+import com.ckhgame.villagebento.villager.VillagerNoviceBaker;
 import com.ckhgame.villagebento.villager.VillagerVillageElder;
 
 import net.minecraft.init.Blocks;
 
-public class BuildingVillageCenter extends Building {
+public class BuildingSmallBakery extends Building {
 
 	@Override
 	public String getName() {
-		return "Village Center";
+		return "Small Bakery";
 	}
 
 	@Override
 	public String getDescription() {
-		return "Welcome to the Village Center! Starting your cute village from here....";
+		return "Welcome to the Small Bakery!";
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class BuildingVillageCenter extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerVillageElder.class,"Bob","Bob",0,0);
+		bb.addBuildingVillager(VillagerNoviceBaker.class,"Haili","Haili",0,0);
 	}
 
 	@Override

@@ -7,16 +7,16 @@ import com.ckhgame.villagebento.villager.VillagerVillageElder;
 
 import net.minecraft.init.Blocks;
 
-public class BuildingVillageCenter extends Building {
+public class BuildingMiningHouse extends Building {
 
 	@Override
 	public String getName() {
-		return "Village Center";
+		return "Mining House";
 	}
 
 	@Override
 	public String getDescription() {
-		return "Welcome to the Village Center! Starting your cute village from here....";
+		return "Welcome to the Mining House!";
 	}
 
 	@Override
@@ -28,7 +28,8 @@ public class BuildingVillageCenter extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerVillageElder.class,"Bob","Bob",0,0);
+		bb.addBuildingVillager(VillagerMiner.class,"Tylor","Tylor",0,0);
+		bb.addBuildingVillager(VillagerMiner.class,"Chris","Chris",0,-1);
 	}
 
 	@Override

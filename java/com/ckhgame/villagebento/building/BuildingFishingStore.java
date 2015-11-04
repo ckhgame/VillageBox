@@ -2,21 +2,22 @@ package com.ckhgame.villagebento.building;
 
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.villager.VillagerFisherman;
 import com.ckhgame.villagebento.villager.VillagerMiner;
 import com.ckhgame.villagebento.villager.VillagerVillageElder;
 
 import net.minecraft.init.Blocks;
 
-public class BuildingVillageCenter extends Building {
+public class BuildingFishingStore extends Building {
 
 	@Override
 	public String getName() {
-		return "Village Center";
+		return "Fishing Store";
 	}
 
 	@Override
 	public String getDescription() {
-		return "Welcome to the Village Center! Starting your cute village from here....";
+		return "Welcome to the Fishing Store!";
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class BuildingVillageCenter extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerVillageElder.class,"Bob","Bob",0,0);
+		bb.addBuildingVillager(VillagerFisherman.class,"Joe","Village Elder",0,0);
 	}
 
 	@Override

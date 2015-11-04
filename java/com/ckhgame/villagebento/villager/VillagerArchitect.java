@@ -7,18 +7,18 @@ import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
-public class VillagerMiner extends Villager {
+public class VillagerArchitect extends Villager {
 
 	@Override
 	public String getProfessionName() {
 		// TODO Auto-generated method stub
-		return "Miner";
+		return "Architect";
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		// TODO Auto-generated method stub
-		return "Mining things.......";
+		return "Let's building";
 	}
 
 	@Override
@@ -39,9 +39,9 @@ public class VillagerMiner extends Villager {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "I saw a big boom yesterday");
-		villagerChat.add(0, "Do you need help?");
-		villagerChat.add(0, "Hello there!");
+		villagerChat.add(0, "Need any help on building?!");
+		villagerChat.add(0, "Glad to see you!");
+		villagerChat.add(0, "I'm nature artist!");
 		
 	}
 

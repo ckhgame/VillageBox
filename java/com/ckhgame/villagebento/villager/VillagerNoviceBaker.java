@@ -12,18 +12,18 @@ import com.ckhgame.villagebento.villager.component.VillagerComponent;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
-public class VillagerVillageElder extends Villager {
+public class VillagerNoviceBaker extends Villager {
 
 	@Override
 	public String getProfessionName() {
 		// TODO Auto-generated method stub
-		return "Village Elder";
+		return "Novice Baker";
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		// TODO Auto-generated method stub
-		return "Living in Village Center";
+		return "Novice Level Baker";
 	}
 
 	@Override
@@ -38,28 +38,17 @@ public class VillagerVillageElder extends Villager {
         components.add(new VillagerCompAbout());
         
         VillagerCompBuy compBuy = new VillagerCompBuy();
-        compBuy.addItemBuy(ModBlocks.blockFishingStore, 1, 1, 0);
-        compBuy.addItemBuy(ModBlocks.blockSmallBakery, 1, 1, 0);
-        compBuy.addItemBuy(ModBlocks.blockMiningHouse, 1, 1, 0);
-        compBuy.addItemBuy(ModBlocks.blockArchitectsHome, 1, 1, 0);
+        compBuy.addItemBuy(Items.bread, 2, 3, 0);
         components.add(compBuy);
-        
-        VillagerCompSell compSell = new VillagerCompSell();
-        compSell.addItemSell(Blocks.log, 20, 30, 0, 0);
-        compSell.addItemSell(Blocks.log, 20, 30, 0, 1);
-        compSell.addItemSell(Blocks.log, 20, 30, 0, 2);
-        compSell.addItemSell(Blocks.log, 20, 30, 0, 3);
-        compSell.addItemSell(Blocks.cobblestone, 50, 60, 0);
-        components.add(compSell);
 
 	}
 	
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "I'm an old man!");
-		villagerChat.add(0, "Glad to see you!");
-		villagerChat.add(0, "zzz...zzz...!");
+		villagerChat.add(0, "Fresh bread!");
+		villagerChat.add(0, "Are you hungury!");
+		villagerChat.add(0, "Hello!!!");
 		
 	}
 

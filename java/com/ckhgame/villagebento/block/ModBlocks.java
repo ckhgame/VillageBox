@@ -1,9 +1,14 @@
 package com.ckhgame.villagebento.block;
 
+import com.ckhgame.villagebento.building.Building;
+import com.ckhgame.villagebento.building.BuildingArchitectsHome;
 import com.ckhgame.villagebento.building.BuildingBlacksmithsShop;
+import com.ckhgame.villagebento.building.BuildingFishingStore;
 import com.ckhgame.villagebento.building.BuildingGroundworkLarge;
 import com.ckhgame.villagebento.building.BuildingGroundworkMedium;
 import com.ckhgame.villagebento.building.BuildingGroundworkSmall;
+import com.ckhgame.villagebento.building.BuildingMiningHouse;
+import com.ckhgame.villagebento.building.BuildingSmallBakery;
 import com.ckhgame.villagebento.building.BuildingVillageCenter;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -21,7 +26,9 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockVillageCenter;
     public static BlockVillageBuilding blockMiningHouse;
     public static BlockVillageBuilding blockBlackSmithsShop;
-    public static BlockVillageBuilding blockBakery;
+    public static BlockVillageBuilding blockSmallBakery;
+    public static BlockVillageBuilding blockArchitectsHome;
+    public static BlockVillageBuilding blockFishingStore;
 
     public static final void init() {
         
@@ -34,8 +41,10 @@ public final class ModBlocks {
         GameRegistry.registerBlock(blockGroundworkOnlyLarge = new BlockVillageBuilding(BuildingGroundworkLarge.class,"BlockGroundworkOnlyLarge"),"BlockGroundworkOnlyLarge");
         
         GameRegistry.registerBlock(blockVillageCenter = new BlockVillageBuilding(BuildingVillageCenter.class,"BlockVillageCenter"),"BlockVillageCenter");
-       // GameRegistry.registerBlock(blockMiningHouse = new BlockVillageBuilding(BuildingTypes.MiningHouse,"BlockMiningHouse"),"BlockMiningHouse");
         GameRegistry.registerBlock(blockBlackSmithsShop = new BlockVillageBuilding(BuildingBlacksmithsShop.class,"BlockBlackSmithsShop"),"BlockBlackSmithsShop");
-       // GameRegistry.registerBlock(blockBakery = new BlockVillageBuilding(BuildingTypes.Bakery,"BlockBakery"),"BlockBakery");
+        GameRegistry.registerBlock(blockArchitectsHome = new BlockVillageBuilding(BuildingArchitectsHome.class,"BlockArchitectsHome"),"BlockArchitectsHome");
+        GameRegistry.registerBlock(blockFishingStore = new BlockVillageBuilding(BuildingFishingStore.class,"BlockFishingStore"),"BlockFishingStore");
+        GameRegistry.registerBlock(blockMiningHouse = new BlockVillageBuilding(BuildingMiningHouse.class,"BlockMiningHouse"),"BlockMiningHouse");
+        GameRegistry.registerBlock(blockSmallBakery = new BlockVillageBuilding(BuildingSmallBakery.class,"BlockSmallBakery"),"BlockSmallBakery");
     }
 }

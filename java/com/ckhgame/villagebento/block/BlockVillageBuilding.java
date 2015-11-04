@@ -43,9 +43,7 @@ public class BlockVillageBuilding extends Block {
 		
 		if(world.isRemote || world.provider.dimensionId !=0) return true;
 		else{
-			//destroy the village block
-			world.func_147480_a(x, y, z, false);
-			
+	
 			if(Building.build(world, player, x, y, z, this.buildingClass)){
 				//refresh village outlines
 				DataVillageBento dataVB = DataVillageBento.get(world);			

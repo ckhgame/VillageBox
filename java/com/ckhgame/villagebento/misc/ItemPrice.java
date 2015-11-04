@@ -2,11 +2,39 @@ package com.ckhgame.villagebento.misc;
 
 import java.util.HashMap;
 
+import com.ckhgame.villagebento.block.ModBlocks;
+
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
 public class ItemPrice {
+	
+	
+	public static void init(){
+		register(Blocks.log,2);
+		register(Blocks.cobblestone,1);
+		
+		register(ModBlocks.blockArchitectsHome,250);
+		register(ModBlocks.blockMiningHouse,100);
+		register(ModBlocks.blockSmallBakery,70);
+		register(ModBlocks.blockFishingStore,150);
+		
+		register(Items.bread,10);
+		
+		register(Items.cooked_fished,10);
+		register(Items.fishing_rod,50);
+		register(Items.fish,6);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private static HashMap<Item,Integer> mapItemPrice = new HashMap<Item,Integer>();
 	
@@ -43,10 +71,5 @@ public class ItemPrice {
 	
 	public static int getBuyPrice(Block block){
 		return getBuyPrice(Item.getItemFromBlock(block));
-	}
-	
-	public static void init(){
-		register(Items.apple,10);
-		register(Items.beef,100);
 	}
 }

@@ -10,6 +10,7 @@ import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.misc.ItemPrice;
 import com.ckhgame.villagebento.network.ModMessages;
 import com.ckhgame.villagebento.network.action.ModActions;
+import com.ckhgame.villagebento.recipe.ModRecipes;
 import com.ckhgame.villagebento.renderer.ModRenderers;
 import com.ckhgame.villagebento.villager.ModVillagers;
 
@@ -26,8 +27,8 @@ public class CommonProxy {
 		ModItems.init();
 		ModEntities.init();
 		ModRenderers.init();
-		ModMessages.init();
-		
+		ModMessages.init();		
+		ModRecipes.init();
 		ModBuildings.init();
 		ModVillagers.init();
 		ModActions.init();
