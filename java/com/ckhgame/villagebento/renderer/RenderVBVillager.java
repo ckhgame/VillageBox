@@ -2,10 +2,10 @@ package com.ckhgame.villagebento.renderer;
 
 import org.lwjgl.opengl.GL11;
 
+import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
-import net.minecraft.client.model.ModelVillager;
-import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -14,19 +14,15 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderVBVillager extends RendererLivingEntity
 {
-    private static final ResourceLocation villagerTextures = new ResourceLocation("textures/entity/villager/villager.png");
-    private static final ResourceLocation farmerVillagerTextures = new ResourceLocation("textures/entity/villager/farmer.png");
-    private static final ResourceLocation librarianVillagerTextures = new ResourceLocation("textures/entity/villager/librarian.png");
-    private static final ResourceLocation priestVillagerTextures = new ResourceLocation("textures/entity/villager/priest.png");
-    private static final ResourceLocation smithVillagerTextures = new ResourceLocation("textures/entity/villager/smith.png");
-    private static final ResourceLocation butcherVillagerTextures = new ResourceLocation("textures/entity/villager/butcher.png");
+   private static final ResourceLocation villagerTextures = new ResourceLocation(Main.MODID + ":" + "textures/entities/villagers/villageelder.png");
+   // private static final ResourceLocation villagerTextures = new ResourceLocation("textures/entity/steve.png");
     /** Model of the villager. */
-    protected ModelVillager villagerModel;
+    protected ModelBiped villagerModel;
 
     public RenderVBVillager()
     {
-        super(new ModelVillager(0.0F), 0.5F);
-        this.villagerModel = (ModelVillager)this.mainModel;
+        super(new ModelBiped(), 0.5F);
+        this.villagerModel = (ModelBiped)this.mainModel;
     }
 
     /**
@@ -53,7 +49,7 @@ public class RenderVBVillager extends RendererLivingEntity
      */
     protected ResourceLocation getEntityTexture(EntityVBVillager p_110775_1_)
     {
-    	return priestVillagerTextures;
+    	return villagerTextures;
     }
 
     protected void renderEquippedItems(EntityVBVillager p_77029_1_, float p_77029_2_)
