@@ -43,16 +43,16 @@ public class ActionGetVillagerSell extends Action {
 		
 		ItemStack[] itemStacks = HelperDataVrComp.getSellList(dvr);
 		
-		return new Object[]{villagerID,itemStacks};
+		return new Object[]{dvr.profession,itemStacks};
 	}
 
 	@Override
 	public void onServerSend(ByteBuf buf, Object[] info) {
 		
-		int villagerID = (int)info[0];
+		int profession = (int)info[0];
 		ItemStack[] itemStacks = (ItemStack[])info[1];	
 		
-		buf.writeInt(villagerID);
+		buf.writeInt(profession);
 		buf.writeInt(itemStacks.length);
 		for(int i =0;i<itemStacks.length;i++){
 			ByteBufUtils.writeItemStack(buf, itemStacks[i]);
@@ -62,14 +62,14 @@ public class ActionGetVillagerSell extends Action {
 	@Override
 	public Object[] onClientReceived(ByteBuf buf) {
 
-		int villagerID = buf.readInt();
+		int profession = buf.readInt();
 		int l = buf.readInt();
 		ItemStack[] itemStacks = new ItemStack[l];
 		for(int i =0;i<l;i++){
 			itemStacks[i] = ByteBufUtils.readItemStack(buf);
 		}
 		
-		return new Object[]{villagerID,itemStacks};
+		return new Object[]{profession,itemStacks};
 	}
 
 
@@ -77,11 +77,10 @@ public class ActionGetVillagerSell extends Action {
 	@Override
 	public void onActionCompleted(Object[] result) {
 
-		int villagerID = (int)result[0];	
+		int profession = (int)result[0];	
 		ItemStack[] itemStacks = (ItemStack[])result[1];	
-		
-		DataVillager dvr = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID); 
-		Villager vr = Villager.registry.get(dvr.profession);
+
+		Villager vr = Villager.registry.get(profession);
 		VillagerCompSell vcSell = (VillagerCompSell)vr.findVillagerComponentByClass(VillagerCompSell.class);
 		if(vcSell != null){
 			((GuiVillagerSell)vcSell.getGui()).setSellList(itemStacks);
