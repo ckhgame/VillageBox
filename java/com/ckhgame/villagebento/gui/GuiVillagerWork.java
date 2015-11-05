@@ -97,8 +97,8 @@ public class GuiVillagerWork extends GuiVillager {
 		drawRect(left, top, left + 160, top + 24, 0xFF666666);	
 		if(work != null){
 			//item name
-			fontRendererObj.drawString(work.name, left + 4, top + 4, 0xFFFFFF00,true);
-			fontRendererObj.drawString(work.remark, left + 4, top + 14, 0xFFAAAAAA);
+			fontRendererObj.drawString(work.name, left + 4, top + 4, 0xFFFFFFAA,true);
+			fontRendererObj.drawString(work.remark, left + 4, top + 14, 0xFFDDDDDD);
 			
 			this.drawRightedString(fontRendererObj, work.price + ", " + work.hours + "h", left + 112, top +4, 0xFFEEEEEE);
 			
@@ -170,7 +170,7 @@ public class GuiVillagerWork extends GuiVillager {
 		buttonTake.visible = false;
 		
 		this.drawCenteredString(fontRendererObj, "Is Working...", fieldCompLeft + 100, fieldCompTop + 12, 0xFFFFFF00);	
-		this.drawCenteredString(fontRendererObj,workName, fieldCompLeft + 100, fieldCompTop + 30, 0xFFFFFFAA);
+		this.drawCenteredString(fontRendererObj,workName, fieldCompLeft + 100, fieldCompTop + 30, 0xFFFFFFEE);
 		this.drawCenteredString(fontRendererObj,workRemark, fieldCompLeft + 100, fieldCompTop + 40, 0xFFAAAAAA);
 		this.drawCenteredString(fontRendererObj,"Client: " + workPlayerName, fieldCompLeft + 100, fieldCompTop + 60, 0xFFFFFFFF);
 		this.drawCenteredString(fontRendererObj,"Hours Left: " + workHoursLeft, fieldCompLeft + 100, fieldCompTop + 70, 0xFFFFFFFF);

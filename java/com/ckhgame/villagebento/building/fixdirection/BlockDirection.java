@@ -65,8 +65,19 @@ public class BlockDirection {
 		mapClassDirArray.put(Blocks.log, new int[][]{{4,8,4,8},{5,9,5,9},{6,10,6,10},{7,11,7,11}});
 		mapClassDirArray.put(Blocks.anvil, new int[][]{{0,1,2,3}});
 		mapClassDirArray.put(Blocks.bed, new int[][]{{9,10,11,8},{1,2,3,0}});
+		//stairs
 		mapClassDirArray.put(Blocks.oak_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
 		mapClassDirArray.put(Blocks.brick_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.acacia_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.birch_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.dark_oak_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.jungle_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.quartz_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.sandstone_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.spruce_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.stone_brick_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		mapClassDirArray.put(Blocks.stone_stairs, new int[][]{{1,3,0,2},{5,7,4,6}});
+		
 		mapClassDirArray.put(Blocks.pumpkin, new int[][]{{3,0,1,2}});
 		mapClassDirArray.put(Blocks.lit_pumpkin, new int[][]{{3,0,1,2}});
 		mapClassDirArray.put(Blocks.wooden_door, new int[][]{{2,3,0,1},{6,7,4,5}});
