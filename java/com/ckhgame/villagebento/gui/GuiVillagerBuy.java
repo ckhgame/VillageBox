@@ -137,8 +137,5 @@ public class GuiVillagerBuy extends GuiVillager {
 			setChatContent("Hmmm... it's too expensive for you...");
 		else if(data == VBResult.FAILED)
 			setChatContent("Something is not right...");
-		
 	}
-	
-	
 }

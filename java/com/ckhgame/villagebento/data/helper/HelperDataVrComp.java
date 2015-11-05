@@ -102,6 +102,9 @@ public class HelperDataVrComp {
 		if(workIdx >= compWork.getWorksSize())
 			return VBResult.FAILED;
 		
+		if(!addCurrency(player,-compWork.getWorkPrice(workIdx)))
+			return VBResult.FAILED_UNAFFORDABLE;
+		
 		dataCompWork.workIdx = workIdx;
 		dataCompWork.playerName = player.getDisplayName();
 		dataCompWork.hoursLeft = compWork.getWorkHours(workIdx);
@@ -125,8 +128,14 @@ public class HelperDataVrComp {
 		if(dataCompWork.workIdx >=0 && dataCompWork.hoursLeft <= 0){
 			if(dataCompWork.output != null){
 				
-				if(dataCompWork.playerName != player.getDisplayName())
+				String name1 = dataCompWork.playerName;
+				String name2 = player.getDisplayName();
+				
+				if(!name1.equals(name2)){
+					
 					return VBResult.FAILED_WRONGNAME;
+				}
+					
 				
 				player.inventory.addItemStackToInventory(dataCompWork.output);
 				dataCompWork.output = null;

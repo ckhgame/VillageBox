@@ -102,6 +102,13 @@ public class VillagerCompWork extends VillagerComponent {
 			return workListAll.get(workIdx).hours;
 	}
 	
+	public int getWorkPrice(int workIdx){
+		if(workIdx >= workListAll.size())
+			return -1;
+		else
+			return workListAll.get(workIdx).price;
+	}
+	
 	public int getWorksSize(){
 		return workListAll.size();
 	}

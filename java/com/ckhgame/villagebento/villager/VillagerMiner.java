@@ -8,6 +8,7 @@ import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerCompWork;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
 public class VillagerMiner extends Villager {
@@ -39,14 +40,17 @@ public class VillagerMiner extends Villager {
         
         VillagerCompWork compWork = new VillagerCompWork();
         int workIdx;
-        workIdx = compWork.createWork("mine1", "mine mine", 0, 10, 100);
+        workIdx = compWork.createWork("mine1", "mine mine", 0, 10, 0);
         compWork.addWorkOutput(workIdx, Items.coal, 10, 20);
+        compWork.addWorkOutput(workIdx, Blocks.cobblestone, 5, 20);
         
-        workIdx = compWork.createWork("mine1", "mine mine", 1, 10, 100);
-        compWork.addWorkOutput(workIdx, Items.coal, 10, 20);
+        workIdx = compWork.createWork("mine2", "mine2 mine2", 1, 10, 10);
+        compWork.addWorkOutput(workIdx, Blocks.iron_ore, 1, 5);
+        compWork.addWorkOutput(workIdx, Blocks.gold_ore, 1, 5);
         
-        workIdx = compWork.createWork("mine1", "mine mine", 0, 10, 100);
-        compWork.addWorkOutput(workIdx, Items.coal, 10, 20);
+        workIdx = compWork.createWork("mine3", "mine3 mine3", 0, 10, 1);
+        compWork.addWorkOutput(workIdx, Items.arrow, 10, 20);
+        compWork.addWorkOutput(workIdx, Items.boat, 1, 2);
         
         components.add(compWork);
 	}

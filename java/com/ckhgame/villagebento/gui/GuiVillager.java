@@ -60,6 +60,11 @@ public abstract class GuiVillager extends GuiScreen {
             renderer.drawString(lines.get(i), x, y + (i * 9), color, false);
     }
 	
+	protected void drawRightedString(FontRenderer font, String text, int left, int top, int c)
+    {
+		font.drawStringWithShadow(text, left - font.getStringWidth(text), top, c);
+    }
+	
 	private void drawFieldBackground(int left,int top,int width,int height){
 		
 		drawRect(left - 2, top - 2, left + width + 2, top + height + 2, 0xFF333333);
