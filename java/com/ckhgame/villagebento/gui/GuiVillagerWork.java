@@ -10,6 +10,7 @@ import com.ckhgame.villagebento.network.action.ActionDoVillagerStartWork;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerTakeWorkOutput;
 import com.ckhgame.villagebento.network.action.ActionGetVillagerSell;
 import com.ckhgame.villagebento.network.action.ActionGetVillagerWork;
+import com.ckhgame.villagebento.network.action.ActionGetVillagerWorkList;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -19,16 +20,28 @@ public class GuiVillagerWork extends GuiVillager {
 	
 	private final int rowSize = 3;
 	
+	//current work
 	private String workPlayerName;
 	private int workIdx;
 	private int workHoursLeft;
 	private ItemStack workOutput;
+	
+	//all available works for the current level
+	private int[] workList;
+	
 	public void setWork(String playerName,int workIdx,int hoursLeft,ItemStack output){
 		this.workPlayerName = playerName;
 		this.workIdx = workIdx;
 		this.workHoursLeft = hoursLeft;
 		this.workOutput = output;
 		System.out.println("SET WORK!! " + this.workPlayerName +","+ this.workIdx +","+ this.workHoursLeft +","+this.workOutput);
+	}
+	
+	public void setWorkList(int[] workList){
+		this.workList = workList;
+		for(int i : workList){
+			System.out.println("L:" + i);
+		}
 	}
 	
 	//buttons
@@ -81,6 +94,7 @@ public class GuiVillagerWork extends GuiVillager {
 	public void onInitGui() {
 		// TODO Auto-generated method stub
 		Action.send(ActionGetVillagerWork.class, new Object[]{this.entityVillager.dataVillagerID});
+		Action.send(ActionGetVillagerWorkList.class, new Object[]{this.entityVillager.dataVillagerID});
 		setChatContent("Can I help you?");
 		
 		buttonUp = new GuiButton(compStartButtonID++, fieldCompLeft + 170,fieldCompTop + 4,28,20,"new");

@@ -14,5 +14,6 @@ public class ModActions {
 		Action.registry.register(id++, new ActionGetVillagerWork());
 		Action.registry.register(id++, new ActionDoVillagerStartWork());
 		Action.registry.register(id++, new ActionDoVillagerTakeWorkOutput());
+		Action.registry.register(id++, new ActionGetVillagerWorkList());
 	}
 }

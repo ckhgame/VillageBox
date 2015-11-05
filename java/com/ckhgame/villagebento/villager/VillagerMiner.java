@@ -42,6 +42,12 @@ public class VillagerMiner extends Villager {
         workIdx = compWork.createWork("mine1", "mine mine", 0, 10, 100);
         compWork.addWorkOutput(workIdx, Items.coal, 10, 20);
         
+        workIdx = compWork.createWork("mine1", "mine mine", 1, 10, 100);
+        compWork.addWorkOutput(workIdx, Items.coal, 10, 20);
+        
+        workIdx = compWork.createWork("mine1", "mine mine", 0, 10, 100);
+        compWork.addWorkOutput(workIdx, Items.coal, 10, 20);
+        
         components.add(compWork);
 	}
 

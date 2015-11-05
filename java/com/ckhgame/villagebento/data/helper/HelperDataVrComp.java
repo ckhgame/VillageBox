@@ -1,5 +1,7 @@
 package com.ckhgame.villagebento.data.helper;
 
+import java.util.ArrayList;
+
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
@@ -105,6 +107,8 @@ public class HelperDataVrComp {
 		dataCompWork.hoursLeft = compWork.getWorkHours(workIdx);
 		dataCompWork.output = compWork.generateOutput(workIdx);
 		
+		HelperDataVrComp.addExp(dvr, ConfigVillager.WorkExpPerHour * compWork.getWorkHours(workIdx));//
+		
 		return VBResult.SUCCESS;
 		
 	}
@@ -159,6 +163,28 @@ public class HelperDataVrComp {
 			return null;
 		
 		return new Object[]{dataCompWork.playerName,dataCompWork.workIdx,dataCompWork.hoursLeft,dataCompWork.output};
+	}
+	
+	public static int[] getWorkList(DataVillager dvr){		
+		Villager vr = Villager.registry.get(dvr.profession);
+		if(vr == null)
+			return new int[0];
+		
+		VillagerCompWork compWork = (VillagerCompWork)vr.findVillagerComponentByClass(VillagerCompWork.class);
+		if(compWork == null)
+			return new int[0];
+		
+		ArrayList<Integer> workIdxList = new ArrayList<Integer>();
+		int s = compWork.getWorksSize();
+		for(int i =0;i<s;i++){
+			if(compWork.getWorkMinLevel(i) <= dvr.level)
+				workIdxList.add(i);
+		}
+		
+		int[] arr = new int[workIdxList.size()];
+		for(int i =0;i<arr.length;i++)
+			arr[i] = workIdxList.get(i);
+		return arr;
 	}
 	
 	public static ItemStack[] getBuyList(DataVillager dvr){
