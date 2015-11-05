@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
+import com.ckhgame.villagebento.villager.component.VillagerCompWork;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
+
+import net.minecraft.init.Items;
 
 public class VillagerMiner extends Villager {
 
@@ -33,7 +36,13 @@ public class VillagerMiner extends Villager {
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
-
+        
+        VillagerCompWork compWork = new VillagerCompWork();
+        int workIdx;
+        workIdx = compWork.createWork("mine1", "mine mine", 0, 10, 100);
+        compWork.addWorkOutput(workIdx, Items.coal, 10, 20);
+        
+        components.add(compWork);
 	}
 
 	@Override

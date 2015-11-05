@@ -11,5 +11,8 @@ public class ModActions {
 		Action.registry.register(id++, new ActionDoVillagerBuy());
 		Action.registry.register(id++, new ActionGetVillagerSell());
 		Action.registry.register(id++, new ActionDoVillagerSell());
+		Action.registry.register(id++, new ActionGetVillagerWork());
+		Action.registry.register(id++, new ActionDoVillagerStartWork());
+		Action.registry.register(id++, new ActionDoVillagerTakeWorkOutput());
 	}
 }

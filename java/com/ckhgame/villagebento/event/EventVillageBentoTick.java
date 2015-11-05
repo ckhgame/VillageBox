@@ -44,6 +44,7 @@ public class EventVillageBentoTick {
 		System.out.println("DUANG! " + hour + ":00 !");
 		updateDeadVillagers(world,hour);
 		updateVillagerBuyAndSellList(world,hour);
+		updateVillageWorks(world,hour);
 	}
 	
 	//--------------------------------------
@@ -53,11 +54,12 @@ public class EventVillageBentoTick {
 		if(hour == 0){
 			DataVillageBento dataVB = DataVillageBento.get(world);
 			HelperDataVB.stepDeadVillages(dataVB);
+			dataVB.markDirty();
 		}
 	}
 	
 	//--------------------------------------
-	//update villagers' buy list
+	//update villagers' buy and sell list
 	private void updateVillagerBuyAndSellList(World world,int hour){	
 		if(hour == 0){
 			DataVillageBento dataVB = DataVillageBento.get();		
@@ -67,9 +69,19 @@ public class EventVillageBentoTick {
 					HelperDataVrComp.refreshSellList(dvr);
 				}
 			}
+			dataVB.markDirty();
 		}	
 	}
 	
 	//--------------------------------------
-	//update villagers' sell list
+	//update villagers' work
+	private void updateVillageWorks(World world,int hour){	
+		DataVillageBento dataVB = DataVillageBento.get();		
+		for(DataVillage dv : dataVB.mapDataVillage.values()){
+			for(DataVillager dvr : dv.mapDataVillager.values()){
+				HelperDataVrComp.refreshWork(dvr);
+			}
+		}	
+		dataVB.markDirty();
+	}
 }

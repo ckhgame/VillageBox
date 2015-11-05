@@ -56,4 +56,8 @@ public class ConfigData {
 	
 	//villager component work
 	public static final String KeyVillagerCompWork					= "vcw";
+	public static final String KeyVillagerCompWorkPlayerName		= "vcwpn";
+	public static final String KeyVillagerCompWorkWorkIdx			= "vcwwi";
+	public static final String KeyVillagerCompWorkHoursLeft			= "vcwhl";
+	public static final String KeyVillagerCompWorkOutput			= "vcwo";
 }

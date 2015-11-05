@@ -5,12 +5,14 @@ import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompBuy;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompSell;
+import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompWork;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.misc.ItemPrice;
 import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
+import com.ckhgame.villagebento.villager.component.VillagerCompWork;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -63,15 +65,100 @@ public class HelperDataVrComp {
 	}
 
 	public static void refreshWork(DataVillager dvr){	
+		
+		DataVillagerCompWork dataCompWork = (DataVillagerCompWork)findDataVillagerComp(dvr,DataVillagerCompWork.class);
+		if(dataCompWork == null)
+			return;
+		
+		if(dataCompWork.workIdx >= 0){
+			dataCompWork.hoursLeft -= 1;
+			if(dataCompWork.hoursLeft < -ConfigVillager.WorkOutputExpirationHours)
+				HelperDataVrComp.removeWorkOutput(dvr);
+		}
 	}
 	
-	public static boolean buyItem(ItemStack from,ItemStack item,EntityPlayer p){
-		if(from.stackSize >= item.stackSize){
-			from.stackSize -= item.stackSize;
-			p.inventory.addItemStackToInventory(item);
-			return true;
+	public static int startWork(DataVillager dvr,EntityPlayer player , int workIdx){
+		if(player == null)
+			return VBResult.FAILED;
+		
+		DataVillagerCompWork dataCompWork = (DataVillagerCompWork)findDataVillagerComp(dvr,DataVillagerCompWork.class);
+		if(dataCompWork == null)
+			return VBResult.FAILED;
+		
+		//if is working or is waiting for taking the output...
+		if(dataCompWork.workIdx >= 0)
+			return VBResult.FAILED;
+		
+		Villager vr = Villager.registry.get(dvr.profession);
+		if(vr == null)
+			return VBResult.FAILED;
+		
+		VillagerCompWork compWork = (VillagerCompWork)vr.findVillagerComponentByClass(VillagerCompWork.class);
+		if(compWork == null)
+			return VBResult.FAILED;
+		
+		if(workIdx >= compWork.getWorksSize())
+			return VBResult.FAILED;
+		
+		dataCompWork.workIdx = workIdx;
+		dataCompWork.playerName = player.getDisplayName();
+		dataCompWork.hoursLeft = compWork.getWorkHours(workIdx);
+		dataCompWork.output = compWork.generateOutput(workIdx);
+		
+		return VBResult.SUCCESS;
+		
+	}
+	
+	public static int takeWorkOutput(DataVillager dvr,EntityPlayer player){
+		if(player == null)
+			return VBResult.FAILED;
+		
+		DataVillagerCompWork dataCompWork = (DataVillagerCompWork)findDataVillagerComp(dvr,DataVillagerCompWork.class);
+		if(dataCompWork == null)
+			return VBResult.FAILED;
+		
+		//if it's waiting for taking the output
+		if(dataCompWork.workIdx >=0 && dataCompWork.hoursLeft <= 0){
+			if(dataCompWork.output != null){
+				
+				if(dataCompWork.playerName != player.getDisplayName())
+					return VBResult.FAILED_WRONGNAME;
+				
+				player.inventory.addItemStackToInventory(dataCompWork.output);
+				dataCompWork.output = null;
+				dataCompWork.workIdx = -1;
+				
+				return VBResult.SUCCESS;
+			}
 		}
-		return false;
+		
+		return VBResult.FAILED;
+	}
+	
+	public static void removeWorkOutput(DataVillager dvr){
+		DataVillagerCompWork dataCompWork = (DataVillagerCompWork)findDataVillagerComp(dvr,DataVillagerCompWork.class);
+		if(dataCompWork == null)
+			return;
+		
+		//if it's waiting for taking the output
+		if(dataCompWork.workIdx >=0 && dataCompWork.hoursLeft <= 0){
+			if(dataCompWork.output != null){
+				dataCompWork.output = null;
+				dataCompWork.workIdx = -1;
+			}
+		}
+	}
+	
+	/**
+	 * return:
+	 * new Object[]{playerName(String),workIdx(int),hoursLeft(int),output(ItemStack)}
+	 */
+	public static Object[] getWork(DataVillager dvr){
+		DataVillagerCompWork dataCompWork = (DataVillagerCompWork)findDataVillagerComp(dvr,DataVillagerCompWork.class);
+		if(dataCompWork == null)
+			return null;
+		
+		return new Object[]{dataCompWork.playerName,dataCompWork.workIdx,dataCompWork.hoursLeft,dataCompWork.output};
 	}
 	
 	public static ItemStack[] getBuyList(DataVillager dvr){

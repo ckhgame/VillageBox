@@ -121,8 +121,7 @@ public class EntityVBVillager extends EntityAgeable{
     		
     		if(startGUI != null)
     			Minecraft.getMinecraft().displayGuiScreen(startGUI);
-    		 
-    		System.out.println(this.profession);
+  
     	}
         return true;
     }
