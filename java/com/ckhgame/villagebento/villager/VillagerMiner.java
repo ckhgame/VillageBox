@@ -31,6 +31,11 @@ public class VillagerMiner extends Villager {
 		return true;
 	}
 
+	@Override
+	protected void setExpBase(){
+		expBase = 20;
+		expE = 3;
+	}
 	
 	
 	@Override
@@ -40,17 +45,11 @@ public class VillagerMiner extends Villager {
         
         VillagerCompWork compWork = new VillagerCompWork();
         int workIdx;
-        workIdx = compWork.createWork("mine1", "mine mine", 0, 10, 0);
-        compWork.addWorkOutput(workIdx, Items.coal, 10, 20);
-        compWork.addWorkOutput(workIdx, Blocks.cobblestone, 5, 20);
+        workIdx = compWork.createWork("Not Enough Torch", "get some coal...",0 , 10, 15);
+        compWork.addWorkOutput(workIdx, Items.coal, 7, 15);
         
-        workIdx = compWork.createWork("mine2", "mine2 mine2", 1, 10, 10);
-        compWork.addWorkOutput(workIdx, Blocks.iron_ore, 1, 5);
-        compWork.addWorkOutput(workIdx, Blocks.gold_ore, 1, 5);
-        
-        workIdx = compWork.createWork("mine3", "mine3 mine3", 0, 10, 1);
-        compWork.addWorkOutput(workIdx, Items.arrow, 10, 20);
-        compWork.addWorkOutput(workIdx, Items.boat, 1, 2);
+        workIdx = compWork.createWork("Iron Finder", "a little bit iron taste..", 1, 10, 50);
+        compWork.addWorkOutput(workIdx, Blocks.iron_ore, 3, 5); 
         
         components.add(compWork);
 	}

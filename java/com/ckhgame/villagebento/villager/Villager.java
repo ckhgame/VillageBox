@@ -61,8 +61,8 @@ public abstract class Villager implements IRegistrable {
 	
 	
 	//level & exp
-	private int expBase;
-	private int expE;
+	protected int expBase;
+	protected int expE;
 	
 	protected void setExpBase(){
 		expBase = 10;
