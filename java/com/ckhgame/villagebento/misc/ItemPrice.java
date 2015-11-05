@@ -14,14 +14,17 @@ public class ItemPrice {
 	
 	public static void init(){
 		register(Blocks.log,2);
-		register(Blocks.cobblestone,1);
+		register(Blocks.log2,2);
+		register(Blocks.cobblestone,2);
 		
+		register(Items.rotten_flesh,4);
 		register(ModBlocks.blockArchitectsHome,250);
 		register(ModBlocks.blockMiningHouse,100);
 		register(ModBlocks.blockSmallBakery,70);
 		register(ModBlocks.blockFishingStore,150);
 		
 		register(Items.bread,10);
+		register(Items.wheat_seeds,2);
 		
 		register(Items.cooked_fished,10);
 		register(Items.fishing_rod,50);

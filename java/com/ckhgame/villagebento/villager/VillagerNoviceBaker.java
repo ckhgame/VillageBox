@@ -40,7 +40,10 @@ public class VillagerNoviceBaker extends Villager {
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(Items.bread, 2, 3, 0);
         components.add(compBuy);
-
+        
+        VillagerCompSell compSell = new VillagerCompSell();
+        compSell.addItemSell(Items.wheat_seeds, 10, 20, 0);
+        components.add(compSell);
 	}
 	
 	@Override

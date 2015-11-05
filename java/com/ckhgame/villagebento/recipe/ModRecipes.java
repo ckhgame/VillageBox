@@ -18,6 +18,14 @@ public class ModRecipes {
 				   'A',Blocks.log,
 				   'B',Blocks.torch,
 				   'C',Blocks.cobblestone);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockVillageCenter), 
+				   "AAA",
+				   "ABA",
+				   "CCC",
+				   'A',Blocks.log2,
+				   'B',Blocks.torch,
+				   'C',Blocks.cobblestone);
+		
 		
 		//block village stick
 		GameRegistry.addRecipe(new ItemStack(ModItems.itemVillageStick), 
