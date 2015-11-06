@@ -19,6 +19,7 @@ import com.ckhgame.villagebento.villager.component.VillagerCompWork;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.ForgeHooks;
 
 public class HelperDataVrComp {
 	
@@ -344,11 +345,22 @@ private static boolean playerRemoveItemStack(EntityPlayer entityPlayer,ItemStack
 		return false;
 	}
 
+	public static boolean dropCurrency(EntityPlayer entityPlayer, int currency){
+		if(addCurrency(entityPlayer,-currency)){
+			
+			ForgeHooks.onPlayerTossEvent(entityPlayer, new ItemStack(ModItems.itemVillageCurrency,1,currency), true);
+			
+			return true;
+		}
+		return false;
+	}
+	
 	public static boolean addCurrency(EntityPlayer entityPlayer, int currency){
 		
 		InventoryPlayer ip = entityPlayer.inventory;
 		ItemStack itemStackCurrency = null;
-		for (int i = 0; i < ip.mainInventory.length; ++i){
+		int i;
+		for (i = 0; i < ip.mainInventory.length; ++i){
             if (ip.mainInventory[i] != null && ip.mainInventory[i].getItem() == ModItems.itemVillageCurrency){
             	itemStackCurrency = ip.mainInventory[i];
             	break;
@@ -358,8 +370,12 @@ private static boolean playerRemoveItemStack(EntityPlayer entityPlayer,ItemStack
 		if(itemStackCurrency != null){
 			//the player already have the curreny item
 			int newCurrency = itemStackCurrency.getItemDamage() + currency;
-			if(newCurrency >= 0){
+			if(newCurrency > 0){
 				itemStackCurrency.setItemDamage(newCurrency);
+				return true;
+			}
+			else if(newCurrency == 0){
+				ip.mainInventory[i] = null;
 				return true;
 			}
 			else{
