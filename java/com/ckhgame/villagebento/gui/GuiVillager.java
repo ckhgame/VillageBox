@@ -145,7 +145,7 @@ public abstract class GuiVillager extends GuiScreen {
 				c.getGui().buttonID = id++;
 				btn = new GuiButton(c.getGui().buttonID, 
 						this.width /2 - 130,this.height /2 - 50 + 20 * (count++),
-						36,20,	
+						46,20,	
 						c.getGui().getButtonText());
 				if(c == villagerComponent)
 					btn.enabled = false;
@@ -154,7 +154,7 @@ public abstract class GuiVillager extends GuiScreen {
 		}
 
 		//leave button
-		this.buttonList.add(new GuiButton(99999, this.width /2 - 130,this.height /2 + 64,36,20,"Leave"));
+		this.buttonList.add(new GuiButton(99999, this.width /2 - 130,this.height /2 + 64,46,20,"Leave"));
 		
 		fieldChatLeft = this.width / 2 - 80;
 		fieldChatTop = this.height /2 - 60;

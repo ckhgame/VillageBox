@@ -83,5 +83,6 @@ public class BlockDirection {
 		mapClassDirArray.put(Blocks.wooden_door, new int[][]{{2,3,0,1},{6,7,4,5}});
 		mapClassDirArray.put(Blocks.iron_door, new int[][]{{2,3,0,1},{6,7,4,5}});
 		mapClassDirArray.put(Blocks.furnace, new int[][]{{5,3,4,2}});
+		mapClassDirArray.put(Blocks.fence_gate, new int[][]{{3,0,1,2}});
 	}
 }

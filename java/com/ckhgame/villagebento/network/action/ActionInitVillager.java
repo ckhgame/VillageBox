@@ -35,8 +35,6 @@ public class ActionInitVillager extends Action {
 
 		int villagerEntityID = (int)info[0];
 		
-		EntityVBVillager v = (EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(villagerEntityID);
-		
 		//(EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).entity
 		int villagerID = ((EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(villagerEntityID)).dataVillagerID;
 		
@@ -47,6 +45,10 @@ public class ActionInitVillager extends Action {
 		
 		int villagerProfession = dvr.profession;
 		String villagerName = dvr.name;
+		
+		//init on server side as well
+		EntityVBVillager evr = (EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(villagerEntityID);
+		evr.initVillager(villagerID,villagerName, villagerProfession);
 		
 		return new Object[]{villagerID,villagerProfession,villagerName,villagerEntityID};
 	}

@@ -1,14 +1,14 @@
 < en_US.lang - English localization file for the mod Tutorial >
-tile.BlockGroundworkOnlySmall.name=Building:Small Base
-tile.BlockGroundworkOnlyMedium.name=Building:Medium Base
-tile.BlockGroundworkOnlyLarge.name=Building:Large Base
+tile.BlockGroundworkOnlySmall.name=Small Base
+tile.BlockGroundworkOnlyMedium.name=Medium Base
+tile.BlockGroundworkOnlyLarge.name=Large Base
 tile.BlockBuildingScanner.name=Building Scanner
 tile.BlockBuildingDestroyer.name=Building Destroyer
-tile.BlockVillageCenter.name=Building:Village Center
-tile.BlockMiningHouse.name=Building:Mining House
-tile.BlockBlackSmithsShop.name=Building:Blacksmith's Shop
-tile.BlockSmallBakery.name=Building:Small Bakery
-tile.BlockFishingStore.name=Building:Fishing Store
-tile.BlockArchitectsHome.name=Building:Architect's Home
+tile.BlockVillageCenter.name=Village Center
+tile.BlockMiningHouse.name=Mining House
+tile.BlockBlackSmithsShop.name=Blacksmith's Shop
+tile.BlockSmallBakery.name=Small Bakery
+tile.BlockFishingStore.name=Fishing Store
+tile.BlockArchitectsHome.name=Architect's Home
 item.ItemVillageStick.name=Village Stick
 item.ItemVillageCurrency.name=Village Coins

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.config.ConfigData;
+import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
+import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.gui.GuiVillager;
 import com.ckhgame.villagebento.network.action.Action;
@@ -44,6 +46,9 @@ public class EntityVBVillager extends EntityAgeable{
 	public int level;
 	public int exp;
 	
+	
+	public int buildingX,buildingY,buildingZ;
+	
 	private ResourceLocation skinTexture = null;
 	public ResourceLocation getSkinTexture(){
 		return skinTexture;
@@ -57,9 +62,24 @@ public class EntityVBVillager extends EntityAgeable{
 		this.profession = profession;
 		
 		Villager vr = Villager.registry.get(this.profession);
-		this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
 		
-		this.skinTexture = vr.getSkin();
+		if(this.worldObj.isRemote){
+			//client
+			this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
+			this.skinTexture = vr.getSkin();
+		}
+		else{
+			//server
+			DataVillageBento dataVB = DataVillageBento.get();
+			DataVillager dvr = HelperDataVB.findVillagerByID(dataVB, this.dataVillagerID);
+			DataBuilding db =  HelperDataVB.findBuildingByID(dataVB, dvr.buildingID);
+			this.buildingX = db.x;
+			this.buildingY = db.y;
+			this.buildingZ = db.z;
+			int d = (int)Math.sqrt(db.sizeX * db.sizeX + db.sizeZ * db.sizeZ);			
+			this.setHomeArea(this.buildingX, this.buildingY, this.buildingZ, d);
+		}
+		
 	}
 	
 	private void updateVBVillager(){
@@ -80,22 +100,22 @@ public class EntityVBVillager extends EntityAgeable{
 		updateVBVillager();
 	}
 
-	public EntityVBVillager(World p_i1578_1_) {
-		super(p_i1578_1_);
-
+	public EntityVBVillager(World world) {
+		super(world);
+		
 		this.setSize(0.6F, 1.8F);
 		this.getNavigator().setBreakDoors(true);
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
-        this.tasks.addTask(2, new EntityAIMoveIndoors(this));
-        this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
-        this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.6D));
-        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityVillager.class, 5.0F, 0.02F));
-        this.tasks.addTask(9, new EntityAIWander(this, 0.6D));
-        this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
+        //this.tasks.addTask(2, new EntityAIMoveIndoors(this));
+        //this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
+       // this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+       // this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.6D));
+       // this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+       // this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityVillager.class, 5.0F, 0.02F));
+        this.tasks.addTask(9, new EntityAIWander(this, 2.6D));
+        //this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 	}
 
 	@Override
