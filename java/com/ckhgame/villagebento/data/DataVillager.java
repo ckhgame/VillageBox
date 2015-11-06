@@ -23,6 +23,8 @@ public class DataVillager extends Data{
 	
 	public ArrayList<DataVillagerComp> dataComponents = new ArrayList<DataVillagerComp>();
 	
+	public int cacheEntityVillagerID;
+	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
 		compound.setInteger(ConfigData.KeyDataVillagerID, this.id);

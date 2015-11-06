@@ -3,6 +3,7 @@ tile.BlockGroundworkOnlySmall.name=Building:Small Base
 tile.BlockGroundworkOnlyMedium.name=Building:Medium Base
 tile.BlockGroundworkOnlyLarge.name=Building:Large Base
 tile.BlockBuildingScanner.name=Building Scanner
+tile.BlockBuildingDestroyer.name=Building Destroyer
 tile.BlockVillageCenter.name=Building:Village Center
 tile.BlockMiningHouse.name=Building:Mining House
 tile.BlockBlackSmithsShop.name=Building:Blacksmith's Shop

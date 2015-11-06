@@ -21,10 +21,6 @@ public class BlockVillageBuilding extends Block {
         this.setBlockName(name);
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockTextureName(Main.MODID + ":"+name);
-      //  this.setHardness(2.0F);
-       // this.setResistance(6.0F);
-        this.setLightLevel(1.0F);
-        //this.setHarvestLevel("pickaxe", 3);
         this.setStepSound(soundTypeWood);
         
         this.buildingClass = bc;

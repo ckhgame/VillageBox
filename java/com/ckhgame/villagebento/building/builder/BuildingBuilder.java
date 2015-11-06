@@ -100,6 +100,13 @@ public class BuildingBuilder {
 											2);
 	}
 
+	/**
+	 * used on removing buildings
+	 */
+	public void setData(DataBuilding db){
+		data = db;
+	}
+	
 	//groundworks
 	public void buildGroundwork(){
 
@@ -123,15 +130,33 @@ public class BuildingBuilder {
 	private void buildGroundworkPerColumn(int x, int z, int y, int depth, int height ){
 		
 		for(int dy = -depth; dy < 0;dy++){
-			world.setBlock(x, y + dy, z, ConfigBuilding.GroundWorkBlock);
+			world.setBlock(x, y + dy, z, ConfigBuilding.GroundWorkBlock,0,2);
 		}
 		
 		for(int dy = 0;dy<height;dy++){
 			if (world.getBlock(x, dy+y, z).getMaterial() != Material.air){
-				world.func_147480_a(x,dy+y,z,false);//destroy block
+				buildGroundworkRemoveBlock(world,x,dy+y,z);
 			}
 		}
 		
+	}
+	
+	private boolean buildGroundworkRemoveBlock(World w,int x, int y, int z){
+		Block block = w.getBlock(x, y, z);
+        if (block.getMaterial() == Material.air)
+        {
+            return false;
+        }
+        else
+        {
+            int l = w.getBlockMetadata(x, y, z);
+            w.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (l << 12));
+
+            int flag = 2;
+            if(block.getLightValue() > 0)
+            	flag = 3;
+            return w.setBlock(x, y, z, Blocks.air, 0, flag);
+        }
 	}
 	
 	//villagers

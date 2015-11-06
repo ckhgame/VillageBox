@@ -25,10 +25,6 @@ public class BlockBuildingScanner extends Block {
         this.setBlockName("BlockBuildingScanner");
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockTextureName(Main.MODID + ":BlockBuildingScanner");
-      //  this.setHardness(2.0F);
-       // this.setResistance(6.0F);
-        this.setLightLevel(1.0F);
-        //this.setHarvestLevel("pickaxe", 3);
         this.setStepSound(soundTypeWood);
     }
     
@@ -58,7 +54,7 @@ public class BlockBuildingScanner extends Block {
 		DataVillageBento dataVB = DataVillageBento.get(world);
 		
 		//get building data
-		DataBuilding bd = HelperDataVB.findBuildingByPos(dataVB,x,z);
+		DataBuilding bd = HelperDataVB.findBuildingByPos(dataVB,x,y,z);
 		int d = ConfigBuilding.BuildingGroundWorkDepth;
 		int h = ConfigBuilding.BuildingMaxHeight;
 		Block b;

@@ -3,6 +3,9 @@ package com.ckhgame.villagebento.building;
 import java.util.HashMap;
 
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
+import com.ckhgame.villagebento.data.DataBuilding;
+import com.ckhgame.villagebento.data.DataVillageBento;
+import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.util.registry.IRegistrable;
 import com.ckhgame.villagebento.util.registry.Registry;
 
@@ -50,6 +53,21 @@ public abstract class Building implements IRegistrable {
 			b.buildBlocks(bb);
 			b.generateVillagers(bb);
 			return true;
+		}
+		return false;
+	}
+	
+	public static boolean destroy(World w,int x,int y,int z){
+		DataVillageBento dataVB = DataVillageBento.get();
+		DataBuilding db = HelperDataVB.findBuildingByPos(dataVB, x,y, z);
+		if(db != null){
+			BuildingBuilder bb = BuildingBuilder.getInstance();
+			bb.reset(w, null, x, y, z);
+			bb.setData(db);	
+			if(HelperDataVB.removeBuildingData(dataVB, db.id)){
+				bb.buildGroundwork();
+				return true;
+			}
 		}
 		return false;
 	}

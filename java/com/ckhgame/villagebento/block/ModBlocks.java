@@ -17,6 +17,7 @@ public final class ModBlocks {
     
     public static BlockBuildingScanner blockBuildingScanner;
     
+    public static BlockBuildingDestroyer blockBuildingDestroyer;
     
     //buildings
     public static BlockVillageBuilding blockGroundworkOnlySmall;
@@ -33,8 +34,9 @@ public final class ModBlocks {
     public static final void init() {
         
         GameRegistry.registerBlock(blockBuildingScanner = new BlockBuildingScanner(), "BlockBuildingScanner");
-              
-        
+         
+        GameRegistry.registerBlock(blockBuildingDestroyer = new BlockBuildingDestroyer(), "BlockBuildingDestroyer");
+             
         //buildings
         GameRegistry.registerBlock(blockGroundworkOnlySmall = new BlockVillageBuilding(BuildingGroundworkSmall.class,"BlockGroundworkOnlySmall"),"BlockGroundworkOnlySmall");
         GameRegistry.registerBlock(blockGroundworkOnlyMedium = new BlockVillageBuilding(BuildingGroundworkMedium.class,"BlockGroundworkOnlyMedium"),"BlockGroundworkOnlyMedium");

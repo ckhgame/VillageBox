@@ -15,8 +15,11 @@ import com.ckhgame.villagebento.util.BoxWithColor;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.WorldServer;
 
 public class HelperDataVB {
 	
@@ -157,6 +160,45 @@ public class HelperDataVB {
 		return true;
 	}
 
+	public static boolean removeBuildingData(DataVillageBento dataVB,int buildingID){
+		for(DataVillage dv : dataVB.mapDataVillage.values()){
+			for(DataBuilding db : dv.mapDataBuilding.values()){
+				if(db.id == buildingID){
+					//remove the villager
+					for(DataVillager dvr : dv.mapDataVillager.values()){
+						if(dvr.buildingID == buildingID){
+							//remove entity as well
+							WorldServer ws = MinecraftServer.getServer().worldServerForDimension(0);
+							Entity entity = ws.getEntityByID(dvr.cacheEntityVillagerID);
+							if(entity != null)
+								ws.removeEntity(entity);
+							//remove village data by id
+							dv.mapDataVillager.remove(dvr.id);
+							break;
+						}
+					}
+					//remove building
+					dv.mapDataBuilding.remove(buildingID);
+					
+					//if the current village has no building 
+					if(dv.mapDataBuilding.size() == 0){
+						//remove the villager
+						dataVB.mapDataVillage.remove(dv.id);
+					}
+					else{
+						HelperDataVB.refreshCacheVillageBoundary(dv);
+					}
+					
+					dataVB.markDirty();
+					
+					return true;				
+				}
+			}
+		}
+		
+		return false;
+	}
+	
 	public static void displayVillageInfo(DataVillage dv){
 		System.out.println("============ Village Info =============");
 		
@@ -195,14 +237,16 @@ public class HelperDataVB {
 		return null;
 	}
 	
-	public static DataBuilding findBuildingByPos(DataVillageBento dataVB,int x, int z){
+	public static DataBuilding findBuildingByPos(DataVillageBento dataVB,int x, int y, int z){
 		DataVillage dv = findVillageByPos(dataVB,x,z);
 		if(dv != null){
 			for(DataBuilding db:dv.mapDataBuilding.values()){
 				if(x < db.x - db.sizeX||
 					x > db.x + db.sizeX||
 					z < db.z - db.sizeZ ||
-					z > db.z + db.sizeZ){
+					z > db.z + db.sizeZ ||
+					y < db.y - ConfigBuilding.BuildingGroundWorkDepth ||
+					y >= db.y + ConfigBuilding.BuildingMaxHeight){
 					continue;
 				}
 				else

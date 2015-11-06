@@ -1,5 +1,8 @@
 package com.ckhgame.villagebento.event;
 
+import java.util.ArrayList;
+
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.RestrictionExceptions;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -7,6 +10,7 @@ import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.block.Block;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
@@ -14,9 +18,25 @@ public class EventBlockChanged {
 	
 	private DataVillageBento dataVB = null;
 	
+	private ArrayList<Block> blockWhiteList = null;
+	private void initBlockWhiteList(){
+		if(blockWhiteList != null)
+			return;
+		blockWhiteList = new ArrayList<Block>();
+		blockWhiteList.add(ModBlocks.blockBuildingScanner);
+		blockWhiteList.add(ModBlocks.blockBuildingDestroyer);
+	}
+	private boolean isInWhiteList(Block block){
+		initBlockWhiteList();
+		return blockWhiteList.contains(block);
+	}
+	
 	 @SubscribeEvent
     public void blockPlaceEvent(BlockEvent.PlaceEvent event)
     {	 
+		if(isInWhiteList(event.block))
+			return;
+		 
 		dataVB = DataVillageBento.get();
 		
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
@@ -34,6 +54,9 @@ public class EventBlockChanged {
 	@SubscribeEvent
     public void blockBreakEvent(BlockEvent.BreakEvent event)
     {
+		if(isInWhiteList(event.block))
+			return;
+		
 		dataVB = DataVillageBento.get();
 		
 		for(DataVillage dv : dataVB.mapDataVillage.values()){

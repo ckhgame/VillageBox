@@ -42,6 +42,9 @@ public class ActionInitVillager extends Action {
 		
 		DataVillageBento dataVB = DataVillageBento.get();
 		DataVillager dvr = HelperDataVB.findVillagerByID(dataVB, villagerID);
+		
+		dvr.cacheEntityVillagerID = villagerEntityID;
+		
 		int villagerProfession = dvr.profession;
 		String villagerName = dvr.name;
 		
