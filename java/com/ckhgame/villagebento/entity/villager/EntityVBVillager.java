@@ -1,8 +1,7 @@
 package com.ckhgame.villagebento.entity.villager;
 
-import java.util.ArrayList;
-
-import com.ckhgame.villagebento.Main;
+import com.ckhgame.villagebento.ai.villager.VillagerAITradePlayer;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWander;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
@@ -17,25 +16,12 @@ import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAIMoveIndoors;
-import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
-import net.minecraft.entity.ai.EntityAIOpenDoor;
-import net.minecraft.entity.ai.EntityAIRestrictOpenDoor;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.ai.EntityAIWatchClosest2;
-import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable{
@@ -45,9 +31,10 @@ public class EntityVBVillager extends EntityAgeable{
 	public int profession;
 	public int level;
 	public int exp;
-	
+		
 	
 	public int buildingX,buildingY,buildingZ;
+	public int buildingSizeX,buildingSizeZ;
 	
 	private ResourceLocation skinTexture = null;
 	public ResourceLocation getSkinTexture(){
@@ -55,6 +42,11 @@ public class EntityVBVillager extends EntityAgeable{
 	}
 	
 	private boolean firstTimeUpdateVBVillager = true;
+	
+	private boolean vbInited = false;
+	public boolean isVBInitialized(){
+		return vbInited;
+	}
 	
 	public void initVillager(int villagerID,String name, int profession){
 		this.dataVillagerID = villagerID;
@@ -76,10 +68,14 @@ public class EntityVBVillager extends EntityAgeable{
 			this.buildingX = db.x;
 			this.buildingY = db.y;
 			this.buildingZ = db.z;
+			this.buildingSizeX = db.sizeX;
+			this.buildingSizeZ = db.sizeZ;
 			int d = (int)Math.sqrt(db.sizeX * db.sizeX + db.sizeZ * db.sizeZ);			
-			this.setHomeArea(this.buildingX, this.buildingY, this.buildingZ, d);
+			this.setHomeArea(this.buildingX, this.buildingY, this.buildingZ, d * 2);
 		}
 		
+		
+		vbInited = true;
 	}
 	
 	private void updateVBVillager(){
@@ -104,17 +100,18 @@ public class EntityVBVillager extends EntityAgeable{
 		super(world);
 		
 		this.setSize(0.6F, 1.8F);
-		this.getNavigator().setBreakDoors(true);
+		this.getNavigator().setBreakDoors(false);
         this.getNavigator().setAvoidsWater(true);
-        this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
-        //this.tasks.addTask(2, new EntityAIMoveIndoors(this));
-        //this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
+        this.targetTasks.addTask(0, new VillagerAIWander(this,0.35D,10,7));
+      //  this.tasks.addTask(0, new EntityAISwimming(this));
+       // this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
+       // this.tasks.addTask(2, new EntityAIMoveIndoors(this));
+       // this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
        // this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
        // this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.6D));
        // this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
        // this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityVillager.class, 5.0F, 0.02F));
-        this.tasks.addTask(9, new EntityAIWander(this, 2.6D));
+        //this.tasks.addTask(5, new VillagerAIWander(this, 2.6,10,7));
         //this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 	}
 
@@ -125,28 +122,41 @@ public class EntityVBVillager extends EntityAgeable{
         return entityvillager;
 	}
 	
+	private EntityPlayer interactTarget;
+	
+	public void setInteractTarget(EntityPlayer entityPlayer){
+		this.interactTarget = entityPlayer;
+	}
+	
+	public EntityPlayer getInteractTarget(){
+		return this.interactTarget;
+	}
+	
+	public void openVillagerGui(){
+		Villager vr = Villager.registry.get(profession);
+		
+		GuiVillager startGUI = null;
+		
+		for(VillagerComponent comp : vr.getVillagerComponents()){
+			comp.getGui().setEntityVillager(this);
+			if(comp.getClass() == VillagerCompAbout.class)
+				startGUI = comp.getGui();
+		}
+		
+		if(startGUI != null)
+			Minecraft.getMinecraft().displayGuiScreen(startGUI);
+	}
+	
 	public boolean interact(EntityPlayer p_70085_1_)
     {
     	if(this.worldObj.isRemote){
     		
-    		Villager vr = Villager.registry.get(profession);
+    		this.setInteractTarget(p_70085_1_);
+    		this.openVillagerGui();
     		
-    		GuiVillager startGUI = null;
-    		
-    		for(VillagerComponent comp : vr.getVillagerComponents()){
-    			comp.getGui().setEntityVillager(this);
-    			if(comp.getClass() == VillagerCompAbout.class)
-    				startGUI = comp.getGui();
-    		}
-    		
-    		if(startGUI != null)
-    			Minecraft.getMinecraft().displayGuiScreen(startGUI);
-  
     	}
         return true;
     }
-
-    
     
 	@Override
 	public void writeEntityToNBT(NBTTagCompound p_70014_1_) {
@@ -168,6 +178,14 @@ public class EntityVBVillager extends EntityAgeable{
 	protected boolean canDespawn() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	
+
+	@Override
+	protected boolean isAIEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 	@Override

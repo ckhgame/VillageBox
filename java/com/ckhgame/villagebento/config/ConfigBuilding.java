@@ -17,7 +17,7 @@ public class ConfigBuilding {
 	public static final int GroundWorkLargeSizeZ = 7;
 	
 	public static final int BuildingGroundWorkDepth = 7;		//depth of tiles below the center y
-	public static final int BuildingMaxHeight = 25;		//maximum tiles above (and include) the center y
+	public static final int BuildingMaxHeight = 15;		//maximum tiles above (and include) the center y
 	
 	public static final int BuildingGap	= 1;
 	
