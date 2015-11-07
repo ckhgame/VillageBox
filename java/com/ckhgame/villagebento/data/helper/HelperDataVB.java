@@ -164,18 +164,21 @@ public class HelperDataVB {
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			for(DataBuilding db : dv.mapDataBuilding.values()){
 				if(db.id == buildingID){
-					//remove the villager
+					//remove the villagers of this building
+					ArrayList<DataVillager> vrRemove = new ArrayList<DataVillager>();
 					for(DataVillager dvr : dv.mapDataVillager.values()){
 						if(dvr.buildingID == buildingID){
-							//remove entity as well
-							WorldServer ws = MinecraftServer.getServer().worldServerForDimension(0);
-							Entity entity = ws.getEntityByID(dvr.cacheEntityVillagerID);
-							if(entity != null)
-								ws.removeEntity(entity);
-							//remove village data by id
-							dv.mapDataVillager.remove(dvr.id);
-							break;
+							vrRemove.add(dvr);
 						}
+					}
+					for(DataVillager dvr : vrRemove){
+						//remove entity as well
+						WorldServer ws = MinecraftServer.getServer().worldServerForDimension(0);
+						Entity entity = ws.getEntityByID(dvr.cacheEntityVillagerID);
+						if(entity != null)
+							ws.removeEntity(entity);
+						//remove village data by id
+						dv.mapDataVillager.remove(dvr.id);
 					}
 					//remove building
 					dv.mapDataBuilding.remove(buildingID);
