@@ -10,20 +10,10 @@ import net.minecraft.util.Vec3;
 public class VillagerAISleep extends EntityAIBase
 {
     private EntityVBVillager entity;
-    private double xPosition;
-    private double yPosition;
-    private double zPosition;
-    private int sizeXZ;
-    private int sizeY;
-    private double speed;
-    private static final String __OBFID = "CL_00001608";
 
-    public VillagerAISleep(EntityVBVillager entity, double speed, int sizeXZ, int sizeY)
+    public VillagerAISleep(EntityVBVillager entity)
     {
         this.entity = entity;
-        this.speed = speed;
-        this.sizeXZ = sizeXZ;
-        this.sizeY = sizeY;
         this.setMutexBits(1);
     }
 
@@ -32,30 +22,19 @@ public class VillagerAISleep extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        if (this.entity.getRNG().nextInt(60) != 0)
-        {
+        if (this.entity.getRNG().nextInt(60) != 0){
             return false;
         }
-        else
-        {
-            Vec3 vec3 = null;
-            if(this.entity.worldObj.isDaytime())
-            	vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
-            else
-            	vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-
-            if (vec3 == null)
-            {
-                return false;
-            }
-            else
-            {
-                this.xPosition = vec3.xCoord;
-                this.yPosition = vec3.yCoord;
-                this.zPosition = vec3.zCoord;
-                return true;
-            }
+        else if(this.entity.worldObj.isDaytime()){
+        	return false;
         }
+        else if(!this.entity.isNearBed()){
+        	return false;
+        }
+        else{
+        	return true;
+        }
+    	
     }
 
     /**
@@ -63,7 +42,13 @@ public class VillagerAISleep extends EntityAIBase
      */
     public boolean continueExecuting()
     {
-        return !this.entity.getNavigator().noPath();
+    	 if (this.entity.getRNG().nextInt(60) != 0){
+             return true;
+         }
+    	 else{
+    		 return !this.entity.worldObj.isDaytime();
+    	 }
+        
     }
 
     /**
@@ -71,6 +56,13 @@ public class VillagerAISleep extends EntityAIBase
      */
     public void startExecuting()
     {
-        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+        this.entity.setSleeping(true);
     }
+
+	@Override
+	public void resetTask() {
+		this.entity.setSleeping(false);
+	}
+    
+    
 }

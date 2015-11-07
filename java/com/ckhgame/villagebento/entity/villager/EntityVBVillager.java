@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.entity.villager;
 
+import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWander;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -28,6 +29,15 @@ import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable{
 
+	//resource
+	private ResourceLocation skinTexture = null;
+	public ResourceLocation getSkinTexture(){
+		return skinTexture;
+	}
+	
+	
+	//----------------------------------------
+	//vb data
 	public int dataVillagerID;
 	public String name;
 	public int profession;
@@ -39,12 +49,7 @@ public class EntityVBVillager extends EntityAgeable{
 	public int buildingSizeX,buildingSizeZ;
 	public int villagerIdxOfBuilding;
 	
-	public Vec3Int bedPosition = null;
-	
-	private ResourceLocation skinTexture = null;
-	public ResourceLocation getSkinTexture(){
-		return skinTexture;
-	}
+	public Vec3 bedPosition = null;
 	
 	private boolean firstTimeUpdateVBVillager = true;
 	
@@ -59,7 +64,7 @@ public class EntityVBVillager extends EntityAgeable{
 				this.buildingSizeX, this.buildingSizeZ, 
 				Blocks.bed, new int[]{8,9,10,11}, false);
 		if(arr != null && this.villagerIdxOfBuilding < arr.length)
-			bedPosition = Vec3Int.create(arr[this.villagerIdxOfBuilding]);
+			bedPosition = arr[this.villagerIdxOfBuilding];
 	}
 	
 	public void initVillager(int villagerID,String name, int profession){
@@ -86,8 +91,6 @@ public class EntityVBVillager extends EntityAgeable{
 			this.buildingSizeZ = db.sizeZ;
 			this.villagerIdxOfBuilding = HelperDataVB.getVillagerIdxInBuilding(dataVB, dvr);
 			findBed();
-			
-			System.out.println("bed:" + (bedPosition == null));
 					
 			int d = (int)Math.sqrt(db.sizeX * db.sizeX + db.sizeZ * db.sizeZ);			
 			this.setHomeArea(this.buildingX, this.buildingY, this.buildingZ, d * 2);
@@ -104,6 +107,31 @@ public class EntityVBVillager extends EntityAgeable{
 		}
 	}
 	
+	//----------------------------------------
+	//sleeping
+	private boolean isSleeping;
+	public boolean getSleeping(){
+		return isSleeping;
+	}
+	public void setSleeping(boolean sleeping){
+		this.isSleeping = sleeping;
+		if(sleeping == true)
+			System.out.println("Start Sleeping!");
+		else
+			System.out.println("End Sleeping!");
+	}
+	public boolean isNearBed(){
+		if(this.bedPosition == null){
+			return false;
+		}
+		else{
+			return (this.getDistance(this.bedPosition.xCoord, this.bedPosition.yCoord, this.bedPosition.zCoord) < 1.5D);
+		}
+	}
+	
+	
+	
+	//----------------------------------------
 	public String getDisplayName(){
 		return name;
 	}
@@ -121,7 +149,8 @@ public class EntityVBVillager extends EntityAgeable{
 		this.setSize(0.6F, 1.8F);
 		this.getNavigator().setBreakDoors(false);
         this.getNavigator().setAvoidsWater(true);
-        this.targetTasks.addTask(0, new VillagerAIWander(this,0.35D,10,7));
+        this.targetTasks.addTask(0, new VillagerAISleep(this));
+        this.targetTasks.addTask(1, new VillagerAIWander(this,0.35D,10,7));
       //  this.tasks.addTask(0, new EntityAISwimming(this));
        // this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
        // this.tasks.addTask(2, new EntityAIMoveIndoors(this));
