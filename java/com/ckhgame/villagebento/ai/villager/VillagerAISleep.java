@@ -1,15 +1,13 @@
 package com.ckhgame.villagebento.ai.villager;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.util.BlockFinder;
 import com.ckhgame.villagebento.util.VBRandomPositionGenerator;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.Vec3;
 
-public class VillagerAIWander extends EntityAIBase
+public class VillagerAISleep extends EntityAIBase
 {
     private EntityVBVillager entity;
     private double xPosition;
@@ -20,7 +18,7 @@ public class VillagerAIWander extends EntityAIBase
     private double speed;
     private static final String __OBFID = "CL_00001608";
 
-    public VillagerAIWander(EntityVBVillager entity, double speed, int sizeXZ, int sizeY)
+    public VillagerAISleep(EntityVBVillager entity, double speed, int sizeXZ, int sizeY)
     {
         this.entity = entity;
         this.speed = speed;
@@ -40,14 +38,11 @@ public class VillagerAIWander extends EntityAIBase
         }
         else
         {
-        	
             Vec3 vec3 = null;
             if(this.entity.worldObj.isDaytime())
             	vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
-            else{
-            	vec3 = entity.bedPosition!=null?entity.bedPosition.toVec3():null;
-            }
-            	//vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+            else
+            	vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
 
             if (vec3 == null)
             {

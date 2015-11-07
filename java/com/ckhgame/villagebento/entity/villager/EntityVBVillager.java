@@ -1,6 +1,5 @@
 package com.ckhgame.villagebento.entity.villager;
 
-import com.ckhgame.villagebento.ai.villager.VillagerAITradePlayer;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWander;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -10,6 +9,8 @@ import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.gui.GuiVillager;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionInitVillager;
+import com.ckhgame.villagebento.util.BlockFinder;
+import com.ckhgame.villagebento.util.Vec3Int;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -17,11 +18,12 @@ import com.ckhgame.villagebento.villager.component.VillagerComponent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable{
@@ -35,6 +37,9 @@ public class EntityVBVillager extends EntityAgeable{
 	
 	public int buildingX,buildingY,buildingZ;
 	public int buildingSizeX,buildingSizeZ;
+	public int villagerIdxOfBuilding;
+	
+	public Vec3Int bedPosition = null;
 	
 	private ResourceLocation skinTexture = null;
 	public ResourceLocation getSkinTexture(){
@@ -46,6 +51,15 @@ public class EntityVBVillager extends EntityAgeable{
 	private boolean vbInited = false;
 	public boolean isVBInitialized(){
 		return vbInited;
+	}
+	
+	private void findBed(){
+		Vec3[] arr = BlockFinder.findBlock(	this.worldObj, 
+				this.buildingX, this.buildingY, this.buildingZ,
+				this.buildingSizeX, this.buildingSizeZ, 
+				Blocks.bed, new int[]{8,9,10,11}, false);
+		if(arr != null && this.villagerIdxOfBuilding < arr.length)
+			bedPosition = Vec3Int.create(arr[this.villagerIdxOfBuilding]);
 	}
 	
 	public void initVillager(int villagerID,String name, int profession){
@@ -70,6 +84,11 @@ public class EntityVBVillager extends EntityAgeable{
 			this.buildingZ = db.z;
 			this.buildingSizeX = db.sizeX;
 			this.buildingSizeZ = db.sizeZ;
+			this.villagerIdxOfBuilding = HelperDataVB.getVillagerIdxInBuilding(dataVB, dvr);
+			findBed();
+			
+			System.out.println("bed:" + (bedPosition == null));
+					
 			int d = (int)Math.sqrt(db.sizeX * db.sizeX + db.sizeZ * db.sizeZ);			
 			this.setHomeArea(this.buildingX, this.buildingY, this.buildingZ, d * 2);
 		}

@@ -259,6 +259,31 @@ public class HelperDataVB {
 		return null;
 	}
 	
+	public static int getVillagerIdxInBuilding(DataVillageBento dataVB, DataVillager dvr){
+		
+		int idx = -1;
+		
+		DataVillage dv = null;
+		for(DataVillage fdv : dataVB.mapDataVillage.values()){
+			if(fdv.mapDataVillager.containsKey(dvr.id)){
+				dv = fdv;
+				break;
+			}
+		}
+		
+		if(dv != null){
+			for(DataVillager other: dv.mapDataVillager.values()){
+				if(other.buildingID == dvr.buildingID){
+					idx++;
+					if(other.id == dvr.id)
+						break;
+				}
+			}
+		}
+
+		return idx;
+	}
+	
 	public static DataVillager findVillagerByID(DataVillageBento dataVB, int id){
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			for(DataVillager dvr : dv.mapDataVillager.values()){
