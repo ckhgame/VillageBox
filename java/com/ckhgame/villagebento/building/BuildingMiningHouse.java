@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerMiner;
+import com.ckhgame.villagebento.villager.VillagerMinerAssistant;
 import com.ckhgame.villagebento.villager.VillagerVillageElder;
 
 import net.minecraft.init.Blocks;
@@ -29,7 +30,7 @@ public class BuildingMiningHouse extends Building {
 		// TODO Auto-generated method stub
 		//add villager
 		bb.addBuildingVillager(VillagerMiner.class,"Tylor",0,0);
-		bb.addBuildingVillager(VillagerMiner.class,"Chris",0,-1);
+		bb.addBuildingVillager(VillagerMinerAssistant.class,"Chris",0,-1);
 	}
 
 	@Override
