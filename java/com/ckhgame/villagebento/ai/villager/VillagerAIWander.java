@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.ai.villager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.BlockFinder;
 import com.ckhgame.villagebento.util.VBRandomPositionGenerator;
+import com.ckhgame.villagebento.util.VillageTime;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
@@ -15,17 +16,12 @@ public class VillagerAIWander extends EntityAIBase
     private double xPosition;
     private double yPosition;
     private double zPosition;
-    private int sizeXZ;
-    private int sizeY;
     private double speed;
-    private static final String __OBFID = "CL_00001608";
 
-    public VillagerAIWander(EntityVBVillager entity, double speed, int sizeXZ, int sizeY)
+    public VillagerAIWander(EntityVBVillager entity, double speed)
     {
         this.entity = entity;
         this.speed = speed;
-        this.sizeXZ = sizeXZ;
-        this.sizeY = sizeY;
         this.setMutexBits(1);
     }
 
@@ -34,34 +30,37 @@ public class VillagerAIWander extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        if (this.entity.getRNG().nextInt(60) != 0)
+        	
+        Vec3 vec3 = null;
+        if(VillageTime.isDayTime(this.entity.worldObj)){
+        	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
+        	if(this.entity.worldObj.isRaining()){
+        		vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+        	}
+        	else{
+        		vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
+        	}
+        }
+        else if(VillageTime.isEarlyNight(this.entity.worldObj)){
+        	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
+        	vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+        }
+    	else{
+    		if(entity.bedPosition!=null && !entity.isNearBed()){
+        		vec3 = Vec3.createVectorHelper(entity.bedPosition.xCoord + 0.5, entity.bedPosition.yCoord + 1, entity.bedPosition.zCoord + 0.5);
+        	}
+    	}
+
+        if (vec3 == null)
         {
             return false;
         }
         else
         {
-        	
-            Vec3 vec3 = null;
-            if(this.entity.worldObj.isDaytime())
-            	vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
-            else{
-            	
-            	if(entity.bedPosition!=null)
-            		vec3 = Vec3.createVectorHelper(entity.bedPosition.xCoord, entity.bedPosition.yCoord + 1, entity.bedPosition.zCoord);
-            }
-            	//vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-
-            if (vec3 == null)
-            {
-                return false;
-            }
-            else
-            {
-                this.xPosition = vec3.xCoord;
-                this.yPosition = vec3.yCoord;
-                this.zPosition = vec3.zCoord;
-                return true;
-            }
+            this.xPosition = vec3.xCoord;
+            this.yPosition = vec3.yCoord;
+            this.zPosition = vec3.zCoord;
+            return true;
         }
     }
 
@@ -70,10 +69,20 @@ public class VillagerAIWander extends EntityAIBase
      */
     public boolean continueExecuting()
     {
+    	
         return !this.entity.getNavigator().noPath();
     }
 
-    /**
+    
+    
+    @Override
+	public void updateTask() {
+		
+		super.updateTask();
+		
+	}
+
+	/**
      * Execute a one shot task or start executing a continuous task
      */
     public void startExecuting()

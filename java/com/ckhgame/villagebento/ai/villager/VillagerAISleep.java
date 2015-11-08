@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.ai.villager;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.VBRandomPositionGenerator;
+import com.ckhgame.villagebento.util.VillageTime;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
@@ -22,6 +23,7 @@ public class VillagerAISleep extends EntityAIBase
      */
     public boolean shouldExecute()
     {
+    	
     	if(this.entity.getSleeping())
     		return true;
     	
@@ -46,21 +48,30 @@ public class VillagerAISleep extends EntityAIBase
              return true;
          }
     	 else{
-    		 return !this.entity.worldObj.isDaytime();
+    		 return VillageTime.isLateNight(this.entity.worldObj);
     	 }
         
     }
 
+    @Override
+	public void updateTask() {
+		
+		super.updateTask();
+		
+	}
+    
     /**
      * Execute a one shot task or start executing a continuous task
      */
     public void startExecuting()
     {
+    	System.out.println("start sleeping!");
         this.entity.setSleeping(true);
     }
 
 	@Override
 	public void resetTask() {
+		System.out.println("false sleeping!");
 		this.entity.setSleeping(false);
 	}
     

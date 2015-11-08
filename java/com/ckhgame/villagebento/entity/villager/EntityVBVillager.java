@@ -121,10 +121,10 @@ public class EntityVBVillager extends EntityAgeable{
 		if(this.worldObj.isRemote){
 			//client
 			if(sleeping == true){
-				System.out.println("Client: Start Sleeping!");
+			//	System.out.println("Client: Start Sleeping!");
 			}
 			else{
-				System.out.println("Client: End Sleeping!");
+				//System.out.println("Client: End Sleeping!");
 			}
 		}
 		else{
@@ -134,10 +134,10 @@ public class EntityVBVillager extends EntityAgeable{
 			if(sleeping == true){
 				if(this.bedPosition != null)
 					this.setPosition(this.bedPosition.xCoord + 0.5D, this.bedPosition.yCoord + 1.0D, this.bedPosition.zCoord + 0.5D);
-				System.out.println("Start Sleeping!");
+				//System.out.println("Start Sleeping!");
 			}
 			else{
-				System.out.println("End Sleeping!");
+				//System.out.println("End Sleeping!");
 			}
 		}
 		
@@ -150,11 +150,11 @@ public class EntityVBVillager extends EntityAgeable{
 		}
 		else{
 			double dy = this.posY - this.bedPosition.yCoord;
-			double dx = this.bedPosition.xCoord - this.posX;
-			double dz = this.bedPosition.zCoord - this.posZ;
+			double dx = this.bedPosition.xCoord + 0.5 - this.posX;
+			double dz = this.bedPosition.zCoord + 0.5 - this.posZ;
 			double dxz = Math.sqrt(dx * dx + dz * dz);
 			System.out.println("dy:" + dy + ",dxz:" + dxz);
-			return (dy >= 0 && dy <= 1.D && dxz <= 1.5D);
+			return (dy >= 0 && dy <= 1.0D && dxz <= 0.8D);
 		}
 	}
 	
@@ -186,8 +186,8 @@ public class EntityVBVillager extends EntityAgeable{
 	//----------------------------------------
 	//ai
 	private void initAIs(){
-        this.targetTasks.addTask(0, new VillagerAISleep(this));
-        this.targetTasks.addTask(1, new VillagerAIWander(this,0.35D,10,7));
+        this.targetTasks.addTask(0, new VillagerAIWander(this,0.35D));
+        this.targetTasks.addTask(1, new VillagerAISleep(this));
 	}
 	
 	//----------------------------------------
