@@ -16,13 +16,13 @@ public class VillagerMinerAssistant extends Villager {
 	@Override
 	public String getProfessionName() {
 		// TODO Auto-generated method stub
-		return "Miner";
+		return "Miner Assistant";
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		// TODO Auto-generated method stub
-		return "Mining things.......";
+		return "Helping Mining things.......";
 	}
 
 	@Override
