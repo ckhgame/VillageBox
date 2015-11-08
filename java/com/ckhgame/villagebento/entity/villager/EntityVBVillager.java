@@ -10,8 +10,8 @@ import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.gui.GuiVillager;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionInitVillager;
+import com.ckhgame.villagebento.network.action.SActionUpdateVillagerSleep;
 import com.ckhgame.villagebento.util.BlockFinder;
-import com.ckhgame.villagebento.util.Vec3Int;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -62,7 +62,7 @@ public class EntityVBVillager extends EntityAgeable{
 		Vec3[] arr = BlockFinder.findBlock(	this.worldObj, 
 				this.buildingX, this.buildingY, this.buildingZ,
 				this.buildingSizeX, this.buildingSizeZ, 
-				Blocks.bed, new int[]{8,9,10,11}, false);
+				Blocks.bed, new int[]{0,1,2,3}, false);
 		if(arr != null && this.villagerIdxOfBuilding < arr.length)
 			bedPosition = arr[this.villagerIdxOfBuilding];
 	}
@@ -96,6 +96,7 @@ public class EntityVBVillager extends EntityAgeable{
 			this.setHomeArea(this.buildingX, this.buildingY, this.buildingZ, d * 2);
 		}
 		
+		initAIs();
 		
 		vbInited = true;
 	}
@@ -109,27 +110,85 @@ public class EntityVBVillager extends EntityAgeable{
 	
 	//----------------------------------------
 	//sleeping
-	private boolean isSleeping;
+	private boolean isSleeping = false;
 	public boolean getSleeping(){
 		return isSleeping;
 	}
+	
 	public void setSleeping(boolean sleeping){
-		this.isSleeping = sleeping;
-		if(sleeping == true)
-			System.out.println("Start Sleeping!");
-		else
-			System.out.println("End Sleeping!");
+		this.isSleeping = sleeping;		
+		
+		if(this.worldObj.isRemote){
+			//client
+			if(sleeping == true){
+				System.out.println("Client: Start Sleeping!");
+			}
+			else{
+				System.out.println("Client: End Sleeping!");
+			}
+		}
+		else{
+			//server
+			Action.send(SActionUpdateVillagerSleep.class,new Object[]{this.getEntityId(),this.isSleeping,
+																	  (int)bedPosition.xCoord,(int)bedPosition.yCoord,(int)bedPosition.zCoord});
+			if(sleeping == true){
+				if(this.bedPosition != null)
+					this.setPosition(this.bedPosition.xCoord + 0.5D, this.bedPosition.yCoord + 1.0D, this.bedPosition.zCoord + 0.5D);
+				System.out.println("Start Sleeping!");
+			}
+			else{
+				System.out.println("End Sleeping!");
+			}
+		}
+		
+		
 	}
+	
 	public boolean isNearBed(){
 		if(this.bedPosition == null){
 			return false;
 		}
 		else{
-			return (this.getDistance(this.bedPosition.xCoord, this.bedPosition.yCoord, this.bedPosition.zCoord) < 1.5D);
+			double dy = this.posY - this.bedPosition.yCoord;
+			double dx = this.bedPosition.xCoord - this.posX;
+			double dz = this.bedPosition.zCoord - this.posZ;
+			double dxz = Math.sqrt(dx * dx + dz * dz);
+			System.out.println("dy:" + dy + ",dxz:" + dxz);
+			return (dy >= 0 && dy <= 1.D && dxz <= 1.5D);
 		}
 	}
 	
+	 public float getBedOrientationInDegrees()
+	    {
+	        if (this.bedPosition != null)
+	        {
+	            int x = (int)bedPosition.xCoord;
+	            int y = (int)bedPosition.yCoord;
+	            int z = (int)bedPosition.zCoord;
+	            int j = worldObj.getBlock(x, y, z).getBedDirection(worldObj, x, y, z);
+
+	            switch (j)
+	            {
+	                case 0:
+	                    return 90.0F;
+	                case 1:
+	                    return 0.0F;
+	                case 2:
+	                    return 270.0F;
+	                case 3:
+	                    return 180.0F;
+	            }
+	        }
+
+	        return 0.0F;
+	    }
 	
+	//----------------------------------------
+	//ai
+	private void initAIs(){
+        this.targetTasks.addTask(0, new VillagerAISleep(this));
+        this.targetTasks.addTask(1, new VillagerAIWander(this,0.35D,10,7));
+	}
 	
 	//----------------------------------------
 	public String getDisplayName(){
@@ -149,8 +208,6 @@ public class EntityVBVillager extends EntityAgeable{
 		this.setSize(0.6F, 1.8F);
 		this.getNavigator().setBreakDoors(false);
         this.getNavigator().setAvoidsWater(true);
-        this.targetTasks.addTask(0, new VillagerAISleep(this));
-        this.targetTasks.addTask(1, new VillagerAIWander(this,0.35D,10,7));
       //  this.tasks.addTask(0, new EntityAISwimming(this));
        // this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
        // this.tasks.addTask(2, new EntityAIMoveIndoors(this));
@@ -211,7 +268,7 @@ public class EntityVBVillager extends EntityAgeable{
 		// TODO Auto-generated method stub
 		super.writeEntityToNBT(p_70014_1_);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerEntityDataVillagerID, dataVillagerID);
-		
+		p_70014_1_.setBoolean(ConfigData.KeyVillagerEntityIsSleeping, isSleeping);
 	}
 
 	@Override
@@ -220,6 +277,7 @@ public class EntityVBVillager extends EntityAgeable{
 		super.readEntityFromNBT(p_70037_1_);
 		
 		dataVillagerID = p_70037_1_.getInteger(ConfigData.KeyVillagerEntityDataVillagerID);
+		isSleeping = p_70037_1_.getBoolean(ConfigData.KeyVillagerEntityIsSleeping);
 	}
 
 	@Override

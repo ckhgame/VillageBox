@@ -39,9 +39,7 @@ public class ConfigData {
 	
 	//villager entity
 	public static final String KeyVillagerEntityDataVillagerID		= "vedvid";
-	public static final String KeyVillagerEntityName				= "ven";
-	public static final String KeyVillagerEntitySkin				= "ves";
-	public static final String KeyVillagerEntityProfession			= "vep";
+	public static final String KeyVillagerEntityIsSleeping			= "veis";
 	
 	//villager component
 	public static final String KeyVillagerComps						= "vc";

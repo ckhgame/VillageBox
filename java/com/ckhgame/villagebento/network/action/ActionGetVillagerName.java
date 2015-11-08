@@ -14,14 +14,19 @@ import io.netty.buffer.ByteBuf;
  */
 public class ActionGetVillagerName extends Action {
 	
+	public ActionGetVillagerName() {
+		super(true);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public void onClientSend(ByteBuf buf, Object[] info) {
+	public void onSelfSend(ByteBuf buf, Object[] info) {
 		int villagerID = (int)info[0];
 		buf.writeInt(villagerID);
 	}
 
 	@Override
-	public Object[] onServerReceived(ByteBuf buf) {
+	public Object[] onTargetReceived(ByteBuf buf) {
 		int villagerID = buf.readInt();
 		return new Object[]{villagerID};
 	}
@@ -38,7 +43,7 @@ public class ActionGetVillagerName extends Action {
 	}
 
 	@Override
-	public void onServerSend(ByteBuf buf, Object[] info) {
+	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
 		String villagerName = (String)info[0];	
 		ByteBufUtils.writeUTF8String(buf, villagerName);
@@ -46,7 +51,7 @@ public class ActionGetVillagerName extends Action {
 	}
 
 	@Override
-	public Object[] onClientReceived(ByteBuf buf) {
+	public Object[] onSelfReceived(ByteBuf buf) {
 
 		String villagerName;
 		villagerName = ByteBufUtils.readUTF8String(buf);

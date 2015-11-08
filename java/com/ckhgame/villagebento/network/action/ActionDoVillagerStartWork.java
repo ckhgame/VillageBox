@@ -4,11 +4,8 @@ import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.data.helper.HelperDataVrComp;
-import com.ckhgame.villagebento.gui.GuiVillagerBuy;
 import com.ckhgame.villagebento.gui.GuiVillagerWork;
-import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.villager.Villager;
-import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompWork;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
@@ -32,8 +29,13 @@ import net.minecraft.server.MinecraftServer;
  */
 public class ActionDoVillagerStartWork extends Action {
 	
+	public ActionDoVillagerStartWork() {
+		super(true);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public void onClientSend(ByteBuf buf, Object[] info) {
+	public void onSelfSend(ByteBuf buf, Object[] info) {
 		int villagerID = (int)info[0];
 		int entityPlayerID = (int)info[1];
 		int workIdx = (int)info[2];
@@ -43,7 +45,7 @@ public class ActionDoVillagerStartWork extends Action {
 	}
 
 	@Override
-	public Object[] onServerReceived(ByteBuf buf) {
+	public Object[] onTargetReceived(ByteBuf buf) {
 		int villagerID = buf.readInt();
 		int entityPlayerID = buf.readInt();
 		int workIdx = buf.readInt();
@@ -71,7 +73,7 @@ public class ActionDoVillagerStartWork extends Action {
 	}
 
 	@Override
-	public void onServerSend(ByteBuf buf, Object[] info) {
+	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
 		int profession = (int)info[0];
 		Object[] work = (Object[])info[1];	
@@ -97,7 +99,7 @@ public class ActionDoVillagerStartWork extends Action {
 	}
 
 	@Override
-	public Object[] onClientReceived(ByteBuf buf) {
+	public Object[] onSelfReceived(ByteBuf buf) {
 
 		int profession = buf.readInt();
 		boolean hasWork = buf.readBoolean();

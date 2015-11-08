@@ -17,8 +17,13 @@ import net.minecraft.client.Minecraft;
  */
 public class ActionGetVillagerLevel extends Action {
 	
+	public ActionGetVillagerLevel() {
+		super(true);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public void onClientSend(ByteBuf buf, Object[] info) {
+	public void onSelfSend(ByteBuf buf, Object[] info) {
 		int villagerID = (int)info[0];
 		int villagerEntityID = (int)info[1];
 		buf.writeInt(villagerID);
@@ -26,7 +31,7 @@ public class ActionGetVillagerLevel extends Action {
 	}
 
 	@Override
-	public Object[] onServerReceived(ByteBuf buf) {
+	public Object[] onTargetReceived(ByteBuf buf) {
 		int villagerID = buf.readInt();
 		int villagerEntityID = buf.readInt();
 		return new Object[]{villagerID,villagerEntityID};
@@ -46,7 +51,7 @@ public class ActionGetVillagerLevel extends Action {
 	}
 
 	@Override
-	public void onServerSend(ByteBuf buf, Object[] info) {
+	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
 		int villagerLevel = (int)info[0];
 		int villageExp = (int)info[1];
@@ -59,7 +64,7 @@ public class ActionGetVillagerLevel extends Action {
 	}
 
 	@Override
-	public Object[] onClientReceived(ByteBuf buf) {
+	public Object[] onSelfReceived(ByteBuf buf) {
 
 		int villagerLevel = buf.readInt();
 		int villageExp = buf.readInt();

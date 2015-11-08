@@ -45,7 +45,9 @@ public class VillagerAIWander extends EntityAIBase
             if(this.entity.worldObj.isDaytime())
             	vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
             else{
-            	vec3 = entity.bedPosition!=null?entity.bedPosition:null;
+            	
+            	if(entity.bedPosition!=null)
+            		vec3 = Vec3.createVectorHelper(entity.bedPosition.xCoord, entity.bedPosition.yCoord + 1, entity.bedPosition.zCoord);
             }
             	//vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
 

@@ -22,14 +22,19 @@ import net.minecraft.item.ItemStack;
  */
 public class ActionGetVillagerBuy extends Action {
 	
+	public ActionGetVillagerBuy() {
+		super(true);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public void onClientSend(ByteBuf buf, Object[] info) {
+	public void onSelfSend(ByteBuf buf, Object[] info) {
 		int villagerID = (int)info[0];
 		buf.writeInt(villagerID);
 	}
 
 	@Override
-	public Object[] onServerReceived(ByteBuf buf) {
+	public Object[] onTargetReceived(ByteBuf buf) {
 		int villagerID = buf.readInt();
 		return new Object[]{villagerID};
 	}
@@ -47,7 +52,7 @@ public class ActionGetVillagerBuy extends Action {
 	}
 
 	@Override
-	public void onServerSend(ByteBuf buf, Object[] info) {
+	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
 		int profession = (int)info[0];
 		ItemStack[] itemStacks = (ItemStack[])info[1];	
@@ -60,7 +65,7 @@ public class ActionGetVillagerBuy extends Action {
 	}
 
 	@Override
-	public Object[] onClientReceived(ByteBuf buf) {
+	public Object[] onSelfReceived(ByteBuf buf) {
 
 		int profession = buf.readInt();
 		int l = buf.readInt();

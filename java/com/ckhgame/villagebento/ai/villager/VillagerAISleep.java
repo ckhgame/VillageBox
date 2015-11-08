@@ -22,10 +22,10 @@ public class VillagerAISleep extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        if (this.entity.getRNG().nextInt(60) != 0){
-            return false;
-        }
-        else if(this.entity.worldObj.isDaytime()){
+    	if(this.entity.getSleeping())
+    		return true;
+    	
+        if(this.entity.worldObj.isDaytime()){
         	return false;
         }
         else if(!this.entity.isNearBed()){

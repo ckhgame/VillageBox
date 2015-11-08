@@ -7,8 +7,6 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
-import net.minecraft.server.MinecraftServer;
 
 /**
  * 
@@ -18,14 +16,19 @@ import net.minecraft.server.MinecraftServer;
  */
 public class ActionDoVillagerChat extends Action {
 	
+	public ActionDoVillagerChat() {
+		super(true);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public void onClientSend(ByteBuf buf, Object[] info) {
+	public void onSelfSend(ByteBuf buf, Object[] info) {
 		int villagerID = (int)info[0];
 		buf.writeInt(villagerID);
 	}
 
 	@Override
-	public Object[] onServerReceived(ByteBuf buf) {
+	public Object[] onTargetReceived(ByteBuf buf) {
 		int villagerID = buf.readInt();
 		return new Object[]{villagerID};
 	}
@@ -50,11 +53,11 @@ public class ActionDoVillagerChat extends Action {
 	}
 
 	@Override
-	public void onServerSend(ByteBuf buf, Object[] info) {
+	public void onTargetSend(ByteBuf buf, Object[] info) {
 	}
 
 	@Override
-	public Object[] onClientReceived(ByteBuf buf) {	
+	public Object[] onSelfReceived(ByteBuf buf) {	
 		return null;
 	}
 

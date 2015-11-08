@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
+import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import net.minecraft.entity.Entity;
@@ -142,5 +143,27 @@ public class RenderVBVillager extends RendererLivingEntity
     public void doRender(Entity p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
     {
         this.doRender((EntityVBVillager)p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
+    }
+
+    
+    @Override
+	protected void rotateCorpse(EntityLivingBase p_77043_1_, float p_77043_2_, float p_77043_3_, float p_77043_4_) {
+		// TODO Auto-generated method stub
+		this.rotateCorpse((EntityVBVillager)p_77043_1_, p_77043_2_, p_77043_3_, p_77043_4_);
+	}
+
+	protected void rotateCorpse(EntityVBVillager p, float p_77043_2_, float p_77043_3_, float p_77043_4_)
+    {		
+        if (p.isEntityAlive() && p.getSleeping())
+        {
+            GL11.glRotatef(p.getBedOrientationInDegrees(), 0.0F, 1.0F, 0.0F);
+            GL11.glRotatef(this.getDeathMaxRotation(p), 0.0F, 0.0F, 1.0F);
+            GL11.glRotatef(270.0F, 0.0F, 1.0F, 0.0F);
+            GL11.glTranslatef(0, -0.5F, -0.1F);
+        }
+        else
+        {
+            super.rotateCorpse(p, p_77043_2_, p_77043_3_, p_77043_4_);
+        }
     }
 }

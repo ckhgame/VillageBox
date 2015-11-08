@@ -18,14 +18,19 @@ import net.minecraft.server.MinecraftServer;
  */
 public class ActionInitVillager extends Action {
 	
+	public ActionInitVillager() {
+		super(true);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public void onClientSend(ByteBuf buf, Object[] info) {
+	public void onSelfSend(ByteBuf buf, Object[] info) {
 		int villagerEntityID = (int)info[0];
 		buf.writeInt(villagerEntityID);
 	}
 
 	@Override
-	public Object[] onServerReceived(ByteBuf buf) {
+	public Object[] onTargetReceived(ByteBuf buf) {
 		int villagerEntityID = buf.readInt();
 		return new Object[]{villagerEntityID};
 	}
@@ -35,7 +40,7 @@ public class ActionInitVillager extends Action {
 
 		int villagerEntityID = (int)info[0];
 		
-		//(EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).entity
+		//(EntityVBVillager)MinecraftTarget.getTarget().worldTargetForDimension(0).entity
 		int villagerID = ((EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(villagerEntityID)).dataVillagerID;
 		
 		DataVillageBento dataVB = DataVillageBento.get();
@@ -46,7 +51,7 @@ public class ActionInitVillager extends Action {
 		int villagerProfession = dvr.profession;
 		String villagerName = dvr.name;
 		
-		//init on server side as well
+		//init on Target side as well
 		EntityVBVillager evr = (EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(villagerEntityID);
 		evr.initVillager(villagerID,villagerName, villagerProfession);
 		
@@ -54,7 +59,7 @@ public class ActionInitVillager extends Action {
 	}
 
 	@Override
-	public void onServerSend(ByteBuf buf, Object[] info) {
+	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
 		int villagerID = (int)info[0];
 		int villagerProfession = (int)info[1];
@@ -69,7 +74,7 @@ public class ActionInitVillager extends Action {
 	}
 
 	@Override
-	public Object[] onClientReceived(ByteBuf buf) {
+	public Object[] onSelfReceived(ByteBuf buf) {
 
 		int villagerID = buf.readInt();
 		int villagerProfession = buf.readInt();

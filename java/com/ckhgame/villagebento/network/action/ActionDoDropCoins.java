@@ -21,8 +21,13 @@ import net.minecraft.server.MinecraftServer;
  */
 public class ActionDoDropCoins extends Action {
 	
+	public ActionDoDropCoins() {
+		super(true);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public void onClientSend(ByteBuf buf, Object[] info) {
+	public void onSelfSend(ByteBuf buf, Object[] info) {
 		int entityPlayerID = (int)info[0];
 		int dropAmount = (int)info[1];
 		buf.writeInt(entityPlayerID);
@@ -30,7 +35,7 @@ public class ActionDoDropCoins extends Action {
 	}
 
 	@Override
-	public Object[] onServerReceived(ByteBuf buf) {
+	public Object[] onTargetReceived(ByteBuf buf) {
 		int entityPlayerID = buf.readInt();
 		int dropAmount = buf.readInt();
 		return new Object[]{entityPlayerID,dropAmount};
@@ -50,11 +55,11 @@ public class ActionDoDropCoins extends Action {
 	}
 
 	@Override
-	public void onServerSend(ByteBuf buf, Object[] info) {
+	public void onTargetSend(ByteBuf buf, Object[] info) {
 	}
 
 	@Override
-	public Object[] onClientReceived(ByteBuf buf) {	
+	public Object[] onSelfReceived(ByteBuf buf) {	
 		return null;
 	}
 
