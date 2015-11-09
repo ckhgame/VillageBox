@@ -20,6 +20,10 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.ai.EntityAIOpenDoor;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -200,8 +204,11 @@ public class EntityVBVillager extends EntityAgeable {
 	// ----------------------------------------
 	// ai
 	private void initAIs() {
-		this.targetTasks.addTask(0, new VillagerAIWander(this));
-		this.targetTasks.addTask(1, new VillagerAISleep(this));
+		this.tasks.addTask(0, new EntityAISwimming(this));
+		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
+		this.tasks.addTask(2, new VillagerAIWander(this));
+		this.tasks.addTask(3, new VillagerAISleep(this));
+		this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
 	}
 
 	// ----------------------------------------
