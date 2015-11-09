@@ -13,7 +13,13 @@ import com.ckhgame.villagebento.building.BuildingGroundworkLarge;
 import com.ckhgame.villagebento.building.BuildingGroundworkMedium;
 import com.ckhgame.villagebento.building.BuildingGroundworkSmall;
 import com.ckhgame.villagebento.building.BuildingHunterHouse;
+import com.ckhgame.villagebento.building.BuildingLargeBakery;
+import com.ckhgame.villagebento.building.BuildingLargeCasino;
+import com.ckhgame.villagebento.building.BuildingLargeHotel;
+import com.ckhgame.villagebento.building.BuildingLargeMilitaryCamp;
+import com.ckhgame.villagebento.building.BuildingLargeTavern;
 import com.ckhgame.villagebento.building.BuildingMiningHouse;
+import com.ckhgame.villagebento.building.BuildingProArchitectsHouse;
 import com.ckhgame.villagebento.building.BuildingSheepShop;
 import com.ckhgame.villagebento.building.BuildingSmallBakery;
 import com.ckhgame.villagebento.building.BuildingSmallCasino;
@@ -54,12 +60,12 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockDefenceTower;
     public static BlockVillageBuilding blockHunterHouse;
     public static BlockVillageBuilding blockSmallMilitaryCamp;
-//    public static BlockVillageBuilding blockLargeTavern;
-//    public static BlockVillageBuilding blockLargeMilitaryCamp;
-//    public static BlockVillageBuilding blockLargeCasino;
-//    public static BlockVillageBuilding blockLargeBakery;
-//    public static BlockVillageBuilding blockProAchitectsHouse;
-//    public static BlockVillageBuilding blockGaintHotel;
+    public static BlockVillageBuilding blockLargeTavern;
+    public static BlockVillageBuilding blockLargeMilitaryCamp;
+    public static BlockVillageBuilding blockLargeCasino;
+    public static BlockVillageBuilding blockLargeBakery;
+    public static BlockVillageBuilding blockProArchitectsHouse;
+    public static BlockVillageBuilding blockLargeHotel;
 
 
     public static final void init() {
@@ -92,12 +98,12 @@ public final class ModBlocks {
         GameRegistry.registerBlock(blockDefenceTower = new BlockVillageBuilding(BuildingDefenceTower.class,"BlockDefenceTower"),"BlockDefenceTower");
         GameRegistry.registerBlock(blockHunterHouse = new BlockVillageBuilding(BuildingHunterHouse.class,"BlockHunterHouse"),"BlockHunterHouse");
         GameRegistry.registerBlock(blockSmallMilitaryCamp = new BlockVillageBuilding(BuildingSmallMilitaryCamp.class,"BlockSmallMilitaryCamp"),"BlockSmallMilitaryCamp");
-//        GameRegistry.registerBlock(blockLargeMilitaryCamp = new BlockVillageBuilding(BuildingLargeMilitaryCamp.class,"BlockLargeMilitaryCamp"),"BlockLargeMilitaryCamp");
-//        GameRegistry.registerBlock(blockLargeTavern = new BlockVillageBuilding(BuildingLargeTavern.class,"BlockLargeTavern"),"BlockLargeTavern");
-//        GameRegistry.registerBlock(blockLargeCasino = new BlockVillageBuilding(BuildingLargeCasino .class,"BlockLargeCasino "),"BlockLargeCasino ");
-//        GameRegistry.registerBlock(blockLargeBakery = new BlockVillageBuilding(BuildingLargeBakery.class,"BlockLargeBakery"),"BlockLargeBakery");
-//        GameRegistry.registerBlock(blockProAchitectsHouse = new BlockVillageBuilding(BuildingProAchitectsHouse.class,"BlockProAchitectsHouse"),"BlockProAchitectsHouse");
-//        GameRegistry.registerBlock(blockGaintHotel = new BlockVillageBuilding(BuildingGaintHotel.class,"BlockGaintHotel"),"BlockGaintHotel");
+        GameRegistry.registerBlock(blockLargeMilitaryCamp = new BlockVillageBuilding(BuildingLargeMilitaryCamp.class,"BlockLargeMilitaryCamp"),"BlockLargeMilitaryCamp");
+        GameRegistry.registerBlock(blockLargeTavern = new BlockVillageBuilding(BuildingLargeTavern.class,"BlockLargeTavern"),"BlockLargeTavern");
+        GameRegistry.registerBlock(blockLargeCasino = new BlockVillageBuilding(BuildingLargeCasino.class,"BlockLargeCasino"),"BlockLargeCasino");
+        GameRegistry.registerBlock(blockLargeBakery = new BlockVillageBuilding(BuildingLargeBakery.class,"BlockLargeBakery"),"BlockLargeBakery");
+        GameRegistry.registerBlock(blockProArchitectsHouse = new BlockVillageBuilding(BuildingProArchitectsHouse.class,"BlockProArchitectsHouse"),"BlockProArchitectsHouse");
+        GameRegistry.registerBlock(blockLargeHotel = new BlockVillageBuilding(BuildingLargeHotel.class,"BlockLargeHotel"),"BlockLargeHotel");
 
         
         

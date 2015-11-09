@@ -12,27 +12,28 @@ public class ModVillagers {
 		Villager.registry.register(15, new VillagerHotelOwner());
 		Villager.registry.register(16, new VillagerTavernOwner());
 		
-//		Villager.registry.register(17, new VillagerBackerAssistant());
+		Villager.registry.register(17, new VillagerBakerAssistant());
 		Villager.registry.register(18, new VillagerBlackSmith());
 
-//		Villager.registry.register(19, new VillagerCasinoDealer());
+		Villager.registry.register(19, new VillagerCasinoDealer());
 		Villager.registry.register(20, new VillagerCasinoManager());
 		Villager.registry.register(21, new VillagerChickenSeller());
 		Villager.registry.register(22, new VillagerCowSeller());
 		Villager.registry.register(23, new VillagerSheepSeller());
 		Villager.registry.register(24, new VillagerFarmer());
 		Villager.registry.register(25, new VillagerFlowerShopOwner());
-//		Villager.registry.register(26, new VillagerGaintHotelOwner());
+		Villager.registry.register(26, new VillagerLargeHotelOwner());
+//		Villager.registry.register(29, new VillagerTailor());
 		Villager.registry.register(27, new VillagerHunter());
-//		Villager.registry.register(28, new VillagerKnight());
-//		Villager.registry.register(29, new VillagerLargeTavernOwner());
+		Villager.registry.register(28, new VillagerKnight());
 		Villager.registry.register(30, new VillagerMarksman());
 		Villager.registry.register(31, new VillagerMerchant());
-//		Villager.registry.register(32, new VillagerProBaker());
-//		Villager.registry.register(33, new VillagerProArchitect());
-//		Villager.registry.register(34, new VillagerTavernOwner());
+		Villager.registry.register(32, new VillagerProBaker());
+		Villager.registry.register(33, new VillagerProArchitect());
+		Villager.registry.register(34, new VillagerLargeTavernOwner());
 		Villager.registry.register(35, new VillagerSoldier());
-//		Villager.registry.register(36, new VillagerCaptainSoldier());
+		Villager.registry.register(36, new VillagerCaptainSoldier());
+		Villager.registry.register(37, new VillagerLargeCasinoManager());
 
 
 

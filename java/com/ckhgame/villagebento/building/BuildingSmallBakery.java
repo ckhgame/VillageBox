@@ -2,9 +2,7 @@ package com.ckhgame.villagebento.building;
 
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.villager.VillagerMiner;
 import com.ckhgame.villagebento.villager.VillagerNoviceBaker;
-import com.ckhgame.villagebento.villager.VillagerVillageElder;
 
 import net.minecraft.init.Blocks;
 
