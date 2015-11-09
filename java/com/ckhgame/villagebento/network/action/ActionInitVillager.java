@@ -9,6 +9,7 @@ import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.Vec3;
 
 /**
  * 
@@ -55,7 +56,18 @@ public class ActionInitVillager extends Action {
 		EntityVBVillager evr = (EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(villagerEntityID);
 		evr.initVillager(villagerID,villagerName, villagerProfession);
 		
-		return new Object[]{villagerID,villagerProfession,villagerName,villagerEntityID};
+		//sleeping info
+		boolean isSleeping = evr.getSleeping();
+		int bedX = -1;
+		int bedY = -1;
+		int bedZ = -1;
+		if(isSleeping){
+			bedX = (int)evr.bedPosition.xCoord;
+			bedY = (int)evr.bedPosition.yCoord;
+			bedZ = (int)evr.bedPosition.zCoord;
+		}
+		
+		return new Object[]{villagerID,villagerProfession,villagerName,villagerEntityID,isSleeping,bedX,bedY,bedZ};
 	}
 
 	@Override
@@ -66,10 +78,20 @@ public class ActionInitVillager extends Action {
 		String villagerName = (String)info[2];
 		int villagerEntityID = (Integer)info[3];
 		
+		boolean isSleeping = (Boolean)info[4];
+		int bedX = (Integer)info[5];
+		int bedY = (Integer)info[6];
+		int bedZ = (Integer)info[7];
+		
 		buf.writeInt(villagerID);
 		buf.writeInt(villagerProfession);
 		ByteBufUtils.writeUTF8String(buf,villagerName);
 		buf.writeInt(villagerEntityID);
+		
+		buf.writeBoolean(isSleeping);
+		buf.writeInt(bedX);
+		buf.writeInt(bedY);
+		buf.writeInt(bedZ);
 
 	}
 
@@ -81,7 +103,12 @@ public class ActionInitVillager extends Action {
 		String villagerName = ByteBufUtils.readUTF8String(buf);
 		int villagerEntityID = buf.readInt();
 		
-		return new Object[]{villagerID,villagerProfession,villagerName,villagerEntityID};
+		boolean isSleeping = buf.readBoolean();
+		int bedX = buf.readInt();
+		int bedY = buf.readInt();
+		int bedZ = buf.readInt();
+		
+		return new Object[]{villagerID,villagerProfession,villagerName,villagerEntityID,isSleeping,bedX,bedY,bedZ};
 	}
 
 
@@ -94,9 +121,17 @@ public class ActionInitVillager extends Action {
 		String villagerName = (String)result[2];
 		int villagerEntityID = (Integer)result[3];
 		
+		boolean isSleeping = (Boolean)result[4];
+		int bedX = (Integer)result[5];
+		int bedY = (Integer)result[6];
+		int bedZ = (Integer)result[7];
+		
 		EntityVBVillager evr = (EntityVBVillager)Minecraft.getMinecraft().theWorld.getEntityByID(villagerEntityID);
 		
 		evr.initVillager(villagerID,villagerName, villagerProfession);
+		evr.setSleeping(isSleeping);
+		if(isSleeping)
+			evr.bedPosition =  Vec3.createVectorHelper(bedX, bedY, bedZ); 
 	}
 
 }
