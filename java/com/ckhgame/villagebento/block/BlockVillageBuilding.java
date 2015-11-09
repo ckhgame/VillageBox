@@ -27,6 +27,9 @@ public class BlockVillageBuilding extends Block {
     }
 
     private final Class<? extends Building> buildingClass;
+    public Class<? extends Building> getBuildingClass(){
+    	return buildingClass;
+    }
     
     private DataVillageBento villageBentoData = null;
     
