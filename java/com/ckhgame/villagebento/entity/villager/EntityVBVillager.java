@@ -329,5 +329,10 @@ public class EntityVBVillager extends EntityAgeable {
 			HelperDataVB.setVillageDeath(dataVB, this.dataVillagerID);
 		}
 	}
+	
+	public boolean allowLeashing()
+    {
+        return false;
+    }
 
 }
