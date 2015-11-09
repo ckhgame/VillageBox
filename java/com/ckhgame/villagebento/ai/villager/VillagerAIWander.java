@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.ai.villager;
 
+import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.BlockFinder;
 import com.ckhgame.villagebento.util.VBRandomPositionGenerator;
@@ -16,12 +17,10 @@ public class VillagerAIWander extends EntityAIBase
     private double xPosition;
     private double yPosition;
     private double zPosition;
-    private double speed;
 
-    public VillagerAIWander(EntityVBVillager entity, double speed)
+    public VillagerAIWander(EntityVBVillager entity)
     {
         this.entity = entity;
-        this.speed = speed;
         this.setMutexBits(1);
     }
 
@@ -45,11 +44,6 @@ public class VillagerAIWander extends EntityAIBase
         	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
         	vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
         }
-    	else{
-    		if(entity.bedPosition!=null && !entity.isNearBed()){
-        		vec3 = Vec3.createVectorHelper(entity.bedPosition.xCoord + 0.5, entity.bedPosition.yCoord + 1, entity.bedPosition.zCoord + 0.5);
-        	}
-    	}
 
         if (vec3 == null)
         {
@@ -87,6 +81,6 @@ public class VillagerAIWander extends EntityAIBase
      */
     public void startExecuting()
     {
-        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, ConfigVillager.VillagerMoveSpeed);
     }
 }

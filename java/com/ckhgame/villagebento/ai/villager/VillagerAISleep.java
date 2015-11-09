@@ -1,12 +1,10 @@
 package com.ckhgame.villagebento.ai.villager;
 
+import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.util.VBRandomPositionGenerator;
 import com.ckhgame.villagebento.util.VillageTime;
 
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.util.Vec3;
 
 public class VillagerAISleep extends EntityAIBase
 {
@@ -23,20 +21,21 @@ public class VillagerAISleep extends EntityAIBase
      */
     public boolean shouldExecute()
     {
+    	//sleep only at late night
+    	if(!VillageTime.isLateNight(this.entity.worldObj))
+    		return false;
     	
+    	//if the one has already been sleeping, just let it keep sleeping... 
     	if(this.entity.getSleeping())
     		return true;
-    	
-        if(this.entity.worldObj.isDaytime()){
-        	return false;
-        }
-        else if(!this.entity.isNearBed()){
-        	return false;
-        }
-        else{
-        	return true;
-        }
-    	
+    	else{
+    		//if now it's not sleeping, we need to move it to the bed 
+    		if(entity.bedPosition==null)
+    			return false;
+    		else
+    			return true;
+    		
+    	}    	
     }
 
     /**
@@ -47,17 +46,16 @@ public class VillagerAISleep extends EntityAIBase
     	 if (this.entity.getRNG().nextInt(60) != 0){
              return true;
          }
-    	 else{
-    		 return VillageTime.isLateNight(this.entity.worldObj);
+    	 else{    		 
+    		 return (VillageTime.isLateNight(this.entity.worldObj) && this.entity.isNearBed());
     	 }
         
     }
 
-    @Override
 	public void updateTask() {
-		
-		super.updateTask();
-		
+		if(!this.entity.getSleeping() && this.entity.isNearBed()){
+			this.entity.setSleeping(true);
+		}
 	}
     
     /**
@@ -65,13 +63,16 @@ public class VillagerAISleep extends EntityAIBase
      */
     public void startExecuting()
     {
-    	System.out.println("start sleeping!");
-        this.entity.setSleeping(true);
+    	if(!this.entity.getSleeping()){
+    		this.entity.getNavigator().tryMoveToXYZ(this.entity.bedPosition.xCoord + 0.5D,
+								    				this.entity.bedPosition.yCoord + 1.0D,
+								    				this.entity.bedPosition.zCoord + 0.5D,
+								    				ConfigVillager.VillagerMoveSpeed);
+    	}
     }
 
 	@Override
 	public void resetTask() {
-		System.out.println("false sleeping!");
 		this.entity.setSleeping(false);
 	}
     

@@ -9,4 +9,6 @@ public class ConfigVillager {
 	public static final int AIWanderDistanceMaxNearBuilding = 5;
 	public static final int AIWanderDistanceMaxY = 3; 
 	public static final int ALWanderInBuildingWallOffset = 2;
+	
+	public static final double VillagerMoveSpeed = 0.35D;
 }
