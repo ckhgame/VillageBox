@@ -220,8 +220,9 @@ public class EntityVBVillager extends EntityAgeable {
 		super(world);
 
 		this.setSize(0.6F, 1.8F);
-		this.getNavigator().setBreakDoors(false);
 		this.getNavigator().setAvoidsWater(true);
+		this.getNavigator().setBreakDoors(true);
+		this.getNavigator().setEnterDoors(true);
 		// this.tasks.addTask(0, new EntityAISwimming(this));
 		// this.tasks.addTask(1, new EntityAIAvoidEntity(this,
 		// EntityZombie.class, 8.0F, 0.6D, 0.6D));

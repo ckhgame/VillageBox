@@ -3,18 +3,24 @@ package com.ckhgame.villagebento.event;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.block.ModBlocks;
+import com.ckhgame.villagebento.config.ConfigVillage;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.PlayerMsg;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
+import net.minecraftforge.event.entity.player.FillBucketEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 
-public class EventBlocks {
+public class EventVillageProtection {
 	
 	private ArrayList<Block> blockWhiteList = null;
 	private void initBlockWhiteList(){
@@ -91,6 +97,53 @@ public class EventBlocks {
 	}
 	
 	
+	@SubscribeEvent
+    public void blockInteractEvent(PlayerInteractEvent event) {
+		
+		
+		//can not use 
+		ItemStack hold = event.entityPlayer.getHeldItem();
+		if(hold!= null && (hold.getItem() == Items.flint_and_steel | hold.getItem() == Items.fire_charge)){
+			
+			System.out.println(event.world.getBlock( event.x,  event.y,  event.z).getUnlocalizedName());
+			
+			DataVillageBento dataVB = DataVillageBento.get();
+			double x = event.x;
+			double y = event.y;
+			double z = event.z;
+			double s = ConfigVillage.FireProhibitDistance;
+			Vec3 vpos = Vec3.createVectorHelper(x,y,z);
+			for(DataVillage dv : dataVB.mapDataVillage.values()){
+				if(HelperDataVB.isNearVillage(dv,x,z,s)){
+					for(DataBuilding db : dv.mapDataBuilding.values()){
+						if(HelperDataVB.isNearBuilding(db,x,y,z,s)){
+							PlayerMsg.send(event.entityPlayer, "Can not set fire near any village building...");
+							event.setCanceled(true);
+							return;
+						}
+					}
+				}
+			}
+		}
+    }
+	
+	@SubscribeEvent
+    public void fillBucketEvent(FillBucketEvent event) {
+		
+		DataVillageBento dataVB = DataVillageBento.get();
+		
+		for(DataVillage dv : dataVB.mapDataVillage.values()){
+			if(HelperDataVB.isInVillage(dv,event.target.blockX,event.target.blockZ)){
+				for(DataBuilding db : dv.mapDataBuilding.values()){
+					if(HelperDataVB.inInBuilding(db,event.target.blockX,event.target.blockY,event.target.blockZ)){
+						PlayerMsg.send(event.entityPlayer, "Bukkets are not allowed here....");
+						event.setCanceled(true);
+						return;
+					}
+				}
+			}
+		}
+    }
 	
 	
 	
