@@ -6,6 +6,7 @@ import com.ckhgame.villagebento.block.BlockVillageBuilding;
 import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -14,9 +15,10 @@ public class ItemBlockVillageBuilding extends ItemBlock{
 
 	BlockVillageBuilding blockVillageBuilding;
 	
-	public ItemBlockVillageBuilding(BlockVillageBuilding p_i45328_1_) {
-		super(p_i45328_1_);
-		// TODO Auto-generated constructor stub
+	public ItemBlockVillageBuilding(Block block) {
+		super(block);
+
+		blockVillageBuilding = (BlockVillageBuilding)block;
 	}
 
 	@Override
