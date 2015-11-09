@@ -11,7 +11,7 @@ import net.minecraft.util.Vec3;
  * 
  * @author ckhgame
  * params:
- * 1.enttiyVillagerID (int)
+ * 1.enttiyVillagerID (Integer)
  * 2.isSleeping
  */
 public class SActionUpdateVillagerSleep extends Action {
@@ -23,11 +23,11 @@ public class SActionUpdateVillagerSleep extends Action {
 
 	@Override
 	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int enttiyVillagerID = (int)info[0];
-		boolean isSleeping = (boolean)info[1];
-		int bedX = (int)info[2];
-		int bedY = (int)info[3];
-		int bedZ = (int)info[4];
+		int enttiyVillagerID = (Integer)info[0];
+		boolean isSleeping = (Boolean)info[1];
+		int bedX = (Integer)info[2];
+		int bedY = (Integer)info[3];
+		int bedZ = (Integer)info[4];
 		buf.writeInt(enttiyVillagerID);
 		buf.writeBoolean(isSleeping);
 		buf.writeInt(bedX);
@@ -48,11 +48,11 @@ public class SActionUpdateVillagerSleep extends Action {
 	@Override
 	public Object[] resolveRequest(Object[] info) {
 
-		int enttiyVillagerID = (int)info[0];
-		boolean isSleeping = (boolean)info[1];
-		int bedX = (int)info[2];
-		int bedY = (int)info[3];
-		int bedZ = (int)info[4];
+		int enttiyVillagerID = (Integer)info[0];
+		boolean isSleeping = (Boolean)info[1];
+		int bedX = (Integer)info[2];
+		int bedY = (Integer)info[3];
+		int bedZ = (Integer)info[4];
 		
 		WorldClient wc = Minecraft.getMinecraft().theWorld;
 		if(wc.provider.dimensionId == 0){

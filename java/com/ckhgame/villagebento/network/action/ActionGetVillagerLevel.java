@@ -12,8 +12,8 @@ import net.minecraft.client.Minecraft;
  * 
  * @author ckhgame
  * params:
- * 1.villagerID (int)
- * 2.villageEntityID (int)
+ * 1.villagerID (Integer)
+ * 2.villageEntityID (Integer)
  */
 public class ActionGetVillagerLevel extends Action {
 	
@@ -24,8 +24,8 @@ public class ActionGetVillagerLevel extends Action {
 
 	@Override
 	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int villagerID = (int)info[0];
-		int villagerEntityID = (int)info[1];
+		int villagerID = (Integer)info[0];
+		int villagerEntityID = (Integer)info[1];
 		buf.writeInt(villagerID);
 		buf.writeInt(villagerEntityID);
 	}
@@ -40,8 +40,8 @@ public class ActionGetVillagerLevel extends Action {
 	@Override
 	public Object[] resolveRequest(Object[] info) {
 
-		int villagerID = (int)info[0];
-		int villagerEntityID = (int)info[1];
+		int villagerID = (Integer)info[0];
+		int villagerEntityID = (Integer)info[1];
 		
 		DataVillager dvr = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID);
 		int villagerLevel = dvr.level;
@@ -53,9 +53,9 @@ public class ActionGetVillagerLevel extends Action {
 	@Override
 	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
-		int villagerLevel = (int)info[0];
-		int villageExp = (int)info[1];
-		int villagerEntityID = (int)info[2];
+		int villagerLevel = (Integer)info[0];
+		int villageExp = (Integer)info[1];
+		int villagerEntityID = (Integer)info[2];
 		
 		buf.writeInt(villagerLevel);
 		buf.writeInt(villageExp);
@@ -78,9 +78,9 @@ public class ActionGetVillagerLevel extends Action {
 	@Override
 	public void onActionCompleted(Object[] result) {
 
-		int villagerLevel = (int)result[0];
-		int villageExp = (int)result[1];
-		int villagerEntityID = (int)result[2];
+		int villagerLevel = (Integer)result[0];
+		int villageExp = (Integer)result[1];
+		int villagerEntityID = (Integer)result[2];
 		
 		EntityVBVillager evr = (EntityVBVillager)Minecraft.getMinecraft().theWorld.getEntityByID(villagerEntityID);
 		evr.level = villagerLevel;

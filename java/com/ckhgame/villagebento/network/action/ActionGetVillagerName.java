@@ -10,7 +10,7 @@ import io.netty.buffer.ByteBuf;
  * 
  * @author ckhgame
  * params:
- * 1.villagerID (int)
+ * 1.villagerID (Integer)
  */
 public class ActionGetVillagerName extends Action {
 	
@@ -21,7 +21,7 @@ public class ActionGetVillagerName extends Action {
 
 	@Override
 	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int villagerID = (int)info[0];
+		int villagerID = (Integer)info[0];
 		buf.writeInt(villagerID);
 	}
 
@@ -34,7 +34,7 @@ public class ActionGetVillagerName extends Action {
 	@Override
 	public Object[] resolveRequest(Object[] info) {
 
-		int villagerID = (int)info[0];
+		int villagerID = (Integer)info[0];
 		
 		String villagerName = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID).name;
 		

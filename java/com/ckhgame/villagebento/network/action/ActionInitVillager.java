@@ -14,7 +14,7 @@ import net.minecraft.server.MinecraftServer;
  * 
  * @author ckhgame
  * params:
- * 1.villageEntityID (int)
+ * 1.villageEntityID (Integer)
  */
 public class ActionInitVillager extends Action {
 	
@@ -25,7 +25,7 @@ public class ActionInitVillager extends Action {
 
 	@Override
 	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int villagerEntityID = (int)info[0];
+		int villagerEntityID = (Integer)info[0];
 		buf.writeInt(villagerEntityID);
 	}
 
@@ -38,7 +38,7 @@ public class ActionInitVillager extends Action {
 	@Override
 	public Object[] resolveRequest(Object[] info) {
 
-		int villagerEntityID = (int)info[0];
+		int villagerEntityID = (Integer)info[0];
 		
 		//(EntityVBVillager)MinecraftTarget.getTarget().worldTargetForDimension(0).entity
 		int villagerID = ((EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(villagerEntityID)).dataVillagerID;
@@ -61,10 +61,10 @@ public class ActionInitVillager extends Action {
 	@Override
 	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
-		int villagerID = (int)info[0];
-		int villagerProfession = (int)info[1];
+		int villagerID = (Integer)info[0];
+		int villagerProfession = (Integer)info[1];
 		String villagerName = (String)info[2];
-		int villagerEntityID = (int)info[3];
+		int villagerEntityID = (Integer)info[3];
 		
 		buf.writeInt(villagerID);
 		buf.writeInt(villagerProfession);
@@ -89,10 +89,10 @@ public class ActionInitVillager extends Action {
 	@Override
 	public void onActionCompleted(Object[] result) {
 
-		int villagerID = (int)result[0];
-		int villagerProfession = (int)result[1];
+		int villagerID = (Integer)result[0];
+		int villagerProfession = (Integer)result[1];
 		String villagerName = (String)result[2];
-		int villagerEntityID = (int)result[3];
+		int villagerEntityID = (Integer)result[3];
 		
 		EntityVBVillager evr = (EntityVBVillager)Minecraft.getMinecraft().theWorld.getEntityByID(villagerEntityID);
 		

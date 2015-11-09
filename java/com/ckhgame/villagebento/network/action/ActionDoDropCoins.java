@@ -16,8 +16,8 @@ import net.minecraft.server.MinecraftServer;
  * 
  * @author ckhgame
  * params:
- * 1.entityPlayerID (int)
- * 2.dropAmount (int)
+ * 1.entityPlayerID (Integer)
+ * 2.dropAmount (Integer)
  */
 public class ActionDoDropCoins extends Action {
 	
@@ -28,8 +28,8 @@ public class ActionDoDropCoins extends Action {
 
 	@Override
 	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int entityPlayerID = (int)info[0];
-		int dropAmount = (int)info[1];
+		int entityPlayerID = (Integer)info[0];
+		int dropAmount = (Integer)info[1];
 		buf.writeInt(entityPlayerID);
 		buf.writeInt(dropAmount);
 	}
@@ -44,8 +44,8 @@ public class ActionDoDropCoins extends Action {
 	@Override
 	public Object[] resolveRequest(Object[] info) {
 
-		int entityPlayerID = (int)info[0];
-		int dropAmount = (int)info[1];
+		int entityPlayerID = (Integer)info[0];
+		int dropAmount = (Integer)info[1];
 		
 		EntityPlayer entityPlayer = (EntityPlayer)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(entityPlayerID);
 		

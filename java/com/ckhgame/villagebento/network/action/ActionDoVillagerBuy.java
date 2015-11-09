@@ -19,8 +19,8 @@ import net.minecraft.server.MinecraftServer;
  * 
  * @author ckhgame
  * params:
- * 1.villagerID (int)
- * 2.EntiryPlayerID (int)
+ * 1.villagerID (Integer)
+ * 2.EntiryPlayerID (Integer)
  * 3.itemBuy (ItemStack)
  * 
  *  result:
@@ -35,8 +35,8 @@ public class ActionDoVillagerBuy extends Action {
 
 	@Override
 	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int villagerID = (int)info[0];
-		int entityPlayerID = (int)info[1];
+		int villagerID = (Integer)info[0];
+		int entityPlayerID = (Integer)info[1];
 		ItemStack itemStack = (ItemStack)info[2];
 		buf.writeInt(villagerID);
 		buf.writeInt(entityPlayerID);
@@ -55,8 +55,8 @@ public class ActionDoVillagerBuy extends Action {
 	@Override
 	public Object[] resolveRequest(Object[] info) {
 
-		int villagerID = (int)info[0];
-		int entityPlayerID = (int)info[1];
+		int villagerID = (Integer)info[0];
+		int entityPlayerID = (Integer)info[1];
 		ItemStack itemBuy = (ItemStack)info[2];
 		
 		EntityPlayer entityPlayer = (EntityPlayer)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(entityPlayerID);
@@ -75,9 +75,9 @@ public class ActionDoVillagerBuy extends Action {
 	@Override
 	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
-		int profession = (int)info[0];
+		int profession = (Integer)info[0];
 		ItemStack[] itemStacks = (ItemStack[])info[1];	
-		int buyResult = (int)info[2];
+		int buyResult = (Integer)info[2];
 		
 		buf.writeInt(profession);
 		buf.writeInt(itemStacks.length);
@@ -106,9 +106,9 @@ public class ActionDoVillagerBuy extends Action {
 	@Override
 	public void onActionCompleted(Object[] result) {
 
-		int profession = (int)result[0];	
+		int profession = (Integer)result[0];	
 		ItemStack[] itemStacks = (ItemStack[])result[1];	
-		int buyResult = (int)result[2];
+		int buyResult = (Integer)result[2];
 		
 		Villager vr = Villager.registry.get(profession);
 		VillagerCompBuy vcBuy = (VillagerCompBuy)vr.findVillagerComponentByClass(VillagerCompBuy.class);

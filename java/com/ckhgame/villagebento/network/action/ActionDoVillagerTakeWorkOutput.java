@@ -18,13 +18,13 @@ import net.minecraft.server.MinecraftServer;
  * 
  * @author ckhgame
  * params:
- * 1.villagerID (int)
- * 2.EntiryPlayerID (int)
+ * 1.villagerID (Integer)
+ * 2.EntiryPlayerID (Integer)
  * result:
  * 1. playerName(String)
- * 2. workIdx (int)
- * 3. hoursLeft (int)
- * 3. output ItemStack[] (int)
+ * 2. workIdx (Integer)
+ * 3. hoursLeft (Integer)
+ * 3. output ItemStack[] (Integer)
  */
 public class ActionDoVillagerTakeWorkOutput extends Action {
 	
@@ -35,8 +35,8 @@ public class ActionDoVillagerTakeWorkOutput extends Action {
 
 	@Override
 	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int villagerID = (int)info[0];
-		int entityPlayerID = (int)info[1];
+		int villagerID = (Integer)info[0];
+		int entityPlayerID = (Integer)info[1];
 		buf.writeInt(villagerID);
 		buf.writeInt(entityPlayerID);
 	}
@@ -51,8 +51,8 @@ public class ActionDoVillagerTakeWorkOutput extends Action {
 	@Override
 	public Object[] resolveRequest(Object[] info) {
 
-		int villagerID = (int)info[0];
-		int entityPlayerID = (int)info[1];
+		int villagerID = (Integer)info[0];
+		int entityPlayerID = (Integer)info[1];
 		
 		DataVillageBento dataVB = DataVillageBento.get();
 		DataVillager dvr = HelperDataVB.findVillagerByID(dataVB, villagerID);
@@ -70,9 +70,9 @@ public class ActionDoVillagerTakeWorkOutput extends Action {
 	@Override
 	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
-		int profession = (int)info[0];
+		int profession = (Integer)info[0];
 		Object[] work = (Object[])info[1];	
-		int takeOutputResult = (int)info[2];
+		int takeOutputResult = (Integer)info[2];
 		
 		buf.writeInt(profession);
 		
@@ -81,8 +81,8 @@ public class ActionDoVillagerTakeWorkOutput extends Action {
 		
 		if(hasWork){
 			ByteBufUtils.writeUTF8String(buf,(String)work[0]);
-			buf.writeInt((int)work[1]);
-			buf.writeInt((int)work[2]);
+			buf.writeInt((Integer)work[1]);
+			buf.writeInt((Integer)work[2]);
 			boolean hasOutput = (work[3] != null);
 			buf.writeBoolean(hasOutput);
 			if(hasOutput){
@@ -121,12 +121,12 @@ public class ActionDoVillagerTakeWorkOutput extends Action {
 	@Override
 	public void onActionCompleted(Object[] result) {
 
-		int profession = (int)result[0];	
+		int profession = (Integer)result[0];	
 		String playerName = result.length <= 1?null : (String)result[1];
-		int workIdx = result.length <= 1?null : (int)result[2];
-		int hoursLeft = result.length <= 1?null : (int)result[3];
+		int workIdx = result.length <= 1?null : (Integer)result[2];
+		int hoursLeft = result.length <= 1?null : (Integer)result[3];
 		ItemStack output = result.length <= 1?null : (ItemStack)result[4];
-		int takeOutputResult = (int)result[5];
+		int takeOutputResult = (Integer)result[5];
 		
 		Villager vr = Villager.registry.get(profession);
 		VillagerCompWork vcWork = (VillagerCompWork)vr.findVillagerComponentByClass(VillagerCompWork.class);

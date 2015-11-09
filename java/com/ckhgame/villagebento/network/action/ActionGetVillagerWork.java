@@ -18,12 +18,12 @@ import net.minecraft.item.ItemStack;
  * 
  * @author ckhgame
  * params:
- * 1.villagerID (int)
+ * 1.villagerID (Integer)
  * result:
  * 1. playerName(String)
- * 2. workIdx (int)
- * 3. hoursLeft (int)
- * 3. output ItemStack[] (int)
+ * 2. workIdx (Integer)
+ * 3. hoursLeft (Integer)
+ * 3. output ItemStack[] (Integer)
  */
 public class ActionGetVillagerWork extends Action {
 	
@@ -34,7 +34,7 @@ public class ActionGetVillagerWork extends Action {
 
 	@Override
 	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int villagerID = (int)info[0];
+		int villagerID = (Integer)info[0];
 		buf.writeInt(villagerID);
 	}
 
@@ -47,7 +47,7 @@ public class ActionGetVillagerWork extends Action {
 	@Override
 	public Object[] resolveRequest(Object[] info) {
 
-		int villagerID = (int)info[0];
+		int villagerID = (Integer)info[0];
 		
 		DataVillager dvr = HelperDataVB.findVillagerByID(DataVillageBento.get(), villagerID);
 		
@@ -59,7 +59,7 @@ public class ActionGetVillagerWork extends Action {
 	@Override
 	public void onTargetSend(ByteBuf buf, Object[] info) {
 		
-		int profession = (int)info[0];
+		int profession = (Integer)info[0];
 		Object[] work = (Object[])info[1];	
 		
 		buf.writeInt(profession);
@@ -69,8 +69,8 @@ public class ActionGetVillagerWork extends Action {
 		
 		if(hasWork){
 			ByteBufUtils.writeUTF8String(buf,(String)work[0]);
-			buf.writeInt((int)work[1]);
-			buf.writeInt((int)work[2]);
+			buf.writeInt((Integer)work[1]);
+			buf.writeInt((Integer)work[2]);
 			boolean hasOutput = (work[3] != null);
 			buf.writeBoolean(hasOutput);
 			if(hasOutput){
@@ -105,10 +105,10 @@ public class ActionGetVillagerWork extends Action {
 	@Override
 	public void onActionCompleted(Object[] result) {
 
-		int profession = (int)result[0];	
+		int profession = (Integer)result[0];	
 		String playerName = result.length <= 1?null : (String)result[1];
-		int workIdx = result.length <= 1?null : (int)result[2];
-		int hoursLeft = result.length <= 1?null : (int)result[3];
+		int workIdx = result.length <= 1?null : (Integer)result[2];
+		int hoursLeft = result.length <= 1?null : (Integer)result[3];
 		ItemStack output = result.length <= 1?null : (ItemStack)result[4];
 		
 		Villager vr = Villager.registry.get(profession);
