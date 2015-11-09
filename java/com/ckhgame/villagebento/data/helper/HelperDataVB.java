@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.data.helper;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.building.builder.RestrictionExceptions;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.config.ConfigRendering;
 import com.ckhgame.villagebento.config.ConfigVillage;
@@ -430,6 +431,60 @@ public class HelperDataVB {
 		}
 		
 		return bs;
+	}
+	
+	
+	
+	
+	//---------check position------------------
+	
+	public static boolean isInVillage(DataVillage dv,int x,int z){
+		if(	x < dv.cacheVillageBoundary.minX ||
+				x > dv.cacheVillageBoundary.maxX ||
+				z < dv.cacheVillageBoundary.minZ ||
+				z > dv.cacheVillageBoundary.maxZ){
+				return false;
+			}
+			return true;
+	}
+	
+	public static boolean isNearVillage(DataVillage dv,double x,double z,double d){
+		
+		if(	x < dv.cacheVillageBoundary.minX - d ||
+			x > dv.cacheVillageBoundary.maxX + d ||
+			z < dv.cacheVillageBoundary.minZ - d ||
+			z > dv.cacheVillageBoundary.maxZ + d){
+			return false;
+		}
+		return true;
+	}
+	
+	public static boolean inInBuilding(DataBuilding db,int x,int y,int z){
+		//if this building filed is in restriction exception list, we just ignore it
+		if(RestrictionExceptions.hasBuildingException(db.id))
+			return false;
+		
+		if(	x < db.x - db.sizeX || x > db.x + db.sizeX ||
+			z < db.z - db.sizeZ || z > db.z + db.sizeZ ||
+			y < db.y - ConfigBuilding.BuildingGroundWorkDepth || y >= db.y + ConfigBuilding.BuildingMaxHeight){
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean isNearBuilding(DataBuilding db,double x,double y,double z,double d){
+		//if this building filed is in restriction exception list, we just ignore it
+		if(RestrictionExceptions.hasBuildingException(db.id))
+			return false;
+		
+		if(	x < db.x - db.sizeX - d || x > db.x + db.sizeX + d + 1 ||
+			z < db.z - db.sizeZ - d || z > db.z + db.sizeZ + d + 1||
+			y < db.y - ConfigBuilding.BuildingGroundWorkDepth - d || y >= db.y + ConfigBuilding.BuildingMaxHeight + d + 1){
+			return false;
+		}
+		
+		return true;
 	}
 
 }
