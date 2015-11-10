@@ -3,15 +3,23 @@ package com.ckhgame.villagebento.building.scanning;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-import net.minecraft.world.World;
 
 public class BuildingPrefab {
 	
 	public ArrayList<BlockTypePosMetadata> blocks = new ArrayList<BlockTypePosMetadata>();
+	public ArrayList<Entity> entities = new ArrayList<Entity>();
+	public int bX;
+	public int bY;
+	public int bZ;
 	
 	public void addblock(BlockTypePosMetadata b){
 		blocks.add(b);
+	}
+	
+	public void addEntity(Entity e){
+		entities.add(e);
 	}
 	
 	public void sort(){

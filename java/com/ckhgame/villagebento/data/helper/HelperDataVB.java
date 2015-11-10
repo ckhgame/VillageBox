@@ -486,5 +486,11 @@ public class HelperDataVB {
 		
 		return true;
 	}
+	
+	
+	public static AxisAlignedBB getBuildingAABB(DataBuilding db){
+		return AxisAlignedBB.getBoundingBox(db.x - db.sizeX, db.y - ConfigBuilding.BuildingGroundWorkDepth, db.z - db.sizeZ, 
+											db.x + db.sizeX+1, db.y + ConfigBuilding.BuildingMaxHeight, db.z + db.sizeZ+1);
+	}
 
 }

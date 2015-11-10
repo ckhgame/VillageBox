@@ -5,12 +5,20 @@ import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.Vec3Int;
 import com.ckhgame.villagebento.villager.Villager;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.item.EntityItemFrame;
+import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.tileentity.TileEntityFlowerPot;
+import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -22,9 +30,7 @@ public class BuildingBuilder {
 			instance = new BuildingBuilder();
 		return instance;
 	}
-	
-	
-	
+
 	private World world;
 	private EntityPlayer player;
 	private int cx, cy, cz;
@@ -98,6 +104,60 @@ public class BuildingBuilder {
 											data.z+fz,
 											BlockDirection.fix(block, metadata, facing),
 											2);
+	}
+	
+	private Vec3Int getFinalPos(int dx, int dy, int dz){
+		Vec3Int fVec = new Vec3Int();
+		fVec.x = dx;
+		fVec.y = dy;
+		fVec.z = dz;
+		
+		switch(facing){
+		case 1://South
+			fVec.x = -dz;
+			fVec.z = dx;
+			break;
+		case 2://West
+			fVec.x = -dx;
+			fVec.z = -dz;
+			break;
+		case 3://North
+			fVec.x = dz;
+			fVec.z = -dx;
+		case 0://East
+			break;
+			default://East
+				break;
+		}
+		
+		return fVec;
+	}
+	
+	public void addTileEntityPot(int dx, int dy, int dz,int itemID, int itemData){
+		Vec3Int fv = getFinalPos(dx,dy,dz);
+		TileEntityFlowerPot tePot = new TileEntityFlowerPot(Item.getItemById(itemID),itemData);
+		//dir
+		world.setTileEntity(data.x + fv.x, data.y + fv.y, data.z + fv.z, tePot);
+	}
+	
+	public void addTileEntitySign(int dx, int dy, int dz,String l1,String l2,String l3,String l4){
+		Vec3Int fv = getFinalPos(dx,dy,dz);
+		TileEntitySign teSign = new TileEntitySign();
+		teSign.signText = new String[]{l1,l2,l3,l4};
+		world.setTileEntity(data.x + fv.x, data.y + fv.y, data.z + fv.z, teSign);
+	}
+	
+	public void addEntityPainting(int dx, int dy,int dz,int dir,String artName){
+		Vec3Int fv = getFinalPos(dx,dy,dz);
+		EntityPainting ePainting = new EntityPainting(world,data.x + fv.x, data.y + fv.y, data.z + fv.z,dir,artName);
+		world.spawnEntityInWorld(ePainting);
+	}
+	
+	public void addEntityItemFrame(int dx, int dy, int dz, int dir, int itemID){
+		Vec3Int fv = getFinalPos(dx,dy,dz);
+		EntityItemFrame eItemFrame = new EntityItemFrame(world,data.x + fv.x, data.y + fv.y, data.z + fv.z,dir);
+		eItemFrame.setDisplayedItem(new ItemStack(Item.getItemById(itemID)));
+		world.spawnEntityInWorld(eItemFrame);
 	}
 
 	/**

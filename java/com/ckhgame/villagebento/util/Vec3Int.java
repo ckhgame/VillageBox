@@ -3,7 +3,7 @@ package com.ckhgame.villagebento.util;
 import net.minecraft.util.Vec3;
 
 public class Vec3Int {
-	int x,y,z;
+	public int x,y,z;
 	
 	public Vec3 toVec3(){
 		return Vec3.createVectorHelper(x, y, z);
