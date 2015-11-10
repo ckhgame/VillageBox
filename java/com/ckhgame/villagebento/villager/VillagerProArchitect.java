@@ -2,8 +2,10 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
+import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
@@ -33,6 +35,17 @@ public class VillagerProArchitect extends Villager {
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
+        
+        VillagerCompBuy compBuy = new VillagerCompBuy();
+        compBuy.addItemBuy(ModBlocks.blockLargeMilitaryCamp, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockLargeTavern, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockLargeHotel, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockLargeCasino, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockLargeBakery, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockFlowerShop, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockPotionStore, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockGroundworkOnlyLarge, 1, 1, 0);
+        components.add(compBuy);
 
 	}
 

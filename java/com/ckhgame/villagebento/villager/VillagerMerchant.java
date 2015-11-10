@@ -2,17 +2,21 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
+import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
+
+import net.minecraft.init.Items;
 
 public class VillagerMerchant extends Villager {
 
 	@Override
 	public String getProfessionName() {
 		// TODO Auto-generated method stub
-		return "Merchant";
+		return "Potion Merchant";
 	}
 
 	@Override
@@ -27,12 +31,22 @@ public class VillagerMerchant extends Villager {
 		return true;
 	}
 
-	
+	@Override
+	protected void setExpBase(){
+		expBase = 20;
+		expE = 3;
+	}
 	
 	@Override
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
+        
+        VillagerCompBuy compBuy = new VillagerCompBuy();
+        compBuy.addItemBuy(Items.glass_bottle, 1, 10, 0);
+        compBuy.addItemBuy(Items.potionitem, 1, 3, 10);
+        compBuy.addItemBuy(Items.experience_bottle, 1, 1, 20);
+        components.add(compBuy);
 
 	}
 

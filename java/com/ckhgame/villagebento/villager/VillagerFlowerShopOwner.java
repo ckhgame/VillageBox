@@ -2,10 +2,14 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
+import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
+
+import net.minecraft.init.Items;
 
 public class VillagerFlowerShopOwner extends Villager {
 
@@ -33,6 +37,11 @@ public class VillagerFlowerShopOwner extends Villager {
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
+        
+        VillagerCompBuy compBuy = new VillagerCompBuy();
+        compBuy.addItemBuy(Items.flower_pot, 1, 5, 0);
+
+        components.add(compBuy);
 
 	}
 

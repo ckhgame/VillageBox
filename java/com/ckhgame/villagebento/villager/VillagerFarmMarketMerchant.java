@@ -7,6 +7,9 @@ import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+
 public class VillagerFarmMarketMerchant extends Villager {
 
 	@Override
@@ -27,12 +30,28 @@ public class VillagerFarmMarketMerchant extends Villager {
 		return true;
 	}
 
-	
+	@Override
+	protected void setExpBase(){
+		expBase = 20;
+		expE = 3;
+	}
 	
 	@Override
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
+        
+        VillagerCompSell compSell = new VillagerCompSell();
+        compSell.addItemSell(Items.reeds, 12, 22, 0);
+        compSell.addItemSell(Items.wheat, 12, 22, 0);
+        compSell.addItemSell(Items.apple, 5, 9, 0);
+        compSell.addItemSell(Items.carrot, 7, 12, 0, 5);
+        compSell.addItemSell(Items.potato, 7, 12, 0, 5);
+        compSell.addItemSell(Blocks.pumpkin, 5, 7, 0, 10);
+        compSell.addItemSell(Blocks.melon_block, 5, 7, 0, 10);
+        compSell.addItemSell(Items.golden_apple, 1, 3, 0, 15);
+        compSell.addItemSell(Items.golden_carrot, 1, 3, 0, 15);
+        components.add(compSell);
 
 	}
 

@@ -2,8 +2,10 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
+import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerCompWork;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -22,7 +24,7 @@ public class VillagerMinerAssistant extends Villager {
 	@Override
 	public String getProfessionDescription() {
 		// TODO Auto-generated method stub
-		return "Helping Mining things.......";
+		return "Sell Mining tools.......";
 	}
 
 	@Override
@@ -43,15 +45,18 @@ public class VillagerMinerAssistant extends Villager {
 
         components.add(new VillagerCompAbout());
         
-        VillagerCompWork compWork = new VillagerCompWork();
-        int workIdx;
-        workIdx = compWork.createWork("Not Enough Torch", "get some coal...",0 , 10, 15);
-        compWork.addWorkOutput(workIdx, Items.coal, 7, 15);
+  
+        VillagerCompBuy compBuy = new VillagerCompBuy();
+        compBuy.addItemBuy(Items.iron_pickaxe, 1, 3, 5);
+        compBuy.addItemBuy(Items.golden_pickaxe, 1, 2, 10);
+        compBuy.addItemBuy(Items.diamond_pickaxe, 1, 1, 25);
+        compBuy.addItemBuy(Blocks.ladder, 1, 32, 0);
+        compBuy.addItemBuy(Blocks.torch, 1, 32, 0);
+        compBuy.addItemBuy(Blocks.rail, 1, 32, 0);
+        compBuy.addItemBuy(Items.minecart, 1, 2, 0);
+        compBuy.addItemBuy(Items.compass, 1, 2, 0);
+        components.add(compBuy);
         
-        workIdx = compWork.createWork("Iron Finder", "a little bit iron taste..", 1, 10, 50);
-        compWork.addWorkOutput(workIdx, Blocks.iron_ore, 3, 5); 
-        
-        components.add(compWork);
 	}
 
 	@Override

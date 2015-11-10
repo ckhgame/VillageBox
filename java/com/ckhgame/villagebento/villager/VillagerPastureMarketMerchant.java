@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
+import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 
 public class VillagerPastureMarketMerchant extends Villager {
 
@@ -27,12 +31,24 @@ public class VillagerPastureMarketMerchant extends Villager {
 		return true;
 	}
 
-	
+	@Override
+	protected void setExpBase(){
+		expBase = 20;
+		expE = 3;
+	}
 	
 	@Override
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
+        
+        VillagerCompSell compSell = new VillagerCompSell();
+        compSell.addItemSell(Items.feather, 12, 23, 0);
+        compSell.addItemSell(Items.string, 12, 23, 0);
+        compSell.addItemSell(Items.egg, 8, 12, 0);
+        compSell.addItemSell(Blocks.wool, 5, 8, 5);
+        compSell.addItemSell(Items.milk_bucket, 5, 8, 8);
+        components.add(compSell);
 
 	}
 

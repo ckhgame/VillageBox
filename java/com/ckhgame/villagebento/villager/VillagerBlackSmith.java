@@ -2,10 +2,15 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
+import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 
 public class VillagerBlackSmith extends Villager {
 
@@ -27,12 +32,28 @@ public class VillagerBlackSmith extends Villager {
 		return true;
 	}
 
-	
+	@Override
+	protected void setExpBase(){
+		expBase = 20;
+		expE = 3;
+	}	
 	
 	@Override
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
+        
+        VillagerCompBuy compBuy = new VillagerCompBuy();
+        compBuy.addItemBuy(Items.iron_sword, 1, 3, 0);
+        compBuy.addItemBuy(Items.iron_axe, 1, 3, 0);
+        compBuy.addItemBuy(Items.golden_sword, 1, 3, 10);
+        compBuy.addItemBuy(Items.golden_axe, 1, 3, 10);
+        components.add(compBuy);
+        
+        VillagerCompSell compSell = new VillagerCompSell();
+        compSell.addItemSell(Items.iron_ingot, 30, 45, 0);
+        compSell.addItemSell(Items.gold_ingot, 20, 35, 10);
+        components.add(compSell);
 
 	}
 

@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
+import com.ckhgame.villagebento.villager.component.VillagerCompWork;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 
 public class VillagerSoldier extends Villager {
 
@@ -33,6 +37,14 @@ public class VillagerSoldier extends Villager {
 	public void createComponents(ArrayList<VillagerComponent> components) {
 
         components.add(new VillagerCompAbout());
+        
+        VillagerCompWork compWork = new VillagerCompWork();
+        int workIdx;
+        workIdx = compWork.createWork("Protect our homeland!", "Get somthing to prove..",0 , 18, 28);
+        compWork.addWorkOutput(workIdx, Items.rotten_flesh, 7, 12);
+        
+       
+        components.add(compWork);
 
 	}
 
