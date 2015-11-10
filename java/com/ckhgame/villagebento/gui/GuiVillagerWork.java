@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 
 public class GuiVillagerWork extends GuiVillager {
 	
-	private final int rowSize = 3;
+	private final int rowSize = 2;
 	
 	private boolean noData;
 	
@@ -93,14 +93,14 @@ public class GuiVillagerWork extends GuiVillager {
 		GL11.glDisable(GL11.GL_LIGHTING);
 		
 		//background
-		drawRect(left - 2, top - 2, left + 160 + 2, top + 24 + 2, 0xFF888888);	
-		drawRect(left, top, left + 160, top + 24, 0xFF666666);	
+		drawRect(left - 2, top - 2, left + 160 + 2, top + 40 + 2, 0xFF888888);	
+		drawRect(left, top, left + 160, top + 40, 0xFF666666);	
 		if(work != null){
 			//item name
 			fontRendererObj.drawString(work.name, left + 4, top + 4, 0xFFFFFFAA,true);
 			fontRendererObj.drawString(work.remark, left + 4, top + 14, 0xFFDDDDDD);
-			
-			this.drawRightedString(fontRendererObj, work.price + ", " + work.hours + "h", left + 112, top +4, 0xFFEEEEEE);
+			String priceAndHours = "price:" + work.price + ", hours:" + work.hours;
+			fontRendererObj.drawString(priceAndHours, left + 4, top + 28, 0xFFFFFFDD,true);
 			
 			if(!buttonRows[row].visible)
 				buttonRows[row].visible = true;
@@ -154,7 +154,7 @@ public class GuiVillagerWork extends GuiVillager {
 		Work work;
 		for(int i = 0;i<rowSize;i++){
 			work = (workList == null || currentIdx + i >= workList.length)? null : workList[currentIdx + i];
-			drawWorkRow(fieldCompLeft + 4,fieldCompTop + 6 + 32 * i,work,i);
+			drawWorkRow(fieldCompLeft + 4,fieldCompTop + 6 + 48 * i,work,i);
 		}
 	}
 	
@@ -205,7 +205,7 @@ public class GuiVillagerWork extends GuiVillager {
 		//assign button ids
 		buttonRows = new GuiButton[rowSize];
 		for(int i = 0;i<rowSize;i++){
-			buttonRows[i] = new GuiButton(compStartButtonID++,fieldCompLeft + 120,fieldCompTop + 8 + 32 * i,40,20,"Start");
+			buttonRows[i] = new GuiButton(compStartButtonID++,fieldCompLeft + 120,fieldCompTop + 16 + 48 * i,40,20,"Start");
 			this.buttonList.add(buttonRows[i]);
 		}
 		
