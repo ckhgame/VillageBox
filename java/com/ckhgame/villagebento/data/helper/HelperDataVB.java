@@ -459,7 +459,7 @@ public class HelperDataVB {
 		return true;
 	}
 	
-	public static boolean inInBuilding(DataBuilding db,int x,int y,int z){
+	public static boolean isInBuilding(DataBuilding db,int x,int y,int z){
 		//if this building filed is in restriction exception list, we just ignore it
 		if(RestrictionExceptions.hasBuildingException(db.id))
 			return false;
@@ -487,6 +487,16 @@ public class HelperDataVB {
 		return true;
 	}
 	
+	
+	public static boolean isEntityInBuilding(DataBuilding db,Entity entity){
+		//if this building filed is in restriction exception list, we just ignore it
+		if(RestrictionExceptions.hasBuildingException(db.id))
+			return false;
+		
+		AxisAlignedBB aabb = getBuildingAABB(db);
+		
+		return aabb.isVecInside(Vec3.createVectorHelper(entity.posX, entity.posY, entity.posZ));
+	}
 	
 	public static AxisAlignedBB getBuildingAABB(DataBuilding db){
 		return AxisAlignedBB.getBoundingBox(db.x - db.sizeX, db.y - ConfigBuilding.BuildingGroundWorkDepth, db.z - db.sizeZ, 

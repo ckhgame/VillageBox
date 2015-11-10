@@ -12,9 +12,13 @@ import com.ckhgame.villagebento.util.PlayerMsg;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItemFrame;
+import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -46,7 +50,7 @@ public class EventVillageProtection {
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 				for(DataBuilding db : dv.mapDataBuilding.values()){
-					if(HelperDataVB.inInBuilding(db,event.x,event.y,event.z)){
+					if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
 						event.setCanceled(true);
 						return;
 					}
@@ -66,7 +70,7 @@ public class EventVillageProtection {
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 				for(DataBuilding db : dv.mapDataBuilding.values()){
-					if(HelperDataVB.inInBuilding(db,event.x,event.y,event.z)){
+					if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
 						event.setCanceled(true);
 						return;
 					}
@@ -98,9 +102,44 @@ public class EventVillageProtection {
 	
 	
 	@SubscribeEvent
-    public void blockInteractEvent(PlayerInteractEvent event) {
-		
-		
+    public void entityInteractEvent(EntityInteractEvent event) {	
+		Class c = event.target.getClass();
+		if(c == EntityPainting.class || c == EntityItemFrame.class){
+			DataVillageBento dataVB = DataVillageBento.get();
+			for(DataVillage dv : dataVB.mapDataVillage.values()){
+				if(HelperDataVB.isInVillage(dv,(int)event.target.posX,(int)event.target.posZ)){
+					for(DataBuilding db : dv.mapDataBuilding.values()){
+						if(HelperDataVB.isEntityInBuilding(db,event.target)){
+							event.setCanceled(true);
+							return;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+    public void entityAttackEvent(AttackEntityEvent event) {	
+		System.out.println("hhh");
+		Class c = event.target.getClass();
+		if(c == EntityPainting.class || c == EntityItemFrame.class){
+			DataVillageBento dataVB = DataVillageBento.get();
+			for(DataVillage dv : dataVB.mapDataVillage.values()){
+				if(HelperDataVB.isInVillage(dv,(int)event.target.posX,(int)event.target.posZ)){
+					for(DataBuilding db : dv.mapDataBuilding.values()){
+						if(HelperDataVB.isEntityInBuilding(db,event.target)){
+							event.setCanceled(true);
+							return;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+    public void blockInteractEvent(PlayerInteractEvent event) {	
 		//can not use 
 		ItemStack hold = event.entityPlayer.getHeldItem();
 		if(hold!= null && (hold.getItem() == Items.flint_and_steel | hold.getItem() == Items.fire_charge)){
@@ -125,6 +164,22 @@ public class EventVillageProtection {
 				}
 			}
 		}
+		
+		if(hold!= null && (hold.getItem().canItemEditBlocks())){
+			DataVillageBento dataVB = DataVillageBento.get();
+			
+			for(DataVillage dv : dataVB.mapDataVillage.values()){
+				if(HelperDataVB.isInVillage(dv,event.x,event.z)){
+					for(DataBuilding db : dv.mapDataBuilding.values()){
+						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
+							//PlayerMsg.send(event.entityPlayer, "Can not use this item here!");
+							event.setCanceled(true);
+							return;
+						}
+					}
+				}
+			}
+		}
     }
 	
 	@SubscribeEvent
@@ -135,7 +190,7 @@ public class EventVillageProtection {
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			if(HelperDataVB.isInVillage(dv,event.target.blockX,event.target.blockZ)){
 				for(DataBuilding db : dv.mapDataBuilding.values()){
-					if(HelperDataVB.inInBuilding(db,event.target.blockX,event.target.blockY,event.target.blockZ)){
+					if(HelperDataVB.isInBuilding(db,event.target.blockX,event.target.blockY,event.target.blockZ)){
 						PlayerMsg.send(event.entityPlayer, "Bukkets are not allowed here....");
 						event.setCanceled(true);
 						return;
