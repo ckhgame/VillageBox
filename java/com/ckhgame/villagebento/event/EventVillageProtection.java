@@ -165,14 +165,14 @@ public class EventVillageProtection {
 			}
 		}
 		
-		if(hold!= null && (hold.getItem().canItemEditBlocks())){
+		else if(hold!= null && (hold.getItem() == Items.painting || hold.getItem() == Items.item_frame)){
 			DataVillageBento dataVB = DataVillageBento.get();
 			
 			for(DataVillage dv : dataVB.mapDataVillage.values()){
 				if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
 						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
-							//PlayerMsg.send(event.entityPlayer, "Can not use this item here!");
+							PlayerMsg.send(event.entityPlayer, "You can't hang it here!");
 							event.setCanceled(true);
 							return;
 						}

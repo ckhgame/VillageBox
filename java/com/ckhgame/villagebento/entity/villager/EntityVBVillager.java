@@ -25,6 +25,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -243,21 +244,6 @@ public class EntityVBVillager extends EntityAgeable {
 		this.getNavigator().setAvoidsWater(true);
 		this.getNavigator().setBreakDoors(true);
 		this.getNavigator().setEnterDoors(true);
-		// this.tasks.addTask(0, new EntityAISwimming(this));
-		// this.tasks.addTask(1, new EntityAIAvoidEntity(this,
-		// EntityZombie.class, 8.0F, 0.6D, 0.6D));
-		// this.tasks.addTask(2, new EntityAIMoveIndoors(this));
-		// this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
-		// this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-		// this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this,
-		// 0.6D));
-		// this.tasks.addTask(9, new EntityAIWatchClosest2(this,
-		// EntityPlayer.class, 3.0F, 1.0F));
-		// this.tasks.addTask(9, new EntityAIWatchClosest2(this,
-		// EntityVillager.class, 5.0F, 0.02F));
-		// this.tasks.addTask(5, new VillagerAIWander(this, 2.6,10,7));
-		// this.tasks.addTask(10, new EntityAIWatchClosest(this,
-		// EntityLiving.class, 8.0F));
 	}
 
 	@Override
@@ -330,6 +316,12 @@ public class EntityVBVillager extends EntityAgeable {
 		isSleeping = p_70037_1_.getBoolean(ConfigData.KeyVillagerEntityIsSleeping);
 	}
 
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
+    }
+	
 	@Override
 	protected boolean canDespawn() {
 		// TODO Auto-generated method stub
