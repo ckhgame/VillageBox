@@ -11,4 +11,6 @@ public class ConfigVillager {
 	public static final int ALWanderInBuildingWallOffset = 2;
 	
 	public static final double VillagerMoveSpeed = 0.35D;
+	
+	public static final double MaxInteractDistanceSq = 16;
 }

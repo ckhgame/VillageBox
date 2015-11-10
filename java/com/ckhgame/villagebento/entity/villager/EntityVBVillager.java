@@ -2,7 +2,10 @@ package com.ckhgame.villagebento.entity.villager;
 
 import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWander;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
 import com.ckhgame.villagebento.config.ConfigData;
+import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
@@ -12,6 +15,7 @@ import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionInitVillager;
 import com.ckhgame.villagebento.network.action.SActionUpdateVillagerSleep;
 import com.ckhgame.villagebento.util.BlockFinder;
+import com.ckhgame.villagebento.util.PlayerMsg;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -19,11 +23,16 @@ import com.ckhgame.villagebento.villager.component.VillagerComponent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -206,9 +215,13 @@ public class EntityVBVillager extends EntityAgeable {
 	private void initAIs() {
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
-		this.tasks.addTask(2, new VillagerAIWander(this));
+		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
 		this.tasks.addTask(3, new VillagerAISleep(this));
-		this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+		
+		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+        this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVillager.class, 5.0F, 0.02F));
+        this.tasks.addTask(6, new VillagerAIWander(this));
+        this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 8.0F));
 	}
 
 	// ----------------------------------------
@@ -258,6 +271,7 @@ public class EntityVBVillager extends EntityAgeable {
 
 	public void setInteractTarget(EntityPlayer entityPlayer) {
 		this.interactTarget = entityPlayer;
+		this.getNavigator().clearPathEntity();
 	}
 
 	public EntityPlayer getInteractTarget() {
@@ -282,9 +296,19 @@ public class EntityVBVillager extends EntityAgeable {
 	public boolean interact(EntityPlayer p_70085_1_) {
 		if (this.worldObj.isRemote) {
 
-			this.setInteractTarget(p_70085_1_);
-			this.openVillagerGui();
-
+			if(this.getDistanceSqToEntity(p_70085_1_) <= ConfigVillager.MaxInteractDistanceSq){
+				
+				if(this.isSleeping){
+					PlayerMsg.send(p_70085_1_, "This villager is sleeping now...");
+				}
+				else{
+					this.setInteractTarget(p_70085_1_);
+					this.openVillagerGui();
+				}
+			}
+			else{
+				PlayerMsg.send(p_70085_1_, "too far from the villager..");
+			}
 		}
 		return true;
 	}

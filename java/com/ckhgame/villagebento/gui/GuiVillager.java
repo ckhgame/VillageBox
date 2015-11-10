@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -172,6 +174,20 @@ public abstract class GuiVillager extends GuiScreen {
 		return false;
 	}
 	
+	@Override
+	public void updateScreen() {
+		// TODO Auto-generated method stub
+		super.updateScreen();
+		
+		//auto close gui screen when villager is far away from the player
+		if(	this.entityVillager == null ||
+			this.entityVillager.getSleeping() ||
+			this.entityVillager.getDistanceSqToEntity(Minecraft.getMinecraft().thePlayer) > ConfigVillager.MaxInteractDistanceSq){
+			this.mc.displayGuiScreen((GuiScreen)null);
+			this.mc.setIngameFocus();
+		}
+		
+	}
 	public abstract String getButtonText();
 	public abstract void onDrawScreen();
 	public abstract void onInitGui();
