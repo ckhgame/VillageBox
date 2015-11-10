@@ -5,6 +5,7 @@ import java.lang.reflect.Modifier;
 import java.util.List;
 
 import com.ckhgame.villagebento.Main;
+import com.ckhgame.villagebento.building.builder.BuildingEntityList;
 import com.ckhgame.villagebento.building.scanning.BlockTypePosMetadata;
 import com.ckhgame.villagebento.building.scanning.BuildingPrefab;
 import com.ckhgame.villagebento.config.ConfigBuilding;
@@ -98,10 +99,7 @@ public class BlockBuildingScanner extends Block {
 			prefab.sort();
 			
 			//scan entityes
-			Class[] entityClasses = new Class[]{
-				EntityPainting.class,
-				EntityItemFrame.class
-			};
+			Class[] entityClasses = BuildingEntityList.get();
 			
 			AxisAlignedBB aabb = HelperDataVB.getBuildingAABB(bd);
 			for(Class c : entityClasses){

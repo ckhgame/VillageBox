@@ -235,6 +235,8 @@ public class EntityVBVillager extends EntityAgeable {
 		// TODO Auto-generated method stub
 		super.onUpdate();
 		updateVBVillager();
+		
+		System.out.println(this.worldObj.isRemote + "," + this.posY);
 	}
 
 	public EntityVBVillager(World world) {

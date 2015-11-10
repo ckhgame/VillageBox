@@ -1,5 +1,7 @@
 package com.ckhgame.villagebento.building.builder;
 
+import java.util.List;
+
 import com.ckhgame.villagebento.building.fixdirection.FixDirection;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -10,6 +12,7 @@ import com.ckhgame.villagebento.villager.Villager;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -162,6 +166,18 @@ public class BuildingBuilder {
 		world.spawnEntityInWorld(eItemFrame);
 	}
 
+	public void removeBuildingEntities(){
+		Class[] entityClasses = BuildingEntityList.get();
+		
+		AxisAlignedBB aabb = HelperDataVB.getBuildingAABB(data);
+		for(Class c : entityClasses){
+			List<Entity> es = world.getEntitiesWithinAABB(c, aabb);
+			for(Entity e : es){
+				world.removeEntity(e);
+			}
+		}
+	}
+	
 	/**
 	 * used on removing buildings
 	 */

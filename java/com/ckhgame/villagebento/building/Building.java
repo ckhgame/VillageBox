@@ -66,6 +66,7 @@ public abstract class Building implements IRegistrable {
 			bb.setData(db);	
 			if(HelperDataVB.removeBuildingData(dataVB, db.id)){
 				bb.buildGroundwork();
+				bb.removeBuildingEntities();
 				return true;
 			}
 		}
