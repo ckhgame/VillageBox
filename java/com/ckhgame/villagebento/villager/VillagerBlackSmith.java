@@ -46,13 +46,13 @@ public class VillagerBlackSmith extends Villager {
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(Items.iron_sword, 1, 3, 0);
         compBuy.addItemBuy(Items.iron_axe, 1, 3, 0);
-        compBuy.addItemBuy(Items.golden_sword, 1, 3, 10);
-        compBuy.addItemBuy(Items.golden_axe, 1, 3, 10);
+        compBuy.addItemBuy(Items.golden_sword, 1, 3, 3);
+        compBuy.addItemBuy(Items.golden_axe, 1, 3, 3);
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell();
-        compSell.addItemSell(Items.iron_ingot, 30, 45, 0);
-        compSell.addItemSell(Items.gold_ingot, 20, 35, 10);
+        compSell.addItemSell(Items.iron_ingot, 8, 12, 0);
+        compSell.addItemSell(Items.gold_ingot, 5, 8, 5);
         components.add(compSell);
 
 	}

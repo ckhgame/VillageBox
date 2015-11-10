@@ -48,19 +48,19 @@ public class VillagerFarmer extends Villager {
         workIdx = compWork.createWork("Basic of farming", "want to make bread?",0 , 10, 30);
         compWork.addWorkOutput(workIdx, Items.wheat, 5, 10);
         
-        workIdx = compWork.createWork("Get more carrots!", "Vegitables are healthy", 5, 15, 50);
+        workIdx = compWork.createWork("Get more carrots!", "Vegitables are healthy", 2, 15, 50);
         compWork.addWorkOutput(workIdx, Items.carrot, 5, 8); 
         
-        workIdx = compWork.createWork("Wanna baking potatos?", "Vegitables are healthy", 5, 15, 50);
+        workIdx = compWork.createWork("Wanna baking potatos?", "Vegitables are healthy", 3, 15, 50);
         compWork.addWorkOutput(workIdx, Items.potato, 5, 8); 
         
         workIdx = compWork.createWork("Pick some apples", "An apple a day keeps teh doctor away!", 5, 15, 50);
         compWork.addWorkOutput(workIdx, Items.apple, 5, 8); 
         
-        workIdx = compWork.createWork("Harvest Time!", "Ready for Autumn's festivals!", 10, 20, 90);
+        workIdx = compWork.createWork("Harvest Time!", "Ready for Autumn's festivals!", 7, 20, 90);
         compWork.addWorkOutput(workIdx, Blocks.pumpkin, 8, 12); 
         
-        workIdx = compWork.createWork("Summer fest!", "Melons!", 10, 20, 102);
+        workIdx = compWork.createWork("Summer fest!", "Melons!", 7, 20, 102);
         compWork.addWorkOutput(workIdx, Blocks.melon_block, 8, 12); 
         
         components.add(compWork);
@@ -68,13 +68,13 @@ public class VillagerFarmer extends Villager {
         
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(Items.iron_hoe, 1, 1, 0);
-        compBuy.addItemBuy(Items.golden_hoe, 1, 1, 15);
+        compBuy.addItemBuy(Items.golden_hoe, 1, 1, 3);
         compBuy.addItemBuy(Items.wheat_seeds, 1, 5, 0);
-        compBuy.addItemBuy(Items.pumpkin_seeds, 1, 2, 15);
-        compBuy.addItemBuy(Items.melon_seeds, 1, 2, 18);
-        compBuy.addItemBuy(Items.carrot, 1, 2, 18);
-        compBuy.addItemBuy(Items.potato, 1, 2, 18);
-        compBuy.addItemBuy(Items.apple, 1, 1, 20);
+        compBuy.addItemBuy(Items.pumpkin_seeds, 1, 2, 2);
+        compBuy.addItemBuy(Items.melon_seeds, 1, 2, 3);
+        compBuy.addItemBuy(Items.carrot, 1, 2, 5);
+        compBuy.addItemBuy(Items.potato, 1, 2, 5);
+        compBuy.addItemBuy(Items.apple, 1, 1, 8);
 
         components.add(compBuy);
 

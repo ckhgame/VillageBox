@@ -45,12 +45,12 @@ public class VillagerFarmMarketMerchant extends Villager {
         compSell.addItemSell(Items.reeds, 12, 22, 0);
         compSell.addItemSell(Items.wheat, 12, 22, 0);
         compSell.addItemSell(Items.apple, 5, 9, 0);
-        compSell.addItemSell(Items.carrot, 7, 12, 0, 5);
-        compSell.addItemSell(Items.potato, 7, 12, 0, 5);
-        compSell.addItemSell(Blocks.pumpkin, 5, 7, 0, 10);
-        compSell.addItemSell(Blocks.melon_block, 5, 7, 0, 10);
-        compSell.addItemSell(Items.golden_apple, 1, 3, 0, 15);
-        compSell.addItemSell(Items.golden_carrot, 1, 3, 0, 15);
+        compSell.addItemSell(Items.carrot, 7, 12, 0, 2);
+        compSell.addItemSell(Items.potato, 7, 12, 0, 2);
+        compSell.addItemSell(Blocks.pumpkin, 5, 7, 0, 3);
+        compSell.addItemSell(Blocks.melon_block, 5, 7, 0, 3);
+        compSell.addItemSell(Items.golden_apple, 1, 3, 0, 5);
+        compSell.addItemSell(Items.golden_carrot, 1, 3, 0, 5);
         components.add(compSell);
 
 	}

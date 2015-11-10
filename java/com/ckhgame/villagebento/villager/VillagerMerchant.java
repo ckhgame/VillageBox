@@ -44,8 +44,8 @@ public class VillagerMerchant extends Villager {
         
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(Items.glass_bottle, 1, 10, 0);
-        compBuy.addItemBuy(Items.potionitem, 1, 3, 10);
-        compBuy.addItemBuy(Items.experience_bottle, 1, 1, 20);
+        compBuy.addItemBuy(Items.potionitem, 1, 3, 3);
+        compBuy.addItemBuy(Items.experience_bottle, 1, 1, 8);
         components.add(compBuy);
 
 	}

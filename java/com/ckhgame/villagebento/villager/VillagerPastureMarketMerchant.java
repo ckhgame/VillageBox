@@ -46,8 +46,8 @@ public class VillagerPastureMarketMerchant extends Villager {
         compSell.addItemSell(Items.feather, 12, 23, 0);
         compSell.addItemSell(Items.string, 12, 23, 0);
         compSell.addItemSell(Items.egg, 8, 12, 0);
-        compSell.addItemSell(Blocks.wool, 5, 8, 5);
-        compSell.addItemSell(Items.milk_bucket, 5, 8, 8);
+        compSell.addItemSell(Blocks.wool, 5, 8, 3);
+        compSell.addItemSell(Items.milk_bucket, 5, 8, 5);
         components.add(compSell);
 
 	}

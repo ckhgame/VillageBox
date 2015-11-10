@@ -47,9 +47,9 @@ public class VillagerMinerAssistant extends Villager {
         
   
         VillagerCompBuy compBuy = new VillagerCompBuy();
-        compBuy.addItemBuy(Items.iron_pickaxe, 1, 3, 5);
-        compBuy.addItemBuy(Items.golden_pickaxe, 1, 2, 10);
-        compBuy.addItemBuy(Items.diamond_pickaxe, 1, 1, 25);
+        compBuy.addItemBuy(Items.iron_pickaxe, 1, 3, 0);
+        compBuy.addItemBuy(Items.golden_pickaxe, 1, 2, 3);
+        compBuy.addItemBuy(Items.diamond_pickaxe, 1, 1, 5);
         compBuy.addItemBuy(Blocks.ladder, 1, 32, 0);
         compBuy.addItemBuy(Blocks.torch, 1, 32, 0);
         compBuy.addItemBuy(Blocks.rail, 1, 32, 0);

@@ -51,10 +51,10 @@ public class VillagerMiner extends Villager {
         workIdx = compWork.createWork("Iron Finder", "a little bit iron taste..", 1, 10, 50);
         compWork.addWorkOutput(workIdx, Blocks.iron_ore, 5, 8); 
         
-        workIdx = compWork.createWork("Need more Gold", "Gold mountains!", 1, 12, 120);
+        workIdx = compWork.createWork("Need more Gold", "Gold mountains!", 3, 12, 120);
         compWork.addWorkOutput(workIdx, Blocks.gold_ore, 3, 6); 
         
-        workIdx = compWork.createWork("Diamond lover", "I think you need get a ring...", 1, 20, 180);
+        workIdx = compWork.createWork("Diamond lover", "I think you need get a ring...", 5, 20, 180);
         compWork.addWorkOutput(workIdx, Blocks.diamond_ore, 1, 4); 
         
         components.add(compWork);
