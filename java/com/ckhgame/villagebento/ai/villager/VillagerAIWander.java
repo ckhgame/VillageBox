@@ -29,7 +29,6 @@ public class VillagerAIWander extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        	
         Vec3 vec3 = null;
         if(VillageTime.isDayTime(this.entity.worldObj)){
         	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
@@ -63,7 +62,8 @@ public class VillagerAIWander extends EntityAIBase
      */
     public boolean continueExecuting()
     {
-    	
+    	if(this.entity.getNavigator().noPath()){
+    	}
         return !this.entity.getNavigator().noPath();
     }
 

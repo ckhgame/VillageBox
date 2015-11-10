@@ -12,5 +12,6 @@ public class ConfigVillager {
 	
 	public static final double VillagerMoveSpeed = 0.35D;
 	
-	public static final double MaxInteractDistanceSq = 16;
+	public static final int MaxInteractDistance = 3;
+	public static final int MaxInteractDistanceSq = MaxInteractDistance * MaxInteractDistance;
 }

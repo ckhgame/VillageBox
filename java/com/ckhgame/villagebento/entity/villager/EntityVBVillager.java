@@ -219,7 +219,7 @@ public class EntityVBVillager extends EntityAgeable {
 		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
 		this.tasks.addTask(3, new VillagerAISleep(this));
 		
-		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
         this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVillager.class, 5.0F, 0.02F));
         this.tasks.addTask(6, new VillagerAIWander(this));
         this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 8.0F));
@@ -236,7 +236,7 @@ public class EntityVBVillager extends EntityAgeable {
 		super.onUpdate();
 		updateVBVillager();
 		
-		System.out.println(this.worldObj.isRemote + "," + this.posY);
+	//	System.out.println(this.worldObj.isRemote + "," + this.posY);
 	}
 
 	public EntityVBVillager(World world) {
@@ -259,7 +259,6 @@ public class EntityVBVillager extends EntityAgeable {
 
 	public void setInteractTarget(EntityPlayer entityPlayer) {
 		this.interactTarget = entityPlayer;
-		this.getNavigator().clearPathEntity();
 	}
 
 	public EntityPlayer getInteractTarget() {
@@ -282,22 +281,27 @@ public class EntityVBVillager extends EntityAgeable {
 	}
 
 	public boolean interact(EntityPlayer p_70085_1_) {
-		if (this.worldObj.isRemote) {
-
-			if(this.getDistanceSqToEntity(p_70085_1_) <= ConfigVillager.MaxInteractDistanceSq){
-				
-				if(this.isSleeping){
+		
+		if(this.getDistanceSqToEntity(p_70085_1_) <= ConfigVillager.MaxInteractDistanceSq){
+			if(this.isSleeping){
+				if(this.worldObj.isRemote)
 					PlayerMsg.send(p_70085_1_, "This villager is sleeping now...");
+			}
+			else{
+				if(this.worldObj.isRemote){
+					this.openVillagerGui();
 				}
 				else{
 					this.setInteractTarget(p_70085_1_);
-					this.openVillagerGui();
+					this.getNavigator().clearPathEntity();
 				}
 			}
-			else{
-				PlayerMsg.send(p_70085_1_, "too far from the villager..");
-			}
 		}
+		else{
+			if(this.worldObj.isRemote)
+				PlayerMsg.send(p_70085_1_, "too far from the villager..");
+		}
+		
 		return true;
 	}
 
@@ -317,12 +321,6 @@ public class EntityVBVillager extends EntityAgeable {
 		dataVillagerID = p_70037_1_.getInteger(ConfigData.KeyVillagerEntityDataVillagerID);
 		isSleeping = p_70037_1_.getBoolean(ConfigData.KeyVillagerEntityIsSleeping);
 	}
-
-    protected void applyEntityAttributes()
-    {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
-    }
 	
 	@Override
 	protected boolean canDespawn() {
