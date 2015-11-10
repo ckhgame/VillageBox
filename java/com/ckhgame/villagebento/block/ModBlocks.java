@@ -17,6 +17,7 @@ import com.ckhgame.villagebento.building.BuildingLargeCasino;
 import com.ckhgame.villagebento.building.BuildingLargeHotel;
 import com.ckhgame.villagebento.building.BuildingLargeMilitaryCamp;
 import com.ckhgame.villagebento.building.BuildingLargeTavern;
+import com.ckhgame.villagebento.building.BuildingMarket;
 import com.ckhgame.villagebento.building.BuildingMiningHouse;
 import com.ckhgame.villagebento.building.BuildingPotionStore;
 import com.ckhgame.villagebento.building.BuildingProArchitectsHouse;
@@ -51,7 +52,6 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockFishingStore;
     public static BlockVillageBuilding blockSmallHotel;
     public static BlockVillageBuilding blockSmallTavern;
-
     public static BlockVillageBuilding blockCowShop;
     public static BlockVillageBuilding blockSheepShop;
     public static BlockVillageBuilding blockChickenShop;
@@ -68,6 +68,7 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockLargeBakery;
     public static BlockVillageBuilding blockProArchitectsHouse;
     public static BlockVillageBuilding blockLargeHotel;
+    public static BlockVillageBuilding blockMarket;
 
 
     public static final void init() {
@@ -106,6 +107,7 @@ public final class ModBlocks {
         registerVillageBlock(blockLargeBakery = new BlockVillageBuilding(BuildingLargeBakery.class,"BlockLargeBakery"),"BlockLargeBakery");
         registerVillageBlock(blockProArchitectsHouse = new BlockVillageBuilding(BuildingProArchitectsHouse.class,"BlockProArchitectsHouse"),"BlockProArchitectsHouse");
         registerVillageBlock(blockLargeHotel = new BlockVillageBuilding(BuildingLargeHotel.class,"BlockLargeHotel"),"BlockLargeHotel");
+        registerVillageBlock(blockMarket = new BlockVillageBuilding(BuildingMarket.class,"BlockMarket"),"BlockMarket");
        
     }
     

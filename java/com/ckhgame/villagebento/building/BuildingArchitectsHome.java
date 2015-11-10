@@ -29,7 +29,7 @@ public class BuildingArchitectsHome extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerArchitect.class,"Craig",0,0);
+		bb.addBuildingVillager(VillagerArchitect.class,"Craig",2,0);
 	}
 
 	@Override

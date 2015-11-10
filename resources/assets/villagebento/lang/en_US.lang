@@ -18,6 +18,7 @@ tile.BlockLargeMilitaryCamp.name=Large Military Camp
 tile.BlockHunterHouse.name=Hunter's House
 tile.BlockDefenceTower.name=Defense Tower
 tile.BlockFarmland.name=Farm land
+tile.BlockMarket.name=Market
 tile.BlockPotionStore.name=Potion Store
 tile.BlockSmallCasino.name=Small Casino
 tile.BlockLargeCasino.name=Large Casino

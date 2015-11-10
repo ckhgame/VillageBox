@@ -28,6 +28,7 @@ public class BuildingSmallMilitaryCamp extends Building {
 		// TODO Auto-generated method stub
 		//add villager
 		bb.addBuildingVillager(VillagerSoldier.class,"Jerff",0,0);
+		bb.addBuildingVillager(VillagerSoldier.class,"Gery",-1,0);
 	}
 
 	@Override

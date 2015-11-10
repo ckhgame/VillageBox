@@ -33,6 +33,7 @@ public class ModBuildings {
 		Building.registry.register(32,new BuildingProArchitectsHouse());
 		Building.registry.register(33,new BuildingLargeBakery());
 		Building.registry.register(34,new BuildingLargeHotel());
+		Building.registry.register(35,new BuildingMarket());
 
 		
 	}
