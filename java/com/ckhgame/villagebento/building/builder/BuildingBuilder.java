@@ -1,6 +1,6 @@
 package com.ckhgame.villagebento.building.builder;
 
-import com.ckhgame.villagebento.building.fixdirection.BlockDirection;
+import com.ckhgame.villagebento.building.fixdirection.FixDirection;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
@@ -102,7 +102,7 @@ public class BuildingBuilder {
 		world.setBlockMetadataWithNotify(	data.x+fx,
 											data.y+fy,
 											data.z+fz,
-											BlockDirection.fix(block, metadata, facing),
+											FixDirection.fix(block, metadata, facing),
 											2);
 	}
 	
@@ -149,13 +149,15 @@ public class BuildingBuilder {
 	
 	public void addEntityPainting(int dx, int dy,int dz,int dir,String artName){
 		Vec3Int fv = getFinalPos(dx,dy,dz);
-		EntityPainting ePainting = new EntityPainting(world,data.x + fv.x, data.y + fv.y, data.z + fv.z,dir,artName);
+		EntityPainting ePainting = new EntityPainting(world,data.x + fv.x, data.y + fv.y, data.z + fv.z,
+				FixDirection.fix(EntityPainting.class, dir, facing),artName);
 		world.spawnEntityInWorld(ePainting);
 	}
 	
 	public void addEntityItemFrame(int dx, int dy, int dz, int dir, int itemID){
 		Vec3Int fv = getFinalPos(dx,dy,dz);
-		EntityItemFrame eItemFrame = new EntityItemFrame(world,data.x + fv.x, data.y + fv.y, data.z + fv.z,dir);
+		EntityItemFrame eItemFrame = new EntityItemFrame(world,data.x + fv.x, data.y + fv.y, data.z + fv.z,
+														FixDirection.fix(EntityItemFrame.class, dir, facing));
 		eItemFrame.setDisplayedItem(new ItemStack(Item.getItemById(itemID)));
 		world.spawnEntityInWorld(eItemFrame);
 	}
