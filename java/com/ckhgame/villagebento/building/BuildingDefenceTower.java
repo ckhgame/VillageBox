@@ -48,7 +48,7 @@ public class BuildingDefenceTower extends Building {
 		bb.buildBlock(0,0,2,Blocks.stonebrick,1);bb.buildBlock(0,0,3,Blocks.fence,0);bb.buildBlock(1,0,-3,Blocks.fence,0);
 		bb.buildBlock(1,0,-2,Blocks.stonebrick,1);bb.buildBlock(1,0,2,Blocks.stonebrick,1);bb.buildBlock(1,0,3,Blocks.fence,0);
 		bb.buildBlock(2,0,-3,Blocks.fence,0);bb.buildBlock(2,0,-2,Blocks.stonebrick,1);bb.buildBlock(2,0,-1,Blocks.stonebrick,1);
-		bb.buildBlock(2,0,0,Blocks.wooden_door,0);bb.buildBlock(2,0,1,Blocks.stonebrick,1);bb.buildBlock(2,0,2,Blocks.stonebrick,1);
+		bb.buildBlock(2,0,0,Blocks.wooden_door,4);bb.buildBlock(2,0,1,Blocks.stonebrick,1);bb.buildBlock(2,0,2,Blocks.stonebrick,1);
 		bb.buildBlock(2,0,3,Blocks.fence,0);bb.buildBlock(3,0,-3,Blocks.fence,0);bb.buildBlock(3,0,-2,Blocks.fence,0);
 		bb.buildBlock(3,0,-1,Blocks.fence,0);bb.buildBlock(3,0,1,Blocks.fence,0);bb.buildBlock(3,0,2,Blocks.fence,0);
 		bb.buildBlock(3,0,3,Blocks.fence,0);bb.buildBlock(-2,1,-2,Blocks.stonebrick,1);bb.buildBlock(-2,1,-1,Blocks.stonebrick,1);
@@ -125,7 +125,7 @@ public class BuildingDefenceTower extends Building {
 		bb.buildBlock(-2,12,-3,Blocks.spruce_stairs,2);bb.buildBlock(-2,12,3,Blocks.spruce_stairs,3);bb.buildBlock(-1,12,-3,Blocks.spruce_stairs,2);
 		bb.buildBlock(-1,12,3,Blocks.spruce_stairs,3);bb.buildBlock(0,12,-3,Blocks.spruce_stairs,2);bb.buildBlock(0,12,3,Blocks.spruce_stairs,3);
 		bb.buildBlock(1,12,-3,Blocks.spruce_stairs,2);bb.buildBlock(1,12,3,Blocks.spruce_stairs,3);bb.buildBlock(2,12,-3,Blocks.spruce_stairs,2);
-		bb.buildBlock(2,12,3,Blocks.spruce_stairs,3);bb.buildBlock(3,12,-3,Blocks.spruce_stairs,2);bb.buildBlock(3,12,-2,Blocks.spruce_stairs,1);
+		bb.buildBlock(2,12,3,Blocks.spruce_stairs,3);bb.buildBlock(3,12,-3,Blocks.spruce_stairs,1);bb.buildBlock(3,12,-2,Blocks.spruce_stairs,1);
 		bb.buildBlock(3,12,-1,Blocks.spruce_stairs,1);bb.buildBlock(3,12,0,Blocks.spruce_stairs,1);bb.buildBlock(3,12,1,Blocks.spruce_stairs,1);
 		bb.buildBlock(3,12,2,Blocks.spruce_stairs,1);bb.buildBlock(3,12,3,Blocks.spruce_stairs,3);bb.buildBlock(-2,13,-2,Blocks.spruce_stairs,0);
 		bb.buildBlock(-2,13,-1,Blocks.spruce_stairs,0);bb.buildBlock(-2,13,0,Blocks.spruce_stairs,0);bb.buildBlock(-2,13,1,Blocks.spruce_stairs,0);

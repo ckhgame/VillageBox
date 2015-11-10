@@ -50,7 +50,7 @@ public class BuildingSheepShop extends Building {
 		bb.buildBlock(1,0,2,Blocks.birch_stairs,2);bb.buildBlock(1,0,3,Blocks.stained_hardened_clay,0);bb.buildBlock(2,0,-3,Blocks.stained_hardened_clay,0);
 		bb.buildBlock(2,0,-2,Blocks.crafting_table,0);bb.buildBlock(2,0,2,Blocks.double_wooden_slab,2);bb.buildBlock(2,0,3,Blocks.stained_hardened_clay,0);
 		bb.buildBlock(3,0,-3,Blocks.stained_hardened_clay,0);bb.buildBlock(3,0,-2,Blocks.stained_hardened_clay,0);bb.buildBlock(3,0,-1,Blocks.stained_hardened_clay,8);
-		bb.buildBlock(3,0,0,Blocks.wooden_door,2);bb.buildBlock(3,0,1,Blocks.stained_hardened_clay,8);bb.buildBlock(3,0,2,Blocks.stained_hardened_clay,0);
+		bb.buildBlock(3,0,0,Blocks.wooden_door,4);bb.buildBlock(3,0,1,Blocks.stained_hardened_clay,8);bb.buildBlock(3,0,2,Blocks.stained_hardened_clay,0);
 		bb.buildBlock(3,0,3,Blocks.stained_hardened_clay,0);bb.buildBlock(-3,1,-3,Blocks.stained_hardened_clay,0);bb.buildBlock(-3,1,-2,Blocks.stained_hardened_clay,0);
 		bb.buildBlock(-3,1,-1,Blocks.stained_hardened_clay,0);bb.buildBlock(-3,1,0,Blocks.stained_hardened_clay,0);bb.buildBlock(-3,1,1,Blocks.stained_hardened_clay,0);
 		bb.buildBlock(-3,1,2,Blocks.stained_hardened_clay,0);bb.buildBlock(-3,1,3,Blocks.stained_hardened_clay,0);bb.buildBlock(-2,1,-3,Blocks.stained_hardened_clay,0);

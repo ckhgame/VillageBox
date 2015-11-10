@@ -6,11 +6,11 @@ import com.ckhgame.villagebento.villager.VillagerMerchant;
 
 import net.minecraft.init.Blocks;
 
-public class BuildingGeneralStore extends Building {
+public class BuildingPotionStore extends Building {
 
 	@Override
 	public String getName() {
-		return "General Store";
+		return "Potion Store";
 	}
 
 	@Override

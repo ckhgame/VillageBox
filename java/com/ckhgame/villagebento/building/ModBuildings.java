@@ -24,7 +24,7 @@ public class ModBuildings {
 		Building.registry.register(23,new BuildingHunterHouse());
 		Building.registry.register(24,new BuildingSmallCasino());
 		Building.registry.register(27,new BuildingFarmland());
-		Building.registry.register(28,new BuildingGeneralStore());
+		Building.registry.register(28,new BuildingPotionStore());
 		Building.registry.register(29,new BuildingDefenceTower());
 		Building.registry.register(30,new BuildingSmallMilitaryCamp());
 		Building.registry.register(25,new BuildingLargeCasino());

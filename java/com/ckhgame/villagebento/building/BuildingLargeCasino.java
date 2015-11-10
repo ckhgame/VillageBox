@@ -30,6 +30,8 @@ public class BuildingLargeCasino extends Building {
 		//add villager
 		bb.addBuildingVillager(VillagerLargeCasinoManager.class,"Rody",-4,0);
 		bb.addBuildingVillager(VillagerCasinoDealer.class,"Jenna",-6,0);
+		bb.addBuildingVillager(VillagerCasinoDealer.class,"Ann",6,0);
+		bb.addBuildingVillager(VillagerCasinoDealer.class,"Mary",-6,2);
 	}
 
 	@Override

@@ -51,7 +51,7 @@ public class BuildingFishingStore extends Building {
 		bb.buildBlock(0,0,3,Blocks.fence,0);bb.buildBlock(1,0,-3,Blocks.fence,0);bb.buildBlock(1,0,-2,Blocks.sandstone,0);
 		bb.buildBlock(1,0,-1,Blocks.chest,3);bb.buildBlock(1,0,2,Blocks.sandstone,0);bb.buildBlock(1,0,3,Blocks.fence,0);
 		bb.buildBlock(2,0,-3,Blocks.fence,0);bb.buildBlock(2,0,-2,Blocks.sandstone,0);bb.buildBlock(2,0,-1,Blocks.sandstone,0);
-		bb.buildBlock(2,0,0,Blocks.wooden_door,2);bb.buildBlock(2,0,1,Blocks.sandstone,0);bb.buildBlock(2,0,2,Blocks.sandstone,0);
+		bb.buildBlock(2,0,0,Blocks.wooden_door,4);bb.buildBlock(2,0,1,Blocks.sandstone,0);bb.buildBlock(2,0,2,Blocks.sandstone,0);
 		bb.buildBlock(2,0,3,Blocks.fence,0);bb.buildBlock(3,0,-3,Blocks.fence,0);bb.buildBlock(3,0,-2,Blocks.fence,0);
 		bb.buildBlock(3,0,-1,Blocks.fence,0);bb.buildBlock(3,0,1,Blocks.fence,0);bb.buildBlock(3,0,2,Blocks.fence,0);
 		bb.buildBlock(3,0,3,Blocks.fence,0);bb.buildBlock(-3,1,-1,Blocks.fence,0);bb.buildBlock(-3,1,0,Blocks.fence,0);
