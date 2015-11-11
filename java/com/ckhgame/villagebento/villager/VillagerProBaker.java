@@ -38,13 +38,12 @@ public class VillagerProBaker extends Villager {
         components.add(new VillagerCompAbout());
         
         VillagerCompBuy compBuy = new VillagerCompBuy();
-        compBuy.addItemBuy(Items.bread, 2, 3, 0);
+        compBuy.addItemBuy(Items.cake, 2, 2, 0);
+        compBuy.addItemBuy(Items.pumpkin_pie, 1, 1, 0);
+        compBuy.addItemBuy(Items.cookie, 1, 2, 0);
+        compBuy.addItemBuy(Items.baked_potato, 2, 3, 0);
         components.add(compBuy);
-        
-        
-        VillagerCompSell compSell = new VillagerCompSell();
-        compSell.addItemSell(Items.wheat_seeds, 10, 20, 0);
-        components.add(compSell);
+
 	}
 	
 	@Override

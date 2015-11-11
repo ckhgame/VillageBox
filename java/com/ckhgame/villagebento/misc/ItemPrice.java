@@ -70,6 +70,10 @@ public class ItemPrice {
 		register(Items.carrot,18);
 		register(Items.golden_carrot,38);
 		register(Items.potato,18);
+		register(Items.cake,36);
+		register(Items.pumpkin_pie,32);
+		register(Items.baked_potato,20);
+		register(Items.cookie,18);
 		
 		register(Blocks.wool,24);
 		register(Items.egg,24);
