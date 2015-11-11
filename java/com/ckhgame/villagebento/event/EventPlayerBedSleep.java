@@ -17,15 +17,17 @@ public class EventPlayerBedSleep {
 	@SubscribeEvent
     public void onPlayerSleepInBedEvent (PlayerSleepInBedEvent event)
     {
-		dataVB = DataVillageBento.get();
-		
-		for(DataVillage dv : dataVB.mapDataVillage.values()){
-			if(isInVillage(dv,event.x,event.z)){
-				for(DataBuilding db : dv.mapDataBuilding.values()){
-					if(inInBuilding(db,event.x,event.y,event.z)){
-						event.result = EnumStatus.OTHER_PROBLEM;
-						PlayerMsg.send(event.entityPlayer, "It's not your bed!");
-						return;
+		if(!event.entityPlayer.worldObj.isRemote){
+			dataVB = DataVillageBento.get();
+			
+			for(DataVillage dv : dataVB.mapDataVillage.values()){
+				if(isInVillage(dv,event.x,event.z)){
+					for(DataBuilding db : dv.mapDataBuilding.values()){
+						if(inInBuilding(db,event.x,event.y,event.z)){
+							event.result = EnumStatus.OTHER_PROBLEM;
+							PlayerMsg.send(event.entityPlayer, "It's not your bed!");
+							return;
+						}
 					}
 				}
 			}
