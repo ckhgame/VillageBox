@@ -7,13 +7,14 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RendererLivingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderVBVillager extends RendererLivingEntity
+public class RenderVBVillager extends RenderBiped
 {
 	private static final ResourceLocation defaultTextures = new ResourceLocation("textures/entity/steve.png");
 	
@@ -31,7 +32,7 @@ public class RenderVBVillager extends RendererLivingEntity
      */
     protected int shouldRenderPass(EntityVBVillager p_77032_1_, int p_77032_2_, float p_77032_3_)
     {
-        return -1;
+        return super.shouldRenderPass(p_77032_1_, p_77032_2_, p_77032_3_);
     }
 
     /**

@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.ai;
 
 import com.ckhgame.villagebento.ai.villager.VillagerAIGuardPatrol;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
+import com.ckhgame.villagebento.ai.villager.VillagerAISleepGuard;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleepNightbird;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWander;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
@@ -57,7 +58,7 @@ public class HelperVillagerAI {
 		entity.tasks.addTask(0, new EntityAISwimming(entity));
 		entity.tasks.addTask(1, new EntityAIAvoidEntity(entity, EntityZombie.class, 8.0F, 0.6D, 0.6D));
 		entity.tasks.addTask(2, new EntityAIOpenDoor(entity, true));
-		entity.tasks.addTask(3, new VillagerAISleepNightbird(entity));
+		entity.tasks.addTask(3, new VillagerAISleepGuard(entity));
 		
 		entity.tasks.addTask(5, new VillagerAIWatchClosest2(entity, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
 		entity.tasks.addTask(5, new VillagerAIWatchClosest2(entity, EntityVillager.class, 5.0F, 0.02F));

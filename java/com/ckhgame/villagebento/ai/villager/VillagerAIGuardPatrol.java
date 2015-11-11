@@ -9,6 +9,8 @@ import com.ckhgame.villagebento.util.VillageTime;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 
 public class VillagerAIGuardPatrol extends EntityAIBase
@@ -70,16 +72,15 @@ public class VillagerAIGuardPatrol extends EntityAIBase
 		super.updateTask();
 		
 	}
-
+    
 	/**
      * Execute a one shot task or start executing a continuous task
      */
     public void startExecuting()
     {
-    	System.out.println("-----");
-    	System.out.println("current:" + this.entity.posX + "," + this.entity.posY + "," + this.entity.posZ);
-    	System.out.println("target:" + this.xPosition + "," + this.yPosition+ "," + this.zPosition);
-    	
         this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, ConfigVillager.VillagerMoveSpeed);
     }
+    
+    
+    
 }

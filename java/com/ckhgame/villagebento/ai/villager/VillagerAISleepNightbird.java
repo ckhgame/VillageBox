@@ -11,7 +11,7 @@ import net.minecraft.util.Vec3;
 
 public class VillagerAISleepNightbird extends EntityAIBase
 {
-    private EntityVBVillager entity;
+    protected EntityVBVillager entity;
 
     public VillagerAISleepNightbird(EntityVBVillager entity)
     {
@@ -57,8 +57,13 @@ public class VillagerAISleepNightbird extends EntityAIBase
 
 	public void updateTask() {
 		if(!this.entity.getSleeping() && this.entity.isNearBed()){
+			onSleep();
 			this.entity.setSleeping(true);
 		}
+	}
+	
+	protected void onSleep(){
+		
 	}
     
     /**
