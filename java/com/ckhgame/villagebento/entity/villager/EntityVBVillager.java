@@ -19,12 +19,14 @@ import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -77,6 +79,7 @@ public class EntityVBVillager extends EntityAgeable {
 		if (this.worldObj.isRemote) {
 			// client
 			this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
+			this.setAlwaysRenderNameTag(true);
 			this.skinTexture = vr.getSkin();
 		} else {
 			// server
@@ -282,6 +285,29 @@ public class EntityVBVillager extends EntityAgeable {
 		}
 		
 		return true;
+	}
+	
+	protected void attackEntity(Entity entity, float distance){
+        if (this.attackTime <= 0 && distance < 2.0F && entity.boundingBox.maxY > this.boundingBox.minY && entity.boundingBox.minY < this.boundingBox.maxY)
+        {
+            this.attackTime = 20;            
+            this.attackEntityAsMob(entity);
+        }
+    }
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		
+		//deal damage
+        entity.attackEntityFrom(DamageSource.causeMobDamage(this), 4.0F);
+        
+        //knock back
+        int k = 1;
+        entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)k * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)k * 0.5F));
+        this.motionX *= 0.6D;
+        this.motionZ *= 0.6D;
+		
+		return super.attackEntityAsMob(entity);
 	}
 
 	@Override

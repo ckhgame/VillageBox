@@ -1,5 +1,7 @@
 package com.ckhgame.villagebento.ai.villager;
 
+import java.util.Random;
+
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.BlockFinder;
@@ -55,6 +57,9 @@ public class VillagerAIGuardPatrol extends EntityAIBase
      */
     public boolean continueExecuting()
     {
+    	if(this.entity.getAttackTarget()!=null)
+    		return false;
+    	
     	if(VillageTime.isMorning(this.entity.worldObj))
     	{
     		if (this.entity.getRNG().nextInt(60) != 0)
@@ -79,7 +84,20 @@ public class VillagerAIGuardPatrol extends EntityAIBase
     public void startExecuting()
     {
     	equipWeaponAndArmors(true);
-        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, ConfigVillager.VillagerMoveSpeed);
+        boolean nav = this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, ConfigVillager.VillagerMoveSpeed);
+        if(nav == false){
+			Vec3 dir = Vec3.createVectorHelper(	this.entity.bedPosition.xCoord - this.entity.posX,
+							    				this.entity.bedPosition.yCoord - this.entity.posY, 
+							    				this.entity.bedPosition.zCoord - this.entity.posZ);
+			dir = dir.normalize();
+			double d = 10;
+			Random rand = this.entity.getRNG();
+			this.entity.getNavigator().tryMoveToXYZ(this.entity.posX + dir.xCoord * d + rand.nextInt(3) - 1,
+													this.entity.posY + dir.yCoord * d + rand.nextInt(3) - 1,
+													this.entity.posZ + dir.zCoord * d + rand.nextInt(3) - 1,
+    												ConfigVillager.VillagerMoveSpeed);
+		}
+        
     }
     
     private void equipWeaponAndArmors(boolean equip){
