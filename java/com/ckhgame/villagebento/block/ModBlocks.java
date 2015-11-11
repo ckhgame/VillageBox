@@ -1,8 +1,10 @@
 package com.ckhgame.villagebento.block;
 
 import com.ckhgame.villagebento.building.BuildingArchitectsHome;
+import com.ckhgame.villagebento.building.BuildingAutumnGarden;
 import com.ckhgame.villagebento.building.BuildingBlacksmithsShop;
 import com.ckhgame.villagebento.building.BuildingChickenShop;
+import com.ckhgame.villagebento.building.BuildingChristmas;
 import com.ckhgame.villagebento.building.BuildingCowShop;
 import com.ckhgame.villagebento.building.BuildingDefenceTower;
 import com.ckhgame.villagebento.building.BuildingFarmland;
@@ -19,14 +21,19 @@ import com.ckhgame.villagebento.building.BuildingLargeMilitaryCamp;
 import com.ckhgame.villagebento.building.BuildingLargeTavern;
 import com.ckhgame.villagebento.building.BuildingMarket;
 import com.ckhgame.villagebento.building.BuildingMiningHouse;
+import com.ckhgame.villagebento.building.BuildingPeacefulGarden;
 import com.ckhgame.villagebento.building.BuildingPotionStore;
 import com.ckhgame.villagebento.building.BuildingProArchitectsHouse;
+import com.ckhgame.villagebento.building.BuildingRoseBridge;
+import com.ckhgame.villagebento.building.BuildingRosePath;
 import com.ckhgame.villagebento.building.BuildingSheepShop;
 import com.ckhgame.villagebento.building.BuildingSmallBakery;
 import com.ckhgame.villagebento.building.BuildingSmallCasino;
 import com.ckhgame.villagebento.building.BuildingSmallHotel;
 import com.ckhgame.villagebento.building.BuildingSmallMilitaryCamp;
 import com.ckhgame.villagebento.building.BuildingSmallTavern;
+import com.ckhgame.villagebento.building.BuildingSunflower;
+import com.ckhgame.villagebento.building.BuildingTeaChair;
 import com.ckhgame.villagebento.building.BuildingVillageCenter;
 import com.ckhgame.villagebento.item.ItemBlockVillageBuilding;
 
@@ -69,8 +76,19 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockProArchitectsHouse;
     public static BlockVillageBuilding blockLargeHotel;
     public static BlockVillageBuilding blockMarket;
-
-
+    public static BlockVillageBuilding blockFarmlandSmall;
+    
+//  Decoration Blocks
+    public static BlockVillageBuilding blockAutumnGarden;
+    public static BlockVillageBuilding blockChristmas;
+    public static BlockVillageBuilding blockPeacefulGarden;
+    public static BlockVillageBuilding blockRoseBridge;
+    public static BlockVillageBuilding blockRosePath;
+    public static BlockVillageBuilding blockSunflower;
+    public static BlockVillageBuilding blockTeaChair;
+    
+    
+    
     public static final void init() {
         
     	GameRegistry.registerBlock(blockBuildingScanner = new BlockBuildingScanner(), "BlockBuildingScanner");
@@ -96,6 +114,7 @@ public final class ModBlocks {
         registerVillageBlock(blockChickenShop = new BlockVillageBuilding(BuildingChickenShop.class,"BlockChickenShop"),"BlockChickenShop");
         registerVillageBlock(blockSmallCasino = new BlockVillageBuilding(BuildingSmallCasino.class,"BlockSmallCasino"),"BlockSmallCasino");
         registerVillageBlock(blockFarmland = new BlockVillageBuilding(BuildingFarmland.class,"BlockFarmland"),"BlockFarmland");
+        registerVillageBlock(blockFarmlandSmall = new BlockVillageBuilding(BuildingFarmland.class,"BlockFarmlandSmall"),"BlockFarmlandSmall");
         registerVillageBlock(blockFlowerShop = new BlockVillageBuilding(BuildingFlowerShop.class,"BlockFlowerShop"),"BlockFlowerShop");
         registerVillageBlock(blockPotionStore = new BlockVillageBuilding(BuildingPotionStore.class,"BlockPotionStore"),"BlockPotionStore");
         registerVillageBlock(blockDefenceTower = new BlockVillageBuilding(BuildingDefenceTower.class,"BlockDefenceTower"),"BlockDefenceTower");
@@ -108,7 +127,15 @@ public final class ModBlocks {
         registerVillageBlock(blockProArchitectsHouse = new BlockVillageBuilding(BuildingProArchitectsHouse.class,"BlockProArchitectsHouse"),"BlockProArchitectsHouse");
         registerVillageBlock(blockLargeHotel = new BlockVillageBuilding(BuildingLargeHotel.class,"BlockLargeHotel"),"BlockLargeHotel");
         registerVillageBlock(blockMarket = new BlockVillageBuilding(BuildingMarket.class,"BlockMarket"),"BlockMarket");
-       
+        
+        //	Decoration Blocks
+        registerVillageBlock(blockAutumnGarden = new BlockVillageBuilding(BuildingAutumnGarden.class,"BlockAutumnGarden"),"BlockAutumnGarden");
+        registerVillageBlock(blockChristmas = new BlockVillageBuilding(BuildingChristmas.class,"BlockChristmas"),"BlockChristmas");
+        registerVillageBlock(blockSunflower = new BlockVillageBuilding(BuildingSunflower.class,"BlockSunflower"),"BlockSunflower");
+        registerVillageBlock(blockRosePath = new BlockVillageBuilding(BuildingRosePath.class,"BlockRosePath"),"BlockRosePath");
+        registerVillageBlock(blockRoseBridge = new BlockVillageBuilding(BuildingRoseBridge.class,"BlockRoseBridge"),"BlockRoseBridge");
+       	registerVillageBlock(blockTeaChair = new BlockVillageBuilding(BuildingTeaChair.class,"BlockTeaChair"),"BlockTeaChair");
+       	registerVillageBlock(blockPeacefulGarden = new BlockVillageBuilding(BuildingPeacefulGarden.class,"BlockPeacefulGarden"),"BlockPeacefulGarden");
     }
     
     private static void registerVillageBlock(Block block,String name){

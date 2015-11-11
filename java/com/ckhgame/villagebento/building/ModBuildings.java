@@ -34,6 +34,18 @@ public class ModBuildings {
 		Building.registry.register(33,new BuildingLargeBakery());
 		Building.registry.register(34,new BuildingLargeHotel());
 		Building.registry.register(35,new BuildingMarket());
+		Building.registry.register(36,new BuildingFarmlandSmall());
+		
+		
+		
+		
+		Building.registry.register(37,new BuildingAutumnGarden());
+		Building.registry.register(38,new BuildingTeaChair());
+		Building.registry.register(39,new BuildingRoseBridge());
+		Building.registry.register(40,new BuildingRosePath());
+		Building.registry.register(41,new BuildingPeacefulGarden());
+		Building.registry.register(42,new BuildingSunflower());
+		Building.registry.register(43,new BuildingChristmas());
 
 		
 	}

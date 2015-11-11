@@ -37,25 +37,20 @@ public class BuildingLargeTavern extends Building {
 
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
-		bb.buildBlock(-6,-5,-6,Blocks.chest,5);bb.buildBlock(-6,-5,-5,Blocks.carpet,14);bb.buildBlock(-6,-5,-4,Blocks.bed,9);
-		bb.buildBlock(-6,-5,-3,Blocks.planks,1);bb.buildBlock(-6,-5,-2,Blocks.chest,5);bb.buildBlock(-6,-5,-1,Blocks.chest,5);
-		bb.buildBlock(-6,-5,0,Blocks.air,0);bb.buildBlock(-6,-5,1,Blocks.chest,5);bb.buildBlock(-6,-5,2,Blocks.chest,5);
-		bb.buildBlock(-5,-5,-6,Blocks.carpet,14);bb.buildBlock(-5,-5,-5,Blocks.carpet,14);bb.buildBlock(-5,-5,-4,Blocks.bed,1);
+		bb.buildBlock(-6,-5,-6,Blocks.chest,5);bb.buildBlock(-6,-5,-5,Blocks.carpet,14);bb.buildBlock(-6,-5,-4,Blocks.bed,9);bb.buildBlock(-6,-5,-3,Blocks.planks,1);
+		bb.buildBlock(-6,-5,-2,Blocks.chest,5);bb.buildBlock(-6,-5,-1,Blocks.chest,5);bb.buildBlock(-6,-5,0,Blocks.air,0);bb.buildBlock(-6,-5,1,Blocks.chest,5);bb.buildBlock(-6,-5,2,Blocks.chest,5);bb.buildBlock(-5,-5,-6,Blocks.carpet,14);bb.buildBlock(-5,-5,-5,Blocks.carpet,14);bb.buildBlock(-5,-5,-4,Blocks.bed,1);
 		bb.buildBlock(-5,-5,-3,Blocks.planks,1);bb.buildBlock(-5,-5,-2,Blocks.air,0);bb.buildBlock(-5,-5,-1,Blocks.air,0);
 		bb.buildBlock(-5,-5,0,Blocks.air,0);bb.buildBlock(-5,-5,1,Blocks.air,0);bb.buildBlock(-5,-5,2,Blocks.air,0);
 		bb.buildBlock(-4,-5,-6,Blocks.carpet,14);bb.buildBlock(-4,-5,-5,Blocks.carpet,14);bb.buildBlock(-4,-5,-4,Blocks.carpet,14);
-		bb.buildBlock(-4,-5,-3,Blocks.planks,1);bb.buildBlock(-4,-5,-2,Blocks.chest,5);bb.buildBlock(-4,-5,-1,Blocks.chest,5);
-		bb.buildBlock(-4,-5,0,Blocks.air,0);bb.buildBlock(-4,-5,1,Blocks.chest,5);bb.buildBlock(-4,-5,2,Blocks.chest,5);
-		bb.buildBlock(-3,-5,-6,Blocks.carpet,14);bb.buildBlock(-3,-5,-5,Blocks.carpet,14);bb.buildBlock(-3,-5,-4,Blocks.carpet,14);
+		bb.buildBlock(-4,-5,-3,Blocks.planks,1);bb.buildBlock(-4,-5,-2,Blocks.chest,4);bb.buildBlock(-4,-5,-1,Blocks.chest,5);bb.buildBlock(-4,-5,0,Blocks.air,0);bb.buildBlock(-4,-5,1,Blocks.chest,4);bb.buildBlock(-4,-5,2,Blocks.chest,5);bb.buildBlock(-3,-5,-6,Blocks.carpet,14);bb.buildBlock(-3,-5,-5,Blocks.carpet,14);bb.buildBlock(-3,-5,-4,Blocks.carpet,14);
 		bb.buildBlock(-3,-5,-3,Blocks.planks,1);bb.buildBlock(-3,-5,-2,Blocks.air,0);bb.buildBlock(-3,-5,-1,Blocks.air,0);
 		bb.buildBlock(-3,-5,0,Blocks.air,0);bb.buildBlock(-3,-5,1,Blocks.air,0);bb.buildBlock(-3,-5,2,Blocks.air,0);
 		bb.buildBlock(-2,-5,-6,Blocks.carpet,14);bb.buildBlock(-2,-5,-5,Blocks.carpet,14);bb.buildBlock(-2,-5,-4,Blocks.carpet,14);
-		bb.buildBlock(-2,-5,-3,Blocks.planks,1);bb.buildBlock(-2,-5,-2,Blocks.chest,5);bb.buildBlock(-2,-5,-1,Blocks.chest,5);
-		bb.buildBlock(-2,-5,0,Blocks.air,0);bb.buildBlock(-2,-5,1,Blocks.chest,5);bb.buildBlock(-2,-5,2,Blocks.chest,5);
-		bb.buildBlock(-1,-5,-6,Blocks.planks,1);bb.buildBlock(-1,-5,-5,Blocks.wooden_door,6);bb.buildBlock(-1,-5,-4,Blocks.planks,1);
+		bb.buildBlock(-2,-5,-3,Blocks.planks,1);bb.buildBlock(-2,-5,-2,Blocks.chest,4);bb.buildBlock(-2,-5,-1,Blocks.chest,5);bb.buildBlock(-2,-5,0,Blocks.air,0);bb.buildBlock(-2,-5,1,Blocks.chest,4);bb.buildBlock(-2,-5,2,Blocks.chest,5);bb.buildBlock(-1,-5,-6,Blocks.planks,1);bb.buildBlock(-1,-5,-5,Blocks.wooden_door,2);bb.buildBlock(-1,-5,-4,Blocks.planks,1);
 		bb.buildBlock(-1,-5,-3,Blocks.planks,1);bb.buildBlock(-1,-5,-2,Blocks.fence,0);bb.buildBlock(-1,-5,-1,Blocks.fence,0);
 		bb.buildBlock(-1,-5,0,Blocks.air,0);bb.buildBlock(-1,-5,1,Blocks.fence,0);bb.buildBlock(-1,-5,2,Blocks.fence,0);
-		bb.buildBlock(0,-5,-6,Blocks.flower_pot,0);bb.buildBlock(0,-5,-5,Blocks.air,0);bb.buildBlock(0,-5,-4,Blocks.flower_pot,0);
+		bb.buildBlock(0,-5,-6,Blocks.flower_pot,0);bb.addTileEntityPot(0,-5,-6,38,0);
+		bb.buildBlock(0,-5,-5,Blocks.air,0);bb.buildBlock(0,-5,-4,Blocks.flower_pot,0);bb.addTileEntityPot(0,-5,-4,38,0);
 		bb.buildBlock(0,-5,-3,Blocks.air,0);bb.buildBlock(0,-5,-2,Blocks.air,0);bb.buildBlock(0,-5,-1,Blocks.air,0);
 		bb.buildBlock(0,-5,0,Blocks.air,0);bb.buildBlock(0,-5,1,Blocks.air,0);bb.buildBlock(0,-5,2,Blocks.cauldron,3);
 		bb.buildBlock(1,-5,-6,Blocks.air,0);bb.buildBlock(1,-5,-5,Blocks.air,0);bb.buildBlock(1,-5,-4,Blocks.air,0);
@@ -208,7 +203,7 @@ public class BuildingLargeTavern extends Building {
 		bb.buildBlock(0,0,6,Blocks.planks,1);bb.buildBlock(1,0,-6,Blocks.planks,1);bb.buildBlock(1,0,-5,Blocks.carpet,14);
 		bb.buildBlock(1,0,-4,Blocks.carpet,14);bb.buildBlock(1,0,0,Blocks.carpet,14);bb.buildBlock(1,0,1,Blocks.carpet,14);
 		bb.buildBlock(1,0,6,Blocks.planks,1);bb.buildBlock(2,0,-6,Blocks.log,3);bb.buildBlock(2,0,-5,Blocks.planks,1);
-		bb.buildBlock(2,0,-4,Blocks.log,3);bb.buildBlock(2,0,-3,Blocks.wooden_door,4);bb.buildBlock(2,0,-2,Blocks.wooden_door,4);
+		bb.buildBlock(2,0,-4,Blocks.log,3);bb.buildBlock(2,0,-3,Blocks.wooden_door,0);bb.buildBlock(2,0,-2,Blocks.wooden_door,0);
 		bb.buildBlock(2,0,-1,Blocks.log,3);bb.buildBlock(2,0,0,Blocks.planks,1);bb.buildBlock(2,0,1,Blocks.planks,1);
 		bb.buildBlock(2,0,2,Blocks.log,3);bb.buildBlock(2,0,6,Blocks.log,3);bb.buildBlock(3,0,2,Blocks.planks,1);
 		bb.buildBlock(3,0,6,Blocks.planks,1);bb.buildBlock(4,0,-6,Blocks.fence,0);bb.buildBlock(4,0,-5,Blocks.fence,0);
@@ -233,6 +228,7 @@ public class BuildingLargeTavern extends Building {
 		bb.buildBlock(2,1,2,Blocks.log,3);bb.buildBlock(2,1,6,Blocks.log,3);bb.buildBlock(3,1,2,Blocks.planks,1);
 		bb.buildBlock(3,1,6,Blocks.planks,1);bb.buildBlock(4,1,-6,Blocks.fence,0);bb.buildBlock(4,1,-5,Blocks.fence,0);
 		bb.buildBlock(4,1,-4,Blocks.fence,0);bb.buildBlock(4,1,2,Blocks.glass_pane,0);bb.buildBlock(4,1,6,Blocks.glass_pane,0);
+		bb.buildBlock(5,1,-5,Blocks.wall_sign,5);bb.addTileEntitySign(5,1,-5,"Stables","","","");
 		bb.buildBlock(5,1,2,Blocks.planks,1);bb.buildBlock(5,1,6,Blocks.planks,1);bb.buildBlock(6,1,2,Blocks.log,3);
 		bb.buildBlock(6,1,3,Blocks.planks,1);bb.buildBlock(6,1,4,Blocks.glass_pane,0);bb.buildBlock(6,1,5,Blocks.planks,1);
 		bb.buildBlock(6,1,6,Blocks.log,3);bb.buildBlock(-6,2,-6,Blocks.log,3);bb.buildBlock(-6,2,-5,Blocks.planks,1);
@@ -364,7 +360,9 @@ public class BuildingLargeTavern extends Building {
 		bb.buildBlock(5,3,3,Blocks.torch,2);bb.buildBlock(5,3,5,Blocks.torch,2);bb.buildBlock(-5,5,-5,Blocks.torch,3);
 		bb.buildBlock(-5,5,5,Blocks.torch,4);bb.buildBlock(1,5,-5,Blocks.torch,3);bb.buildBlock(1,5,-1,Blocks.torch,2);
 		bb.buildBlock(2,5,3,Blocks.torch,3);bb.buildBlock(5,5,3,Blocks.torch,2);bb.buildBlock(5,5,5,Blocks.torch,2);
-
+		bb.addEntityPainting(-4,-3,-7,0,"Sea");
+		bb.addEntityPainting(-5,-3,-7,0,"Bomb");
+		bb.addEntityItemFrame(2,1,-1,3,-1);
 
 	}
 

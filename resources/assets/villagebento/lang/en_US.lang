@@ -31,3 +31,14 @@ tile.BlockArchitectsHome.name=Architect's Home
 tile.BlockProArchitectsHouse.name=Professional Architect's Home
 item.ItemVillageStick.name=Village Stick
 item.ItemVillageCurrency.name=Village Coins
+tile.BlockFarmlandSmall.name=Small Farm
+
+
+
+tile.BlockAutumnGarden.name=Autumn Garden
+tile.BlockPeacefulGarden.name=Small Flower Park
+tile.BlockChristmas.name=Christmas Park
+tile.BlockSunflower.name=Summer Garden
+tile.BlockTeaChair.name=Tea Party Garden
+tile.BlockRosePath.name=Rose Path Park
+tile.BlockRoseBridge.name=Rose Bridge Park

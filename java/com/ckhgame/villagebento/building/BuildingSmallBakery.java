@@ -39,10 +39,10 @@ public class BuildingSmallBakery extends Building {
 	protected void buildBlocks(BuildingBuilder bb) {
 		bb.buildBlock(-3,0,-2,Blocks.planks,0);bb.buildBlock(-3,0,-1,Blocks.planks,0);bb.buildBlock(-3,0,0,Blocks.planks,0);
 		bb.buildBlock(-3,0,1,Blocks.planks,0);bb.buildBlock(-3,0,2,Blocks.planks,0);bb.buildBlock(-2,0,-3,Blocks.planks,0);
-		bb.buildBlock(-2,0,-2,Blocks.chest,3);bb.buildBlock(-2,0,-1,Blocks.bed,10);bb.buildBlock(-2,0,0,Blocks.bed,2);
-		bb.buildBlock(-2,0,3,Blocks.planks,0);bb.buildBlock(-1,0,-3,Blocks.planks,0);bb.buildBlock(-1,0,-2,Blocks.planks,0);
-		bb.buildBlock(-1,0,-1,Blocks.planks,0);bb.buildBlock(-1,0,0,Blocks.planks,0);bb.buildBlock(-1,0,1,Blocks.planks,0);
-		bb.buildBlock(-1,0,3,Blocks.planks,0);bb.buildBlock(0,0,-3,Blocks.planks,0);bb.buildBlock(0,0,-2,Blocks.flower_pot,5);
+		bb.buildBlock(-2,0,-2,Blocks.chest,3);bb.buildBlock(-2,0,-1,Blocks.bed,10);bb.buildBlock(-2,0,0,Blocks.bed,2);bb.buildBlock(-2,0,3,Blocks.planks,0);
+		bb.buildBlock(-1,0,-3,Blocks.planks,0);bb.buildBlock(-1,0,-2,Blocks.planks,0);bb.buildBlock(-1,0,-1,Blocks.planks,0);
+		bb.buildBlock(-1,0,0,Blocks.planks,0);bb.buildBlock(-1,0,1,Blocks.planks,0);bb.buildBlock(-1,0,3,Blocks.planks,0);
+		bb.buildBlock(0,0,-3,Blocks.planks,0);bb.buildBlock(0,0,-2,Blocks.flower_pot,2);bb.addTileEntityPot(0,0,-2,38,2);
 		bb.buildBlock(0,0,3,Blocks.planks,0);bb.buildBlock(1,0,-3,Blocks.planks,0);bb.buildBlock(1,0,0,Blocks.planks,0);
 		bb.buildBlock(1,0,1,Blocks.planks,0);bb.buildBlock(1,0,2,Blocks.planks,0);bb.buildBlock(1,0,3,Blocks.planks,0);
 		bb.buildBlock(2,0,-3,Blocks.planks,0);bb.buildBlock(2,0,3,Blocks.planks,0);bb.buildBlock(3,0,-2,Blocks.planks,0);
@@ -90,7 +90,7 @@ public class BuildingSmallBakery extends Building {
 		bb.buildBlock(3,4,2,Blocks.spruce_stairs,1);bb.buildBlock(-3,0,-3,Blocks.torch,5);bb.buildBlock(-3,0,3,Blocks.torch,5);
 		bb.buildBlock(3,0,-3,Blocks.torch,5);bb.buildBlock(3,0,3,Blocks.torch,5);bb.buildBlock(-2,3,-2,Blocks.torch,1);
 		bb.buildBlock(-2,3,2,Blocks.torch,1);bb.buildBlock(0,3,-2,Blocks.torch,3);bb.buildBlock(0,3,2,Blocks.torch,4);
-		bb.buildBlock(2,3,-2,Blocks.torch,3);bb.buildBlock(2,3,2,Blocks.torch,4);
+		bb.buildBlock(2,3,-2,Blocks.torch,3);bb.buildBlock(2,3,2,Blocks.torch,4);bb.addEntityPainting(-2,2,-3,0,"Wasteland");
 	}
 
 }

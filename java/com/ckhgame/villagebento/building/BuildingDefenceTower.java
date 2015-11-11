@@ -48,7 +48,7 @@ public class BuildingDefenceTower extends Building {
 		bb.buildBlock(0,0,2,Blocks.stonebrick,1);bb.buildBlock(0,0,3,Blocks.fence,0);bb.buildBlock(1,0,-3,Blocks.fence,0);
 		bb.buildBlock(1,0,-2,Blocks.stonebrick,1);bb.buildBlock(1,0,2,Blocks.stonebrick,1);bb.buildBlock(1,0,3,Blocks.fence,0);
 		bb.buildBlock(2,0,-3,Blocks.fence,0);bb.buildBlock(2,0,-2,Blocks.stonebrick,1);bb.buildBlock(2,0,-1,Blocks.stonebrick,1);
-		bb.buildBlock(2,0,0,Blocks.wooden_door,4);bb.buildBlock(2,0,1,Blocks.stonebrick,1);bb.buildBlock(2,0,2,Blocks.stonebrick,1);
+		bb.buildBlock(2,0,0,Blocks.wooden_door,0);bb.buildBlock(2,0,1,Blocks.stonebrick,1);bb.buildBlock(2,0,2,Blocks.stonebrick,1);
 		bb.buildBlock(2,0,3,Blocks.fence,0);bb.buildBlock(3,0,-3,Blocks.fence,0);bb.buildBlock(3,0,-2,Blocks.fence,0);
 		bb.buildBlock(3,0,-1,Blocks.fence,0);bb.buildBlock(3,0,1,Blocks.fence,0);bb.buildBlock(3,0,2,Blocks.fence,0);
 		bb.buildBlock(3,0,3,Blocks.fence,0);bb.buildBlock(-2,1,-2,Blocks.stonebrick,1);bb.buildBlock(-2,1,-1,Blocks.stonebrick,1);
@@ -144,7 +144,7 @@ public class BuildingDefenceTower extends Building {
 		bb.buildBlock(2,10,3,Blocks.torch,2);bb.buildBlock(3,10,-2,Blocks.torch,3);bb.buildBlock(3,10,2,Blocks.torch,4);
 		bb.buildBlock(-2,12,-2,Blocks.torch,1);bb.buildBlock(-2,12,2,Blocks.torch,1);bb.buildBlock(0,12,-2,Blocks.torch,3);
 		bb.buildBlock(0,12,2,Blocks.torch,4);bb.buildBlock(2,12,-2,Blocks.torch,2);bb.buildBlock(2,12,2,Blocks.torch,2);
-
+		bb.addEntityItemFrame(2,2,0,3,261);
 
 	}
 

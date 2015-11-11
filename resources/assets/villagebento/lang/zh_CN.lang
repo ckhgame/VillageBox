@@ -18,6 +18,7 @@ tile.BlockLargeMilitaryCamp.name=大型兵营
 tile.BlockHunterHouse.name=猎人小屋
 tile.BlockDefenceTower.name=瞭望塔
 tile.BlockFarmland.name=农场
+tile.BlockFarmlandSmall.name=小农场
 tile.BlockMarket.name=集市
 tile.BlockPotionStore.name=药水店
 tile.BlockSmallCasino.name=小赌场
@@ -31,3 +32,13 @@ tile.BlockArchitectsHome.name=建筑师的家
 tile.BlockProArchitectsHouse.name=高级建筑师之家
 item.ItemVillageStick.name=村庄短杖
 item.ItemVillageCurrency.name=村庄货币
+
+
+
+tile.BlockAutumnGarden.name=秋之花园
+tile.BlockPeacefulGarden.name=青蓝之园
+tile.BlockChristmas.name=圣诞派对
+tile.BlockSunflower.name=初夏之园
+tile.BlockTeaChair.name=茶会花园
+tile.BlockRosePath.name=玫瑰小径
+tile.BlockRoseBridge.name=花桥园

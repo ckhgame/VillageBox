@@ -117,8 +117,15 @@ public class ItemPrice {
 		register(ModBlocks.blockLargeCasino,1200);
 		
 		
-
-
+		//Decorations
+		register(ModBlocks.blockSunflower,280);
+		register(ModBlocks.blockTeaChair,320);
+		register(ModBlocks.blockAutumnGarden,340);
+		register(ModBlocks.blockPeacefulGarden,280);
+		register(ModBlocks.blockRoseBridge,340);
+		register(ModBlocks.blockRosePath,380);
+		register(ModBlocks.blockChristmas,380);
+		
 
 	}
 	

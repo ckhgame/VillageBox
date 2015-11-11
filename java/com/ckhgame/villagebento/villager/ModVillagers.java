@@ -36,6 +36,7 @@ public class ModVillagers {
 		Villager.registry.register(37, new VillagerLargeCasinoManager());
 		Villager.registry.register(38, new VillagerFarmMarketMerchant());
 		Villager.registry.register(39, new VillagerPastureMarketMerchant());
+		Villager.registry.register(40, new VillagerFarmerSmall());
 
 
 

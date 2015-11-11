@@ -40,7 +40,13 @@ public class VillagerFlowerShopOwner extends Villager {
         
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(Items.flower_pot, 1, 5, 0);
-
+        compBuy.addItemBuy(ModBlocks.blockSunflower, 1, 2, 0);
+        compBuy.addItemBuy(ModBlocks.blockPeacefulGarden, 1, 2, 0);
+        compBuy.addItemBuy(ModBlocks.blockTeaChair, 1, 2, 0);
+        compBuy.addItemBuy(ModBlocks.blockAutumnGarden, 1, 2, 0);
+        compBuy.addItemBuy(ModBlocks.blockRoseBridge, 1, 2, 0);
+        compBuy.addItemBuy(ModBlocks.blockRosePath, 1, 2, 0);
+        compBuy.addItemBuy(ModBlocks.blockChristmas, 1, 2, 0);
         components.add(compBuy);
 
 	}
