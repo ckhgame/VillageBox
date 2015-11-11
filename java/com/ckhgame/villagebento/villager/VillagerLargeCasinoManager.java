@@ -2,8 +2,10 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.network.action.ActionDoVillagerBet;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
+import com.ckhgame.villagebento.villager.component.VillagerCompAction;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
@@ -34,6 +36,11 @@ public class VillagerLargeCasinoManager extends Villager {
 
         components.add(new VillagerCompAbout());
 
+        //action
+        VillagerCompAction compAction = new VillagerCompAction();
+        compAction.addAction("I'm..CRAZY!!!(bet:1000)", ActionDoVillagerBet.class, new Object[]{1000}, 0);
+        compAction.addAction("I'm..SUPER CRAZY!!!(bet:2000)", ActionDoVillagerBet.class, new Object[]{2000}, 1);
+        components.add(compAction);
 	}
 
 	@Override

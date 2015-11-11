@@ -18,6 +18,8 @@ public class ModActions {
 		Action.registry.register(id++, new ActionDoVillagerTakeWorkOutput());
 		Action.registry.register(id++, new ActionGetVillagerWorkList());
 		Action.registry.register(id++, new ActionDoDropCoins());
+		Action.registry.register(id++, new ActionGetVillagerActionList());
+		Action.registry.register(id++, new ActionDoVillagerBet());
 		
 		
 		//server -> clinet

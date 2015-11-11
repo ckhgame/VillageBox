@@ -1,6 +1,7 @@
 package com.ckhgame.villagebento.data.helper;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataVillager;
@@ -12,6 +13,7 @@ import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.misc.ItemPrice;
 import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.villager.Villager;
+import com.ckhgame.villagebento.villager.component.VillagerCompAction;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerCompWork;
@@ -194,6 +196,28 @@ public class HelperDataVrComp {
 		int[] arr = new int[workIdxList.size()];
 		for(int i =0;i<arr.length;i++)
 			arr[i] = workIdxList.get(i);
+		return arr;
+	}
+	
+	public static int[] getActionList(DataVillager dvr){		
+		Villager vr = Villager.registry.get(dvr.profession);
+		if(vr == null)
+			return new int[0];
+		
+		VillagerCompAction compAction = (VillagerCompAction)vr.findVillagerComponentByClass(VillagerCompAction.class);
+		if(compAction == null)
+			return new int[0];
+		
+		ArrayList<Integer> actionIdxList = new ArrayList<Integer>();
+		int s = compAction.getActionSize();
+		for(int i =0;i<s;i++){
+			if(compAction.getActionMinLevel(i) <= dvr.level)
+				actionIdxList.add(i);
+		}
+		
+		int[] arr = new int[actionIdxList.size()];
+		for(int i =0;i<arr.length;i++)
+			arr[i] = actionIdxList.get(i);
 		return arr;
 	}
 	
@@ -394,4 +418,39 @@ private static boolean playerRemoveItemStack(EntityPlayer entityPlayer,ItemStack
 			
 		}
 	}
+
+	/**
+	 * return times, <0 means not enough money, =0 means lose money, >0 means the final times
+	 */
+	public static int bet(EntityPlayer entityPlayer,DataVillager dvr, int bet){
+		
+		if(addCurrency(entityPlayer,-bet)){
+
+			HelperDataVrComp.addExp(dvr, ConfigVillager.BetExp);
+			
+			Random rand = new Random();
+			int r = rand.nextInt(100);
+			int times = 0;
+			if(r < 50){
+				times = 0;//50%
+			}
+			else if(r >= 50 && r < 84)
+				times = 1;//34%
+			else if(r >= 84 && r < 94){
+				times = 2;//10%
+			}
+			else if(r >= 94 && r < 99){
+				times = 4;//5%
+			}
+			else{
+				times = 8;//1%
+			}
+			
+			addCurrency(entityPlayer,bet * times);
+			
+			return times;
+		}
+		return -1;
+	}
+
 }
