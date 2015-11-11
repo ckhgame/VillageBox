@@ -8,6 +8,7 @@ import com.ckhgame.villagebento.building.BuildingChristmas;
 import com.ckhgame.villagebento.building.BuildingCowShop;
 import com.ckhgame.villagebento.building.BuildingDefenceTower;
 import com.ckhgame.villagebento.building.BuildingFarmland;
+import com.ckhgame.villagebento.building.BuildingFarmlandSmall;
 import com.ckhgame.villagebento.building.BuildingFishingStore;
 import com.ckhgame.villagebento.building.BuildingFlowerShop;
 import com.ckhgame.villagebento.building.BuildingGroundworkLarge;
@@ -114,7 +115,7 @@ public final class ModBlocks {
         registerVillageBlock(blockChickenShop = new BlockVillageBuilding(BuildingChickenShop.class,"BlockChickenShop"),"BlockChickenShop");
         registerVillageBlock(blockSmallCasino = new BlockVillageBuilding(BuildingSmallCasino.class,"BlockSmallCasino"),"BlockSmallCasino");
         registerVillageBlock(blockFarmland = new BlockVillageBuilding(BuildingFarmland.class,"BlockFarmland"),"BlockFarmland");
-        registerVillageBlock(blockFarmlandSmall = new BlockVillageBuilding(BuildingFarmland.class,"BlockFarmlandSmall"),"BlockFarmlandSmall");
+        registerVillageBlock(blockFarmlandSmall = new BlockVillageBuilding(BuildingFarmlandSmall.class,"BlockFarmlandSmall"),"BlockFarmlandSmall");
         registerVillageBlock(blockFlowerShop = new BlockVillageBuilding(BuildingFlowerShop.class,"BlockFlowerShop"),"BlockFlowerShop");
         registerVillageBlock(blockPotionStore = new BlockVillageBuilding(BuildingPotionStore.class,"BlockPotionStore"),"BlockPotionStore");
         registerVillageBlock(blockDefenceTower = new BlockVillageBuilding(BuildingDefenceTower.class,"BlockDefenceTower"),"BlockDefenceTower");
