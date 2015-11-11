@@ -1,6 +1,7 @@
 package com.ckhgame.villagebento.data.helper;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.ckhgame.villagebento.building.builder.RestrictionExceptions;
 import com.ckhgame.villagebento.config.ConfigBuilding;
@@ -12,6 +13,7 @@ import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.data.DataVillager;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
+import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.BoxWithColor;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -433,6 +435,39 @@ public class HelperDataVB {
 		return bs;
 	}
 	
+
+	
+	//---------use of guard potral---------
+
+	private static DataVillage getVillagersVillage(DataVillageBento dataVB, int dataVillagerID){
+		for(DataVillage dv : dataVB.mapDataVillage.values()){
+			if(dv.mapDataVillager.containsKey(dataVillagerID))
+				return dv;
+		}
+		return null;
+	}
+	
+	public static DataBuilding getRandomBuildingInVillage(DataVillageBento dataVB, EntityVBVillager evr){
+		DataVillage dv = getVillagersVillage(dataVB,evr.dataVillagerID);
+		if(dv != null){
+			
+			ArrayList<DataBuilding> dbArr = new ArrayList<DataBuilding>();
+			for(DataBuilding db : dv.mapDataBuilding.values()){
+				double dx = db.x - evr.posX;
+				double dz = db.z - evr.posZ;
+				double dsq = dx * dx + dz * dz;
+				if(dsq <= ConfigVillager.AIGuardPotrolSearchDistanceSq){
+					dbArr.add(db);
+				}
+			}
+			
+			if(dbArr.size() == 0)
+				return null;
+			
+			return dbArr.get(evr.getRNG().nextInt(dbArr.size()));
+		}
+		return null;
+	}
 	
 	
 	

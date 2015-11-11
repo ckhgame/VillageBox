@@ -12,6 +12,11 @@ public class ConfigVillager {
 	public static final int AIWanderDistanceMaxY = 3; 
 	public static final int ALWanderInBuildingWallOffset = 2;
 	
+	public static final int ALGuardPatrolNearMaxBuilding = 1;
+	public static final int AIGuardPatrolDistanceMaxY = 1;
+	public static final int AIGuardPotrolSearchDistanceSq = 12 * 12;
+	
+	
 	public static final double VillagerMoveSpeed = 0.35D;
 	
 	public static final int MaxInteractDistance = 3;

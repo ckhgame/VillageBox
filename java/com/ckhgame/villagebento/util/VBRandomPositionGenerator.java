@@ -4,6 +4,9 @@ import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.config.ConfigVillager;
+import com.ckhgame.villagebento.data.DataBuilding;
+import com.ckhgame.villagebento.data.DataVillageBento;
+import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
 import net.minecraft.entity.EntityCreature;
@@ -139,5 +142,40 @@ public class VBRandomPositionGenerator{
         return found?Vec3.createVectorHelper((double)fx, (double)fy, (double)fz):null;
     }
 
+	public static Vec3 findRandomTargetGuardPatrol(EntityVBVillager evr){
+		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(DataVillageBento.get(), evr);
+		if(db != null){
+			if(!evr.isVBInitialized())
+				return null;
+			
+			Random random = evr.getRNG();
+			
+			int d = ConfigVillager.ALGuardPatrolNearMaxBuilding;
+			int sy = ConfigVillager.AIGuardPatrolDistanceMaxY;
+			int sx = db.sizeX;
+			int sz = db.sizeZ;
+
+			boolean onX = random.nextBoolean();
+			int x = db.x;
+			int z = db.z;
+			if(onX){
+				x += random.nextInt(1 + sx * 2) - sx;
+				z += (random.nextBoolean()?1:-1) * (random.nextInt(d) + 1 + sz);
+			}
+			else{
+				z += random.nextInt(1 + sz * 2) - sz;
+				x += (random.nextBoolean()?1:-1) * (random.nextInt(d) + 1 + sx);
+			}
+
+			int y = random.nextInt(2 * sy + 1) - sy + db.y;
+
+	        return Vec3.createVectorHelper((double)x, (double)y, (double)z);
+		}
+		
+		return null;
+	}
+	
+	
+	
 	
 }

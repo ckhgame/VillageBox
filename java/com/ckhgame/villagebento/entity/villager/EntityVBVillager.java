@@ -1,9 +1,6 @@
 package com.ckhgame.villagebento.entity.villager;
 
-import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWander;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
+import com.ckhgame.villagebento.ai.HelperVillagerAI;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -23,17 +20,7 @@ import com.ckhgame.villagebento.villager.component.VillagerComponent;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAIOpenDoor;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.ai.EntityAIWatchClosest2;
-import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -184,7 +171,7 @@ public class EntityVBVillager extends EntityAgeable {
 			double dx = this.bedPosition.xCoord + 0.5 - this.posX;
 			double dz = this.bedPosition.zCoord + 0.5 - this.posZ;
 			double dxz = Math.sqrt(dx * dx + dz * dz);
-			System.out.println("dy:" + dy + ",dxz:" + dxz);
+			//System.out.println("dy:" + dy + ",dxz:" + dxz);
 			return (dy <= 1.0D && dxz <= 1.6D);
 		}
 	}
@@ -214,15 +201,7 @@ public class EntityVBVillager extends EntityAgeable {
 	// ----------------------------------------
 	// ai
 	private void initAIs() {
-		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
-		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
-		this.tasks.addTask(3, new VillagerAISleep(this));
-		
-		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
-        this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVillager.class, 5.0F, 0.02F));
-        this.tasks.addTask(6, new VillagerAIWander(this));
-        this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 8.0F));
+		HelperVillagerAI.SetVBVillagerAI(this);
 	}
 
 	// ----------------------------------------

@@ -9,11 +9,11 @@ import com.ckhgame.villagebento.util.VillageTime;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.Vec3;
 
-public class VillagerAISleep extends EntityAIBase
+public class VillagerAISleepNightbird extends EntityAIBase
 {
     private EntityVBVillager entity;
 
-    public VillagerAISleep(EntityVBVillager entity)
+    public VillagerAISleepNightbird(EntityVBVillager entity)
     {
         this.entity = entity;
         this.setMutexBits(1);
@@ -25,7 +25,7 @@ public class VillagerAISleep extends EntityAIBase
     public boolean shouldExecute()
     {
     	//sleep only at late night
-    	if(!VillageTime.isLateNight(this.entity.worldObj))
+    	if(!VillageTime.isMorning(this.entity.worldObj))
     		return false;
     	
     	//if the one has already been sleeping, just let it keep sleeping... 
@@ -50,7 +50,7 @@ public class VillagerAISleep extends EntityAIBase
              return true;
          }
     	 else{    		 
-    		 return (VillageTime.isLateNight(this.entity.worldObj) && this.entity.isNearBed());
+    		 return (VillageTime.isMorning(this.entity.worldObj) && this.entity.isNearBed());
     	 }
         
     }

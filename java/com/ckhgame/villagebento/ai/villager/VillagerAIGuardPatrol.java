@@ -11,14 +11,14 @@ import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.Vec3;
 
-public class VillagerAIWander extends EntityAIBase
+public class VillagerAIGuardPatrol extends EntityAIBase
 {
     private EntityVBVillager entity;
     private double xPosition;
     private double yPosition;
     private double zPosition;
 
-    public VillagerAIWander(EntityVBVillager entity)
+    public VillagerAIGuardPatrol(EntityVBVillager entity)
     {
         this.entity = entity;
         this.setMutexBits(1);
@@ -30,20 +30,11 @@ public class VillagerAIWander extends EntityAIBase
     public boolean shouldExecute()
     {
         Vec3 vec3 = null;
-        if(VillageTime.isDayTime(this.entity.worldObj)){
-        	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
-        	if(this.entity.worldObj.isRaining()){
-        		vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-        	}
-        	else{
-        		vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
-        	}
-        }
-        else{
-        	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
-        	vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-        }
-
+        
+        if (this.entity.getRNG().nextInt(20) != 0) {return false;}
+        
+        vec3 = VBRandomPositionGenerator.findRandomTargetGuardPatrol(this.entity);
+        
         if (vec3 == null)
         {
             return false;
@@ -62,6 +53,12 @@ public class VillagerAIWander extends EntityAIBase
      */
     public boolean continueExecuting()
     {
+    	if(VillageTime.isMorning(this.entity.worldObj))
+    	{
+    		if (this.entity.getRNG().nextInt(60) != 0)
+    			return false;
+    	}
+    	
         return !this.entity.getNavigator().noPath();
     }
 
@@ -79,6 +76,10 @@ public class VillagerAIWander extends EntityAIBase
      */
     public void startExecuting()
     {
+    	System.out.println("-----");
+    	System.out.println("current:" + this.entity.posX + "," + this.entity.posY + "," + this.entity.posZ);
+    	System.out.println("target:" + this.xPosition + "," + this.yPosition+ "," + this.zPosition);
+    	
         this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, ConfigVillager.VillagerMoveSpeed);
     }
 }
