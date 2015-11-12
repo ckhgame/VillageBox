@@ -129,9 +129,12 @@ public class BuildingCowShop extends Building {
 		bb.buildBlock(2,7,2,Blocks.wooden_slab,2);bb.buildBlock(2,7,3,Blocks.dark_oak_stairs,3);bb.buildBlock(3,7,-3,Blocks.dark_oak_stairs,1);
 		bb.buildBlock(3,7,-2,Blocks.dark_oak_stairs,1);bb.buildBlock(3,7,-1,Blocks.dark_oak_stairs,1);bb.buildBlock(3,7,0,Blocks.dark_oak_stairs,1);
 		bb.buildBlock(3,7,1,Blocks.dark_oak_stairs,1);bb.buildBlock(3,7,2,Blocks.dark_oak_stairs,1);bb.buildBlock(3,7,3,Blocks.dark_oak_stairs,1);
-		bb.buildBlock(-2,6,-2,Blocks.torch,1);bb.buildBlock(-2,6,2,Blocks.torch,1);bb.buildBlock(0,6,-2,Blocks.torch,3);
-		bb.buildBlock(0,6,2,Blocks.torch,4);bb.buildBlock(2,6,-2,Blocks.torch,2);bb.buildBlock(2,6,2,Blocks.torch,2);
-		bb.addEntityPainting(-3,5,1,3,"Kebab");
+		bb.buildBlock(-3,2,-2,Blocks.torch,5);bb.buildBlock(-3,2,0,Blocks.torch,5);bb.buildBlock(-3,2,2,Blocks.torch,5);
+		bb.buildBlock(-2,2,-3,Blocks.torch,5);bb.buildBlock(-2,2,3,Blocks.torch,5);bb.buildBlock(0,2,-3,Blocks.torch,5);
+		bb.buildBlock(0,2,3,Blocks.torch,5);bb.buildBlock(2,2,-3,Blocks.torch,5);bb.buildBlock(2,2,3,Blocks.torch,5);
+		bb.buildBlock(3,2,2,Blocks.torch,5);bb.buildBlock(-2,6,-2,Blocks.torch,1);bb.buildBlock(-2,6,2,Blocks.torch,1);
+		bb.buildBlock(0,6,-2,Blocks.torch,3);bb.buildBlock(0,6,2,Blocks.torch,4);bb.buildBlock(2,6,-2,Blocks.torch,2);
+		bb.buildBlock(2,6,2,Blocks.torch,2);bb.addEntityPainting(-3,5,1,3,"Kebab");
 		bb.addEntityPainting(-3,5,0,3,"Sea");
 	}
 

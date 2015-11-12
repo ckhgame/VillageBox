@@ -40,18 +40,19 @@ public class BuildingMiningHouse extends Building {
 
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
-		bb.buildBlock(-2,-6,-2,Blocks.bed,9);bb.buildBlock(-2,-6,-1,Blocks.chest,5);bb.buildBlock(-2,-6,0,Blocks.bed,9);bb.buildBlock(-1,-6,-2,Blocks.bed,1);bb.buildBlock(-1,-6,-1,Blocks.air,0);
-		bb.buildBlock(-1,-6,0,Blocks.bed,1);bb.buildBlock(0,-6,-2,Blocks.air,0);bb.buildBlock(0,-6,0,Blocks.air,0);
+		bb.buildBlock(-2,-6,-2,Blocks.bed,9);bb.buildBlock(-2,-6,-1,Blocks.bookshelf,0);bb.buildBlock(-2,-6,0,Blocks.bed,9);
+		bb.buildBlock(-1,-6,-2,Blocks.bed,1);bb.buildBlock(-1,-6,-1,Blocks.air,0);bb.buildBlock(-1,-6,0,Blocks.bed,1);
+		bb.buildBlock(0,-6,-2,Blocks.air,0);bb.buildBlock(0,-6,-1,Blocks.air,0);bb.buildBlock(0,-6,0,Blocks.air,0);
 		bb.buildBlock(1,-6,-2,Blocks.flower_pot,7);bb.addTileEntityPot(1,-6,-2,38,7);
 		bb.buildBlock(1,-6,-1,Blocks.air,0);bb.buildBlock(1,-6,0,Blocks.air,0);bb.buildBlock(1,-6,1,Blocks.stone_brick_stairs,1);
-		bb.buildBlock(1,-6,2,Blocks.stone_brick_stairs,1);bb.buildBlock(2,-6,-2,Blocks.bookshelf,0);bb.buildBlock(2,-6,-1,Blocks.air,0);
-		bb.buildBlock(2,-6,0,Blocks.air,0);bb.buildBlock(2,-6,1,Blocks.air,0);bb.buildBlock(2,-6,2,Blocks.air,0);
-		bb.buildBlock(-2,-5,-2,Blocks.air,0);bb.buildBlock(-2,-5,-1,Blocks.air,0);bb.buildBlock(-2,-5,0,Blocks.air,0);
-		bb.buildBlock(-1,-5,-2,Blocks.air,0);bb.buildBlock(-1,-5,-1,Blocks.air,0);bb.buildBlock(-1,-5,0,Blocks.air,0);
-		bb.buildBlock(0,-5,-2,Blocks.air,0);bb.buildBlock(0,-5,-1,Blocks.air,0);bb.buildBlock(0,-5,0,Blocks.air,0);
-		bb.buildBlock(0,-5,1,Blocks.stone_brick_stairs,1);bb.buildBlock(0,-5,2,Blocks.stone_brick_stairs,1);bb.buildBlock(1,-5,-2,Blocks.air,0);
-		bb.buildBlock(1,-5,-1,Blocks.air,0);bb.buildBlock(1,-5,0,Blocks.air,0);bb.buildBlock(1,-5,1,Blocks.air,0);
-		bb.buildBlock(1,-5,2,Blocks.air,0);bb.buildBlock(2,-5,-2,Blocks.flower_pot,1);bb.addTileEntityPot(2,-5,-2,38,1);
+		bb.buildBlock(1,-6,2,Blocks.stone_brick_stairs,1);bb.buildBlock(2,-6,-2,Blocks.chest,3);bb.buildBlock(2,-6,-1,Blocks.air,0);bb.buildBlock(2,-6,0,Blocks.air,0);bb.buildBlock(2,-6,1,Blocks.air,0);
+		bb.buildBlock(2,-6,2,Blocks.air,0);bb.buildBlock(-2,-5,-2,Blocks.air,0);bb.buildBlock(-2,-5,-1,Blocks.flower_pot,1);
+		bb.addTileEntityPot(-2,-5,-1,38,1);
+		bb.buildBlock(-2,-5,0,Blocks.air,0);bb.buildBlock(-1,-5,-2,Blocks.air,0);bb.buildBlock(-1,-5,-1,Blocks.air,0);
+		bb.buildBlock(-1,-5,0,Blocks.air,0);bb.buildBlock(0,-5,-2,Blocks.air,0);bb.buildBlock(0,-5,-1,Blocks.air,0);
+		bb.buildBlock(0,-5,0,Blocks.air,0);bb.buildBlock(0,-5,1,Blocks.stone_brick_stairs,1);bb.buildBlock(0,-5,2,Blocks.stone_brick_stairs,1);
+		bb.buildBlock(1,-5,-2,Blocks.air,0);bb.buildBlock(1,-5,-1,Blocks.air,0);bb.buildBlock(1,-5,0,Blocks.air,0);
+		bb.buildBlock(1,-5,1,Blocks.air,0);bb.buildBlock(1,-5,2,Blocks.air,0);bb.buildBlock(2,-5,-2,Blocks.air,0);
 		bb.buildBlock(2,-5,-1,Blocks.air,0);bb.buildBlock(2,-5,0,Blocks.air,0);bb.buildBlock(2,-5,1,Blocks.air,0);
 		bb.buildBlock(2,-5,2,Blocks.air,0);bb.buildBlock(-2,-4,-2,Blocks.air,0);bb.buildBlock(-2,-4,-1,Blocks.air,0);
 		bb.buildBlock(-2,-4,0,Blocks.air,0);bb.buildBlock(-2,-4,1,Blocks.stone_brick_stairs,3);bb.buildBlock(-2,-4,2,Blocks.air,0);
