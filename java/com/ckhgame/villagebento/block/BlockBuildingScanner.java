@@ -80,7 +80,7 @@ public class BlockBuildingScanner extends Block {
 			prefab.bZ = bd.z;
 			
 			//scan blocks
-			for(int dy = -d;dy <= h;dy++){
+			for(int dy = -d;dy < h;dy++){
 				for(int dx= -bd.sizeX;dx<= bd.sizeX;dx++){
 					for(int dz= -bd.sizeZ;dz<= bd.sizeZ;dz++){
 						b = world.getBlock(bd.x + dx, bd.y + dy, bd.z + dz);
@@ -90,8 +90,11 @@ public class BlockBuildingScanner extends Block {
 								prefab.addblock(new BlockTypePosMetadata(b,dx,dy,dz,mt,world.getTileEntity(bd.x + dx, bd.y + dy, bd.z + dz)));
 						}					
 						else{ //under center y,in other words inside of groundwork
-							if(b != ConfigBuilding.GroundWorkBlock  && b != ModBlocks.blockBuildingScanner)
-								prefab.addblock(new BlockTypePosMetadata(b,dx,dy,dz,mt,world.getTileEntity(bd.x + dx, bd.y + dy, bd.z + dz)));
+							if(b != ConfigBuilding.GroundWorkBlock)
+								if(b == ModBlocks.blockBuildingScanner)
+									prefab.addblock(new BlockTypePosMetadata(Blocks.air,dx,dy,dz,mt,world.getTileEntity(bd.x + dx, bd.y + dy, bd.z + dz)));
+								else
+									prefab.addblock(new BlockTypePosMetadata(b,dx,dy,dz,mt,world.getTileEntity(bd.x + dx, bd.y + dy, bd.z + dz)));
 						}
 					}
 				}
