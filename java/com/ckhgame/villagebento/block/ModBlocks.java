@@ -20,6 +20,7 @@ import com.ckhgame.villagebento.building.BuildingLargeCasino;
 import com.ckhgame.villagebento.building.BuildingLargeHotel;
 import com.ckhgame.villagebento.building.BuildingLargeMilitaryCamp;
 import com.ckhgame.villagebento.building.BuildingLargeTavern;
+import com.ckhgame.villagebento.building.BuildingLibrary;
 import com.ckhgame.villagebento.building.BuildingMarket;
 import com.ckhgame.villagebento.building.BuildingMiningHouse;
 import com.ckhgame.villagebento.building.BuildingPeacefulGarden;
@@ -78,6 +79,7 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockLargeHotel;
     public static BlockVillageBuilding blockMarket;
     public static BlockVillageBuilding blockFarmlandSmall;
+    public static BlockVillageBuilding blockLibrary;
     
 //  Decoration Blocks
     public static BlockVillageBuilding blockAutumnGarden;
@@ -128,6 +130,7 @@ public final class ModBlocks {
         registerVillageBlock(blockProArchitectsHouse = new BlockVillageBuilding(BuildingProArchitectsHouse.class,"BlockProArchitectsHouse"),"BlockProArchitectsHouse");
         registerVillageBlock(blockLargeHotel = new BlockVillageBuilding(BuildingLargeHotel.class,"BlockLargeHotel"),"BlockLargeHotel");
         registerVillageBlock(blockMarket = new BlockVillageBuilding(BuildingMarket.class,"BlockMarket"),"BlockMarket");
+       	registerVillageBlock(blockLibrary = new BlockVillageBuilding(BuildingLibrary.class,"BlockLibrary"),"BlockLibrary");
         
         //	Decoration Blocks
         registerVillageBlock(blockAutumnGarden = new BlockVillageBuilding(BuildingAutumnGarden.class,"BlockAutumnGarden"),"BlockAutumnGarden");

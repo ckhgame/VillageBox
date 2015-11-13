@@ -61,6 +61,8 @@ public class ItemPrice {
 		register(Items.beef,25);
 		register(Items.stick,2);
 		
+		register(Items.paper,4);
+		
 		register(Items.reeds,10);
 		register(Items.wheat,12);
 		register(Items.apple,18);
@@ -105,6 +107,7 @@ public class ItemPrice {
 		register(ModBlocks.blockChickenShop,420);
 		register(ModBlocks.blockSheepShop,460);
 		register(ModBlocks.blockCowShop,480);
+		register(ModBlocks.blockLibrary,480);
 		register(ModBlocks.blockProArchitectsHouse,648);
 		register(ModBlocks.blockGroundworkOnlyMedium,500);
 		

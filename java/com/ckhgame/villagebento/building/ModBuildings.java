@@ -46,6 +46,8 @@ public class ModBuildings {
 		Building.registry.register(41,new BuildingPeacefulGarden());
 		Building.registry.register(42,new BuildingSunflower());
 		Building.registry.register(43,new BuildingChristmas());
+		Building.registry.register(44,new BuildingLibrary());
+
 
 		
 	}

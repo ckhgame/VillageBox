@@ -30,6 +30,7 @@ tile.BlockChickenShop.name=小鸡之家
 tile.BlockFishingStore.name=渔店
 tile.BlockArchitectsHome.name=建筑师的家
 tile.BlockProArchitectsHouse.name=高级建筑师之家
+tile.BlockLibrary.name=图书馆
 item.ItemVillageStick.name=村庄短杖
 item.ItemVillageCurrency.name=村庄货币
 
