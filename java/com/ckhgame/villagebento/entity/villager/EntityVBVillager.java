@@ -19,14 +19,20 @@ import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable {
@@ -77,6 +83,7 @@ public class EntityVBVillager extends EntityAgeable {
 		if (this.worldObj.isRemote) {
 			// client
 			this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
+			this.setAlwaysRenderNameTag(true);
 			this.skinTexture = vr.getSkin();
 		} else {
 			// server
@@ -282,6 +289,59 @@ public class EntityVBVillager extends EntityAgeable {
 		}
 		
 		return true;
+	}
+
+	
+	
+	
+	@Override
+	protected void applyEntityAttributes() {
+		// TODO Auto-generated method stub
+		super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(8.0D);
+		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		// TODO Auto-generated method stub
+		super.onLivingUpdate();
+		this.updateArmSwingProgress();
+		if (this.getHealth() < this.getMaxHealth() && this.ticksExisted % 40 * 12 == 0)
+        {
+            this.heal(1.0F);
+        }
+	}
+
+	protected void attackEntity(Entity entity, float distance){
+        if (this.attackTime <= 0 && distance < 2.0F && entity.boundingBox.maxY > this.boundingBox.minY && entity.boundingBox.minY < this.boundingBox.maxY)
+        {
+            this.attackTime = 20;            
+            this.attackEntityAsMob(entity);
+        }
+    }
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		
+		//deal damage
+		float dmg = (float)this.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
+        entity.attackEntityFrom(DamageSource.causeMobDamage(this), dmg);
+        
+        //knock back
+        float k = 0.5F;
+        entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * k * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)k * 0.5F));
+        this.motionX *= 0.6D;
+        this.motionZ *= 0.6D;
+		
+		return super.attackEntityAsMob(entity);
+	}
+
+	@Override
+	public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_) {
+		if(p_70097_1_.getEntity() instanceof EntityLivingBase)
+			this.setAttackTarget((EntityLivingBase)p_70097_1_.getEntity());
+		return super.attackEntityFrom(p_70097_1_, p_70097_2_);
 	}
 
 	@Override

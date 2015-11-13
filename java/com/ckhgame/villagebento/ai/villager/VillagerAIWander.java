@@ -1,7 +1,10 @@
 package com.ckhgame.villagebento.ai.villager;
 
+import java.util.Random;
+
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.misc.VillagerNavigator;
 import com.ckhgame.villagebento.util.BlockFinder;
 import com.ckhgame.villagebento.util.VBRandomPositionGenerator;
 import com.ckhgame.villagebento.util.VillageTime;
@@ -79,6 +82,6 @@ public class VillagerAIWander extends EntityAIBase
      */
     public void startExecuting()
     {
-        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, ConfigVillager.VillagerMoveSpeed);
+    	VillagerNavigator.tryMoveToXYZ(entity, this.xPosition, this.yPosition, this.zPosition);   
     }
 }

@@ -74,7 +74,7 @@ public class VillagerAIWatchClosest extends EntityAIBase
     {
     	if(this.theWatcher.getSleeping())
     		return false;
-    	
+
         return !this.closestEntity.isEntityAlive() ? false : (this.theWatcher.getDistanceSqToEntity(this.closestEntity) > (double)(this.maxDistanceForPlayer * this.maxDistanceForPlayer) ? false : this.lookTime > 0);
     }
 

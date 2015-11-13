@@ -1,7 +1,10 @@
 package com.ckhgame.villagebento.ai.villager;
 
+import java.util.Random;
+
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.misc.VillagerNavigator;
 import com.ckhgame.villagebento.util.BlockFinder;
 import com.ckhgame.villagebento.util.VBRandomPositionGenerator;
 import com.ckhgame.villagebento.util.VillageTime;
@@ -37,6 +40,11 @@ public class VillagerAIGuardPatrol extends EntityAIBase
         
         vec3 = VBRandomPositionGenerator.findRandomTargetGuardPatrol(this.entity);
         
+        if(vec3 == null){
+        	//if the guard can not find any building near self, he is considered lost his way and will be moved towards his building 
+        	vec3 = Vec3.createVectorHelper(entity.buildingX, entity.buildingY, entity.buildingZ);
+        }
+        
         if (vec3 == null)
         {
             return false;
@@ -55,6 +63,9 @@ public class VillagerAIGuardPatrol extends EntityAIBase
      */
     public boolean continueExecuting()
     {
+    	if(this.entity.getAttackTarget()!=null)
+    		return false;
+    	
     	if(VillageTime.isMorning(this.entity.worldObj))
     	{
     		if (this.entity.getRNG().nextInt(60) != 0)
@@ -79,7 +90,7 @@ public class VillagerAIGuardPatrol extends EntityAIBase
     public void startExecuting()
     {
     	equipWeaponAndArmors(true);
-        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, ConfigVillager.VillagerMoveSpeed);
+    	VillagerNavigator.tryMoveToXYZ(entity, this.xPosition, this.yPosition, this.zPosition);       
     }
     
     private void equipWeaponAndArmors(boolean equip){

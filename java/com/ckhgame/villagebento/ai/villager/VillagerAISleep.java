@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.misc.VillagerNavigator;
 import com.ckhgame.villagebento.util.VillageTime;
 
 import net.minecraft.entity.ai.EntityAIBase;
@@ -66,23 +67,10 @@ public class VillagerAISleep extends EntityAIBase
      */
     public void startExecuting()
     {
-    	if(!this.entity.getSleeping()){
-    		boolean nav = this.entity.getNavigator().tryMoveToXYZ(this.entity.bedPosition.xCoord + 0.5D,
-								    				this.entity.bedPosition.yCoord + 1.0D,
-								    				this.entity.bedPosition.zCoord + 0.5D,
-								    				ConfigVillager.VillagerMoveSpeed);
-    		if(nav == false){
-    			Vec3 dir = Vec3.createVectorHelper(	this.entity.bedPosition.xCoord - this.entity.posX,
-								    				this.entity.bedPosition.yCoord - this.entity.posY, 
-								    				this.entity.bedPosition.zCoord - this.entity.posZ);
-    			dir = dir.normalize();
-    			double d = 10;
-    			Random rand = this.entity.getRNG();
-    			this.entity.getNavigator().tryMoveToXYZ(this.entity.posX + dir.xCoord * d + rand.nextInt(3) - 1,
-    													this.entity.posY + dir.yCoord * d + rand.nextInt(3) - 1,
-    													this.entity.posZ + dir.zCoord * d + rand.nextInt(3) - 1,
-	    												ConfigVillager.VillagerMoveSpeed);
-    		}
+    	if(!this.entity.getSleeping()){		
+    		VillagerNavigator.tryMoveToXYZ(entity, 	this.entity.bedPosition.xCoord + 0.5D,
+					    							this.entity.bedPosition.yCoord + 1.0D,
+					    							this.entity.bedPosition.zCoord + 0.5D);   
     	}
     }
 
