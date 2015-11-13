@@ -55,7 +55,7 @@ public class VillagerLibrarian extends Villager {
 
 	@Override
 	public String getSkinName() {
-		return "architect";
+		return "librarian";
 	}
 
 }
