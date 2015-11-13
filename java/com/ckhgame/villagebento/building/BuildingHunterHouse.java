@@ -98,7 +98,7 @@ public class BuildingHunterHouse extends Building {
 		bb.buildBlock(-2,4,2,Blocks.torch,1);bb.addEntityItemFrame(-3,4,1,3,288);
 		bb.addEntityItemFrame(-3,4,0,3,334);
 		bb.addEntityItemFrame(-3,4,-1,3,280);
-		bb.addEntityItemFrame(2,2,0,3,262);
+		bb.addEntityItemFrame(2,2,0,3,192);
 
 	}
 

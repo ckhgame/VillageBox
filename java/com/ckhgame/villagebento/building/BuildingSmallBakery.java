@@ -46,7 +46,7 @@ public class BuildingSmallBakery extends Building {
 		bb.buildBlock(0,0,3,Blocks.planks,0);bb.buildBlock(1,0,-3,Blocks.planks,0);bb.buildBlock(1,0,0,Blocks.planks,0);
 		bb.buildBlock(1,0,1,Blocks.planks,0);bb.buildBlock(1,0,2,Blocks.planks,0);bb.buildBlock(1,0,3,Blocks.planks,0);
 		bb.buildBlock(2,0,-3,Blocks.planks,0);bb.buildBlock(2,0,3,Blocks.planks,0);bb.buildBlock(3,0,-2,Blocks.planks,0);
-		bb.buildBlock(3,0,-1,Blocks.planks,0);bb.buildBlock(3,0,0,Blocks.wooden_door,4);bb.buildBlock(3,0,1,Blocks.planks,0);
+		bb.buildBlock(3,0,-1,Blocks.planks,0);bb.buildBlock(3,0,0,Blocks.wooden_door,0);bb.buildBlock(3,0,1,Blocks.planks,0);
 		bb.buildBlock(3,0,2,Blocks.planks,0);bb.buildBlock(-3,1,-2,Blocks.planks,0);bb.buildBlock(-3,1,-1,Blocks.planks,0);
 		bb.buildBlock(-3,1,0,Blocks.planks,0);bb.buildBlock(-3,1,1,Blocks.planks,0);bb.buildBlock(-3,1,2,Blocks.planks,0);
 		bb.buildBlock(-2,1,-3,Blocks.planks,0);bb.buildBlock(-2,1,3,Blocks.planks,0);bb.buildBlock(-1,1,-3,Blocks.planks,0);
@@ -54,9 +54,9 @@ public class BuildingSmallBakery extends Building {
 		bb.buildBlock(-1,1,1,Blocks.planks,0);bb.buildBlock(-1,1,3,Blocks.glass_pane,0);bb.buildBlock(0,1,-3,Blocks.planks,0);
 		bb.buildBlock(0,1,3,Blocks.planks,0);bb.buildBlock(1,1,-3,Blocks.glass_pane,0);bb.buildBlock(1,1,0,Blocks.glass,0);
 		bb.buildBlock(1,1,1,Blocks.glass,0);bb.buildBlock(1,1,2,Blocks.glass,0);bb.buildBlock(1,1,3,Blocks.glass_pane,0);
-		bb.buildBlock(2,1,-3,Blocks.planks,0);bb.buildBlock(2,1,3,Blocks.planks,0);bb.buildBlock(3,1,-2,Blocks.planks,0);
-		bb.buildBlock(3,1,-1,Blocks.planks,0);bb.buildBlock(3,1,0,Blocks.wooden_door,8);bb.buildBlock(3,1,1,Blocks.planks,0);
-		bb.buildBlock(3,1,2,Blocks.planks,0);bb.buildBlock(-3,2,-2,Blocks.planks,0);bb.buildBlock(-3,2,-1,Blocks.planks,0);
+		bb.buildBlock(2,1,-3,Blocks.planks,0);bb.buildBlock(2,1,2,Blocks.planks,0);bb.buildBlock(2,1,3,Blocks.planks,0);
+		bb.buildBlock(3,1,-2,Blocks.glass,0);bb.buildBlock(3,1,-1,Blocks.planks,0);bb.buildBlock(3,1,0,Blocks.wooden_door,8);
+		bb.buildBlock(3,1,1,Blocks.planks,0);bb.buildBlock(-3,2,-2,Blocks.planks,0);bb.buildBlock(-3,2,-1,Blocks.planks,0);
 		bb.buildBlock(-3,2,0,Blocks.planks,0);bb.buildBlock(-3,2,1,Blocks.planks,0);bb.buildBlock(-3,2,2,Blocks.planks,0);
 		bb.buildBlock(-2,2,-3,Blocks.planks,0);bb.buildBlock(-2,2,3,Blocks.planks,0);bb.buildBlock(-1,2,-3,Blocks.planks,0);
 		bb.buildBlock(-1,2,-2,Blocks.planks,0);bb.buildBlock(-1,2,-1,Blocks.fence,0);bb.buildBlock(-1,2,0,Blocks.fence,0);
@@ -90,7 +90,8 @@ public class BuildingSmallBakery extends Building {
 		bb.buildBlock(3,4,2,Blocks.spruce_stairs,1);bb.buildBlock(-3,0,-3,Blocks.torch,5);bb.buildBlock(-3,0,3,Blocks.torch,5);
 		bb.buildBlock(3,0,-3,Blocks.torch,5);bb.buildBlock(3,0,3,Blocks.torch,5);bb.buildBlock(-2,3,-2,Blocks.torch,1);
 		bb.buildBlock(-2,3,2,Blocks.torch,1);bb.buildBlock(0,3,-2,Blocks.torch,3);bb.buildBlock(0,3,2,Blocks.torch,4);
-		bb.buildBlock(2,3,-2,Blocks.torch,3);bb.buildBlock(2,3,2,Blocks.torch,4);bb.addEntityPainting(-2,2,-3,0,"Wasteland");
+		bb.buildBlock(2,3,-2,Blocks.torch,3);bb.addEntityPainting(-2,2,-3,0,"Wasteland");
+		bb.addEntityItemFrame(2,1,2,3,181);
 	}
 
 }

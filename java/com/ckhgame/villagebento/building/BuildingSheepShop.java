@@ -65,9 +65,9 @@ public class BuildingSheepShop extends Building {
 		bb.buildBlock(-3,2,2,Blocks.planks,2);bb.buildBlock(-2,2,-3,Blocks.planks,2);bb.buildBlock(-2,2,3,Blocks.planks,2);
 		bb.buildBlock(-1,2,-3,Blocks.planks,2);bb.buildBlock(-1,2,3,Blocks.planks,2);bb.buildBlock(0,2,-3,Blocks.glass_pane,0);
 		bb.buildBlock(0,2,3,Blocks.glass_pane,0);bb.buildBlock(1,2,-3,Blocks.planks,2);bb.buildBlock(1,2,3,Blocks.planks,2);
-		bb.buildBlock(2,2,-3,Blocks.planks,2);bb.buildBlock(2,2,3,Blocks.planks,2);bb.buildBlock(3,2,-2,Blocks.planks,2);
-		bb.buildBlock(3,2,-1,Blocks.planks,0);bb.buildBlock(3,2,0,Blocks.planks,0);bb.buildBlock(3,2,1,Blocks.planks,0);
-		bb.buildBlock(3,2,2,Blocks.planks,2);bb.buildBlock(-3,3,-3,Blocks.fence,0);bb.buildBlock(-3,3,-2,Blocks.planks,2);
+		bb.buildBlock(2,2,-3,Blocks.planks,2);bb.buildBlock(2,2,-2,Blocks.planks,2);bb.buildBlock(2,2,2,Blocks.planks,2);
+		bb.buildBlock(2,2,3,Blocks.planks,2);bb.buildBlock(3,2,-1,Blocks.planks,0);bb.buildBlock(3,2,0,Blocks.planks,0);
+		bb.buildBlock(3,2,1,Blocks.planks,0);bb.buildBlock(-3,3,-3,Blocks.fence,0);bb.buildBlock(-3,3,-2,Blocks.planks,2);
 		bb.buildBlock(-3,3,-1,Blocks.planks,2);bb.buildBlock(-3,3,0,Blocks.planks,2);bb.buildBlock(-3,3,1,Blocks.planks,2);
 		bb.buildBlock(-3,3,2,Blocks.planks,2);bb.buildBlock(-3,3,3,Blocks.fence,0);bb.buildBlock(-2,3,-3,Blocks.planks,2);
 		bb.buildBlock(-2,3,3,Blocks.planks,2);bb.buildBlock(-1,3,-3,Blocks.planks,2);bb.buildBlock(-1,3,3,Blocks.planks,2);
@@ -98,6 +98,7 @@ public class BuildingSheepShop extends Building {
 		bb.buildBlock(2,3,0,Blocks.torch,2);bb.buildBlock(2,3,2,Blocks.torch,2);bb.addEntityPainting(-3,2,1,3,"Aztec2");
 		bb.addEntityPainting(-3,2,0,3,"Bomb");
 		bb.addEntityPainting(-3,2,-1,3,"Wasteland");
+		bb.addEntityItemFrame(2,2,2,3,185);
 	}
 
 }

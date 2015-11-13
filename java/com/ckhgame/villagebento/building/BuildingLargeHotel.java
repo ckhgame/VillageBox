@@ -464,7 +464,7 @@ public class BuildingLargeHotel extends Building {
 		bb.addEntityPainting(0,6,-4,3,"Bomb");
 		bb.addEntityPainting(5,2,4,1,"Sunset");
 		bb.addEntityPainting(0,6,4,3,"Aztec2");
-		bb.addEntityItemFrame(4,2,0,3,355);
+		bb.addEntityItemFrame(4,2,0,3,199);
 	}
 
 }

@@ -130,7 +130,7 @@ public class BuildingFlowerShop extends Building {
 		bb.buildBlock(-3,4,2,Blocks.torch,2);bb.buildBlock(-2,4,-3,Blocks.torch,4);bb.buildBlock(-2,4,3,Blocks.torch,3);
 		bb.buildBlock(2,4,-3,Blocks.torch,4);bb.buildBlock(2,4,3,Blocks.torch,3);bb.buildBlock(3,4,-2,Blocks.torch,1);
 		bb.buildBlock(3,4,2,Blocks.torch,1);bb.buildBlock(-2,9,-2,Blocks.torch,5);bb.buildBlock(-2,9,2,Blocks.torch,5);
-		bb.buildBlock(2,9,-2,Blocks.torch,5);bb.buildBlock(2,9,2,Blocks.torch,5);bb.addEntityItemFrame(2,2,0,3,175);
+		bb.buildBlock(2,9,-2,Blocks.torch,5);bb.buildBlock(2,9,2,Blocks.torch,5);bb.addEntityItemFrame(2,2,0,3,189);
 		bb.addEntityItemFrame(-1,1,0,3,175);
 		bb.addEntityItemFrame(-1,1,-1,3,175);
 

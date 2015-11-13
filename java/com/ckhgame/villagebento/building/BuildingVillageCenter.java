@@ -45,7 +45,7 @@ public class BuildingVillageCenter extends Building {
 		bb.buildBlock(-1,0,0,Blocks.flower_pot,0);bb.addTileEntityPot(-1,0,0,37,0);
 		bb.buildBlock(-1,0,1,Blocks.oak_stairs,3);bb.buildBlock(-1,0,2,Blocks.stonebrick,0);bb.buildBlock(0,0,-2,Blocks.stonebrick,0);
 		bb.buildBlock(0,0,2,Blocks.stonebrick,0);bb.buildBlock(1,0,-2,Blocks.stonebrick,0);bb.buildBlock(1,0,2,Blocks.stonebrick,0);
-		bb.buildBlock(2,0,-2,Blocks.stonebrick,0);bb.buildBlock(2,0,-1,Blocks.wooden_door,0);bb.buildBlock(2,0,0,Blocks.wooden_door,0);
+		bb.buildBlock(2,0,-2,Blocks.stonebrick,0);bb.buildBlock(2,0,-1,Blocks.wooden_door,0);bb.buildBlock(2,0,0,Blocks.wooden_door,4);
 		bb.buildBlock(2,0,1,Blocks.stonebrick,0);bb.buildBlock(2,0,2,Blocks.stonebrick,0);bb.buildBlock(3,0,-3,Blocks.fence,0);
 		bb.buildBlock(3,0,3,Blocks.fence,0);bb.buildBlock(-3,1,-3,Blocks.fence,0);bb.buildBlock(-3,1,3,Blocks.fence,0);
 		bb.buildBlock(-2,1,-2,Blocks.log,0);bb.buildBlock(-2,1,-1,Blocks.planks,2);bb.buildBlock(-2,1,0,Blocks.planks,2);
@@ -131,7 +131,7 @@ public class BuildingVillageCenter extends Building {
 		bb.buildBlock(1,2,-1,Blocks.torch,3);bb.buildBlock(1,2,1,Blocks.torch,4);bb.buildBlock(3,2,-2,Blocks.torch,1);
 		bb.buildBlock(3,2,2,Blocks.torch,1);bb.buildBlock(-2,7,-2,Blocks.torch,3);bb.buildBlock(-2,7,2,Blocks.torch,4);
 		bb.buildBlock(2,7,-2,Blocks.torch,3);bb.buildBlock(2,7,2,Blocks.torch,4);bb.addEntityPainting(-2,1,-1,3,"Bomb");
-		bb.addEntityItemFrame(2,1,1,3,-1);
+		bb.addEntityItemFrame(2,1,1,3,176);
 	}
 
 }

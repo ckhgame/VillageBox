@@ -158,8 +158,7 @@ public class BuildingMarket extends Building {
 		bb.buildBlock(-2,7,0,Blocks.torch,1);bb.buildBlock(-2,7,2,Blocks.torch,1);bb.buildBlock(2,7,-2,Blocks.torch,2);
 		bb.buildBlock(2,7,0,Blocks.torch,2);bb.buildBlock(2,7,2,Blocks.torch,2);bb.addEntityPainting(-1,1,0,2,"Kebab");
 		bb.addEntityPainting(-1,1,0,0,"Plant");
-		bb.addEntityItemFrame(3,2,0,3,-1);
-
+		bb.addEntityItemFrame(3,2,0,3,200);
 	}
 
 }

@@ -37,7 +37,7 @@ public class BuildingFarmland extends Building {
 
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
-		bb.buildBlock(2,-2,-3,Blocks.stonebrick,2);bb.buildBlock(-7,-1,-7,Blocks.grass,0);bb.buildBlock(-7,-1,-6,Blocks.grass,0);
+		bb.buildBlock(2,-2,-3,Blocks.monster_egg,2);bb.buildBlock(-7,-1,-7,Blocks.grass,0);bb.buildBlock(-7,-1,-6,Blocks.grass,0);
 		bb.buildBlock(-7,-1,-5,Blocks.grass,0);bb.buildBlock(-7,-1,-4,Blocks.grass,0);bb.buildBlock(-7,-1,-3,Blocks.grass,0);
 		bb.buildBlock(-7,-1,-2,Blocks.grass,0);bb.buildBlock(-7,-1,-1,Blocks.grass,0);bb.buildBlock(-7,-1,0,Blocks.grass,0);
 		bb.buildBlock(-7,-1,1,Blocks.grass,0);bb.buildBlock(-7,-1,2,Blocks.grass,0);bb.buildBlock(-7,-1,3,Blocks.grass,0);
@@ -250,7 +250,7 @@ public class BuildingFarmland extends Building {
 		bb.buildBlock(7,1,7,Blocks.torch,5);bb.buildBlock(1,3,-6,Blocks.torch,3);bb.buildBlock(1,3,-4,Blocks.torch,1);
 		bb.buildBlock(1,3,-2,Blocks.torch,4);bb.buildBlock(3,3,-6,Blocks.torch,3);bb.buildBlock(3,3,-2,Blocks.torch,4);
 		bb.buildBlock(5,3,-6,Blocks.torch,3);bb.buildBlock(5,3,-4,Blocks.torch,2);bb.buildBlock(5,3,-2,Blocks.torch,4);
-		bb.addEntityItemFrame(6,1,-2,3,296);
+		bb.addEntityItemFrame(6,1,-2,3,188);
 	}
 
 }

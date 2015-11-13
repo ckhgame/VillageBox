@@ -41,7 +41,6 @@ public class BuildingLargeCasino extends Building {
 
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
-		bb.buildBlock(-1,-7,-1,Blocks.air,0);bb.buildBlock(-1,-7,0,Blocks.air,0);bb.buildBlock(-1,-7,1,Blocks.air,0);
 		bb.buildBlock(-1,-7,2,Blocks.air,0);bb.buildBlock(-1,-7,3,Blocks.air,0);bb.buildBlock(-1,-7,4,Blocks.air,0);
 		bb.buildBlock(-1,-7,5,Blocks.air,0);bb.buildBlock(-1,-7,6,Blocks.air,0);bb.buildBlock(-1,-7,7,Blocks.air,0);
 		bb.buildBlock(0,-7,-7,Blocks.air,0);bb.buildBlock(0,-7,-6,Blocks.air,0);bb.buildBlock(0,-7,-5,Blocks.air,0);
@@ -319,11 +318,11 @@ public class BuildingLargeCasino extends Building {
 		bb.buildBlock(3,0,-7,Blocks.sandstone,2);bb.buildBlock(3,0,-3,Blocks.sandstone,1);bb.buildBlock(3,0,3,Blocks.sandstone,1);
 		bb.buildBlock(3,0,7,Blocks.sandstone,2);bb.buildBlock(4,0,-7,Blocks.sandstone,2);bb.buildBlock(4,0,7,Blocks.sandstone,2);
 		bb.buildBlock(5,0,-7,Blocks.sandstone,2);bb.buildBlock(5,0,-5,Blocks.fence,0);bb.buildBlock(5,0,5,Blocks.fence,0);
-		bb.buildBlock(5,0,7,Blocks.sandstone,2);bb.buildBlock(6,0,-7,Blocks.sandstone,2);bb.buildBlock(6,0,7,Blocks.sandstone,2);
-		bb.buildBlock(7,0,-7,Blocks.sandstone,2);bb.buildBlock(7,0,-6,Blocks.sandstone,2);bb.buildBlock(7,0,-5,Blocks.sandstone,2);
-		bb.buildBlock(7,0,-4,Blocks.sandstone,2);bb.buildBlock(7,0,-3,Blocks.sandstone,2);bb.buildBlock(7,0,-2,Blocks.sandstone,2);
-		bb.buildBlock(7,0,-1,Blocks.sandstone,2);bb.buildBlock(7,0,0,Blocks.wooden_door,0);bb.buildBlock(7,0,1,Blocks.wooden_door,0);
-		bb.buildBlock(7,0,2,Blocks.sandstone,2);bb.buildBlock(7,0,3,Blocks.sandstone,2);bb.buildBlock(7,0,4,Blocks.sandstone,2);
+		bb.buildBlock(5,0,7,Blocks.sandstone,2);bb.buildBlock(6,0,-7,Blocks.sandstone,2);bb.buildBlock(6,0,-2,Blocks.sandstone,2);
+		bb.buildBlock(6,0,3,Blocks.sandstone,2);bb.buildBlock(6,0,7,Blocks.sandstone,2);bb.buildBlock(7,0,-7,Blocks.sandstone,2);
+		bb.buildBlock(7,0,-6,Blocks.sandstone,2);bb.buildBlock(7,0,-5,Blocks.sandstone,2);bb.buildBlock(7,0,-4,Blocks.sandstone,2);
+		bb.buildBlock(7,0,-3,Blocks.sandstone,2);bb.buildBlock(7,0,-1,Blocks.sandstone,2);bb.buildBlock(7,0,0,Blocks.wooden_door,0);
+		bb.buildBlock(7,0,1,Blocks.wooden_door,0);bb.buildBlock(7,0,2,Blocks.sandstone,2);bb.buildBlock(7,0,4,Blocks.sandstone,2);
 		bb.buildBlock(7,0,5,Blocks.sandstone,2);bb.buildBlock(7,0,6,Blocks.sandstone,2);bb.buildBlock(7,0,7,Blocks.sandstone,2);
 		bb.buildBlock(-7,1,-7,Blocks.sandstone,2);bb.buildBlock(-7,1,-6,Blocks.sandstone,2);bb.buildBlock(-7,1,-5,Blocks.glass_pane,0);
 		bb.buildBlock(-7,1,-4,Blocks.glass_pane,0);bb.buildBlock(-7,1,-3,Blocks.sandstone,2);bb.buildBlock(-7,1,-2,Blocks.glass_pane,0);
@@ -350,11 +349,11 @@ public class BuildingLargeCasino extends Building {
 		bb.buildBlock(3,1,-3,Blocks.sandstone,1);bb.buildBlock(3,1,3,Blocks.sandstone,1);bb.buildBlock(3,1,7,Blocks.sandstone,2);
 		bb.buildBlock(4,1,-7,Blocks.sandstone,2);bb.buildBlock(4,1,7,Blocks.sandstone,2);bb.buildBlock(5,1,-7,Blocks.sandstone,2);
 		bb.buildBlock(5,1,-5,Blocks.wooden_slab,2);bb.buildBlock(5,1,5,Blocks.wooden_slab,2);bb.buildBlock(5,1,7,Blocks.sandstone,2);
-		bb.buildBlock(6,1,-7,Blocks.sandstone,2);bb.buildBlock(6,1,7,Blocks.sandstone,2);bb.buildBlock(7,1,-7,Blocks.sandstone,2);
-		bb.buildBlock(7,1,-6,Blocks.sandstone,2);bb.buildBlock(7,1,-5,Blocks.glass_pane,0);bb.buildBlock(7,1,-4,Blocks.sandstone,2);
-		bb.buildBlock(7,1,-3,Blocks.glass_pane,0);bb.buildBlock(7,1,-2,Blocks.glass_pane,0);bb.buildBlock(7,1,-1,Blocks.sandstone,2);
-		bb.buildBlock(7,1,0,Blocks.wooden_door,8);bb.buildBlock(7,1,1,Blocks.wooden_door,9);bb.buildBlock(7,1,2,Blocks.sandstone,2);
-		bb.buildBlock(7,1,3,Blocks.glass_pane,0);bb.buildBlock(7,1,4,Blocks.sandstone,2);bb.buildBlock(7,1,5,Blocks.glass_pane,0);
+		bb.buildBlock(6,1,-7,Blocks.sandstone,2);bb.buildBlock(6,1,-2,Blocks.sandstone,2);bb.buildBlock(6,1,3,Blocks.sandstone,2);
+		bb.buildBlock(6,1,7,Blocks.sandstone,2);bb.buildBlock(7,1,-7,Blocks.sandstone,2);bb.buildBlock(7,1,-6,Blocks.sandstone,2);
+		bb.buildBlock(7,1,-5,Blocks.glass_pane,0);bb.buildBlock(7,1,-4,Blocks.sandstone,2);bb.buildBlock(7,1,-3,Blocks.sandstone,2);
+		bb.buildBlock(7,1,-1,Blocks.sandstone,2);bb.buildBlock(7,1,0,Blocks.wooden_door,8);bb.buildBlock(7,1,1,Blocks.wooden_door,9);
+		bb.buildBlock(7,1,2,Blocks.sandstone,2);bb.buildBlock(7,1,4,Blocks.sandstone,2);bb.buildBlock(7,1,5,Blocks.glass_pane,0);
 		bb.buildBlock(7,1,6,Blocks.sandstone,2);bb.buildBlock(7,1,7,Blocks.sandstone,2);bb.buildBlock(-7,2,-7,Blocks.sandstone,2);
 		bb.buildBlock(-7,2,-6,Blocks.sandstone,2);bb.buildBlock(-7,2,-5,Blocks.glass_pane,0);bb.buildBlock(-7,2,-4,Blocks.glass_pane,0);
 		bb.buildBlock(-7,2,-3,Blocks.sandstone,2);bb.buildBlock(-7,2,-2,Blocks.glass_pane,0);bb.buildBlock(-7,2,-1,Blocks.glass_pane,0);
@@ -376,11 +375,11 @@ public class BuildingLargeCasino extends Building {
 		bb.buildBlock(2,2,7,Blocks.glass_pane,0);bb.buildBlock(3,2,-7,Blocks.sandstone,2);bb.buildBlock(3,2,-3,Blocks.sandstone,1);
 		bb.buildBlock(3,2,3,Blocks.sandstone,1);bb.buildBlock(3,2,7,Blocks.sandstone,2);bb.buildBlock(4,2,-7,Blocks.glass_pane,0);
 		bb.buildBlock(4,2,7,Blocks.glass_pane,0);bb.buildBlock(5,2,-7,Blocks.glass_pane,0);bb.buildBlock(5,2,7,Blocks.glass_pane,0);
-		bb.buildBlock(6,2,-7,Blocks.sandstone,2);bb.buildBlock(6,2,7,Blocks.sandstone,2);bb.buildBlock(7,2,-7,Blocks.sandstone,2);
-		bb.buildBlock(7,2,-6,Blocks.sandstone,2);bb.buildBlock(7,2,-5,Blocks.glass_pane,0);bb.buildBlock(7,2,-4,Blocks.sandstone,2);
-		bb.buildBlock(7,2,-3,Blocks.glass_pane,0);bb.buildBlock(7,2,-2,Blocks.glass_pane,0);bb.buildBlock(7,2,-1,Blocks.sandstone,2);
-		bb.buildBlock(7,2,0,Blocks.sandstone,2);bb.buildBlock(7,2,1,Blocks.sandstone,2);bb.buildBlock(7,2,2,Blocks.sandstone,2);
-		bb.buildBlock(7,2,3,Blocks.glass_pane,0);bb.buildBlock(7,2,4,Blocks.sandstone,2);bb.buildBlock(7,2,5,Blocks.glass_pane,0);
+		bb.buildBlock(6,2,-7,Blocks.sandstone,2);bb.buildBlock(6,2,-2,Blocks.sandstone,2);bb.buildBlock(6,2,3,Blocks.sandstone,2);
+		bb.buildBlock(6,2,7,Blocks.sandstone,2);bb.buildBlock(7,2,-7,Blocks.sandstone,2);bb.buildBlock(7,2,-6,Blocks.sandstone,2);
+		bb.buildBlock(7,2,-5,Blocks.glass_pane,0);bb.buildBlock(7,2,-4,Blocks.sandstone,2);bb.buildBlock(7,2,-3,Blocks.sandstone,2);
+		bb.buildBlock(7,2,-1,Blocks.sandstone,2);bb.buildBlock(7,2,0,Blocks.sandstone,2);bb.buildBlock(7,2,1,Blocks.sandstone,2);
+		bb.buildBlock(7,2,2,Blocks.sandstone,2);bb.buildBlock(7,2,4,Blocks.sandstone,2);bb.buildBlock(7,2,5,Blocks.glass_pane,0);
 		bb.buildBlock(7,2,6,Blocks.sandstone,2);bb.buildBlock(7,2,7,Blocks.sandstone,2);bb.buildBlock(-7,3,-6,Blocks.sandstone,2);
 		bb.buildBlock(-7,3,-5,Blocks.sandstone,2);bb.buildBlock(-7,3,-4,Blocks.sandstone,2);bb.buildBlock(-7,3,-3,Blocks.sandstone,2);
 		bb.buildBlock(-7,3,-2,Blocks.sandstone,2);bb.buildBlock(-7,3,-1,Blocks.sandstone,2);bb.buildBlock(-7,3,0,Blocks.sandstone,2);
@@ -696,24 +695,25 @@ public class BuildingLargeCasino extends Building {
 		bb.buildBlock(2,13,0,Blocks.glass,0);bb.buildBlock(2,13,1,Blocks.glass,0);bb.buildBlock(2,13,2,Blocks.glass,0);
 		bb.buildBlock(2,13,3,Blocks.stone_slab,1);bb.buildBlock(3,13,-3,Blocks.stone_slab,1);bb.buildBlock(3,13,-2,Blocks.stone_slab,1);
 		bb.buildBlock(3,13,-1,Blocks.stone_slab,1);bb.buildBlock(3,13,0,Blocks.stone_slab,1);bb.buildBlock(3,13,1,Blocks.stone_slab,1);
-		bb.buildBlock(3,13,2,Blocks.stone_slab,1);bb.buildBlock(3,13,3,Blocks.stone_slab,1);bb.buildBlock(4,2,-3,Blocks.torch,1);
-		bb.buildBlock(4,2,3,Blocks.torch,1);bb.buildBlock(-6,4,-6,Blocks.torch,3);bb.buildBlock(-6,4,-3,Blocks.torch,1);
-		bb.buildBlock(-6,4,0,Blocks.torch,1);bb.buildBlock(-6,4,3,Blocks.torch,1);bb.buildBlock(-6,4,5,Blocks.torch,1);
-		bb.buildBlock(-6,4,6,Blocks.torch,4);bb.buildBlock(-3,4,-6,Blocks.torch,3);bb.buildBlock(-3,4,6,Blocks.torch,4);
-		bb.buildBlock(0,4,-6,Blocks.torch,3);bb.buildBlock(0,4,6,Blocks.torch,4);bb.buildBlock(3,4,-6,Blocks.torch,3);
-		bb.buildBlock(3,4,6,Blocks.torch,4);bb.buildBlock(6,4,-6,Blocks.torch,3);bb.buildBlock(6,4,-5,Blocks.torch,2);
-		bb.buildBlock(6,4,-3,Blocks.torch,2);bb.buildBlock(6,4,-1,Blocks.torch,2);bb.buildBlock(6,4,1,Blocks.torch,2);
-		bb.buildBlock(6,4,3,Blocks.torch,2);bb.buildBlock(6,4,5,Blocks.torch,2);bb.buildBlock(6,4,6,Blocks.torch,4);
-		bb.buildBlock(-5,10,-5,Blocks.torch,3);bb.buildBlock(-5,10,-4,Blocks.torch,4);bb.buildBlock(-5,10,-2,Blocks.torch,1);
-		bb.buildBlock(-5,10,0,Blocks.torch,1);bb.buildBlock(-5,10,2,Blocks.torch,1);bb.buildBlock(-5,10,5,Blocks.torch,4);
-		bb.buildBlock(-2,10,-5,Blocks.torch,3);bb.buildBlock(-2,10,-4,Blocks.torch,4);bb.buildBlock(-2,10,5,Blocks.torch,4);
-		bb.buildBlock(1,10,-5,Blocks.torch,3);bb.buildBlock(1,10,-4,Blocks.torch,4);bb.buildBlock(1,10,5,Blocks.torch,4);
-		bb.buildBlock(4,10,5,Blocks.torch,4);bb.buildBlock(5,10,-5,Blocks.torch,2);bb.buildBlock(5,10,-4,Blocks.torch,2);
-		bb.buildBlock(5,10,-2,Blocks.torch,2);bb.buildBlock(5,10,2,Blocks.torch,2);bb.buildBlock(5,10,4,Blocks.torch,2);
-		bb.addEntityPainting(0,2,0,3,"Alban");
+		bb.buildBlock(3,13,2,Blocks.stone_slab,1);bb.buildBlock(3,13,3,Blocks.stone_slab,1);bb.buildBlock(7,0,-2,Blocks.torch,5);
+		bb.buildBlock(7,0,3,Blocks.torch,5);bb.buildBlock(4,2,-3,Blocks.torch,1);bb.buildBlock(4,2,3,Blocks.torch,1);
+		bb.buildBlock(-6,4,-6,Blocks.torch,3);bb.buildBlock(-6,4,-3,Blocks.torch,1);bb.buildBlock(-6,4,0,Blocks.torch,1);
+		bb.buildBlock(-6,4,3,Blocks.torch,1);bb.buildBlock(-6,4,5,Blocks.torch,1);bb.buildBlock(-6,4,6,Blocks.torch,4);
+		bb.buildBlock(-3,4,-6,Blocks.torch,3);bb.buildBlock(-3,4,6,Blocks.torch,4);bb.buildBlock(0,4,-6,Blocks.torch,3);
+		bb.buildBlock(0,4,6,Blocks.torch,4);bb.buildBlock(3,4,-6,Blocks.torch,3);bb.buildBlock(3,4,6,Blocks.torch,4);
+		bb.buildBlock(6,4,-6,Blocks.torch,3);bb.buildBlock(6,4,-5,Blocks.torch,2);bb.buildBlock(6,4,-3,Blocks.torch,2);
+		bb.buildBlock(6,4,-1,Blocks.torch,2);bb.buildBlock(6,4,1,Blocks.torch,2);bb.buildBlock(6,4,3,Blocks.torch,2);
+		bb.buildBlock(6,4,5,Blocks.torch,2);bb.buildBlock(6,4,6,Blocks.torch,4);bb.buildBlock(-5,10,-5,Blocks.torch,3);
+		bb.buildBlock(-5,10,-4,Blocks.torch,4);bb.buildBlock(-5,10,-2,Blocks.torch,1);bb.buildBlock(-5,10,0,Blocks.torch,1);
+		bb.buildBlock(-5,10,2,Blocks.torch,1);bb.buildBlock(-5,10,5,Blocks.torch,4);bb.buildBlock(-2,10,-5,Blocks.torch,3);
+		bb.buildBlock(-2,10,-4,Blocks.torch,4);bb.buildBlock(-2,10,5,Blocks.torch,4);bb.buildBlock(1,10,-5,Blocks.torch,3);
+		bb.buildBlock(1,10,-4,Blocks.torch,4);bb.buildBlock(1,10,5,Blocks.torch,4);bb.buildBlock(4,10,5,Blocks.torch,4);
+		bb.buildBlock(5,10,-5,Blocks.torch,2);bb.buildBlock(5,10,-4,Blocks.torch,2);bb.buildBlock(5,10,-2,Blocks.torch,2);
+		bb.buildBlock(5,10,2,Blocks.torch,2);bb.buildBlock(5,10,4,Blocks.torch,2);bb.addEntityPainting(0,2,0,3,"Alban");
 		bb.addEntityPainting(3,6,0,1,"Plant");
 		bb.addEntityPainting(3,6,-1,1,"Aztec2");
 		bb.addEntityPainting(3,6,1,1,"Bomb");
+		bb.addEntityItemFrame(6,1,3,3,196);
 
 	}
 

@@ -94,9 +94,9 @@ public class BuildingMiningHouse extends Building {
 		bb.buildBlock(0,-3,-2,Blocks.torch,1);bb.buildBlock(0,-3,-1,Blocks.torch,1);bb.buildBlock(0,-3,0,Blocks.torch,1);
 		bb.buildBlock(2,-3,-2,Blocks.torch,2);bb.buildBlock(2,-3,2,Blocks.torch,2);bb.buildBlock(-2,-2,2,Blocks.torch,4);
 		bb.buildBlock(-3,0,-3,Blocks.torch,5);bb.buildBlock(-3,0,3,Blocks.torch,5);bb.buildBlock(3,0,-3,Blocks.torch,5);
-		bb.buildBlock(3,0,-1,Blocks.torch,1);bb.buildBlock(3,0,1,Blocks.torch,1);bb.buildBlock(3,0,3,Blocks.torch,5);
+		bb.buildBlock(3,0,-2,Blocks.torch,1);bb.buildBlock(3,0,2,Blocks.torch,1);bb.buildBlock(3,0,3,Blocks.torch,5);
 		bb.buildBlock(-1,1,-1,Blocks.torch,3);bb.buildBlock(-1,1,1,Blocks.torch,4);bb.buildBlock(1,1,-1,Blocks.torch,3);
-		bb.buildBlock(1,1,1,Blocks.torch,4);
+		bb.buildBlock(1,1,1,Blocks.torch,4);bb.addEntityItemFrame(2,0,1,3,180);
 	}
 
 }

@@ -41,12 +41,12 @@ public class BuildingLargeMilitaryCamp extends Building {
 
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
-		bb.buildBlock(-4,-2,4,Blocks.stonebrick,2);bb.buildBlock(-4,-1,-2,Blocks.stonebrick,2);bb.buildBlock(-5,0,-5,Blocks.stonebrick,0);
-		bb.buildBlock(-5,0,-4,Blocks.stonebrick,0);bb.buildBlock(-5,0,-3,Blocks.stonebrick,0);bb.buildBlock(-5,0,-2,Blocks.stonebrick,0);
-		bb.buildBlock(-5,0,-1,Blocks.stonebrick,0);bb.buildBlock(-5,0,0,Blocks.stonebrick,0);bb.buildBlock(-5,0,1,Blocks.stonebrick,0);
-		bb.buildBlock(-5,0,2,Blocks.stonebrick,0);bb.buildBlock(-5,0,3,Blocks.stonebrick,0);bb.buildBlock(-5,0,4,Blocks.stonebrick,0);
-		bb.buildBlock(-5,0,5,Blocks.stonebrick,0);bb.buildBlock(-4,0,-5,Blocks.stonebrick,0);bb.buildBlock(-4,0,-4,Blocks.dark_oak_stairs,1);
-		bb.buildBlock(-4,0,-3,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,-2,Blocks.flower_pot,6);bb.addTileEntityPot(-4,0,-2,38,6);
+		bb.buildBlock(-5,0,-5,Blocks.stonebrick,0);bb.buildBlock(-5,0,-4,Blocks.stonebrick,0);bb.buildBlock(-5,0,-3,Blocks.stonebrick,0);
+		bb.buildBlock(-5,0,-2,Blocks.stonebrick,0);bb.buildBlock(-5,0,-1,Blocks.stonebrick,0);bb.buildBlock(-5,0,0,Blocks.stonebrick,0);
+		bb.buildBlock(-5,0,1,Blocks.stonebrick,0);bb.buildBlock(-5,0,2,Blocks.stonebrick,0);bb.buildBlock(-5,0,3,Blocks.stonebrick,0);
+		bb.buildBlock(-5,0,4,Blocks.stonebrick,0);bb.buildBlock(-5,0,5,Blocks.stonebrick,0);bb.buildBlock(-4,0,-5,Blocks.stonebrick,0);
+		bb.buildBlock(-4,0,-4,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,-3,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,-2,Blocks.flower_pot,6);
+		bb.addTileEntityPot(-4,0,-2,38,6);
 		bb.buildBlock(-4,0,-1,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,0,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,1,Blocks.dark_oak_stairs,1);
 		bb.buildBlock(-4,0,2,Blocks.flower_pot,6);bb.addTileEntityPot(-4,0,2,38,6);
 		bb.buildBlock(-4,0,3,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,4,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,5,Blocks.stonebrick,0);
@@ -222,7 +222,7 @@ public class BuildingLargeMilitaryCamp extends Building {
 		bb.buildBlock(4,2,2,Blocks.torch,2);bb.buildBlock(4,4,-4,Blocks.torch,2);bb.buildBlock(4,4,4,Blocks.torch,2);
 		bb.buildBlock(-3,8,-3,Blocks.torch,3);bb.buildBlock(-3,8,0,Blocks.torch,1);bb.buildBlock(-3,8,1,Blocks.torch,1);
 		bb.buildBlock(-3,8,3,Blocks.torch,4);bb.buildBlock(-1,8,-3,Blocks.torch,3);bb.buildBlock(-1,8,3,Blocks.torch,4);
-		bb.buildBlock(1,8,-3,Blocks.torch,3);bb.buildBlock(1,8,3,Blocks.torch,4);bb.addEntityItemFrame(5,1,3,3,306);
+		bb.buildBlock(1,8,-3,Blocks.torch,3);bb.buildBlock(1,8,3,Blocks.torch,4);bb.addEntityItemFrame(5,1,3,3,194);
 	}
 
 }
