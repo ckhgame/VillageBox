@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerTavernOwner;
@@ -119,7 +120,7 @@ public class BuildingSmallTavern extends Building {
 		bb.buildBlock(2,3,-2,Blocks.torch,2);bb.buildBlock(2,3,0,Blocks.torch,2);bb.buildBlock(3,3,2,Blocks.torch,1);
 		bb.addEntityPainting(3,-3,-1,1,"Alban");
 		bb.addEntityPainting(3,-3,0,1,"Pool");
-		bb.addEntityItemFrame(2,2,2,3,183);
+		bb.addEntityItemFrame(2,2,2,3,ModBlocks.blockSmallTavern);
 	}
 
 }

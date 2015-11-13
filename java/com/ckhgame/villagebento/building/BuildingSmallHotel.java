@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerHotelOwner;
@@ -116,7 +117,7 @@ public class BuildingSmallHotel extends Building {
 		bb.buildBlock(-1,6,2,Blocks.dark_oak_stairs,1);bb.buildBlock(-1,6,3,Blocks.dark_oak_stairs,1);bb.buildBlock(-2,1,-1,Blocks.torch,4);
 		bb.buildBlock(-2,2,2,Blocks.torch,4);bb.buildBlock(3,4,-2,Blocks.torch,1);bb.buildBlock(3,4,2,Blocks.torch,1);
 		bb.buildBlock(-1,5,-2,Blocks.torch,3);bb.buildBlock(-1,5,2,Blocks.torch,4);bb.addEntityPainting(-1,4,-3,0,"Aztec");
-		bb.addEntityItemFrame(2,1,2,3,182);
+		bb.addEntityItemFrame(2,1,2,3,ModBlocks.blockSmallHotel);
 	}
 
 }

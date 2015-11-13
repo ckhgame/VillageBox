@@ -1,13 +1,12 @@
 package com.ckhgame.villagebento.block;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.List;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.builder.BuildingEntityList;
 import com.ckhgame.villagebento.building.scanning.BlockTypePosMetadata;
 import com.ckhgame.villagebento.building.scanning.BuildingPrefab;
+import com.ckhgame.villagebento.building.scanning.HelperScanning;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
@@ -17,14 +16,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.ai.EntitySenses;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.AxisAlignedBB;
@@ -149,7 +146,8 @@ public class BlockBuildingScanner extends Block {
 			System.out.println("===================================");
 			int ln = 0;
 			for(BlockTypePosMetadata b:prefab.blocks){
-				System.out.format("bb.buildBlock(%d,%d,%d,%s,%d);" + (ln++%3 == 2?"\n":""), b.x,b.y,b.z, getBlockVariable(b.block),b.metadata);
+				
+				System.out.format("bb.buildBlock(%d,%d,%d,%s,%d);" + (ln++%3 == 2?"\n":""), b.x,b.y,b.z,HelperScanning.getInstancePath(b.block),b.metadata);
 				if(b.tileEntity != null){
 					ln = 0;
 					//pot
@@ -186,33 +184,22 @@ public class BlockBuildingScanner extends Block {
 					EntityItemFrame eItemFrame = (EntityItemFrame)e;
 					ItemStack itemStack = eItemFrame.getDisplayedItem();
 					int itemID = itemStack == null?-1:Item.getIdFromItem(itemStack.getItem());
-					System.out.format("bb.addEntityItemFrame(%d,%d,%d,%d,%d);\n",	
+					String path = null;
+					Block block = (Block)Block.blockRegistry.getObjectById(itemID);
+					if(block != null && block != Blocks.air){
+						path = HelperScanning.getInstancePath(block);
+					}
+					else{
+						Item item = Item.getItemById(itemID);
+						path = HelperScanning.getInstancePath(item);
+					}				
+					System.out.format("bb.addEntityItemFrame(%d,%d,%d,%d,%s);\n",	
 							eItemFrame.field_146063_b - prefab.bX,eItemFrame.field_146064_c - prefab.bY,eItemFrame.field_146062_d - prefab.bZ,
-							eItemFrame.hangingDirection,itemID);
+							eItemFrame.hangingDirection,path);
 				}
 			}
 			
 		}
 		
-	}
-	
-	private String getBlockVariable(Block b){
-		Field[] fs = Blocks.class.getFields();
-		for(Field f: fs){
-			if(Modifier.isStatic(f.getModifiers())){
-				try {
-					if(f.get(null) == b){
-						return "Blocks." + f.getName();
-					}
-				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return "can not find";
 	}
 }

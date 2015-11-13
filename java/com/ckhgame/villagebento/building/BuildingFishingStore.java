@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerFisherman;
@@ -102,7 +103,7 @@ public class BuildingFishingStore extends Building {
 		bb.buildBlock(3,1,1,Blocks.torch,5);bb.buildBlock(3,1,3,Blocks.torch,5);bb.buildBlock(-1,3,-1,Blocks.torch,3);
 		bb.buildBlock(-1,3,1,Blocks.torch,4);bb.buildBlock(1,3,-1,Blocks.torch,3);bb.buildBlock(1,3,1,Blocks.torch,4);
 		bb.addEntityPainting(-2,2,0,3,"Aztec2");
-		bb.addEntityItemFrame(2,2,0,3,179);
+		bb.addEntityItemFrame(2,2,0,3,ModBlocks.blockFishingStore);
 	}
 
 }

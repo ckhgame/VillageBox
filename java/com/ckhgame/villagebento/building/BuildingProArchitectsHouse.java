@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerProArchitect;
@@ -152,7 +153,7 @@ public class BuildingProArchitectsHouse extends Building {
 		bb.addEntityPainting(1,7,-3,0,"Aztec2");
 		bb.addEntityPainting(0,6,-3,0,"Pool");
 		bb.addEntityPainting(2,1,-2,0,"Wanderer");
-		bb.addEntityItemFrame(2,1,2,3,198);
+		bb.addEntityItemFrame(2,1,2,3,ModBlocks.blockProArchitectsHouse);
 	}
 
 }

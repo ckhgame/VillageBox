@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerCowSeller;
@@ -136,7 +137,7 @@ public class BuildingCowShop extends Building {
 		bb.buildBlock(0,6,-2,Blocks.torch,3);bb.buildBlock(0,6,2,Blocks.torch,4);bb.buildBlock(2,6,-2,Blocks.torch,2);
 		bb.buildBlock(2,6,2,Blocks.torch,2);bb.addEntityPainting(-3,5,1,3,"Kebab");
 		bb.addEntityPainting(-3,5,0,3,"Sea");
-		bb.addEntityItemFrame(2,1,2,3,184);
+		bb.addEntityItemFrame(2,1,2,3,ModBlocks.blockCowShop);
 	}
 
 }

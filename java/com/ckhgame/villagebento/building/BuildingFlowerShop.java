@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerFlowerShopOwner;
@@ -27,7 +28,7 @@ public class BuildingFlowerShop extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerFlowerShopOwner.class,"Tina",0,0);
+		bb.addBuildingVillager(VillagerFlowerShopOwner.class,"Tina",1,0);
 	}
 
 	@Override
@@ -130,9 +131,9 @@ public class BuildingFlowerShop extends Building {
 		bb.buildBlock(-3,4,2,Blocks.torch,2);bb.buildBlock(-2,4,-3,Blocks.torch,4);bb.buildBlock(-2,4,3,Blocks.torch,3);
 		bb.buildBlock(2,4,-3,Blocks.torch,4);bb.buildBlock(2,4,3,Blocks.torch,3);bb.buildBlock(3,4,-2,Blocks.torch,1);
 		bb.buildBlock(3,4,2,Blocks.torch,1);bb.buildBlock(-2,9,-2,Blocks.torch,5);bb.buildBlock(-2,9,2,Blocks.torch,5);
-		bb.buildBlock(2,9,-2,Blocks.torch,5);bb.buildBlock(2,9,2,Blocks.torch,5);bb.addEntityItemFrame(2,2,0,3,189);
-		bb.addEntityItemFrame(-1,1,0,3,175);
-		bb.addEntityItemFrame(-1,1,-1,3,175);
+		bb.buildBlock(2,9,-2,Blocks.torch,5);bb.buildBlock(2,9,2,Blocks.torch,5);bb.addEntityItemFrame(-1,1,0,3,Blocks.yellow_flower);
+		bb.addEntityItemFrame(-1,1,-1,3,Blocks.red_flower);
+		bb.addEntityItemFrame(2,2,0,3,ModBlocks.blockFlowerShop);
 
 	}
 

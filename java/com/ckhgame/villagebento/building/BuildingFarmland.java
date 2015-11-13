@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerFarmer;
@@ -250,7 +251,7 @@ public class BuildingFarmland extends Building {
 		bb.buildBlock(7,1,7,Blocks.torch,5);bb.buildBlock(1,3,-6,Blocks.torch,3);bb.buildBlock(1,3,-4,Blocks.torch,1);
 		bb.buildBlock(1,3,-2,Blocks.torch,4);bb.buildBlock(3,3,-6,Blocks.torch,3);bb.buildBlock(3,3,-2,Blocks.torch,4);
 		bb.buildBlock(5,3,-6,Blocks.torch,3);bb.buildBlock(5,3,-4,Blocks.torch,2);bb.buildBlock(5,3,-2,Blocks.torch,4);
-		bb.addEntityItemFrame(6,1,-2,3,188);
+		bb.addEntityItemFrame(6,1,-2,3,ModBlocks.blockFarmland);
 	}
 
 }

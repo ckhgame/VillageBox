@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerSoldier;
@@ -100,7 +101,7 @@ public class BuildingSmallMilitaryCamp extends Building {
 		bb.buildBlock(3,5,3,Blocks.stone_brick_stairs,3);bb.buildBlock(3,0,-2,Blocks.torch,5);bb.buildBlock(3,0,2,Blocks.torch,5);
 		bb.buildBlock(-2,4,-2,Blocks.torch,1);bb.buildBlock(-2,4,0,Blocks.torch,1);bb.buildBlock(-2,4,2,Blocks.torch,1);
 		bb.buildBlock(0,4,-2,Blocks.torch,3);bb.buildBlock(0,4,2,Blocks.torch,4);bb.buildBlock(2,4,-2,Blocks.torch,2);
-		bb.buildBlock(2,4,0,Blocks.torch,2);bb.buildBlock(2,4,2,Blocks.torch,2);bb.addEntityItemFrame(2,1,2,3,193);
+		bb.buildBlock(2,4,0,Blocks.torch,2);bb.buildBlock(2,4,2,Blocks.torch,2);bb.addEntityItemFrame(2,1,2,3,ModBlocks.blockSmallMilitaryCamp);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerCaptainSoldier;
@@ -222,7 +223,7 @@ public class BuildingLargeMilitaryCamp extends Building {
 		bb.buildBlock(4,2,2,Blocks.torch,2);bb.buildBlock(4,4,-4,Blocks.torch,2);bb.buildBlock(4,4,4,Blocks.torch,2);
 		bb.buildBlock(-3,8,-3,Blocks.torch,3);bb.buildBlock(-3,8,0,Blocks.torch,1);bb.buildBlock(-3,8,1,Blocks.torch,1);
 		bb.buildBlock(-3,8,3,Blocks.torch,4);bb.buildBlock(-1,8,-3,Blocks.torch,3);bb.buildBlock(-1,8,3,Blocks.torch,4);
-		bb.buildBlock(1,8,-3,Blocks.torch,3);bb.buildBlock(1,8,3,Blocks.torch,4);bb.addEntityItemFrame(5,1,3,3,194);
+		bb.buildBlock(1,8,-3,Blocks.torch,3);bb.buildBlock(1,8,3,Blocks.torch,4);bb.addEntityItemFrame(5,1,3,3,ModBlocks.blockLargeMilitaryCamp);
 	}
 
 }

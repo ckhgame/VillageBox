@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerCasinoManager;
@@ -150,7 +151,7 @@ public class BuildingSmallCasino extends Building {
 		bb.buildBlock(-2,2,-1,Blocks.torch,1);bb.buildBlock(-2,2,1,Blocks.torch,1);bb.buildBlock(2,2,-1,Blocks.torch,2);
 		bb.buildBlock(2,2,1,Blocks.torch,2);bb.buildBlock(-2,3,-2,Blocks.torch,3);bb.buildBlock(0,3,-2,Blocks.torch,3);
 		bb.buildBlock(0,3,2,Blocks.torch,4);bb.buildBlock(2,3,-2,Blocks.torch,3);bb.buildBlock(3,3,2,Blocks.torch,1);
-		bb.addEntityItemFrame(2,2,2,3,187);
+		bb.addEntityItemFrame(2,2,2,3,ModBlocks.blockSmallCasino);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerBlackSmith;
@@ -193,7 +194,7 @@ public class BuildingBlacksmithsShop extends Building {
 		bb.buildBlock(0,1,5,Blocks.torch,5);bb.buildBlock(3,1,-5,Blocks.torch,5);bb.buildBlock(3,1,5,Blocks.torch,5);
 		bb.buildBlock(5,1,1,Blocks.torch,5);bb.buildBlock(5,1,4,Blocks.torch,5);bb.buildBlock(5,2,-4,Blocks.torch,1);
 		bb.buildBlock(5,2,-1,Blocks.torch,1);bb.addEntityPainting(-5,-5,0,3,"DonkeyKong");
-		bb.addEntityItemFrame(4,1,-1,3,177);
+		bb.addEntityItemFrame(4,1,-1,3,ModBlocks.blockBlackSmithsShop);
 	}
 
 }

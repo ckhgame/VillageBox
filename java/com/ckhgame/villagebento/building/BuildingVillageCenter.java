@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerMiner;
@@ -131,7 +132,7 @@ public class BuildingVillageCenter extends Building {
 		bb.buildBlock(1,2,-1,Blocks.torch,3);bb.buildBlock(1,2,1,Blocks.torch,4);bb.buildBlock(3,2,-2,Blocks.torch,1);
 		bb.buildBlock(3,2,2,Blocks.torch,1);bb.buildBlock(-2,7,-2,Blocks.torch,3);bb.buildBlock(-2,7,2,Blocks.torch,4);
 		bb.buildBlock(2,7,-2,Blocks.torch,3);bb.buildBlock(2,7,2,Blocks.torch,4);bb.addEntityPainting(-2,1,-1,3,"Bomb");
-		bb.addEntityItemFrame(2,1,1,3,176);
+		bb.addEntityItemFrame(2,1,1,3,ModBlocks.blockVillageCenter);
 	}
 
 }

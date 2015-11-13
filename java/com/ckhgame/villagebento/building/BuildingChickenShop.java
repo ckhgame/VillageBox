@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerChickenSeller;
@@ -85,7 +86,7 @@ public class BuildingChickenShop extends Building {
 		bb.buildBlock(-2,3,-2,Blocks.torch,1);bb.buildBlock(-2,3,2,Blocks.torch,1);bb.buildBlock(0,3,-2,Blocks.torch,3);
 		bb.buildBlock(0,3,2,Blocks.torch,4);bb.buildBlock(2,3,-2,Blocks.torch,2);bb.buildBlock(2,3,2,Blocks.torch,2);
 		bb.addEntityPainting(-3,2,0,3,"Wasteland");
-		bb.addEntityItemFrame(2,1,1,3,186);
+		bb.addEntityItemFrame(2,1,1,3,ModBlocks.blockChickenShop);
 
 	}
 

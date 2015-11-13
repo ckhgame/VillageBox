@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerBakerAssistant;
@@ -181,7 +182,7 @@ public class BuildingLargeBakery extends Building {
 		bb.buildBlock(-3,7,-3,Blocks.torch,3);bb.buildBlock(-3,7,3,Blocks.torch,4);bb.buildBlock(-1,7,-3,Blocks.torch,3);
 		bb.buildBlock(-1,7,3,Blocks.torch,4);bb.addEntityPainting(-3,2,-3,3,"Bomb");
 		bb.addEntityPainting(-4,6,2,3,"Plant");
-		bb.addEntityItemFrame(4,1,1,3,197);
+		bb.addEntityItemFrame(4,1,1,3,ModBlocks.blockBlackSmithsShop);
 
 	}
 

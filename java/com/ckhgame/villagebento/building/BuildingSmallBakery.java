@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerNoviceBaker;
@@ -91,7 +92,7 @@ public class BuildingSmallBakery extends Building {
 		bb.buildBlock(3,0,-3,Blocks.torch,5);bb.buildBlock(3,0,3,Blocks.torch,5);bb.buildBlock(-2,3,-2,Blocks.torch,1);
 		bb.buildBlock(-2,3,2,Blocks.torch,1);bb.buildBlock(0,3,-2,Blocks.torch,3);bb.buildBlock(0,3,2,Blocks.torch,4);
 		bb.buildBlock(2,3,-2,Blocks.torch,3);bb.addEntityPainting(-2,2,-3,0,"Wasteland");
-		bb.addEntityItemFrame(2,1,2,3,181);
+		bb.addEntityItemFrame(2,1,2,3,ModBlocks.blockSmallBakery);
 	}
 
 }

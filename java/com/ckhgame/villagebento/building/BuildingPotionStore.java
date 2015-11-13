@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerMerchant;
@@ -203,7 +204,7 @@ public class BuildingPotionStore extends Building {
 		bb.buildBlock(2,7,2,Blocks.torch,2);bb.buildBlock(-1,8,-1,Blocks.torch,3);bb.buildBlock(-1,8,1,Blocks.torch,4);
 		bb.buildBlock(1,8,-1,Blocks.torch,3);bb.buildBlock(1,8,1,Blocks.torch,4);bb.addEntityPainting(-3,7,0,3,"Bomb");
 		bb.addEntityPainting(-4,2,-1,3,"Bomb");
-		bb.addEntityItemFrame(4,1,1,3,190);
+		bb.addEntityItemFrame(4,1,1,3,ModBlocks.blockPotionStore);
 	}
 
 }

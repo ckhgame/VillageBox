@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerCasinoDealer;
@@ -713,7 +714,7 @@ public class BuildingLargeCasino extends Building {
 		bb.addEntityPainting(3,6,0,1,"Plant");
 		bb.addEntityPainting(3,6,-1,1,"Aztec2");
 		bb.addEntityPainting(3,6,1,1,"Bomb");
-		bb.addEntityItemFrame(6,1,3,3,196);
+		bb.addEntityItemFrame(6,1,3,3,ModBlocks.blockLargeCasino);
 
 	}
 

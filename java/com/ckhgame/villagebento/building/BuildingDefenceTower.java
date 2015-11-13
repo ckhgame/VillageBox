@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerMarksman;
@@ -144,7 +145,7 @@ public class BuildingDefenceTower extends Building {
 		bb.buildBlock(2,10,3,Blocks.torch,2);bb.buildBlock(3,10,-2,Blocks.torch,3);bb.buildBlock(3,10,2,Blocks.torch,4);
 		bb.buildBlock(-2,12,-2,Blocks.torch,1);bb.buildBlock(-2,12,2,Blocks.torch,1);bb.buildBlock(0,12,-2,Blocks.torch,3);
 		bb.buildBlock(0,12,2,Blocks.torch,4);bb.buildBlock(2,12,-2,Blocks.torch,2);bb.buildBlock(2,12,2,Blocks.torch,2);
-		bb.addEntityItemFrame(2,2,0,3,191);
+		bb.addEntityItemFrame(2,2,0,3,ModBlocks.blockDefenceTower);
 
 	}
 

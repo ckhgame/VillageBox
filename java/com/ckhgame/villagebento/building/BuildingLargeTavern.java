@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerLargeTavernOwner;
@@ -362,7 +363,7 @@ public class BuildingLargeTavern extends Building {
 		bb.buildBlock(2,5,3,Blocks.torch,3);bb.buildBlock(5,5,3,Blocks.torch,2);bb.buildBlock(5,5,5,Blocks.torch,2);
 		bb.addEntityPainting(-4,-3,-7,0,"Sea");
 		bb.addEntityPainting(-5,-3,-7,0,"Bomb");
-		bb.addEntityItemFrame(2,1,-1,3,195);
+		bb.addEntityItemFrame(2,1,-1,3,ModBlocks.blockLargeTavern);
 
 	}
 

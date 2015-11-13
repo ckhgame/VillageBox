@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerSheepSeller;
@@ -98,7 +99,7 @@ public class BuildingSheepShop extends Building {
 		bb.buildBlock(2,3,0,Blocks.torch,2);bb.buildBlock(2,3,2,Blocks.torch,2);bb.addEntityPainting(-3,2,1,3,"Aztec2");
 		bb.addEntityPainting(-3,2,0,3,"Bomb");
 		bb.addEntityPainting(-3,2,-1,3,"Wasteland");
-		bb.addEntityItemFrame(2,2,2,3,185);
+		bb.addEntityItemFrame(2,2,2,3,ModBlocks.blockSheepShop);
 	}
 
 }

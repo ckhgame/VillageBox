@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerFarmMarketMerchant;
@@ -158,7 +159,7 @@ public class BuildingMarket extends Building {
 		bb.buildBlock(-2,7,0,Blocks.torch,1);bb.buildBlock(-2,7,2,Blocks.torch,1);bb.buildBlock(2,7,-2,Blocks.torch,2);
 		bb.buildBlock(2,7,0,Blocks.torch,2);bb.buildBlock(2,7,2,Blocks.torch,2);bb.addEntityPainting(-1,1,0,2,"Kebab");
 		bb.addEntityPainting(-1,1,0,0,"Plant");
-		bb.addEntityItemFrame(3,2,0,3,200);
+		bb.addEntityItemFrame(3,2,0,3,ModBlocks.blockMarket);
 	}
 
 }
