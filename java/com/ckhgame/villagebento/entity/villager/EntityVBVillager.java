@@ -30,6 +30,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable {
@@ -299,6 +300,11 @@ public class EntityVBVillager extends EntityAgeable {
 		// TODO Auto-generated method stub
 		super.onLivingUpdate();
 		this.updateArmSwingProgress();
+		System.out.println(this.getHealth() +"/" + this.getMaxHealth());
+		if (this.getHealth() < this.getMaxHealth() && this.ticksExisted % 40 * 12 == 0)
+        {
+            this.heal(1.0F);
+        }
 	}
 
 	protected void attackEntity(Entity entity, float distance){
