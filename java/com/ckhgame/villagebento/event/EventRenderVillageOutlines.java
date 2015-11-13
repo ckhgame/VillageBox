@@ -44,6 +44,7 @@ public class EventRenderVillageOutlines {
 	private static ResourceLocation outlineTexture = new ResourceLocation(Main.MODID + ":" + "textures/effects/village/outlinefill.png");
 	
 	private double coordOffet = 0;
+	private double alphaCurrent = 0;
 	
 	public void setVillageOutlines(ArrayList<BoxWithColor> villageOutlines){ //if set vbData to null, no outlines will be display
 		this.villageOutlines = villageOutlines;
@@ -63,14 +64,20 @@ public class EventRenderVillageOutlines {
 			System.out.println(Minecraft.getMinecraft().thePlayer.getDisplayName() + ": ==>");
 		}*/
 
-		if(enabled && this.villageOutlines != null){
+		if(this.enabled && alphaCurrent < 1.0D)
+			alphaCurrent += event.partialTicks * 0.01D;
+		
+		if(!this.enabled && alphaCurrent > 0.0D)
+			alphaCurrent -= event.partialTicks * 0.01D;
+		
+		if(alphaCurrent > 0 && this.villageOutlines != null){
 			EntityPlayer p = Minecraft.getMinecraft().thePlayer;
 			
 			px = p.lastTickPosX + (p.posX - p.lastTickPosX) * (double) event.partialTicks;
 			py = p.lastTickPosY + (p.posY - p.lastTickPosY) * (double) event.partialTicks;
 			pz = p.lastTickPosZ + (p.posZ - p.lastTickPosZ) * (double) event.partialTicks;
 			
-			coordOffet += event.partialTicks * 0.01D;
+			coordOffet += event.partialTicks * 0.003D;
 			if(coordOffet > 1.0D)
 				coordOffet -= 1.0D; 
 			
@@ -117,12 +124,13 @@ private void renderOutlineFill(BoxWithColor b){
 	double maxy = b.maxY - py;
 	double maxz = b.maxZ - pz + 0.1D;
 	double co = coordOffet;//= maxx == minx ? 0:coordOffet * 10.0D /(maxx - minx);
+	int a = (int)(alphaCurrent * b.A);
 	
 	Minecraft.getMinecraft().renderEngine.bindTexture(outlineTexture);
 	
 	
 	tessellator.startDrawingQuads();
-	tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+	tessellator.setColorRGBA(b.R, b.G, b.B, a);
 	tessellator.addVertexWithUV(minx, miny, minz, 1 + co, 1); //Bottom left texture
 	tessellator.addVertexWithUV(minx, maxy, minz, 1 + co, 0); //Top left
 	tessellator.addVertexWithUV(maxx, maxy, minz, 0 + co, 0); //Top right
@@ -130,7 +138,7 @@ private void renderOutlineFill(BoxWithColor b){
 	tessellator.draw();
 	
 	tessellator.startDrawingQuads();
-	tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+	tessellator.setColorRGBA(b.R, b.G, b.B, a);
 	tessellator.addVertexWithUV(minx, miny, maxz, 0 + co, 1); //Bottom left texture
 	tessellator.addVertexWithUV(minx, maxy, maxz, 0 + co, 0); //Top left
 	tessellator.addVertexWithUV(maxx, maxy, maxz, 1 + co, 0); //Top right
@@ -138,7 +146,7 @@ private void renderOutlineFill(BoxWithColor b){
 	tessellator.draw();
 	
 	tessellator.startDrawingQuads();
-	tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+	tessellator.setColorRGBA(b.R, b.G, b.B, a);
 	tessellator.addVertexWithUV(minx, miny, minz, 0 + co, 1); //Bottom left texture
 	tessellator.addVertexWithUV(minx, maxy, minz, 0 + co, 0); //Top left
 	tessellator.addVertexWithUV(minx, maxy, maxz, 1 + co, 0); //Top right
@@ -146,7 +154,7 @@ private void renderOutlineFill(BoxWithColor b){
 	tessellator.draw();
 	
 	tessellator.startDrawingQuads();
-	tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+	tessellator.setColorRGBA(b.R, b.G, b.B, a);
 	tessellator.addVertexWithUV(maxx, miny, minz, 1 + co, 1); //Bottom left texture
 	tessellator.addVertexWithUV(maxx, maxy, minz, 1 + co, 0); //Top left
 	tessellator.addVertexWithUV(maxx, maxy, maxz, 0 + co, 0); //Top right
@@ -164,6 +172,7 @@ private void renderOutline(BoxWithColor b) {
 	double maxx = b.maxX - px;
 	double maxy = b.maxY - py;
 	double maxz = b.maxZ - pz;
+	int a = (int)(alphaCurrent * b.A);
 	
     /*
     tessellator.startDrawing(GL11.GL_QUADS);
@@ -184,7 +193,7 @@ private void renderOutline(BoxWithColor b) {
  	*/
 	
 	tessellator.startDrawing(GL11.GL_LINE_LOOP);
-    tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+    tessellator.setColorRGBA(b.R, b.G, b.B, a);
     tessellator.addVertex(minx, maxy, maxz);
     tessellator.addVertex(maxx, maxy, maxz);
     tessellator.addVertex(maxx, miny, maxz);
@@ -192,7 +201,7 @@ private void renderOutline(BoxWithColor b) {
     tessellator.draw();
     
     tessellator.startDrawing(GL11.GL_LINE_LOOP);
-    tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+    tessellator.setColorRGBA(b.R, b.G, b.B, a);
     tessellator.addVertex(minx, miny, minz);
     tessellator.addVertex(minx, maxy, minz);
     tessellator.addVertex(maxx, maxy, minz);
@@ -200,7 +209,7 @@ private void renderOutline(BoxWithColor b) {
     tessellator.draw();
     
     tessellator.startDrawing(GL11.GL_LINE_LOOP);
-    tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+    tessellator.setColorRGBA(b.R, b.G, b.B, a);
     tessellator.addVertex(minx,miny, minz);
     tessellator.addVertex(minx,miny, maxz);
     tessellator.addVertex(minx,maxy, maxz);
@@ -208,7 +217,7 @@ private void renderOutline(BoxWithColor b) {
     tessellator.draw();
     
     tessellator.startDrawing(GL11.GL_LINE_LOOP);
-    tessellator.setColorRGBA(b.R, b.G, b.B, b.A);
+    tessellator.setColorRGBA(b.R, b.G, b.B, a);
     tessellator.addVertex(maxx,miny, minz);
     tessellator.addVertex(maxx,miny, maxz);
     tessellator.addVertex(maxx,maxy, maxz);
