@@ -19,8 +19,8 @@ public class ConfigVillager {
 	
 	public static final double VillagerMoveSpeed = 0.35D;
 	
-	public static final double VillagerMoveTowardsDistance = 10;
-	public static final int VillagerMoveTowardsRange = 1;
+	public static final double VillagerMoveTowardsDistance = 5;
+	public static final int VillagerMoveTowardsRange = 2;
 	
 	public static final int MaxInteractDistance = 3;
 	public static final int MaxInteractDistanceSq = MaxInteractDistance * MaxInteractDistance;
