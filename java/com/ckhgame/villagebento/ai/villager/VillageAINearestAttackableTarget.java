@@ -9,12 +9,12 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAITarget;
 
-public class VillageAIFindTarget extends VillagerAITarget
+public class VillageAINearestAttackableTarget extends VillagerAITarget
 {
     private final Class targetClass;
     private final int targetChance;
     /** Instance of EntityAINearestAttackableTargetSorter. */
-    private final VillageAIFindTarget.Sorter theNearestAttackableTargetSorter;
+    private final VillageAINearestAttackableTarget.Sorter theNearestAttackableTargetSorter;
     /**
      * This filter is applied to the Entity search.  Only matching entities will be targetted.  (null -> no
      * restrictions)
@@ -22,22 +22,22 @@ public class VillageAIFindTarget extends VillagerAITarget
     private final IEntitySelector targetEntitySelector;
     private EntityLivingBase targetEntity;
 
-    public VillageAIFindTarget(EntityCreature p_i1663_1_, Class p_i1663_2_, int p_i1663_3_, boolean p_i1663_4_)
+    public VillageAINearestAttackableTarget(EntityCreature p_i1663_1_, Class p_i1663_2_, int p_i1663_3_, boolean p_i1663_4_)
     {
         this(p_i1663_1_, p_i1663_2_, p_i1663_3_, p_i1663_4_, false);
     }
 
-    public VillageAIFindTarget(EntityCreature p_i1664_1_, Class p_i1664_2_, int p_i1664_3_, boolean p_i1664_4_, boolean p_i1664_5_)
+    public VillageAINearestAttackableTarget(EntityCreature p_i1664_1_, Class p_i1664_2_, int p_i1664_3_, boolean p_i1664_4_, boolean p_i1664_5_)
     {
         this(p_i1664_1_, p_i1664_2_, p_i1664_3_, p_i1664_4_, p_i1664_5_, (IEntitySelector)null);
     }
 
-    public VillageAIFindTarget(EntityCreature p_i1665_1_, Class p_i1665_2_, int p_i1665_3_, boolean p_i1665_4_, boolean p_i1665_5_, final IEntitySelector p_i1665_6_)
+    public VillageAINearestAttackableTarget(EntityCreature p_i1665_1_, Class p_i1665_2_, int p_i1665_3_, boolean p_i1665_4_, boolean p_i1665_5_, final IEntitySelector p_i1665_6_)
     {
         super(p_i1665_1_, p_i1665_4_, p_i1665_5_);
         this.targetClass = p_i1665_2_;
         this.targetChance = p_i1665_3_;
-        this.theNearestAttackableTargetSorter = new VillageAIFindTarget.Sorter(p_i1665_1_);
+        this.theNearestAttackableTargetSorter = new VillageAINearestAttackableTarget.Sorter(p_i1665_1_);
         this.setMutexBits(1);
         this.targetEntitySelector = new IEntitySelector()
         {
@@ -46,7 +46,7 @@ public class VillageAIFindTarget extends VillagerAITarget
              */
             public boolean isEntityApplicable(Entity p_82704_1_)
             {
-                return !(p_82704_1_ instanceof EntityLivingBase) ? false : (p_i1665_6_ != null && !p_i1665_6_.isEntityApplicable(p_82704_1_) ? false : VillageAIFindTarget.this.isSuitableTarget((EntityLivingBase)p_82704_1_, false));
+                return !(p_82704_1_ instanceof EntityLivingBase) ? false : (p_i1665_6_ != null && !p_i1665_6_.isEntityApplicable(p_82704_1_) ? false : VillageAINearestAttackableTarget.this.isSuitableTarget((EntityLivingBase)p_82704_1_, false));
             }
         };
     }
@@ -68,13 +68,11 @@ public class VillageAIFindTarget extends VillagerAITarget
 
             if (list.isEmpty())
             {
-                System.out.println("Nothing Found Target!!!");
                 return false;
             }
             else
             {
                 this.targetEntity = (EntityLivingBase)list.get(0);
-                System.out.println("Found Target!!!");
                 
                 return true;
             }
@@ -93,7 +91,6 @@ public class VillageAIFindTarget extends VillagerAITarget
     public static class Sorter implements Comparator
         {
             private final Entity theEntity;
-            private static final String __OBFID = "CL_00001622";
 
             public Sorter(Entity p_i1662_1_)
             {

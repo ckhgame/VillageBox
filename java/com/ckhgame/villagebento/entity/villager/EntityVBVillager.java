@@ -23,6 +23,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -294,6 +295,14 @@ public class EntityVBVillager extends EntityAgeable {
 	
 	
 	@Override
+	protected void applyEntityAttributes() {
+		// TODO Auto-generated method stub
+		super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(8.0D);
+		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+	}
+
+	@Override
 	public void onLivingUpdate() {
 		// TODO Auto-generated method stub
 		super.onLivingUpdate();
@@ -316,11 +325,12 @@ public class EntityVBVillager extends EntityAgeable {
 	public boolean attackEntityAsMob(Entity entity) {
 		
 		//deal damage
-        entity.attackEntityFrom(DamageSource.causeMobDamage(this), 4.0F);
+		float dmg = (float)this.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
+        entity.attackEntityFrom(DamageSource.causeMobDamage(this), dmg);
         
         //knock back
-        int k = 1;
-        entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)k * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)k * 0.5F));
+        float k = 0.5F;
+        entity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * k * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)k * 0.5F));
         this.motionX *= 0.6D;
         this.motionZ *= 0.6D;
 		

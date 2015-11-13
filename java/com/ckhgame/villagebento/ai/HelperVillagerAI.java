@@ -1,6 +1,7 @@
 package com.ckhgame.villagebento.ai;
 
-import com.ckhgame.villagebento.ai.villager.VillageAIFindTarget;
+import com.ckhgame.villagebento.ai.villager.VillageAINearestAttackableTarget;
+import com.ckhgame.villagebento.ai.villager.VillagerAIAttackOnCollide;
 import com.ckhgame.villagebento.ai.villager.VillagerAIGuardPatrol;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleepGuard;
@@ -27,6 +28,10 @@ import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -48,7 +53,7 @@ public class HelperVillagerAI {
 	
 	private static void setNightbirdAI(EntityVBVillager entity){
 		entity.tasks.addTask(0, new EntityAISwimming(entity));
-		entity.tasks.addTask(1, new EntityAIAvoidEntity(entity, EntityZombie.class, 6.0F, 0.4D, 0.4D));
+		entity.tasks.addTask(1, new EntityAIAvoidEntity(entity, EntityMob.class, 6.0F, 0.4D, 0.4D));
 		entity.tasks.addTask(2, new EntityAIOpenDoor(entity, true));
 		entity.tasks.addTask(3, new VillagerAISleepNightbird(entity));
 		
@@ -60,21 +65,21 @@ public class HelperVillagerAI {
 	
 	private static void setGuardAI(EntityVBVillager entity){
 		entity.tasks.addTask(0, new EntityAISwimming(entity));
-		entity.tasks.addTask(1, new EntityAIAttackOnCollide(entity, EntityZombie.class, 0.5D, true));
+		entity.tasks.addTask(1, new VillagerAIAttackOnCollide(entity, EntityMob.class, 0.5D, false));
 		entity.tasks.addTask(2, new EntityAIOpenDoor(entity, true));
 		entity.tasks.addTask(3, new VillagerAISleepGuard(entity));
 		
 		entity.tasks.addTask(6, new VillagerAIGuardPatrol(entity));
 		entity.tasks.addTask(7, new VillagerAIWatchClosest(entity, EntityLiving.class, 6.0F));
 		
-		entity.targetTasks.addTask(0, new VillageAIFindTarget(entity, EntityZombie.class, 0, false));
+		entity.targetTasks.addTask(0, new VillageAINearestAttackableTarget(entity, EntityMob.class, 0, false));
 		
 		System.out.println("task:" + entity.tasks.taskEntries.size());
 	}
 	
 	private static void setNormalAI(EntityVBVillager entity){
 		entity.tasks.addTask(0, new EntityAISwimming(entity));
-		entity.tasks.addTask(1, new EntityAIAvoidEntity(entity, EntityZombie.class, 6.0F, 0.4D, 0.4D));
+		entity.tasks.addTask(1, new EntityAIAvoidEntity(entity, EntityMob.class, 6.0F, 0.4D, 0.4D));
 		entity.tasks.addTask(2, new EntityAIOpenDoor(entity, true));
 		entity.tasks.addTask(3, new VillagerAISleep(entity));
 		
