@@ -37,7 +37,7 @@ public class BuildingFarmland extends Building {
 
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
-		bb.buildBlock(2,-2,-3,Blocks.monster_egg,2);bb.buildBlock(-7,-1,-7,Blocks.grass,0);bb.buildBlock(-7,-1,-6,Blocks.grass,0);
+		bb.buildBlock(2,-2,-3,Blocks.stonebrick,2);bb.buildBlock(-7,-1,-7,Blocks.grass,0);bb.buildBlock(-7,-1,-6,Blocks.grass,0);
 		bb.buildBlock(-7,-1,-5,Blocks.grass,0);bb.buildBlock(-7,-1,-4,Blocks.grass,0);bb.buildBlock(-7,-1,-3,Blocks.grass,0);
 		bb.buildBlock(-7,-1,-2,Blocks.grass,0);bb.buildBlock(-7,-1,-1,Blocks.grass,0);bb.buildBlock(-7,-1,0,Blocks.grass,0);
 		bb.buildBlock(-7,-1,1,Blocks.grass,0);bb.buildBlock(-7,-1,2,Blocks.grass,0);bb.buildBlock(-7,-1,3,Blocks.grass,0);

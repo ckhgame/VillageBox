@@ -40,7 +40,7 @@ public class BuildingSmallHotel extends Building {
 
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
-		bb.buildBlock(-1,-1,1,Blocks.monster_egg,2);bb.buildBlock(-3,0,-3,Blocks.planks,5);bb.buildBlock(-3,0,-2,Blocks.planks,0);
+		bb.buildBlock(-1,-1,1,Blocks.stonebrick,2);bb.buildBlock(-3,0,-3,Blocks.planks,5);bb.buildBlock(-3,0,-2,Blocks.planks,0);
 		bb.buildBlock(-3,0,-1,Blocks.planks,0);bb.buildBlock(-3,0,0,Blocks.planks,0);bb.buildBlock(-3,0,1,Blocks.planks,0);
 		bb.buildBlock(-3,0,2,Blocks.planks,0);bb.buildBlock(-3,0,3,Blocks.planks,5);bb.buildBlock(-2,0,-3,Blocks.planks,0);
 		bb.buildBlock(-2,0,-2,Blocks.bed,9);bb.buildBlock(-2,0,0,Blocks.planks,0);bb.buildBlock(-2,0,1,Blocks.ladder,3);

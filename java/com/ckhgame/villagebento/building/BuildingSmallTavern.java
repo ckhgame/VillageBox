@@ -37,15 +37,15 @@ public class BuildingSmallTavern extends Building {
 
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
-		bb.buildBlock(-2,-4,-2,Blocks.chest,5);bb.buildBlock(-2,-4,-1,Blocks.bed,0);bb.buildBlock(-2,-4,0,Blocks.bed,8);bb.buildBlock(-2,-4,3,Blocks.monster_egg,2);
+		bb.buildBlock(-2,-4,-2,Blocks.chest,5);bb.buildBlock(-2,-4,-1,Blocks.bed,0);bb.buildBlock(-2,-4,0,Blocks.bed,8);bb.buildBlock(-2,-4,3,Blocks.stonebrick,2);
 		bb.buildBlock(-1,-4,-2,Blocks.air,0);bb.buildBlock(-1,-4,-1,Blocks.air,0);bb.buildBlock(-1,-4,0,Blocks.air,0);
 		bb.buildBlock(0,-4,-2,Blocks.air,0);bb.buildBlock(0,-4,-1,Blocks.air,0);bb.buildBlock(0,-4,0,Blocks.air,0);
 		bb.buildBlock(0,-4,1,Blocks.spruce_stairs,1);bb.buildBlock(0,-4,2,Blocks.spruce_stairs,1);bb.buildBlock(1,-4,-2,Blocks.air,0);
 		bb.buildBlock(1,-4,-1,Blocks.air,0);bb.buildBlock(1,-4,0,Blocks.air,0);bb.buildBlock(1,-4,1,Blocks.air,0);
 		bb.buildBlock(1,-4,2,Blocks.air,0);bb.buildBlock(2,-4,-2,Blocks.flower_pot,0);bb.addTileEntityPot(2,-4,-2,38,0);
 		bb.buildBlock(2,-4,-1,Blocks.air,0);bb.buildBlock(2,-4,0,Blocks.air,0);bb.buildBlock(2,-4,1,Blocks.air,0);
-		bb.buildBlock(2,-4,2,Blocks.air,0);bb.buildBlock(-3,-3,-2,Blocks.monster_egg,2);bb.buildBlock(-2,-3,-2,Blocks.air,0);
-		bb.buildBlock(-2,-3,-1,Blocks.air,0);bb.buildBlock(-2,-3,0,Blocks.air,0);bb.buildBlock(-2,-3,3,Blocks.monster_egg,2);
+		bb.buildBlock(2,-4,2,Blocks.air,0);bb.buildBlock(-3,-3,-2,Blocks.stonebrick,2);bb.buildBlock(-2,-3,-2,Blocks.air,0);
+		bb.buildBlock(-2,-3,-1,Blocks.air,0);bb.buildBlock(-2,-3,0,Blocks.air,0);bb.buildBlock(-2,-3,3,Blocks.stonebrick,2);
 		bb.buildBlock(-1,-3,-2,Blocks.air,0);bb.buildBlock(-1,-3,-1,Blocks.air,0);bb.buildBlock(-1,-3,0,Blocks.air,0);
 		bb.buildBlock(-1,-3,1,Blocks.spruce_stairs,1);bb.buildBlock(-1,-3,2,Blocks.spruce_stairs,1);bb.buildBlock(0,-3,-2,Blocks.air,0);
 		bb.buildBlock(0,-3,-1,Blocks.air,0);bb.buildBlock(0,-3,0,Blocks.air,0);bb.buildBlock(0,-3,1,Blocks.air,0);
@@ -120,7 +120,6 @@ public class BuildingSmallTavern extends Building {
 		bb.addEntityPainting(3,-3,-1,1,"Alban");
 		bb.addEntityPainting(3,-3,0,1,"Pool");
 		bb.addEntityItemFrame(2,2,2,3,183);
-
 	}
 
 }
