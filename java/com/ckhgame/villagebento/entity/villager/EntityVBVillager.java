@@ -24,6 +24,7 @@ import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -218,6 +219,9 @@ public class EntityVBVillager extends EntityAgeable {
 		super.onUpdate();
 		updateVBVillager();
 		
+		if(this.getAttackTarget() != null)
+			System.out.println("Has Target!" + this.getAttackTarget().getClass());
+		
 	//	System.out.println(this.worldObj.isRemote + "," + this.posY);
 	}
 
@@ -286,7 +290,17 @@ public class EntityVBVillager extends EntityAgeable {
 		
 		return true;
 	}
+
 	
+	
+	
+	@Override
+	public void onLivingUpdate() {
+		// TODO Auto-generated method stub
+		super.onLivingUpdate();
+		this.updateArmSwingProgress();
+	}
+
 	protected void attackEntity(Entity entity, float distance){
         if (this.attackTime <= 0 && distance < 2.0F && entity.boundingBox.maxY > this.boundingBox.minY && entity.boundingBox.minY < this.boundingBox.maxY)
         {
