@@ -64,7 +64,7 @@ public class EventRenderVillageOutlines {
 			System.out.println(Minecraft.getMinecraft().thePlayer.getDisplayName() + ": ==>");
 		}*/
 
-		if(this.enabled && alphaCurrent < 1.0D)
+		if(this.enabled && alphaCurrent < 0.5D)
 			alphaCurrent += event.partialTicks * 0.01D;
 		
 		if(!this.enabled && alphaCurrent > 0.0D)
