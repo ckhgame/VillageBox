@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.building;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.villager.VillagerLibrarian;
@@ -230,7 +231,7 @@ public class BuildingLibrary extends Building {
 		bb.buildBlock(1,8,3,Blocks.torch,2);bb.addEntityPainting(-2,6,1,3,"Aztec2");
 		bb.addEntityPainting(-2,6,0,3,"Alban");
 		bb.addEntityPainting(-2,6,-1,3,"Plant");
-		bb.addEntityItemFrame(4,1,1,3,209);
+		bb.addEntityItemFrame(4,1,1,3,ModBlocks.blockLibrary);
 	}
 
 }
