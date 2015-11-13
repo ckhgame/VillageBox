@@ -21,6 +21,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -220,9 +221,6 @@ public class EntityVBVillager extends EntityAgeable {
 		super.onUpdate();
 		updateVBVillager();
 		
-		if(this.getAttackTarget() != null)
-			System.out.println("Has Target!" + this.getAttackTarget().getClass());
-		
 	//	System.out.println(this.worldObj.isRemote + "," + this.posY);
 	}
 
@@ -300,7 +298,6 @@ public class EntityVBVillager extends EntityAgeable {
 		// TODO Auto-generated method stub
 		super.onLivingUpdate();
 		this.updateArmSwingProgress();
-		System.out.println(this.getHealth() +"/" + this.getMaxHealth());
 		if (this.getHealth() < this.getMaxHealth() && this.ticksExisted % 40 * 12 == 0)
         {
             this.heal(1.0F);
@@ -328,6 +325,13 @@ public class EntityVBVillager extends EntityAgeable {
         this.motionZ *= 0.6D;
 		
 		return super.attackEntityAsMob(entity);
+	}
+
+	@Override
+	public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_) {
+		if(p_70097_1_.getEntity() instanceof EntityLivingBase)
+			this.setAttackTarget((EntityLivingBase)p_70097_1_.getEntity());
+		return super.attackEntityFrom(p_70097_1_, p_70097_2_);
 	}
 
 	@Override

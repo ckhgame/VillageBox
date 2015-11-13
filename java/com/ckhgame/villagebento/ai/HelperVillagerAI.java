@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.ai;
 
+import com.ckhgame.villagebento.ai.villager.VillageAIFindTarget;
 import com.ckhgame.villagebento.ai.villager.VillagerAIGuardPatrol;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleepGuard;
@@ -58,7 +59,6 @@ public class HelperVillagerAI {
 	}
 	
 	private static void setGuardAI(EntityVBVillager entity){
-		System.out.println("task:" + entity.tasks.taskEntries.size());
 		entity.tasks.addTask(0, new EntityAISwimming(entity));
 		entity.tasks.addTask(1, new EntityAIAttackOnCollide(entity, EntityZombie.class, 0.5D, true));
 		entity.tasks.addTask(2, new EntityAIOpenDoor(entity, true));
@@ -67,7 +67,7 @@ public class HelperVillagerAI {
 		entity.tasks.addTask(6, new VillagerAIGuardPatrol(entity));
 		entity.tasks.addTask(7, new VillagerAIWatchClosest(entity, EntityLiving.class, 6.0F));
 		
-		entity.targetTasks.addTask(0, new EntityAINearestAttackableTarget(entity, EntityZombie.class, 0, false));
+		entity.targetTasks.addTask(0, new VillageAIFindTarget(entity, EntityZombie.class, 0, false));
 		
 		System.out.println("task:" + entity.tasks.taskEntries.size());
 	}
