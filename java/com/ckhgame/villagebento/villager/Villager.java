@@ -106,7 +106,7 @@ public abstract class Villager implements IRegistrable {
 
 		if(v != null && v.canSpawn()){
 			//generate villager data
-			DataVillager dv = HelperDataVB.createDataVillager(v.profession, name, buildingID);
+			DataVillager dv = HelperDataVB.createDataVillager(v.profession, name, buildingID,x,z);
 			if(HelperDataVB.addVillagerData(DataVillageBento.get(w), dv)){
 				return spawn(w,x,y,z,dv,v);
 			}

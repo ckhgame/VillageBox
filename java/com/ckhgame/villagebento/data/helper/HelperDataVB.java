@@ -1,7 +1,6 @@
 package com.ckhgame.villagebento.data.helper;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import com.ckhgame.villagebento.building.builder.RestrictionExceptions;
 import com.ckhgame.villagebento.config.ConfigBuilding;
@@ -341,13 +340,15 @@ public class HelperDataVB {
 		return db;
 	}
 	
-	public static DataVillager createDataVillager(int profession, String name, int buildingID){
+	public static DataVillager createDataVillager(int profession, String name, int buildingID,int initX,int initZ){
 		
 		DataVillager dvr = new DataVillager();
 		dvr.id = -1; //the id will be automatially generated when adding to the village data
 		dvr.name = name;
 		dvr.profession = profession;
 		dvr.buildingID = buildingID;
+		dvr.initX = initX;
+		dvr.initZ = initZ;
 		
 		//villager components data
 		Villager vr = Villager.registry.get(dvr.profession);
@@ -391,8 +392,8 @@ public class HelperDataVB {
 					if(dvr.death == 0){
 						DataBuilding db = findBuildingByID(dataVB,dvr.buildingID);
 						if(db != null){
-							//respawn on the position of the villager's building
-							Villager.spawn(dataVB.world,db.x, db.y, db.z, dvr);
+							//respawn on the init pos		
+							Villager.spawn(dataVB.world,dvr.initX, db.y, dvr.initZ, dvr);
 						}
 					}
 				}
@@ -401,6 +402,20 @@ public class HelperDataVB {
 		
 		if(changed)
 			dataVB.markDirty();
+	}
+	
+	public static void tpEntityVillagersInbuildingToInitPos(DataVillageBento dataVB, DataBuilding db){
+		 WorldServer world = MinecraftServer.getServer().worldServerForDimension(0);
+		 for(DataVillage dv : dataVB.mapDataVillage.values()){
+			 if(dv.mapDataBuilding.containsKey(db.id)){
+				 for(DataVillager dvr : dv.mapDataVillager.values()){
+					 if(dvr.buildingID == db.id){
+						 EntityVBVillager evr = (EntityVBVillager)world.getEntityByID(dvr.cacheEntityVillagerID);
+						 evr.setPosition(dvr.initX + 0.5, db.y + 0.1, dvr.initZ + 0.5);
+					 }
+				 }
+			 }
+		 }
 	}
 	
 	public static ArrayList<BoxWithColor> getVillageOutlines(DataVillageBento dataVB){

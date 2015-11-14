@@ -3,6 +3,7 @@ tile.BlockGroundworkOnlySmall.name=小型地基
 tile.BlockGroundworkOnlyMedium.name=中型地基
 tile.BlockGroundworkOnlyLarge.name=大型地基
 tile.BlockBuildingScanner.name=建筑扫描器
+tile.BlockVillagerHomeTP.name=村民召回器
 tile.BlockBuildingDestroyer.name=建筑摧毁器
 tile.BlockVillageCenter.name=村庄中心
 tile.BlockMiningHouse.name=矿工小屋

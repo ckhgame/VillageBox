@@ -33,6 +33,7 @@ public class EventVillageProtection {
 		blockWhiteList = new ArrayList<Block>();
 		blockWhiteList.add(ModBlocks.blockBuildingScanner);
 		blockWhiteList.add(ModBlocks.blockBuildingDestroyer);
+		blockWhiteList.add(ModBlocks.blockVillagerHomeTP);
 	}
 	private boolean isInWhiteList(Block block){
 		initBlockWhiteList();

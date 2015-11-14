@@ -18,6 +18,8 @@ public class ConfigData {
 	public static final String KeyDataVillagerDeath		= "dvrd";
 	public static final String KeyDataVillagerLevel		= "dvrl";
 	public static final String KeyDataVillagerExp		= "dvre";
+	public static final String KeyDataVillagerInitX		= "dvrix";
+	public static final String KeyDataVillagerInitZ		= "dvriz";
 	
 	//village
 	public static final String KeyDataVillageID			= "dvid";

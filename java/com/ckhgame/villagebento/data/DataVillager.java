@@ -20,6 +20,8 @@ public class DataVillager extends Data{
 	public int death;	// > 0 means the villager has to wait for [death] days to revive again, <=0 means the villager is alive now.
 	public int level;
 	public int exp;
+	public int initX;
+	public int initZ;
 	
 	public ArrayList<DataVillagerComp> dataComponents = new ArrayList<DataVillagerComp>();
 	
@@ -34,6 +36,8 @@ public class DataVillager extends Data{
 		compound.setInteger(ConfigData.KeyDataVillagerDeath, this.death);
 		compound.setInteger(ConfigData.KeyDataVillagerLevel,this.level);
 		compound.setInteger(ConfigData.KeyDataVillagerExp,this.exp);
+		compound.setInteger(ConfigData.KeyDataVillagerInitX,this.initX);
+		compound.setInteger(ConfigData.KeyDataVillagerInitZ,this.initZ);
 		
 		//save components
 		NBTTagList tagList = new NBTTagList();
@@ -55,6 +59,8 @@ public class DataVillager extends Data{
 		this.death = compound.getInteger(ConfigData.KeyDataVillagerDeath);	
 		this.level = compound.getInteger(ConfigData.KeyDataVillagerLevel);
 		this.exp = compound.getInteger(ConfigData.KeyDataVillagerExp);
+		this.initX = compound.getInteger(ConfigData.KeyDataVillagerInitX);
+		this.initZ = compound.getInteger(ConfigData.KeyDataVillagerInitZ);
 		
 		//load components
 		NBTTagList tagList = compound.getTagList(ConfigData.KeyVillagerComps, Constants.NBT.TAG_COMPOUND);

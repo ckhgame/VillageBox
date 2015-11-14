@@ -48,6 +48,8 @@ public final class ModBlocks {
     
     public static BlockBuildingDestroyer blockBuildingDestroyer;
     
+    public static BlockVillagerHomeTP blockVillagerHomeTP;
+    
     //buildings
     public static BlockVillageBuilding blockGroundworkOnlySmall;
     public static BlockVillageBuilding blockGroundworkOnlyMedium;
@@ -95,6 +97,7 @@ public final class ModBlocks {
     public static final void init() {
         
     	GameRegistry.registerBlock(blockBuildingScanner = new BlockBuildingScanner(), "BlockBuildingScanner");
+    	GameRegistry.registerBlock(blockVillagerHomeTP = new BlockVillagerHomeTP(), "BlockVillagerHomeTP");
          
     	GameRegistry.registerBlock(blockBuildingDestroyer = new BlockBuildingDestroyer(), "BlockBuildingDestroyer");
              
