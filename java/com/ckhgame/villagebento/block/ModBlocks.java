@@ -38,6 +38,7 @@ import com.ckhgame.villagebento.building.BuildingSunflower;
 import com.ckhgame.villagebento.building.BuildingTailorStore;
 import com.ckhgame.villagebento.building.BuildingTeaChair;
 import com.ckhgame.villagebento.building.BuildingVillageCenter;
+import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 import com.ckhgame.villagebento.item.ItemBlockVillageBuilding;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -94,7 +95,8 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockSunflower;
     public static BlockVillageBuilding blockTeaChair;
     
-    
+    //Animal boxes
+    public static BlockVillageAnimal blockChicken;
     
     public static final void init() {
         
@@ -145,6 +147,10 @@ public final class ModBlocks {
         registerVillageBlock(blockRoseBridge = new BlockVillageBuilding(BuildingRoseBridge.class,"BlockRoseBridge"),"BlockRoseBridge");
        	registerVillageBlock(blockTeaChair = new BlockVillageBuilding(BuildingTeaChair.class,"BlockTeaChair"),"BlockTeaChair");
        	registerVillageBlock(blockPeacefulGarden = new BlockVillageBuilding(BuildingPeacefulGarden.class,"BlockPeacefulGarden"),"BlockPeacefulGarden");
+       	
+       	
+       	//Animal boxes
+       	GameRegistry.registerBlock(blockChicken = new BlockVillageAnimal(EntityVBChicken.class,"BlockChicken"),"BlockChicken");
     }
     
     private static void registerVillageBlock(Block block,String name){

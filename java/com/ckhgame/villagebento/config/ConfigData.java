@@ -60,4 +60,12 @@ public class ConfigData {
 	public static final String KeyVillagerCompWorkWorkIdx			= "vcwwi";
 	public static final String KeyVillagerCompWorkHoursLeft			= "vcwhl";
 	public static final String KeyVillagerCompWorkOutput			= "vcwo";
+	
+	//village animal entity
+	public static final String KeyAnimalHunger						= "vah";
+	public static final String KeyAnimalState						= "vas";
+	public static final String KeyAnimalProducts					= "vap";
+	public static final String KeyAnimalProductTimer				= "vapt";
+	public static final String KeyAnimalLoveLvl						= "vall";
+	public static final String KeyAnimalLoveExp						= "vale";
 }
