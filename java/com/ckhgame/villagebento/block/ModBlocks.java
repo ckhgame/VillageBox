@@ -35,6 +35,7 @@ import com.ckhgame.villagebento.building.BuildingSmallHotel;
 import com.ckhgame.villagebento.building.BuildingSmallMilitaryCamp;
 import com.ckhgame.villagebento.building.BuildingSmallTavern;
 import com.ckhgame.villagebento.building.BuildingSunflower;
+import com.ckhgame.villagebento.building.BuildingTailorStore;
 import com.ckhgame.villagebento.building.BuildingTeaChair;
 import com.ckhgame.villagebento.building.BuildingVillageCenter;
 import com.ckhgame.villagebento.item.ItemBlockVillageBuilding;
@@ -82,6 +83,7 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockMarket;
     public static BlockVillageBuilding blockFarmlandSmall;
     public static BlockVillageBuilding blockLibrary;
+    public static BlockVillageBuilding blockTailorStore;
     
 //  Decoration Blocks
     public static BlockVillageBuilding blockAutumnGarden;
@@ -134,7 +136,7 @@ public final class ModBlocks {
         registerVillageBlock(blockLargeHotel = new BlockVillageBuilding(BuildingLargeHotel.class,"BlockLargeHotel"),"BlockLargeHotel");
         registerVillageBlock(blockMarket = new BlockVillageBuilding(BuildingMarket.class,"BlockMarket"),"BlockMarket");
        	registerVillageBlock(blockLibrary = new BlockVillageBuilding(BuildingLibrary.class,"BlockLibrary"),"BlockLibrary");
-        
+       	registerVillageBlock(blockTailorStore = new BlockVillageBuilding(BuildingTailorStore.class,"BlockTailorStore"),"BlockTailorStore");
         //	Decoration Blocks
         registerVillageBlock(blockAutumnGarden = new BlockVillageBuilding(BuildingAutumnGarden.class,"BlockAutumnGarden"),"BlockAutumnGarden");
         registerVillageBlock(blockChristmas = new BlockVillageBuilding(BuildingChristmas.class,"BlockChristmas"),"BlockChristmas");

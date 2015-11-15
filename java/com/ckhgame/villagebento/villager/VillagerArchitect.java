@@ -44,6 +44,7 @@ public class VillagerArchitect extends Villager {
             compBuy.addItemBuy(ModBlocks.blockSmallMilitaryCamp, 1, 1, 0);
             compBuy.addItemBuy(ModBlocks.blockSheepShop, 1, 1, 0);
             compBuy.addItemBuy(ModBlocks.blockCowShop, 1, 1, 0);
+            compBuy.addItemBuy(ModBlocks.blockTailorStore, 1, 1, 0);
             compBuy.addItemBuy(ModBlocks.blockSmallTavern, 1, 1, 0);
             compBuy.addItemBuy(ModBlocks.blockFarmland, 1, 1, 0);          
             compBuy.addItemBuy(ModBlocks.blockBuildingDestroyer, 1, 1, 0);

@@ -30,6 +30,7 @@ public class ItemPrice {
 		register(Items.cooked_fished,10);
 		register(Items.fishing_rod,50);
 		register(Items.fish,6);
+
 		
 		//examples:
 		//register(Items.book,10);
@@ -98,6 +99,7 @@ public class ItemPrice {
 		register(ModBlocks.blockBlackSmithsShop,360);
 		register(ModBlocks.blockSmallHotel,420);
 		register(ModBlocks.blockHunterHouse,420);
+		register(ModBlocks.blockTailorStore,480);
 		register(ModBlocks.blockSmallTavern,480);
 		register(ModBlocks.blockSmallMilitaryCamp,420);
 		register(ModBlocks.blockSmallCasino,520);

@@ -25,7 +25,7 @@ public class ModVillagers {
 		Villager.registry.register(26, new VillagerLargeHotelOwner());
 		Villager.registry.register(27, new VillagerHunter());
 		Villager.registry.register(28, new VillagerKnight());
-//		Villager.registry.register(29, new VillagerTailor());
+		Villager.registry.register(29, new VillagerTailor());
 		Villager.registry.register(30, new VillagerMarksman());
 		Villager.registry.register(31, new VillagerMerchant());
 		Villager.registry.register(32, new VillagerProBaker());

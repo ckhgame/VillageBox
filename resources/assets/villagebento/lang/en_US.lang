@@ -31,6 +31,8 @@ tile.BlockFishingStore.name=Fishing Store
 tile.BlockArchitectsHome.name=Architect's Home
 tile.BlockProArchitectsHouse.name=Professional Architect's Home
 tile.BlockLibrary.name=Library
+tile.BlockTailorStore.name=Tailor Store
+
 item.ItemVillageStick.name=Village Stick
 item.ItemVillageCurrency.name=Village Coins
 tile.BlockFarmlandSmall.name=Small Farm
