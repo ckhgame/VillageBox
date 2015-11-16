@@ -17,21 +17,21 @@ import net.minecraft.world.World;
 public abstract class EntityVBAnimal extends EntityAgeable
 {
 	//>= 12k full, >= 0 && < 12k little hungry, >= -12k && 
-    protected int getAnimHunger(){return this.dataWatcher.getWatchableObjectInt(17);}
+	public int getAnimHunger(){return this.dataWatcher.getWatchableObjectInt(17);}
     protected void setAnimHunber(int h){this.dataWatcher.updateObject(17, h);}
     
     //> 60 very good, >=0 && < 60 good, < 0 && >= -40 sick, >=-100 && < 40 deadly, <-100 I'm dead :( 
-    protected int getAnimState(){return this.dataWatcher.getWatchableObjectInt(18);}
+    public int getAnimState(){return this.dataWatcher.getWatchableObjectInt(18);}
     protected void setAnimState(int s){this.dataWatcher.updateObject(18, s);}
     
     //1-n means how many products you can get from me! this will refresh everyday, and the number is depends on animState and animLove
-    protected int getAnimProducts(){return this.dataWatcher.getWatchableObjectInt(19);}
+    public int getAnimProducts(){return this.dataWatcher.getWatchableObjectInt(19);}
     protected void setAnimProducts(int p){this.dataWatcher.updateObject(19, p);}
     
-    protected int getAnimLoveLvl(){return this.dataWatcher.getWatchableObjectInt(20);}
+    public int getAnimLoveLvl(){return this.dataWatcher.getWatchableObjectInt(20);}
     protected void setAnimLoveLvl(int l){this.dataWatcher.updateObject(20, l);}
     
-    protected int getAnimLoveExp(){return this.dataWatcher.getWatchableObjectInt(21);}
+    public int getAnimLoveExp(){return this.dataWatcher.getWatchableObjectInt(21);}
     protected void setAnimLoveExp(int e){this.dataWatcher.updateObject(21, e);}
     
     private long lastWorldTime = 0;
@@ -191,6 +191,12 @@ public abstract class EntityVBAnimal extends EntityAgeable
 
     	return super.interact(p_70085_1_);
     }
+    
+    @Override
+	public EntityAgeable createChild(EntityAgeable p_90011_1_) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
     public abstract boolean breed(ItemStack food);
     public abstract boolean dropProduct(ItemStack tool);

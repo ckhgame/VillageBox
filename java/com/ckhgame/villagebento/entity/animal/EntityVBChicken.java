@@ -123,12 +123,6 @@ public class EntityVBChicken extends EntityVBAnimal
     {
         this.playSound("mob.chicken.step", 0.15F, 1.0F);
     }
-
-	@Override
-	public EntityAgeable createChild(EntityAgeable p_90011_1_) {
-		// TODO Auto-generated method stub
-		return null;
-	}
     
 	@Override
 	public boolean breed(ItemStack food) {

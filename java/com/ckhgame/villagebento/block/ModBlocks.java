@@ -39,6 +39,7 @@ import com.ckhgame.villagebento.building.BuildingTailorStore;
 import com.ckhgame.villagebento.building.BuildingTeaChair;
 import com.ckhgame.villagebento.building.BuildingVillageCenter;
 import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
+import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.item.ItemBlockVillageBuilding;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -97,6 +98,7 @@ public final class ModBlocks {
     
     //Animal boxes
     public static BlockVillageAnimal blockChicken;
+    public static BlockVillageAnimal blockSheep;
     
     public static final void init() {
         
@@ -151,6 +153,7 @@ public final class ModBlocks {
        	
        	//Animal boxes
        	GameRegistry.registerBlock(blockChicken = new BlockVillageAnimal(EntityVBChicken.class,"BlockChicken"),"BlockChicken");
+       	GameRegistry.registerBlock(blockSheep = new BlockVillageAnimal(EntityVBSheep.class,"BlockSheep"),"BlockSheep");
     }
     
     private static void registerVillageBlock(Block block,String name){
