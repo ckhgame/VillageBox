@@ -34,6 +34,8 @@ public class EntityVBCow extends EntityVBAnimal
         
         this.setCustomNameTag("<Cow>");
         this.setAlwaysRenderNameTag(true);
+        
+        this.setGrowingAge(-48000);
     }
 
     /**

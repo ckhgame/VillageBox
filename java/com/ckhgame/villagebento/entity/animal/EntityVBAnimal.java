@@ -65,21 +65,31 @@ public abstract class EntityVBAnimal extends EntityAgeable
      * use this to react to sunlight and start to burn.
      */
     public void onLivingUpdate()
-    {
-        super.onLivingUpdate();
-        
+    { 
+    	int age = this.getGrowingAge();
+    	super.onLivingUpdate();
+    	
         if(!this.worldObj.isRemote){
         	long currentTime = this.worldObj.getWorldTime();
         	long deltaTime = Math.max(0, currentTime - this.lastWorldTime);
         	this.lastWorldTime = currentTime;
         	
+        	//update animal products
         	this.productTimer += deltaTime;
         	if(this.productTimer > this.productTime){
         		this.productTimer -= this.productTime;
         		int products = this.getAnimProducts();
         		this.setAnimProducts(products + 1);
         	}
+        	
+        	//update child animal ages
+        	if(this.isChild()){
+        		age += deltaTime;
+        		this.setGrowingAge(age);
+        	}
         }
+        
+       
 
     }
     

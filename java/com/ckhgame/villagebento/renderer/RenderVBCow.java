@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.renderer;
 
+import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 
 import cpw.mods.fml.relauncher.Side;
@@ -13,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class RenderVBCow extends RenderLiving
 {
-    private static final ResourceLocation cowTextures = new ResourceLocation("textures/entity/cow/cow.png");
+    private static final ResourceLocation cowTextures = new ResourceLocation(Main.MODID + ":" + "textures/entity/animal/cow.png");
 
     public RenderVBCow()
     {

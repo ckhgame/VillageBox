@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.renderer;
 
 import org.lwjgl.opengl.GL11;
 
+import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.models.ModelVBSheep1;
 import com.ckhgame.villagebento.models.ModelVBSheep2;
@@ -13,8 +14,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderVBSheep extends RenderLiving
 {
-    private static final ResourceLocation sheepTextures = new ResourceLocation("textures/entity/sheep/sheep_fur.png");
-    private static final ResourceLocation shearedSheepTextures = new ResourceLocation("textures/entity/sheep/sheep.png");
+    private static final ResourceLocation sheepTextures = new ResourceLocation(Main.MODID + ":" + "textures/entity/animal/sheep_fur.png");
+    private static final ResourceLocation shearedSheepTextures = new ResourceLocation(Main.MODID + ":" + "textures/entity/animal/sheep.png");
 
     public RenderVBSheep()
     {

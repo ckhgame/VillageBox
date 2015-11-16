@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.renderer;
 
+import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 
 import cpw.mods.fml.relauncher.Side;
@@ -13,7 +14,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderVBChicken extends RenderLiving {
-	private static final ResourceLocation chickenTextures = new ResourceLocation("textures/entity/chicken.png");
+	private static final ResourceLocation chickenTextures = new ResourceLocation(Main.MODID + ":" + "textures/entity/animal/chicken.png");
 
 	public RenderVBChicken() {
 		super(new ModelChicken(), 0.3F);

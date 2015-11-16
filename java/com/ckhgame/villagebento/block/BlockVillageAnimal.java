@@ -43,7 +43,7 @@ public class BlockVillageAnimal extends Block {
 					e.printStackTrace();
 				}
 
-				entity.setLocationAndAngles(x, y, z, 0.0F, 0.0F);
+				entity.setLocationAndAngles(x + 0.5F, y + 0.1F, z + 0.5F, 0.0F, 0.0F);
 
 				if(world.spawnEntityInWorld(entity)){
 					world.setBlockToAir(x, y, z);

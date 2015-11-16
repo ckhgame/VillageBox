@@ -33,6 +33,8 @@ public class EntityVBSheep extends EntityVBAnimal
         
         this.setCustomNameTag("<Sheep>");
         this.setAlwaysRenderNameTag(true);
+        
+        this.setGrowingAge(-48000);
     }
 
     /**
