@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.entity;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
+import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
@@ -15,5 +16,6 @@ public class ModEntities {
         EntityRegistry.registerModEntity(EntityVBVillager.class, "EntityVBVillager", id++, Main.instance, 80, 1, false);
         EntityRegistry.registerModEntity(EntityVBChicken.class, "EntityVBChicken", id++, Main.instance, 80, 1, false);
         EntityRegistry.registerModEntity(EntityVBSheep.class, "EntityVBSheep", id++, Main.instance, 80, 1, false);
+        EntityRegistry.registerModEntity(EntityVBCow.class, "EntityVBCow", id++, Main.instance, 80, 1, false);
     }
 }

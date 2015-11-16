@@ -1,6 +1,7 @@
 package com.ckhgame.villagebento.renderer;
 
 import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
+import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
@@ -13,6 +14,7 @@ public class ModRenderers {
 		RenderingRegistry.registerEntityRenderingHandler(EntityVBVillager.class, new RenderVBVillager());
 		RenderingRegistry.registerEntityRenderingHandler(EntityVBChicken.class, new RenderVBChicken());
 		RenderingRegistry.registerEntityRenderingHandler(EntityVBSheep.class, new RenderVBSheep());
+		RenderingRegistry.registerEntityRenderingHandler(EntityVBCow.class, new RenderVBCow());
 	}
 	
 }
