@@ -14,6 +14,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.item.EntityPainting;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
@@ -43,6 +44,9 @@ public class EventVillageProtection {
 	 @SubscribeEvent
     public void blockPlaceEvent(BlockEvent.PlaceEvent event)
     {	 
+		if(event.world.provider.dimensionId != 0)
+			return;
+		 
 		if(isInWhiteList(event.block))
 			return;
 		 
@@ -63,6 +67,9 @@ public class EventVillageProtection {
 	@SubscribeEvent
     public void blockBreakEvent(BlockEvent.BreakEvent event)
     {
+		if(event.world.provider.dimensionId != 0)
+			return;
+		
 		if(isInWhiteList(event.block))
 			return;
 		
@@ -82,7 +89,9 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
 	public void onExplosionStart(ExplosionEvent.Start event) {		
-
+		if(event.world.provider.dimensionId != 0)
+			return;
+		
 		DataVillageBento dataVB = DataVillageBento.get();
 		double x = event.explosion.explosionX;
 		double y = event.explosion.explosionY;
@@ -104,6 +113,9 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
     public void entityInteractEvent(EntityInteractEvent event) {	
+		if(event.target.worldObj.provider.dimensionId != 0)
+			return;
+		
 		Class c = event.target.getClass();
 		if(c == EntityPainting.class || c == EntityItemFrame.class){
 			DataVillageBento dataVB = DataVillageBento.get();
@@ -122,7 +134,9 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
     public void entityAttackEvent(AttackEntityEvent event) {	
-		System.out.println("hhh");
+		if(event.target.worldObj.provider.dimensionId != 0)
+			return;
+		
 		Class c = event.target.getClass();
 		if(c == EntityPainting.class || c == EntityItemFrame.class){
 			DataVillageBento dataVB = DataVillageBento.get();
@@ -141,11 +155,12 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
     public void blockInteractEvent(PlayerInteractEvent event) {	
+		if(event.world.provider.dimensionId != 0)
+			return;
+		
 		//can not use 
 		ItemStack hold = event.entityPlayer.getHeldItem();
 		if(hold!= null && (hold.getItem() == Items.flint_and_steel | hold.getItem() == Items.fire_charge)){
-			
-			System.out.println(event.world.getBlock( event.x,  event.y,  event.z).getUnlocalizedName());
 			
 			DataVillageBento dataVB = DataVillageBento.get();
 			double x = event.x;
@@ -174,6 +189,21 @@ public class EventVillageProtection {
 					for(DataBuilding db : dv.mapDataBuilding.values()){
 						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
 							PlayerMsg.send(event.entityPlayer, "You can't hang it here!");
+							event.setCanceled(true);
+							return;
+						}
+					}
+				}
+			}
+		}
+		
+		else if(event.world.getBlock(event.x, event.y, event.z) == Blocks.chest){
+			DataVillageBento dataVB = DataVillageBento.get();
+			for(DataVillage dv : dataVB.mapDataVillage.values()){
+				if(HelperDataVB.isInVillage(dv,event.x,event.z)){
+					for(DataBuilding db : dv.mapDataBuilding.values()){
+						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
+							PlayerMsg.send(event.entityPlayer, "It's not your chest!");
 							event.setCanceled(true);
 							return;
 						}
