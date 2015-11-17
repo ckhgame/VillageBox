@@ -24,6 +24,9 @@ import com.ckhgame.villagebento.building.BuildingLibrary;
 import com.ckhgame.villagebento.building.BuildingMarket;
 import com.ckhgame.villagebento.building.BuildingMiningHouse;
 import com.ckhgame.villagebento.building.BuildingPeacefulGarden;
+import com.ckhgame.villagebento.building.BuildingPlayerFieldLarge;
+import com.ckhgame.villagebento.building.BuildingPlayerFieldMedium;
+import com.ckhgame.villagebento.building.BuildingPlayerFieldSmall;
 import com.ckhgame.villagebento.building.BuildingPotionStore;
 import com.ckhgame.villagebento.building.BuildingProArchitectsHouse;
 import com.ckhgame.villagebento.building.BuildingRoseBridge;
@@ -97,6 +100,11 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockSunflower;
     public static BlockVillageBuilding blockTeaChair;
     
+    //player field
+    public static BlockVillageBuilding blockPlayerFieldSmall;
+    public static BlockVillageBuilding blockPlayerFieldMedium;
+    public static BlockVillageBuilding blockPlayerFieldLarge;
+    
     //Animal boxes
     public static BlockVillageAnimal blockChicken;
     public static BlockVillageAnimal blockSheep;
@@ -151,7 +159,10 @@ public final class ModBlocks {
         registerVillageBlock(blockRoseBridge = new BlockVillageBuilding(BuildingRoseBridge.class,"BlockRoseBridge"),"BlockRoseBridge");
        	registerVillageBlock(blockTeaChair = new BlockVillageBuilding(BuildingTeaChair.class,"BlockTeaChair"),"BlockTeaChair");
        	registerVillageBlock(blockPeacefulGarden = new BlockVillageBuilding(BuildingPeacefulGarden.class,"BlockPeacefulGarden"),"BlockPeacefulGarden");
-       	
+       	//player field
+       	registerVillageBlock(blockPlayerFieldSmall = new BlockVillageBuilding(BuildingPlayerFieldSmall.class,"BlockPlayerFieldSmall",true),"BlockPlayerFieldSmall");
+       	registerVillageBlock(blockPlayerFieldMedium = new BlockVillageBuilding(BuildingPlayerFieldMedium.class,"BlockPlayerFieldMedium",true),"BlockPlayerFieldMedium");
+       	registerVillageBlock(blockPlayerFieldLarge = new BlockVillageBuilding(BuildingPlayerFieldLarge.class,"BlockPlayerFieldLarge",true),"BlockPlayerFieldLarge");
        	
        	//Animal boxes
        	GameRegistry.registerBlock(blockChicken = new BlockVillageAnimal(EntityVBChicken.class,"BlockChicken"),"BlockChicken");

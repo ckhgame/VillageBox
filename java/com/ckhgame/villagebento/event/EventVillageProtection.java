@@ -55,7 +55,7 @@ public class EventVillageProtection {
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 				for(DataBuilding db : dv.mapDataBuilding.values()){
-					if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
+					if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)&&!HelperDataVB.PlayerOwnsBuilding(event.player, db)){
 						event.setCanceled(true);
 						return;
 					}
@@ -78,7 +78,7 @@ public class EventVillageProtection {
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 				for(DataBuilding db : dv.mapDataBuilding.values()){
-					if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
+					if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)&&!HelperDataVB.PlayerOwnsBuilding(event.getPlayer(), db)){
 						event.setCanceled(true);
 						return;
 					}
@@ -122,7 +122,7 @@ public class EventVillageProtection {
 			for(DataVillage dv : dataVB.mapDataVillage.values()){
 				if(HelperDataVB.isInVillage(dv,(int)event.target.posX,(int)event.target.posZ)){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
-						if(HelperDataVB.isEntityInBuilding(db,event.target)){
+						if(HelperDataVB.isEntityInBuilding(db,event.target)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
 							event.setCanceled(true);
 							return;
 						}
@@ -143,7 +143,7 @@ public class EventVillageProtection {
 			for(DataVillage dv : dataVB.mapDataVillage.values()){
 				if(HelperDataVB.isInVillage(dv,(int)event.target.posX,(int)event.target.posZ)){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
-						if(HelperDataVB.isEntityInBuilding(db,event.target)){
+						if(HelperDataVB.isEntityInBuilding(db,event.target)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
 							event.setCanceled(true);
 							return;
 						}
@@ -187,7 +187,7 @@ public class EventVillageProtection {
 			for(DataVillage dv : dataVB.mapDataVillage.values()){
 				if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
-						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
+						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
 							PlayerMsg.send(event.entityPlayer, "You can't hang it here!");
 							event.setCanceled(true);
 							return;
@@ -202,7 +202,7 @@ public class EventVillageProtection {
 			for(DataVillage dv : dataVB.mapDataVillage.values()){
 				if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
-						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)){
+						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
 							PlayerMsg.send(event.entityPlayer, "It's not your chest!");
 							event.setCanceled(true);
 							return;

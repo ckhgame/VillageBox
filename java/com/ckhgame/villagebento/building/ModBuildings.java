@@ -50,6 +50,9 @@ public class ModBuildings {
 		Building.registry.register(45,new BuildingTailorStore());
 
 
+		Building.registry.register(1000,new BuildingPlayerFieldSmall());
+		Building.registry.register(1001,new BuildingPlayerFieldMedium());
+		Building.registry.register(1002,new BuildingPlayerFieldLarge());
 		
 	}
 }

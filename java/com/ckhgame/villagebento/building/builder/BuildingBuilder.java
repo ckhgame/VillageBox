@@ -40,6 +40,7 @@ public class BuildingBuilder {
 	private int cx, cy, cz;
 	private DataBuilding data;
 	private int facing;
+	private String owner;
 	
 	private BuildingBuilder(){
 		
@@ -53,13 +54,19 @@ public class BuildingBuilder {
 		this.cz = z;
 	}
 	
+	public void setOwnerName(String owner){
+		if(owner == null)
+			owner = "";
+		this.owner = owner;
+	}
+	
 	public boolean generateData(int type,int sizeType){
 		DataVillageBento villageBentoData = DataVillageBento.get(world);		
 
 		data = null;
 		
 		//check if there is a building exists on the current location
-		DataBuilding db = HelperDataVB.createDataBuilding(cx,cy,cz,type,sizeType);
+		DataBuilding db = HelperDataVB.createDataBuilding(cx,cy,cz,type,sizeType,owner);
 		if(HelperDataVB.addBuildingData(villageBentoData, db)){
 			
 			data = db;
@@ -180,6 +187,11 @@ public class BuildingBuilder {
 				world.removeEntity(e);
 			}
 		}
+	}
+	
+	public void addPlayerFieldSign(int x,int y,int z){
+		this.buildBlock(x,y,z,Blocks.standing_sign,12);
+		this.addTileEntitySign(x,y,z,"======",this.owner + "'s","Field","======");
 	}
 	
 	/**

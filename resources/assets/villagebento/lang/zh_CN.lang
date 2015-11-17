@@ -2,6 +2,9 @@
 tile.BlockGroundworkOnlySmall.name=小型地基
 tile.BlockGroundworkOnlyMedium.name=中型地基
 tile.BlockGroundworkOnlyLarge.name=大型地基
+tile.BlockPlayerFieldSmall.name=小型私有地
+tile.BlockPlayerFieldMedium.name=中型私有地
+tile.BlockPlayerFieldLarge.name=大型私有地
 tile.BlockBuildingScanner.name=建筑扫描器
 tile.BlockVillagerHomeTP.name=村民召回器
 tile.BlockBuildingDestroyer.name=建筑摧毁器

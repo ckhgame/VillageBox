@@ -18,6 +18,7 @@ import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
@@ -315,7 +316,7 @@ public class HelperDataVB {
 	}
 	
 	//buldings
-	public static DataBuilding createDataBuilding(int x, int y, int z, int type, int sizeType){
+	public static DataBuilding createDataBuilding(int x, int y, int z, int type, int sizeType, String owner){
 		
 		int sx = ConfigBuilding.GroundWorkSmallSizeX;
 		int sz = ConfigBuilding.GroundWorkSmallSizeZ;
@@ -336,6 +337,7 @@ public class HelperDataVB {
 		db.sizeX =sx;
 		db.sizeZ = sz;
 		db.type = type;
+		db.owner = owner;
 		
 		return db;
 	}
@@ -551,6 +553,12 @@ public class HelperDataVB {
 	public static AxisAlignedBB getBuildingAABB(DataBuilding db){
 		return AxisAlignedBB.getBoundingBox(db.x - db.sizeX, db.y - ConfigBuilding.BuildingGroundWorkDepth, db.z - db.sizeZ, 
 											db.x + db.sizeX+1, db.y + ConfigBuilding.BuildingMaxHeight, db.z + db.sizeZ+1);
+	}
+	
+	
+	//player private field
+	public static boolean PlayerOwnsBuilding(EntityPlayer player, DataBuilding db){
+		return player.getDisplayName().equals(db.owner);
 	}
 
 }

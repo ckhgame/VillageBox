@@ -38,12 +38,16 @@ public abstract class Building implements IRegistrable {
 	//---------------------------------
 	public static Registry<Building> registry = new Registry<Building>();
 	
-	public static boolean build(World w,EntityPlayer p,int x, int y,int z, Class<? extends Building> c){
+	public static boolean build(World w,EntityPlayer p,int x, int y,int z, Class<? extends Building> c, boolean hasOwner){
 		
 		BuildingBuilder bb = BuildingBuilder.getInstance();
 		Building b = registry.get(c);
 
 		bb.reset(w, p, x, y, z);
+		
+		if(hasOwner){
+			bb.setOwnerName(p.getDisplayName());
+		}
 		
 		//generate bulding data
 		if( b!=null && b.canBuild() && bb.generateData(b.getType(),b.getSizeType())){

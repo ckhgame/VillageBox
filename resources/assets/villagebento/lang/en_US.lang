@@ -2,6 +2,9 @@
 tile.BlockGroundworkOnlySmall.name=Small Base
 tile.BlockGroundworkOnlyMedium.name=Medium Base
 tile.BlockGroundworkOnlyLarge.name=Large Base
+tile.BlockPlayerFieldSmall.name=Small Player Field
+tile.BlockPlayerFieldMedium.name=Medium Player Field
+tile.BlockPlayerFieldLarge.name=Large Player Field
 tile.BlockBuildingScanner.name=Building Scanner
 tile.BlockVillagerHomeTP.name=Villager Home Teleporter
 tile.BlockBuildingDestroyer.name=Building Destroyer

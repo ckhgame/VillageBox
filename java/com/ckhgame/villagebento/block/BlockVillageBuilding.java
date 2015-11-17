@@ -16,16 +16,24 @@ import net.minecraft.world.World;
 
 public class BlockVillageBuilding extends Block {
 
-    protected BlockVillageBuilding(Class<? extends Building> bc,String name) {
+    protected BlockVillageBuilding(Class<? extends Building> bc,String name,boolean hasOwner) {
         super(Material.wood);
         this.setBlockName(name);
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockTextureName(Main.MODID + ":"+name);
         this.setStepSound(soundTypeWood);
         
+        this.hasOwner = hasOwner;
+        
         this.buildingClass = bc;
     }
+    
+    protected BlockVillageBuilding(Class<? extends Building> bc,String name) {
+    	this(bc,name,false);
+    }
 
+    private boolean hasOwner; //if hasOwner is true, the building has an player as its owner, which is used in buildings such as player custom fields 
+    
     private final Class<? extends Building> buildingClass;
     public Class<? extends Building> getBuildingClass(){
     	return buildingClass;
@@ -41,7 +49,7 @@ public class BlockVillageBuilding extends Block {
 		if(!world.isRemote || world.provider.dimensionId !=0){
 			//the player must be very close to the block to use it
 			if(player.getDistance(x, y, z) < 1.5){
-				if(Building.build(world, player, x, y, z, this.buildingClass)){
+				if(Building.build(world, player, x, y, z, this.buildingClass,hasOwner)){
 					//refresh village outlines
 					DataVillageBento dataVB = DataVillageBento.get(world);			
 					MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
