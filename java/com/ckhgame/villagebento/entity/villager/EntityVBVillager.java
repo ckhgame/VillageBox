@@ -298,7 +298,7 @@ public class EntityVBVillager extends EntityAgeable {
 	protected void applyEntityAttributes() {
 		// TODO Auto-generated method stub
 		super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(12.0D);
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 	}
 

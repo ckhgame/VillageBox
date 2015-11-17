@@ -48,7 +48,6 @@ public class RenderVBSheep extends RenderLiving
      */
     protected ResourceLocation getEntityTexture(EntityVBSheep p_110775_1_)
     {
-    	System.out.println("getget textrure");
         return shearedSheepTextures;
     }
 
