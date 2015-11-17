@@ -37,41 +37,33 @@ public class BlockVillageAnimal extends Block {
 			return true;
 		}
 		
-		
-		if(!world.isRemote){
-			//the player must be very close to the block to use it
-			if(player.getDistance(x, y, z) < 1.5D){
-				Minecraft.getMinecraft().displayGuiScreen(new GuiCreateAnimal(this,world,player,x,y,z));
-				
-			} 
-			else{
-				PlayerMsg.send(player, "Please get closer to the block");
-			}
+		if(world.isRemote){
+			Minecraft.getMinecraft().displayGuiScreen(new GuiCreateAnimal(player.getEntityId(),x,y,z));
 		}
+
 		return true;
 	}
 	
 	public void createAnimal(World world,EntityPlayer player,int x, int y, int z,String name){
-		
-		Minecraft.getMinecraft().displayGuiScreen(null);
-		
-		EntityVBAnimal entity = null;
-		
-		try {
-			entity = animalClass.getDeclaredConstructor(World.class).newInstance(world);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if(!world.isRemote){
+			EntityVBAnimal entity = null;
+			
+			try {
+				entity = animalClass.getDeclaredConstructor(World.class).newInstance(world);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		entity.setCustomNameTag(name);
-		entity.setLocationAndAngles(x + 0.5F, y + 0.1F, z + 0.5F, 0.0F, 0.0F);
+			entity.setCustomNameTag(name);
+			entity.setLocationAndAngles(x + 0.5F, y + 0.1F, z + 0.5F, 0.0F, 0.0F);
 
-		if(world.spawnEntityInWorld(entity)){
-			world.setBlockToAir(x, y, z);
-		}
-		else{
-			PlayerMsg.send(player, "Sorry, You can't spawn it here!");
+			if(world.spawnEntityInWorld(entity)){
+				world.setBlockToAir(x, y, z);
+			}
+			else{
+				PlayerMsg.send(player, "Sorry, You can't spawn it here!");
+			}
 		}
 	}
 }

@@ -10,6 +10,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.misc.HelperString;
 import com.ckhgame.villagebento.network.action.Action;
+import com.ckhgame.villagebento.network.action.ActionDoCreateAnimal;
 import com.ckhgame.villagebento.network.action.ActionDoDropCoins;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -27,19 +28,15 @@ import net.minecraft.world.World;
 public class GuiCreateAnimal extends GuiScreen {
 
 	// pass in
-	private World world;
-	private EntityPlayer player;
 	private int x, y, z;
-	private BlockVillageAnimal block;
 	private boolean created = false;
+	private int playerEntityID;
 
-	public GuiCreateAnimal(BlockVillageAnimal b, World w, EntityPlayer p, int x, int y, int z) {
-		this.world = w;
-		this.player = p;
+	public GuiCreateAnimal(int playerEntityID,int x, int y, int z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.block = b;
+		this.playerEntityID = playerEntityID;
 	}
 
 	private GuiTextField textField;
@@ -98,7 +95,7 @@ public class GuiCreateAnimal extends GuiScreen {
 
 	@Override
 	protected void actionPerformed(GuiButton button) {
-		
+
 		// leave
 		if (button.id == buttonOK.id) {
 			if(created)
@@ -118,12 +115,12 @@ public class GuiCreateAnimal extends GuiScreen {
 				textColor = 0xFFAAAA;
 			}
 			else{
-				block.createAnimal(world, player, x, y, z, name);
+				Action.send(ActionDoCreateAnimal.class, new Object[]{playerEntityID,x,y,z,name});
 				created = true;
 			}
 			
 		}
-
+		
 		super.actionPerformed(button);
 	}
 

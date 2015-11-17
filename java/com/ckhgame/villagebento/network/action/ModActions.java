@@ -20,10 +20,11 @@ public class ModActions {
 		Action.registry.register(id++, new ActionDoDropCoins());
 		Action.registry.register(id++, new ActionGetVillagerActionList());
 		Action.registry.register(id++, new ActionDoVillagerBet());
+		Action.registry.register(id++, new ActionDoCreateAnimal());
 		
 		
 		//server -> clinet
-		id = 100;
+		id = 1000;
 		Action.registry.register(id++, new SActionUpdateVillagerSleep());
 		
 	}
