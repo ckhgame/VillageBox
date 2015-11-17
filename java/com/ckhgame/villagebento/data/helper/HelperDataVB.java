@@ -558,6 +558,8 @@ public class HelperDataVB {
 	
 	//player private field
 	public static boolean PlayerOwnsBuilding(EntityPlayer player, DataBuilding db){
+		if(db.owner == null)
+			return false;
 		return player.getDisplayName().equals(db.owner);
 	}
 

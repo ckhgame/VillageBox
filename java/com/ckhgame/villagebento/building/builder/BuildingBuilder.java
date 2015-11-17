@@ -55,8 +55,6 @@ public class BuildingBuilder {
 	}
 	
 	public void setOwnerName(String owner){
-		if(owner == null)
-			owner = "";
 		this.owner = owner;
 	}
 	

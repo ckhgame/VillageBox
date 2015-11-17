@@ -12,7 +12,7 @@ public class DataBuilding extends Data{
 	public int sizeZ; // similar as sizeX
 	public int y;
 	public int type;
-	public String owner = ""; //the name of the owner player
+	public String owner; //the name of the owner player
 	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
@@ -23,7 +23,8 @@ public class DataBuilding extends Data{
 		compound.setInteger(ConfigData.KeyDataBuildingSizeX, this.sizeX);
 		compound.setInteger(ConfigData.KeyDataBuildingSizeZ, this.sizeZ);
 		compound.setInteger(ConfigData.KeyDataBuildingType, this.type);
-		compound.setString(ConfigData.KeyDataBuildingOwner, owner);
+		if(owner != null)
+			compound.setString(ConfigData.KeyDataBuildingOwner, owner);
 	}
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
@@ -34,6 +35,7 @@ public class DataBuilding extends Data{
 		this.sizeX = compound.getInteger(ConfigData.KeyDataBuildingSizeX);
 		this.sizeZ = compound.getInteger(ConfigData.KeyDataBuildingSizeZ);
 		this.type = compound.getInteger(ConfigData.KeyDataBuildingType);
-		this.owner = compound.getString(ConfigData.KeyDataBuildingOwner);
+		if(compound.hasKey(ConfigData.KeyDataBuildingOwner))
+			this.owner = compound.getString(ConfigData.KeyDataBuildingOwner);
 	}
 }
