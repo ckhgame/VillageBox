@@ -9,6 +9,7 @@ public class ConfigData {
 	public static final String KeyDataBuildingSizeX 	= "dbsx";
 	public static final String KeyDataBuildingSizeZ 	= "dbsz";
 	public static final String KeyDataBuildingType 		= "dbt";
+	public static final String KeyDataBuildingOwner		= "dbo";
 	
 	//villager
 	public static final String KeyDataVillagerID		= "dvrid";
