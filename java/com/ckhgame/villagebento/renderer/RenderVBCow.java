@@ -2,9 +2,7 @@ package com.ckhgame.villagebento.renderer;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
-import com.ckhgame.villagebento.renderer.gui.RenderGui;
-import com.ckhgame.villagebento.renderer.gui.RenderGuiLiving;
-import com.ckhgame.villagebento.renderer.gui.element.GuiText;
+import com.ckhgame.villagebento.renderer.gui.RenderGuiAnimal;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,13 +16,15 @@ import net.minecraft.util.ResourceLocation;
 public class RenderVBCow extends RenderLiving
 {
     private static final ResourceLocation cowTextures = new ResourceLocation(Main.MODID + ":" + "textures/entity/animal/cow.png");
+    private static final ResourceLocation textProduct = new ResourceLocation(Main.MODID + ":" + "textures/items/ItemVillageMilk.png");
+    private static final ResourceLocation textFood = new ResourceLocation(Main.MODID + ":" + "textures/items/ItemCowFood.png");
     
-    private RenderGuiLiving renderGui;   
+    private RenderGuiAnimal renderGui;   
     
     public RenderVBCow()
     {
         super(new ModelCow(), 0.7F);
-        renderGui = new RenderGuiLiving();
+        renderGui = new RenderGuiAnimal(textProduct,textFood);
     }
     
     /**

@@ -13,6 +13,9 @@ public class GuiSprite extends GuiElement{
 	public double vmin = 0.0F;
 	public double umax = 1.0F;
 	public double vmax = 1.0F;
+	public float r = 1.0F;
+	public float g = 1.0F;
+	public float b = 1.0F;
 	
 	
 	public GuiSprite(double x, double y ,double w, double h,ResourceLocation resource) {
@@ -27,7 +30,7 @@ public class GuiSprite extends GuiElement{
 		Tessellator tessellator = Tessellator.instance;
 		Minecraft.getMinecraft().renderEngine.bindTexture(resource);
     	tessellator.startDrawingQuads();
-    	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+    	GL11.glColor4f(r, g, b, 1.0F);
     	tessellator.addVertexWithUV(x, -y-height, 0.0D,umin,vmin);
 		tessellator.addVertexWithUV(x, -y, 0.0D,umin,vmax);
 		tessellator.addVertexWithUV(x + width, -y, 0.0D,umax,vmax);
@@ -40,7 +43,7 @@ public class GuiSprite extends GuiElement{
 		Tessellator tessellator = Tessellator.instance;
 		Minecraft.getMinecraft().renderEngine.bindTexture(resource);
     	tessellator.startDrawingQuads();
-    	GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.3F);
+    	GL11.glColor4f(r, g, b, 0.3F);
     	tessellator.addVertexWithUV(x, -y-height, 0.0D,umin,vmin);
 		tessellator.addVertexWithUV(x, -y, 0.0D,umin,vmax);
 		tessellator.addVertexWithUV(x + width, -y, 0.0D,umax,vmax);

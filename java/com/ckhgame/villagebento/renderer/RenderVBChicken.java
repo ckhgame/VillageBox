@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.renderer;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
+import com.ckhgame.villagebento.renderer.gui.RenderGuiAnimal;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -15,9 +16,14 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderVBChicken extends RenderLiving {
 	private static final ResourceLocation chickenTextures = new ResourceLocation(Main.MODID + ":" + "textures/entity/animal/chicken.png");
-
+	private static final ResourceLocation textProduct = new ResourceLocation(Main.MODID + ":" + "textures/items/ItemVillageEgg.png");
+    private static final ResourceLocation textFood = new ResourceLocation(Main.MODID + ":" + "textures/items/ItemChickenFood.png");
+	
+    private RenderGuiAnimal renderGui;
+	
 	public RenderVBChicken() {
 		super(new ModelChicken(), 0.3F);
+		renderGui = new RenderGuiAnimal(textProduct,textFood);
 	}
 
 	/**
@@ -102,5 +108,13 @@ public class RenderVBChicken extends RenderLiving {
 	public void doRender(Entity p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_,
 			float p_76986_9_) {
 		this.doRender((EntityVBChicken) p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
+	}
+	
+	@Override
+	protected void passSpecialRender(EntityLivingBase p_77033_1_, double p_77033_2_, double p_77033_4_,double p_77033_6_) {
+		// TODO Auto-generated method stub
+		super.passSpecialRender(p_77033_1_, p_77033_2_, p_77033_4_, p_77033_6_);
+		
+		renderGui.render(p_77033_1_,p_77033_2_,p_77033_4_,p_77033_6_);
 	}
 }

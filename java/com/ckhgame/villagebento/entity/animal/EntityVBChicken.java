@@ -135,9 +135,7 @@ public class EntityVBChicken extends EntityVBAnimal
 			return false;
 		
 		if(food.getItem() == ModItems.itemChickenFood){
-			int hunger = this.getAnimHunger();
-			if(hunger > 24000)
-				hunger = 24000;
+			this.addAnimHunger(6000);
 			return true;
 		}
 		else if(food.getItem() == ModItems.itemChickenPotion){

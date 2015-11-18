@@ -6,6 +6,7 @@ import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.models.ModelVBSheep1;
 import com.ckhgame.villagebento.models.ModelVBSheep2;
+import com.ckhgame.villagebento.renderer.gui.RenderGuiAnimal;
 
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
@@ -16,11 +17,16 @@ public class RenderVBSheep extends RenderLiving
 {
     private static final ResourceLocation sheepTextures = new ResourceLocation(Main.MODID + ":" + "textures/entity/animal/sheep_fur.png");
     private static final ResourceLocation shearedSheepTextures = new ResourceLocation(Main.MODID + ":" + "textures/entity/animal/sheep.png");
+    private static final ResourceLocation textProduct = new ResourceLocation(Main.MODID + ":" + "textures/items/ItemVillageWool.png");
+    private static final ResourceLocation textFood = new ResourceLocation(Main.MODID + ":" + "textures/items/ItemSheepFood.png");
 
+    private RenderGuiAnimal renderGui;
+    
     public RenderVBSheep()
     {
         super(new ModelVBSheep2(), 0.7F);
         this.setRenderPassModel(new ModelVBSheep1());
+        renderGui = new RenderGuiAnimal(textProduct,textFood);
     }
 
     /**
@@ -66,4 +72,12 @@ public class RenderVBSheep extends RenderLiving
     {
         return this.getEntityTexture((EntityVBSheep)p_110775_1_);
     }
+    
+    @Override
+  	protected void passSpecialRender(EntityLivingBase p_77033_1_, double p_77033_2_, double p_77033_4_,double p_77033_6_) {
+  		// TODO Auto-generated method stub
+  		super.passSpecialRender(p_77033_1_, p_77033_2_, p_77033_4_, p_77033_6_);
+  		
+  		renderGui.render(p_77033_1_,p_77033_2_,p_77033_4_,p_77033_6_);
+  	}
 }

@@ -16,9 +16,18 @@ import net.minecraft.world.World;
 
 public abstract class EntityVBAnimal extends EntityAgeable
 {
-	//>= 12k full, >= 0 && < 12k little hungry, >= -12k && 
+	//0 - 24k, < 6k hungry
 	public int getAnimHunger(){return this.dataWatcher.getWatchableObjectInt(17);}
-    protected void setAnimHunber(int h){this.dataWatcher.updateObject(17, h);}
+    protected void setAnimHunger(int h){this.dataWatcher.updateObject(17, h);}
+    public float getAnimHungerPercent(){
+    	int h = this.dataWatcher.getWatchableObjectInt(17);
+    	return Math.max(0.0F, h * 1.0F / 24000.0F);
+    }
+    public void addAnimHunger(int food){
+    	int h = this.dataWatcher.getWatchableObjectInt(17);
+    	h = Math.min(24000, Math.max(0, food) + h);
+    	this.dataWatcher.updateObject(17, h);
+    }
     
     //> 60 very good, >=0 && < 60 good, < 0 && >= -40 sick, >=-100 && < 40 deadly, <-100 I'm dead :( 
     public int getAnimState(){return this.dataWatcher.getWatchableObjectInt(18);}
@@ -53,7 +62,7 @@ public abstract class EntityVBAnimal extends EntityAgeable
     protected void entityInit()
     {
         super.entityInit();
-        this.dataWatcher.addObject(17, new Integer(100));
+        this.dataWatcher.addObject(17, new Integer(24000));
         this.dataWatcher.addObject(18, new Integer(100));
         this.dataWatcher.addObject(19, new Integer(0));
         this.dataWatcher.addObject(20, new Integer(0));
@@ -74,23 +83,28 @@ public abstract class EntityVBAnimal extends EntityAgeable
         	long deltaTime = Math.max(0, currentTime - this.lastWorldTime);
         	this.lastWorldTime = currentTime;
         	
-        	//update animal products
-        	this.productTimer += deltaTime;
-        	if(this.productTimer > this.productTime){
-        		this.productTimer -= this.productTime;
-        		int products = this.getAnimProducts();
-        		this.setAnimProducts(products + 1);
-        	}
         	
-        	//update child animal ages
         	if(this.isChild()){
+        		//update child animal ages
         		age += deltaTime;
         		this.setGrowingAge(age);
         	}
+        	else{
+            	//update animal products
+            	this.productTimer += deltaTime;
+            	if(this.productTimer > this.productTime){
+            		this.productTimer -= this.productTime;
+            		int products = this.getAnimProducts();
+            		this.setAnimProducts(products + 1);
+            	}
+        	}
+        	
+        	//update hunger
+        	int h =  this.getAnimHunger();
+        	if(h > 0)
+        		this.setAnimHunger(Math.max(0,h - (int)deltaTime));
         }
         
-       
-
     }
     
     /**
@@ -150,7 +164,7 @@ public abstract class EntityVBAnimal extends EntityAgeable
     public void readEntityFromNBT(NBTTagCompound p_70037_1_)
     {
         super.readEntityFromNBT(p_70037_1_);
-       	this.setAnimHunber(p_70037_1_.getInteger(ConfigData.KeyAnimalHunger));
+       	this.setAnimHunger(p_70037_1_.getInteger(ConfigData.KeyAnimalHunger));
     	this.setAnimState(p_70037_1_.getInteger(ConfigData.KeyAnimalState));
     	this.setAnimProducts(p_70037_1_.getInteger(ConfigData.KeyAnimalProducts));
     	this.productTimer = p_70037_1_.getInteger(ConfigData.KeyAnimalProductTimer);
