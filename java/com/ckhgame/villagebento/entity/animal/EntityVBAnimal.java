@@ -54,7 +54,7 @@ public abstract class EntityVBAnimal extends EntityAgeable
     public int getAnimProducts(){return this.dataWatcher.getWatchableObjectInt(19);}
     protected void setAnimProducts(int p){this.dataWatcher.updateObject(19, p);}
     public int getAnimProductsMax(){
-    	return getAnimLoveLvl() + 1;
+    	return this.isChild()?0:(getAnimLoveLvl() + 1);
     }
     
     public int getAnimLove(){return this.dataWatcher.getWatchableObjectInt(20);}
