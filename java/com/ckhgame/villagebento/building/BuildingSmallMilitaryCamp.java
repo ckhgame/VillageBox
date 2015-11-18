@@ -48,7 +48,7 @@ public class BuildingSmallMilitaryCamp extends Building {
 		bb.buildBlock(1,0,-3,Blocks.stonebrick,0);bb.buildBlock(1,0,3,Blocks.stonebrick,0);bb.buildBlock(2,0,-3,Blocks.stonebrick,0);
 		bb.buildBlock(2,0,-2,Blocks.stonebrick,0);bb.buildBlock(2,0,2,Blocks.stonebrick,0);bb.buildBlock(2,0,3,Blocks.stonebrick,0);
 		bb.buildBlock(3,0,-3,Blocks.stonebrick,0);bb.buildBlock(3,0,-1,Blocks.stonebrick,0);bb.buildBlock(3,0,0,Blocks.wooden_door,0);
-		bb.buildBlock(3,0,1,Blocks.stonebrick,0);bb.buildBlock(3,0,3,Blocks.stonebrick,0);bb.buildBlock(-3,1,-3,Blocks.stonebrick,0);
+		bb.buildBlock(3,0,1,Blocks.wooden_door,0);bb.buildBlock(3,0,3,Blocks.stonebrick,0);bb.buildBlock(-3,1,-3,Blocks.stonebrick,0);
 		bb.buildBlock(-3,1,-2,Blocks.stonebrick,0);bb.buildBlock(-3,1,-1,Blocks.stonebrick,0);bb.buildBlock(-3,1,0,Blocks.stonebrick,0);
 		bb.buildBlock(-3,1,1,Blocks.stonebrick,0);bb.buildBlock(-3,1,2,Blocks.stonebrick,0);bb.buildBlock(-3,1,3,Blocks.stonebrick,0);
 		bb.buildBlock(-2,1,-3,Blocks.stonebrick,0);bb.buildBlock(-2,1,0,Blocks.flower_pot,8);bb.addTileEntityPot(-2,1,0,38,8);
@@ -56,7 +56,7 @@ public class BuildingSmallMilitaryCamp extends Building {
 		bb.buildBlock(0,1,-3,Blocks.stonebrick,0);bb.buildBlock(0,1,3,Blocks.stonebrick,0);bb.buildBlock(1,1,-3,Blocks.stonebrick,0);
 		bb.buildBlock(1,1,3,Blocks.stonebrick,0);bb.buildBlock(2,1,-3,Blocks.stonebrick,0);bb.buildBlock(2,1,-2,Blocks.stonebrick,0);
 		bb.buildBlock(2,1,2,Blocks.stonebrick,0);bb.buildBlock(2,1,3,Blocks.stonebrick,0);bb.buildBlock(3,1,-3,Blocks.stonebrick,0);
-		bb.buildBlock(3,1,-1,Blocks.stonebrick,0);bb.buildBlock(3,1,0,Blocks.wooden_door,8);bb.buildBlock(3,1,1,Blocks.stonebrick,0);
+		bb.buildBlock(3,1,-1,Blocks.stonebrick,0);bb.buildBlock(3,1,0,Blocks.wooden_door,8);bb.buildBlock(3,1,1,Blocks.wooden_door,9);
 		bb.buildBlock(3,1,3,Blocks.stonebrick,0);bb.buildBlock(-3,2,-3,Blocks.stonebrick,0);bb.buildBlock(-3,2,-2,Blocks.stonebrick,0);
 		bb.buildBlock(-3,2,-1,Blocks.glass_pane,0);bb.buildBlock(-3,2,0,Blocks.glass_pane,0);bb.buildBlock(-3,2,1,Blocks.glass_pane,0);
 		bb.buildBlock(-3,2,2,Blocks.stonebrick,0);bb.buildBlock(-3,2,3,Blocks.stonebrick,0);bb.buildBlock(-2,2,-3,Blocks.stonebrick,0);

@@ -43,13 +43,12 @@ public class BuildingLargeMilitaryCamp extends Building {
 	@Override
 	protected void buildBlocks(BuildingBuilder bb) {
 		bb.buildBlock(-5,0,-5,Blocks.stonebrick,0);bb.buildBlock(-5,0,-4,Blocks.stonebrick,0);bb.buildBlock(-5,0,-3,Blocks.stonebrick,0);
-		bb.buildBlock(-5,0,-2,Blocks.stonebrick,0);bb.buildBlock(-5,0,-1,Blocks.stonebrick,0);bb.buildBlock(-5,0,0,Blocks.stonebrick,0);
-		bb.buildBlock(-5,0,1,Blocks.stonebrick,0);bb.buildBlock(-5,0,2,Blocks.stonebrick,0);bb.buildBlock(-5,0,3,Blocks.stonebrick,0);
+		bb.buildBlock(-5,0,-2,Blocks.stonebrick,0);bb.buildBlock(-5,0,-1,Blocks.stonebrick,0);bb.buildBlock(-5,0,0,Blocks.wooden_door,2);
+		bb.buildBlock(-5,0,1,Blocks.wooden_door,2);bb.buildBlock(-5,0,2,Blocks.stonebrick,0);bb.buildBlock(-5,0,3,Blocks.stonebrick,0);
 		bb.buildBlock(-5,0,4,Blocks.stonebrick,0);bb.buildBlock(-5,0,5,Blocks.stonebrick,0);bb.buildBlock(-4,0,-5,Blocks.stonebrick,0);
 		bb.buildBlock(-4,0,-4,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,-3,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,-2,Blocks.flower_pot,6);
 		bb.addTileEntityPot(-4,0,-2,38,6);
-		bb.buildBlock(-4,0,-1,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,0,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,1,Blocks.dark_oak_stairs,1);
-		bb.buildBlock(-4,0,2,Blocks.flower_pot,6);bb.addTileEntityPot(-4,0,2,38,6);
+		bb.buildBlock(-4,0,-1,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,2,Blocks.flower_pot,6);bb.addTileEntityPot(-4,0,2,38,6);
 		bb.buildBlock(-4,0,3,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,4,Blocks.dark_oak_stairs,1);bb.buildBlock(-4,0,5,Blocks.stonebrick,0);
 		bb.buildBlock(-3,0,-5,Blocks.stonebrick,0);bb.buildBlock(-3,0,5,Blocks.stonebrick,0);bb.buildBlock(-2,0,-5,Blocks.stonebrick,0);
 		bb.buildBlock(-2,0,5,Blocks.stonebrick,0);bb.buildBlock(-1,0,-5,Blocks.stonebrick,0);bb.buildBlock(-1,0,0,Blocks.trapped_chest,4);
@@ -65,7 +64,7 @@ public class BuildingLargeMilitaryCamp extends Building {
 		bb.buildBlock(5,0,2,Blocks.stonebrick,0);bb.buildBlock(5,0,3,Blocks.stonebrick,0);bb.buildBlock(5,0,4,Blocks.stonebrick,0);
 		bb.buildBlock(5,0,5,Blocks.stonebrick,0);bb.buildBlock(-5,1,-5,Blocks.stonebrick,0);bb.buildBlock(-5,1,-4,Blocks.stonebrick,0);
 		bb.buildBlock(-5,1,-3,Blocks.stonebrick,0);bb.buildBlock(-5,1,-2,Blocks.stonebrick,0);bb.buildBlock(-5,1,-1,Blocks.stonebrick,0);
-		bb.buildBlock(-5,1,0,Blocks.stonebrick,0);bb.buildBlock(-5,1,1,Blocks.stonebrick,0);bb.buildBlock(-5,1,2,Blocks.stonebrick,0);
+		bb.buildBlock(-5,1,0,Blocks.wooden_door,9);bb.buildBlock(-5,1,1,Blocks.wooden_door,8);bb.buildBlock(-5,1,2,Blocks.stonebrick,0);
 		bb.buildBlock(-5,1,3,Blocks.stonebrick,0);bb.buildBlock(-5,1,4,Blocks.stonebrick,0);bb.buildBlock(-5,1,5,Blocks.stonebrick,0);
 		bb.buildBlock(-4,1,-5,Blocks.stonebrick,0);bb.buildBlock(-4,1,5,Blocks.stonebrick,0);bb.buildBlock(-3,1,-5,Blocks.stonebrick,0);
 		bb.buildBlock(-3,1,5,Blocks.stonebrick,0);bb.buildBlock(-2,1,-5,Blocks.stonebrick,0);bb.buildBlock(-2,1,5,Blocks.stonebrick,0);
