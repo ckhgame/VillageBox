@@ -1,5 +1,8 @@
 package com.ckhgame.villagebento.entity.animal;
 
+import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.PlayerMsg;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -127,28 +130,48 @@ public class EntityVBChicken extends EntityVBAnimal
     }
     
 	@Override
-	public boolean breed(ItemStack food) {
+	public boolean breed(ItemStack food,EntityPlayer player) {
 		if(food == null)
 			return false;
 		
-		if(food.getItem() == Items.wheat_seeds){
+		if(food.getItem() == ModItems.itemChickenFood){
 			int hunger = this.getAnimHunger();
 			if(hunger > 24000)
 				hunger = 24000;
 			return true;
 		}
+		else if(food.getItem() == ModItems.itemChickenPotion){
+			PlayerMsg.send(player, "that animal is not sick!");
+		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean dropProduct(ItemStack tool) {
-		if(tool == null){ // hands
+	public boolean dropProduct(ItemStack tool,EntityPlayer player) {
+		if(tool == null || tool.getItem() == ModItems.itemChickenGloves){ // hands
 			
 			int products = this.getAnimProducts();
 			if(products > 0){
 				this.setAnimProducts(products - 1); 
-				this.dropItem(Items.egg, 1);
-				this.setCustomNameTag("<chicken> " + this.getAnimProducts());
+				
+				if(tool == null)
+					this.dropItem(ModItems.itemVillageEgg, 1);
+				else{
+					int r = this.getRNG().nextInt(100);
+					if(r < 80){
+						this.dropItem(ModItems.itemVillageHeartEgg, 1);
+					}
+					else if(r < 90){
+						this.dropItem(ModItems.itemVillageSilverEgg, 1);
+					}
+					else if(r < 95){
+						this.dropItem(ModItems.itemVillageGoldenEgg, 1);
+					}
+					else if(r < 100){
+						this.dropItem(ModItems.itemVillageEasterEgg, 1);
+					}
+				}
 			}
 		}
 		return false;

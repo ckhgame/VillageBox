@@ -193,8 +193,8 @@ public abstract class EntityVBAnimal extends EntityAgeable
     	if(!this.worldObj.isRemote){
     		ItemStack hold = p_70085_1_.inventory.getCurrentItem();
 
-    		if(!breed(hold)){
-    			if(dropProduct(hold));
+    		if(!breed(hold,p_70085_1_)){
+    			if(dropProduct(hold,p_70085_1_));
     		}
     		return true;
     	}
@@ -208,6 +208,6 @@ public abstract class EntityVBAnimal extends EntityAgeable
 		return null;
 	}
     
-    public abstract boolean breed(ItemStack food);
-    public abstract boolean dropProduct(ItemStack tool);
+    public abstract boolean breed(ItemStack food,EntityPlayer player);
+    public abstract boolean dropProduct(ItemStack tool,EntityPlayer player);
 }

@@ -49,3 +49,28 @@ tile.BlockSunflower.name=Summer Garden
 tile.BlockTeaChair.name=Tea Party Garden
 tile.BlockRosePath.name=Rose Path Park
 tile.BlockRoseBridge.name=Rose Bridge Park
+
+
+
+tile.BlockChicken.name=Chicken Box
+tile.BlockSheep.name=Sheep Box
+tile.BlockCow.name=Cow Box
+
+item.ItemChickenPotion.name=Chicken Potion
+item.ItemChickenFood.name=Chicken Food
+item.ItemChickenGloves.name=Chicken Gloves
+item.ItemVillageEgg.name=Village Egg
+item.ItemVillageHeartEgg.name=Heart Egg
+item.ItemVillageSilverEgg.name=Silver Egg
+item.ItemVillageGoldenEgg.name=Golden Egg
+item.ItemVillageEasterEgg.name=Easter Egg
+
+item.ItemSheepPotion.name=Sheep Potion
+item.ItemSheepFood.name=Sheep Food
+item.ItemWoolShears.name=Wool Shears
+item.ItemVillageWool.name=Village Wool
+
+item.ItemCowPotion.name=Cow Potion
+item.ItemCowFood.name=Cow Food
+item.ItemMilkBottle.name=Milk Bottle
+item.ItemVillageMilk.name=Village Milk

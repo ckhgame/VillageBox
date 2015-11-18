@@ -1,5 +1,8 @@
 package com.ckhgame.villagebento.entity.animal;
 
+import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.PlayerMsg;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -105,31 +108,34 @@ public class EntityVBSheep extends EntityVBAnimal
     
 
 	@Override
-	public boolean breed(ItemStack food) {
+	public boolean breed(ItemStack food,EntityPlayer player) {
 		if(food == null)
 			return false;
 		
-		if(food.getItem() == Items.wheat){
+		if(food.getItem() == ModItems.itemSheepFood){
 			int hunger = this.getAnimHunger();
 			if(hunger > 24000)
 				hunger = 24000;
 			return true;
 		}
+		else if(food.getItem() == ModItems.itemSheepPotion){
+			PlayerMsg.send(player, "that animal is not sick!");
+		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean dropProduct(ItemStack tool) {
+	public boolean dropProduct(ItemStack tool,EntityPlayer player) {
 		if(tool == null)
 			return false;
 		
-		if(tool.getItem() == Items.shears){ // hands
+		if(tool.getItem() == ModItems.itemWoolShears){ // hands
 			
 			int products = this.getAnimProducts();
 			if(products > 0){
 				this.setAnimProducts(products - 1); 
-				this.dropItem(Item.getItemFromBlock(Blocks.wool), 1);
-				this.setCustomNameTag("<chicken> " + this.getAnimProducts());
+				this.dropItem(ModItems.itemVillageWool, 1);
 				this.playSound("mob.sheep.shear", 1.0F, 1.0F);
 			}
 		}

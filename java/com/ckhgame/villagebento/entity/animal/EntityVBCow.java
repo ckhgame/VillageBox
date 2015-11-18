@@ -1,5 +1,8 @@
 package com.ckhgame.villagebento.entity.animal;
 
+import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.PlayerMsg;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -91,30 +94,36 @@ public class EntityVBCow extends EntityVBAnimal
     }
 
     @Override
-	public boolean breed(ItemStack food) {
+	public boolean breed(ItemStack food,EntityPlayer player) {
 		if(food == null)
 			return false;
 		
-		if(food.getItem() == Items.wheat){
+		if(food.getItem() == ModItems.itemCowFood){
 			int hunger = this.getAnimHunger();
 			if(hunger > 24000)
 				hunger = 24000;
 			return true;
 		}
+		else if(food.getItem() == ModItems.itemCowPotion){
+			PlayerMsg.send(player, "that animal is not sick!");
+		}
+		
+		
 		return false;
 	}
 
 	@Override
-	public boolean dropProduct(ItemStack tool) {
+	public boolean dropProduct(ItemStack tool,EntityPlayer player) {
 		if(tool == null)
 			return false;
 		
-		if(tool.getItem() == Items.glass_bottle){ // hands
+		if(tool.getItem() == ModItems.itemMilkBottle){ // hands
 			
 			int products = this.getAnimProducts();
 			if(products > 0){
 				this.setAnimProducts(products - 1); 
-				this.dropItem(Items.milk_bucket, 1);
+				this.dropItem(ModItems.itemVillageMilk, 1);
+				--tool.stackSize;
 			}
 		}
 		return false;
