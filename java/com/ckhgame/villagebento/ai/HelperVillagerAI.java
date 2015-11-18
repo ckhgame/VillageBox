@@ -58,7 +58,7 @@ public class HelperVillagerAI {
 		entity.tasks.addTask(3, new VillagerAISleepNightbird(entity));
 		
 		entity.tasks.addTask(5, new VillagerAIWatchClosest2(entity, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
-		entity.tasks.addTask(5, new VillagerAIWatchClosest2(entity, EntityVillager.class, 5.0F, 0.02F));
+		entity.tasks.addTask(5, new VillagerAIWatchClosest2(entity, EntityVBVillager.class, 5.0F, 0.02F));
 		entity.tasks.addTask(6, new VillagerAIWander(entity));
 		entity.tasks.addTask(7, new VillagerAIWatchClosest(entity, EntityLiving.class, 6.0F));
 	}
@@ -84,7 +84,7 @@ public class HelperVillagerAI {
 		entity.tasks.addTask(3, new VillagerAISleep(entity));
 		
 		entity.tasks.addTask(5, new VillagerAIWatchClosest2(entity, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
-		entity.tasks.addTask(5, new VillagerAIWatchClosest2(entity, EntityVillager.class, 5.0F, 0.02F));
+		entity.tasks.addTask(5, new VillagerAIWatchClosest2(entity, EntityVBVillager.class, 5.0F, 0.02F));
 		entity.tasks.addTask(6, new VillagerAIWander(entity));
 		entity.tasks.addTask(7, new VillagerAIWatchClosest(entity, EntityLiving.class, 6.0F));
 	}

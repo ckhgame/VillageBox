@@ -191,6 +191,8 @@ public class RenderVBVillager extends RenderBiped
 			GL11.glPushMatrix();
 			GL11.glTranslatef((float) p_147906_3_ + 0.0F, (float) p_147906_5_ + p_147906_1_.height + 0.5F + offsetY,
 					(float) p_147906_7_);
+			System.out.println("22draw:" + ((float) p_147906_3_ + 0.0F) + "," + ((float) p_147906_5_ + p_147906_1_.height + 0.5F) + "," + ((float) p_147906_7_));
+			System.out.println("33draw:" +p_147906_1_.posX + "," + p_147906_1_.posY + "," +p_147906_1_.posZ);
 			GL11.glNormal3f(0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
 			GL11.glRotatef(this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
