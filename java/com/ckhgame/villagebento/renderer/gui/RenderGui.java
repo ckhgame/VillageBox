@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.lwjgl.opengl.GL11;
 
+import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.renderer.gui.element.GuiElement;
 import com.ckhgame.villagebento.renderer.gui.element.GuiSprite;
 import com.ckhgame.villagebento.renderer.gui.element.GuiText;
@@ -35,12 +36,18 @@ public abstract class RenderGui {
 		return guiSprite;
 	}
 	
-	public void render(Entity entity,double gx,double gy,double gz){
+	public void render(Entity entity,double gx,double gy,double gz){		
+		
 		if(this.elements == null){
 			this.elements = new ArrayList<GuiElement>();
 			this.renderManager = RenderManager.instance;
 			this.init();
 		}
+		
+		double d = entity.getDistanceSqToEntity(this.renderManager.livingPlayer);
+
+		if (d > ConfigVillager.MaxRenderGuiDrawDistanceSq) 
+			return;
 		
 		this.update(entity);
 		

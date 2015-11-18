@@ -24,15 +24,12 @@ public class EntityVBChicken extends EntityVBAnimal
     public float field_70884_g;
     public float field_70888_h;
     public float field_70889_i = 1.0F;
-    /** The time until the next egg is spawned. */
-    public int timeUntilNextEgg;
-    public boolean field_152118_bv;
-    private static final String __OBFID = "CL_00001639";
 
     public EntityVBChicken(World p_i1682_1_)
     {
         super(p_i1682_1_);
         this.setSize(0.3F, 0.7F);
+        this.renderDistanceWeight = 2.0D;
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
         this.tasks.addTask(3, new EntityAITempt(this, 1.0D, ModItems.itemChickenFood, false));

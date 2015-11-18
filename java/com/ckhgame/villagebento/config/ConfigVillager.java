@@ -24,4 +24,6 @@ public class ConfigVillager {
 	
 	public static final int MaxInteractDistance = 3;
 	public static final int MaxInteractDistanceSq = MaxInteractDistance * MaxInteractDistance;
+	
+	public static final int MaxRenderGuiDrawDistanceSq = 64 * 64;
 }
