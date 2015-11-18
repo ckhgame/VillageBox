@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.renderer.gui;
+package com.ckhgame.villagebento.renderer.gui.element;
 
 public abstract class GuiElement{
 	public double x;
@@ -13,6 +13,7 @@ public abstract class GuiElement{
 		this.height = h;
 	}
 	
+	public abstract void renderBackground();
 	public abstract void renderFront();
 	public abstract void renderBack();
 }
