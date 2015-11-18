@@ -10,16 +10,21 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderGuiAnimal extends RenderGuiLiving{
 
-	private static final ResourceLocation textHeart = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/heartAnimal.png");;
-	private ResourceLocation textProduct;
-	private ResourceLocation textFood;
+	private static final ResourceLocation texHeart = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/heartAnimal.png");
+	private static final ResourceLocation texAnimHappy = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/animHappy.png");
+	private static final ResourceLocation texAnimNormal = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/animNormal.png");
+	private static final ResourceLocation texAnimSick = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/animSick.png");
+	private static final ResourceLocation texAnimDeadly = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/animDeadly.png");
+	
+	private ResourceLocation texProduct;
+	private ResourceLocation texFood;
 	
 	private GuiText heart,products;
-	private GuiSprite food;
+	private GuiSprite food,state;
 	
 	public RenderGuiAnimal(ResourceLocation textProduct,ResourceLocation textFood){
-		this.textProduct = textProduct;
-		this.textFood = textFood;
+		this.texProduct = textProduct;
+		this.texFood = textFood;
 	}
 	
 	@Override
@@ -30,22 +35,31 @@ public class RenderGuiAnimal extends RenderGuiLiving{
 
 	protected void update(EntityVBAnimal entity){
 		heart.text = String.valueOf(entity.getAnimLoveLvl());
-		products.text = String.valueOf(entity.getAnimProducts());
+		products.text = entity.getAnimProducts() + "/" + entity.getAnimProductsMax();
 		
 		float f = entity.getAnimHungerPercent();
 		food.height = 8.0D * f;
 		food.vmin = 1.0D - f;
+		
+		int s = entity.getAnimState();
+		switch(s){
+		case EntityVBAnimal.AnimStateHappy:state.resource = texAnimHappy;break;
+		case EntityVBAnimal.AnimStateNormal:state.resource = texAnimNormal;break;
+		case EntityVBAnimal.AnimStateSick:state.resource = texAnimSick;break;
+		case EntityVBAnimal.AnimStateDeadly:state.resource = texAnimDeadly;break;
+		}
 	}
 
 	@Override
 	protected void init() {    
 		super.init();
-		this.addSprite(-12, 8, 8, 8, textHeart);
-		this.addSprite(-4, 8, 8, 8, textProduct);
-		GuiSprite foodb = this.addSprite(4, 8, 8, 8, textFood);
+		state = this.addSprite(-16, 8, 8, 8, texAnimHappy);
+		this.addSprite(-8, 8, 8, 8, texHeart);
+		this.addSprite(0, 8, 8, 8, texProduct);
+		GuiSprite foodb = this.addSprite(8, 8, 8, 8, texFood);
 		foodb.r = 0.5F;foodb.g = 0.5F;foodb.b = 0.5F;
-		food = this.addSprite(4, 8, 8, 8, textFood);
-		heart = this.addText(-8, 16, "1", true,true);
-		products = this.addText(0, 16, "1", true,true);
+		food = this.addSprite(8, 8, 8, 8, texFood);
+		heart = this.addText(-4, 16, "1", true,true);
+		products = this.addText(0, 16, "1/1", false,true);
 	}
 }

@@ -10,6 +10,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,14 +31,14 @@ public class EntityVBSheep extends EntityVBAnimal
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
+        this.tasks.addTask(3, new EntityAITempt(this, 1.0D, ModItems.itemSheepFood, false));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         
-        this.setCustomNameTag("<Sheep>");
         this.setAlwaysRenderNameTag(true);
         
-        this.setGrowingAge(-48000);
+        this.setGrowingAge(-24000 * 7);
     }
 
     /**
@@ -60,7 +61,7 @@ public class EntityVBSheep extends EntityVBAnimal
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23000000417232513D);
     }
 
@@ -117,7 +118,13 @@ public class EntityVBSheep extends EntityVBAnimal
 			return true;
 		}
 		else if(food.getItem() == ModItems.itemSheepPotion){
-			PlayerMsg.send(player, "that animal is not sick!");
+			int s = this.getAnimState();
+			if(s != AnimStateSick && s!= AnimStateDeadly){
+				PlayerMsg.send(player, "that animal is not sick!");
+			}
+			else{
+				this.setAnimStateValue(17000);
+			}
 		}
 		
 		return false;

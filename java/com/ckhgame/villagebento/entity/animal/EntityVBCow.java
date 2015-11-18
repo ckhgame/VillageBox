@@ -31,14 +31,14 @@ public class EntityVBCow extends EntityVBAnimal
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
+        this.tasks.addTask(3, new EntityAITempt(this, 1.0D, ModItems.itemCowFood, false));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         
-        this.setCustomNameTag("<Cow>");
         this.setAlwaysRenderNameTag(true);
         
-        this.setGrowingAge(-48000);
+        this.setGrowingAge(-24000 * 7);
     }
 
     /**
@@ -104,7 +104,13 @@ public class EntityVBCow extends EntityVBAnimal
 			return true;
 		}
 		else if(food.getItem() == ModItems.itemCowPotion){
-			PlayerMsg.send(player, "that animal is not sick!");
+			int s = this.getAnimState();
+			if(s != AnimStateSick && s!= AnimStateDeadly){
+				PlayerMsg.send(player, "that animal is not sick!");
+			}
+			else{
+				this.setAnimStateValue(17000);
+			}
 		}
 		
 		

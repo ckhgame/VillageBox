@@ -67,6 +67,5 @@ public class ConfigData {
 	public static final String KeyAnimalState						= "vas";
 	public static final String KeyAnimalProducts					= "vap";
 	public static final String KeyAnimalProductTimer				= "vapt";
-	public static final String KeyAnimalLoveLvl						= "vall";
-	public static final String KeyAnimalLoveExp						= "vale";
+	public static final String KeyAnimalLove						= "val";
 }

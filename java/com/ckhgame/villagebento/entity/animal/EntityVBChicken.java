@@ -9,6 +9,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,14 +35,14 @@ public class EntityVBChicken extends EntityVBAnimal
         this.setSize(0.3F, 0.7F);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
+        this.tasks.addTask(3, new EntityAITempt(this, 1.0D, ModItems.itemChickenFood, false));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
         
-        this.setCustomNameTag("<Chicken>");
         this.setAlwaysRenderNameTag(true);
         
-        this.setGrowingAge(-24000);
+        this.setGrowingAge(-24000 * 7);
     }
 
     /**
@@ -139,7 +140,13 @@ public class EntityVBChicken extends EntityVBAnimal
 			return true;
 		}
 		else if(food.getItem() == ModItems.itemChickenPotion){
-			PlayerMsg.send(player, "that animal is not sick!");
+			int s = this.getAnimState();
+			if(s != AnimStateSick && s!= AnimStateDeadly){
+				PlayerMsg.send(player, "that animal is not sick!");
+			}
+			else{
+				this.setAnimStateValue(17000);
+			}
 		}
 		
 		return false;
