@@ -159,6 +159,8 @@ public abstract class EntityVBAnimal extends EntityAgeable
         		l += deltaTime;
         	else if(s == AnimStateNormal)
         		l += this.getRNG().nextInt((int)deltaTime + 1);
+        	else if(s == AnimStateSick || s == AnimStateDeadly)
+        		l -= this.getRNG().nextInt((int)deltaTime + 1);
         	
         	this.setAnimLove(l);
         	
@@ -197,6 +199,12 @@ public abstract class EntityVBAnimal extends EntityAgeable
             }
 
             this.entityToAttack = null;
+            
+            //animal will drop state value when hit
+            int sv = this.getAnimStateValue();
+        	sv -= (this.getRNG().nextInt(450) + 450);
+        	this.setAnimStateValue(sv);
+            
             return super.attackEntityFrom(p_70097_1_, p_70097_2_);
         }
     }

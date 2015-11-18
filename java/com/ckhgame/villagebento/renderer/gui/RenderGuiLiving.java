@@ -23,7 +23,8 @@ public class RenderGuiLiving extends RenderGui {
 	}
 	
 	protected void update(EntityLiving entity){
-		hp.text = (int)entity.getHealth() + "/" + (int)entity.getMaxHealth();
+		
+		hp.text = (int)Math.ceil(entity.getHealth()) + "/" + (int)entity.getMaxHealth();
 		float p = entity.getHealth() / entity.getMaxHealth();
 		hpBarFill.width = 32 * p;
 		hpBarFill.umax = p;
