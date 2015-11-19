@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
@@ -39,23 +40,23 @@ public class VillagerFarmer extends Villager {
         
         VillagerCompWork compWork = new VillagerCompWork();
         int workIdx;
-        workIdx = compWork.createWork("Basic of farming", "want to make bread?",0 , 10, 30);
-        compWork.addWorkOutput(workIdx, Items.wheat, 5, 10);
+        workIdx = compWork.createWork("Basic of farming", "want to make rice?",0 , 10, 30);
+        compWork.addWorkOutput(workIdx, ModItems.itemRiceplant, 5, 10);
         
-        workIdx = compWork.createWork("Get more carrots!", "Vegitables are healthy", 2, 15, 50);
-        compWork.addWorkOutput(workIdx, Items.carrot, 5, 8); 
+        workIdx = compWork.createWork("Get more Vegi!", "Vegitables are healthy", 2, 15, 50);
+        compWork.addWorkOutput(workIdx, ModItems.itemCabbage, 5, 8); 
         
-        workIdx = compWork.createWork("Wanna baking potatos?", "Vegitables are healthy", 3, 15, 50);
-        compWork.addWorkOutput(workIdx, Items.potato, 5, 8); 
+        workIdx = compWork.createWork("Wanna make cornchips?", "Cornchips are delicious!", 3, 15, 50);
+        compWork.addWorkOutput(workIdx, ModItems.itemCorn, 5, 8); 
         
-        workIdx = compWork.createWork("Pick some apples", "An apple a day keeps teh doctor away!", 5, 15, 50);
-        compWork.addWorkOutput(workIdx, Items.apple, 5, 8); 
+        workIdx = compWork.createWork("Some Asia testy", "Hand make Tofu.", 5, 15, 50);
+        compWork.addWorkOutput(workIdx, ModItems.itemSoybeans, 5, 8); 
         
-        workIdx = compWork.createWork("Harvest Time!", "Ready for Autumn's festivals!", 7, 20, 90);
-        compWork.addWorkOutput(workIdx, Blocks.pumpkin, 8, 12); 
+        workIdx = compWork.createWork("Pick Grapes!", "Ready for Vines festivals!", 7, 20, 90);
+        compWork.addWorkOutput(workIdx, ModItems.itemGrapes, 8, 12); 
         
-        workIdx = compWork.createWork("Summer fest!", "Melons!", 7, 20, 102);
-        compWork.addWorkOutput(workIdx, Blocks.melon_block, 8, 12); 
+        workIdx = compWork.createWork("Mexcio fest!", "Hot Chilis!", 7, 20, 102);
+        compWork.addWorkOutput(workIdx, ModItems.itemChili, 8, 12); 
         
         components.add(compWork);
         
@@ -63,12 +64,12 @@ public class VillagerFarmer extends Villager {
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(Items.iron_hoe, 1, 1, 0);
         compBuy.addItemBuy(Items.golden_hoe, 1, 1, 3);
-        compBuy.addItemBuy(Items.wheat_seeds, 1, 5, 0);
-        compBuy.addItemBuy(Items.pumpkin_seeds, 1, 2, 2);
-        compBuy.addItemBuy(Items.melon_seeds, 1, 2, 3);
-        compBuy.addItemBuy(Items.carrot, 1, 2, 5);
-        compBuy.addItemBuy(Items.potato, 1, 2, 5);
-        compBuy.addItemBuy(Items.apple, 1, 1, 8);
+        compBuy.addItemBuy(ModItems.itemRiceSeed, 1, 5, 0);
+        compBuy.addItemBuy(ModItems.itemCornSeed, 1, 2, 2);
+        compBuy.addItemBuy(ModItems.itemCabbageSeed, 1, 2,3);
+        compBuy.addItemBuy(ModItems.itemSoybeanSeed, 1, 2, 5);
+        compBuy.addItemBuy(ModItems.itemGrapeSeed, 1, 2, 5);
+        compBuy.addItemBuy(ModItems.itemChiliSeed, 1, 1, 5);
 
         components.add(compBuy);
 

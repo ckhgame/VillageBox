@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.villager;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.block.ModBlocks;
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
@@ -39,7 +40,9 @@ public class VillagerBakerAssistant extends Villager {
         
         
         VillagerCompSell compSell = new VillagerCompSell();
-        compSell.addItemSell(Items.wheat_seeds, 10, 20, 0);
+        compSell.addItemSell(ModItems.itemWheatFlour, 10, 20, 0);
+        compSell.addItemSell(ModItems.itemRiceFlour, 10, 20, 0);
+        compSell.addItemSell(ModItems.itemSalt, 6, 10, 0);
         components.add(compSell);
 	}
 	

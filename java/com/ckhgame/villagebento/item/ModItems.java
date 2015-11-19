@@ -88,7 +88,7 @@ public class ModItems {
         GameRegistry.registerItem(itemMilkBottle = new ItemVB("ItemMilkBottle",null,CreativeTabs.tabTools),"ItemMilkBottle");
         GameRegistry.registerItem(itemVillageMilk = new ItemVB("ItemVillageMilk",null,CreativeTabs.tabMaterials),"ItemVillageMilk");
         
-        GameRegistry.registerItem(itemGuaze = new ItemVB("itemGuaze",null,CreativeTabs.tabMaterials),"ItemGuaze");
+        GameRegistry.registerItem(itemGuaze = new ItemVB("ItemGuaze",null,CreativeTabs.tabMaterials),"ItemGuaze");
         
         
 

@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.villager;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.block.ModBlocks;
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
@@ -38,10 +39,15 @@ public class VillagerProBaker extends Villager {
         components.add(new VillagerCompAbout());
         
         VillagerCompBuy compBuy = new VillagerCompBuy();
+        compBuy.addItemBuy(ModItems.itemAppleCandy, 2, 2, 0);
         compBuy.addItemBuy(Items.cake, 2, 2, 0);
+        compBuy.addItemBuy(ModItems.itemCarrotCake, 2, 2, 0);
         compBuy.addItemBuy(Items.pumpkin_pie, 1, 1, 0);
-        compBuy.addItemBuy(Items.cookie, 1, 2, 0);
-        compBuy.addItemBuy(Items.baked_potato, 2, 3, 0);
+        compBuy.addItemBuy(ModItems.itemHambuger, 2, 2, 0);
+        compBuy.addItemBuy(ModItems.itemUdon, 2, 2, 0);
+        compBuy.addItemBuy(ModItems.itemPorkRamen, 2, 2, 0);
+
+
         components.add(compBuy);
 
 	}

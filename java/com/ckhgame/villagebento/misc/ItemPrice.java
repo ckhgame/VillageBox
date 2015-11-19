@@ -153,6 +153,37 @@ public class ItemPrice {
 		register(ModItems.itemVillageMilk,25);
 		register(ModItems.itemVillageWool,20);
 		
+		//Seeds
+		register(ModItems.itemCabbageSeed,14);
+		register(ModItems.itemGrapeSeed,28);
+		register(ModItems.itemCornSeed,14);
+		register(ModItems.itemChiliSeed,24);
+		register(ModItems.itemRiceSeed,16);
+		register(ModItems.itemSoybeanSeed,20);
+
+		//Crops
+		register(ModItems.itemCabbage,30);
+		register(ModItems.itemChili,50);
+		register(ModItems.itemGrapes,80);
+		register(ModItems.itemRiceplant,30);
+		register(ModItems.itemSoybeans,40);
+		register(ModItems.itemCorn,30);
+		
+		//Food
+		register(ModItems.itemAppleCandy,30);
+		register(ModItems.itemBoiledEgg,50);
+		register(ModItems.itemCarrotCake,40);
+		register(ModItems.itemCheese,30);
+		register(ModItems.itemFries,40);
+		register(ModItems.itemHambuger,30);
+		register(ModItems.itemMayonaise,30);
+		register(ModItems.itemMelonIce,50);
+		register(ModItems.itemPorkRamen,80);
+		register(ModItems.itemRice,30);
+		register(ModItems.itemRiceFlour,40);
+		register(ModItems.itemSalt,30);
+		register(ModItems.itemUdon,40);
+		register(ModItems.itemWheatFlour,30);
 		
 		
 	}
