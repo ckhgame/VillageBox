@@ -28,7 +28,7 @@ public class ModItems {
 	public static Item itemCowFood;
 	public static Item itemMilkBottle;
 	public static Item itemVillageMilk;
-	public static Item itemGuaze;
+	public static Item itemGauze;
 	
 	//seeds
 	public static Item itemCabbageSeed;
@@ -88,7 +88,7 @@ public class ModItems {
         GameRegistry.registerItem(itemMilkBottle = new ItemVB("ItemMilkBottle",null,CreativeTabs.tabTools),"ItemMilkBottle");
         GameRegistry.registerItem(itemVillageMilk = new ItemVB("ItemVillageMilk",null,CreativeTabs.tabMaterials),"ItemVillageMilk");
         
-        GameRegistry.registerItem(itemGuaze = new ItemVB("ItemGuaze",null,CreativeTabs.tabMaterials),"ItemGuaze");
+        GameRegistry.registerItem(itemGauze = new ItemVB("ItemGauze",null,CreativeTabs.tabMaterials),"ItemGauze");
         
         
 
@@ -120,10 +120,10 @@ public class ModItems {
         GameRegistry.registerItem(itemMelonIce = new ItemVB("ItemMelonIce",null,CreativeTabs.tabFood),"ItemMelonIce");
         GameRegistry.registerItem(itemPorkRamen = new ItemVB("ItemPorkRamen",null,CreativeTabs.tabFood),"ItemPorkRamen");
         GameRegistry.registerItem(itemRice = new ItemVB("ItemRice",null,CreativeTabs.tabFood),"ItemRice");
-        GameRegistry.registerItem(itemRiceFlour = new ItemVB("ItemRiceFlour",null,CreativeTabs.tabFood),"ItemRiceFlour");
-        GameRegistry.registerItem(itemSalt = new ItemVB("ItemSalt",null,CreativeTabs.tabFood),"ItemSalt");
+        GameRegistry.registerItem(itemRiceFlour = new ItemVB("ItemRiceFlour",null,CreativeTabs.tabMaterials),"ItemRiceFlour");
+        GameRegistry.registerItem(itemSalt = new ItemVB("ItemSalt",null,CreativeTabs.tabFood),"tabMaterials");
         GameRegistry.registerItem(itemUdon = new ItemVB("ItemUdon",null,CreativeTabs.tabFood),"ItemUdon");
-        GameRegistry.registerItem(itemWheatFlour = new ItemVB("ItemWheatFlour",null,CreativeTabs.tabFood),"ItemWheatFlour");
+        GameRegistry.registerItem(itemWheatFlour = new ItemVB("ItemWheatFlour",null,CreativeTabs.tabMaterials),"ItemWheatFlour");
 
 
         

@@ -44,7 +44,7 @@ public class VillagerSheepSeller extends Villager {
         compBuy.addItemBuy(ModItems.itemSheepFood, 30, 50, 0);
         compBuy.addItemBuy(ModItems.itemSheepPotion, 3, 5, 0);
         compBuy.addItemBuy(ModItems.itemWoolShears, 1, 1, 0);
-        compBuy.addItemBuy(ModItems.itemGuaze, 30, 50, 0);
+        compBuy.addItemBuy(ModItems.itemGauze, 30, 50, 0);
         compBuy.addItemBuy(ModItems.itemVillageWool, 5, 10, 0);
         compBuy.addItemBuy(Items.lead, 1, 2, 0);
 
