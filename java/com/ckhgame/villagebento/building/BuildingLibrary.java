@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.misc.NameGenerator;
 import com.ckhgame.villagebento.villager.VillagerLibrarian;
 
 import net.minecraft.init.Blocks;
@@ -28,7 +29,7 @@ public class BuildingLibrary extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerLibrarian.class,"Jessica",2,0);
+		bb.addBuildingVillager(VillagerLibrarian.class,NameGenerator.getRandomFemaleName(),2,0);
 	}
 
 	@Override

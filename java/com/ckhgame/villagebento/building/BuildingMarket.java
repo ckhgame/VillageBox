@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.misc.NameGenerator;
 import com.ckhgame.villagebento.villager.VillagerFarmMarketMerchant;
 import com.ckhgame.villagebento.villager.VillagerPastureMarketMerchant;
 
@@ -29,8 +30,8 @@ public class BuildingMarket extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerFarmMarketMerchant.class,"Peter",2,0);
-		bb.addBuildingVillager(VillagerPastureMarketMerchant.class,"Eric",2,1);
+		bb.addBuildingVillager(VillagerFarmMarketMerchant.class,NameGenerator.getRandomMaleName(),2,0);
+		bb.addBuildingVillager(VillagerPastureMarketMerchant.class,NameGenerator.getRandomMaleName(),2,1);
 	}
 
 	@Override

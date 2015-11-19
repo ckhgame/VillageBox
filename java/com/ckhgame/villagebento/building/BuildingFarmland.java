@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
+import com.ckhgame.villagebento.misc.NameGenerator;
 import com.ckhgame.villagebento.villager.VillagerFarmer;
 
 import net.minecraft.init.Blocks;
@@ -28,7 +29,7 @@ public class BuildingFarmland extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerFarmer.class,"James",0,0);
+		bb.addBuildingVillager(VillagerFarmer.class,NameGenerator.getRandomMaleName(),0,0);
 	}
 
 	@Override
