@@ -74,3 +74,33 @@ item.ItemCowPotion.name=Cow Potion
 item.ItemCowFood.name=Cow Food
 item.ItemMilkBottle.name=Milk Bottle
 item.ItemVillageMilk.name=Village Milk
+
+
+item.itemCabbageSeed.name=Cabbage Seed
+item.itemGrapeSeed.name=Grape Seed
+item.itemCornSeed.name=Corn Seed
+item.itemChiliSeed.name=Chili Seed
+item.itemRiceSeed.name=Rice Seed
+item.itemSoybeanSeed.name=Soybean Seed
+
+item.itemCabbage.name=Cabbage
+item.itemChili.name=Chili Pepper
+item.itemGrapes.name=Grapes
+item.itemRiceplant.name=Rice Plant
+item.itemSoybeans.name=Soybean
+item.itemCorn.name=Corn
+
+item.itemAppleCandy.name=Apple Candy
+item.itemBoiledEgg.name=Boiled Egg
+item.itemCarrotCake.name=Carrot Cake
+item.itemCheese.name=Cheese
+item.itemFries.name=French Fries
+item.itemHambuger.name=Hamburger
+item.itemMayonaise.name=Mayonaise
+item.itemMelonIce.name=Melon Ice
+item.itemPorkRamen.name=Pork Ramen
+item.itemRice.name=Rice 
+item.itemRiceFlour.name=Rice Flour
+item.itemSalt.name=Salt
+item.itemUdon.name=Udon
+item.itemWheatFlour.name=Wheat Flour
