@@ -26,6 +26,6 @@ public class ModActions {
 		//server -> clinet
 		id = 1000;
 		Action.registry.register(id++, new SActionUpdateVillagerSleep());
-		
+		Action.registry.register(id++, new SActionDoSpawnParticles());
 	}
 }

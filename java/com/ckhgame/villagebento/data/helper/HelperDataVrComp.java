@@ -9,9 +9,13 @@ import com.ckhgame.villagebento.data.villagercomp.DataVillagerComp;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompBuy;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompSell;
 import com.ckhgame.villagebento.data.villagercomp.DataVillagerCompWork;
+import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.misc.ItemPrice;
+import com.ckhgame.villagebento.misc.VBParticles;
 import com.ckhgame.villagebento.misc.VBResult;
+import com.ckhgame.villagebento.network.action.Action;
+import com.ckhgame.villagebento.network.action.SActionDoSpawnParticles;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerCompAction;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
@@ -21,6 +25,7 @@ import com.ckhgame.villagebento.villager.component.VillagerCompWork;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.ForgeHooks;
 
 public class HelperDataVrComp {
@@ -364,8 +369,18 @@ private static boolean playerRemoveItemStack(EntityPlayer entityPlayer,ItemStack
 			int nextExp = vr.getNextLevelExp(dvr.level);
 			dvr.exp += exp;
 			if(dvr.exp >= nextExp){
+				//level up
 				dvr.level++;
 				dvr.exp -= nextExp;
+
+
+				EntityVBVillager entity = (EntityVBVillager)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(dvr.cacheEntityVillagerID);
+				if(entity != null){
+					//spawn fx
+					Action.send(SActionDoSpawnParticles.class, new Object[]{VBParticles.Fx_VillagerLevelingUp,entity.posX,entity.posY,entity.posZ,entity.getEntityId()});
+				    //play sound
+					entity.playSound("random.levelup", 1.0F, 1.0F);
+				}
 			}
 			return true;
 		}		
