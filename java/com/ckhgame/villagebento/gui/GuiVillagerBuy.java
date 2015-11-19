@@ -49,7 +49,7 @@ public class GuiVillagerBuy extends GuiVillager {
 			fontRendererObj.drawString(priceAndNum, left + 28, top + 14, 0xFFFFFFDD,true);
 			//item icon
 			drawRect(left + 3, top + 3, left + 21, top + 21, 0xFF333333);
-			drawRect(left + 4, top + 4, left + 20, top + 20, 0xFFFFFFFF);	
+			drawRect(left + 4, top + 4, left + 20, top + 20, 0xFFAAAAAA);	
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left + 4, top + 4);
 			
 			if(!buttonRows[row].visible)
@@ -86,6 +86,8 @@ public class GuiVillagerBuy extends GuiVillager {
 		buyList = null;
 		Action.send(ActionGetVillagerBuy.class, new Object[]{this.entityVillager.dataVillagerID});
 		setChatContent("What you want to buy?");
+		
+		currentIdx = 0;
 		
 		//assign button ids
 		buttonRows = new GuiButton[rowSize];

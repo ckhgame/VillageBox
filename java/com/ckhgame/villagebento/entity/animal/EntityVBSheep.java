@@ -114,7 +114,7 @@ public class EntityVBSheep extends EntityVBAnimal
 			return false;
 		
 		if(food.getItem() == ModItems.itemSheepFood){
-			this.addAnimHunger(6000);
+			this.addAnimHunger(8000);
 			return true;
 		}
 		else if(food.getItem() == ModItems.itemSheepPotion){

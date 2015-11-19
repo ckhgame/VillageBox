@@ -99,7 +99,7 @@ public class EntityVBCow extends EntityVBAnimal
 			return false;
 		
 		if(food.getItem() == ModItems.itemCowFood){
-			this.addAnimHunger(6000);
+			this.addAnimHunger(8000);
 			System.out.println("cool");
 			return true;
 		}

@@ -52,6 +52,7 @@ public class BuildingBuilder {
 		this.cx = x;
 		this.cy = y;
 		this.cz = z;
+		this.owner = null;
 	}
 	
 	public void setOwnerName(String owner){

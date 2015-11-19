@@ -131,7 +131,30 @@ public class ItemPrice {
 		register(ModBlocks.blockRosePath,380);
 		register(ModBlocks.blockChristmas,380);
 		
-
+		
+		//Animals
+		register(ModBlocks.blockChicken,200);
+		register(ModBlocks.blockCow,300);
+		register(ModBlocks.blockSheep,300);
+		register(ModItems.itemChickenFood,2);
+		register(ModItems.itemSheepFood,2);
+		register(ModItems.itemCowFood,2);
+		register(ModItems.itemChickenPotion,150);
+		register(ModItems.itemSheepPotion,150);
+		register(ModItems.itemCowPotion,150);
+		register(ModItems.itemChickenGloves,100);
+		register(ModItems.itemWoolShears,150);
+		register(ModItems.itemMilkBottle,5);
+		register(ModItems.itemVillageEgg,10);
+		register(ModItems.itemVillageHeartEgg,12);
+		register(ModItems.itemVillageSilverEgg,30);
+		register(ModItems.itemVillageGoldenEgg,60);
+		register(ModItems.itemVillageEasterEgg,70);
+		register(ModItems.itemVillageMilk,25);
+		register(ModItems.itemVillageWool,20);
+		
+		
+		
 	}
 	
 	

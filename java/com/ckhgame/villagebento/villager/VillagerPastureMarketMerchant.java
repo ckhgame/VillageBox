@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
@@ -43,11 +44,13 @@ public class VillagerPastureMarketMerchant extends Villager {
         components.add(new VillagerCompAbout());
         
         VillagerCompSell compSell = new VillagerCompSell();
-        compSell.addItemSell(Items.feather, 12, 23, 0);
-        compSell.addItemSell(Items.string, 12, 23, 0);
-        compSell.addItemSell(Items.egg, 8, 12, 0);
-        compSell.addItemSell(Blocks.wool, 5, 8, 3);
-        compSell.addItemSell(Items.milk_bucket, 5, 8, 5);
+        compSell.addItemSell(ModItems.itemVillageEgg, 10, 20, 0);
+        compSell.addItemSell(ModItems.itemVillageHeartEgg, 10, 20, 0);
+        compSell.addItemSell(ModItems.itemVillageSilverEgg, 4, 8, 0);
+        compSell.addItemSell(ModItems.itemVillageGoldenEgg, 2, 5, 0);
+        compSell.addItemSell(ModItems.itemVillageEasterEgg, 2, 5, 0);
+        compSell.addItemSell(ModItems.itemVillageWool, 10, 20, 0);
+        compSell.addItemSell(ModItems.itemVillageMilk, 10, 20, 0);
         components.add(compSell);
 
 	}

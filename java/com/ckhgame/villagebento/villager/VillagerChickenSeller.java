@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.villager;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.block.ModBlocks;
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
@@ -39,8 +40,13 @@ public class VillagerChickenSeller extends Villager {
         components.add(new VillagerCompAbout());
 
         VillagerCompBuy compBuy = new VillagerCompBuy();
-        compBuy.addItemBuy(Items.lead, 1, 1, 0);
-        compBuy.addItemBuy(Items.feather, 1, 5, 0);
+        compBuy.addItemBuy(ModBlocks.blockChicken, 1, 1, 0);
+        compBuy.addItemBuy(ModItems.itemChickenFood, 30, 50, 0);
+        compBuy.addItemBuy(ModItems.itemChickenPotion, 3, 5, 0);
+        compBuy.addItemBuy(ModItems.itemChickenGloves, 1, 1, 0);
+        compBuy.addItemBuy(ModItems.itemVillageEgg, 5, 10, 0);
+        compBuy.addItemBuy(ModItems.itemVillageHeartEgg, 2, 5, 0);
+        compBuy.addItemBuy(Items.lead, 1, 2, 0);
 
         components.add(compBuy);
 	}
