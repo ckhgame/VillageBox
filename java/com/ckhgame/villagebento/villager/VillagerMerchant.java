@@ -30,12 +30,6 @@ public class VillagerMerchant extends Villager {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
-	@Override
-	protected void setExpBase(){
-		expBase = 20;
-		expE = 3;
-	}
 	
 	@Override
 	public void createComponents(ArrayList<VillagerComponent> components) {

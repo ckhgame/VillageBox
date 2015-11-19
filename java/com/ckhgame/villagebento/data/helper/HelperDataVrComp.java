@@ -358,6 +358,9 @@ private static boolean playerRemoveItemStack(EntityPlayer entityPlayer,ItemStack
 		
 		Villager vr = Villager.registry.get(dvr.profession);
 		if(vr != null){
+			if(vr.isMaxLevel(dvr.level))
+				return false;
+			
 			int nextExp = vr.getNextLevelExp(dvr.level);
 			dvr.exp += exp;
 			if(dvr.exp >= nextExp){

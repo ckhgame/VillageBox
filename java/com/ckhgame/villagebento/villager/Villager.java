@@ -61,16 +61,22 @@ public abstract class Villager implements IRegistrable {
 	
 	
 	//level & exp
-	protected int expBase;
-	protected int expE;
+	protected int[] expLvls;
 	
 	protected void setExpBase(){
-		expBase = 10;
-		expE = 2;
+		expLvls = new int[]{200,300,400,500};
 	}
 	
 	public int getNextLevelExp(int currentLevel){
-		return (int)(expBase * Math.pow(expE, currentLevel));
+		if(currentLevel >= 0 && currentLevel <expLvls.length){
+			return expLvls[currentLevel];
+		}
+		else
+			return -1;
+	}
+	
+	public boolean isMaxLevel(int currentLevel){
+		return (currentLevel >= expLvls.length);
 	}
 	
 	//villager chat

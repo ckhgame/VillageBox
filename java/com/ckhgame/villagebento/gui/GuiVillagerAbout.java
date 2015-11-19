@@ -25,8 +25,9 @@ public class GuiVillagerAbout extends GuiVillager {
 	public void onDrawScreen() {		
 
 		String infoProfession = "Profession: " + this.villager.getProfessionName();
-		String infoLevel = "Level: " + this.entityVillager.level;
-		String infoExp = "Exp: " + this.entityVillager.exp + " / " + this.villager.getNextLevelExp(this.entityVillager.level);
+		String infoLevel = "Level: " + (this.entityVillager.level + 1) + (this.villager.isMaxLevel(this.entityVillager.level)?" (Max)":"");
+		int levelexp = this.villager.getNextLevelExp(this.entityVillager.level);
+		String infoExp = "Exp: " + (levelexp>=0?(this.entityVillager.exp + " / " + levelexp):"--/--");
 		String infoProDesction = this.villager.getProfessionDescription();
 		
 		this.fontRendererObj.drawString(infoProfession, fieldCompLeft + 4,fieldCompTop + 2, 0xFFFFFFFF);
@@ -35,8 +36,7 @@ public class GuiVillagerAbout extends GuiVillager {
 		
 		this.fontRendererObj.drawString("-------", fieldCompLeft + 4,fieldCompTop + 47, 0xFFAAAAAA);		
 		this.drawWrappedString(	this.fontRendererObj,infoProDesction,
-								fieldCompLeft+4,fieldCompTop+62,0xFFFFFF66,196);
-		
+								fieldCompLeft+4,fieldCompTop+62,0xFFFFFF66,196);	
 	}
 
 	@Override
