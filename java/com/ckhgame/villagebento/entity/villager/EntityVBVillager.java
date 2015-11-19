@@ -28,12 +28,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
 public class EntityVBVillager extends EntityAgeable {
 
@@ -80,9 +82,10 @@ public class EntityVBVillager extends EntityAgeable {
 
 		Villager vr = Villager.registry.get(this.profession);
 
+		this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
+		
 		if (this.worldObj.isRemote) {
 			// client
-			this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
 			this.setAlwaysRenderNameTag(true);
 			this.skinTexture = vr.getSkin();
 		} else {
@@ -373,6 +376,14 @@ public class EntityVBVillager extends EntityAgeable {
 		return true;
 	}
 
+	
+	
+	@Override
+	public String getCommandSenderName() {
+		// TODO Auto-generated method stub
+		return super.getCommandSenderName();
+	}
+
 	@Override
 	public void onDeath(DamageSource p_70645_1_) {
 		super.onDeath(p_70645_1_);
@@ -382,6 +393,8 @@ public class EntityVBVillager extends EntityAgeable {
 		if(!this.worldObj.isRemote){
 			DataVillageBento dataVB = DataVillageBento.get();
 			HelperDataVB.setVillageDeath(dataVB, this.dataVillagerID);
+			
+			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(this.func_110142_aN().func_151521_b());
 		}
 	}
 	
