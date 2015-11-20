@@ -13,9 +13,9 @@ public class ModEntities {
 	
 	public static final void init() {
 		int id = 0;
-        EntityRegistry.registerModEntity(EntityVBVillager.class, "EntityVBVillager", id++, Main.instance, 80, 1, false);
-        EntityRegistry.registerModEntity(EntityVBChicken.class, "EntityVBChicken", id++, Main.instance, 80, 1, false);
-        EntityRegistry.registerModEntity(EntityVBSheep.class, "EntityVBSheep", id++, Main.instance, 80, 1, false);
-        EntityRegistry.registerModEntity(EntityVBCow.class, "EntityVBCow", id++, Main.instance, 80, 1, false);
+        EntityRegistry.registerModEntity(EntityVBVillager.class, "EntityVBVillager", id++, Main.instance, 80, 1, true);
+        EntityRegistry.registerModEntity(EntityVBChicken.class, "EntityVBChicken", id++, Main.instance, 80, 1, true);
+        EntityRegistry.registerModEntity(EntityVBSheep.class, "EntityVBSheep", id++, Main.instance, 80, 1, true);
+        EntityRegistry.registerModEntity(EntityVBCow.class, "EntityVBCow", id++, Main.instance, 80, 1, true);
     }
 }
