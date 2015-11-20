@@ -37,7 +37,7 @@ public class ItemVillageStick extends Item {
 				DataVillageBento dataVB = DataVillageBento.get(world);
 				
 				MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
-				msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB);
+				msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB,p.getDisplayName());
 				
 				VBNetwork.networkWrapper.sendTo(msg, (EntityPlayerMP)p);
 			}

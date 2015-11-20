@@ -17,6 +17,7 @@ import com.ckhgame.villagebento.util.BoxWithColor;
 import com.ckhgame.villagebento.villager.Villager;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
@@ -420,7 +421,7 @@ public class HelperDataVB {
 		 }
 	}
 	
-	public static ArrayList<BoxWithColor> getVillageOutlines(DataVillageBento dataVB){
+	public static ArrayList<BoxWithColor> getVillageOutlines(DataVillageBento dataVB, String playerName){
 		
 		ArrayList<BoxWithColor> bs = new ArrayList<BoxWithColor>();
 		
@@ -429,6 +430,7 @@ public class HelperDataVB {
 		
 		int[] cb = ConfigRendering.ColorVillageBuildingOutlines;
 		int[] cv = ConfigRendering.ColorVillageOutlines;
+		int[] co = ConfigRendering.ColorVillageOwnerOutlines;
 		
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			//village
@@ -439,11 +441,13 @@ public class HelperDataVB {
 			bs.add(b);
 			
 			//buildings
+			int[] c;
 			for(DataBuilding db : dv.mapDataBuilding.values()){
+				c = (db.owner != null && db.owner.equals(playerName))?co:cb;
 				b = new BoxWithColor(
 						db.x - db.sizeX, db.y - ConfigBuilding.BuildingGroundWorkDepth, db.z - db.sizeZ, 
 						db.x + db.sizeX + 1, db.y + ConfigBuilding.BuildingMaxHeight, db.z + db.sizeZ + 1,
-						cb[0], cb[1], cb[2], cb[3]
+						c[0], c[1], c[2], c[3]
 						);
 				bs.add(b);
 			}

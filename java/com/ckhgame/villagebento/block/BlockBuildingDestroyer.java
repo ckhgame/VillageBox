@@ -33,7 +33,7 @@ public class BlockBuildingDestroyer extends Block {
 				//refresh village outlines
 				DataVillageBento dataVB = DataVillageBento.get(world);			
 				MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
-				msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB);			
+				msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB,player.getDisplayName());			
 				VBNetwork.networkWrapper.sendToAll(msg);
 			}
 		}	
