@@ -53,7 +53,7 @@ public class EntityVBVillager extends EntityAgeable {
 	public int profession;
 	public int level;
 	public int exp;
-
+	
 	public int buildingX, buildingY, buildingZ;
 	public int buildingSizeX, buildingSizeZ;
 	public int villagerIdxOfBuilding;
@@ -81,7 +81,7 @@ public class EntityVBVillager extends EntityAgeable {
 		this.profession = profession;
 
 		Villager vr = Villager.registry.get(this.profession);
-
+		
 		this.setCustomNameTag(name + "<" + vr.getProfessionName() + ">");
 		
 		if (this.worldObj.isRemote) {
@@ -100,6 +100,9 @@ public class EntityVBVillager extends EntityAgeable {
 			this.buildingSizeZ = db.sizeZ;
 			this.villagerIdxOfBuilding = HelperDataVB.getVillagerIdxInBuilding(dataVB, dvr);
 			findBed();
+			
+			this.level = dvr.level;
+			onLevelUpdated();
 
 			int d = (int) Math.sqrt(db.sizeX * db.sizeX + db.sizeZ * db.sizeZ);
 			this.setHomeArea(this.buildingX, this.buildingY, this.buildingZ, d * 2);
@@ -117,6 +120,14 @@ public class EntityVBVillager extends EntityAgeable {
 		}
 	}
 
+	//level updated
+	public void onLevelUpdated(){
+		float hp = 8.0F + this.level * 3;
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(hp);
+		if(this.getHealth() > hp)
+		this.setHealth(hp);
+	}
+	
 	// ----------------------------------------
 	// sleeping
 	private boolean isSleeping = false;
@@ -207,7 +218,7 @@ public class EntityVBVillager extends EntityAgeable {
 
 		return 0.0F;
 	}
-
+	
 	// ----------------------------------------
 	// ai
 	private void initAIs() {

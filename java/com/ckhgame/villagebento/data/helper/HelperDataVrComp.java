@@ -380,6 +380,10 @@ private static boolean playerRemoveItemStack(EntityPlayer entityPlayer,ItemStack
 					Action.send(SActionDoSpawnParticles.class, new Object[]{VBParticles.Fx_VillagerLevelingUp,entity.posX,entity.posY,entity.posZ,entity.getEntityId()});
 				    //play sound
 					entity.playSound("random.levelup", 1.0F, 1.0F);
+					//update level up
+					entity.level = dvr.level;
+					entity.onLevelUpdated();
+					entity.setHealth(entity.getMaxHealth());
 				}
 			}
 			return true;

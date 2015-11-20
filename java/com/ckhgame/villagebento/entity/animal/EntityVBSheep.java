@@ -61,7 +61,7 @@ public class EntityVBSheep extends EntityVBAnimal
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(12.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23000000417232513D);
     }
 
