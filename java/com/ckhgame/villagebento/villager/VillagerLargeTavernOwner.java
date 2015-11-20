@@ -43,6 +43,7 @@ public class VillagerLargeTavernOwner extends Villager {
         compBuy.addItemBuy(ModItems.itemWhisky, 1, 5, 0);
         compBuy.addItemBuy(ModItems.itemVodka, 1, 3, 0);
         compBuy.addItemBuy(ModItems.itemCookVine, 1, 15, 0);
+        components.add(compBuy);
 
 	}
 
