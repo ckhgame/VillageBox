@@ -113,6 +113,11 @@ public final class ModBlocks {
     
     //crops
     public static BlockVBCrops blockRicePlant;
+    public static BlockVBCrops blockCabbage;
+    public static BlockVBCrops blockChili;
+    public static BlockVBCrops blockSoybeans;
+    public static BlockVBCrops blockCorn;
+    public static BlockVBCrops blockGrapes;
     
     public static final void init() {
         
@@ -174,7 +179,12 @@ public final class ModBlocks {
        	GameRegistry.registerBlock(blockCow = new BlockVillageAnimal(EntityVBCow.class,"BlockCow"),"BlockCow");
        	
        	//crops
-       	GameRegistry.registerBlock(blockRicePlant = new BlockVBCrops("BlockRicePlant","ItemRiceSeed","ItemRiceplant"),"BlockRicePlant");
+       	GameRegistry.registerBlock(blockRicePlant = new BlockVBCrops("BlockRiceplant","ItemRiceSeed","ItemRiceplant"),"BlockRiceplant");
+       	GameRegistry.registerBlock(blockCabbage = new BlockVBCrops("BlockCabbage","ItemCabbageSeed","ItemCabbage"),"BlockCabbage");
+       	GameRegistry.registerBlock(blockChili = new BlockVBCrops("BlockChili","ItemChiliSeed","ItemChili"),"BlockChili");
+       	GameRegistry.registerBlock(blockSoybeans = new BlockVBCrops("BlockSoybeans","ItemSoybeanSeed","ItemSoybeans"),"BlockSoybeans");
+       	GameRegistry.registerBlock(blockCorn = new BlockVBCrops("BlockCorn","ItemCornSeed","ItemCorn"),"BlockCorn");
+       	GameRegistry.registerBlock(blockGrapes = new BlockVBCrops("BlockGrapes","ItemGrapeSeed","ItemGrapes"),"BlockGrapes");
     }
     
     private static void registerVillageBlock(Block block,String name){

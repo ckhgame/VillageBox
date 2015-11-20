@@ -115,12 +115,12 @@ public class ModItems {
 
         
         //Seeds
-        GameRegistry.registerItem(itemCabbageSeed = new ItemVB("ItemCabbageSeed",null,CreativeTabs.tabMisc),"ItemCabbageSeed");
-        GameRegistry.registerItem(itemGrapeSeed = new ItemVB("ItemGrapeSeed",null,CreativeTabs.tabMisc),"ItemGrapeSeed");
-        GameRegistry.registerItem(itemCornSeed = new ItemVB("ItemCornSeed",null,CreativeTabs.tabMisc),"ItemCornSeed");
-        GameRegistry.registerItem(itemChiliSeed = new ItemVB("ItemChiliSeed",null,CreativeTabs.tabMisc),"ItemChiliSeed");
+        GameRegistry.registerItem(itemCabbageSeed = new ItemVBSeeds("ItemCabbageSeed",null,CreativeTabs.tabMisc,ModBlocks.blockCabbage),"ItemCabbageSeed");
+        GameRegistry.registerItem(itemGrapeSeed = new ItemVBSeeds("ItemGrapeSeed",null,CreativeTabs.tabMisc,ModBlocks.blockGrapes),"ItemGrapeSeed");
+        GameRegistry.registerItem(itemCornSeed = new ItemVBSeeds("ItemCornSeed",null,CreativeTabs.tabMisc,ModBlocks.blockCorn),"ItemCornSeed");
+        GameRegistry.registerItem(itemChiliSeed = new ItemVBSeeds("ItemChiliSeed",null,CreativeTabs.tabMisc,ModBlocks.blockChili),"ItemChiliSeed");
         GameRegistry.registerItem(itemRiceSeed = new ItemVBSeeds("ItemRiceSeed",null,CreativeTabs.tabMisc,ModBlocks.blockRicePlant),"ItemRiceSeed");
-        GameRegistry.registerItem(itemSoybeanSeed = new ItemVB("ItemSoybeanSeed",null,CreativeTabs.tabMisc),"ItemSoybeanSeed");
+        GameRegistry.registerItem(itemSoybeanSeed = new ItemVBSeeds("ItemSoybeanSeed",null,CreativeTabs.tabMisc,ModBlocks.blockSoybeans),"ItemSoybeanSeed");
         
         //Crops
         GameRegistry.registerItem(itemCabbage = new ItemVB("ItemCabbage",null,CreativeTabs.tabMisc),"ItemCabbage");
