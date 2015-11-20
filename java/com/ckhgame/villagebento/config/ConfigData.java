@@ -68,4 +68,8 @@ public class ConfigData {
 	public static final String KeyAnimalProducts					= "vap";
 	public static final String KeyAnimalProductTimer				= "vapt";
 	public static final String KeyAnimalLove						= "val";
+	
+	//tile entity crops
+	public static final String KeyCropsGrowingTimer					= "cgt";
+	public static final String KeyCropsUpdateTimer					= "cut";
 }

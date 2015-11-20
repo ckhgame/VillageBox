@@ -16,6 +16,7 @@ import com.ckhgame.villagebento.network.ModMessages;
 import com.ckhgame.villagebento.network.action.ModActions;
 import com.ckhgame.villagebento.recipe.ModRecipes;
 import com.ckhgame.villagebento.renderer.ModRenderers;
+import com.ckhgame.villagebento.tileentity.ModTileEntities;
 import com.ckhgame.villagebento.villager.ModVillagers;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -30,6 +31,7 @@ public class CommonProxy {
 		ModBlocks.init();
 		ModItems.init();
 		ModEntities.init();
+		ModTileEntities.init();
 		ModRenderers.init();
 		ModMessages.init();		
 		ModRecipes.init();

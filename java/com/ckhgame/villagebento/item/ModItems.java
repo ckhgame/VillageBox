@@ -1,7 +1,7 @@
 package com.ckhgame.villagebento.item;
 
 
-import com.ckhgame.villagebento.Main;
+import com.ckhgame.villagebento.block.ModBlocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
@@ -119,7 +119,7 @@ public class ModItems {
         GameRegistry.registerItem(itemGrapeSeed = new ItemVB("ItemGrapeSeed",null,CreativeTabs.tabMisc),"ItemGrapeSeed");
         GameRegistry.registerItem(itemCornSeed = new ItemVB("ItemCornSeed",null,CreativeTabs.tabMisc),"ItemCornSeed");
         GameRegistry.registerItem(itemChiliSeed = new ItemVB("ItemChiliSeed",null,CreativeTabs.tabMisc),"ItemChiliSeed");
-        GameRegistry.registerItem(itemRiceSeed = new ItemVB("ItemRiceSeed",null,CreativeTabs.tabMisc),"ItemRiceSeed");
+        GameRegistry.registerItem(itemRiceSeed = new ItemVBSeeds("ItemRiceSeed",null,CreativeTabs.tabMisc,ModBlocks.blockRicePlant),"ItemRiceSeed");
         GameRegistry.registerItem(itemSoybeanSeed = new ItemVB("ItemSoybeanSeed",null,CreativeTabs.tabMisc),"ItemSoybeanSeed");
         
         //Crops

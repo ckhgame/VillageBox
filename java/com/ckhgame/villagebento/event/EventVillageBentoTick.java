@@ -26,8 +26,9 @@ public class EventVillageBentoTick {
 	@SubscribeEvent
 	public void onWorldTick(TickEvent.WorldTickEvent event) {
 		if(!event.world.isRemote && event.world.provider.dimensionId == 0){ // only server and the overworld dimension					
+			
 			currentHours = (int)(event.world.getWorldTime() / 1000);
-			if(currentHours > lastHours){ 			
+			if(lastHours != -1 && currentHours > lastHours){ 			
 				for(int h = lastHours + 1;h<= currentHours;h++){
 					updateByHour(event.world,h%24);
 				}

@@ -45,6 +45,7 @@ import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.item.ItemBlockVillageBuilding;
+import com.ckhgame.villagebento.item.ModItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -110,6 +111,9 @@ public final class ModBlocks {
     public static BlockVillageAnimal blockSheep;
     public static BlockVillageAnimal blockCow;
     
+    //crops
+    public static BlockVBCrops blockRicePlant;
+    
     public static final void init() {
         
     	GameRegistry.registerBlock(blockBuildingScanner = new BlockBuildingScanner(), "BlockBuildingScanner");
@@ -168,6 +172,9 @@ public final class ModBlocks {
        	GameRegistry.registerBlock(blockChicken = new BlockVillageAnimal(EntityVBChicken.class,"BlockChicken"),"BlockChicken");
        	GameRegistry.registerBlock(blockSheep = new BlockVillageAnimal(EntityVBSheep.class,"BlockSheep"),"BlockSheep");
        	GameRegistry.registerBlock(blockCow = new BlockVillageAnimal(EntityVBCow.class,"BlockCow"),"BlockCow");
+       	
+       	//crops
+       	GameRegistry.registerBlock(blockRicePlant = new BlockVBCrops("BlockRicePlant","ItemRiceSeed","ItemRiceplant"),"BlockRicePlant");
     }
     
     private static void registerVillageBlock(Block block,String name){
