@@ -44,7 +44,7 @@ public class VillagerProArchitect extends Villager {
         compBuy.addItemBuy(ModBlocks.blockLargeBakery, 1, 1, 0);
         compBuy.addItemBuy(ModBlocks.blockFlowerShop, 1, 1, 0);
         compBuy.addItemBuy(ModBlocks.blockPotionStore, 1, 1, 0);
-        compBuy.addItemBuy(ModBlocks.blockGroundworkOnlyLarge, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockPlayerFieldLarge, 1, 1, 0);
         components.add(compBuy);
 
 	}

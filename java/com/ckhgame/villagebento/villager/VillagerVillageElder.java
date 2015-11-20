@@ -3,10 +3,8 @@ package com.ckhgame.villagebento.villager;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.block.ModBlocks;
-import com.ckhgame.villagebento.network.action.ActionDoVillagerBet;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
-import com.ckhgame.villagebento.villager.component.VillagerCompAction;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
 import com.ckhgame.villagebento.villager.component.VillagerCompSell;
 import com.ckhgame.villagebento.villager.component.VillagerComponent;
@@ -48,7 +46,7 @@ public class VillagerVillageElder extends Villager {
         compBuy.addItemBuy(ModBlocks.blockFishingStore, 1, 1, 0);
         compBuy.addItemBuy(ModBlocks.blockSmallBakery, 1, 1, 0);
         compBuy.addItemBuy(ModBlocks.blockMiningHouse, 1, 1, 0);
-        compBuy.addItemBuy(ModBlocks.blockGroundworkOnlySmall, 1, 1, 0);
+        compBuy.addItemBuy(ModBlocks.blockPlayerFieldSmall, 1, 1, 0);
         compBuy.addItemBuy(ModBlocks.blockArchitectsHome, 1, 1, 0);
         components.add(compBuy);
         

@@ -48,7 +48,7 @@ public class VillagerArchitect extends Villager {
             compBuy.addItemBuy(ModBlocks.blockSmallTavern, 1, 1, 0);
             compBuy.addItemBuy(ModBlocks.blockFarmland, 1, 1, 0);          
             compBuy.addItemBuy(ModBlocks.blockBuildingDestroyer, 1, 1, 0);
-            compBuy.addItemBuy(ModBlocks.blockGroundworkOnlyMedium, 1, 1, 0);
+            compBuy.addItemBuy(ModBlocks.blockPlayerFieldMedium, 1, 1, 0);
             compBuy.addItemBuy(ModBlocks.blockSmallCasino, 1, 1, 0);            
             compBuy.addItemBuy(ModBlocks.blockProArchitectsHouse, 1, 1, 0);
             components.add(compBuy);
