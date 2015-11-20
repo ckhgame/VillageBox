@@ -104,3 +104,24 @@ item.ItemRiceFlour.name=Rice Flour
 item.ItemSalt.name=Salt
 item.ItemUdon.name=Udon
 item.ItemWheatFlour.name=Wheat Flour
+
+item.ItemNoodleSoup.name=Noodle Soup
+item.ItemCongee.name=Congee
+item.ItemNigiri.name=Nigiri
+item.ItemSoySauce.name=Soy Sauce
+item.ItemTofu.name=Tofu
+item.ItemMapoTofu.name=Ma Po Tofu
+item.ItemOil.name=Oil
+item.ItemBouquetLamb.name=Bouquet Lamb Meat
+item.ItemCornChips.name=Corn Chips
+item.ItemCreamyCorn.name=Creamy Corn 
+item.ItemBeefNoodleSoup.name=Beef Noodle Soup
+item.ItemBoiledFish.name=Spicy Boiled Fish
+
+
+item.ItemCockTail.name=Cocktail
+item.ItemBeer.name=Beer
+item.ItemGrapeVine.name=Grape Wine
+item.ItemWhisky.name=Whisky
+item.ItemVodka.name=Vodka
+item.ItemCookVine.name=Cooking Wine

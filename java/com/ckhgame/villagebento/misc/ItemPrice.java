@@ -188,6 +188,28 @@ public class ItemPrice {
 		register(ModItems.itemWheatFlour,30);
 		
 		
+		register(ModItems.itemNoodleSoup,60);
+		register(ModItems.itemBeefNoodleSoup,50);
+		register(ModItems.itemBoiledFish,80);
+		register(ModItems.itemBouquetLamb,76);
+		register(ModItems.itemCongee,50);
+		register(ModItems.itemCornChips,30);
+		register(ModItems.itemCreamyCorn,30);
+		register(ModItems.itemMapoTofu,52);
+		register(ModItems.itemNigiri,52);
+		register(ModItems.itemOil,30);
+		register(ModItems.itemSoySauce,40);
+		register(ModItems.itemTofu,30);
+		
+		
+		
+		//Wine
+		register(ModItems.itemCockTail,42);
+		register(ModItems.itemBeer,40);
+		register(ModItems.itemGrapeVine,46);
+		register(ModItems.itemWhisky,54);
+		register(ModItems.itemVodka,68);
+		register(ModItems.itemCookVine,30);
 	}
 	
 	

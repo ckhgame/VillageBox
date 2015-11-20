@@ -40,12 +40,16 @@ public class VillagerProBaker extends Villager {
         
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(ModItems.itemAppleCandy, 2, 2, 0);
+        compBuy.addItemBuy(ModItems.itemCornChips, 2, 5, 0);
         compBuy.addItemBuy(Items.cake, 2, 2, 0);
         compBuy.addItemBuy(ModItems.itemCarrotCake, 2, 2, 0);
         compBuy.addItemBuy(Items.pumpkin_pie, 1, 1, 0);
         compBuy.addItemBuy(ModItems.itemHambuger, 2, 2, 0);
         compBuy.addItemBuy(ModItems.itemUdon, 2, 2, 0);
         compBuy.addItemBuy(ModItems.itemPorkRamen, 2, 2, 0);
+        compBuy.addItemBuy(ModItems.itemCongee, 2, 2, 0);
+        compBuy.addItemBuy(ModItems.itemNoodleSoup, 2, 2, 0);
+
 
 
         components.add(compBuy);
@@ -55,7 +59,7 @@ public class VillagerProBaker extends Villager {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Fresh bread!");
+		villagerChat.add(0, "Wanna some warm food?");
 		villagerChat.add(0, "Are you hungury?");
 		villagerChat.add(0, "Got somthing delicious!");
 		

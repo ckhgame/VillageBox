@@ -62,6 +62,27 @@ public class ModItems {
 	public static Item itemUdon;
 	public static Item itemWheatFlour;
 	
+	public static Item itemNoodleSoup;
+	public static Item itemBeefNoodleSoup;
+	public static Item itemBoiledFish;
+	public static Item itemBouquetLamb;
+	public static Item itemCongee;
+	public static Item itemCornChips;
+	public static Item itemCreamyCorn;
+	public static Item itemMapoTofu;
+	public static Item itemNigiri;
+	public static Item itemOil;
+	public static Item itemSoySauce;
+	public static Item itemTofu;
+	
+	//Wine
+	public static Item itemCockTail;
+	public static Item itemBeer;
+	public static Item itemGrapeVine;
+	public static Item itemWhisky;
+	public static Item itemVodka;
+	public static Item itemCookVine;
+	
 	
 	
 	public static final void init() {
@@ -121,9 +142,31 @@ public class ModItems {
         GameRegistry.registerItem(itemPorkRamen = new ItemVB("ItemPorkRamen",null,CreativeTabs.tabFood),"ItemPorkRamen");
         GameRegistry.registerItem(itemRice = new ItemVB("ItemRice",null,CreativeTabs.tabFood),"ItemRice");
         GameRegistry.registerItem(itemRiceFlour = new ItemVB("ItemRiceFlour",null,CreativeTabs.tabMaterials),"ItemRiceFlour");
-        GameRegistry.registerItem(itemSalt = new ItemVB("ItemSalt",null,CreativeTabs.tabFood),"tabMaterials");
+        GameRegistry.registerItem(itemSalt = new ItemVB("ItemSalt",null,CreativeTabs.tabMaterials),"ItemSalt");
         GameRegistry.registerItem(itemUdon = new ItemVB("ItemUdon",null,CreativeTabs.tabFood),"ItemUdon");
         GameRegistry.registerItem(itemWheatFlour = new ItemVB("ItemWheatFlour",null,CreativeTabs.tabMaterials),"ItemWheatFlour");
+        
+        GameRegistry.registerItem(itemNoodleSoup = new ItemVB("ItemNoodleSoup",null,CreativeTabs.tabFood),"ItemNoodleSoup");
+        GameRegistry.registerItem(itemBeefNoodleSoup = new ItemVB("ItemBeefNoodleSoup",null,CreativeTabs.tabFood),"ItemBeefNoodleSoup");
+        GameRegistry.registerItem(itemBoiledFish = new ItemVB("ItemBoiledFish",null,CreativeTabs.tabFood),"ItemBoiledFish");
+        GameRegistry.registerItem(itemBouquetLamb = new ItemVB("ItemBouquetLamb",null,CreativeTabs.tabFood),"ItemBouquetLamb");
+        GameRegistry.registerItem(itemCongee = new ItemVB("ItemCongee",null,CreativeTabs.tabFood),"ItemCongee");
+        GameRegistry.registerItem(itemCornChips = new ItemVB("ItemCornChips",null,CreativeTabs.tabFood),"ItemCornChips");
+        GameRegistry.registerItem(itemCreamyCorn = new ItemVB("ItemCreamyCorn",null,CreativeTabs.tabFood),"ItemCreamyCorn");
+        GameRegistry.registerItem(itemMapoTofu = new ItemVB("ItemMapoTofu",null,CreativeTabs.tabFood),"ItemMapoTofu");
+        GameRegistry.registerItem(itemNigiri = new ItemVB("ItemNigiri",null,CreativeTabs.tabFood),"ItemNigiri");
+        GameRegistry.registerItem(itemOil = new ItemVB("ItemOil",null,CreativeTabs.tabMaterials),"ItemOil");
+        GameRegistry.registerItem(itemSoySauce = new ItemVB("ItemSoySauce",null,CreativeTabs.tabMaterials),"ItemSoySauce");
+        GameRegistry.registerItem(itemTofu = new ItemVB("ItemTofu",null,CreativeTabs.tabFood),"itemTofu");
+        
+        //Wine
+        GameRegistry.registerItem(itemCockTail = new ItemVB("ItemCockTail",null,CreativeTabs.tabFood),"ItemCockTail");
+        GameRegistry.registerItem(itemCookVine = new ItemVB("ItemCookVine",null,CreativeTabs.tabMaterials),"ItemCookVine");
+        GameRegistry.registerItem(itemBeer = new ItemVB("ItemBeer",null,CreativeTabs.tabFood),"ItemBeer");
+        GameRegistry.registerItem(itemGrapeVine = new ItemVB("ItemGrapeVine",null,CreativeTabs.tabFood),"ItemGrapeVine");
+        GameRegistry.registerItem(itemWhisky = new ItemVB("ItemWhisky",null,CreativeTabs.tabFood),"ItemWhisky");
+        GameRegistry.registerItem(itemVodka = new ItemVB("ItemVodka",null,CreativeTabs.tabFood),"ItemVodka");
+        
 
 
         

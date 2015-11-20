@@ -40,9 +40,10 @@ public class VillagerBakerAssistant extends Villager {
         
         
         VillagerCompSell compSell = new VillagerCompSell();
-        compSell.addItemSell(ModItems.itemWheatFlour, 10, 20, 0);
-        compSell.addItemSell(ModItems.itemRiceFlour, 10, 20, 0);
+        compSell.addItemSell(ModItems.itemWheatFlour, 9, 16, 0);
+        compSell.addItemSell(ModItems.itemRiceFlour, 9, 16, 0);
         compSell.addItemSell(ModItems.itemSalt, 6, 10, 0);
+        compSell.addItemSell(ModItems.itemOil, 6, 10, 0);
         components.add(compSell);
 	}
 	
