@@ -76,6 +76,7 @@ item.ItemMilkBottle.name=Milk Bottle
 item.ItemVillageMilk.name=Village Milk
 
 item.ItemGauze.name=Gauze
+item.ItemSeaweed.name=Seaweed
 item.ItemCabbageSeed.name=Cabbage Seed
 item.ItemGrapeSeed.name=Grape Seed
 item.ItemCornSeed.name=Corn Seed
@@ -112,7 +113,7 @@ item.ItemSoySauce.name=Soy Sauce
 item.ItemTofu.name=Tofu
 item.ItemMapoTofu.name=Ma Po Tofu
 item.ItemOil.name=Oil
-item.ItemBouquetLamb.name=Bouquet Lamb Meat
+item.ItemBouquetLamb.name=Bouquet Steak
 item.ItemCornChips.name=Corn Chips
 item.ItemCreamyCorn.name=Creamy Corn 
 item.ItemBeefNoodleSoup.name=Beef Noodle Soup

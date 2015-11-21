@@ -29,6 +29,7 @@ public class ModItems {
 	public static Item itemMilkBottle;
 	public static Item itemVillageMilk;
 	public static Item itemGauze;
+	public static Item itemSeaweed;
 	
 	//seeds
 	public static Item itemCabbageSeed;
@@ -110,6 +111,7 @@ public class ModItems {
         GameRegistry.registerItem(itemVillageMilk = new ItemVB("ItemVillageMilk",null,CreativeTabs.tabMaterials),"ItemVillageMilk");
         
         GameRegistry.registerItem(itemGauze = new ItemVB("ItemGauze",null,CreativeTabs.tabMaterials),"ItemGauze");
+        GameRegistry.registerItem(itemSeaweed = new ItemVB("ItemSeaweed",null,CreativeTabs.tabMaterials),"ItemSeaweed");
         
         
 

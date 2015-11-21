@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.villager;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.block.ModBlocks;
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
@@ -40,6 +41,7 @@ public class VillagerFisherman extends Villager {
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(Items.cooked_fished, 4, 6, 0, 0);
         compBuy.addItemBuy(Items.cooked_fished, 4, 6, 0, 1);
+        compBuy.addItemBuy(ModItems.itemSeaweed,7, 10, 0);
         compBuy.addItemBuy(Items.fishing_rod, 1, 1, 0);
         components.add(compBuy);
         

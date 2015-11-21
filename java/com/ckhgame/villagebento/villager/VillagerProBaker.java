@@ -41,6 +41,7 @@ public class VillagerProBaker extends Villager {
         VillagerCompBuy compBuy = new VillagerCompBuy();
         compBuy.addItemBuy(ModItems.itemAppleCandy, 2, 2, 0);
         compBuy.addItemBuy(ModItems.itemCornChips, 2, 5, 0);
+        compBuy.addItemBuy(ModItems.itemMayonaise, 2, 10, 0);
         compBuy.addItemBuy(Items.cake, 2, 2, 0);
         compBuy.addItemBuy(ModItems.itemCarrotCake, 2, 2, 0);
         compBuy.addItemBuy(Items.pumpkin_pie, 1, 1, 0);

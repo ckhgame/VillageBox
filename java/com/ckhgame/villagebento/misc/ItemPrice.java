@@ -155,6 +155,7 @@ public class ItemPrice {
 		
 		
 		register(ModItems.itemGauze,4);
+		register(ModItems.itemSeaweed,8);
 		//Seeds
 		register(ModItems.itemCabbageSeed,14);
 		register(ModItems.itemGrapeSeed,28);

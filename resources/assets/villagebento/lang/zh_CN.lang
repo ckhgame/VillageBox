@@ -90,6 +90,7 @@ item.ItemRiceplant.name=水稻
 item.ItemSoybeans.name=大豆
 item.ItemCorn.name=玉米
 
+item.ItemSeaweed.name=海带
 item.ItemAppleCandy.name=苹果糖
 item.ItemBoiledEgg.name=白水鸡蛋
 item.ItemCarrotCake.name=胡萝卜蛋糕
@@ -112,7 +113,7 @@ item.ItemSoySauce.name=酱油
 item.ItemTofu.name=豆腐
 item.ItemMapoTofu.name=麻婆豆腐
 item.ItemOil.name=植物油
-item.ItemBouquetLamb.name=酒香小羊腿
+item.ItemBouquetLamb.name=醇香牛排
 item.ItemCornChips.name=玉米片
 item.ItemCreamyCorn.name=奶油玉米 
 item.ItemBeefNoodleSoup.name=牛肉面
