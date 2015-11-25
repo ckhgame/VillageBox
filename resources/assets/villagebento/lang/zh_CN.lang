@@ -126,3 +126,15 @@ item.ItemGrapeVine.name=葡萄酒
 item.ItemWhisky.name=威士忌
 item.ItemVodka.name=伏特加
 item.ItemCookVine.name=料酒
+
+item.ItemIronFishingPool.name=铁制钓鱼竿
+item.ItemIronBox.name=铁宝箱
+item.ItemWoodBox.name=木宝箱
+item.ItemGoldenBox.name=金宝箱
+
+item.ItemCookingBookI.name=初级厨艺指南
+item.ItemCookingBookII.name=高级厨艺指南
+item.ItemAnimalBook.name=动物百科全书
+item.ItemPlantBook.name=自然造物百科
+item.ItemBuildingsBook.name=建筑历史
+item.ItemNPCBook.name=职业指南

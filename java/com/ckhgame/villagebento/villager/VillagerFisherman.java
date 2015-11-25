@@ -43,6 +43,7 @@ public class VillagerFisherman extends Villager {
         compBuy.addItemBuy(Items.cooked_fished, 4, 6, 0, 1);
         compBuy.addItemBuy(ModItems.itemSeaweed,7, 10, 0);
         compBuy.addItemBuy(Items.fishing_rod, 1, 1, 0);
+        compBuy.addItemBuy(ModItems.itemIronFishingPool, 1, 1, 0);
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell();

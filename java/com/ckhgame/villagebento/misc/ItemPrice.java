@@ -29,6 +29,7 @@ public class ItemPrice {
 		
 		register(Items.cooked_fished,10);
 		register(Items.fishing_rod,50);
+		register(ModItems.itemIronFishingPool,120);
 		register(Items.fish,6);
 
 		
@@ -211,6 +212,18 @@ public class ItemPrice {
 		register(ModItems.itemWhisky,54);
 		register(ModItems.itemVodka,68);
 		register(ModItems.itemCookVine,30);
+		
+		//Books
+		register(ModItems.itemCookingBookI,30);
+		register(ModItems.itemCookingBookII,52);
+		register(ModItems.itemAnimalBook,52);
+		register(ModItems.itemPlantBook,52);
+		register(ModItems.itemBuildingsBook,68);
+		register(ModItems.itemNPCBook,64);
+		
+		
+		
+		
 	}
 	
 	

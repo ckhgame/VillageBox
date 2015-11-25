@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.villager;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.block.ModBlocks;
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.villager.chat.VillagerChat;
 import com.ckhgame.villagebento.villager.component.VillagerCompAbout;
 import com.ckhgame.villagebento.villager.component.VillagerCompBuy;
@@ -38,6 +39,14 @@ public class VillagerLibrarian extends Villager {
 
             VillagerCompBuy compBuy = new VillagerCompBuy();
             compBuy.addItemBuy(Items.paper, 1, 10, 0);
+            compBuy.addItemBuy(ModItems.itemCookingBookI, 1, 1, 0);
+            compBuy.addItemBuy(ModItems.itemCookingBookII, 1, 1, 0);
+            compBuy.addItemBuy(ModItems.itemAnimalBook, 1, 1, 0);
+            compBuy.addItemBuy(ModItems.itemPlantBook, 1, 1, 0);
+            compBuy.addItemBuy(ModItems.itemBuildingsBook, 1, 1, 0);
+            compBuy.addItemBuy(ModItems.itemNPCBook, 1, 1, 0);
+
+
 
             components.add(compBuy);
             

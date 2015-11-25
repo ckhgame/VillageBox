@@ -84,6 +84,22 @@ public class ModItems {
 	public static Item itemVodka;
 	public static Item itemCookVine;
 	
+	//Fishing
+	public static Item itemIronFishingPool;
+	public static Item itemIronBox;
+	public static Item itemWoodBox;
+	public static Item itemGoldenBox;
+	
+	//Books
+	public static Item itemPlantBook;
+	public static Item itemAnimalBook;
+	public static Item itemCookingBookI;
+	public static Item itemCookingBookII;
+	public static Item itemBuildingsBook;
+	public static Item itemNPCBook;
+	
+
+	
 	
 	
 	public static final void init() {
@@ -169,7 +185,19 @@ public class ModItems {
         GameRegistry.registerItem(itemWhisky = new ItemVB("ItemWhisky",null,CreativeTabs.tabFood),"ItemWhisky");
         GameRegistry.registerItem(itemVodka = new ItemVB("ItemVodka",null,CreativeTabs.tabFood),"ItemVodka");
         
+        //Fishing
+        GameRegistry.registerItem(itemIronFishingPool = new ItemVB("ItemIronFishingPool",null,CreativeTabs.tabTools),"ItemIronFishingPool");
+        GameRegistry.registerItem(itemWoodBox = new ItemVB("ItemWoodBox",null,CreativeTabs.tabMisc),"ItemWoodBox");
+        GameRegistry.registerItem(itemIronBox = new ItemVB("ItemIronBox",null,CreativeTabs.tabMisc),"ItemIronBox");
+        GameRegistry.registerItem(itemGoldenBox = new ItemVB("ItemGoldenBox",null,CreativeTabs.tabMisc),"ItemGoldenBox");
 
+        //Books
+        GameRegistry.registerItem(itemPlantBook = new ItemVB("ItemPlantBook",null,CreativeTabs.tabMisc),"ItemPlantBook");
+        GameRegistry.registerItem(itemAnimalBook = new ItemVB("ItemAnimalBook",null,CreativeTabs.tabMisc),"ItemAnimalBook");
+        GameRegistry.registerItem(itemCookingBookI = new ItemVB("ItemCookingBookI",null,CreativeTabs.tabMisc),"ItemCookingBookI");
+        GameRegistry.registerItem(itemCookingBookII = new ItemVB("ItemCookingBookII",null,CreativeTabs.tabMisc),"ItemCookingBookII");
+        GameRegistry.registerItem(itemBuildingsBook = new ItemVB("ItemBuildingsBook",null,CreativeTabs.tabMisc),"ItemBuildingsBook");
+        GameRegistry.registerItem(itemNPCBook = new ItemVB("ItemNPCBook",null,CreativeTabs.tabMisc),"ItemNPCBook");
 
         
         

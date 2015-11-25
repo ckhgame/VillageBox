@@ -126,3 +126,15 @@ item.ItemGrapeVine.name=Grape Wine
 item.ItemWhisky.name=Whisky
 item.ItemVodka.name=Vodka
 item.ItemCookVine.name=Cooking Wine
+
+item.ItemIronFishingPool.name=Iron Fishing Pool
+item.ItemIronBox.name=Iron Box
+item.ItemWoodBox.name=Wooden Box
+item.ItemGoldenBox.name=Golden Box
+
+item.ItemCookingBookI.name=Cooking Guide I
+item.ItemCookingBookII.name=Cooking Guide II
+item.ItemAnimalBook.name=Animal Encyclopedia
+item.ItemPlantBook.name=Nature Creations
+item.ItemBuildingsBook.name=The History of Architecture
+item.ItemNPCBook.name=Career Guide
