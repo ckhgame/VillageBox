@@ -11,17 +11,6 @@ public class ConfigData {
 	public static final String KeyDataBuildingType 		= "dbt";
 	public static final String KeyDataBuildingOwner		= "dbo";
 	
-	//villager
-	public static final String KeyDataVillagerID		= "dvrid";
-	public static final String KeyDataVillagerName		= "dvrn";
-	public static final String KeyDataVillagerProfession= "dvrp";
-	public static final String KeyDataVillagerBuildingID= "dvrbid";
-	public static final String KeyDataVillagerDeath		= "dvrd";
-	public static final String KeyDataVillagerLevel		= "dvrl";
-	public static final String KeyDataVillagerExp		= "dvre";
-	public static final String KeyDataVillagerInitX		= "dvrix";
-	public static final String KeyDataVillagerInitZ		= "dvriz";
-	
 	//village
 	public static final String KeyDataVillageID			= "dvid";
 	public static final String KeyDataVillageVillagerMapSize		= "dvvrs";
@@ -29,9 +18,19 @@ public class ConfigData {
 	public static final String KeyDataVillageVillagerMapPrefix		= "dvvr_";
 	public static final String KeyDataVillageBuildingMapPrefix 		= "dvb_";
 	
+	//dead villager
+	public static final String KeyDataDeadVillagerList			= "ddvrl";
+	public static final String KeyDataDeadVillagerName			= "ddvrn";
+	public static final String KeyDataDeadVillagerBuildingID	= "ddvrbid";
+	public static final String KeyDataDeadVillagerProfessionID	= "ddvrpid";
+	public static final String KeyDataDeadVillagerInitX			= "ddvrix";
+	public static final String KeyDataDeadVillagerInitY			= "ddvriy";
+	public static final String KeyDataDeadVillagerInitZ			= "ddvriz";
+	public static final String KeyDataDeadVillagerExp			= "ddvre";
+	public static final String KeyDataDeadVillagerTimer			= "ddvrt";
+	
 	//id
 	public static final String KeyDataIDLastVillage		= "didlv";
-	public static final String KeyDataIDLastVillager	= "didlvr";
 	public static final String KeyDataIDLastBuilding	= "didlb";
 	
 	//village bento (main)
@@ -41,26 +40,29 @@ public class ConfigData {
 	public static final String KeyDataVillageBentoIDs				= "dvbids";
 	
 	//villager entity
-	public static final String KeyVillagerEntityDataVillagerID		= "vedvid";
-	public static final String KeyVillagerEntityIsSleeping			= "veis";
+	public static final String KeyVillagerSleeping					= "vrs";
+	public static final String KeyVillagerProfessionID				= "vrpid";
+	public static final String KeyVillagerBuildingID				= "vrbid";
+	public static final String KeyVillagerExp						= "vre";
+	public static final String KeyVillagerInitX						= "vrix";
+	public static final String KeyVillagerInitY						= "vriy";
+	public static final String KeyVillagerInitZ						= "vriz";
 	
 	//villager component
 	public static final String KeyVillagerComps						= "vc";
 	
-	//villager component buy
-	public static final String KeyVillagerCompBuy					= "vcb";
-	public static final String KeyVillagerCompBuyItemStackList		= "vcbisl";
-	
-	//villager component sell
-	public static final String KeyVillagerCompSell					= "vcs";
-	public static final String KeyVillagerCompSellItemStackList		= "vcsisl";
+	//villager components item list
+	public static final String KeyVillagerCompItemList				= "vcil";
 	
 	//villager component work
-	public static final String KeyVillagerCompWork					= "vcw";
+	public static final String KeyVillagerCompWorkCurrentIdxList	= "vcwcl";
 	public static final String KeyVillagerCompWorkPlayerName		= "vcwpn";
 	public static final String KeyVillagerCompWorkWorkIdx			= "vcwwi";
 	public static final String KeyVillagerCompWorkHoursLeft			= "vcwhl";
 	public static final String KeyVillagerCompWorkOutput			= "vcwo";
+	
+	//villager component action
+	public static final String KeyVillagerCompActionCurrentIdxList	= "vcacl";
 	
 	//village animal entity
 	public static final String KeyAnimalHunger						= "vah";

@@ -1,14 +1,12 @@
 package com.ckhgame.villagebento.event;
 
-import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.DataVillager;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.data.helper.HelperDataVrComp;
+import com.ckhgame.villagebento.entity.VBEntityMgr;
+import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.relauncher.Side;
 import net.minecraft.world.World;
 
 public class EventVillageBentoTick {
@@ -30,7 +28,7 @@ public class EventVillageBentoTick {
 			currentHours = (int)(event.world.getWorldTime() / 1000);
 			if(lastHours != -1 && currentHours > lastHours){ 			
 				for(int h = lastHours + 1;h<= currentHours;h++){
-					updateByHour(event.world,h%24);
+					updateByTime(h%24);
 				}
 			}
 			lastHours = currentHours;
@@ -39,50 +37,29 @@ public class EventVillageBentoTick {
 	
 	
 	/**
-	 * !! hour%24 == 0 is the time of sun raising....
+	 * !! time == 0 is the time of sun raising....
 	 */
-	private void updateByHour(World world,int hour){
-		System.out.println("DUANG! " + hour + ":00 !");
-		updateDeadVillagers(world,hour);
-		updateVillagerBuyAndSellList(world,hour);
-		updateVillageWorks(world,hour);
+	private void updateByTime(int time){
+		System.out.println("DUANG! " + time + ":00 !");
+		updateVillagerByTime(time);
+		updateDeadVillagers(time);
 	}
 	
 	//--------------------------------------
 	//update dead villagers
 	
-	private void updateDeadVillagers(World world,int hour){
-		if(hour == 0){
-			DataVillageBento dataVB = DataVillageBento.get(world);
-			HelperDataVB.stepDeadVillages(dataVB);
-			dataVB.markDirty();
+	private void updateDeadVillagers(int time){
+		if(time == 0){
+			DataVillageBento dataVB = DataVillageBento.get();
+			HelperDataVB.stepDeathAll(dataVB);
 		}
 	}
 	
 	//--------------------------------------
 	//update villagers' buy and sell list
-	private void updateVillagerBuyAndSellList(World world,int hour){	
-		if(hour == 0){
-			DataVillageBento dataVB = DataVillageBento.get();		
-			for(DataVillage dv : dataVB.mapDataVillage.values()){
-				for(DataVillager dvr : dv.mapDataVillager.values()){
-					HelperDataVrComp.refreshBuyList(dvr);
-					HelperDataVrComp.refreshSellList(dvr);
-				}
-			}
-			dataVB.markDirty();
-		}	
-	}
-	
-	//--------------------------------------
-	//update villagers' work
-	private void updateVillageWorks(World world,int hour){	
-		DataVillageBento dataVB = DataVillageBento.get();		
-		for(DataVillage dv : dataVB.mapDataVillage.values()){
-			for(DataVillager dvr : dv.mapDataVillager.values()){
-				HelperDataVrComp.refreshWork(dvr);
-			}
-		}	
-		dataVB.markDirty();
+	private void updateVillagerByTime(int time){
+		for(EntityVBVillager villager : VBEntityMgr.get().getVillagers()){
+			villager.updateVillagerComponentsByTime(time);
+		}
 	}
 }

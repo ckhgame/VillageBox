@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.util.VillageTime;
+import com.ckhgame.villagebento.util.village.VillageTime;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.init.Items;

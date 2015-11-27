@@ -1,10 +1,19 @@
 package com.ckhgame.villagebento.data;
 
+import java.util.ArrayList;
+
 import com.ckhgame.villagebento.config.ConfigData;
+import com.ckhgame.villagebento.util.IData;
+import com.ckhgame.villagebento.util.data.Vec3Int;
+import com.ckhgame.villagebento.util.village.BlockFinder;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.World;
 
-public class DataBuilding extends Data{
+public class DataBuilding implements IData{
+	
 	public int id;
 	public int x;
 	public int z;
@@ -37,5 +46,53 @@ public class DataBuilding extends Data{
 		this.type = compound.getInteger(ConfigData.KeyDataBuildingType);
 		if(compound.hasKey(ConfigData.KeyDataBuildingOwner))
 			this.owner = compound.getString(ConfigData.KeyDataBuildingOwner);
+	}
+	
+	
+	
+	
+	//------ caches -------
+	
+	private class BedInfo{
+		public String owner;
+		public int x;
+		public int y;
+		public int z;
+	}
+	
+	//bed cache
+	private ArrayList<BedInfo> cacheBedsInfo = null;
+	
+	private void generatCacheBedsInfo(){
+		this.cacheBedsInfo = new ArrayList<BedInfo>();
+		World world = DataVillageBento.get().world;
+		Vec3Int[] arr = BlockFinder.findBlock(world, this.x, this.y, this.z,this.sizeX,this.sizeZ, Blocks.bed, new int[] { 0, 1, 2, 3 }, false);
+		BedInfo bedInfo;
+		for(Vec3Int vec : arr){
+			bedInfo = new BedInfo();
+			bedInfo.owner = null;
+			bedInfo.x = vec.x;
+			bedInfo.y = vec.y;
+			bedInfo.z = vec.z;
+			this.cacheBedsInfo.add(bedInfo);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param name: owner's name, could be any villager or player
+	 * @return the bed position, null means no bed in the building or all beds are full
+	 */
+	public Vec3Int applyForBed(String name) {
+		if(this.cacheBedsInfo == null){
+			generatCacheBedsInfo();
+		}
+		for(BedInfo bedInfo : this.cacheBedsInfo){
+			if(bedInfo.owner == null){
+				bedInfo.owner = name;
+				return Vec3Int.create(bedInfo.x,bedInfo.y,bedInfo.z);
+			}
+		}
+		return null;
 	}
 }

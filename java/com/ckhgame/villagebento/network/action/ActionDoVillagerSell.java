@@ -1,123 +1,42 @@
 package com.ckhgame.villagebento.network.action;
 
-import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.DataVillager;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.data.helper.HelperDataVrComp;
-import com.ckhgame.villagebento.gui.GuiVillagerSell;
-import com.ckhgame.villagebento.misc.VBResult;
-import com.ckhgame.villagebento.villager.Villager;
-import com.ckhgame.villagebento.villager.component.VillagerCompSell;
+import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
+import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 
 /**
  * 
  * @author ckhgame
- * params:
- * 1.villagerID (Integer)
- * 2.EntiryPlayerID (Integer)
- * 3.itemSell (ItemStack)
+ * params & return
+ * see ActionSyncVillagerComp
  * 
- *  result:
- * 1. ItemStack[]
+ * sync params
+ * ItemStack itemSell
  */
-public class ActionDoVillagerSell extends Action {
-	
-	public ActionDoVillagerSell() {
-		super(true);
-		// TODO Auto-generated constructor stub
+public class ActionDoVillagerSell extends ActionSyncVillagerComp {
+
+	@Override
+	protected void onSyncParamsSend(ByteBuf buf, Object[] params) {
+		ItemStack itemSell = (ItemStack)params[0];
+		ByteBufUtils.writeItemStack(buf, itemSell);
 	}
 
 	@Override
-	public void onSelfSend(ByteBuf buf, Object[] info) {
-		int villagerID = (Integer)info[0];
-		int entityPlayerID = (Integer)info[1];
-		ItemStack itemStack = (ItemStack)info[2];
-		buf.writeInt(villagerID);
-		buf.writeInt(entityPlayerID);
-		ByteBufUtils.writeItemStack(buf, itemStack);
+	protected Object[] onSyncParamsReceived(ByteBuf buf) {
+		ItemStack itemSell = ByteBufUtils.readItemStack(buf);
+		return new Object[]{itemSell};
 	}
 
 	@Override
-	public Object[] onTargetReceived(ByteBuf buf) {
-		int villagerID = buf.readInt();
-		int entityPlayerID = buf.readInt();
-		ItemStack itemStack = ByteBufUtils.readItemStack(buf);
-		
-		return new Object[]{villagerID,entityPlayerID,itemStack};
+	protected VBCompResult onResolveSync(EntityVBVillager villager, VillagerComponent component, EntityPlayer player,Object[] params) {
+		ItemStack itemSell = (ItemStack)params[0];
+		return ((VillagerCompSell)component).sellItem(player, itemSell);
 	}
 	
-	@Override
-	public Object[] resolveRequest(Object[] info) {
-
-		int villagerID = (Integer)info[0];
-		int entityPlayerID = (Integer)info[1];
-		ItemStack itemSell = (ItemStack)info[2];
-		
-		EntityPlayer entityPlayer = (EntityPlayer)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(entityPlayerID);
-		DataVillageBento dataVB = DataVillageBento.get();
-		DataVillager dvr = HelperDataVB.findVillagerByID(dataVB, villagerID);
-
-		int sellResult = HelperDataVrComp.sellItem(dvr, entityPlayer, itemSell);
-		
-		if(sellResult == VBResult.SUCCESS)
-			dataVB.markDirty();
-		ItemStack[] itemStacks = HelperDataVrComp.getSellList(dvr);
-		
-		return new Object[]{dvr.profession,itemStacks,sellResult};
-	}
-	
-	@Override
-	public void onTargetSend(ByteBuf buf, Object[] info) {
-		
-		int profession = (Integer)info[0];
-		ItemStack[] itemStacks = (ItemStack[])info[1];	
-		int sellResult = (Integer)info[2];
-		
-		buf.writeInt(profession);
-		buf.writeInt(itemStacks.length);
-		for(int i =0;i<itemStacks.length;i++){
-			ByteBufUtils.writeItemStack(buf, itemStacks[i]);
-		}
-		buf.writeInt(sellResult);
-	}
-
-	@Override
-	public Object[] onSelfReceived(ByteBuf buf) {
-
-		int profession = buf.readInt();
-		int l = buf.readInt();
-		ItemStack[] itemStacks = new ItemStack[l];
-		for(int i =0;i<l;i++){
-			itemStacks[i] = ByteBufUtils.readItemStack(buf);
-		}
-		int sellResult = buf.readInt();
-		
-		
-		return new Object[]{profession,itemStacks,sellResult};
-	}
-
-
-
-	@Override
-	public void onActionCompleted(Object[] result) {
-
-		int profession = (Integer)result[0];	
-		ItemStack[] itemStacks = (ItemStack[])result[1];	
-		int sellResult = (Integer)result[2];
-		
-		Villager vr = Villager.registry.get(profession);
-		VillagerCompSell vcSell = (VillagerCompSell)vr.findVillagerComponentByClass(VillagerCompSell.class);
-		if(vcSell != null){
-			GuiVillagerSell gui = (GuiVillagerSell)vcSell.getGui();
-			gui.setSellList(itemStacks);
-			gui.updateWithData(sellResult);
-		}
-	}
-
 }

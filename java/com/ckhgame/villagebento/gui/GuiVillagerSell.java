@@ -1,12 +1,15 @@
 package com.ckhgame.villagebento.gui;
 
+import java.util.ArrayList;
+
 import org.lwjgl.opengl.GL11;
 
-import com.ckhgame.villagebento.misc.ItemPrice;
-import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerSell;
-import com.ckhgame.villagebento.network.action.ActionGetVillagerSell;
+import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.data.VBResult;
+import com.ckhgame.villagebento.util.village.ItemPrice;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -16,15 +19,12 @@ public class GuiVillagerSell extends GuiVillager {
 	
 	private final int rowSize = 3;
 	
-	private ItemStack[] sellList;
-	public void setSellList(ItemStack[] itemStacks){
-		sellList = itemStacks;
-	}
-	
 	//buttons
 	public GuiButton[] buttonRows;
 	public GuiButton buttonUp;
 	public GuiButton buttonDown;
+	
+	private VillagerCompSell villagerCompSell;
 	
 	int currentIdx = 0;
 	
@@ -64,11 +64,11 @@ public class GuiVillagerSell extends GuiVillager {
 	
 	@Override
 	public void onDrawScreen() {
-		//this.drawWrappedString(this.fontRendererObj,"Nothing to trade with you now :(",this.width / 2 - 74,this.height /2 - 45,0xFFFFFFFF,188);
+		ArrayList<ItemStack> sellList = this.villagerCompSell.itemListCurrent;
 		ItemStack itemStack;
 		int price;
 		for(int i = 0;i<rowSize;i++){
-			itemStack = (sellList == null || currentIdx + i >= sellList.length)? null : sellList[currentIdx + i];
+			itemStack = (sellList == null || currentIdx + i >= sellList.size())? null : sellList.get(currentIdx + i);
 			price = (itemStack == null?0:ItemPrice.getSellPrice(itemStack.getItem()));
 			drawItemRow(fieldCompLeft + 4,fieldCompTop + 6 + 32 * i,itemStack,price,i);
 		}
@@ -76,18 +76,15 @@ public class GuiVillagerSell extends GuiVillager {
 		
 		//current row index
 		GL11.glDisable(GL11.GL_LIGHTING);
-		String idx = (sellList == null || sellList.length == 0)?"0/0":(currentIdx + 1) + "/" + sellList.length;
+		String idx = (sellList == null || sellList.size() == 0)?"0/0":(currentIdx + 1) + "/" + sellList.size();
 		this.drawCenteredString(fontRendererObj, idx, fieldCompLeft + 184, fieldCompTop + 46, 0xFFFFFFFF);
 	}
 
 	@Override
 	public void onInitGui() {
-		// TODO Auto-generated method stub
-		sellList = null;
-		Action.send(ActionGetVillagerSell.class, new Object[]{this.entityVillager.dataVillagerID});
 		setChatContent("What you want to sell?");
-		
 		currentIdx = 0;
+		this.villagerCompSell = (VillagerCompSell)villagerComponent;
 		
 		//assign button ids
 		buttonRows = new GuiButton[rowSize];
@@ -105,40 +102,41 @@ public class GuiVillagerSell extends GuiVillager {
 	@Override
 	public void onActionPerformed(GuiButton button) {
 
+		ArrayList<ItemStack> sellList = this.villagerCompSell.itemListCurrent;
+		
 		if(button.id == buttonUp.id){
 			currentIdx = Math.max(0, --currentIdx);
 		}
 		else if(button.id == buttonDown.id){
-			int max = sellList == null?0:Math.max(0,sellList.length - 1);
+			int max = sellList == null?0:Math.max(0,sellList.size() - 1);
 			currentIdx = Math.min(max, ++currentIdx);
 		}
 		
 		for(int i = 0;i<rowSize;i++){
 			if(button.id == buttonRows[i].id){
 				int stackIdx = currentIdx + i;
-				if(sellList != null && stackIdx >= 0 && stackIdx < sellList.length){
-					ItemStack itemSell = sellList[stackIdx].copy();
+				if(sellList != null && stackIdx >= 0 && stackIdx < sellList.size()){
+					ItemStack itemSell = sellList.get(stackIdx).copy();
 					itemSell.stackSize = 1;
 					
-					Action.send(ActionDoVillagerSell.class, new Object[]{this.entityVillager.dataVillagerID,
-																		Minecraft.getMinecraft().thePlayer.getEntityId(),
-																		itemSell});
+					int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerComponent);
+					if(compIdx < 0)
+						System.out.println("Can not find the village component! idx < 0");
+					else
+						Action.send(ActionDoVillagerSell.class, new Object[]{	this.entityVBVillager.getEntityId(),
+																				compIdx, 
+																				Minecraft.getMinecraft().thePlayer.getEntityId(),
+																				new Object[]{itemSell}});
 				}
 			}
 		}
 		
 	}
-	
+
 	@Override
-	public void updateWithData(int data) {
-		if(data == VBResult.SUCCESS)
-			setChatContent("Thank you!");
-		else if(data == VBResult.FALLED_RUNOUT)
-			setChatContent("I don't need more of that..");
-		else if(data == VBResult.FAILED_NOITEM)
-			setChatContent("You don't have that...");
-		else if(data == VBResult.FAILED)
-			setChatContent("Something is not right...");
+	public void onSyncCompleted() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

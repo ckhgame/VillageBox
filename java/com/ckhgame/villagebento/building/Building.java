@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
 import com.ckhgame.villagebento.util.registry.IRegistrable;
 import com.ckhgame.villagebento.util.registry.Registry;
 

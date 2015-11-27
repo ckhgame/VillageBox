@@ -3,16 +3,16 @@ package com.ckhgame.villagebento.data;
 import java.util.HashMap;
 
 import com.ckhgame.villagebento.config.ConfigData;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.IData;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 
-public class DataVillage extends Data{
+public class DataVillage implements IData{
 	
 	public int id;
 	public HashMap<Integer,DataBuilding> mapDataBuilding = new HashMap<Integer,DataBuilding>();
-	public HashMap<Integer,DataVillager> mapDataVillager = new HashMap<Integer,DataVillager>();
 	
 	//caches
 	public AxisAlignedBB cacheVillageBoundary = null;
@@ -30,15 +30,6 @@ public class DataVillage extends Data{
 			bd.writeToNBT(c);
 			compound.setTag(ConfigData.KeyDataVillageBuildingMapPrefix + (idx++), c);
 		}
-		
-		//villager Map
-		idx = 0;
-		compound.setInteger(ConfigData.KeyDataVillageVillagerMapSize, this.mapDataVillager.size());
-		for(DataVillager bvr:this.mapDataVillager.values()){
-			NBTTagCompound c = new NBTTagCompound();
-			bvr.writeToNBT(c);
-			compound.setTag(ConfigData.KeyDataVillageVillagerMapPrefix + (idx++), c);
-		}
 	}
 	
 	@Override
@@ -53,15 +44,6 @@ public class DataVillage extends Data{
 			DataBuilding db = new DataBuilding();
 			db.readFromNBT((NBTTagCompound)compound.getTag(ConfigData.KeyDataVillageBuildingMapPrefix + i));
 			mapDataBuilding.put(db.id, db);
-		}
-		
-		//villager Map
-		mapDataVillager.clear();
-		size = compound.getInteger(ConfigData.KeyDataVillageVillagerMapSize);
-		for(int i =0;i<size;i++){
-			DataVillager dvr = new DataVillager();
-			dvr.readFromNBT((NBTTagCompound)compound.getTag(ConfigData.KeyDataVillageVillagerMapPrefix + i));
-			mapDataVillager.put(dvr.id, dvr);
 		}
 		
 		//refresh cache

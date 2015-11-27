@@ -1,12 +1,14 @@
 package com.ckhgame.villagebento.gui;
 
+import java.util.ArrayList;
+
 import org.lwjgl.opengl.GL11;
 
-import com.ckhgame.villagebento.misc.ItemPrice;
-import com.ckhgame.villagebento.misc.VBResult;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerBuy;
-import com.ckhgame.villagebento.network.action.ActionGetVillagerBuy;
+import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.village.ItemPrice;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -16,15 +18,12 @@ public class GuiVillagerBuy extends GuiVillager {
 	
 	private final int rowSize = 3;
 	
-	private ItemStack[] buyList;
-	public void setBuyList(ItemStack[] itemStacks){
-		buyList = itemStacks;
-	}
-	
 	//buttons
 	public GuiButton[] buttonRows;
 	public GuiButton buttonUp;
 	public GuiButton buttonDown;
+	
+	private VillagerCompBuy villagerCompBuy;
 	
 	int currentIdx = 0;
 	
@@ -64,11 +63,11 @@ public class GuiVillagerBuy extends GuiVillager {
 	
 	@Override
 	public void onDrawScreen() {
-		//this.drawWrappedString(this.fontRendererObj,"Nothing to trade with you now :(",this.width / 2 - 74,this.height /2 - 45,0xFFFFFFFF,188);
+		ArrayList<ItemStack> buyList = this.villagerCompBuy.itemListCurrent;
 		ItemStack itemStack;
 		int price;
 		for(int i = 0;i<rowSize;i++){
-			itemStack = (buyList == null || currentIdx + i >= buyList.length)? null : buyList[currentIdx + i];
+			itemStack = (buyList == null || currentIdx + i >= buyList.size())? null : buyList.get(currentIdx + i);
 			price = (itemStack == null?0:ItemPrice.getBuyPrice(itemStack.getItem()));
 			drawItemRow(fieldCompLeft + 4,fieldCompTop + 6 + 32 * i,itemStack,price,i);
 		}
@@ -76,18 +75,15 @@ public class GuiVillagerBuy extends GuiVillager {
 		
 		//current row index
 		GL11.glDisable(GL11.GL_LIGHTING);
-		String idx = (buyList == null || buyList.length == 0)?"0/0":(currentIdx + 1) + "/" + buyList.length;
+		String idx = (this.villagerComponent == null || buyList.size() == 0)?"0/0":(currentIdx + 1) + "/" + buyList.size();
 		this.drawCenteredString(fontRendererObj, idx, fieldCompLeft + 184, fieldCompTop + 46, 0xFFFFFFFF);
 	}
 
 	@Override
 	public void onInitGui() {
-		// TODO Auto-generated method stub
-		buyList = null;
-		Action.send(ActionGetVillagerBuy.class, new Object[]{this.entityVillager.dataVillagerID});
 		setChatContent("What you want to buy?");
-		
 		currentIdx = 0;
+		this.villagerCompBuy = (VillagerCompBuy)villagerComponent;
 		
 		//assign button ids
 		buttonRows = new GuiButton[rowSize];
@@ -105,39 +101,40 @@ public class GuiVillagerBuy extends GuiVillager {
 	@Override
 	public void onActionPerformed(GuiButton button) {
 
+		ArrayList<ItemStack> buyList = this.villagerCompBuy.itemListCurrent;
+		
 		if(button.id == buttonUp.id){
 			currentIdx = Math.max(0, --currentIdx);
 		}
 		else if(button.id == buttonDown.id){
-			int max = buyList == null?0:Math.max(0,buyList.length - 1);
+			int max = buyList == null?0:Math.max(0,buyList.size() - 1);
 			currentIdx = Math.min(max, ++currentIdx);
 		}
 		
 		for(int i = 0;i<rowSize;i++){
 			if(button.id == buttonRows[i].id){
 				int stackIdx = currentIdx + i;
-				if(buyList != null && stackIdx >= 0 && stackIdx < buyList.length){
-					ItemStack itemBuy = buyList[stackIdx].copy();
+				if(buyList != null && stackIdx >= 0 && stackIdx < buyList.size()){
+					ItemStack itemBuy = buyList.get(stackIdx).copy();
 					itemBuy.stackSize = 1;
-					
-					Action.send(ActionDoVillagerBuy.class, new Object[]{this.entityVillager.dataVillagerID,
-																		Minecraft.getMinecraft().thePlayer.getEntityId(),
-																		itemBuy});
+
+					int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerComponent);
+					if(compIdx < 0)
+						System.out.println("Can not find the village component! idx < 0");
+					else
+						Action.send(ActionDoVillagerBuy.class, new Object[]{	this.entityVBVillager.getEntityId(),
+																				compIdx, 
+																				Minecraft.getMinecraft().thePlayer.getEntityId(),
+																				new Object[]{itemBuy}});
 				}
 			}
 		}
 		
 	}
-	
+
 	@Override
-	public void updateWithData(int data) {
-		if(data == VBResult.SUCCESS)
-			setChatContent("Thank you!");
-		else if(data == VBResult.FALLED_RUNOUT)
-			setChatContent("That one is sold out...");
-		else if(data == VBResult.FAILED_UNAFFORDABLE)
-			setChatContent("Hmmm... it's too expensive for you...");
-		else if(data == VBResult.FAILED)
-			setChatContent("Something is not right...");
+	public void onSyncCompleted() {
+		// TODO Auto-generated method stub
+		
 	}
 }

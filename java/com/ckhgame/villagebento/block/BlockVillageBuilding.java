@@ -3,10 +3,10 @@ package com.ckhgame.villagebento.block;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.network.VBNetwork;
 import com.ckhgame.villagebento.network.message.MessageVillageOutlinesChanged;
-import com.ckhgame.villagebento.util.PlayerMsg;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -51,7 +51,7 @@ public class BlockVillageBuilding extends Block {
 			if(player.getDistance(x, y, z) < 1.5){
 				if(Building.build(world, player, x, y, z, this.buildingClass,hasOwner)){
 					//refresh village outlines
-					DataVillageBento dataVB = DataVillageBento.get(world);			
+					DataVillageBento dataVB = DataVillageBento.get();			
 					MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
 					msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB,player.getDisplayName());			
 					VBNetwork.networkWrapper.sendToAll(msg);

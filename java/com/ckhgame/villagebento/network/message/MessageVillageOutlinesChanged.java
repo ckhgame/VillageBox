@@ -2,7 +2,7 @@ package com.ckhgame.villagebento.network.message;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.util.BoxWithColor;
+import com.ckhgame.villagebento.util.data.BoxWithColor;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import io.netty.buffer.ByteBuf;

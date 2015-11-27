@@ -3,9 +3,8 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.misc.NameGenerator;
-import com.ckhgame.villagebento.villager.VillagerCasinoDealer;
-import com.ckhgame.villagebento.villager.VillagerLargeCasinoManager;
+import com.ckhgame.villagebento.profession.ProfessionCasinoDealer;
+import com.ckhgame.villagebento.profession.ProfessionLargeCasinoManager;
 
 import net.minecraft.init.Blocks;
 
@@ -30,10 +29,10 @@ public class BuildingLargeCasino extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerLargeCasinoManager.class,NameGenerator.getRandomMaleName(),-4,0);
-		bb.addBuildingVillager(VillagerCasinoDealer.class,NameGenerator.getRandomFemaleName(),-6,0);
-		bb.addBuildingVillager(VillagerCasinoDealer.class,NameGenerator.getRandomFemaleName(),6,0);
-		bb.addBuildingVillager(VillagerCasinoDealer.class,NameGenerator.getRandomFemaleName(),-6,2);
+		bb.addVillager(ProfessionLargeCasinoManager.class,-4,0 );
+		bb.addVillager(ProfessionCasinoDealer.class,-6,0 );
+		bb.addVillager(ProfessionCasinoDealer.class,6,0 );
+		bb.addVillager(ProfessionCasinoDealer.class,-6,2 );
 	}
 
 	@Override

@@ -7,8 +7,8 @@ import com.ckhgame.villagebento.config.ConfigVillage;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.util.PlayerMsg;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.Block;

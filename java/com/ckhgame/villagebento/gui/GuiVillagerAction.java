@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.ckhgame.villagebento.network.action.Action;
-import com.ckhgame.villagebento.network.action.ActionGetVillagerActionList;
-import com.ckhgame.villagebento.network.action.ActionGetVillagerLevel;
-import com.ckhgame.villagebento.network.action.ActionGetVillagerWorkList;
-import com.ckhgame.villagebento.villager.component.VillagerCompAction;
+import com.ckhgame.villagebento.network.action.ActionDoVillagerAction;
+import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.data.VBResult;
+import com.ckhgame.villagebento.util.tool.VBRandom;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -16,15 +17,17 @@ public class GuiVillagerAction extends GuiVillager {
 	
 	private int rows = 1;
 	private int actionWaitingTime = 0;
-	private Random rand = new Random();
+	private Random rand = VBRandom.getRand();
+	
+	private VillagerCompAction villagerCompAction;
 	
 	private boolean isResultScreen = false;
 	private ArrayList<GuiButton> buttonActionList = new ArrayList<GuiButton>();
 	private GuiButton buttonBack;
 	private boolean justSwitch = false;
 	
-	private String resultTitle;
-	private String resultContent;
+	boolean initedActionList = false;
+	boolean receivedResult = false;
 	
 	@Override
 	public String getButtonText() {
@@ -32,25 +35,7 @@ public class GuiVillagerAction extends GuiVillager {
 		return "Action";
 	}
 	
-	int[] actionList = null;
 	int lastSelected = -1;
-	
-	public void setActionList(int[] actionList){
-		
-		this.actionList = actionList;
-		
-		VillagerCompAction compAction = (VillagerCompAction)villager.findVillagerComponentByClass(VillagerCompAction.class);
-		
-		int id = compStartButtonID + 10;
-		for(int i =0;i<actionList.length;i++){
-			addActionButton(id++,compAction.getActionText(actionList[i]));
-		}
-		refreshActionButtonPositions();
-		
-		//move the back button to the bottom
-		this.buttonList.remove(buttonBack);
-		this.buttonList.add(buttonBack);
-	}
 	
 	@Override
 	public void onDrawScreen() {		
@@ -61,9 +46,9 @@ public class GuiVillagerAction extends GuiVillager {
 				this.drawCenteredString(fontRendererObj, "Waiting...", fieldCompLeft + 100, fieldCompTop + 40 + yPos, 0xFFFFFF00);
 				buttonBack.visible = false;
 			}
-			else{
-				this.drawCenteredString(fontRendererObj, resultTitle, fieldCompLeft + 100, fieldCompTop + 10, 0xFFFFFF00);
-				this.drawWrappedString(fontRendererObj, resultContent, fieldCompLeft + 20, fieldCompTop + 25, 0xFFDDDDDD, 160);
+			else if(receivedResult){
+				this.drawCenteredString(fontRendererObj, this.villagerCompAction.resultTitle, fieldCompLeft + 100, fieldCompTop + 10, 0xFFFFFF00);
+				this.drawWrappedString(fontRendererObj, this.villagerCompAction.resultContent, fieldCompLeft + 20, fieldCompTop + 25, 0xFFDDDDDD, 160);
 				buttonBack.visible = true;
 			}
 		}
@@ -78,8 +63,7 @@ public class GuiVillagerAction extends GuiVillager {
 		
 		if(isResultScreen){
 			actionWaitingTime = rand.nextInt(24) + 12;
-			resultTitle = "";
-			resultContent = "";
+			receivedResult = false;
 		}
 		
 		//button visibilities
@@ -90,24 +74,38 @@ public class GuiVillagerAction extends GuiVillager {
 	
 	@Override
 	public void onInitGui() {
-		actionList = null;
-		Action.send(ActionGetVillagerActionList.class, new Object[]{this.entityVillager.dataVillagerID});
 		setChatContent("Can I help you?");
+		this.villagerCompAction = (VillagerCompAction)villagerComponent;
 		
 		actionWaitingTime = 0;
 		
 		buttonActionList.clear();
+		initedActionList = false;
+		
 		//buttons
 		int id = compStartButtonID;
 		
 		buttonBack = new GuiButton(id++,fieldCompLeft + 80,fieldCompTop + 70,40,20,"Back");
 		this.buttonList.add(buttonBack);
 		
-		resultTitle = "";
-		resultContent = "";
-		
 		setResultScreen(false);
+	}
+	
+	public void initActionList(){
 		
+		int[] actionIdxList = this.villagerCompAction.actionIdxListCurrent;
+		
+		int id = compStartButtonID + 10;
+		for(int i =0;i<actionIdxList.length;i++){
+			addActionButton(id++,this.villagerCompAction.getAction(actionIdxList[i]).text);
+		}
+		refreshActionButtonPositions();
+		
+		//move the back button to the bottom
+		this.buttonList.remove(buttonBack);
+		this.buttonList.add(buttonBack);
+		
+		initedActionList = true;
 	}
 	
 	private void addActionButton(int id, String text){
@@ -144,8 +142,6 @@ public class GuiVillagerAction extends GuiVillager {
 		
 	}
 	
-	
-	
 	@Override
 	public void updateScreen() {
 		super.updateScreen();
@@ -158,31 +154,44 @@ public class GuiVillagerAction extends GuiVillager {
 		}
 		
 	}
-	public void setActionResult(String title, String content, String chat){
-		resultTitle = title;
-		resultContent = content;
-		this.setChatContent(chat);
-	}
-	@Override
-	public void updateWithData(int data) {
-		// TODO Auto-generated method stub
-	}
 	
 	private void sendAction(){
 
-		if(actionList != null && lastSelected >= 0 &&lastSelected < actionList.length){
-			int actionIdx = actionList[lastSelected];
-			VillagerCompAction compAction = (VillagerCompAction)villager.findVillagerComponentByClass(VillagerCompAction.class);
-			Object[] params = compAction.getActionParam(actionIdx);
-			Object[] fullParams = new Object[2 + params.length];
-			fullParams[0] = this.entityVillager.dataVillagerID;
-			fullParams[1] = Minecraft.getMinecraft().thePlayer.getEntityId();
-			for(int i =0;i<params.length;i++){
-				fullParams[2 + i] = params[i];
-			}
-			Action.send(compAction.getActionClass(actionIdx),fullParams);
+		int[] actionIdxList = this.villagerCompAction.actionIdxListCurrent;
+		
+		if(actionIdxList != null && lastSelected >= 0 &&lastSelected < actionIdxList.length){
+			int actionIdx = actionIdxList[lastSelected];
+
+
+		int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerComponent);
+		if(compIdx < 0)
+			System.out.println("Can not find the village component! idx < 0");
+		else
+			Action.send(ActionDoVillagerAction.class, new Object[]{	this.entityVBVillager.getEntityId(),
+																	compIdx, 
+																	Minecraft.getMinecraft().thePlayer.getEntityId(),
+																	new Object[]{actionIdx}});
 		}
 		
+	}
+
+	
+	
+	@Override
+	public void updateWithVBCompResult(VBCompResult vbCompResult) {
+		super.updateWithVBCompResult(vbCompResult);
+		if(!VBResult.isSuccess(vbCompResult.vbResult))
+			this.setResultScreen(false);
+	}
+
+	@Override
+	public void onSyncCompleted() {
+		if(initedActionList){
+			receivedResult = true;
+		}
+		else{
+			initActionList();
+		}
 	}
 	
 }

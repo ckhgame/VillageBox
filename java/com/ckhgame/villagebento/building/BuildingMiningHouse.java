@@ -3,10 +3,8 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.misc.NameGenerator;
-import com.ckhgame.villagebento.villager.VillagerMiner;
-import com.ckhgame.villagebento.villager.VillagerMinerAssistant;
-import com.ckhgame.villagebento.villager.VillagerVillageElder;
+import com.ckhgame.villagebento.profession.ProfessionMiner;
+import com.ckhgame.villagebento.profession.ProfessionMinerAssistant;
 
 import net.minecraft.init.Blocks;
 
@@ -31,8 +29,8 @@ public class BuildingMiningHouse extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerMiner.class,NameGenerator.getRandomMaleName(),0,0);
-		bb.addBuildingVillager(VillagerMinerAssistant.class,NameGenerator.getRandomMaleName(),0,-1);
+		bb.addVillager(ProfessionMiner.class,0,0 );
+		bb.addVillager(ProfessionMinerAssistant.class,0,-1 );
 	}
 
 	@Override

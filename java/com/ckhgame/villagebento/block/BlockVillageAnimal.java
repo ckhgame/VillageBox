@@ -4,7 +4,7 @@ import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBAnimal;
 import com.ckhgame.villagebento.gui.GuiCreateAnimal;
 import com.ckhgame.villagebento.gui.GuiDropCoins;
-import com.ckhgame.villagebento.util.PlayerMsg;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

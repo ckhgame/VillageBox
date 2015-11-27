@@ -3,8 +3,7 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.misc.NameGenerator;
-import com.ckhgame.villagebento.villager.VillagerBlackSmith;
+import com.ckhgame.villagebento.profession.ProfessionBlackSmith;
 
 import net.minecraft.init.Blocks;
 
@@ -27,11 +26,8 @@ public class BuildingBlacksmithsShop extends Building {
 	
 	@Override
 	protected void generateVillagers(BuildingBuilder bb) {
-		// TODO Auto-generated method stub
-		//add villager
-	//	bb.addBuildingVillager(VillagerProfessions.Miner,"Miner1","Miner",1,0);
-		//bb.addBuildingVillager(VillagerProfessions.Miner,"Miner2","Miner",-1,0);
-		bb.addBuildingVillager(VillagerBlackSmith.class,NameGenerator.getRandomMaleName(),-3,0);
+
+		bb.addVillager(ProfessionBlackSmith.class,-3,0);
 	}
 
 	@Override

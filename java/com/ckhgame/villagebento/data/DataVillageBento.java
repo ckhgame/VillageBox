@@ -12,6 +12,7 @@ import net.minecraft.world.WorldSavedData;
 public class DataVillageBento extends WorldSavedData{
 	
 	public HashMap<Integer,DataVillage> mapDataVillage = new HashMap<Integer,DataVillage>();
+	public DataDeath dataDeath = new DataDeath();
 	public DataID dataID = new DataID();
 	public World world;
 	
@@ -34,6 +35,9 @@ public class DataVillageBento extends WorldSavedData{
 		
 		//id
 		dataID.readFromNBT((NBTTagCompound)compound.getTag(ConfigData.KeyDataVillageBentoIDs));
+		
+		//death
+		dataDeath.readFromNBT(compound);
 	}
 
 	@Override
@@ -51,19 +55,18 @@ public class DataVillageBento extends WorldSavedData{
 		NBTTagCompound c = new NBTTagCompound();
 		dataID.writeToNBT(c);
 		compound.setTag(ConfigData.KeyDataVillageBentoIDs, c);
+		
+		//death
+		dataDeath.writeToNBT(compound);
 	}
 	
 	private static DataVillageBento instanceCache = null;
 	
-	public static DataVillageBento get(){		
-		if(instanceCache != null)
-			return instanceCache;
-		
-		World w = net.minecraft.server.MinecraftServer.getServer().worldServerForDimension(0);
-		return get(w);
+	public static DataVillageBento get(){
+		return instanceCache;
 	}
 	
-	public static DataVillageBento get(World world){
+	public static DataVillageBento init(World world){
 
 		if(world.provider.dimensionId != 0) // only overworld
 			return null;
@@ -84,6 +87,11 @@ public class DataVillageBento extends WorldSavedData{
 		instanceCache = data;
 		
 		return data;
+	}
+	
+	public static void resetInstance(){
+		instanceCache = null;
+		System.out.println("=============================== reset data vb instance===================================");
 	}
 
 }

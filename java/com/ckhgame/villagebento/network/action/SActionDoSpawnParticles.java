@@ -1,6 +1,6 @@
 package com.ckhgame.villagebento.network.action;
 
-import com.ckhgame.villagebento.misc.VBParticles;
+import com.ckhgame.villagebento.util.data.VBParticles;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;

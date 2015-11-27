@@ -46,7 +46,7 @@ public class VillagerAIWatchClosest extends EntityAIBase
         }
         else
         {
-        	if(this.theWatcher.getSleeping())
+        	if(this.theWatcher.isSleeping())
         		return false;
         	
             if (this.theWatcher.getAttackTarget() != null)
@@ -72,7 +72,7 @@ public class VillagerAIWatchClosest extends EntityAIBase
      */
     public boolean continueExecuting()
     {
-    	if(this.theWatcher.getSleeping())
+    	if(this.theWatcher.isSleeping())
     		return false;
 
         return !this.closestEntity.isEntityAlive() ? false : (this.theWatcher.getDistanceSqToEntity(this.closestEntity) > (double)(this.maxDistanceForPlayer * this.maxDistanceForPlayer) ? false : this.lookTime > 0);

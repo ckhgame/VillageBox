@@ -2,7 +2,6 @@ package com.ckhgame.villagebento.building;
 
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.villager.VillagerMerchant;
 
 import net.minecraft.init.Blocks;
 

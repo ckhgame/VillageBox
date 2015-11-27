@@ -1,14 +1,8 @@
 package com.ckhgame.villagebento.network.action;
 
-import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.DataVillager;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.data.helper.HelperDataVrComp;
-import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.helper.HelperPlayer;
 
-import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 
@@ -49,7 +43,7 @@ public class ActionDoDropCoins extends Action {
 		
 		EntityPlayer entityPlayer = (EntityPlayer)MinecraftServer.getServer().worldServerForDimension(0).getEntityByID(entityPlayerID);
 		
-	    HelperDataVrComp.dropCurrency(entityPlayer, dropAmount);
+	    HelperPlayer.dropCurrency(entityPlayer, dropAmount);
 		
 		return null;
 	}

@@ -2,10 +2,10 @@ package com.ckhgame.villagebento.item;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.event.EventRenderVillageOutlines;
 import com.ckhgame.villagebento.network.VBNetwork;
 import com.ckhgame.villagebento.network.message.MessageVillageOutlinesChanged;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,7 +34,7 @@ public class ItemVillageStick extends Item {
 			else{
 				//server				
 				
-				DataVillageBento dataVB = DataVillageBento.get(world);
+				DataVillageBento dataVB = DataVillageBento.get();
 				
 				MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
 				msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB,p.getDisplayName());

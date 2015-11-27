@@ -3,8 +3,8 @@ package com.ckhgame.villagebento.block;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.util.PlayerMsg;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -30,7 +30,7 @@ public class BlockVillagerHomeTP extends Block {
 			DataBuilding db = HelperDataVB.findBuildingByPos(DataVillageBento.get(), x, y, z);
 			if(db != null){
 				world.setBlockToAir(x, y, z);			
-				HelperDataVB.tpEntityVillagersInbuildingToInitPos(DataVillageBento.get(), db);
+				HelperDataVB.tpEntityVillagersInbuildingToInitPos(db);
 			}
 			else{
 				PlayerMsg.send(player, "You can't use it here!");

@@ -127,7 +127,7 @@ item.ItemWhisky.name=威士忌
 item.ItemVodka.name=伏特加
 item.ItemCookVine.name=料酒
 
-item.ItemIronFishingPool.name=铁制钓鱼竿
+item.ItemIronFishingPole.name=铁制钓鱼竿
 item.ItemIronBox.name=铁宝箱
 item.ItemWoodBox.name=木宝箱
 item.ItemGoldenBox.name=金宝箱

@@ -6,9 +6,14 @@ import com.ckhgame.villagebento.building.fixdirection.FixDirection;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
-import com.ckhgame.villagebento.util.Vec3Int;
-import com.ckhgame.villagebento.villager.Villager;
+import com.ckhgame.villagebento.entity.villager.EntityVBGuard;
+import com.ckhgame.villagebento.entity.villager.EntityVBNightbird;
+import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.profession.Profession;
+import com.ckhgame.villagebento.util.data.Vec3Int;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.tool.NameGenerator;
+import com.ckhgame.villagebento.util.village.VillagerSpawner;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -19,7 +24,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.AxisAlignedBB;
@@ -60,7 +64,7 @@ public class BuildingBuilder {
 	}
 	
 	public boolean generateData(int type,int sizeType){
-		DataVillageBento villageBentoData = DataVillageBento.get(world);		
+		DataVillageBento villageBentoData = DataVillageBento.get();		
 
 		data = null;
 		
@@ -253,7 +257,7 @@ public class BuildingBuilder {
 	}
 	
 	//villagers
-	public void addBuildingVillager(Class<? extends Villager> c, String name, int dx, int dz){
+	public void addVillager(Class<? extends Profession> pc, int dx, int dz){
 		
 		int fx = dx;
 		int fz = dz;
@@ -275,9 +279,10 @@ public class BuildingBuilder {
 			default://East
 				break;
 		}
+
+		Profession profession = Profession.registry.get(pc);
+		String name = profession.isMale()?NameGenerator.getRandomMaleName():NameGenerator.getRandomFemaleName();
 		
-		Villager.spawn(	world,
-						data.x + fx, data.y, data.z + fz, 
-						c, name, data.id);
+		VillagerSpawner.spawn(world, pc, data.id, data.x + fx, data.y, data.z + fz,name);
 	}
 }

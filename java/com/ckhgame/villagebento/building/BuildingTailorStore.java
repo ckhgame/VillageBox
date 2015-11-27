@@ -3,8 +3,7 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.misc.NameGenerator;
-import com.ckhgame.villagebento.villager.VillagerTailor;
+import com.ckhgame.villagebento.profession.ProfessionTailor;
 
 import net.minecraft.init.Blocks;
 
@@ -29,7 +28,7 @@ public class BuildingTailorStore extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerTailor.class,NameGenerator.getRandomMaleName(),-2,0);
+		bb.addVillager(ProfessionTailor.class,-2,0);
 	}
 
 	@Override

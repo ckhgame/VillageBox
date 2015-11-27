@@ -10,7 +10,7 @@ import com.ckhgame.villagebento.building.scanning.HelperScanning;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -44,7 +44,7 @@ public class BlockBuildingScanner extends Block {
 		
 		if(world.isRemote || world.provider.dimensionId !=0) return true;
 		else{
-			villageBentoData = DataVillageBento.get(world);
+			villageBentoData = DataVillageBento.get();
 			
 			scanBuilding(world,x,y,z);		
 			outputScanResults();
@@ -60,7 +60,7 @@ public class BlockBuildingScanner extends Block {
 		
 		prefab = null;		
 		
-		DataVillageBento dataVB = DataVillageBento.get(world);
+		DataVillageBento dataVB = DataVillageBento.get();
 		
 		//get building data
 		DataBuilding bd = HelperDataVB.findBuildingByPos(dataVB,x,y,z);

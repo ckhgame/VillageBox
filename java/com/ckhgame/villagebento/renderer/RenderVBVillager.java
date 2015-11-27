@@ -3,12 +3,10 @@ package com.ckhgame.villagebento.renderer;
 import org.lwjgl.opengl.GL11;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.renderer.gui.RenderGuiLiving;
 
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.OpenGlHelper;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -54,11 +52,16 @@ public class RenderVBVillager extends RenderBiped
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityVBVillager p)
+    protected ResourceLocation getEntityTexture(EntityVBVillager vr)
     {
-    	ResourceLocation t = p.getSkinTexture();
+    	Profession pro = vr.getProfession();
+    	if(pro == null)
+    		return defaultTextures;
+    	
+    	ResourceLocation t = pro.getSkin();
     	if(t == null)
-    		t = defaultTextures;
+    		return defaultTextures;
+    	
     	return t;
     }
 
@@ -160,9 +163,9 @@ public class RenderVBVillager extends RenderBiped
 
 	protected void rotateCorpse(EntityVBVillager p, float p_77043_2_, float p_77043_3_, float p_77043_4_)
     {		
-        if (p.isEntityAlive() && p.getSleeping())
+        if (p.isEntityAlive() && p.isSleeping())
         {
-            GL11.glRotatef(p.getBedOrientationInDegrees(), 0.0F, 1.0F, 0.0F);
+            GL11.glRotatef(p.getSleepingOrientation(), 0.0F, 1.0F, 0.0F);
             GL11.glRotatef(this.getDeathMaxRotation(p), 0.0F, 0.0F, 1.0F);
             GL11.glRotatef(270.0F, 0.0F, 1.0F, 0.0F);
             GL11.glTranslatef(0, -0.5F, -0.1F);

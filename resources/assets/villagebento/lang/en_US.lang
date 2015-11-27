@@ -127,7 +127,7 @@ item.ItemWhisky.name=Whisky
 item.ItemVodka.name=Vodka
 item.ItemCookVine.name=Cooking Wine
 
-item.ItemIronFishingPool.name=Iron Fishing Pool
+item.ItemIronFishingPole.name=Iron Fishing Pool
 item.ItemIronBox.name=Iron Box
 item.ItemWoodBox.name=Wooden Box
 item.ItemGoldenBox.name=Golden Box

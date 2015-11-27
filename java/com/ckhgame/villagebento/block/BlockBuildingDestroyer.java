@@ -3,10 +3,10 @@ package com.ckhgame.villagebento.block;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.data.helper.HelperDataVB;
 import com.ckhgame.villagebento.network.VBNetwork;
 import com.ckhgame.villagebento.network.message.MessageVillageOutlinesChanged;
-import com.ckhgame.villagebento.util.PlayerMsg;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -31,7 +31,7 @@ public class BlockBuildingDestroyer extends Block {
 			
 			if(Building.destroy(world, x, y, z)){
 				//refresh village outlines
-				DataVillageBento dataVB = DataVillageBento.get(world);			
+				DataVillageBento dataVB = DataVillageBento.get();			
 				MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
 				msg.listOutlines = HelperDataVB.getVillageOutlines(dataVB,player.getDisplayName());			
 				VBNetwork.networkWrapper.sendToAll(msg);

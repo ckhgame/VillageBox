@@ -1,29 +1,11 @@
 package com.ckhgame.villagebento.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
-import com.ckhgame.villagebento.block.BlockVillageAnimal;
-import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.item.ModItems;
-import com.ckhgame.villagebento.misc.HelperString;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoCreateAnimal;
-import com.ckhgame.villagebento.network.action.ActionDoDropCoins;
-import com.ckhgame.villagebento.villager.Villager;
-import com.ckhgame.villagebento.villager.component.VillagerComponent;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public class GuiCreateAnimal extends GuiScreen {
 

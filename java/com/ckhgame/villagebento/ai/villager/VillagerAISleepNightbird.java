@@ -4,8 +4,8 @@ import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.misc.VillagerNavigator;
-import com.ckhgame.villagebento.util.VillageTime;
+import com.ckhgame.villagebento.util.village.VillageTime;
+import com.ckhgame.villagebento.util.village.VillagerNavigator;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.Vec3;
@@ -30,7 +30,7 @@ public class VillagerAISleepNightbird extends EntityAIBase
     		return false;
     	
     	//if the one has already been sleeping, just let it keep sleeping... 
-    	if(this.entity.getSleeping())
+    	if(this.entity.isSleeping())
     		return true;
     	else{
     		//if now it's not sleeping, we need to move it to the bed 
@@ -57,9 +57,9 @@ public class VillagerAISleepNightbird extends EntityAIBase
     }
 
 	public void updateTask() {
-		if(!this.entity.getSleeping() && this.entity.isNearBed()){
+		if(!this.entity.isSleeping() && this.entity.isNearBed()){
 			onSleep();
-			this.entity.setSleeping(true);
+			this.entity.startSleeping();
 		}
 	}
 	
@@ -72,16 +72,16 @@ public class VillagerAISleepNightbird extends EntityAIBase
      */
     public void startExecuting()
     {
-    	if(!this.entity.getSleeping()){
-    		VillagerNavigator.tryMoveToXYZ(entity, 	this.entity.bedPosition.xCoord + 0.5D,
-					this.entity.bedPosition.yCoord + 1.0D,
-					this.entity.bedPosition.zCoord + 0.5D); 
+    	if(!this.entity.isSleeping()){
+    		VillagerNavigator.tryMoveToXYZ(entity, 	this.entity.bedPosition.x + 0.5D,
+					this.entity.bedPosition.y + 1.0D,
+					this.entity.bedPosition.z + 0.5D); 
     	}
     }
 
 	@Override
 	public void resetTask() {
-		this.entity.setSleeping(false);
+		this.entity.endSleeping();
 	}
     
     

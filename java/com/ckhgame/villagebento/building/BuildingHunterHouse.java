@@ -3,8 +3,7 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.misc.NameGenerator;
-import com.ckhgame.villagebento.villager.VillagerHunter;
+import com.ckhgame.villagebento.profession.ProfessionHunter;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -30,7 +29,7 @@ public class BuildingHunterHouse extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerHunter.class,NameGenerator.getRandomMaleName(),0,0);
+		bb.addVillager(ProfessionHunter.class,0,0 );
 	}
 
 	@Override

@@ -1,20 +1,11 @@
 package com.ckhgame.villagebento.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
-import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
-import com.ckhgame.villagebento.misc.HelperString;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoDropCoins;
-import com.ckhgame.villagebento.villager.Villager;
-import com.ckhgame.villagebento.villager.component.VillagerComponent;
+import com.ckhgame.villagebento.util.tool.HelperString;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;

@@ -9,7 +9,7 @@ import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.util.BoxWithColor;
+import com.ckhgame.villagebento.util.data.BoxWithColor;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;

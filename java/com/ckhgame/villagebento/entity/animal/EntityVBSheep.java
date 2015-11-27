@@ -1,7 +1,7 @@
 package com.ckhgame.villagebento.entity.animal;
 
 import com.ckhgame.villagebento.item.ModItems;
-import com.ckhgame.villagebento.util.PlayerMsg;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -1,19 +1,9 @@
 package com.ckhgame.villagebento.gui;
 
-import java.util.List;
+import com.ckhgame.villagebento.profession.Profession;
+import com.ckhgame.villagebento.util.data.VBCompResult;
 
-import org.lwjgl.opengl.GL11;
-
-import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.network.action.Action;
-import com.ckhgame.villagebento.network.action.ActionGetVillagerLevel;
-import com.ckhgame.villagebento.network.action.ActionGetVillagerName;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiLabel;
-import net.minecraft.client.gui.GuiScreen;
 
 public class GuiVillagerAbout extends GuiVillager {
 	@Override
@@ -23,12 +13,14 @@ public class GuiVillagerAbout extends GuiVillager {
 	}
 	@Override
 	public void onDrawScreen() {		
-
-		String infoProfession = "Profession: " + this.villager.getProfessionName();
-		String infoLevel = "Level: " + (this.entityVillager.level + 1) + (this.villager.isMaxLevel(this.entityVillager.level)?" (Max)":"");
-		int levelexp = this.villager.getNextLevelExp(this.entityVillager.level);
-		String infoExp = "Exp: " + (levelexp>=0?(this.entityVillager.exp + " / " + levelexp):"--/--");
-		String infoProDesction = this.villager.getProfessionDescription();
+		
+		int vrLvl = this.entityVBVillager.getLevel();
+		Profession profession = this.entityVBVillager.getProfession();
+		String infoProfession = "Profession: " + profession.getProfessionName();
+		String infoLevel = "Level: " + (vrLvl + 1) + (profession.isMaxLevel(vrLvl)?" (Max)":"");
+		int levelexp = profession.getNextLevelExp(vrLvl);	
+		String infoExp = "Exp: " + (levelexp>=0?(this.entityVBVillager.getExp() + " / " + levelexp):"--/--");
+		String infoProDesction = profession.getProfessionDescription();
 		
 		this.fontRendererObj.drawString(infoProfession, fieldCompLeft + 4,fieldCompTop + 2, 0xFFFFFFFF);
 		this.fontRendererObj.drawString(infoLevel, fieldCompLeft + 4,fieldCompTop + 17, 0xFFFFFFFF);
@@ -41,9 +33,7 @@ public class GuiVillagerAbout extends GuiVillager {
 
 	@Override
 	public void onInitGui() {
-		// TODO Auto-generated method stub
-		Action.send(ActionGetVillagerLevel.class, new Object[]{this.entityVillager.dataVillagerID,this.entityVillager.getEntityId()});
-		setChatContent(this.villager.getVillagerChat().getRandom(this.entityVillager.level));
+		setChatContent(this.entityVBVillager.getProfession().getVillagerChat().getRandom(this.entityVBVillager.getLevel()));
 	}
 
 	@Override
@@ -51,9 +41,10 @@ public class GuiVillagerAbout extends GuiVillager {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	@Override
-	public void updateWithData(int data) {
+	public void onSyncCompleted() {
+		// TODO Auto-generated method stub
 		
 	}
 	

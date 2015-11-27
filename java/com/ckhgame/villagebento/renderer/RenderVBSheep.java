@@ -4,8 +4,8 @@ import org.lwjgl.opengl.GL11;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
-import com.ckhgame.villagebento.models.ModelVBSheep1;
-import com.ckhgame.villagebento.models.ModelVBSheep2;
+import com.ckhgame.villagebento.model.ModelVBSheep1;
+import com.ckhgame.villagebento.model.ModelVBSheep2;
 import com.ckhgame.villagebento.renderer.gui.RenderGuiAnimal;
 
 import net.minecraft.client.renderer.entity.RenderLiving;

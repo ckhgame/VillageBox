@@ -3,9 +3,8 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.misc.NameGenerator;
-import com.ckhgame.villagebento.villager.VillagerBakerAssistant;
-import com.ckhgame.villagebento.villager.VillagerProBaker;
+import com.ckhgame.villagebento.profession.ProfessionBakerAssistant;
+import com.ckhgame.villagebento.profession.ProfessionProBaker;
 
 import net.minecraft.init.Blocks;
 
@@ -30,8 +29,8 @@ public class BuildingLargeBakery extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerProBaker.class,NameGenerator.getRandomFemaleName(),-2,0);
-		bb.addBuildingVillager(VillagerBakerAssistant.class,NameGenerator.getRandomMaleName(),-3,0);
+		bb.addVillager(ProfessionProBaker.class,-2,0 );
+		bb.addVillager(ProfessionBakerAssistant.class,-3,0 );
 	}
 
 	@Override

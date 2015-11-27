@@ -3,9 +3,8 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.misc.NameGenerator;
-import com.ckhgame.villagebento.villager.VillagerCaptainSoldier;
-import com.ckhgame.villagebento.villager.VillagerKnight;
+import com.ckhgame.villagebento.profession.ProfessionCaptainSoldier;
+import com.ckhgame.villagebento.profession.ProfessionKnight;
 
 import net.minecraft.init.Blocks;
 
@@ -30,10 +29,10 @@ public class BuildingLargeMilitaryCamp extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerKnight.class,NameGenerator.getRandomMaleName(),-3,0);
-		bb.addBuildingVillager(VillagerKnight.class,NameGenerator.getRandomMaleName(),-3,1);
-		bb.addBuildingVillager(VillagerKnight.class,NameGenerator.getRandomMaleName(),-3,-1);
-		bb.addBuildingVillager(VillagerCaptainSoldier.class,NameGenerator.getRandomMaleName(),-4,0);
+		bb.addVillager(ProfessionKnight.class,-3,0);
+		bb.addVillager(ProfessionKnight.class,-3,1);
+		bb.addVillager(ProfessionKnight.class,-3,-1);
+		bb.addVillager(ProfessionCaptainSoldier.class,-4,0);
 	}
 
 	@Override

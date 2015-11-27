@@ -5,27 +5,18 @@ public class ModActions {
 		
 		//client ->server
 		int id = 0;
-		Action.registry.register(id++, new ActionGetVillagerName());
-		Action.registry.register(id++, new ActionGetVillagerLevel());
-		Action.registry.register(id++, new ActionDoVillagerChat());
-		Action.registry.register(id++, new ActionInitVillager());
-		Action.registry.register(id++, new ActionGetVillagerBuy());
 		Action.registry.register(id++, new ActionDoVillagerBuy());
-		Action.registry.register(id++, new ActionGetVillagerSell());
 		Action.registry.register(id++, new ActionDoVillagerSell());
-		Action.registry.register(id++, new ActionGetVillagerWork());
+		Action.registry.register(id++, new ActionDoVillagerAction());
 		Action.registry.register(id++, new ActionDoVillagerStartWork());
 		Action.registry.register(id++, new ActionDoVillagerTakeWorkOutput());
-		Action.registry.register(id++, new ActionGetVillagerWorkList());
 		Action.registry.register(id++, new ActionDoDropCoins());
-		Action.registry.register(id++, new ActionGetVillagerActionList());
-		Action.registry.register(id++, new ActionDoVillagerBet());
 		Action.registry.register(id++, new ActionDoCreateAnimal());
+		Action.registry.register(id++, new ActionSyncVillagerComp());
 		
 		
 		//server -> clinet
 		id = 1000;
-		Action.registry.register(id++, new SActionUpdateVillagerSleep());
 		Action.registry.register(id++, new SActionDoSpawnParticles());
 	}
 }

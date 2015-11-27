@@ -3,10 +3,7 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.misc.NameGenerator;
-import com.ckhgame.villagebento.villager.VillagerFisherman;
-import com.ckhgame.villagebento.villager.VillagerMiner;
-import com.ckhgame.villagebento.villager.VillagerVillageElder;
+import com.ckhgame.villagebento.profession.ProfessionFisherman;
 
 import net.minecraft.init.Blocks;
 
@@ -31,7 +28,7 @@ public class BuildingFishingStore extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addBuildingVillager(VillagerFisherman.class,NameGenerator.getRandomMaleName(),0,0);
+		bb.addVillager(ProfessionFisherman.class,0,0 );
 	}
 
 	@Override
