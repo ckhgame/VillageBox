@@ -192,12 +192,12 @@ public class ModItems {
         GameRegistry.registerItem(itemGoldenBox = new ItemVB("ItemGoldenBox",null,CreativeTabs.tabMisc),"ItemGoldenBox");
 
         //Books
-        GameRegistry.registerItem(itemPlantBook = new ItemVB("ItemPlantBook",null,CreativeTabs.tabMisc),"ItemPlantBook");
-        GameRegistry.registerItem(itemAnimalBook = new ItemVB("ItemAnimalBook",null,CreativeTabs.tabMisc),"ItemAnimalBook");
-        GameRegistry.registerItem(itemCookingBookI = new ItemVB("ItemCookingBookI",null,CreativeTabs.tabMisc),"ItemCookingBookI");
-        GameRegistry.registerItem(itemCookingBookII = new ItemVB("ItemCookingBookII",null,CreativeTabs.tabMisc),"ItemCookingBookII");
-        GameRegistry.registerItem(itemBuildingsBook = new ItemVB("ItemBuildingsBook",null,CreativeTabs.tabMisc),"ItemBuildingsBook");
-        GameRegistry.registerItem(itemNPCBook = new ItemVB("ItemNPCBook",null,CreativeTabs.tabMisc),"ItemNPCBook");
+        GameRegistry.registerItem(itemPlantBook = new ItemVBBook("ItemPlantBook",null,CreativeTabs.tabMisc,"PlantBook"),"ItemPlantBook");
+        GameRegistry.registerItem(itemAnimalBook = new ItemVBBook("ItemAnimalBook",null,CreativeTabs.tabMisc,"AnimalBook"),"ItemAnimalBook");
+        GameRegistry.registerItem(itemCookingBookI = new ItemVBBook("ItemCookingBookI",null,CreativeTabs.tabMisc,"CookingBookI"),"ItemCookingBookI");
+        GameRegistry.registerItem(itemCookingBookII = new ItemVBBook("ItemCookingBookII",null,CreativeTabs.tabMisc,"CookingBookII"),"ItemCookingBookII");
+        GameRegistry.registerItem(itemBuildingsBook = new ItemVBBook("ItemBuildingsBook",null,CreativeTabs.tabMisc,"BuildingsBook"),"ItemBuildingsBook");
+        GameRegistry.registerItem(itemNPCBook = new ItemVBBook("ItemNPCBook",null,CreativeTabs.tabMisc,"NPCBook"),"ItemNPCBook");
 
         
         

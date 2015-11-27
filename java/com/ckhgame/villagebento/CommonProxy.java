@@ -1,6 +1,7 @@
 package com.ckhgame.villagebento;
 
 import com.ckhgame.villagebento.block.ModBlocks;
+import com.ckhgame.villagebento.book.VBBooks;
 import com.ckhgame.villagebento.building.ModBuildings;
 import com.ckhgame.villagebento.config.ConfigDev;
 import com.ckhgame.villagebento.entity.ModEntities;
@@ -41,6 +42,7 @@ public class CommonProxy {
 		ModActions.init();
 		
 		ItemPrice.init();
+		VBBooks.init();
 	}
 
 	public void init(FMLInitializationEvent e) {
