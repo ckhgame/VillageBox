@@ -15,6 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.Tessellator;
 
 public abstract class GuiVillager extends GuiScreen {
 
@@ -33,10 +34,14 @@ public abstract class GuiVillager extends GuiScreen {
 	protected String chatContentDisplay = "";
 	
 	//filed locations
+	protected int fieldVillagerHeadLeft;
+	protected int fieldVillagerHeadTop;
 	protected int fieldChatLeft;
 	protected int fieldChatTop;
 	protected int fieldCompLeft;
 	protected int fieldCompTop;
+	
+	protected int fieldVillagerHeadTopOffset = 0;
 	
 	//component button id start
 	protected int compStartButtonID = 100;
@@ -44,6 +49,7 @@ public abstract class GuiVillager extends GuiScreen {
 	protected void setChatContent(String chatContent){
 		this.chatContent = chatContent;
 		chatContentDisplay = "";
+		fieldVillagerHeadTopOffset = -4;
 	}
 	
 	public void setVillageComponent(VillagerComponent villagerComponent){
@@ -70,14 +76,68 @@ public abstract class GuiVillager extends GuiScreen {
 		drawRect(left, top, left + width, top + height, 0xFF555555);
 	}
 	
+	private void drawVillagerHead(int left, int top, int width, int height){
+		this.mc.getTextureManager().bindTexture(this.entityVBVillager.getProfession().getSkin());
+		
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		double u = 0.125D;
+		double uw = 0.125D;
+		double v = 0.25D;
+		double vh = 0.25D;
+        Tessellator tessellator = Tessellator.instance;
+        tessellator.startDrawingQuads();
+        tessellator.addVertexWithUV((double)(left), (double)(top + height), (double)this.zLevel, u, v + vh);
+        tessellator.addVertexWithUV((double)(left + width), (double)(top + height), (double)this.zLevel, u + uw, v + vh);
+        tessellator.addVertexWithUV((double)(left + width), (double)(top), (double)this.zLevel, u + uw, v);
+        tessellator.addVertexWithUV((double)(left), (double)(top), (double)this.zLevel, u, v);
+        tessellator.draw();
+        
+        //mouth
+        
+        if(chatContent != null && chatContentDisplay != null){
+        	int lc = chatContent.length();
+            int lcd = chatContentDisplay.length();
+            if(lcd < lc - 5){
+            	int d = lcd % 10;
+            	if(d < 5){
+                    GL11.glColor4f(0.5F, 0.2F, 0.2F, 1.0F);
+                    double mx = left + 0.375D * width;
+                    double my = top + 0.875D * height;
+                    double mw = 0.25D * width;
+                    double mh = 0.125D * height;
+                    double z = (double)this.zLevel + 0.0001D;
+                    
+                    GL11.glEnable(GL11.GL_BLEND);
+                    GL11.glDisable(GL11.GL_TEXTURE_2D);        
+                    tessellator.startDrawingQuads();
+                    tessellator.addVertex(mx, my + mh, z);
+                    tessellator.addVertex(mx + mw, my + mh, z);
+                    tessellator.addVertex(mx + mw, my, z);
+                    tessellator.addVertex(mx, my, z);
+                    tessellator.draw();
+                    GL11.glEnable(GL11.GL_TEXTURE_2D);
+                    GL11.glDisable(GL11.GL_BLEND);
+            	}
+            }
+        }
+	}
+	
 	@Override
 	public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
 		
 		this.drawDefaultBackground();
 		
+		//GUI LAYOUT: Right Top Villager Head Field
+		//head jump
+		if(fieldVillagerHeadTopOffset < 0){
+			fieldVillagerHeadTopOffset++;
+		}
+		drawFieldBackground(fieldVillagerHeadLeft,fieldVillagerHeadTop + fieldVillagerHeadTopOffset,30,30);
+		drawVillagerHead(fieldVillagerHeadLeft + 3, fieldVillagerHeadTop + fieldVillagerHeadTopOffset + 3, 24, 24);
+		
 		//GUI LAYOUT: Right Top Chat Field
 		
-		drawFieldBackground(fieldChatLeft,fieldChatTop,200,30);
+		drawFieldBackground(fieldChatLeft,fieldChatTop,166,30);
 		//display name and chat content
 		String name = this.entityVBVillager.getName() + ":";
 
@@ -153,7 +213,9 @@ public abstract class GuiVillager extends GuiScreen {
 		//leave button
 		this.buttonList.add(new GuiButton(99999, this.width /2 - 130,this.height /2 + 64,46,20,"Leave"));
 		
-		fieldChatLeft = this.width / 2 - 80;
+		fieldVillagerHeadLeft = this.width / 2 - 80;
+		fieldVillagerHeadTop = this.height / 2 - 60;
+		fieldChatLeft = this.width / 2 - 46;
 		fieldChatTop = this.height /2 - 60;
 		fieldCompLeft = this.width / 2 - 80;
 		fieldCompTop = this.height /2 - 20;
