@@ -23,7 +23,7 @@ public class VillagerQuestDesign {
 	}
 	
 	public int getMinLevel(){
-		return this.getMinLevel();
+		return this.minLevel;
 	}
 	
 	public ArrayList<ItemStack> getNeeds(){

@@ -3,11 +3,10 @@ package com.ckhgame.villagebento.villagercomponent;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.config.ConfigData;
-import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.gui.GuiVillagerQuest;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.tool.VBRandom;
-import com.ckhgame.villagebento.villagercomponent.VillagerCompWork.Work;
 import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuest;
 import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuestDesign;
 
@@ -43,6 +42,10 @@ public class VillagerCompQuest extends VillagerComponent {
 	
 	private ArrayList<VillagerQuest> questListCurrent = new ArrayList<VillagerQuest>();
 
+	public ArrayList<VillagerQuest> getQuestListCurrent(){
+		return this.questListCurrent;
+	}
+	
 	public void refreshQuestListCurrent(int time){		
 		//update the left hours of all quests
 		ArrayList<VillagerQuest> removes = new ArrayList<VillagerQuest>();
@@ -59,7 +62,8 @@ public class VillagerCompQuest extends VillagerComponent {
 		
 		//occasionally generate random quest on the beginning of a day...
 		if(time == 0){
-			if(VBRandom.getRand().nextInt(7) == 0){ //chance to create a new quest
+			if(VBRandom.getRand().nextInt(1) == 0){ //chance to create a new quest
+				System.out.println("bbbbbbbbb quest");
 				ArrayList<VillagerQuestDesign> designs = new  ArrayList<VillagerQuestDesign>();
 				for(VillagerQuestDesign design : this.questDesignList){
 					if(design.getMinLevel() <= this.getVillager().getLevel()){
@@ -69,8 +73,11 @@ public class VillagerCompQuest extends VillagerComponent {
 				if(designs.size() > 0){
 					VillagerQuestDesign selected = designs.get(VBRandom.getRand().nextInt(designs.size()));
 					VillagerQuest quest = selected.generateRandomQuest();
-					if(quest != null)
+					if(quest != null){
 						questListCurrent.add(quest);
+						System.out.println("aaaaaaaaaaaaaaaaa quest");
+					}
+						
 				}
 			}
 		}
