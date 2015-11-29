@@ -61,6 +61,14 @@ public class ConfigData {
 	public static final String KeyVillagerCompWorkHoursLeft			= "vcwhl";
 	public static final String KeyVillagerCompWorkOutput			= "vcwo";
 	
+	//villager component quest
+	public static final String KeyVillagerCompQuestListCurrent		= "vcqlc";
+	public static final String KeyVillagerCompQuestTitle			= "vcqt";
+	public static final String KeyVillagerCompQuestDescription		= "vcqd";
+	public static final String KeyVillagerCompQuestNeed				= "vcqn";
+	public static final String KeyVillagerCompQuestReward			= "vcqr";
+	public static final String KeyVillagerCompQuestTimeLeft			= "vcqtl";
+	
 	//villager component action
 	public static final String KeyVillagerCompActionCurrentIdxList	= "vcacl";
 	
