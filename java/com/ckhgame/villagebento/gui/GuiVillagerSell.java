@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.gui;
 import java.util.ArrayList;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerSell;
@@ -13,6 +14,7 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 
 public class GuiVillagerSell extends GuiVillager {
@@ -42,15 +44,11 @@ public class GuiVillagerSell extends GuiVillager {
 		drawRect(left - 2, top - 2, left + 160 + 2, top + 24 + 2, 0xFF888888);	
 		drawRect(left, top, left + 160, top + 24, 0xFF666666);	
 		if(itemStack != null){
-			//item name
-			fontRendererObj.drawString(itemStack.getDisplayName(), left + 28, top + 4, 0xFFFFFFFF,true);
 			//item price and how many items left
-			String priceAndNum = "price:" + price + ", want:" + itemStack.stackSize;
-			fontRendererObj.drawString(priceAndNum, left + 28, top + 14, 0xFFFFFFDD,true);
-			//item icon
-			drawRect(left + 3, top + 3, left + 21, top + 21, 0xFF333333);
-			drawRect(left + 4, top + 4, left + 20, top + 20, 0xFFAAAAAA);	
-			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left + 4, top + 4);
+			String textPrice = "price: " + price;
+			fontRendererObj.drawString(textPrice, left + 28, top + 10, 0xFFFFFFDD,true);
+			//item
+			this.drawItem(left + 4, top + 4, itemStack);
 			
 			if(!buttonRows[row].visible)
 				buttonRows[row].visible = true;

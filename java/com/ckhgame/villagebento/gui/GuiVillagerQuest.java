@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.gui;
 import java.util.ArrayList;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.action.Action;
@@ -14,6 +15,7 @@ import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuest;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 
 public class GuiVillagerQuest extends GuiVillager {
@@ -120,19 +122,7 @@ public class GuiVillagerQuest extends GuiVillager {
 		}
 	}
 	
-	private void drawItem(int left, int top,ItemStack itemStack){
-		//item icon
-		drawRect(left + 3, top + 3, left + 21, top + 21, 0xFF333333);
-		drawRect(left + 4, top + 4, left + 20, top + 20, 0xFFAAAAAA);	
-		
-		GL11.glEnable(GL11.GL_LIGHTING);
-		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left + 4, top + 4);
-		GL11.glDisable(GL11.GL_LIGHTING);
-		//name
-		int num = itemStack.getItem() == ModItems.itemVillageCurrency?itemStack.getItemDamage() : itemStack.stackSize; //display meta as total number if it's village currency
-		String text = "x" + num;
-		this.fontRendererObj.drawString(text , left + 24, top + 8, 0xFFFFFFFF);
-	}
+	
 	
 	private void drawQuestDetails(){
 		

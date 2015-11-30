@@ -3,9 +3,11 @@ package com.ckhgame.villagebento.gui;
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
 import com.ckhgame.villagebento.util.data.VBCompResult;
@@ -15,7 +17,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.item.ItemStack;
 
 public abstract class GuiVillager extends GuiScreen {
 
@@ -40,6 +44,9 @@ public abstract class GuiVillager extends GuiScreen {
 	protected int fieldChatTop;
 	protected int fieldCompLeft;
 	protected int fieldCompTop;
+	
+	//mouse
+	protected int mouseX,mouseY;
 	
 	protected int fieldVillagerHeadTopOffset = 0;
 	
@@ -68,6 +75,44 @@ public abstract class GuiVillager extends GuiScreen {
     {
 		font.drawStringWithShadow(text, left - font.getStringWidth(text), top, c);
     }
+	
+	protected boolean isMouseIn(int left, int top, int width, int height){
+		if(	this.mouseX < left || 
+			this.mouseX > left + width ||
+			this.mouseY < top || 
+			this.mouseY >= top + height){
+			return false;
+		}
+		return true;
+	}
+	
+	protected void drawItem(int left, int top, ItemStack itemStack){
+		//item icon
+		drawRect(left - 2, top - 2, left + 18, top + 18, 0xFF888888);
+		drawRect(left - 1, top - 1, left + 17, top + 17, 0xFFCCCCCC);
+		drawRect(left, top, left + 16, top + 16, 0xFFAAAAAA);	
+		
+		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+		RenderHelper.enableGUIStandardItemLighting();
+		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left, top);
+		if(itemStack.getItem() == ModItems.itemVillageCurrency){
+			String num = "x" + itemStack.getItemDamage();
+			fontRendererObj.drawString(num, left + 16, top + 6, 0xFFFFFFFF);
+		}
+		else{
+			String num = String.valueOf(itemStack.stackSize);
+			itemRender.renderItemOverlayIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left, top, num);
+		}
+		
+		RenderHelper.disableStandardItemLighting();
+		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+
+		if(isMouseIn(left,top,16,16)){
+			this.renderToolTip(itemStack, this.mouseX, this.mouseY);
+		}
+			
+		GL11.glDisable(GL11.GL_LIGHTING);
+	}
 	
 	private void drawFieldBackground(int left,int top,int width,int height){
 		
@@ -124,6 +169,9 @@ public abstract class GuiVillager extends GuiScreen {
 	
 	@Override
 	public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
+		
+		this.mouseX = p_73863_1_;
+		this.mouseY = p_73863_2_;
 		
 		this.drawDefaultBackground();
 		
