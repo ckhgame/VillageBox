@@ -10,13 +10,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class VillagerQuest implements IData, ISync{
+	
+	public int id;
 	public String title;
 	public String description;
 	public ItemStack need;
 	public ItemStack reward;
 	public int timeLeft;
 	
-	public VillagerQuest(String title,String description,ItemStack need,ItemStack reward){
+	public VillagerQuest(int id,String title,String description,ItemStack need,ItemStack reward){
+		this.id = id;
 		this.title = (title == null?"<empty>":title);
 		this.description = (description == null?"<empty>":description);
 		this.need = need;
@@ -29,6 +32,7 @@ public class VillagerQuest implements IData, ISync{
 
 	@Override
 	public void syneWrite(ByteBuf buf) {
+		buf.writeInt(this.id);
 		ByteBufUtils.writeUTF8String(buf, this.title);
 		ByteBufUtils.writeUTF8String(buf, this.description);
 		ByteBufUtils.writeItemStack(buf, this.need);
@@ -38,6 +42,7 @@ public class VillagerQuest implements IData, ISync{
 
 	@Override
 	public void syneRead(ByteBuf buf) {
+		this.id = buf.readInt();
 		this.title = ByteBufUtils.readUTF8String(buf);
 		this.description = ByteBufUtils.readUTF8String(buf);
 		this.need = ByteBufUtils.readItemStack(buf);
@@ -47,6 +52,7 @@ public class VillagerQuest implements IData, ISync{
 
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
+		compound.setInteger(ConfigData.KeyVillagerCompQuestQuestID, this.id);
 		compound.setString(ConfigData.KeyVillagerCompQuestTitle, this.title);
 		compound.setString(ConfigData.KeyVillagerCompQuestDescription, this.description);
 		NBTTagCompound tag = new NBTTagCompound();
@@ -60,6 +66,7 @@ public class VillagerQuest implements IData, ISync{
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
+		this.id = compound.getInteger(ConfigData.KeyVillagerCompQuestQuestID);
 		this.title = compound.getString(ConfigData.KeyVillagerCompQuestTitle);
 		this.description = compound.getString(ConfigData.KeyVillagerCompQuestDescription);
 		this.need = ItemStack.loadItemStackFromNBT(compound.getCompoundTag(ConfigData.KeyVillagerCompQuestNeed));

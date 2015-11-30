@@ -87,7 +87,7 @@ public class ProfessionVillageElder extends Profession {
         
         //quest
         VillagerCompQuest compQuest = new VillagerCompQuest(villager);
-        VillagerQuestDesign design = new VillagerQuestDesign("The Quest for Beginner","Hi, thank you so much for building the house for me. If you don't mind, could you keep helping with me?",0);
+        VillagerQuestDesign design = new VillagerQuestDesign("Beginner Quest","Hi, thank you so much for building the house for me. If you don't mind, could you keep helping with me?",0);
         design.addNeeds(Items.apple, 2, 0);
         design.addNeeds(Blocks.log, 5, 0);
         design.addNeeds(Blocks.log, 5, 1);

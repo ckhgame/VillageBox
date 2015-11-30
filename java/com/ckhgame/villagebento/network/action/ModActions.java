@@ -5,6 +5,7 @@ public class ModActions {
 		
 		//client ->server
 		int id = 0;
+		Action.registry.register(id++, new ActionSyncVillagerComp());
 		Action.registry.register(id++, new ActionDoVillagerBuy());
 		Action.registry.register(id++, new ActionDoVillagerSell());
 		Action.registry.register(id++, new ActionDoVillagerAction());
@@ -12,7 +13,8 @@ public class ModActions {
 		Action.registry.register(id++, new ActionDoVillagerTakeWorkOutput());
 		Action.registry.register(id++, new ActionDoDropCoins());
 		Action.registry.register(id++, new ActionDoCreateAnimal());
-		Action.registry.register(id++, new ActionSyncVillagerComp());
+		Action.registry.register(id++, new ActionDoVillagerCompleteQuest());
+		Action.registry.register(id++, new ActionDoVillagerAcceptQuest());
 		
 		
 		//server -> clinet

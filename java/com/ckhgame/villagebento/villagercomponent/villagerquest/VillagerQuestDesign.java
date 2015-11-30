@@ -52,13 +52,14 @@ public class VillagerQuestDesign {
 		return this.addRewards(Item.getItemFromBlock(block), num, meta);
 	}
 	
-	public VillagerQuest generateRandomQuest(){
+	public VillagerQuest generateRandomQuest(int id){
 		if(this.needs.size() == 0 || this.rewards.size() == 0){
 			return null;
 		}
 		
 		Random rand = VBRandom.getRand();
-		VillagerQuest quest = new VillagerQuest(this.title,
+		VillagerQuest quest = new VillagerQuest(id,
+												this.title,
 												this.description,
 												this.needs.get(rand.nextInt(this.needs.size())),
 												this.rewards.get(rand.nextInt(this.rewards.size())));

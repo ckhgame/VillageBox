@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.gui.GuiVillagerQuest;
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.data.VBResult;
+import com.ckhgame.villagebento.util.helper.HelperPlayer;
 import com.ckhgame.villagebento.util.tool.VBRandom;
 import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuest;
 import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuestDesign;
@@ -36,14 +39,15 @@ public class VillagerCompQuest extends VillagerComponent {
 	//--------------------Data-------------------------------
 	//-------------------------------------------------------
 	
-	//workIdx >=0 && hoursLeft > 0   ---->    in working..
-	//workIdx >=0 && hoursLeft <= 0  ---->    waiting for player to take the output, hoursLeft means the expiration time 
-	//workIdx <0 && hoursLeft <0     ---->    waiting for next work...
-	
 	private ArrayList<VillagerQuest> questListCurrent = new ArrayList<VillagerQuest>();
+	private int lastQuestID = 0;
 
 	public ArrayList<VillagerQuest> getQuestListCurrent(){
 		return this.questListCurrent;
+	}
+	
+	private int getNextId(){
+		return lastQuestID++;
 	}
 	
 	public void refreshQuestListCurrent(int time){		
@@ -63,7 +67,6 @@ public class VillagerCompQuest extends VillagerComponent {
 		//occasionally generate random quest on the beginning of a day...
 		if(time == 0){
 			if(VBRandom.getRand().nextInt(1) == 0){ //chance to create a new quest
-				System.out.println("bbbbbbbbb quest");
 				ArrayList<VillagerQuestDesign> designs = new  ArrayList<VillagerQuestDesign>();
 				for(VillagerQuestDesign design : this.questDesignList){
 					if(design.getMinLevel() <= this.getVillager().getLevel()){
@@ -72,15 +75,23 @@ public class VillagerCompQuest extends VillagerComponent {
 				}
 				if(designs.size() > 0){
 					VillagerQuestDesign selected = designs.get(VBRandom.getRand().nextInt(designs.size()));
-					VillagerQuest quest = selected.generateRandomQuest();
+					VillagerQuest quest = selected.generateRandomQuest(this.getNextId());
 					if(quest != null){
 						questListCurrent.add(quest);
-						System.out.println("aaaaaaaaaaaaaaaaa quest");
 					}
 						
 				}
 			}
 		}
+	}
+	
+	private VillagerQuest findQuestById(int id){
+		for(VillagerQuest quest : this.questListCurrent){
+			if(quest.id == id){
+				return quest;
+			}
+		}
+		return null;
 	}
 	
 	@Override
@@ -94,6 +105,7 @@ public class VillagerCompQuest extends VillagerComponent {
 	@Override
 	public void syneRead(ByteBuf buf) {
 		int size = buf.readInt();
+		this.questListCurrent.clear();
 		for(int i =0;i<size;i++){
 			VillagerQuest quest = new VillagerQuest();
 			quest.syneRead(buf);
@@ -113,6 +125,8 @@ public class VillagerCompQuest extends VillagerComponent {
 		}
 		
 		compound.setTag(ConfigData.KeyVillagerCompQuestListCurrent, tagList);	
+		
+		compound.setInteger(ConfigData.KeyVillagerCompQuestLastQuestID, this.lastQuestID);
 	}
 
 	@Override
@@ -127,6 +141,8 @@ public class VillagerCompQuest extends VillagerComponent {
 			quest.readFromNBT(tag);
 			questListCurrent.add(quest);
 		}
+		
+		this.lastQuestID = compound.getInteger(ConfigData.KeyVillagerCompQuestLastQuestID);
 	}
 
 	@Override
@@ -144,15 +160,30 @@ public class VillagerCompQuest extends VillagerComponent {
 	//--------------------Methods----------------------------
 	//-------------------------------------------------------
 	
-	public VBCompResult completeQuest(int qIdx, EntityPlayer player){
+	public VBCompResult completeQuest(int qid, EntityPlayer player){
+			
+		VillagerQuest quest = findQuestById(qid);
+		if(quest == null)
+			return new VBCompResult(VBResult.FALLED_RUNOUT,"The quest is not existed :(");
 		
+		if(!HelperPlayer.playerRemoveItemStack(player, quest.need)){
+			return new VBCompResult(VBResult.FAILED_NOITEM,"You don't have what I need..");
+		}
 		
+		if(quest.reward.getItem() == ModItems.itemVillageCurrency){
+			HelperPlayer.addCurrency(player, quest.reward.getItemDamage());
+		}
+		else{
+			player.inventory.addItemStackToInventory(quest.reward);
+		}
 		
-		return VBCompResult.getDefaultSuccess();
+		this.questListCurrent.remove(quest);
+		
+		return new VBCompResult(VBResult.SUCCESS,"Thanks, take your reward!");
 		
 	}
 	
-	public VBCompResult acceptQuest(int qIdx, EntityPlayer player){
+	public VBCompResult acceptQuest(int qid, EntityPlayer player){
 		
 		return VBCompResult.getDefaultSuccess();
 	}

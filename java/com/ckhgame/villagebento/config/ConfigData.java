@@ -62,7 +62,9 @@ public class ConfigData {
 	public static final String KeyVillagerCompWorkOutput			= "vcwo";
 	
 	//villager component quest
+	public static final String KeyVillagerCompQuestLastQuestID		= "vcqlqid";
 	public static final String KeyVillagerCompQuestListCurrent		= "vcqlc";
+	public static final String KeyVillagerCompQuestQuestID			= "vcqqid";
 	public static final String KeyVillagerCompQuestTitle			= "vcqt";
 	public static final String KeyVillagerCompQuestDescription		= "vcqd";
 	public static final String KeyVillagerCompQuestNeed				= "vcqn";
