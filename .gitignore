@@ -1,0 +1,20 @@
+#################
+## Village Bento
+#################
+
+# forge
+
+.gradle/
+.settings/
+bin/
+build/
+eclipse/
+gradle/
+
+.classpath
+.project
+build.gradle
+gradlew
+
+*.txt
+*.bat
