@@ -6,7 +6,7 @@ import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.BlockFinder;
 import com.ckhgame.villagebento.util.village.VBRandomPositionGenerator;
-import com.ckhgame.villagebento.util.village.VillageTime;
+import com.ckhgame.villagebento.util.village.VBDataTime;
 import com.ckhgame.villagebento.util.village.VillagerNavigator;
 
 import net.minecraft.entity.ai.EntityAIBase;
@@ -33,7 +33,7 @@ public class VillagerAIWander extends EntityAIBase
     public boolean shouldExecute()
     {
         Vec3 vec3 = null;
-        if(VillageTime.isDayTime(this.entity.worldObj)){
+        if(VBDataTime.isDayTime()){
         	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
         	if(this.entity.worldObj.isRaining()){
         		vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);

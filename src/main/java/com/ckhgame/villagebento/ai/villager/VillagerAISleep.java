@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.util.village.VillageTime;
+import com.ckhgame.villagebento.util.village.VBDataTime;
 import com.ckhgame.villagebento.util.village.VillagerNavigator;
 
 import net.minecraft.entity.ai.EntityAIBase;
@@ -26,7 +26,7 @@ public class VillagerAISleep extends EntityAIBase
     public boolean shouldExecute()
     {
     	//sleep only at late night
-    	if(!VillageTime.isLateNight(this.entity.worldObj))
+    	if(!VBDataTime.isLateNight())
     		return false;
     	
     	//if the one has already been sleeping, just let it keep sleeping... 
@@ -51,7 +51,7 @@ public class VillagerAISleep extends EntityAIBase
              return true;
          }
     	 else{    		 
-    		 return (VillageTime.isLateNight(this.entity.worldObj) && this.entity.isNearBed());
+    		 return (VBDataTime.isLateNight() && this.entity.isNearBed());
     	 }
         
     }

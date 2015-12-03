@@ -6,7 +6,7 @@ import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.BlockFinder;
 import com.ckhgame.villagebento.util.village.VBRandomPositionGenerator;
-import com.ckhgame.villagebento.util.village.VillageTime;
+import com.ckhgame.villagebento.util.village.VBDataTime;
 import com.ckhgame.villagebento.util.village.VillagerNavigator;
 
 import net.minecraft.entity.ai.EntityAIBase;
@@ -66,7 +66,7 @@ public class VillagerAIGuardPatrol extends EntityAIBase
     	if(this.entity.getAttackTarget()!=null)
     		return false;
     	
-    	if(VillageTime.isMorning(this.entity.worldObj))
+    	if(VBDataTime.isMorning())
     	{
     		if (this.entity.getRNG().nextInt(60) != 0)
     			return false;

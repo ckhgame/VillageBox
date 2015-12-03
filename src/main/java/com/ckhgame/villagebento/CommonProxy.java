@@ -6,6 +6,7 @@ import com.ckhgame.villagebento.building.ModBuildings;
 import com.ckhgame.villagebento.config.ConfigDev;
 import com.ckhgame.villagebento.entity.ModEntities;
 import com.ckhgame.villagebento.event.EventEntity;
+import com.ckhgame.villagebento.event.EventOverlay;
 import com.ckhgame.villagebento.event.EventPlayer;
 import com.ckhgame.villagebento.event.EventPlayerBedSleep;
 import com.ckhgame.villagebento.event.EventRenderVillageOutlines;
@@ -53,6 +54,7 @@ public class CommonProxy {
 		 MinecraftForge.EVENT_BUS.register(new EventPlayerBedSleep());
 		 MinecraftForge.EVENT_BUS.register(new EventEntity());
 		 MinecraftForge.EVENT_BUS.register(new EventWorld());
+		 MinecraftForge.EVENT_BUS.register(new EventOverlay());
 		 
 		 //if it's in development, we don't want to restrict block placing&breaking, all items are avaliable to use as well...
 		 if(!ConfigDev.IsDevMod){
