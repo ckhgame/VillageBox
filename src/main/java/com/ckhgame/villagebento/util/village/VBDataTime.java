@@ -25,6 +25,7 @@ public class VBDataTime {
 	private static int hour;
 	private static int dayInWeek;
 	private static int week;
+	private static int minites;
 	
 	public static void init(World w){
 		if(w.provider.dimensionId == 0){
@@ -42,6 +43,7 @@ public class VBDataTime {
 			int days = (int)(t / 24000);
 			dayInWeek = days % 7;
 			week = (int)(days / 7);
+			minites = (int)((currentTick % 1000) / 16.667D);
 			lastRefreshedTick = currentTick;
 		}
 	}
@@ -86,6 +88,10 @@ public class VBDataTime {
 		return week;
 	}
 	
+	public static int getMinites(){
+		return minites;
+	}
+	
 	public static String getDataTimeString(){
 		refreshTick();
 		String day = "";
@@ -102,7 +108,7 @@ public class VBDataTime {
 		int h12 = hour%12;
 		if(h12 == 0) h12 = 12;
 		
-		String hour12 = h12 + ":00" + (hour >= 12?"PM":"AM");
+		String hour12 = String.format("%02d:%02d%s", h12, 10 * (minites/10), hour >= 12?"PM":"AM");
 		
 		return String.format("Week%d | %s | %s", week + 1,day,hour12);
 	}

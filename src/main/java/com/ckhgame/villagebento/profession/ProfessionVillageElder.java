@@ -38,8 +38,21 @@ public class ProfessionVillageElder extends Profession {
 
 	@Override
 	public void createVillagerComponents(ArrayList<VillagerComponent> components,EntityVBVillager villager) {
-
+		
         components.add(new VillagerCompAbout(villager));
+        
+        //quest
+        VillagerCompQuest compQuest = new VillagerCompQuest(villager);
+        VillagerQuestDesign design = new VillagerQuestDesign("Beginner Quest","Hi, thank you so much for building the house for me. If you don't mind, could you keep helping with me?",0);
+        design.addNeeds(Items.apple, 2, 0);
+        design.addNeeds(Blocks.log, 5, 0);
+        design.addNeeds(Blocks.log, 5, 1);
+        design.addRewards(ModItems.itemVillageCurrency, 1, 100);
+        design.addRewards(ModItems.itemVillageCurrency, 1, 150);
+        compQuest.addQuestDesign(design);
+        
+        components.add(compQuest);
+        
         
         //buy & sell
         //params:
@@ -84,18 +97,6 @@ public class ProfessionVillageElder extends Profession {
         components.add(compWork);
         
          */
-        
-        //quest
-        VillagerCompQuest compQuest = new VillagerCompQuest(villager);
-        VillagerQuestDesign design = new VillagerQuestDesign("Beginner Quest","Hi, thank you so much for building the house for me. If you don't mind, could you keep helping with me?",0);
-        design.addNeeds(Items.apple, 2, 0);
-        design.addNeeds(Blocks.log, 5, 0);
-        design.addNeeds(Blocks.log, 5, 1);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 100);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 150);
-        compQuest.addQuestDesign(design);
-        
-        components.add(compQuest);
 	}
 	
 	@Override

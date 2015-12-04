@@ -26,7 +26,7 @@ public class VillagerAISleep extends EntityAIBase
     public boolean shouldExecute()
     {
     	//sleep only at late night
-    	if(!VBDataTime.isLateNight())
+    	if(!this.entity.getProfession().getTimeSchedule().isSleepTimeNow())
     		return false;
     	
     	//if the one has already been sleeping, just let it keep sleeping... 
@@ -51,7 +51,7 @@ public class VillagerAISleep extends EntityAIBase
              return true;
          }
     	 else{    		 
-    		 return (VBDataTime.isLateNight() && this.entity.isNearBed());
+    		 return (this.entity.getProfession().getTimeSchedule().isSleepTimeNow() && this.entity.isNearBed());
     	 }
         
     }

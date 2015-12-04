@@ -65,5 +65,10 @@ public class ProfessionSoldier extends Profession {
 	public String getSkinName() {
 		return "soldier";
 	}
+	
+	@Override
+	protected void setTimeSchedule(){	
+		timeSchedule.setSleeptime(new int[]{6, 14});
+	}
 
 }

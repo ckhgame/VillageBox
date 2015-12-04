@@ -2,7 +2,6 @@ package com.ckhgame.villagebento.profession;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.entity.villager.EntityVBNightbird;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
@@ -26,7 +25,7 @@ public class ProfessionCasinoManager extends Profession {
 	
 	@Override
 	public Class<? extends EntityVBVillager> getEntityClass(){
-		return EntityVBNightbird.class;
+		return EntityVBVillager.class;
 	}
 	
 	@Override
@@ -63,6 +62,20 @@ public class ProfessionCasinoManager extends Profession {
 	@Override
 	public String getSkinName() {
 		return "casinomanager";
+	}
+	
+	@Override
+	protected void setTimeSchedule(){
+		timeSchedule.setWorkTime(0, new int[]{0, 4 ,18, 24});		//Monday
+		timeSchedule.setWorkTime(1, new int[]{0, 4, 18, 24});		//Tuesday
+		timeSchedule.setWorkTime(2, new int[]{0, 4});					//Wednesday
+																								//Thursday
+		timeSchedule.setWorkTime(4, new int[]{18, 24});				//Friday
+		timeSchedule.setWorkTime(5, new int[]{0, 4, 18, 24});		//Saturday
+		timeSchedule.setWorkTime(6, new int[]{0, 4, 18, 24});		//Sunday
+		
+		//sleeping
+		timeSchedule.setSleeptime(new int[]{6, 14});
 	}
 
 }

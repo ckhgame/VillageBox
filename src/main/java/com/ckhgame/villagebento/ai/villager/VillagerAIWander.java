@@ -33,7 +33,11 @@ public class VillagerAIWander extends EntityAIBase
     public boolean shouldExecute()
     {
         Vec3 vec3 = null;
-        if(VBDataTime.isDayTime()){
+        if(this.entity.getProfession().getTimeSchedule().isWorkTimeNow()){
+        	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
+        	vec3 = Vec3.createVectorHelper( this.entity.getInitPosX(),this.entity.getInitPosY(),this.entity.getInitPosZ());
+        }
+        else if(VBDataTime.isDayTime()){
         	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
         	if(this.entity.worldObj.isRaining()){
         		vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);

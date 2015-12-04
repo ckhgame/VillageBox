@@ -222,7 +222,12 @@ public abstract class GuiVillager extends GuiScreen {
 		for(int i =0;i<compSize;i++){
 			comp = this.entityVBVillager.getVillagerComponent(i);
 			if(comp.getGui().buttonID == button.id){
-				this.mc.displayGuiScreen(comp.getGui());
+				if(comp.enabled()){
+					this.mc.displayGuiScreen(comp.getGui());
+				}
+				else{
+					this.mc.displayGuiScreen(this.entityVBVillager.getVillagerComponent(0).getGui());
+				}
 				return;
 			}
 		}
@@ -246,16 +251,17 @@ public abstract class GuiVillager extends GuiScreen {
 		int compSize = this.entityVBVillager.getVillagerComponentsSize();
 		VillagerComponent comp;
 		for(int i =0;i<compSize;i++){
-			comp = this.entityVBVillager.getVillagerComponent(i);
-			
-			comp.getGui().buttonID = id++;
-			btn = new GuiButton(comp.getGui().buttonID, 
-					this.width /2 - 130,this.height /2 - 50 + 20 * (count++),
-					46,20,	
-					comp.getGui().getButtonText());
-			if(comp == villagerComponent)
-				btn.enabled = false;
-			this.buttonList.add(btn);
+			comp = this.entityVBVillager.getVillagerComponent(i);	
+			if(comp.enabled()){
+				comp.getGui().buttonID = id++;
+				btn = new GuiButton(comp.getGui().buttonID, 
+						this.width /2 - 130,this.height /2 - 50 + 20 * (count++),
+						46,20,	
+						comp.getGui().getButtonText());
+				if(comp == villagerComponent)
+					btn.enabled = false;
+				this.buttonList.add(btn);
+			}			
 		}
 
 		//leave button

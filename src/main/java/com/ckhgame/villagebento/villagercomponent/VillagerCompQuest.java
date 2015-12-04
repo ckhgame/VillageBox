@@ -188,6 +188,10 @@ public class VillagerCompQuest extends VillagerComponent {
 		return VBCompResult.getDefaultSuccess();
 	}
 	
-	
+	@Override
+	public boolean enabled() {
+		//quest component should always be enabled...
+		return true;
+	}
 	
 }

@@ -2,7 +2,6 @@ package com.ckhgame.villagebento.profession;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.entity.villager.EntityVBNightbird;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VillagerChat;
@@ -31,7 +30,7 @@ public class ProfessionTavernOwner extends Profession {
 	
 	@Override
 	public Class<? extends EntityVBVillager> getEntityClass(){
-		return EntityVBNightbird.class;
+		return EntityVBVillager.class;
 	}
 	
 	@Override

@@ -39,4 +39,12 @@ public class VillagerCompAbout extends VillagerComponent {
 	public void update(int time) {
 		
 	}
+
+	@Override
+	public boolean enabled() {
+		//about component should always be enabled...
+		return true;
+	}
+	
+	
 }

@@ -38,4 +38,8 @@ public abstract class VillagerComponent implements ISync, IData{
 	public EntityVBVillager getVillager(){
 		return this.entityVillager;
 	}
+	
+	public boolean enabled(){
+		return this.entityVillager.getProfession().getTimeSchedule().isWorkTimeNow();
+	}
 }
