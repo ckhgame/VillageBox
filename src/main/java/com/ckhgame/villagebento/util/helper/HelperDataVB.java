@@ -393,7 +393,8 @@ public class HelperDataVB {
 	
 	//---------use of guard potral---------
 
-	private static DataVillage getVillagersVillage(DataVillageBento dataVB, EntityVBVillager villager){
+	private static DataVillage getVillagersVillage(EntityVBVillager villager){	
+		DataVillageBento dataVB = DataVillageBento.get();	
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			if(dv.mapDataBuilding.containsKey(villager.getBuildingID()))
 				return dv;
@@ -401,17 +402,20 @@ public class HelperDataVB {
 		return null;
 	}
 	
-	public static DataBuilding getRandomBuildingInVillage(DataVillageBento dataVB, EntityVBVillager villager){
-		DataVillage dv = getVillagersVillage(dataVB,villager);
+	public static DataBuilding getRandomBuildingInVillage(EntityVBVillager villager, int maxDistanceSq){		
+		DataVillageBento dataVB = DataVillageBento.get();		
+		DataVillage dv = getVillagersVillage(villager);
 		if(dv != null){
-			
 			ArrayList<DataBuilding> dbArr = new ArrayList<DataBuilding>();
 			for(DataBuilding db : dv.mapDataBuilding.values()){
-				double dx = db.x - villager.posX;
-				double dz = db.z - villager.posZ;
-				double dsq = dx * dx + dz * dz;
-				if(dsq <= ConfigVillager.AIGuardPotrolSearchDistanceSq){
-					dbArr.add(db);
+				if(db.id != villager.getBuildingID()){
+					double dx = db.x - villager.posX;
+					double dy = db.y - villager.posY;
+					double dz = db.z - villager.posZ;
+					double dsq = dx * dx + dz * dz + dy * dy;
+					if(dsq <= maxDistanceSq){
+						dbArr.add(db);
+					}
 				}
 			}
 			
@@ -499,5 +503,6 @@ public class HelperDataVB {
 			return false;
 		return player.getDisplayName().equals(db.owner);
 	}
+	 
 
 }

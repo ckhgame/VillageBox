@@ -14,14 +14,15 @@ import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.Vec3;
 
-public class VillagerAIWander extends EntityAIBase
+public class VillagerAIMovement extends EntityAIBase
 {
     private EntityVBVillager entity;
+    private boolean hasTarget;
     private double xPosition;
     private double yPosition;
     private double zPosition;
 
-    public VillagerAIWander(EntityVBVillager entity)
+    public VillagerAIMovement(EntityVBVillager entity)
     {
         this.entity = entity;
         this.setMutexBits(1);
@@ -32,24 +33,34 @@ public class VillagerAIWander extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        Vec3 vec3 = null;
-        if(this.entity.getProfession().getTimeSchedule().isWorkTimeNow()){
-        	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
-        	vec3 = Vec3.createVectorHelper( this.entity.getInitPosX(),this.entity.getInitPosY(),this.entity.getInitPosZ());
-        }
-        else if(VBDataTime.isDayTime()){
-        	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
-        	if(this.entity.worldObj.isRaining()){
-        		vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-        	}
-        	else{
-        		vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
-        	}
-        }
-        else{
-        	if (this.entity.getRNG().nextInt(60) != 0) {return false;}
-        	vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-        }
+    	Vec3 vec3 = null;
+    	if (this.entity.getRNG().nextInt(60) == 0){
+    		 if(this.entity.getProfession().getTimeSchedule().isWorkTimeNow()){ // in working time        	
+    	        	vec3 = Vec3.createVectorHelper( this.entity.getInitPosX() + 0.5D,this.entity.getInitPosY(),this.entity.getInitPosZ() + 0.5D);
+    	        }
+    	        else if(VBDataTime.isDayTime()){ //day time & out of working time
+    	        	if(this.entity.worldObj.isRaining()){ // rainning : stay in side of the building
+    	        		vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+    	        	}
+    	        	else{
+    	        		
+    	        		//if it's not raining and it's day time, there are two options
+    	        		//if(this.entity.getRNG().nextInt(10) != 0)
+    	        		
+    	        		//not raining: walking near the building
+    	        		vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
+    	        	}
+    	        }
+    	        else{ // when it's night
+    	        	vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+    	        }
+    	}
+    	else{
+    		if(hasTarget){
+    			return true;
+    		}
+    	}
+       
 
         if (vec3 == null)
         {
@@ -60,6 +71,7 @@ public class VillagerAIWander extends EntityAIBase
             this.xPosition = vec3.xCoord;
             this.yPosition = vec3.yCoord;
             this.zPosition = vec3.zCoord;
+            this.hasTarget = true;
             return true;
         }
     }
@@ -86,6 +98,9 @@ public class VillagerAIWander extends EntityAIBase
      */
     public void startExecuting()
     {
-    	VillagerNavigator.tryMoveToXYZ(entity, this.xPosition, this.yPosition, this.zPosition);   
+    	if(VillagerNavigator.tryMoveToXYZ(entity, this.xPosition, this.yPosition, this.zPosition)){
+    		this.hasTarget = false;
+    	}
+    	
     }
 }

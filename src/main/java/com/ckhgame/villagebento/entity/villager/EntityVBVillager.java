@@ -3,7 +3,7 @@ package com.ckhgame.villagebento.entity.villager;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWander;
+import com.ckhgame.villagebento.ai.villager.VillagerAIMovement;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
 import com.ckhgame.villagebento.config.ConfigData;
@@ -42,6 +42,9 @@ public class EntityVBVillager extends EntityAgeable {
 	private Profession profession; 	// professtion of the villager
 	private int buidlingID = -1; // village building ID (used to find the related
 	
+	private int visitingBuildingID = -1; 		//ID of the building the villager is visiting...
+	private boolean visitingSkipSleep = false; 	//if the visiting should ignore sleeping schedule, e.g. the villager is staying in tavern over night
+	
 	//components of the villager (is created by profession)
 	private ArrayList<VillagerComponent> components = new ArrayList<VillagerComponent>();
 	
@@ -69,7 +72,7 @@ public class EntityVBVillager extends EntityAgeable {
 		
 		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
 		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVBVillager.class, 5.0F, 0.02F));
-		this.tasks.addTask(6, new VillagerAIWander(this));
+		this.tasks.addTask(6, new VillagerAIMovement(this));
 		this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 6.0F));
 	}
 	
@@ -84,7 +87,7 @@ public class EntityVBVillager extends EntityAgeable {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(12.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(ConfigVillager.AIVillagerSearchDistance);
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 	}
 
@@ -172,6 +175,7 @@ public class EntityVBVillager extends EntityAgeable {
 		return this.getCustomNameTag();
 	}
 
+	//-- sleeping --
 	public void setSleepingValue(int value){
 		this.dataWatcher.updateObject(18, value);
 	}
@@ -229,6 +233,7 @@ public class EntityVBVillager extends EntityAgeable {
 		}
 	}
 	
+	//-- init position --
 	public void setInitPos(int x, int y, int z){
 		this.initPosX = x;
 		this.initPosY = y;
@@ -251,6 +256,7 @@ public class EntityVBVillager extends EntityAgeable {
 		this.setPosition(this.initPosX + 0.5D, this.initPosY + 0.1D, this.initPosZ + 0.5D);
 	}
 	
+	//-- villager components --
 	public int getVillagerComponentsSize(){
 		return this.components.size();
 	}
@@ -283,6 +289,15 @@ public class EntityVBVillager extends EntityAgeable {
 			component.firstTimeInit();
 	}
 
+	//-- visiting --	
+	public void startRandomVisiting(){
+		
+	}
+	
+	public void cancelVisiting(){
+		
+	}
+	
 	// temp caches
 	public int buildingX, buildingY, buildingZ;
 	public int buildingSizeX, buildingSizeZ;
@@ -490,7 +505,7 @@ public class EntityVBVillager extends EntityAgeable {
 
 	@Override
 	public boolean allowLeashing() {
-		return false;
+		return true;
 	}
 
 }

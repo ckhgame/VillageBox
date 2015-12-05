@@ -14,8 +14,11 @@ public class ConfigVillager {
 	
 	public static final int ALGuardPatrolNearMaxBuilding = 1;
 	public static final int AIGuardPatrolDistanceMaxY = 1;
-	public static final int AIGuardPotrolSearchDistanceSq = 16 * 16;
+	public static final int AIGuardPotrolSearchDistanceSq = 16 * 16 * 8;
 	
+	public static final int AIVillagerVisitingSearchDistanceSq = 16 * 16 * 8;
+	
+	public static final double AIVillagerSearchDistance = 12.0D;
 	
 	public static final double VillagerMoveSpeed = 0.35D;
 	

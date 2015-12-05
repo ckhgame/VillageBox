@@ -135,7 +135,7 @@ public class VBRandomPositionGenerator{
     }
 
 	public static Vec3 findRandomTargetGuardPatrol(EntityVBVillager evr){
-		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(DataVillageBento.get(), evr);
+		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(evr,ConfigVillager.AIGuardPotrolSearchDistanceSq);
 		if(db != null){
 			
 			Random random = evr.getRNG();
