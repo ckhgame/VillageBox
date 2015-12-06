@@ -50,7 +50,7 @@ public class VillagerAIMovement extends EntityAIBase
     						this.entity.cancelVisiting();
     				}
     				else{
-    					if(this.entity.getRNG().nextInt(25) == 0){
+    					if(this.entity.getRNG().nextInt(60) == 0){
     						this.entity.startRandomVisiting();
     					}
     					if(!this.entity.isVisiting()){
@@ -75,7 +75,7 @@ public class VillagerAIMovement extends EntityAIBase
     					}
     				}
     				else{
-    					if(this.entity.getRNG().nextInt(25) == 0){
+    					if(this.entity.getRNG().nextInt(60) == 0){
     						this.entity.startRandomVisiting();
     					}
     					if(!this.entity.isVisiting()){

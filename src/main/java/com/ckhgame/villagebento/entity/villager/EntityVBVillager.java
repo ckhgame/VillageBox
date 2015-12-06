@@ -308,7 +308,7 @@ public class EntityVBVillager extends EntityAgeable {
 					ConfigVillager.AIVillagerVisitingSearchDistanceZ,
 					ids);
 			this.visitingBuildingID = (db == null?-1:db.id);
-			this.visitingSkipSleep = true;
+			this.visitingSkipSleep = this.rand.nextBoolean();
 		}
 //		else{
 //			DataBuilding db = HelperDataVB.getRandomBuildingInVillage(this, 
