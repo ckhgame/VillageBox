@@ -13,8 +13,8 @@ public class VillagerNavigator {
 		
 		boolean removeTarget = entity.getNavigator().tryMoveToXYZ(x,y,z,ConfigVillager.VillagerMoveSpeed);
 		if(!removeTarget){
-			System.out.println(entity.worldObj.getBlock((int)x, (int)y, (int)z) + ":" + x + "," + y + "," + z);
-			System.out.println("Cant find the path!!!!!!!!");
+			//System.out.println(entity.worldObj.getBlock((int)x, (int)y, (int)z) + ":" + x + "," + y + "," + z);
+		//System.out.println("Cant find the path!!!!!!!!");
 			removeTarget = !tryMoveTowardsTheTarget(entity,x,y,z);
 		}
 		return removeTarget;
@@ -39,8 +39,8 @@ public class VillagerNavigator {
 				ty = entity.posY + dy * r;
 				tz = entity.posZ + dz * r;
 				if(!entity.getNavigator().tryMoveToXYZ(tx,ty,tz,ConfigVillager.VillagerMoveSpeed)){
-					System.out.println("d:"+d + ", l:" + l + ",r:" + r);
-					System.out.println(entity.worldObj.getBlock((int)tx, (int)ty, (int)tz) + ":" + tx + "," + ty + "," + tz);
+				//	System.out.println("d:"+d + ", l:" + l + ",r:" + r);
+					//System.out.println(entity.worldObj.getBlock((int)tx, (int)ty, (int)tz) + ":" + tx + "," + ty + "," + tz);
 					d *= 0.5D;
 				}
 				else{
@@ -52,7 +52,7 @@ public class VillagerNavigator {
 				return true; // do not remove the moving target
 			}
 			else{
-				System.out.println("22222 Cant find the path!!!!!!!!");
+			//	System.out.println("22222 Cant find the path!!!!!!!!");
 				return false;// remove the moving target
 			}
 		}

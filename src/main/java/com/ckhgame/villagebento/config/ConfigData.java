@@ -47,6 +47,8 @@ public class ConfigData {
 	public static final String KeyVillagerInitX						= "vrix";
 	public static final String KeyVillagerInitY						= "vriy";
 	public static final String KeyVillagerInitZ						= "vriz";
+	public static final String KeyVillagerVisitingBuildingID	= "vrvbid";
+	public static final String KeyVillagerVisitingSkipSleep	= "vrvss";
 	
 	//villager component
 	public static final String KeyVillagerComps						= "vc";

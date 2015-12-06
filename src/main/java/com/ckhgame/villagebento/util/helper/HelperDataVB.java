@@ -421,20 +421,41 @@ public class HelperDataVB {
 		return null;
 	}
 	
-	public static DataBuilding getRandomBuildingInVillage(EntityVBVillager villager, double maxDistanceX, double maxDistanceY, double maxDistanceZ){		
+	public static DataBuilding getRandomBuildingInVillage(EntityVBVillager villager, double maxDistanceX, double maxDistanceY, double maxDistanceZ){
+		return getRandomBuildingInVillage(villager,maxDistanceX,maxDistanceY,maxDistanceZ,null);
+	}
+	
+	public static DataBuilding getRandomBuildingInVillage(EntityVBVillager villager, double maxDistanceX, double maxDistanceY, double maxDistanceZ, int[] buildingTypes){		
 		DataVillageBento dataVB = DataVillageBento.get();		
 		DataVillage dv = getVillagersVillage(villager);
 		if(dv != null){
 			ArrayList<DataBuilding> dbArr = new ArrayList<DataBuilding>();
 			for(DataBuilding db : dv.mapDataBuilding.values()){
-				if(db.id != villager.getBuildingID()){
-					
-					if(Math.abs(db.x - villager.posX) <= maxDistanceX &&
-						Math.abs(db.y - villager.posY) <= maxDistanceY &&
-						Math.abs(db.z - villager.posZ) <= maxDistanceZ){					
-						dbArr.add(db);
+				//not self
+				if(db.id == villager.getBuildingID()){
+					continue;
+				}
+				//building type
+				if(buildingTypes != null){
+					boolean foundType = false;
+					for(int t : buildingTypes){
+						if(t == db.type){
+							foundType= true;
+							break;
+						}
+					}
+					if(!foundType){
+						continue;
 					}
 				}
+				//distance
+				if(Math.abs(db.x - villager.posX) > maxDistanceX ||
+					Math.abs(db.y - villager.posY) > maxDistanceY ||
+					Math.abs(db.z - villager.posZ) > maxDistanceZ){
+					continue;
+				}
+					
+				dbArr.add(db);
 			}
 			
 			if(dbArr.size() == 0)

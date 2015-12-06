@@ -2,10 +2,13 @@ package com.ckhgame.villagebento.entity.villager;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
 import com.ckhgame.villagebento.ai.villager.VillagerAIMovement;
+import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
+import com.ckhgame.villagebento.building.Building;
+import com.ckhgame.villagebento.building.BuildingLargeTavern;
+import com.ckhgame.villagebento.building.BuildingSmallTavern;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -291,11 +294,32 @@ public class EntityVBVillager extends EntityAgeable {
 
 	//-- visiting --	
 	public void startRandomVisiting(){
-		this.visitingBuildingID = HelperDataVB.getRandomBuildingInVillage(this, 
-																												ConfigVillager.AIVillagerVisitingSearchDistanceX,
-																												ConfigVillager.AIVillagerVisitingSearchDistanceY,
-																												ConfigVillager.AIVillagerVisitingSearchDistanceZ).id;
-		this.visitingSkipSleep = false;
+		
+		int r = this.rand.nextInt(10);
+		if(r < 10) //%30 chances go to taverns... 
+		{
+			int[] ids = new int[2];
+			ids[0] = Building.registry.get(BuildingSmallTavern.class).getType();
+			ids[1] = Building.registry.get(BuildingLargeTavern.class).getType();
+			
+			DataBuilding db = HelperDataVB.getRandomBuildingInVillage(this, 
+					ConfigVillager.AIVillagerVisitingSearchDistanceX,
+					ConfigVillager.AIVillagerVisitingSearchDistanceY,
+					ConfigVillager.AIVillagerVisitingSearchDistanceZ,
+					ids);
+			this.visitingBuildingID = (db == null?-1:db.id);
+			this.visitingSkipSleep = true;
+		}
+//		else{
+//			DataBuilding db = HelperDataVB.getRandomBuildingInVillage(this, 
+//					ConfigVillager.AIVillagerVisitingSearchDistanceX,
+//					ConfigVillager.AIVillagerVisitingSearchDistanceY,
+//					ConfigVillager.AIVillagerVisitingSearchDistanceZ);
+//			this.visitingBuildingID = (db == null?-1:db.id);
+//			this.visitingSkipSleep = false;
+//		}
+	
+		
 		System.out.println(this.getName() + ": START VISITING!");
 	}
 	
@@ -477,6 +501,8 @@ public class EntityVBVillager extends EntityAgeable {
 		p_70014_1_.setInteger(ConfigData.KeyVillagerInitY, this.initPosY);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerInitZ, this.initPosZ);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerSleeping, this.getSleepingValue());
+		p_70014_1_.setInteger(ConfigData.KeyVillagerVisitingBuildingID, this.getVisitingBuildingID());
+		p_70014_1_.setBoolean(ConfigData.KeyVillagerVisitingSkipSleep, this.isVisitingSkipSleeping());
 		
 		for(VillagerComponent component : components)
 			component.writeToNBT(p_70014_1_);
@@ -492,6 +518,8 @@ public class EntityVBVillager extends EntityAgeable {
 		this.initPosY = p_70037_1_.getInteger(ConfigData.KeyVillagerInitY);
 		this.initPosZ = p_70037_1_.getInteger(ConfigData.KeyVillagerInitZ);
 		this.setSleepingValue(p_70037_1_.getInteger(ConfigData.KeyVillagerSleeping));
+		this.visitingBuildingID = p_70037_1_.getInteger(ConfigData.KeyVillagerVisitingBuildingID);
+		this.visitingSkipSleep = p_70037_1_.getBoolean(ConfigData.KeyVillagerVisitingSkipSleep);
 		
 		for(VillagerComponent component : components)
 			component.readFromNBT(p_70037_1_);

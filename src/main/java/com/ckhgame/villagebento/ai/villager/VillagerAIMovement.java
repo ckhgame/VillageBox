@@ -42,13 +42,15 @@ public class VillagerAIMovement extends EntityAIBase
 				}
 				vec3 = Vec3.createVectorHelper( this.entity.getInitPosX() + 0.5D,this.entity.getInitPosY(),this.entity.getInitPosZ() + 0.5D);
 	        }
-    		else{
+    		else{ // out of working time
     			if(VBDataTime.isDayTime()){ //day
     				if(this.entity.isVisiting()){
-    					vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity.getVisitingBuildingID());
+    					vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity.getVisitingBuildingID(),true);
+    					if(vec3 == null)
+    						this.entity.cancelVisiting();
     				}
     				else{
-    					if(this.entity.getRNG().nextInt(100) == 0){
+    					if(this.entity.getRNG().nextInt(25) == 0){
     						this.entity.startRandomVisiting();
     					}
     					if(!this.entity.isVisiting()){
@@ -64,14 +66,16 @@ public class VillagerAIMovement extends EntityAIBase
     			else{ //night
     				if(this.entity.isVisiting()){
     					if(this.entity.isVisitingSkipSleeping()){
-    						vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity.getVisitingBuildingID());
+    						vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity.getVisitingBuildingID(),true);
+    						if(vec3 == null)
+        						this.entity.cancelVisiting();
     					}
     					else{
     						this.entity.cancelVisiting();
     					}
     				}
     				else{
-    					if(this.entity.getRNG().nextInt(100) == 0){
+    					if(this.entity.getRNG().nextInt(25) == 0){
     						this.entity.startRandomVisiting();
     					}
     					if(!this.entity.isVisiting()){
