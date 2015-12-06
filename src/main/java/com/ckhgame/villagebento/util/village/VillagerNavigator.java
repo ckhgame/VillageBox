@@ -13,6 +13,7 @@ public class VillagerNavigator {
 		
 		boolean removeTarget = entity.getNavigator().tryMoveToXYZ(x,y,z,ConfigVillager.VillagerMoveSpeed);
 		if(!removeTarget){
+			System.out.println(entity.worldObj.getBlock((int)x, (int)y, (int)z) + ":" + x + "," + y + "," + z);
 			System.out.println("Cant find the path!!!!!!!!");
 			removeTarget = !tryMoveTowardsTheTarget(entity,x,y,z);
 		}
@@ -23,31 +24,40 @@ public class VillagerNavigator {
 		double tx= x;
 		double ty = y;
 		double tz = z;
-		double d = ConfigVillager.AIVillagerSearchDistance - 1.0D;
+		double d = ConfigVillager.AIVillagerSearchDistance  - 0.5D;
 		
-		if(tx - entity.posX > d) tx = entity.posX + d;
-		else if(tx - entity.posX < -d) tx = entity.posX - d;
+		double dx = tx - entity.posX;
+		double dy = ty - entity.posY;
+		double dz = tz - entity.posZ;
+		double l = Math.sqrt(dx * dx + dy * dy + dz * dz);
 		
-		if(ty - entity.posY > d) ty = entity.posY + d;
-		else if(ty - entity.posY < -d) ty = entity.posY - d;
-		
-		if(tz - entity.posZ > d) tz = entity.posZ + d;
-		else if(tz - entity.posZ < -d) tz = entity.posZ - d;
-		
-		int dy = 0;
-		System.out.println(entity.worldObj.getBlock((int)tx, (int)ty, (int)tz));
-		while(!entity.getNavigator().tryMoveToXYZ(tx,ty + dy,tz,ConfigVillager.VillagerMoveSpeed)){
-			if(++dy >= 12)
-				break;
+		if(l > d){
+			
+			while(d > 1.0D){
+				double r = d / l;
+				tx = entity.posX + dx * r;
+				ty = entity.posY + dy * r;
+				tz = entity.posZ + dz * r;
+				if(!entity.getNavigator().tryMoveToXYZ(tx,ty,tz,ConfigVillager.VillagerMoveSpeed)){
+					System.out.println("d:"+d + ", l:" + l + ",r:" + r);
+					System.out.println(entity.worldObj.getBlock((int)tx, (int)ty, (int)tz) + ":" + tx + "," + ty + "," + tz);
+					d *= 0.5D;
+				}
+				else{
+					break;
+				}
+			}
+			
+			if(d > 1.0D){
+				return true; // do not remove the moving target
+			}
+			else{
+				System.out.println("22222 Cant find the path!!!!!!!!");
+				return false;// remove the moving target
+			}
 		}
-		
-		if(dy < 12){
-			return true;
-		}
-		else
-		{
-			System.out.println("22222 Cant find the path!!!!!!!!");
-			return false;
+		else{
+			return true;// do not remove the moving target
 		}
 	}
 	

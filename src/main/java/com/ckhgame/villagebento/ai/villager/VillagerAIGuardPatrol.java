@@ -19,6 +19,7 @@ import net.minecraft.util.Vec3;
 public class VillagerAIGuardPatrol extends EntityAIBase
 {
     private EntityVBVillager entity;
+    private boolean hasTarget;
     private double xPosition;
     private double yPosition;
     private double zPosition;
@@ -36,13 +37,17 @@ public class VillagerAIGuardPatrol extends EntityAIBase
     {
         Vec3 vec3 = null;
         
-        if (this.entity.getRNG().nextInt(20) != 0) {return false;}
-        
-        vec3 = VBRandomPositionGenerator.findRandomTargetGuardPatrol(this.entity);
-        
-        if(vec3 == null){
-        	//if the guard can not find any building near self, he is considered lost his way and will be moved towards his building 
-        	vec3 = Vec3.createVectorHelper(entity.buildingX, entity.buildingY, entity.buildingZ);
+        if (this.entity.getRNG().nextInt(40) != 0){
+        	if(this.hasTarget)
+        		return true;
+        }
+        else{
+        	vec3 = VBRandomPositionGenerator.findRandomTargetGuardPatrol(this.entity);
+            
+            if(vec3 == null){
+            	//if the guard can not find any building near self, he is considered lost his way and will be moved towards his building 
+            	vec3 = Vec3.createVectorHelper(entity.getInitPosX() + 0.5D,entity.getInitPosY(), entity.getInitPosZ() + 0.5D);
+            }
         }
         
         if (vec3 == null)
@@ -54,6 +59,7 @@ public class VillagerAIGuardPatrol extends EntityAIBase
             this.xPosition = vec3.xCoord;
             this.yPosition = vec3.yCoord;
             this.zPosition = vec3.zCoord;
+            this.hasTarget = true;
             return true;
         }
     }
@@ -90,7 +96,10 @@ public class VillagerAIGuardPatrol extends EntityAIBase
     public void startExecuting()
     {
     	equipWeaponAndArmors(true);
-    	VillagerNavigator.tryMoveToXYZ(entity, this.xPosition, this.yPosition, this.zPosition);       
+    	if(VillagerNavigator.tryMoveToXYZ(entity, this.xPosition, this.yPosition, this.zPosition)){
+    		hasTarget = false;
+    	}
+    		
     }
     
     private void equipWeaponAndArmors(boolean equip){

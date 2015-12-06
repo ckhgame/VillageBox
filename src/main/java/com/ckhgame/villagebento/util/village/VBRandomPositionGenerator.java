@@ -8,9 +8,8 @@ import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.tool.VBRandom;
 
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 
 public class VBRandomPositionGenerator{
@@ -72,6 +71,28 @@ public class VBRandomPositionGenerator{
 
         return found?Vec3.createVectorHelper((double)fx, (double)fy, (double)fz):null;
 	}
+	
+	public static Vec3 findRandomTargetInBuildingFast(int BuildingID)
+    {
+		DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(), BuildingID);
+		if(db == null) return null;
+		
+		int bx = db.x;
+		int by = db.y;
+		int bz = db.z;
+		int d = ConfigVillager.ALWanderInBuildingWallOffset;
+		int sx = Math.max(0,db.sizeX - d);
+		int sz = Math.max(0,db.sizeZ - d);
+		int sh = ConfigBuilding.BuildingMaxHeight;
+		int sd = ConfigBuilding.BuildingGroundWorkDepth;
+
+		Random rand = VBRandom.getRand();
+        int x = rand.nextInt(2 * sx + 1) - sx + bx;
+        int z = rand.nextInt(2 * sz + 1) - sz + bz;
+        int y = rand.nextInt(sd + sh) - sd + by;
+
+        return Vec3.createVectorHelper((double)x, (double)y, (double)z);
+    }
 	
 	public static Vec3 findRandomTargetInBuildingFast(EntityVBVillager evr)
     {
@@ -135,7 +156,10 @@ public class VBRandomPositionGenerator{
     }
 
 	public static Vec3 findRandomTargetGuardPatrol(EntityVBVillager evr){
-		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(evr,ConfigVillager.AIGuardPotrolSearchDistanceSq);
+		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(evr,
+																										ConfigVillager.AIGuardPotrolSearchDistanceX,
+																										ConfigVillager.AIGuardPotrolSearchDistanceY,
+																										ConfigVillager.AIGuardPotrolSearchDistanceZ);
 		if(db != null){
 			
 			Random random = evr.getRNG();

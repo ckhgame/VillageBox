@@ -291,11 +291,28 @@ public class EntityVBVillager extends EntityAgeable {
 
 	//-- visiting --	
 	public void startRandomVisiting(){
-		
+		this.visitingBuildingID = HelperDataVB.getRandomBuildingInVillage(this, 
+																												ConfigVillager.AIVillagerVisitingSearchDistanceX,
+																												ConfigVillager.AIVillagerVisitingSearchDistanceY,
+																												ConfigVillager.AIVillagerVisitingSearchDistanceZ).id;
+		this.visitingSkipSleep = false;
+		System.out.println(this.getName() + ": START VISITING!");
 	}
 	
 	public void cancelVisiting(){
-		
+		this.visitingBuildingID = -1;
+	}
+	
+	public boolean isVisiting(){
+		return (this.visitingBuildingID >= 0);
+	}
+	
+	public int getVisitingBuildingID(){
+		return this.visitingBuildingID;
+	}
+	
+	public boolean isVisitingSkipSleeping(){
+		return this.visitingSkipSleep;
 	}
 	
 	// temp caches
@@ -505,7 +522,7 @@ public class EntityVBVillager extends EntityAgeable {
 
 	@Override
 	public boolean allowLeashing() {
-		return true;
+		return false;
 	}
 
 }

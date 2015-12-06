@@ -35,25 +35,51 @@ public class VillagerAIMovement extends EntityAIBase
     {
     	Vec3 vec3 = null;
     	if (this.entity.getRNG().nextInt(60) == 0){
-    		 if(this.entity.getProfession().getTimeSchedule().isWorkTimeNow()){ // in working time        	
-    	        	vec3 = Vec3.createVectorHelper( this.entity.getInitPosX() + 0.5D,this.entity.getInitPosY(),this.entity.getInitPosZ() + 0.5D);
-    	        }
-    	        else if(VBDataTime.isDayTime()){ //day time & out of working time
-    	        	if(this.entity.worldObj.isRaining()){ // rainning : stay in side of the building
-    	        		vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-    	        	}
-    	        	else{
-    	        		
-    	        		//if it's not raining and it's day time, there are two options
-    	        		//if(this.entity.getRNG().nextInt(10) != 0)
-    	        		
-    	        		//not raining: walking near the building
-    	        		vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
-    	        	}
-    	        }
-    	        else{ // when it's night
-    	        	vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-    	        }
+    		
+			if(this.entity.getProfession().getTimeSchedule().isWorkTimeNow()){ // in working time      
+				if(this.entity.isVisiting()){
+					this.entity.cancelVisiting();
+				}
+				vec3 = Vec3.createVectorHelper( this.entity.getInitPosX() + 0.5D,this.entity.getInitPosY(),this.entity.getInitPosZ() + 0.5D);
+	        }
+    		else{
+    			if(VBDataTime.isDayTime()){ //day
+    				if(this.entity.isVisiting()){
+    					vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity.getVisitingBuildingID());
+    				}
+    				else{
+    					if(this.entity.getRNG().nextInt(100) == 0){
+    						this.entity.startRandomVisiting();
+    					}
+    					if(!this.entity.isVisiting()){
+    						if(this.entity.worldObj.isRaining()){
+    							vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+    						}
+    						else{
+    							vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
+    						}
+    					}
+    				}
+    			}
+    			else{ //night
+    				if(this.entity.isVisiting()){
+    					if(this.entity.isVisitingSkipSleeping()){
+    						vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity.getVisitingBuildingID());
+    					}
+    					else{
+    						this.entity.cancelVisiting();
+    					}
+    				}
+    				else{
+    					if(this.entity.getRNG().nextInt(100) == 0){
+    						this.entity.startRandomVisiting();
+    					}
+    					if(!this.entity.isVisiting()){
+    						vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+    					}
+    				}
+    			}
+    		}
     	}
     	else{
     		if(hasTarget){
