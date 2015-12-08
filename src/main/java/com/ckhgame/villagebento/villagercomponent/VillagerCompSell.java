@@ -37,7 +37,7 @@ public class VillagerCompSell extends VillagerCompItemList {
 						itemStack.stackSize -= itemSell.stackSize;
 						HelperPlayer.playerRemoveItemStack(player, itemSell);
 						HelperPlayer.addCurrency(player,ItemPrice.getSellPrice(itemSell.getItem()));
-						this.getVillager().addExp(ConfigVillager.TradingExp);
+						//this.getVillager().addExp(ConfigVillager.TradingExp);
 					
 						return VBCompResult.getDefaultSuccess();
 					}

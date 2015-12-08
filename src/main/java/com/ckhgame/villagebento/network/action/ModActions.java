@@ -15,6 +15,7 @@ public class ModActions {
 		Action.registry.register(id++, new ActionDoCreateAnimal());
 		Action.registry.register(id++, new ActionDoVillagerCompleteQuest());
 		Action.registry.register(id++, new ActionDoVillagerAcceptQuest());
+		Action.registry.register(id++, new ActionDoVillagerUpgrade());
 		
 		
 		//server -> clinet

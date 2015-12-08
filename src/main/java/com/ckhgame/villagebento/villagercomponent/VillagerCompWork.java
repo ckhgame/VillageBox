@@ -263,7 +263,7 @@ public class VillagerCompWork extends VillagerComponent {
 		this.hoursLeft = this.workListTotal.get(wIdx).hours;
 		refreshOutput();
 		
-		this.getVillager().addExp(ConfigVillager.WorkExpPerHour * this.workListTotal.get(wIdx).hours);//
+		//this.getVillager().addExp(ConfigVillager.WorkExpPerHour * this.workListTotal.get(wIdx).hours);//
 		
 		return VBCompResult.getDefaultSuccess();
 		

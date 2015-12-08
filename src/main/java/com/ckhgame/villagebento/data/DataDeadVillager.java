@@ -12,7 +12,7 @@ public class DataDeadVillager implements IData{
 	public int initX;
 	public int initY;
 	public int initZ;
-	public int exp;
+	public int level;
 	public int timer;
 	
 	@Override
@@ -23,7 +23,7 @@ public class DataDeadVillager implements IData{
 		compound.setInteger(ConfigData.KeyDataDeadVillagerInitX, this.initX);
 		compound.setInteger(ConfigData.KeyDataDeadVillagerInitY, this.initY);
 		compound.setInteger(ConfigData.KeyDataDeadVillagerInitZ, this.initZ);
-		compound.setInteger(ConfigData.KeyDataDeadVillagerExp, this.exp);
+		compound.setInteger(ConfigData.KeyDataDeadVillagerLevel, this.level);
 		compound.setInteger(ConfigData.KeyDataDeadVillagerTimer, this.timer);
 	}
 	@Override
@@ -34,7 +34,7 @@ public class DataDeadVillager implements IData{
 		this.initX = compound.getInteger(ConfigData.KeyDataDeadVillagerInitX);
 		this.initY = compound.getInteger(ConfigData.KeyDataDeadVillagerInitY);
 		this.initZ = compound.getInteger(ConfigData.KeyDataDeadVillagerInitZ);
-		this.exp = compound.getInteger(ConfigData.KeyDataDeadVillagerExp);
+		this.level = compound.getInteger(ConfigData.KeyDataDeadVillagerLevel);
 		this.timer = compound.getInteger(ConfigData.KeyDataDeadVillagerTimer);
 	}
 }

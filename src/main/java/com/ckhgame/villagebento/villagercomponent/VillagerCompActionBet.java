@@ -26,7 +26,7 @@ public class VillagerCompActionBet extends VillagerCompAction {
 		
 		if(HelperPlayer.addCurrency(player,-bet)){
 
-			this.getVillager().addExp(ConfigVillager.BetExp);
+			//this.getVillager().addExp(ConfigVillager.BetExp);
 			
 			Random rand = new Random();
 			int r = rand.nextInt(100);

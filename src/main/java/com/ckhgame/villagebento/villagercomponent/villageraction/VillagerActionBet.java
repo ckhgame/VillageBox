@@ -28,7 +28,7 @@ public class VillagerActionBet extends VillagerAction {
 
 		if (HelperPlayer.addCurrency(player, -bet)) {
 
-			villager.addExp(ConfigVillager.BetExp);
+			//villager.addExp(ConfigVillager.BetExp);
 
 			Random rand = VBRandom.getRand();
 			int r = rand.nextInt(100);

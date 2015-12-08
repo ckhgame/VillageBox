@@ -15,6 +15,7 @@ import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuestDes
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 
 public class ProfessionVillageElder extends Profession {
 
@@ -112,5 +113,21 @@ public class ProfessionVillageElder extends Profession {
 	public String getSkinName() {
 		return "villageelder";
 	}
+
+	@Override
+	protected void setILevelRequirements() {
+		
+		this.levelRequirements = new ItemStack[2][];
+		
+		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(Blocks.torch,16),
+																				new ItemStack(Items.bed,2)};
+		
+		this.levelRequirements[1] = new ItemStack[]{	new ItemStack(Items.apple,10),
+																				new ItemStack(Items.boat,1),
+																				new ItemStack(Items.beef,10)};
+		
+	}
+	
+	
 
 }

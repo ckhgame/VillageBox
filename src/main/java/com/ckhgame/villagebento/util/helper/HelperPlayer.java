@@ -23,33 +23,41 @@ public class HelperPlayer {
 		int i;
 		InventoryPlayer ip = entityPlayer.inventory;
 
+		int total = 0;
+		
 		for (i = 0; i < ip.mainInventory.length; ++i) {
-			if (ip.mainInventory[i] != null && ip.mainInventory[i].isItemEqual(itemStack)
-					&& ip.mainInventory[i].stackSize >= itemStack.stackSize) {
-				return true;
+			if (ip.mainInventory[i] != null && ip.mainInventory[i].isItemEqual(itemStack)) {
+				total += ip.mainInventory[i].stackSize;
 			}
 		}
 
-		return false;
+		return (total >= itemStack.stackSize);
 	}
 
 	public static boolean playerRemoveItemStack(EntityPlayer entityPlayer, ItemStack itemStack) {
-
-		int i;
+		
+		int total = itemStack.stackSize;
+		
 		InventoryPlayer ip = entityPlayer.inventory;
 
-		for (i = 0; i < ip.mainInventory.length; ++i) {
-			if (ip.mainInventory[i] != null && ip.mainInventory[i].isItemEqual(itemStack)
-					&& ip.mainInventory[i].stackSize >= itemStack.stackSize) {
-				ip.mainInventory[i].stackSize -= itemStack.stackSize;
-				if (ip.mainInventory[i].stackSize == 0)
+		for (int i = 0; i < ip.mainInventory.length; ++i) {
+			if (ip.mainInventory[i] != null && ip.mainInventory[i].isItemEqual(itemStack)) {
+				
+				if(total < ip.mainInventory[i].stackSize){
+					ip.mainInventory[i].stackSize -= total;
+					total = 0;
+				}
+				else{
+					total -= ip.mainInventory[i].stackSize;
 					ip.mainInventory[i] = null;
-
-				return true;
+				}
+				
+				if(total == 0)
+					break;
 			}
 		}
-
-		return false;
+		
+		return (total <= 0);
 	}
 
 	public static boolean dropCurrency(EntityPlayer entityPlayer, int currency) {

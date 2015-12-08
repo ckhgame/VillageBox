@@ -307,7 +307,7 @@ public class HelperDataVB {
 		ddvr.initX = villager.getInitPosX();
 		ddvr.initY = villager.getInitPosY();
 		ddvr.initZ = villager.getInitPosZ();
-		ddvr.exp = villager.getExp();
+		ddvr.level = villager.getLevel();
 		ddvr.timer = 0;	
 		dataVB.dataDeath.deadVillagers.add(ddvr);
 		dataVB.markDirty();

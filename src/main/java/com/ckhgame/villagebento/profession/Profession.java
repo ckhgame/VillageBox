@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.util.data.Hour24;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.util.data.VillagerSchedule;
 import com.ckhgame.villagebento.util.registry.IRegistrable;
 import com.ckhgame.villagebento.util.registry.Registry;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public abstract class Profession implements IRegistrable {
@@ -46,29 +46,6 @@ public abstract class Profession implements IRegistrable {
 	}
 	public ResourceLocation getSkin(){
 		return skinTexture;
-	}
-		
-	//level & exp
-	protected int[] expLvls;
-	
-	protected void setExpBase(){
-		expLvls = new int[]{200,300,400,500};
-	}
-	
-	public int getNextLevelExp(int currentLevel){
-		if(currentLevel >= 0 && currentLevel <expLvls.length){
-			return expLvls[currentLevel];
-		}
-		else
-			return -1;
-	}
-	
-	public boolean isMaxLevel(int currentLevel){
-		return (currentLevel >= expLvls.length);
-	}
-	
-	public int expToLevel(int exp){
-		return 0;
 	}
 
 	//villager chat
@@ -107,10 +84,29 @@ public abstract class Profession implements IRegistrable {
 		return this.timeSchedule;
 	}
 	
+	//leveling up requirements
+	protected ItemStack[][] levelRequirements;
+	protected void setILevelRequirements(){
+	}
+	
+	public boolean isMaxLevel(int currentLevel){
+		if(currentLevel < 0 || levelRequirements == null || currentLevel >= levelRequirements.length ){
+			return true;
+		}
+		return false;
+	}
+	
+	public ItemStack[] getNextLevelRequirements(int currentLevel){
+		if(isMaxLevel(currentLevel)){
+			return null;
+		}
+		
+		return this.levelRequirements[currentLevel];
+	}
 	
 	public Profession(){
 		initVillagerChat(villagerChat);
-		setExpBase();
+		setILevelRequirements();
 		setSkin(this.getSkinName());
 		setTimeSchedule();
 	}

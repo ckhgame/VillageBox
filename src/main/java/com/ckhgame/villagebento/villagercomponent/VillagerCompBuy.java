@@ -38,7 +38,7 @@ public class VillagerCompBuy extends VillagerCompItemList {
 					if(HelperPlayer.addCurrency(player,-ItemPrice.getBuyPrice(itemBuy.getItem()))){
 						itemStack.stackSize -= itemBuy.stackSize;
 						player.inventory.addItemStackToInventory(itemBuy);
-						this.getVillager().addExp(ConfigVillager.TradingExp);						
+						//this.getVillager().addExp(ConfigVillager.TradingExp);						
 						return VBCompResult.getDefaultSuccess();
 					}
 					else

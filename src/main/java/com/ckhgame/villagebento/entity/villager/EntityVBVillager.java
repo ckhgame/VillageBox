@@ -84,7 +84,7 @@ public class EntityVBVillager extends EntityAgeable {
         super.entityInit();
         this.dataWatcher.addObject(17, new Integer(-1));	//profession
         this.dataWatcher.addObject(18, new Integer(-1));	//sleeping <0: false, others: true ( >= 0indicates the sleep orientation as well:0 90 180 270)
-        this.dataWatcher.addObject(19, new Integer(0));		//exp
+        this.dataWatcher.addObject(19, new Integer(0));	//level
     }
 	
 	@Override
@@ -135,31 +135,20 @@ public class EntityVBVillager extends EntityAgeable {
 		return this.buidlingID;
 	}
 
-	public void setExp(int exp) {
-		this.dataWatcher.updateObject(19, exp);
-	}
-	
-	public void addExp(int add){
-		int exp = this.getExp();
-		int lvl = this.getLevel();
-		//add exp
-		exp += Math.max(0, add);
-		this.setExp(exp);
-		//check leveling up
-		int lvlAfter = this.getLevel();
-		if(lvlAfter != lvl)
-			this.levelChanged(lvlAfter > lvl);
-	}
-
-	public int getExp() {
+	public int getLevel(){
 		return this.dataWatcher.getWatchableObjectInt(19);
 	}
 	
-	public int getLevel(){
-		return this.profession.expToLevel(this.getExp());
+	protected void setLevel(int level){
+		this.dataWatcher.updateObject(19,level);
 	}
 	
-	public void levelChanged(boolean isLevelup){
+	public void upgradeLevel(){
+		this.setLevel(this.getLevel() + 1);
+		onLevelUpgraded();
+	}
+	
+	public void onLevelUpgraded(){
 		float hp = 8.0F + this.getLevel() * 3;
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(hp);
 		if (this.getHealth() > hp)
@@ -496,10 +485,10 @@ public class EntityVBVillager extends EntityAgeable {
 		super.writeEntityToNBT(p_70014_1_);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerProfessionID, this.getProfessionID());
 		p_70014_1_.setInteger(ConfigData.KeyVillagerBuildingID, this.getBuildingID());
-		p_70014_1_.setInteger(ConfigData.KeyVillagerExp, this.getExp());
 		p_70014_1_.setInteger(ConfigData.KeyVillagerInitX, this.initPosX);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerInitY, this.initPosY);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerInitZ, this.initPosZ);
+		p_70014_1_.setInteger(ConfigData.KeyVillagerLevel, this.getLevel());
 		p_70014_1_.setInteger(ConfigData.KeyVillagerSleeping, this.getSleepingValue());
 		p_70014_1_.setInteger(ConfigData.KeyVillagerVisitingBuildingID, this.getVisitingBuildingID());
 		p_70014_1_.setBoolean(ConfigData.KeyVillagerVisitingSkipSleep, this.isVisitingSkipSleeping());
@@ -513,10 +502,10 @@ public class EntityVBVillager extends EntityAgeable {
 		super.readEntityFromNBT(p_70037_1_);
 		this.setProfessionID(p_70037_1_.getInteger(ConfigData.KeyVillagerProfessionID));
 		this.setBuildingID(p_70037_1_.getInteger(ConfigData.KeyVillagerBuildingID));
-		this.setExp(p_70037_1_.getInteger(ConfigData.KeyVillagerExp));
 		this.initPosX = p_70037_1_.getInteger(ConfigData.KeyVillagerInitX);
 		this.initPosY = p_70037_1_.getInteger(ConfigData.KeyVillagerInitY);
 		this.initPosZ = p_70037_1_.getInteger(ConfigData.KeyVillagerInitZ);
+		this.setLevel(p_70037_1_.getInteger(ConfigData.KeyVillagerLevel));
 		this.setSleepingValue(p_70037_1_.getInteger(ConfigData.KeyVillagerSleeping));
 		this.visitingBuildingID = p_70037_1_.getInteger(ConfigData.KeyVillagerVisitingBuildingID);
 		this.visitingSkipSleep = p_70037_1_.getBoolean(ConfigData.KeyVillagerVisitingSkipSleep);

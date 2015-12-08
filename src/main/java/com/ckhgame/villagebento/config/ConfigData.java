@@ -26,7 +26,7 @@ public class ConfigData {
 	public static final String KeyDataDeadVillagerInitX			= "ddvrix";
 	public static final String KeyDataDeadVillagerInitY			= "ddvriy";
 	public static final String KeyDataDeadVillagerInitZ			= "ddvriz";
-	public static final String KeyDataDeadVillagerExp			= "ddvre";
+	public static final String KeyDataDeadVillagerLevel			= "ddvrlv";
 	public static final String KeyDataDeadVillagerTimer			= "ddvrt";
 	
 	//id
@@ -43,7 +43,7 @@ public class ConfigData {
 	public static final String KeyVillagerSleeping					= "vrs";
 	public static final String KeyVillagerProfessionID				= "vrpid";
 	public static final String KeyVillagerBuildingID				= "vrbid";
-	public static final String KeyVillagerExp						= "vre";
+	public static final String KeyVillagerLevel						= "vrl";
 	public static final String KeyVillagerInitX						= "vrix";
 	public static final String KeyVillagerInitY						= "vriy";
 	public static final String KeyVillagerInitZ						= "vriz";
