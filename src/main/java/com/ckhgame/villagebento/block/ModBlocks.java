@@ -45,7 +45,7 @@ import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.item.ItemBlockVillageBuilding;
-import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.model.ModelChair;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -119,6 +119,10 @@ public final class ModBlocks {
     public static BlockVBCrops blockCorn;
     public static BlockVBCrops blockGrapes;
     
+    //furniture
+    //mountable
+    public static BlockMountable blockWoodenChair;
+    
     public static final void init() {
         
     	GameRegistry.registerBlock(blockBuildingScanner = new BlockBuildingScanner(), "BlockBuildingScanner");
@@ -185,6 +189,10 @@ public final class ModBlocks {
        	GameRegistry.registerBlock(blockSoybeans = new BlockVBCrops("BlockSoybeans","ItemSoybeanSeed","ItemSoybeans"),"BlockSoybeans");
        	GameRegistry.registerBlock(blockCorn = new BlockVBCrops("BlockCorn","ItemCornSeed","ItemCorn"),"BlockCorn");
        	GameRegistry.registerBlock(blockGrapes = new BlockVBCrops("BlockGrapes","ItemGrapeSeed","ItemGrapes"),"BlockGrapes");
+       	
+       	//furniture
+       	// ** mountable
+       	GameRegistry.registerBlock(blockWoodenChair = new BlockMountable("BlockWoodenChair",new ModelChair(),"planks_jungle"),"BlockWoodenChair");
     }
     
     private static void registerVillageBlock(Block block,String name){
