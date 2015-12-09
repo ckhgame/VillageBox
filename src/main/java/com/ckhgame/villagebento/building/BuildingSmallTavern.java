@@ -134,7 +134,7 @@ public class BuildingSmallTavern extends Building {
 		bb.buildBlock(0,3,2,Blocks.torch,4);bb.buildBlock(2,3,-2,Blocks.torch,2);bb.buildBlock(2,3,0,Blocks.torch,2);
 		bb.buildBlock(3,3,2,Blocks.torch,1);bb.addEntityPainting(2,-3,-1,1,"Pool");
 		bb.addEntityPainting(-3,2,-2,3,"Wasteland");
-		bb.addEntityPainting(-3,2,0,3,"Plant");
+		bb.addEntityPainting(-3,2,0,3,"Plant"); 
 		bb.addEntityPainting(-3,2,2,3,"Aztec2");
 		bb.addEntityItemFrame(2,2,2,3,ModBlocks.blockSmallTavern);
 	}
