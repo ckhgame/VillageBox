@@ -42,7 +42,7 @@ import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable {
 
-	private Profession profession; 	// professtion of the villager
+	private Profession profession; 	// profession of the villager
 	private int buidlingID = -1; // village building ID (used to find the related
 	
 	private int visitingBuildingID = -1; 		//ID of the building the villager is visiting...
@@ -427,6 +427,12 @@ public class EntityVBVillager extends EntityAgeable {
 	private boolean isFirstTimeLivingUpdate = true;
 	private void onFirstTimeLivingUpdate(){
 		this.refreshBuildingCaches();
+		
+		//update client ridden
+		if(!this.worldObj.isRemote && this.ridingEntity != null){
+			this.mountEntity(this.ridingEntity);
+		}
+		
 	}
 	
 	@Override
