@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBGuard;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompWork;
@@ -68,7 +69,7 @@ public class ProfessionSoldier extends Profession {
 	
 	@Override
 	protected void setTimeSchedule(){	
-		timeSchedule.setSleeptime(new int[]{6, 14});
+		timeSchedule.setSleeptime(new  RangeInt(6,14));
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.util.data.VillagerSchedule;
 import com.ckhgame.villagebento.util.registry.IRegistrable;
@@ -69,15 +70,15 @@ public abstract class Profession implements IRegistrable {
 	//time schedule
 	protected VillagerSchedule timeSchedule = new VillagerSchedule();
 	protected void setTimeSchedule(){
-		timeSchedule.setWorkTime(0, new int[]{8, 16});		//Monday
-		timeSchedule.setWorkTime(1, new int[]{8, 16});		//Tuesday
-		timeSchedule.setWorkTime(2, new int[]{8, 16});		//Wednesday
-		timeSchedule.setWorkTime(3, new int[]{8, 16});		//Thursday
-		timeSchedule.setWorkTime(4, new int[]{8, 16});		//Friday
+		timeSchedule.setWorkTime(0, new RangeInt(8,16));		//Monday
+		timeSchedule.setWorkTime(1, new RangeInt(8,16));		//Tuesday
+		timeSchedule.setWorkTime(2, new RangeInt(8,16));		//Wednesday
+		timeSchedule.setWorkTime(3, new RangeInt(8,16));		//Thursday
+		timeSchedule.setWorkTime(4, new RangeInt(8,16));		//Friday
 																					//Saturday
 																					//Sunday
 		
-		timeSchedule.setSleeptime(new int[]{0, 6, 22, 24});
+		timeSchedule.setSleeptime(new RangeInt(22,30));
 	}
 	
 	public VillagerSchedule getTimeSchedule(){

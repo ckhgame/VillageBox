@@ -6,70 +6,58 @@ import java.util.Random;
 import com.ckhgame.villagebento.util.village.VBDataTime;
 
 public class VillagerSchedule {
-	private Hour24[][] worktimes = new Hour24[7][];
-	private Hour24[] sleeptime;
+	
+	public static final int No= 0;
+	public static final int YesYesterday = 1;
+	public static final int YesToday = 2;
+	
+	private RangeInt[] worktimes = new RangeInt[7];
+	private RangeInt sleeptime;
 	
 	//works
-	public void setWorkTime(int dayOfWeek, Hour24[] ranges){
+	public void setWorkTime(int dayOfWeek, RangeInt range){
 		if(dayOfWeek >= 0 || dayOfWeek < 7){
-			worktimes[dayOfWeek] = ranges;
+			worktimes[dayOfWeek] = range;
 		}
-	}
-	
-	public void setWorkTime(int dayOfWeek, int[] arr){
-		if(arr == null || arr.length == 0 || arr.length % 2 == 1){
-			System.out.println("unvalid work time int array");
-			return;
-		}
-		
-		Hour24[] ranges = new Hour24[arr.length / 2];
-		for(int i=0;i<ranges.length;i++){
-			ranges[i] = new Hour24(arr[i * 2],arr[i * 2 + 1]);
-		}
-		
-		this.setWorkTime(dayOfWeek, ranges);
 	}
 	
 	//sleeping
-	public void setSleeptime(Hour24[] ranges){
-		sleeptime = ranges;
-	}
-	
-	public void setSleeptime(int[] arr){
-		if(arr == null || arr.length == 0 || arr.length % 2 == 1){
-			System.out.println("unvalid work time int array");
-			return;
-		}
-		
-		Hour24[] ranges = new Hour24[arr.length / 2];
-		for(int i=0;i<ranges.length;i++){
-			ranges[i] = new Hour24(arr[i * 2],arr[i * 2 + 1]);
-		}
-		
-		setSleeptime(ranges);
+	public void setSleeptime(RangeInt range){
+		sleeptime = range;
 	}
 	
 	//-------
 	
 	public boolean isWorkTimeNow(){
+		return (isWorkTimeNowResult() != No);
+	}
+	
+	public int isWorkTimeNowResult(){
 		int h = VBDataTime.getHourOfDay();
-		Hour24[] ranges = worktimes[VBDataTime.getDayInWeek()];
-		if(ranges != null){
-			for(Hour24 range : ranges){
-				if(range.inRange(h)){
-					return true;
-				}
-			}
+		int day = VBDataTime.getDayInWeek();
+		int prev = day > 0?day - 1:6;
+		
+		//check yesterday
+		RangeInt prevRange = worktimes[prev];
+		if(prevRange != null && prevRange.to >= 24 && h <  prevRange.to % 24){
+			return YesYesterday;
 		}
-		return false;
+		
+		RangeInt todayRange = worktimes[day];
+		if(todayRange != null && todayRange.inRange(h)){
+			return YesToday;
+		}
+		
+		return No;
 	}
 	public boolean isSleepTimeNow(){
 		int h = VBDataTime.getHourOfDay();
 		if(sleeptime != null){
-			for(Hour24 range : sleeptime){
-				if(range.inRange(h)){
-					return true;
-				}
+			if(sleeptime.inRange(h)){
+				return true;
+			}
+			else if(sleeptime.to >= 24 && h < sleeptime.to % 24){
+				return true;
 			}
 		}
 		return false;
@@ -90,17 +78,16 @@ public class VillagerSchedule {
 		return "Sleep " + getRangeText(sleeptime);
 	}
 	
-	private String getRangeText(Hour24[] ranges){
-		if(ranges == null)
+	private String getRangeText(RangeInt range){
+		if(range == null){
 			return "---";
-		String text = "";
-		for(int i =0;i<ranges.length;i++){
-			text += getHour24Text(ranges[i].from) + " - "  + getHour24Text(ranges[i].to) + (i < ranges.length - 1?", ":"");
 		}
-		return text;
+		else{
+			return getHourText(range.from) + " - "  + getHourText(range.to % 24) ;
+		}
 	}
 	
-	private String getHour24Text(int hour){
+	private String getHourText(int hour){
 		int h = hour % 12;
 		if(h == 0) h = 12;
 		return h + (hour < 12?" am":" pm");

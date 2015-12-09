@@ -27,8 +27,8 @@ public class BlockFinder {
 		
 		ArrayList<Vec3Int> list = new ArrayList<Vec3Int>();
 		
-		for(int x = x1;x <= x2;x++){
-			for(int y = y1;y <= y2;y++){
+		for(int y = y1;y <= y2;y++){ // from bottom to top
+			for(int x = x1;x <= x2;x++){
 				for(int z = z1;z <= z2;z++){
 					if(world.getBlock(x, y, z) == block){
 						int metadata = world.getBlockMetadata(x, y, z);
