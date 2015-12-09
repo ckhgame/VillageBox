@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.ai.villager.VillagerAIMovement;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
+import com.ckhgame.villagebento.ai.villager.VillagerAIVisiting;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
-import com.ckhgame.villagebento.building.Building;
-import com.ckhgame.villagebento.building.BuildingLargeTavern;
-import com.ckhgame.villagebento.building.BuildingSmallTavern;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -18,6 +16,7 @@ import com.ckhgame.villagebento.gui.GuiVillager;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.util.data.Vec3Int;
 import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.village.HelperVisiting;
 import com.ckhgame.villagebento.util.village.PlayerMsg;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
@@ -36,6 +35,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -56,7 +56,7 @@ public class EntityVBVillager extends EntityAgeable {
 	
 	public EntityVBVillager(World w) {
 		super(w);
-		this.setSize(0.6F, 1.8F);
+		this.setSize(0.2F, 1.8F);
 		this.getNavigator().setAvoidsWater(true);
 		this.getNavigator().setBreakDoors(true);
 		this.getNavigator().setEnterDoors(true);
@@ -72,6 +72,7 @@ public class EntityVBVillager extends EntityAgeable {
 		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 6.0F, 0.4D, 0.4D));
 		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
 		this.tasks.addTask(3, new VillagerAISleep(this));
+		this.tasks.addTask(4, new VillagerAIVisiting(this));
 		
 		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
 		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVBVillager.class, 5.0F, 0.02F));
@@ -284,32 +285,8 @@ public class EntityVBVillager extends EntityAgeable {
 	//-- visiting --	
 	public void startRandomVisiting(){
 		
-		int r = this.rand.nextInt(10);
-		if(r < 10) //%30 chances go to taverns... 
-		{
-			int[] ids = new int[2];
-			ids[0] = Building.registry.get(BuildingSmallTavern.class).getType();
-			ids[1] = Building.registry.get(BuildingLargeTavern.class).getType();
-			
-			DataBuilding db = HelperDataVB.getRandomBuildingInVillage(this, 
-					ConfigVillager.AIVillagerVisitingSearchDistanceX,
-					ConfigVillager.AIVillagerVisitingSearchDistanceY,
-					ConfigVillager.AIVillagerVisitingSearchDistanceZ,
-					ids);
-			this.visitingBuildingID = (db == null?-1:db.id);
-			this.visitingSkipSleep = this.rand.nextBoolean();
-		}
-//		else{
-//			DataBuilding db = HelperDataVB.getRandomBuildingInVillage(this, 
-//					ConfigVillager.AIVillagerVisitingSearchDistanceX,
-//					ConfigVillager.AIVillagerVisitingSearchDistanceY,
-//					ConfigVillager.AIVillagerVisitingSearchDistanceZ);
-//			this.visitingBuildingID = (db == null?-1:db.id);
-//			this.visitingSkipSleep = false;
-//		}
-	
-		
-		System.out.println(this.getName() + ": START VISITING!");
+	 HelperVisiting.startRandomVisiting(this);
+
 	}
 	
 	public void cancelVisiting(){
@@ -324,6 +301,14 @@ public class EntityVBVillager extends EntityAgeable {
 		return this.visitingBuildingID;
 	}
 	
+	public void setVisitingBuidlingID(int bid){
+		this.visitingBuildingID = bid;
+	}
+	
+	public void setVisitingSkipSleeping(boolean skip){
+		this.visitingSkipSleep = skip;
+	}
+	
 	public boolean isVisitingSkipSleeping(){
 		return this.visitingSkipSleep;
 	}
@@ -333,6 +318,8 @@ public class EntityVBVillager extends EntityAgeable {
 	public int buildingSizeX, buildingSizeZ;
 	public Vec3Int bedPosition = null;
 	public int bedOritation;
+	public double aiMovingTargetX, aiMovingTargetY, aiMovingTargetZ;
+	public boolean hasAIMovingTarget;
 	
 	private void refreshBuildingCaches(){
 		if(!this.worldObj.isRemote){//server only
@@ -410,7 +397,14 @@ public class EntityVBVillager extends EntityAgeable {
 	}
 
 	public boolean interact(EntityPlayer p_70085_1_) {
-
+		
+		System.out.println("P:" + p_70085_1_.boundingBox);
+		System.out.println("V:" + this.boundingBox);
+		System.out.println("P:" + p_70085_1_.posY);
+		System.out.println("V:" + this.posY);
+		System.out.println("------------------------");
+		
+		
 		if (this.getDistanceSqToEntity(p_70085_1_) <= ConfigVillager.MaxInteractDistanceSq) {
 			if (this.isSleeping()) {
 				if (this.worldObj.isRemote)
@@ -541,5 +535,15 @@ public class EntityVBVillager extends EntityAgeable {
 	public boolean allowLeashing() {
 		return false;
 	}
+
+	@Override
+	public double getYOffset() {
+		// TODO Auto-generated method stub
+		return super.getYOffset() - 0.5D;
+	}
+	
+	
+	
+	
 
 }

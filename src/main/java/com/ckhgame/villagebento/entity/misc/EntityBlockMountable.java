@@ -25,7 +25,9 @@ public class EntityBlockMountable extends Entity {
 
 	@Override
 	public void onEntityUpdate() {
-		// TODO Auto-generated method stub
+		
+		//System.out.println("MMMMMMMMMMM");
+		
 		super.onEntityUpdate();
 		if (riddenByEntity == null || riddenByEntity.isDead) {
             setDead();

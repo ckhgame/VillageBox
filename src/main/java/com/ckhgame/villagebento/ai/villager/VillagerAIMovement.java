@@ -5,6 +5,7 @@ import java.util.Random;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.BlockFinder;
+import com.ckhgame.villagebento.util.village.HelperVisiting;
 import com.ckhgame.villagebento.util.village.VBRandomPositionGenerator;
 import com.ckhgame.villagebento.util.village.VBDataTime;
 import com.ckhgame.villagebento.util.village.VillagerNavigator;
@@ -17,10 +18,6 @@ import net.minecraft.util.Vec3;
 public class VillagerAIMovement extends EntityAIBase
 {
     private EntityVBVillager entity;
-    private boolean hasTarget;
-    private double xPosition;
-    private double yPosition;
-    private double zPosition;
 
     public VillagerAIMovement(EntityVBVillager entity)
     {
@@ -45,12 +42,12 @@ public class VillagerAIMovement extends EntityAIBase
     		else{ // out of working time
     			if(VBDataTime.isDayTime()){ //day
     				if(this.entity.isVisiting()){
-    					vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity.getVisitingBuildingID(),true);
+    					vec3 = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
     					if(vec3 == null)
     						this.entity.cancelVisiting();
     				}
     				else{
-    					if(this.entity.getRNG().nextInt(60) == 0){
+    					if(this.entity.getRNG().nextInt(ConfigVillager.VisitingChance) == 0){
     						this.entity.startRandomVisiting();
     					}
     					if(!this.entity.isVisiting()){
@@ -66,7 +63,7 @@ public class VillagerAIMovement extends EntityAIBase
     			else{ //night
     				if(this.entity.isVisiting()){
     					if(this.entity.isVisitingSkipSleeping()){
-    						vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity.getVisitingBuildingID(),true);
+    						vec3 = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
     						if(vec3 == null)
         						this.entity.cancelVisiting();
     					}
@@ -75,18 +72,18 @@ public class VillagerAIMovement extends EntityAIBase
     					}
     				}
     				else{
-    					if(this.entity.getRNG().nextInt(60) == 0){
+    					if(this.entity.getRNG().nextInt(ConfigVillager.VisitingChance) == 0){
     						this.entity.startRandomVisiting();
     					}
     					if(!this.entity.isVisiting()){
-    						vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+    						vec3 = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
     					}
     				}
     			}
     		}
     	}
     	else{
-    		if(hasTarget){
+    		if(this.entity.hasAIMovingTarget){
     			return true;
     		}
     	}
@@ -98,10 +95,10 @@ public class VillagerAIMovement extends EntityAIBase
         }
         else
         {
-            this.xPosition = vec3.xCoord;
-            this.yPosition = vec3.yCoord;
-            this.zPosition = vec3.zCoord;
-            this.hasTarget = true;
+            this.entity.aiMovingTargetX = vec3.xCoord;
+            this.entity.aiMovingTargetY = vec3.yCoord;
+            this.entity.aiMovingTargetZ = vec3.zCoord;
+            this.entity.hasAIMovingTarget = true;
             return true;
         }
     }
@@ -120,16 +117,15 @@ public class VillagerAIMovement extends EntityAIBase
 	public void updateTask() {
 		
 		super.updateTask();
-		
 	}
-
+    
 	/**
      * Execute a one shot task or start executing a continuous task
      */
     public void startExecuting()
     {
-    	if(VillagerNavigator.tryMoveToXYZ(entity, this.xPosition, this.yPosition, this.zPosition)){
-    		this.hasTarget = false;
+    	if(VillagerNavigator.tryMoveToXYZ(entity, this.entity.aiMovingTargetX, this.entity.aiMovingTargetY, this.entity.aiMovingTargetZ)){
+    		this.entity.hasAIMovingTarget = false;
     	}
     	
     }

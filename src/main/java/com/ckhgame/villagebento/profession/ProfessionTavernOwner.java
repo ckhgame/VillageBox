@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
@@ -54,6 +55,20 @@ public class ProfessionTavernOwner extends Profession {
 
 	}
 
+	@Override
+	protected void setTimeSchedule(){
+		timeSchedule.setWorkTime(0, new RangeInt(16,28));		//Monday
+		timeSchedule.setWorkTime(1, new RangeInt(16,28));		//Tuesday
+		timeSchedule.setWorkTime(2, new RangeInt(16,28));		//Wednesday
+		timeSchedule.setWorkTime(3, new RangeInt(16,28));		//Thursday
+		timeSchedule.setWorkTime(4, new RangeInt(16,28));		//Friday
+		timeSchedule.setWorkTime(5, new RangeInt(16,28));		//Saturday
+		timeSchedule.setWorkTime(6, new RangeInt(16,28));		//Sunday
+		
+		//sleeping
+		timeSchedule.setSleeptime(new  RangeInt(6,14));
+	}
+	
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 

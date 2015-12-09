@@ -91,7 +91,7 @@ public class VBRandomPositionGenerator{
         int z = rand.nextInt(2 * sz + 1) - sz + bz;
         int y = rand.nextInt(sd + sh) - sd + by;
 
-        return Vec3.createVectorHelper((double)x, (double)y, (double)z);
+        return Vec3.createVectorHelper((double)x + 0.5D, (double)y + 0.1D, (double)z + 0.5D);
     }
 	
 	public static Vec3 findRandomTargetInBuildingFast(EntityVBVillager evr)

@@ -2,14 +2,15 @@ package com.ckhgame.villagebento.data;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.util.IData;
 import com.ckhgame.villagebento.util.data.Vec3Int;
+import com.ckhgame.villagebento.util.tool.VBRandom;
 import com.ckhgame.villagebento.util.village.BlockFinder;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
 public class DataBuilding implements IData{
@@ -94,5 +95,29 @@ public class DataBuilding implements IData{
 			}
 		}
 		return null;
+	}
+	
+	
+	//mountable cache
+	private ArrayList<Vec3Int> cacheMountables = null;
+	
+	private void generatCacheMountables(){
+		cacheMountables = new  ArrayList<Vec3Int>();
+		World world = DataVillageBento.get().world;
+		Vec3Int[] arr = BlockFinder.findBlock(world, this.x, this.y, this.z,this.sizeX,this.sizeZ, ModBlocks.blockWoodenChair, new int[] {0}, false);
+		for(Vec3Int v3 : arr){
+			cacheMountables.add(v3);
+		}
+	}
+	
+	public Vec3Int getRandomAvailableMoutable(){
+		if(this.cacheMountables == null)
+			generatCacheMountables();
+		
+		if(cacheMountables.size() == 0)
+			return null;
+		
+		return cacheMountables.get(VBRandom.getRand().nextInt(cacheMountables.size()));
+		
 	}
 }

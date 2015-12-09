@@ -1,13 +1,14 @@
 package com.ckhgame.villagebento.block;
 
-import com.ckhgame.villagebento.Main;
-import com.ckhgame.villagebento.entity.misc.EntityBlockMountable;
+import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import com.ckhgame.villagebento.entity.misc.EntityBlockMountable;
+import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
+
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class BlockMountable extends BlockCustom{
@@ -21,13 +22,38 @@ public class BlockMountable extends BlockCustom{
 		public boolean onBlockActivated(World world, int x, int y, int z,EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
 			
 			if(!world.isRemote){ // server only
-				EntityBlockMountable entityBlockMountable = new EntityBlockMountable(world);
-				entityBlockMountable.setPosition(x + 0.5D, y + 0.5D, z + 0.5D);
-				world.spawnEntityInWorld(entityBlockMountable);
-				player.mountEntity(entityBlockMountable);
-				//entityBlockMountable.setMountTileEntity(this.getTileEntityBlockCustom());
+				if(isRiddenByEntity(world,x,y,z)){
+					System.out.println("that one is ridden by someone..");
+				}
+				else{
+					EntityBlockMountable entityBlockMountable = new EntityBlockMountable(world);
+					entityBlockMountable.setPosition(x + 0.5D, y + 0.5D, z + 0.5D);
+					world.spawnEntityInWorld(entityBlockMountable);
+					player.mountEntity(entityBlockMountable);
+					//entityBlockMountable.setMountTileEntity(this.getTileEntityBlockCustom());
+				}
 			}
 		
 			return true;
+		}
+		
+		private boolean isRiddenByEntity(World world, int x, int y,int z){
+			List l = world.getEntitiesWithinAABB(EntityBlockMountable.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1.0D, y + 1.0D, z + 1.0D));
+			return !(l == null || l.size() == 0);
+		}
+		
+		public void activedByEntityVBVillager(EntityVBVillager villager, int x, int y, int z){
+			if(!villager.worldObj.isRemote){ // server only
+				if(isRiddenByEntity(villager.worldObj,x,y,z)){
+					System.out.println("that one is ridden by someone..");
+				}
+				else{
+					EntityBlockMountable entityBlockMountable = new EntityBlockMountable(villager.worldObj);
+					entityBlockMountable.setPosition(x + 0.5D, y + 0.5D, z + 0.5D);
+					villager.worldObj.spawnEntityInWorld(entityBlockMountable);
+					villager.mountEntity(entityBlockMountable);
+					//entityBlockMountable.setMountTileEntity(this.getTileEntityBlockCustom());
+				}
+			}
 		}
 }
