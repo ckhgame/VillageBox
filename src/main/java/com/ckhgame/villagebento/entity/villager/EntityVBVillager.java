@@ -427,12 +427,6 @@ public class EntityVBVillager extends EntityAgeable {
 	private boolean isFirstTimeLivingUpdate = true;
 	private void onFirstTimeLivingUpdate(){
 		this.refreshBuildingCaches();
-		
-		//update client ridden
-		if(!this.worldObj.isRemote && this.ridingEntity != null){
-			this.mountEntity(this.ridingEntity);
-		}
-		
 	}
 	
 	@Override

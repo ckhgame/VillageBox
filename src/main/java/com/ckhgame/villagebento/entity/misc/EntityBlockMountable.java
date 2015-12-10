@@ -26,14 +26,9 @@ public class EntityBlockMountable extends Entity {
 	@Override
 	public void onEntityUpdate() {
 		
-		//System.out.println("MMMMMMMMMMM");
-		
 		super.onEntityUpdate();
-		if (riddenByEntity == null || riddenByEntity.isDead) {
+		if (!this.worldObj.isRemote && (riddenByEntity == null || riddenByEntity.isDead)) {
             setDead();
-            if(this.getMountTileEntity() != null){
-            	this.getMountTileEntity().setTarget(null);
-            }
         } 
 	}
 
@@ -47,15 +42,6 @@ public class EntityBlockMountable extends Entity {
 	protected void writeEntityToNBT(NBTTagCompound p_70014_1_) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	public void setMountTileEntity(TileEntityBlockCustom mountTileEntity){
-		this.mountTileEntity = mountTileEntity;
-		this.mountTileEntity.setTarget(this.riddenByEntity);
-	}
-	
-	public TileEntityBlockCustom getMountTileEntity(){
-		return this.mountTileEntity;
 	}
 
 }

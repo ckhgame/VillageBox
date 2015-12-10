@@ -22,7 +22,7 @@ public class ModEntities {
         EntityRegistry.registerModEntity(EntityVBSheep.class, "EntityVBSheep", id++, Main.instance, 80, 3, true);
         EntityRegistry.registerModEntity(EntityVBCow.class, "EntityVBCow", id++, Main.instance, 80, 3, true);
         
-        EntityRegistry.registerModEntity(EntityBlockMountable.class, "EntityBlockMountable", id++, Main.instance, 80, 3, true);
+        EntityRegistry.registerModEntity(EntityBlockMountable.class, "EntityBlockMountable", id++, Main.instance, 64, 1, true);
         
         //entity manager
         VBEntityMgr.get().init();
