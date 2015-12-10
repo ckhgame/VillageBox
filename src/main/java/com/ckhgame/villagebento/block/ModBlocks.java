@@ -40,6 +40,8 @@ import com.ckhgame.villagebento.building.BuildingSmallTavern;
 import com.ckhgame.villagebento.building.BuildingSunflower;
 import com.ckhgame.villagebento.building.BuildingTailorStore;
 import com.ckhgame.villagebento.building.BuildingTeaChair;
+import com.ckhgame.villagebento.building.BuildingTownSquareLarge;
+import com.ckhgame.villagebento.building.BuildingTownSquareSmall;
 import com.ckhgame.villagebento.building.BuildingVillageCenter;
 import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
@@ -91,6 +93,8 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockFarmlandSmall;
     public static BlockVillageBuilding blockLibrary;
     public static BlockVillageBuilding blockTailorStore;
+    public static BlockVillageBuilding blockTownSquareSmall;
+    public static BlockVillageBuilding blockTownSquareLarge;
     
 //  Decoration Blocks
     public static BlockVillageBuilding blockAutumnGarden;
@@ -164,6 +168,10 @@ public final class ModBlocks {
         registerVillageBlock(blockMarket = new BlockVillageBuilding(BuildingMarket.class,"BlockMarket"),"BlockMarket");
        	registerVillageBlock(blockLibrary = new BlockVillageBuilding(BuildingLibrary.class,"BlockLibrary"),"BlockLibrary");
        	registerVillageBlock(blockTailorStore = new BlockVillageBuilding(BuildingTailorStore.class,"BlockTailorStore"),"BlockTailorStore");
+       	registerVillageBlock(blockTownSquareSmall = new BlockVillageBuilding(BuildingTownSquareSmall.class,"BlockTownSquareSmall"),"BlockTownSquareSmall");
+       	registerVillageBlock(blockTownSquareLarge = new BlockVillageBuilding(BuildingTownSquareLarge.class,"BlockTownSquareLarge"),"BlockTownSquareLarge");
+       	
+       	
         //	Decoration Blocks
         registerVillageBlock(blockAutumnGarden = new BlockVillageBuilding(BuildingAutumnGarden.class,"BlockAutumnGarden"),"BlockAutumnGarden");
         registerVillageBlock(blockChristmas = new BlockVillageBuilding(BuildingChristmas.class,"BlockChristmas"),"BlockChristmas");
@@ -172,6 +180,8 @@ public final class ModBlocks {
         registerVillageBlock(blockRoseBridge = new BlockVillageBuilding(BuildingRoseBridge.class,"BlockRoseBridge"),"BlockRoseBridge");
        	registerVillageBlock(blockTeaChair = new BlockVillageBuilding(BuildingTeaChair.class,"BlockTeaChair"),"BlockTeaChair");
        	registerVillageBlock(blockPeacefulGarden = new BlockVillageBuilding(BuildingPeacefulGarden.class,"BlockPeacefulGarden"),"BlockPeacefulGarden");
+      
+       	
        	//player field
        	registerVillageBlock(blockPlayerFieldSmall = new BlockVillageBuilding(BuildingPlayerFieldSmall.class,"BlockPlayerFieldSmall",true),"BlockPlayerFieldSmall");
        	registerVillageBlock(blockPlayerFieldMedium = new BlockVillageBuilding(BuildingPlayerFieldMedium.class,"BlockPlayerFieldMedium",true),"BlockPlayerFieldMedium");

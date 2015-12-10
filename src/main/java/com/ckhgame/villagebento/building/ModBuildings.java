@@ -48,6 +48,8 @@ public class ModBuildings {
 		Building.registry.register(43,new BuildingChristmas());
 		Building.registry.register(44,new BuildingLibrary());
 		Building.registry.register(45,new BuildingTailorStore());
+		Building.registry.register(46,new BuildingTownSquareSmall());
+		Building.registry.register(47,new BuildingTownSquareLarge());
 
 
 		Building.registry.register(1000,new BuildingPlayerFieldSmall());
