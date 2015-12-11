@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class VillagerAIWatchClosest extends EntityAIBase
 {
-    private EntityVBVillager theWatcher;
+    protected EntityVBVillager theWatcher;
     /** The closest entity which is being watched by this one. */
     protected Entity closestEntity;
     /** This is the Maximum distance that the AI will look for the Entity */

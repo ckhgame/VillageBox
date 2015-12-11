@@ -30,7 +30,7 @@ public class ConfigVillager {
 	public static final int VillagerMoveTowardsRange = 2;
 	
 	public static final int MaxInteractDistance = 3;
-	public static final int MaxInteractDistanceSq = MaxInteractDistance * MaxInteractDistance;
+	public static final int MaxInteractDistanceSq = 9;
 	
 	public static final int MaxRenderGuiDrawDistanceSq = 64 * 64;
 	

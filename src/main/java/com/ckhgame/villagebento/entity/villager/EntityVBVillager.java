@@ -7,6 +7,7 @@ import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
 import com.ckhgame.villagebento.ai.villager.VillagerAIVisiting;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWatchInteractTarget;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
@@ -74,10 +75,11 @@ public class EntityVBVillager extends EntityAgeable {
 		this.tasks.addTask(3, new VillagerAISleep(this));
 		this.tasks.addTask(4, new VillagerAIVisiting(this));
 		
-		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
-		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVBVillager.class, 5.0F, 0.02F));
+		this.tasks.addTask(5, new VillagerAIWatchInteractTarget(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
+		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 0.02F));
+		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVBVillager.class, 3.0F, 0.02F));
 		this.tasks.addTask(6, new VillagerAIMovement(this));
-		this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 6.0F));
+		this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 5.0F));
 	}
 	
 	protected void entityInit()
@@ -314,6 +316,7 @@ public class EntityVBVillager extends EntityAgeable {
 	}
 	
 	// temp caches
+	public Entity InteractTarget;
 	public int buildingX, buildingY, buildingZ;
 	public int buildingSizeX, buildingSizeZ;
 	public Vec3Int bedPosition = null;
@@ -413,6 +416,7 @@ public class EntityVBVillager extends EntityAgeable {
 				if (this.worldObj.isRemote) {
 					this.openVillagerGui();
 				} else {
+					this.InteractTarget = p_70085_1_;
 					this.getNavigator().clearPathEntity();
 				}
 			}
@@ -422,6 +426,15 @@ public class EntityVBVillager extends EntityAgeable {
 		}
 
 		return true;
+	}
+	
+	
+	private void updateInteractTarget(){
+		if(this.InteractTarget != null && !this.worldObj.isRemote){
+			if(this.getDistanceSqToEntity( this.InteractTarget) > ConfigVillager.MaxInteractDistanceSq){
+				this.InteractTarget = null;
+			}
+		}
 	}
 
 	private boolean isFirstTimeLivingUpdate = true;
@@ -437,6 +450,8 @@ public class EntityVBVillager extends EntityAgeable {
 			isFirstTimeLivingUpdate = false;
 			this.onFirstTimeLivingUpdate();
 		}
+		
+		this.updateInteractTarget();
 		
 		this.updateArmSwingProgress();
 		if (this.getHealth() < this.getMaxHealth() && this.ticksExisted % 80 * 12 == 0) {
