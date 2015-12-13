@@ -29,9 +29,11 @@ public class VillagerAISleep extends EntityAIBase
     	if(!this.entity.getProfession().getTimeSchedule().isSleepTimeNow())
     		return false;
     	
-    	if(this.entity.isVisiting() && this.entity.isVisitingSkipSleeping())
+    	if(this.entity.isVisiting() && this.entity.isVisitingSkipSleeping()){
+    		this.entity.cancelVisiting();
     		return false;
-    	
+    	}
+    		
     	//if the one has already been sleeping, just let it keep sleeping... 
     	if(this.entity.isSleeping())
     		return true;

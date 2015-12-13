@@ -8,11 +8,11 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.MathHelper;
 
-public class VillagerAIVisiting extends EntityAIBase
+public class VillagerAIVisitMount extends EntityAIBase
 {
     private EntityVBVillager entity;
 
-    public VillagerAIVisiting(EntityVBVillager entity)
+    public VillagerAIVisitMount(EntityVBVillager entity)
     {
         this.entity = entity;
         this.setMutexBits(0);
@@ -46,7 +46,10 @@ public class VillagerAIVisiting extends EntityAIBase
     	if(!(b instanceof BlockMountable))
     		return false;
     	
-    	((BlockMountable)b).activedByEntityVBVillager(this.entity, x, y, z);
+    	if(!((BlockMountable)b).activedByEntityVBVillager(this.entity, x, y, z)){
+    		return false;
+    	}
+    		
     	
     	return true;
     }
@@ -55,14 +58,8 @@ public class VillagerAIVisiting extends EntityAIBase
      * Returns whether an in-progress EntityAIBase should continue executing
      */
     public boolean continueExecuting()
-    {
-    	 if (this.entity.getRNG().nextInt(100) != 0){
-             return true;
-         }
-    	 else{    		 
-    		 return (this.entity.isVisiting());
-    	 }
-        
+    { 		 
+    		 return (this.entity.isVisiting());       
     }
 
 	public void updateTask() {
@@ -78,7 +75,6 @@ public class VillagerAIVisiting extends EntityAIBase
 
 	@Override
 	public void resetTask() {
-		System.out.println("RESET!!!");
 		this.entity.mountEntity(null);
 	}
     

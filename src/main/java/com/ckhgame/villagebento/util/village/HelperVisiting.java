@@ -3,6 +3,8 @@ package com.ckhgame.villagebento.util.village;
 import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.building.BuildingLargeTavern;
 import com.ckhgame.villagebento.building.BuildingSmallTavern;
+import com.ckhgame.villagebento.building.BuildingTownSquareLarge;
+import com.ckhgame.villagebento.building.BuildingTownSquareSmall;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
@@ -28,40 +30,75 @@ public class HelperVisiting {
 		}
 		
 		//find a random position
-		if(p == null) {
+		boolean canVisitorRandomWalking = false;
+		if(p == null && canVisitorRandomWalking) {
 			p = VBRandomPositionGenerator.findRandomTargetInBuildingFast(buildingID,true);
 		}
 		return p;
 	}
 	
 	public static void startRandomVisiting(EntityVBVillager villager){
-		int r = villager.getRNG().nextInt(10);
-		if(r < 10) //%30 chances go to taverns... 
-		{
-			if(villager.getProfession().getClass() == ProfessionTavernOwner.class || villager.getProfession().getClass() == ProfessionLargeTavernOwner.class)
-				return;
-			
-			int[] types = new int[2];
-			types[0] = Building.registry.get(BuildingSmallTavern.class).getType();
-			types[1] = Building.registry.get(BuildingLargeTavern.class).getType();
-			
-			DataBuilding db = HelperDataVB.getRandomBuildingInVillage(villager, 
-					ConfigVillager.AIVillagerVisitingSearchDistanceX,
-					ConfigVillager.AIVillagerVisitingSearchDistanceY,
-					ConfigVillager.AIVillagerVisitingSearchDistanceZ,
-					types);
-			villager.setVisitingBuidlingID(db == null?-1:db.id);
-			villager.setVisitingSkipSleeping(villager.getRNG().nextBoolean());
-			
-			System.out.println(villager.getName() + ": START VISITING!");
+		int r = villager.getRNG().nextInt(100);
+		
+		if(r < 30) { //%30 chances go to taverns... 
+			startVisitRandomTavern(villager);
 		}
-//		else{
-//		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(this, 
-//				ConfigVillager.AIVillagerVisitingSearchDistanceX,
-//				ConfigVillager.AIVillagerVisitingSearchDistanceY,
-//				ConfigVillager.AIVillagerVisitingSearchDistanceZ);
-//		this.visitingBuildingID = (db == null?-1:db.id);
-//		this.visitingSkipSleep = false;
-//	}
+		else{ //%70
+			startVisitRandomSquare(villager);
+		}
+		
+//		if(r < 20) { //%20 chances go to taverns... 
+//			startVisitRandomTavern(villager);
+//		}
+//		else if(r < 60){ //%40
+//			startVisitRandomSquare(villager);
+//		}
+//		else{ //%40
+//			startVisitRandomBuilding(villager);
+//		}
+			
+	}
+	
+	private static void startVisitRandomTavern(EntityVBVillager villager){
+		if(villager.getProfession().getClass() == ProfessionTavernOwner.class || villager.getProfession().getClass() == ProfessionLargeTavernOwner.class)
+			return;
+		
+		int[] types = new int[2];
+		types[0] = Building.registry.get(BuildingSmallTavern.class).getType();
+		types[1] = Building.registry.get(BuildingLargeTavern.class).getType();
+		
+		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(villager, 
+				ConfigVillager.AIVillagerVisitingSearchDistanceX,
+				ConfigVillager.AIVillagerVisitingSearchDistanceY,
+				ConfigVillager.AIVillagerVisitingSearchDistanceZ,
+				types);
+		villager.setVisitingBuidlingID(db == null?-1:db.id);
+		villager.setVisitingSkipSleeping(villager.getRNG().nextBoolean());
+		//villager.setVisitingSkipSleeping(false);
+	}
+	
+	private static void startVisitRandomSquare(EntityVBVillager villager){
+		
+		int[] types = new int[2];
+		types[0] = Building.registry.get(BuildingTownSquareLarge.class).getType();
+		types[1] = Building.registry.get(BuildingTownSquareSmall.class).getType();
+		
+		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(villager, 
+				ConfigVillager.AIVillagerVisitingSearchDistanceX,
+				ConfigVillager.AIVillagerVisitingSearchDistanceY,
+				ConfigVillager.AIVillagerVisitingSearchDistanceZ,
+				types);
+		villager.setVisitingBuidlingID(db == null?-1:db.id);
+		villager.setVisitingSkipSleeping(false);
+	}
+	
+	private static void startVisitRandomBuilding(EntityVBVillager villager){
+		DataBuilding db = HelperDataVB.getRandomBuildingInVillage(villager, 
+				ConfigVillager.AIVillagerVisitingSearchDistanceX,
+				ConfigVillager.AIVillagerVisitingSearchDistanceY,
+				ConfigVillager.AIVillagerVisitingSearchDistanceZ,
+				null);
+		villager.setVisitingBuidlingID(db == null?-1:db.id);
+		villager.setVisitingSkipSleeping(false);
 	}
 }

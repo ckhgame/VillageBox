@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.ai.villager.VillagerAIMovement;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
-import com.ckhgame.villagebento.ai.villager.VillagerAIVisiting;
+import com.ckhgame.villagebento.ai.villager.VillagerAIVisitMount;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchInteractTarget;
@@ -73,7 +73,7 @@ public class EntityVBVillager extends EntityAgeable {
 		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 6.0F, 0.4D, 0.4D));
 		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
 		this.tasks.addTask(3, new VillagerAISleep(this));
-		this.tasks.addTask(4, new VillagerAIVisiting(this));
+		this.tasks.addTask(4, new VillagerAIVisitMount(this));
 		
 		this.tasks.addTask(5, new VillagerAIWatchInteractTarget(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
 		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 0.02F));
@@ -288,11 +288,12 @@ public class EntityVBVillager extends EntityAgeable {
 	public void startRandomVisiting(){
 		
 	 HelperVisiting.startRandomVisiting(this);
-
+	 System.out.println(this.getName() + " Started visiting...");
 	}
 	
 	public void cancelVisiting(){
 		this.visitingBuildingID = -1;
+		System.out.println(this.getName() + " Canceled visiting...");
 	}
 	
 	public boolean isVisiting(){
@@ -361,8 +362,6 @@ public class EntityVBVillager extends EntityAgeable {
 			int y = bedPosition.y;
 			int z = bedPosition.z;
 			int j = worldObj.getBlock(x, y, z).getBedDirection(worldObj, x, y, z);
-
-			System.out.println("BED J:" +j);
 			
 			switch (j) {
 			case 0:
@@ -399,14 +398,7 @@ public class EntityVBVillager extends EntityAgeable {
 			Minecraft.getMinecraft().displayGuiScreen(startGUI);
 	}
 
-	public boolean interact(EntityPlayer p_70085_1_) {
-		
-		System.out.println("P:" + p_70085_1_.boundingBox);
-		System.out.println("V:" + this.boundingBox);
-		System.out.println("P:" + p_70085_1_.posY);
-		System.out.println("V:" + this.posY);
-		System.out.println("------------------------");
-		
+	public boolean interact(EntityPlayer p_70085_1_) {		
 		
 		if (this.getDistanceSqToEntity(p_70085_1_) <= ConfigVillager.MaxInteractDistanceSq) {
 			if (this.isSleeping()) {

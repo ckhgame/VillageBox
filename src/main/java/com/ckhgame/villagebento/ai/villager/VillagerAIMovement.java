@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.ai.villager;
 import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
+import com.ckhgame.villagebento.entity.misc.EntityBlockMountable;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.BlockFinder;
 import com.ckhgame.villagebento.util.village.HelperVisiting;
@@ -31,7 +32,7 @@ public class VillagerAIMovement extends EntityAIBase
     public boolean shouldExecute()
     {
     	Vec3 vec3 = null;
-    	if (this.entity.getRNG().nextInt(60) == 0){
+    	if (this.entity.getRNG().nextInt(30) == 0){
     		
 			if(this.entity.getProfession().getTimeSchedule().isWorkTimeNow()){ // in working time      
 				if(this.entity.isVisiting()){
@@ -40,35 +41,22 @@ public class VillagerAIMovement extends EntityAIBase
 				vec3 = Vec3.createVectorHelper( this.entity.getInitPosX() + 0.5D,this.entity.getInitPosY(),this.entity.getInitPosZ() + 0.5D);
 	        }
     		else{ // out of working time
-    			if(VBDataTime.isDayTime()){ //day
-    				if(this.entity.isVisiting()){
-    					vec3 = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
-    					if(vec3 == null)
-    						this.entity.cancelVisiting();
-    				}
-    				else{
-    					if(this.entity.getRNG().nextInt(ConfigVillager.VisitingChance) == 0){
-    						this.entity.startRandomVisiting();
-    					}
-    					if(!this.entity.isVisiting()){
-    						if(this.entity.worldObj.isRaining()){
-    							vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-    						}
-    						else{
-    							vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
-    						}
-    					}
-    				}
+    			if(this.entity.worldObj.isRaining()){//raining...
+    				if(this.entity.isVisiting())
+    					this.entity.cancelVisiting();
+    				vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
     			}
-    			else{ //night
+    			else{
     				if(this.entity.isVisiting()){
-    					if(this.entity.isVisitingSkipSleeping()){
-    						vec3 = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
-    						if(vec3 == null)
-        						this.entity.cancelVisiting();
+    					if(!VBDataTime.isDayTime() && !this.entity.isVisitingSkipSleeping()){
+    						this.entity.cancelVisiting();
     					}
     					else{
-    						this.entity.cancelVisiting();
+    						if(!this.entity.isRiding()){
+    							vec3 = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
+            					if(vec3 == null)
+            						this.entity.cancelVisiting();
+    						}
     					}
     				}
     				else{
@@ -76,7 +64,12 @@ public class VillagerAIMovement extends EntityAIBase
     						this.entity.startRandomVisiting();
     					}
     					if(!this.entity.isVisiting()){
-    						vec3 = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
+    						if(VBDataTime.isDayTime()){
+    							vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
+    						}
+    						else{
+    							vec3 = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
+    						}
     					}
     				}
     			}
@@ -95,6 +88,7 @@ public class VillagerAIMovement extends EntityAIBase
         }
         else
         {
+        	System.out.println("New Moving Target: " + vec3);
             this.entity.aiMovingTargetX = vec3.xCoord;
             this.entity.aiMovingTargetY = vec3.yCoord;
             this.entity.aiMovingTargetZ = vec3.zCoord;

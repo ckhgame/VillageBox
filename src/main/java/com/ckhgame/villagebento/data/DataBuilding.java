@@ -2,13 +2,16 @@ package com.ckhgame.villagebento.data;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.block.BlockMountable;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.config.ConfigData;
+import com.ckhgame.villagebento.entity.misc.EntityBlockMountable;
 import com.ckhgame.villagebento.util.IData;
 import com.ckhgame.villagebento.util.data.Vec3Int;
 import com.ckhgame.villagebento.util.tool.VBRandom;
 import com.ckhgame.villagebento.util.village.BlockFinder;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
@@ -105,8 +108,10 @@ public class DataBuilding implements IData{
 		cacheMountables = new  ArrayList<Vec3Int>();
 		World world = DataVillageBento.get().world;
 		Vec3Int[] arr = BlockFinder.findBlock(world, this.x, this.y, this.z,this.sizeX,this.sizeZ, ModBlocks.blockWoodenChair, new int[] {0}, false);
-		for(Vec3Int v3 : arr){
-			cacheMountables.add(v3);
+		if(arr != null){
+			for(Vec3Int v3 : arr){
+				cacheMountables.add(v3);
+			}
 		}
 	}
 	
@@ -117,7 +122,20 @@ public class DataBuilding implements IData{
 		if(cacheMountables.size() == 0)
 			return null;
 		
-		return cacheMountables.get(VBRandom.getRand().nextInt(cacheMountables.size()));
+		 ArrayList<Vec3Int> available = new  ArrayList<Vec3Int>();
+		 Block b;
+		 World w = DataVillageBento.get().world;
+		 for(Vec3Int p : cacheMountables){
+			 b = w.getBlock(p.x, p.y, p.z);
+			 if(b instanceof BlockMountable && !((BlockMountable)b).isRiddenByEntity(w, p.x, p.y, p.z)){
+				 available.add(p);
+			 }
+		 }
+		
+		 if(available.size() == 0)
+				return null;
+		 
+		return available.get(VBRandom.getRand().nextInt(available.size()));
 		
 	}
 }

@@ -30,30 +30,32 @@ public class BlockMountable extends BlockCustom{
 					entityBlockMountable.setPosition(x + 0.5D, y + 0.5D, z + 0.5D);
 					world.spawnEntityInWorld(entityBlockMountable);
 					player.mountEntity(entityBlockMountable);
-					//entityBlockMountable.setMountTileEntity(this.getTileEntityBlockCustom());
 				}
 			}
 		
 			return true;
 		}
 		
-		private boolean isRiddenByEntity(World world, int x, int y,int z){
+		public boolean isRiddenByEntity(World world, int x, int y,int z){
 			List l = world.getEntitiesWithinAABB(EntityBlockMountable.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1.0D, y + 1.0D, z + 1.0D));
 			return !(l == null || l.size() == 0);
 		}
 		
-		public void activedByEntityVBVillager(EntityVBVillager villager, int x, int y, int z){
+		public boolean activedByEntityVBVillager(EntityVBVillager villager, int x, int y, int z){
+							
 			if(!villager.worldObj.isRemote){ // server only
 				if(isRiddenByEntity(villager.worldObj,x,y,z)){
 					System.out.println("that one is ridden by someone..");
+					return false;
 				}
 				else{
 					EntityBlockMountable entityBlockMountable = new EntityBlockMountable(villager.worldObj);
 					entityBlockMountable.setPosition(x + 0.5D, y + 0.5D, z + 0.5D);
 					villager.worldObj.spawnEntityInWorld(entityBlockMountable);
 					villager.mountEntity(entityBlockMountable);
-					//entityBlockMountable.setMountTileEntity(this.getTileEntityBlockCustom());
+					return true;
 				}
 			}
+			return false;
 		}
 }

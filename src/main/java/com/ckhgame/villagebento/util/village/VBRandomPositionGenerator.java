@@ -72,7 +72,7 @@ public class VBRandomPositionGenerator{
         return found?Vec3.createVectorHelper((double)fx, (double)fy, (double)fz):null;
 	}
 	
-	public static Vec3 findRandomTargetInBuildingFast(int BuildingID, boolean aboveGroundwork)
+	public static Vec3 findRandomTargetInBuildingFast(int BuildingID, boolean isVisiting)
     {
 		DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(), BuildingID);
 		if(db == null) return null;
@@ -83,8 +83,8 @@ public class VBRandomPositionGenerator{
 		int d = ConfigVillager.ALWanderInBuildingWallOffset;
 		int sx = Math.max(0,db.sizeX - d);
 		int sz = Math.max(0,db.sizeZ - d);
-		int sh = ConfigBuilding.BuildingMaxHeight;
-		int sd = aboveGroundwork?0:ConfigBuilding.BuildingGroundWorkDepth;
+		int sh = isVisiting?ConfigVillager.VisitingMaxSearchHeight:ConfigBuilding.BuildingMaxHeight;
+		int sd = isVisiting?0:ConfigBuilding.BuildingGroundWorkDepth;
 
 		Random rand = VBRandom.getRand();
         int x = rand.nextInt(2 * sx + 1) - sx + bx;
