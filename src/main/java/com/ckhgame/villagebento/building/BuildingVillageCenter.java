@@ -64,8 +64,7 @@ public class BuildingVillageCenter extends Building {
 		bb.buildBlock(-3,1,2,Blocks.planks,2);bb.buildBlock(-3,1,3,Blocks.log,0);bb.buildBlock(-2,1,-3,Blocks.planks,2);
 		bb.buildBlock(-2,1,-2,Blocks.bookshelf,0);bb.buildBlock(-2,1,-1,Blocks.bookshelf,0);bb.buildBlock(-2,1,0,Blocks.planks,0);
 		bb.buildBlock(-2,1,1,Blocks.oak_stairs,3);bb.buildBlock(-2,1,3,Blocks.planks,2);bb.buildBlock(-1,1,-3,Blocks.glass_pane,0);
-		bb.buildBlock(-1,1,3,Blocks.glass_pane,0);bb.buildBlock(0,1,-3,Blocks.glass_pane,0);bb.buildBlock(0,1,-2,Blocks.flower_pot,0);
-		bb.addTileEntityPot(0,1,-2,37,0);
+		bb.buildBlock(-1,1,3,Blocks.glass_pane,0);bb.buildBlock(0,1,-3,Blocks.glass_pane,0);
 		bb.buildBlock(0,1,3,Blocks.glass_pane,0);bb.buildBlock(1,1,-3,Blocks.glass_pane,0);bb.buildBlock(1,1,3,Blocks.glass_pane,0);
 		bb.buildBlock(2,1,-3,Blocks.planks,2);bb.buildBlock(2,1,2,Blocks.bookshelf,0);bb.buildBlock(2,1,3,Blocks.planks,2);
 		bb.buildBlock(3,1,-3,Blocks.log,0);bb.buildBlock(3,1,-2,Blocks.planks,2);bb.buildBlock(3,1,-1,Blocks.wooden_door,8);

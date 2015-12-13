@@ -106,10 +106,8 @@ public class BuildingSmallHotel extends Building {
 		bb.buildBlock(-3,1,0,Blocks.glass_pane,0);bb.buildBlock(-3,1,1,Blocks.glass_pane,0);bb.buildBlock(-3,1,2,Blocks.planks,0);
 		bb.buildBlock(-3,1,3,Blocks.planks,5);bb.buildBlock(-2,1,-3,Blocks.planks,0);bb.buildBlock(-2,1,-1,Blocks.spruce_stairs,2);
 		bb.buildBlock(-2,1,0,Blocks.spruce_stairs,7);bb.buildBlock(-2,1,3,Blocks.planks,0);bb.buildBlock(-1,1,-3,Blocks.planks,0);
-		bb.buildBlock(-1,1,3,Blocks.glass_pane,0);bb.buildBlock(0,1,-3,Blocks.glass_pane,0);bb.buildBlock(0,1,2,Blocks.flower_pot,7);
-		bb.addTileEntityPot(0,1,2,38,7);
+		bb.buildBlock(-1,1,3,Blocks.glass_pane,0);bb.buildBlock(0,1,-3,Blocks.glass_pane,0);
 		bb.buildBlock(0,1,3,Blocks.glass_pane,0);bb.buildBlock(1,1,-3,Blocks.glass_pane,0);bb.buildBlock(1,1,-2,Blocks.fence,0);
-		bb.buildBlock(1,1,2,Blocks.flower_pot,5);bb.addTileEntityPot(1,1,2,38,5);
 		bb.buildBlock(1,1,3,Blocks.glass_pane,0);bb.buildBlock(2,1,-3,Blocks.planks,0);bb.buildBlock(2,1,-2,Blocks.glass_pane,0);
 		bb.buildBlock(2,1,-1,Blocks.planks,0);bb.buildBlock(2,1,0,Blocks.wooden_door,8);bb.buildBlock(2,1,1,Blocks.wooden_door,9);
 		bb.buildBlock(2,1,2,Blocks.planks,0);bb.buildBlock(2,1,3,Blocks.planks,0);bb.buildBlock(3,1,-3,Blocks.planks,5);
