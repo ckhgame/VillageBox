@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.util.data;
 
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 
 public class Vec3Int {
@@ -19,17 +20,17 @@ public class Vec3Int {
 	
 	public static Vec3Int create(double x, double y, double z){
 		Vec3Int v = new Vec3Int();
-		v.x = (int)x;
-		v.y = (int)y;
-		v.z = (int)z;
+		v.x = MathHelper.floor_double(x);
+		v.y = MathHelper.floor_double(y);
+		v.z = MathHelper.floor_double(z);
 		return v;
 	}
 	
 	public static Vec3Int create(Vec3 v3){
 		Vec3Int v = new Vec3Int();
-		v.x = (int)v3.xCoord;
-		v.y = (int)v3.yCoord;
-		v.z = (int)v3.zCoord;
+		v.x = MathHelper.floor_double(v3.xCoord);
+		v.y = MathHelper.floor_double(v3.yCoord);
+		v.z = MathHelper.floor_double(v3.zCoord);
 		return v;
 	}
 }

@@ -11,7 +11,7 @@ import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataDeadVillager;
 import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.entity.VBEntityMgr;
+import com.ckhgame.villagebento.entity.VBVillagerMgr;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.util.data.BoxWithColor;
@@ -149,7 +149,7 @@ public class HelperDataVB {
 			for(DataBuilding db : dv.mapDataBuilding.values()){
 				if(db.id == buildingID){
 					//villagers
-					ArrayList<EntityVBVillager> villagers = VBEntityMgr.get().findBuildingVillagers(buildingID);
+					ArrayList<EntityVBVillager> villagers = VBVillagerMgr.get().findBuildingVillagers(buildingID);
 					WorldServer ws = MinecraftServer.getServer().worldServerForDimension(0);
 					for(EntityVBVillager villager : villagers){		
 						ws.removeEntity(villager);
@@ -348,7 +348,7 @@ public class HelperDataVB {
 	}
 	
 	public static void tpEntityVillagersInbuildingToInitPos(DataBuilding db){
-		 ArrayList<EntityVBVillager> villagers = VBEntityMgr.get().findBuildingVillagers(db.id);
+		 ArrayList<EntityVBVillager> villagers = VBVillagerMgr.get().findBuildingVillagers(db.id);
 		 for(EntityVBVillager villager : villagers){
 			 villager.moveToInitPos();
 		 }

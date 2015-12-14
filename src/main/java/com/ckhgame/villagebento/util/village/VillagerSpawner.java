@@ -6,11 +6,11 @@ import com.ckhgame.villagebento.profession.Profession;
 import net.minecraft.world.World;
 
 public class VillagerSpawner {
-	public static void spawn(World world, Class<? extends Profession> proClass,int buildingID, int initX,int initY, int initZ, String name){
+	public static EntityVBVillager spawn(World world, Class<? extends Profession> proClass,int buildingID, int initX,int initY, int initZ, String name){
 		
 		//server side only
 		if(world.isRemote)
-			return;
+			return null;
 		
 		Profession profession = Profession.registry.get(proClass);
 		
@@ -22,7 +22,7 @@ public class VillagerSpawner {
 		}
 		
 		if(villager == null)
-			return;
+			return null;
 		
 		//init villager
 		villager.setProfession(profession);
@@ -33,5 +33,7 @@ public class VillagerSpawner {
 		villager.firstTimeInitComponents();
 		
 		world.spawnEntityInWorld(villager);
+		
+		return villager;
 	}
 }

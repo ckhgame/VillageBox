@@ -25,6 +25,6 @@ public class ModEntities {
         EntityRegistry.registerModEntity(EntityBlockMountable.class, "EntityBlockMountable", id++, Main.instance, 64, 1, true);
         
         //entity manager
-        VBEntityMgr.get().init();
+        VBVillagerMgr.get().init();
     }
 }

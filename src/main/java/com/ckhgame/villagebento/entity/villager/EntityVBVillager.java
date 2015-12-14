@@ -12,11 +12,12 @@ import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.entity.VBEntityMgr;
+import com.ckhgame.villagebento.entity.VBVillagerMgr;
 import com.ckhgame.villagebento.gui.GuiVillager;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.util.data.Vec3Int;
 import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.village.HelperVillager;
 import com.ckhgame.villagebento.util.village.HelperVisiting;
 import com.ckhgame.villagebento.util.village.PlayerMsg;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
@@ -39,6 +40,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class EntityVBVillager extends EntityAgeable {
@@ -55,6 +57,9 @@ public class EntityVBVillager extends EntityAgeable {
 	//initialized position relates to the building
 	private int initPosX, initPosY, initPosZ;
 	
+	private boolean isTraveler = false; // if this villager is a traveler
+	private int travelTimer;
+	
 	public EntityVBVillager(World w) {
 		super(w);
 		this.setSize(0.2F, 1.8F);
@@ -64,7 +69,7 @@ public class EntityVBVillager extends EntityAgeable {
 		this.initAITasks();	
 		this.setAlwaysRenderNameTag(true);
 		if(!w.isRemote){
-			VBEntityMgr.get().addVillager(this);
+			VBVillagerMgr.get().addVillager(this);
 		}
 	}
 	
@@ -77,7 +82,7 @@ public class EntityVBVillager extends EntityAgeable {
 		
 		this.tasks.addTask(5, new VillagerAIWatchInteractTarget(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
 		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 0.02F));
-		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVBVillager.class, 3.0F, 0.02F));
+		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVBVillager.class, 2.0F, 0.02F));
 		this.tasks.addTask(6, new VillagerAIMovement(this));
 		this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 5.0F));
 	}
@@ -210,20 +215,8 @@ public class EntityVBVillager extends EntityAgeable {
 			this.setSleeping(false);
 			//find a passable block near the bed
 			if(this.isNearBed()){
-				int[] dxz = new int[]{1,1, 1,0, 1,-1, 
-						  0,1,	0,-1,
-						  -1,1, -1,0, -1,-1,0,0};
-				for(int i =0;i<dxz.length;i+=2){
-					Block b = this.worldObj.getBlock(	(int)this.bedPosition.x + dxz[i], 
-														(int)this.bedPosition.y,
-														(int)this.bedPosition.z + dxz[i +1]);
-					if(b == Blocks.air || b == Blocks.carpet){
-						this.setPosition((int)this.bedPosition.x + dxz[i]  + 0.5D, 
-										 this.bedPosition.y + 1.0D, 
-										 (int)this.bedPosition.z + dxz[i +1] + 0.5D);
-						break;
-					}
-				}
+				Vec3 p = HelperVillager.findWalkableBlockNearPos(this.worldObj,this.bedPosition.x,this.bedPosition.y, this.bedPosition.z);
+				this.setPosition(p.xCoord,p.yCoord,p.zCoord);
 			}	
 		}
 	}
@@ -316,10 +309,34 @@ public class EntityVBVillager extends EntityAgeable {
 		return this.visitingSkipSleep;
 	}
 	
+	//traveler
+	public void setTraveler(int travelTime){
+		if(travelTime > 0){
+			this.isTraveler = true;
+			this.travelTimer = travelTime;
+		}
+		else{
+			this.isTraveler = false;
+		}
+	}
+	
+	public boolean isTraveler(){
+		return this.isTraveler;
+	}
+	
+	public int getTravelTimer(){
+		return this.travelTimer;
+	}
+	
+	public void stepTravelTimer(){
+		this.travelTimer--;
+	}
+	
 	// temp caches
 	public Entity InteractTarget;
 	public int buildingX, buildingY, buildingZ;
 	public int buildingSizeX, buildingSizeZ;
+	public int bedIdx = -1;
 	public Vec3Int bedPosition = null;
 	public int bedOritation;
 	public double aiMovingTargetX, aiMovingTargetY, aiMovingTargetZ;
@@ -335,7 +352,13 @@ public class EntityVBVillager extends EntityAgeable {
 			buildingSizeX = db.sizeX;
 			buildingSizeZ = db.sizeZ;		
 			System.out.println("apply bed!");
-			bedPosition =  db.applyForBed(this.getName());
+			//when we spawn a traveler, we have to set the initialized position, which requires the bed position, 
+			//so in this case the bed index will be generated before the entity is actually spawned, that's why we
+			//check the bed index before apply since we don't want the villager apply the bed twice.
+			if(bedIdx < 0){ 
+				bedIdx = db.applyForBed(this.getName());
+			}
+			bedPosition =  db.getBedPosition(bedIdx);
 			if(bedPosition == null)
 				System.out.println("BED ISNULL!!!");
 			else
@@ -493,6 +516,8 @@ public class EntityVBVillager extends EntityAgeable {
 		p_70014_1_.setInteger(ConfigData.KeyVillagerSleeping, this.getSleepingValue());
 		p_70014_1_.setInteger(ConfigData.KeyVillagerVisitingBuildingID, this.getVisitingBuildingID());
 		p_70014_1_.setBoolean(ConfigData.KeyVillagerVisitingSkipSleep, this.isVisitingSkipSleeping());
+		p_70014_1_.setBoolean(ConfigData.KeyVillagerIsTraveler, this.isTraveler());
+		p_70014_1_.setInteger(ConfigData.KeyVillagerTravelerTimer, this.getTravelTimer());
 		
 		for(VillagerComponent component : components)
 			component.writeToNBT(p_70014_1_);
@@ -510,6 +535,8 @@ public class EntityVBVillager extends EntityAgeable {
 		this.setSleepingValue(p_70037_1_.getInteger(ConfigData.KeyVillagerSleeping));
 		this.visitingBuildingID = p_70037_1_.getInteger(ConfigData.KeyVillagerVisitingBuildingID);
 		this.visitingSkipSleep = p_70037_1_.getBoolean(ConfigData.KeyVillagerVisitingSkipSleep);
+		this.isTraveler = p_70037_1_.getBoolean(ConfigData.KeyVillagerIsTraveler);
+		this.travelTimer = p_70037_1_.getInteger(ConfigData.KeyVillagerTravelerTimer);
 		
 		for(VillagerComponent component : components)
 			component.readFromNBT(p_70037_1_);
@@ -523,8 +550,10 @@ public class EntityVBVillager extends EntityAgeable {
 		// dead, and he will be revive on next noon
 		if (!this.worldObj.isRemote) {
 			//should move the villager to death list
-			VBEntityMgr.get().removeVillager(this);
-			HelperDataVB.addDeadVillager(DataVillageBento.get(), this);
+			VBVillagerMgr.get().removeVillager(this);
+			if(!this.isTraveler()){ // traveler will not revive after death...
+				HelperDataVB.addDeadVillager(DataVillageBento.get(), this);
+			}
 		}
 	}
 

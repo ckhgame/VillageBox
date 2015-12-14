@@ -4,9 +4,13 @@ import java.util.List;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
 
-public class HelperVillagerAI {
+public class HelperVillager {
 	public static EntityVBVillager findNearestVillagerWithinAABB(AxisAlignedBB aabb, EntityVBVillager entitySelf)
     {
         List list = entitySelf.worldObj.getEntitiesWithinAABB(EntityVBVillager.class, aabb);
@@ -38,4 +42,19 @@ public class HelperVillagerAI {
         
         return entity1;
     }
+	
+	public static Vec3 findWalkableBlockNearPos(World world, int x, int y, int z){
+		int[] dxz = new int[]{1,1, 1,0, 1,-1, 
+				  0,1,	0,-1,
+				  -1,1, -1,0, -1,-1,0,0};
+		for(int i =0;i<dxz.length;i+=2){
+			Block b = world.getBlock(x + dxz[i], y,z + dxz[i +1]);
+			if(b == Blocks.air || b == Blocks.carpet){
+				return Vec3.createVectorHelper(x+ dxz[i]  + 0.5D, 
+								 y + 1.0D, 
+								 z + dxz[i +1] + 0.5D);
+			}
+		}
+		return null;
+	}
 }

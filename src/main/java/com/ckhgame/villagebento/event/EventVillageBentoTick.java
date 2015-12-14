@@ -1,9 +1,10 @@
 package com.ckhgame.villagebento.event;
 
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.entity.VBEntityMgr;
+import com.ckhgame.villagebento.entity.VBVillagerMgr;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.helper.HelperDataVB;
+import com.ckhgame.villagebento.util.tool.VBRandom;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
@@ -40,9 +41,9 @@ public class EventVillageBentoTick {
 	 * !! time == 0 is the time of sun raising....
 	 */
 	private void updateByTime(int time){
-		System.out.println("DUANG! " + time + ":00 !");
 		updateVillagerByTime(time);
 		updateDeadVillagers(time);
+		updateTraveler(time);
 	}
 	
 	//--------------------------------------
@@ -58,8 +59,18 @@ public class EventVillageBentoTick {
 	//--------------------------------------
 	//update villagers' buy and sell list
 	private void updateVillagerByTime(int time){
-		for(EntityVBVillager villager : VBEntityMgr.get().getVillagers()){
+		for(EntityVBVillager villager : VBVillagerMgr.get().getVillagers()){
 			villager.updateVillagerComponentsByTime(time);
+		}
+	}
+	
+	//update travellers
+	private void updateTraveler(int time){
+		
+		VBVillagerMgr.get().updateTravelers();
+		
+		if(VBRandom.getRand().nextInt(24) == 0){
+			VBVillagerMgr.get().spawnRandomTravelers();
 		}
 	}
 }

@@ -85,19 +85,57 @@ public class DataBuilding implements IData{
 	/**
 	 * 
 	 * @param name: owner's name, could be any villager or player
-	 * @return the bed position, null means no bed in the building or all beds are full
+	 * @return the bed index, -1 means no bed is available
 	 */
-	public Vec3Int applyForBed(String name) {
+	public int applyForBed(String name) {
+		if(this.cacheBedsInfo == null){
+			generatCacheBedsInfo();
+		}
+		
+		for(int i =0;i<this.cacheBedsInfo.size();i++){
+			BedInfo bedInfo = this.cacheBedsInfo.get(i);
+			if(bedInfo.owner == null){
+				bedInfo.owner = name;
+				return i;
+			}
+		}
+		
+		return -1;//all full...
+	}
+	
+	public Vec3Int getBedPosition(int bedIdx){
+		if(this.cacheBedsInfo == null){
+			generatCacheBedsInfo();
+		}
+		if(bedIdx < 0 || bedIdx >= this.cacheBedsInfo .size()){
+			return null;
+		}
+		BedInfo bedInfo = this.cacheBedsInfo.get(bedIdx);
+		return Vec3Int.create(bedInfo.x,bedInfo.y,bedInfo.z);
+	}
+	
+	public boolean hasEmptyBed(){
 		if(this.cacheBedsInfo == null){
 			generatCacheBedsInfo();
 		}
 		for(BedInfo bedInfo : this.cacheBedsInfo){
 			if(bedInfo.owner == null){
-				bedInfo.owner = name;
-				return Vec3Int.create(bedInfo.x,bedInfo.y,bedInfo.z);
+				return true;
 			}
 		}
-		return null;
+		return false;
+	}
+	
+	public void returnBed(int bedIdx){
+		if(this.cacheBedsInfo == null){
+			generatCacheBedsInfo();
+		}
+		
+		if(bedIdx < 0 || bedIdx >= this.cacheBedsInfo .size()){
+			return;
+		}
+		
+		this.cacheBedsInfo.get(bedIdx).owner = null;
 	}
 	
 	

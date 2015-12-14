@@ -10,6 +10,6 @@ public class PlayerMsg {
 	}
 	
 	public static void sendToAll(String text){
-		MinecraftServer.getServer().addChatMessage(new ChatComponentText(text));
+		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentText(text));
 	}
 }
