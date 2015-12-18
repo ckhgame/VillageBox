@@ -17,6 +17,7 @@ import com.ckhgame.villagebento.profession.ProfessionFlowerShopOwner;
 import com.ckhgame.villagebento.profession.ProfessionHunter;
 import com.ckhgame.villagebento.profession.ProfessionLargeCasinoManager;
 import com.ckhgame.villagebento.util.data.Vec3Int;
+import com.ckhgame.villagebento.util.helper.HelperDataVB;
 import com.ckhgame.villagebento.util.tool.NameGenerator;
 import com.ckhgame.villagebento.util.tool.VBRandom;
 import com.ckhgame.villagebento.util.village.HelperVillager;
@@ -91,6 +92,8 @@ public class VBVillagerMgr {
 		for(EntityVBVillager villager : removes){
 			villager.worldObj.removeEntity(villager);
 			VBVillagerMgr.get().removeVillager(villager);
+			DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(), villager.getBuildingID());
+			db.returnBed(villager.bedIdx);
 			PlayerMsg.sendToAll(villager.getName() + "Has departed!");
 		}
 		

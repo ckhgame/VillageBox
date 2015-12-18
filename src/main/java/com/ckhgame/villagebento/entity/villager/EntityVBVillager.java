@@ -553,6 +553,8 @@ public class EntityVBVillager extends EntityAgeable {
 			VBVillagerMgr.get().removeVillager(this);
 			if(!this.isTraveler()){ // traveler will not revive after death...
 				HelperDataVB.addDeadVillager(DataVillageBento.get(), this);
+				DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(), this.getBuildingID());
+				db.returnBed(this.bedIdx);
 			}
 		}
 	}
