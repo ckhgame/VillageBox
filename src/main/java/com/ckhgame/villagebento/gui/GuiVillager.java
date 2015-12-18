@@ -180,25 +180,27 @@ public abstract class GuiVillager extends GuiScreen {
 		if(fieldVillagerHeadTopOffset < 0){
 			fieldVillagerHeadTopOffset++;
 		}
-		drawFieldBackground(fieldVillagerHeadLeft,fieldVillagerHeadTop + fieldVillagerHeadTopOffset,30,30);
-		drawVillagerHead(fieldVillagerHeadLeft + 3, fieldVillagerHeadTop + fieldVillagerHeadTopOffset + 3, 24, 24);
+		drawFieldBackground(fieldVillagerHeadLeft,fieldVillagerHeadTop + fieldVillagerHeadTopOffset,64,64);
+		drawVillagerHead(fieldVillagerHeadLeft + 8, fieldVillagerHeadTop + fieldVillagerHeadTopOffset + 8, 48, 48);
 		
 		//GUI LAYOUT: Right Top Chat Field
 		
-		drawFieldBackground(fieldChatLeft,fieldChatTop,166,30);
+		drawFieldBackground(fieldChatLeft,fieldChatTop, 320, 64);
 		//display name and chat content
-		String name = this.entityVBVillager.getName() + ":";
-
-		this.fontRendererObj.drawString(name, fieldChatLeft + 1,fieldChatTop + 1, 0xFFFFFF00,true);
+		String name = this.entityVBVillager.getName();
+		String info ="Lv" + (this.entityVBVillager.getLevel() +1 ) + " " + this.entityVBVillager.getProfession().getProfessionName();
+		
+		this.fontRendererObj.drawString(name, fieldChatLeft + 4,fieldChatTop + 4, 0xFFFFFF00,true);
+		this.fontRendererObj.drawString(info, fieldChatLeft + 6 + this.fontRendererObj.getStringWidth(name), fieldChatTop + 4, 0xFFFFAA00,true);
 		
 		//chat anim
 		if(chatContentDisplay.length() < chatContent.length()){
 			chatContentDisplay = chatContent.substring(0, chatContentDisplay.length() + 1);
 		}
-		this.fontRendererObj.drawString(chatContentDisplay, fieldChatLeft + 6,fieldChatTop + 13, 0xFFFFFFEE,true);
+		this.fontRendererObj.drawString(chatContentDisplay, fieldChatLeft + 8,fieldChatTop + 28, 0xFFFFFFEE,true);
 		
 		//GUI LAYOUT: Right Top Component Field
-		drawFieldBackground(fieldCompLeft,fieldCompTop,200,100);
+		drawFieldBackground(fieldCompLeft,fieldCompTop,270,164);
 		
 		onDrawScreen();
 		
@@ -255,8 +257,8 @@ public abstract class GuiVillager extends GuiScreen {
 			if(comp.enabled()){
 				comp.getGui().buttonID = id++;
 				btn = new GuiButton(comp.getGui().buttonID, 
-						this.width /2 - 130,this.height /2 - 50 + 20 * (count++),
-						46,20,	
+						this.width /2 - 194,this.height /2 - 80 + 20 * (count++),
+						110,20,	
 						comp.getGui().getButtonText());
 				if(comp == villagerComponent)
 					btn.enabled = false;
@@ -265,14 +267,14 @@ public abstract class GuiVillager extends GuiScreen {
 		}
 
 		//leave button
-		this.buttonList.add(new GuiButton(99999, this.width /2 - 130,this.height /2 + 64,46,20,"Leave"));
+		this.buttonList.add(new GuiButton(99999, this.width /2 - 196,this.height /2 + 64,110,20,"Leave"));
 		
-		fieldVillagerHeadLeft = this.width / 2 - 80;
-		fieldVillagerHeadTop = this.height / 2 - 60;
-		fieldChatLeft = this.width / 2 - 46;
-		fieldChatTop = this.height /2 - 60;
+		fieldVillagerHeadLeft = this.width / 2 - 192;
+		fieldVillagerHeadTop = this.height - 64;
+		fieldChatLeft = this.width / 2 - 128;
+		fieldChatTop = this.height - 64;
 		fieldCompLeft = this.width / 2 - 80;
-		fieldCompTop = this.height /2 - 20;
+		fieldCompTop = this.height /2 - 80;
 		
 		int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerComponent);
 		if(compIdx < 0)
