@@ -45,7 +45,7 @@ public class GuiVillagerQuest extends GuiVillager {
 	@Override
 	public String getButtonText() {
 		// TODO Auto-generated method stub
-		return "Quest";
+		return "> Do you need my help?";
 	}
 
 	private void drawQuestRow(int left,int top, VillagerQuest quest,int row){

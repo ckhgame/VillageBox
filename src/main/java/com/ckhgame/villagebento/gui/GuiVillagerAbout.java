@@ -30,8 +30,8 @@ public class GuiVillagerAbout extends GuiVillager {
 	
 	@Override
 	public String getButtonText() {
-		// TODO Auto-generated method stub
-		return "General";
+		
+		return "> Tell me about you";
 	}
 	@Override
 	public void onDrawScreen() {		

@@ -30,8 +30,7 @@ public class GuiVillagerWork extends GuiVillager {
 	
 	@Override
 	public String getButtonText() {
-		// TODO Auto-generated method stub
-		return "Work";
+		return "> Can you work for me?";
 	}
 
 	private void drawWorkRow(int left,int top, Work work,int row){

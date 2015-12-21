@@ -32,7 +32,7 @@ public class GuiVillagerAction extends GuiVillager {
 	@Override
 	public String getButtonText() {
 		// TODO Auto-generated method stub
-		return "Action";
+		return "> Do an action";
 	}
 	
 	int lastSelected = -1;

@@ -13,17 +13,15 @@ import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.entity.VBVillagerMgr;
-import com.ckhgame.villagebento.gui.GuiVillager;
+import com.ckhgame.villagebento.gui2.GuiVillagerDialogMenu;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.util.data.Vec3Int;
 import com.ckhgame.villagebento.util.helper.HelperDataVB;
 import com.ckhgame.villagebento.util.village.HelperVillager;
 import com.ckhgame.villagebento.util.village.HelperVisiting;
 import com.ckhgame.villagebento.util.village.PlayerMsg;
-import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -35,9 +33,7 @@ import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
@@ -409,16 +405,18 @@ public class EntityVBVillager extends EntityAgeable {
 
 	public void openVillagerGui() {
 		
-		GuiVillager startGUI = null;
-
-		for (VillagerComponent comp : this.components) {
-			comp.getGui().setVillageComponent(comp);
-			if (comp.getClass() == VillagerCompAbout.class)
-				startGUI = comp.getGui();
-		}
-
-		if (startGUI != null)
-			Minecraft.getMinecraft().displayGuiScreen(startGUI);
+		Minecraft.getMinecraft().displayGuiScreen(new GuiVillagerDialogMenu(this));
+		
+//		GuiVillager startGUI = null;
+//
+//		for (VillagerComponent comp : this.components) {
+//			comp.getGui().setVillageComponent(comp);
+//			if (comp.getClass() == VillagerCompAbout.class)
+//				startGUI = comp.getGui();
+//		}
+//
+//		if (startGUI != null)
+//			Minecraft.getMinecraft().displayGuiScreen(startGUI);
 	}
 
 	public boolean interact(EntityPlayer p_70085_1_) {		

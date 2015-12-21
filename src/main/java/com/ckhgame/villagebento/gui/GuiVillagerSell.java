@@ -33,7 +33,7 @@ public class GuiVillagerSell extends GuiVillager {
 	@Override
 	public String getButtonText() {
 		// TODO Auto-generated method stub
-		return "Sell";
+		return "> Do you need anything?";
 	}
 
 	private void drawItemRow(int left,int top, ItemStack itemStack, int price,int row){

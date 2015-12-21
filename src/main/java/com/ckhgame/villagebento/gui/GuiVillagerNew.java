@@ -22,17 +22,8 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 
-public abstract class GuiVillager extends GuiScreen {
-
-	public static boolean isWaitingForActionResult = true; 
-	public static void ActionStart(){
-		isWaitingForActionResult = true;
-	}
-	public static void ActionCompleted(){
-		isWaitingForActionResult = false;
-	}
+public abstract class GuiVillagerNew extends GuiScreen {
 	
-	protected VillagerComponent villagerComponent;
 	protected EntityVBVillager entityVBVillager;
 	protected int buttonID;
 	protected String chatContent = "......";
@@ -46,23 +37,31 @@ public abstract class GuiVillager extends GuiScreen {
 	protected int fieldCompLeft;
 	protected int fieldCompTop;
 	
+	//chat options (options list)
+	public static final int OptionsList_Main = 0;
+	public static final int OptionsList_Trade = 1;
+	public static final int OptionsList_Back = 2;
+	
+	//chat options (buttons)
+	public static final int Options_About = 0;
+	public static final int Options_Trade = 1;
+	public static final int Options_Buy = 2;
+	public static final int Options_Sell = 3;
+	public static final int Options_Work = 4;
+	public static final int Options_Quest = 5;
+	public static final int Options_Action = 6;
+	public static final int Options_Back = 7;
+	public static final int Options_Leave = 8;
+	
 	//mouse
 	protected int mouseX,mouseY;
 	
 	protected int fieldVillagerHeadTopOffset = 0;
 	
-	//component button id start
-	protected int compStartButtonID = 100;
-	
 	protected void setChatContent(String chatContent){
 		this.chatContent = chatContent;
 		chatContentDisplay = "";
 		fieldVillagerHeadTopOffset = -4;
-	}
-	
-	public void setVillageComponent(VillagerComponent villagerComponent){
-		this.villagerComponent = villagerComponent;
-		this.entityVBVillager = this.villagerComponent.getVillager();
 	}
 	
 	protected void drawWrappedString(FontRenderer renderer, String drawing, int x, int y, int color, int wrap)
@@ -203,7 +202,7 @@ public abstract class GuiVillager extends GuiScreen {
 		//GUI LAYOUT: Right Top Component Field
 		drawFieldBackground(fieldCompLeft,fieldCompTop,200,150);
 		
-		onDrawScreen();
+		//onDrawScreen();
 		
 		GL11.glDisable(GL11.GL_LIGHTING);
 		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);	
@@ -211,32 +210,7 @@ public abstract class GuiVillager extends GuiScreen {
 	}
 
 	@Override
-	protected void actionPerformed(GuiButton button) {
-
-		//leave
-		if(button.id == 99999){
-			this.mc.displayGuiScreen((GuiScreen)null);
-            this.mc.setIngameFocus();
-            return;
-		}
-		
-		int compSize = this.entityVBVillager.getVillagerComponentsSize();
-		VillagerComponent comp;
-		for(int i =0;i<compSize;i++){
-			comp = this.entityVBVillager.getVillagerComponent(i);
-			if(comp.getGui().buttonID == button.id){
-				if(comp.enabled()){
-					this.mc.displayGuiScreen(comp.getGui());
-				}
-				else{
-					this.mc.displayGuiScreen(this.entityVBVillager.getVillagerComponent(0).getGui());
-				}
-				return;
-			}
-		}
-		
-        onActionPerformed(button);
-        
+	protected void actionPerformed(GuiButton button) {    
 		super.actionPerformed(button);
 	}
 
@@ -253,45 +227,14 @@ public abstract class GuiVillager extends GuiScreen {
 		
 		//buttons
 		this.buttonList.clear();
-		int id = 0;
-		int count = 0;
-		GuiTextButton btn;
-		
-		//GUI LAYOUT
-		//left buttons field
-		int compSize = this.entityVBVillager.getVillagerComponentsSize();
-		VillagerComponent comp;
-		for(int i =0;i<compSize;i++){
-			comp = this.entityVBVillager.getVillagerComponent(i);	
-			if(comp.enabled()){
-				comp.getGui().buttonID = id++;
-				btn = new GuiTextButton(this.mc,comp.getGui().buttonID, 
-						 this.fieldChatLeft + 6 + 164 * (count / 3),
-						 this.fieldChatTop + 30 + 10 * (count % 3),
-						comp.getGui().getButtonText());
-				count++;
-				if(comp == villagerComponent)
-					btn.enabled = false;
-				this.buttonList.add(btn);
-			}
-		}
-
-		//leave button
-		//this.buttonList.add(new GuiButton(99999, this.width /2 - 196,this.height /2 + 64,110,20,"Leave"));
-
-		//this.buttonList.add(new GuiTextButton(this.mc, 99999, this.fieldChatLeft + 6,this.fieldChatTop + 24,"> Bye bye!"));
-		
-		int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerComponent);
-		if(compIdx < 0)
-			System.out.println("Can not find the village component! idx < 0");
-		else
-			Action.send(ActionSyncVillagerComp.class, new Object[]{this.entityVBVillager.getEntityId(),compIdx, Minecraft.getMinecraft().thePlayer.getEntityId(),null});
-		
-		onInitGui();
 		
 		super.initGui();
 	}
 
+	public void initChatOptionsList(){
+		
+	}
+	
 	@Override
 	public boolean doesGuiPauseGame() {
 		return false;
@@ -309,18 +252,4 @@ public abstract class GuiVillager extends GuiScreen {
 			this.mc.setIngameFocus();
 		}
 	}
-	
-	public void updateWithVBCompResult(VBCompResult vbCompResult){
-		if(vbCompResult.chatContent != null && vbCompResult.chatContent != ""){
-			setChatContent(vbCompResult.chatContent);
-		}
-	}
-	
-	public abstract String getButtonText();
-	public abstract void onDrawScreen();
-	public abstract void onInitGui();
-	public abstract void onActionPerformed(GuiButton button);
-	
-	public abstract void onSyncCompleted();
-	
 }
