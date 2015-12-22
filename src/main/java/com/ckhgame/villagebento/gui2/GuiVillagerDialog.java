@@ -1,14 +1,20 @@
 package com.ckhgame.villagebento.gui2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.data.VBCompResult;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.item.ItemStack;
 
 public class GuiVillagerDialog extends GuiScreen{
 
@@ -21,17 +27,23 @@ public class GuiVillagerDialog extends GuiScreen{
 	
 	protected String dialogSource,dialogDisplay;
 	
+	protected List mouseHoverTexts;
+	
 	protected EntityVBVillager entityVBVillager;
 	
 	public GuiVillagerDialog(EntityVBVillager entityVBVillager){
 		this.entityVBVillager = entityVBVillager;
 	}
 	
+	protected void initData(){
+		
+	}
+	
 	protected void initCenterContent(){
 		
 	}
 	
-	protected void drawCenterContent(int centerContentID){
+	protected void drawCenterContent(int centerContentID, int mx, int my, float f){
 		this.drawBoundaryBackground(this.boundCenterContent);
 	}
 	
@@ -56,8 +68,9 @@ public class GuiVillagerDialog extends GuiScreen{
 		String prefix = "> ";
 		int maxCol = 3;
 		int yOffset = 28;
+		int xOffset = 8;
 		int lineHeight = 10;
-		int x = this.boundDialogBar.getIntX() + (idx / maxCol) * this.boundDialogBar.getIntW() / 2;
+		int x = this.boundDialogBar.getIntX()  + xOffset + (idx / maxCol) * this.boundDialogBar.getIntW() / 2;
 		int y = this.boundDialogBar.getIntY() + yOffset + (idx % maxCol) * lineHeight;
 		this.buttonList.add(new GuiTextButton(this.mc, id, x, y, prefix + text));
 	}
@@ -67,7 +80,7 @@ public class GuiVillagerDialog extends GuiScreen{
 		this.dialogDisplay = "";
 	}
 	
-	protected void drawDialogBar(){
+	protected void drawDialogBar(int mx, int my, float f){
 		//portrait
 		this.drawBoundaryBackground(this.boundPortrait);
 		
@@ -102,20 +115,43 @@ public class GuiVillagerDialog extends GuiScreen{
 		this.boundCenterContent = new GuiBoundary(this.width / 2 - 128, this.height / 2 - 96, 256, 128);
 	}
 	
+	public void updateWithVBCompResult(VBCompResult vbCompResult){
+		if(vbCompResult.chatContent != null && vbCompResult.chatContent != ""){
+			this.setDialogString(vbCompResult.chatContent);
+		}
+	}
+	
+	public void clearMouseHoverTexts(){
+		this.mouseHoverTexts = null;
+	}
+	
+	public void drawMouseHoverTexts(int mx, int my){
+		if(this.mouseHoverTexts != null){
+			this.drawHoveringText(this.mouseHoverTexts, mx, my, this.fontRendererObj);
+		}
+	}
+	
+	public void setMouseHoverTexts(List texts){
+		this.mouseHoverTexts = texts;
+	}
+	
 	//---------------------------------------------
 	//methods inherits from GuiScreen
 	//---------------------------------------------
 	@Override
-	public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_) {
-		this.drawDialogBar();
+	public void drawScreen(int mx, int my, float f) {
+		this.clearMouseHoverTexts();
+		this.drawDialogBar(mx,my,f);
 		if(!hideCenterContent){
-			this.drawCenterContent(this.centerContentID);
+			this.drawCenterContent(this.centerContentID,mx, my, f);
 		}
-		super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+		super.drawScreen(mx, my, f);
+		this.drawMouseHoverTexts(mx, my);
 	}
 	@Override
 	public void initGui() {
 		super.initGui();
+		this.initData();
 		this.initBoundaries();
 		this.initDialogAndOptions();
 		this.initCenterContent();
@@ -203,6 +239,42 @@ public class GuiVillagerDialog extends GuiScreen{
             	}
             }
         }
+	}
+	
+	/**
+	 * 
+	 * @return true: the mouse is currenly on the item
+	 */
+	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack){
+		//item icon
+		int left = x + 2;
+		int top = y + 2;
+		int w = 16;
+		int h = 16;
+		drawRect(left - 2, top - 2, left + w + 2, top + h + 2, 0xFF888888);
+		drawRect(left - 1, top - 1, left + w + 1, top + h + 1, 0xFFCCCCCC);
+		drawRect(left, top, left + w, top + h, 0xFFAAAAAA);	
+		
+		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+		RenderHelper.enableGUIStandardItemLighting();
+		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left, top);
+		if(itemStack.getItem() == ModItems.itemVillageCurrency){
+			String num = "x" + itemStack.getItemDamage();
+			fontRendererObj.drawString(num, left + 20, top + 6, 0xFFFFFFFF);
+		}
+		else{
+			String num = String.valueOf(itemStack.stackSize);
+			itemRender.renderItemOverlayIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left, top, num);
+		}
+		
+		RenderHelper.disableStandardItemLighting();
+		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+		GL11.glDisable(GL11.GL_LIGHTING);
+		
+		if(mx < left || my < top || mx > left + w || my > top + h)
+			return false;
+		
+		return true;
 	}
 	
 }

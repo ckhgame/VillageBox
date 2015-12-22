@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.network.action;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.gui.GuiVillager;
+import com.ckhgame.villagebento.gui2.GuiVillagerDialog;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
@@ -145,9 +146,8 @@ public class ActionSyncVillagerComp extends Action {
 	@Override
 	public void onActionCompleted(Object[] result) {
 		VBCompResult vbCompresult = (VBCompResult)result[0];
-		if(Minecraft.getMinecraft().currentScreen instanceof GuiVillager){
-			((GuiVillager)Minecraft.getMinecraft().currentScreen).updateWithVBCompResult(vbCompresult);
-			((GuiVillager)Minecraft.getMinecraft().currentScreen).onSyncCompleted();
+		if(Minecraft.getMinecraft().currentScreen instanceof GuiVillagerDialog){
+			((GuiVillagerDialog)Minecraft.getMinecraft().currentScreen).updateWithVBCompResult(vbCompresult);
 		}
 	}
 

@@ -69,6 +69,15 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 		case ButtonID_Trade:
 			this.createDialogTrade();
 			break;
+		case ButtonID_Buy:
+			this.mc.displayGuiScreen(new GuiVillagerDialogBuy(this.entityVBVillager));
+			break;
+		case ButtonID_Sell:
+			this.mc.displayGuiScreen(new GuiVillagerDialogSell(this.entityVBVillager));
+			break;
+		case ButtonID_Quest:
+			this.mc.displayGuiScreen(new GuiVillagerDialogQuest(this.entityVBVillager));
+			break;
 		case ButtonID_Back:
 			this.createDialogMain();
 			break;

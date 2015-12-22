@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.villagercomponent;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.config.ConfigData;
+import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.gui.GuiVillagerQuest;
 import com.ckhgame.villagebento.item.ModItems;
@@ -66,20 +67,22 @@ public class VillagerCompQuest extends VillagerComponent {
 		
 		//occasionally generate random quest on the beginning of a day...
 		if(time == 0){
-			if(VBRandom.getRand().nextInt(1) == 0){ //chance to create a new quest
-				ArrayList<VillagerQuestDesign> designs = new  ArrayList<VillagerQuestDesign>();
-				for(VillagerQuestDesign design : this.questDesignList){
-					if(design.getMinLevel() <= this.getVillager().getLevel()){
-						designs.add(design);
+			if(this.questListCurrent.size() == 0){ // maximum 1 quest at the same time (12.22.2015)
+				if(VBRandom.getRand().nextInt(ConfigVillager.QuestChance) == 0){ //chance to create a new quest
+					ArrayList<VillagerQuestDesign> designs = new  ArrayList<VillagerQuestDesign>();
+					for(VillagerQuestDesign design : this.questDesignList){
+						if(design.getMinLevel() <= this.getVillager().getLevel()){
+							designs.add(design);
+						}
 					}
-				}
-				if(designs.size() > 0){
-					VillagerQuestDesign selected = designs.get(VBRandom.getRand().nextInt(designs.size()));
-					VillagerQuest quest = selected.generateRandomQuest(this.getNextId());
-					if(quest != null){
-						questListCurrent.add(quest);
+					if(designs.size() > 0){
+						VillagerQuestDesign selected = designs.get(VBRandom.getRand().nextInt(designs.size()));
+						VillagerQuest quest = selected.generateRandomQuest(this.getNextId());
+						if(quest != null){
+							questListCurrent.add(quest);
+						}
+							
 					}
-						
 				}
 			}
 		}

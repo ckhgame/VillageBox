@@ -263,6 +263,15 @@ public class EntityVBVillager extends EntityAgeable {
 			return null;
 	}
 	
+	public VillagerComponent getVillagerComponent(Class<? extends VillagerComponent> compClass){
+		for(VillagerComponent comp : this.components ){
+			if(comp.getClass() == compClass){
+				return comp;
+			}
+		}
+		return null;
+	}
+	
 	public void updateVillagerComponentsByTime(int time){
 		for(VillagerComponent component : components)
 			component.update(time);

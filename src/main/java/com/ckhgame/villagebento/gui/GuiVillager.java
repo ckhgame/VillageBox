@@ -316,6 +316,8 @@ public abstract class GuiVillager extends GuiScreen {
 		}
 	}
 	
+	
+	
 	public abstract String getButtonText();
 	public abstract void onDrawScreen();
 	public abstract void onInitGui();

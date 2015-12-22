@@ -35,6 +35,8 @@ public class ConfigVillager {
 	
 	public static final int MaxRenderGuiDrawDistanceSq = 64 * 64;
 	
-	public static final int VisitingChance = 1; // means it has 1/VisitingChance to init a visiting...
+	public static final int VisitingChance = 4; // means it has 1/VisitingChance to init a visiting...
 	public static final int VisitingMaxSearchHeight = 1;
+	
+	public static final int QuestChance = 3;
 }
