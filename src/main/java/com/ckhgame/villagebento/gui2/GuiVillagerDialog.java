@@ -16,7 +16,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 
-public class GuiVillagerDialog extends GuiScreen{
+public abstract class GuiVillagerDialog extends GuiScreen{
 
 	protected GuiBoundary boundDialogBar;
 	protected GuiBoundary boundPortrait;
@@ -25,7 +25,8 @@ public class GuiVillagerDialog extends GuiScreen{
 	private boolean hideCenterContent = false;
 	private int centerContentID = -1;
 	
-	protected String dialogSource,dialogDisplay;
+	protected String dialogSource = "";
+	protected String dialogDisplay = "";
 	
 	protected List mouseHoverTexts;
 	
@@ -34,15 +35,7 @@ public class GuiVillagerDialog extends GuiScreen{
 	public GuiVillagerDialog(EntityVBVillager entityVBVillager){
 		this.entityVBVillager = entityVBVillager;
 	}
-	
-	protected void initData(){
-		
-	}
-	
-	protected void initCenterContent(){
-		
-	}
-	
+
 	protected void drawCenterContent(int centerContentID, int mx, int my, float f){
 		this.drawBoundaryBackground(this.boundCenterContent);
 	}
@@ -54,10 +47,6 @@ public class GuiVillagerDialog extends GuiScreen{
 	
 	protected void hideCenterContent(){
 		this.hideCenterContent = true;
-	}
-	
-	protected void initDialogAndOptions(){
-		
 	}
 	
 	protected void clearAllDialogOptions(){
@@ -115,10 +104,15 @@ public class GuiVillagerDialog extends GuiScreen{
 		this.boundCenterContent = new GuiBoundary(this.width / 2 - 128, this.height / 2 - 96, 256, 128);
 	}
 	
-	public void updateWithVBCompResult(VBCompResult vbCompResult){
+	/**
+	 * @return false means first time (used for initialization..)
+	 */
+	public boolean updateWithVBCompResult(VBCompResult vbCompResult){
 		if(vbCompResult.chatContent != null && vbCompResult.chatContent != ""){
 			this.setDialogString(vbCompResult.chatContent);
+			return true;
 		}
+		return false;
 	}
 	
 	public void clearMouseHoverTexts(){
@@ -134,6 +128,8 @@ public class GuiVillagerDialog extends GuiScreen{
 	public void setMouseHoverTexts(List texts){
 		this.mouseHoverTexts = texts;
 	}
+	
+	public abstract void initDialog();
 	
 	//---------------------------------------------
 	//methods inherits from GuiScreen
@@ -151,10 +147,8 @@ public class GuiVillagerDialog extends GuiScreen{
 	@Override
 	public void initGui() {
 		super.initGui();
-		this.initData();
 		this.initBoundaries();
-		this.initDialogAndOptions();
-		this.initCenterContent();
+		this.initDialog();
 	}
 	@Override
 	public void updateScreen() {
@@ -276,5 +270,5 @@ public class GuiVillagerDialog extends GuiScreen{
 		
 		return true;
 	}
-	
+
 }

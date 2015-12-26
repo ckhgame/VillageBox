@@ -7,6 +7,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerBuy;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
+import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 
@@ -26,6 +27,38 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 		super(entityVBVillager);
 	}
 
+	@Override
+	public void initDialog() {
+		this.villagerCompBuy = (VillagerCompBuy)this.entityVBVillager.getVillagerComponent(VillagerCompBuy.class);
+		if(this.villagerCompBuy == null){ // the villager doesn't have component buy
+			this.hideCenterContent();
+			this.setDialogString("Sorry, I have nothing to sell...");
+			this.addDialogOptions(ButtonID_Back, 0, "Back");
+		}
+		else if(!this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){ // has component buy but is out of open hours now..
+			this.hideCenterContent();
+			this.setDialogString("Sorry, It's out of my open hours now...");
+			this.addDialogOptions(ButtonID_Back, 0, "Back");
+		}
+		else{  // send a packet to query the item list, the buy gui will display after receiving
+			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompBuy);
+			if(compIdx < 0)
+				System.out.println("Can not find the village component! idx < 0");
+			else
+				Action.send(ActionSyncVillagerComp.class, new Object[]{this.entityVBVillager.getEntityId(),compIdx, Minecraft.getMinecraft().thePlayer.getEntityId(),null});
+		}
+	}
+	
+	@Override
+	public boolean updateWithVBCompResult(VBCompResult vbCompResult) {
+		if(!super.updateWithVBCompResult(vbCompResult)){
+			this.setDialogString("What do you want to buy?");
+			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.showCenterContent(ContentID_Buy);
+		}
+		return false;
+	}
+	
 	@Override
 	protected void drawGridCell(int idx, int mx, int my, int x, int y) {
 		if(idx < this.villagerCompBuy.itemListCurrent.size()){
@@ -58,53 +91,6 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 																		Minecraft.getMinecraft().thePlayer.getEntityId(),
 																		new Object[]{itemBuy}});
 		}
-	}
-
-	@Override
-	protected void initData() {
-		super.initData();
-		this.villagerCompBuy = (VillagerCompBuy)this.entityVBVillager.getVillagerComponent(VillagerCompBuy.class);
-		if(this.villagerCompBuy != null){
-			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompBuy);
-			if(compIdx < 0)
-				System.out.println("Can not find the village component! idx < 0");
-			else
-				Action.send(ActionSyncVillagerComp.class, new Object[]{this.entityVBVillager.getEntityId(),compIdx, Minecraft.getMinecraft().thePlayer.getEntityId(),null});
-		}
-	}
-
-	private void createDialogBuy(){
-		this.clearAllDialogOptions();
-		if(villagerCompBuy == null){
-			this.setDialogString("Sorry, I have nothing to sell...");
-		}
-		else{
-			if(this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){
-				this.setDialogString("What do you want to buy?");
-			}
-			else{
-				this.setDialogString("Sorry, It's out of my open hours now...");
-			}
-			
-		}
-		this.addDialogOptions(ButtonID_Back, 0, "Back");
-	}
-	
-	@Override
-	protected void initCenterContent() {
-		super.initCenterContent();
-		if(villagerCompBuy == null || !this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){
-			this.hideCenterContent();
-		}
-		else{
-			this.showCenterContent(ContentID_Buy);
-		}
-	}
-	
-	@Override
-	protected void initDialogAndOptions() {
-		super.initDialogAndOptions();
-		this.createDialogBuy();
 	}
 
 	@Override

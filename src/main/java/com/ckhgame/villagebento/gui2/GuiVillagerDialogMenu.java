@@ -27,6 +27,12 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 		super(entityVBVillager);
 	}
 
+	@Override
+	public void initDialog() {
+		this.hideCenterContent();
+		this.createDialogMain();
+	}
+
 	private void createDialogMain(){
 		this.clearAllDialogOptions();
 		this.setDialogString("Hi, How is going");
@@ -44,18 +50,6 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 		this.addDialogOptions(ButtonID_Buy, 0, "I want to buy");
 		this.addDialogOptions(ButtonID_Sell, 1, "I want to sell");
 		this.addDialogOptions(ButtonID_Back, 2, "Back");
-	}
-	
-	@Override
-	protected void initCenterContent() {
-		super.initCenterContent();
-		this.hideCenterContent();
-	}
-
-	@Override
-	protected void initDialogAndOptions() {
-		super.initDialogAndOptions();
-		this.createDialogMain();
 	}
 
 	@Override
@@ -83,6 +77,5 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 			break;
 		}
 	}
-	
 	
 }

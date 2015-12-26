@@ -26,6 +26,12 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 		super(entityVBVillager);
 	}
 
+	@Override
+	public void initDialog() {
+		this.hideCenterContent();
+		this.createDialogAbout();
+	}
+	
 	private void createDialogAbout(){
 		this.clearAllDialogOptions();
 		this.setDialogString("My name is " + this.entityVBVillager.getName());
@@ -34,20 +40,6 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 		this.addDialogOptions(ButtonID_OpenHours, 3, "Your open hours");
 		this.addDialogOptions(ButtonID_Back, 2, "Back");
 	}
-	
-	@Override
-	protected void initCenterContent() {
-		super.initCenterContent();
-		this.hideCenterContent();
-	}
-	
-	@Override
-	protected void initDialogAndOptions() {
-		super.initDialogAndOptions();
-		this.createDialogAbout();
-	}
-
-	
 	
 	@Override
 	protected void drawCenterContent(int centerContentID, int mx, int my, float f) {
@@ -85,6 +77,5 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 			break;
 		}
 	}
-	
 	
 }

@@ -7,6 +7,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerCompleteQuest;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
+import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompQuest;
@@ -27,18 +28,38 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 	public GuiVillagerDialogQuest(EntityVBVillager entityVBVillager) {
 		super(entityVBVillager);
 	}
-
+	
 	@Override
-	protected void initData() {
-		super.initData();
+	public void initDialog() {
 		this.villagerCompQuest = (VillagerCompQuest)this.entityVBVillager.getVillagerComponent(VillagerCompQuest.class);
-		if(this.villagerCompQuest != null){
+		if(villagerCompQuest == null){
+			this.setDialogString("Sorry, I don't have any quest for you now..");
+			this.addDialogOptions(ButtonID_Back, 0, "Back");
+		}
+		else{
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompQuest);
 			if(compIdx < 0)
 				System.out.println("Can not find the village component! idx < 0");
 			else
 				Action.send(ActionSyncVillagerComp.class, new Object[]{this.entityVBVillager.getEntityId(),compIdx, Minecraft.getMinecraft().thePlayer.getEntityId(),null});
 		}
+	}
+	
+	@Override
+	public boolean updateWithVBCompResult(VBCompResult vbCompResult) {
+		if(!super.updateWithVBCompResult(vbCompResult)){
+			if(villagerCompQuest.getQuestListCurrent().size() < 1){
+				this.setDialogString("Sorry, I don't have any quest for you now..");
+				this.addDialogOptions(ButtonID_Back, 0, "Back");
+			}
+			else{
+				this.setDialogString("Yes, I'm just looking someone to help me...");
+				this.addDialogOptions(ButtonID_Complete, 0, "Complete the quest");
+				this.addDialogOptions(ButtonID_Back, 1, "Back");
+				this.showCenterContent(ContentID_Quest);
+			}
+		}
+		return false;
 	}
 
 	private void createDialogQuest(){
@@ -52,23 +73,6 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 			this.addDialogOptions(ButtonID_Complete, 0, "Complete the quest");
 			this.addDialogOptions(ButtonID_Back, 1, "Back");
 		}
-	}
-	
-	@Override
-	protected void initCenterContent() {
-		super.initCenterContent();
-		if(villagerCompQuest == null || villagerCompQuest.getQuestListCurrent().size() < 1){
-			this.hideCenterContent();
-		}
-		else{
-			this.showCenterContent(ContentID_Quest);
-		}
-	}
-	
-	@Override
-	protected void initDialogAndOptions() {
-		super.initDialogAndOptions();
-		this.createDialogQuest();
 	}
 
 	@Override
