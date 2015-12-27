@@ -59,12 +59,12 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 	
 	protected void addDialogOptions(int id, int idx, String text){
 		String prefix = "> ";
-		int maxCol = 3;
+		int maxCol = 2;
 		int yOffset = 28;
 		int xOffset = 8;
 		int lineHeight = 10;
-		int x = this.boundDialogBar.getIntX()  + xOffset + (idx / maxCol) * this.boundDialogBar.getIntW() / 2;
-		int y = this.boundDialogBar.getIntY() + yOffset + (idx % maxCol) * lineHeight;
+		int x = this.boundDialogBar.getIntX()  + xOffset + (idx % maxCol) * this.boundDialogBar.getIntW() / 2;
+		int y = this.boundDialogBar.getIntY() + yOffset + (idx / maxCol) * lineHeight;
 		this.buttonList.add(new GuiTextButton(this.mc, id, x, y, prefix + text));
 	}
 	

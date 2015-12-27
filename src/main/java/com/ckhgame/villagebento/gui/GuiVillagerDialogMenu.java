@@ -1,15 +1,14 @@
 package com.ckhgame.villagebento.gui;
 
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompQuest;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompWork;
 
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.Tessellator;
 
 public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 
@@ -36,12 +35,28 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 	private void createDialogMain(){
 		this.clearAllDialogOptions();
 		this.setDialogString("Hi, How is going");
-		this.addDialogOptions(ButtonID_About, 0, "Tell me about you");
-		this.addDialogOptions(ButtonID_Trade, 1, "I want to trade with you");
-		this.addDialogOptions(ButtonID_Quest, 2, "Can I help you?");
-		this.addDialogOptions(ButtonID_Action, 3, "Actions...");
-		this.addDialogOptions(ButtonID_Work, 4, "please work for me");
-		this.addDialogOptions(ButtonID_Leave, 5, "Bye bye!");
+		int idx = 0;
+		//about
+		this.addDialogOptions(ButtonID_About, idx++, "Tell me about you");
+		//trade (buy & sell)
+		if(this.entityVBVillager.getVillagerComponent(VillagerCompBuy.class) != null ||
+			this.entityVBVillager.getVillagerComponent(VillagerCompSell.class) != null){
+			this.addDialogOptions(ButtonID_Trade, idx++, "I want to trade with you");
+		}
+		//quest
+		if(this.entityVBVillager.getVillagerComponent(VillagerCompQuest.class) != null){
+			this.addDialogOptions(ButtonID_Quest, idx++, "Can I help you?");
+		}
+		//actions
+		if(this.entityVBVillager.getVillagerComponent(VillagerCompAction.class) != null){
+			this.addDialogOptions(ButtonID_Action,idx++, "Actions...");
+		}
+		//works
+		if(this.entityVBVillager.getVillagerComponent(VillagerCompWork.class) != null){
+			this.addDialogOptions(ButtonID_Work, idx++, "please work for me");
+		}
+		
+		this.addDialogOptions(ButtonID_Leave, idx++, "Bye bye!");
 	}
 	
 	private void createDialogTrade(){

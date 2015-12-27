@@ -65,8 +65,8 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 		this.setDialogString("My name is " + this.entityVBVillager.getName());
 		this.addDialogOptions(ButtonID_Story, 0, "Your story");
 		this.addDialogOptions(ButtonID_CheckUpgrade, 1, "I want to upgrade you");
-		this.addDialogOptions(ButtonID_OpenHours, 3, "Your open hours");
-		this.addDialogOptions(ButtonID_Back, 2, "Back");
+		this.addDialogOptions(ButtonID_OpenHours, 2, "Your open hours");
+		this.addDialogOptions(ButtonID_Back, 3, "Back");
 	}
 	
 	private void createDialogUpgrade(){
