@@ -58,8 +58,9 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 				this.addDialogOptions(ButtonID_Back, 1, "Back");
 				this.showCenterContent(ContentID_Quest);
 			}
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	private void createDialogQuest(){

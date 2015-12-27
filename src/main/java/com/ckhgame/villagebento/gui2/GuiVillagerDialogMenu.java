@@ -72,6 +72,13 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 		case ButtonID_Quest:
 			this.mc.displayGuiScreen(new GuiVillagerDialogQuest(this.entityVBVillager));
 			break;
+		case ButtonID_Action:
+			this.mc.displayGuiScreen(new GuiVillagerDialogAction(this.entityVBVillager));
+			break;
+		case ButtonID_Leave:
+			this.mc.displayGuiScreen((GuiScreen)null);
+            this.mc.setIngameFocus();
+			break;
 		case ButtonID_Back:
 			this.createDialogMain();
 			break;

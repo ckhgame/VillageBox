@@ -55,8 +55,9 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 			this.setDialogString("What do you want to buy?");
 			this.addDialogOptions(ButtonID_Back, 0, "Back");
 			this.showCenterContent(ContentID_Buy);
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	@Override
