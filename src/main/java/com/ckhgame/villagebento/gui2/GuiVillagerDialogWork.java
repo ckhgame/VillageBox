@@ -1,5 +1,8 @@
 package com.ckhgame.villagebento.gui2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.network.action.Action;
@@ -8,6 +11,7 @@ import com.ckhgame.villagebento.network.action.ActionDoVillagerStartWork;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerTakeWorkOutput;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
 import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompWork;
@@ -112,7 +116,11 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 			this.drawCenteredString(fontRendererObj,"Expire in: " + (ConfigVillager.WorkOutputExpirationHours + this.villagerCompWork.hoursLeft) + " h",  this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 64, 0xFFFFFFFF);
 		
 			if(this.villagerCompWork.output != null){
-				this.drawItem(mx, my, this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 78, this.villagerCompWork.output);
+				if(this.drawItem(mx, my, this.boundCenterContent.getIntCenterX() - 12,  this.boundCenterContent.getIntY() + 78, this.villagerCompWork.output)){
+					List texts = new ArrayList();
+					texts.add(this.villagerCompWork.output.getDisplayName());
+					this.setMouseHoverTexts(texts);
+				}
 			}	
 		}
 	}
@@ -121,7 +129,7 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 	protected void actionPerformed(GuiButton guiButton) {
 		super.actionPerformed(guiButton);
 		
-		if(this.villagerCompWork != null){
+		if(this.villagerCompWork != null &&  this.villagerCompWork.workIdxListCurrent != null){
 			int[] workIdxList = this.villagerCompWork.workIdxListCurrent;
 			for(int i =0;i<workIdxList.length;i++){
 				if(guiButton.id == ButtonID_Work0 + i){

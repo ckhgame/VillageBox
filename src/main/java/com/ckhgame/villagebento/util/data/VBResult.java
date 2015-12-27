@@ -2,7 +2,6 @@ package com.ckhgame.villagebento.util.data;
 
 public class VBResult {
 	public static final int SUCCESS = 0;
-	public static final int SUCCESS_INIT = 1;
 	public static final int FAILED_UNAFFORDABLE = 100;
 	public static final int FALLED_RUNOUT = 101;
 	public static final int FAILED_NOITEM = 102;

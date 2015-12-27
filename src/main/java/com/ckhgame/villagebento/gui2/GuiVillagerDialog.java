@@ -49,6 +49,10 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		this.hideCenterContent = true;
 	}
 	
+	public int getCentercontentID(){
+		return this.centerContentID;
+	}
+	
 	protected void clearAllDialogOptions(){
 		this.buttonList.clear();
 	}
