@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.GuiVillagerSell;
+import com.ckhgame.villagebento.guiold.GuiVillagerSell;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.helper.HelperPlayer;

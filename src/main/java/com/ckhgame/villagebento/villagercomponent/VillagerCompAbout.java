@@ -5,7 +5,7 @@ import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.entity.villager.EntityVBGuard;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.GuiVillagerAbout;
+import com.ckhgame.villagebento.guiold.GuiVillagerAbout;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;

@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.gui;
+package com.ckhgame.villagebento.guiold;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL12;
 
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.module.GuiTextButton;
+import com.ckhgame.villagebento.gui.GuiTextButton;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;

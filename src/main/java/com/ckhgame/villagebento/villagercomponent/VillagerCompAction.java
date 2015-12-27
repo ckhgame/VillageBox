@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.GuiVillagerAction;
+import com.ckhgame.villagebento.guiold.GuiVillagerAction;
 import com.ckhgame.villagebento.villagercomponent.villageraction.VillagerAction;
 
 import cpw.mods.fml.common.network.ByteBufUtils;

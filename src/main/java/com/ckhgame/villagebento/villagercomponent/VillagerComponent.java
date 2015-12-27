@@ -1,7 +1,7 @@
 package com.ckhgame.villagebento.villagercomponent;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.GuiVillager;
+import com.ckhgame.villagebento.guiold.GuiVillager;
 import com.ckhgame.villagebento.util.IData;
 import com.ckhgame.villagebento.util.ISync;
 

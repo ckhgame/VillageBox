@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.GuiVillagerQuest;
+import com.ckhgame.villagebento.guiold.GuiVillagerQuest;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;

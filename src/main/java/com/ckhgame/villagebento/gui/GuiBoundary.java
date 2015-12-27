@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.gui2;
+package com.ckhgame.villagebento.gui;
 
 import net.minecraft.util.MathHelper;
 

@@ -5,7 +5,7 @@ import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.GuiVillager;
+import com.ckhgame.villagebento.guiold.GuiVillager;
 import com.ckhgame.villagebento.util.tool.VBRandom;
 
 import cpw.mods.fml.common.network.ByteBufUtils;

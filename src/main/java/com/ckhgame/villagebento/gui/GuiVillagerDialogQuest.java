@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.gui2;
+package com.ckhgame.villagebento.gui;
 
 import java.util.ArrayList;
 import java.util.List;

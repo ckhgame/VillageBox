@@ -13,7 +13,7 @@ import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.entity.VBVillagerMgr;
-import com.ckhgame.villagebento.gui2.GuiVillagerDialogMenu;
+import com.ckhgame.villagebento.gui.GuiVillagerDialogMenu;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.util.data.Vec3Int;
 import com.ckhgame.villagebento.util.helper.HelperDataVB;

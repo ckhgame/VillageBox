@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.gui;
+package com.ckhgame.villagebento.guiold;
 
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerUpgrade;

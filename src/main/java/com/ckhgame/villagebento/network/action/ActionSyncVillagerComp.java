@@ -1,8 +1,8 @@
 package com.ckhgame.villagebento.network.action;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.GuiVillager;
-import com.ckhgame.villagebento.gui2.GuiVillagerDialog;
+import com.ckhgame.villagebento.gui.GuiVillagerDialog;
+import com.ckhgame.villagebento.guiold.GuiVillager;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;

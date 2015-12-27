@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.gui2;
+package com.ckhgame.villagebento.gui;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.network.action.Action;
@@ -79,10 +79,8 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 	protected void drawCenterContent(int centerContentID, int mx, int my, float f) {
 		super.drawCenterContent(centerContentID, mx, my, f);
 		if(centerContentID == ContentID_ActionResult){
-			String text = "test result...";
-			this.drawWrappedString(this.fontRendererObj, text, 
-														this.boundCenterContent.getIntX() + 8, this.boundCenterContent.getIntY() + 8, 
-														0xFFFFFFFF, this.boundCenterContent.getIntW() - 16);
+			this.drawCenteredString(fontRendererObj, this.villagerCompAction.resultTitle, this.boundCenterContent.getIntCenterX(), this.boundCenterContent.getIntY()  + 8, 0xFFFFFF00);
+			this.drawWrappedString(fontRendererObj, this.villagerCompAction.resultContent, this.boundCenterContent.getIntX() + 8 , this.boundCenterContent.getIntY()  + 24, 0xFFDDDDDD, 240);
 		}
 	}
 

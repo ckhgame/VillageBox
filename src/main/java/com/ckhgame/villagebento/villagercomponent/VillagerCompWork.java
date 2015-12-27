@@ -6,7 +6,7 @@ import java.util.Random;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.gui.GuiVillagerWork;
+import com.ckhgame.villagebento.guiold.GuiVillagerWork;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.helper.HelperPlayer;

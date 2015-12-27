@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.gui;
+package com.ckhgame.villagebento.guiold;
 
 import org.lwjgl.opengl.GL11;
 
