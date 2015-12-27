@@ -8,6 +8,7 @@ import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerCompleteQuest;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
 import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompQuest;
@@ -31,6 +32,7 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 	
 	@Override
 	public void initDialog() {
+		this.hideCenterContent();
 		this.villagerCompQuest = (VillagerCompQuest)this.entityVBVillager.getVillagerComponent(VillagerCompQuest.class);
 		if(villagerCompQuest == null){
 			this.setDialogString("Sorry, I don't have any quest for you now..");
@@ -50,9 +52,11 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 		if(!super.updateWithVBCompResult(vbCompResult)){
 			if(villagerCompQuest.getQuestListCurrent().size() < 1){
 				this.setDialogString("Sorry, I don't have any quest for you now..");
+				this.clearAllDialogOptions();
 				this.addDialogOptions(ButtonID_Back, 0, "Back");
 			}
 			else{
+				this.clearAllDialogOptions();
 				this.setDialogString("Yes, I'm just looking someone to help me...");
 				this.addDialogOptions(ButtonID_Complete, 0, "Complete the quest");
 				this.addDialogOptions(ButtonID_Back, 1, "Back");
@@ -60,7 +64,15 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 			}
 			return false;
 		}
-		return true;
+		else{
+			if(vbCompResult.vbResult == VBResult.SUCCESS){ //quest completed
+				this.setDialogString("Thank you so much!");
+				this.hideCenterContent();
+				this.clearAllDialogOptions();
+				this.addDialogOptions(ButtonID_Back, 0, "Back");
+			}
+			return true;
+		}
 	}
 
 	private void createDialogQuest(){

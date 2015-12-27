@@ -31,7 +31,12 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 		this.villagerCompAction = (VillagerCompAction)this.entityVBVillager.getVillagerComponent(VillagerCompAction.class);
 		if(this.villagerCompAction == null){ // the villager doesn't have component action
 			this.hideCenterContent();
-			this.setDialogString("Sorry, I don't have any actions...");
+			this.setDialogString("Sorry, I don't have any action...");
+			this.addDialogOptions(ButtonID_Back, 0, "Back");
+		}
+		else if(!this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){ // has component buy but is out of open hours now..
+			this.hideCenterContent();
+			this.setDialogString("Sorry, It's out of my open hours now...");
 			this.addDialogOptions(ButtonID_Back, 0, "Back");
 		}
 		else{
