@@ -79,7 +79,6 @@ public class ConfigData {
 	public static final String KeyVillagerCompActionCurrentIdxList	= "vcacl";
 	
 	//village animal entity
-	public static final String KeyAnimalHunger						= "vah";
 	public static final String KeyAnimalState						= "vas";
 	public static final String KeyAnimalProducts					= "vap";
 	public static final String KeyAnimalProductTimer				= "vapt";

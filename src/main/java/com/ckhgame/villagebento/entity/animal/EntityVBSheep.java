@@ -114,16 +114,22 @@ public class EntityVBSheep extends EntityVBAnimal
 			return false;
 		
 		if(food.getItem() == ModItems.itemSheepFood){
-			this.addAnimHunger(8000);
+			int s = this.getAnimState();
+			if(s == AnimStateSick){
+				PlayerMsg.send(player, this.getCommandSenderName() + "is sick and doesn't like to eat anything!");
+			}
+			else{
+				this.feedAnimal(24000);
+			}		
 			return true;
 		}
 		else if(food.getItem() == ModItems.itemSheepPotion){
 			int s = this.getAnimState();
-			if(s != AnimStateSick && s!= AnimStateDeadly){
-				PlayerMsg.send(player, "that animal is not sick!");
+			if(s != AnimStateSick){
+				PlayerMsg.send(player, this.getCommandSenderName() + " is not sick!");
 			}
 			else{
-				this.setAnimStateValue(17000);
+				this.setAnimStateValue(-12000);
 			}
 		}
 		
@@ -137,9 +143,8 @@ public class EntityVBSheep extends EntityVBAnimal
 		
 		if(tool.getItem() == ModItems.itemWoolShears){ // hands
 			
-			int products = this.getAnimProducts();
-			if(products > 0){
-				this.setAnimProducts(products - 1); 
+			if(this.hasProduct()){
+				this.harvestProdcut();
 				this.dropItem(ModItems.itemVillageWool, 1);
 				this.playSound("mob.sheep.shear", 1.0F, 1.0F);
 			}

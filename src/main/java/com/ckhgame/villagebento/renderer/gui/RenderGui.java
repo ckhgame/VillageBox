@@ -66,17 +66,17 @@ public abstract class RenderGui {
 		OpenGlHelper.glBlendFunc(770, 771, 1, 0);		
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		for(GuiElement element : this.elements)
-			element.renderBackground();
+			if(element.isVisible) element.renderBackground();
 		GL11.glEnable(GL11.GL_TEXTURE_2D);	
 		for(GuiElement element : this.elements){
-			element.renderBack();	
+			if(element.isVisible) element.renderBack();	
 		}			
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		GL11.glDepthMask(true);
 		GL11.glPushMatrix();
 		for(GuiElement element : this.elements){
 			GL11.glTranslatef(0,0,-0.01f);
-			element.renderFront();
+			if(element.isVisible) element.renderFront();
 		}
 		GL11.glPopMatrix();
 		GL11.glEnable(GL11.GL_LIGHTING);

@@ -35,7 +35,7 @@ public class RenderVBSheep extends RenderLiving
     protected int shouldRenderPass(EntityVBSheep entity, int p_77032_2_, float p_77032_3_)
     {
     	
-        if (p_77032_2_ == 0 && entity.getAnimProducts() > 0)
+        if (p_77032_2_ == 0 && entity.hasProduct())
         {
             this.bindTexture(sheepTextures);
 

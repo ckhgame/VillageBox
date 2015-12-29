@@ -133,16 +133,22 @@ public class EntityVBChicken extends EntityVBAnimal
 			return false;
 		
 		if(food.getItem() == ModItems.itemChickenFood){
-			this.addAnimHunger(8000);
+			int s = this.getAnimState();
+			if(s == AnimStateSick){
+				PlayerMsg.send(player, this.getCommandSenderName() + "is sick and doesn't like to eat anything!");
+			}
+			else{
+				this.feedAnimal(24000);
+			}		
 			return true;
 		}
 		else if(food.getItem() == ModItems.itemChickenPotion){
 			int s = this.getAnimState();
-			if(s != AnimStateSick && s!= AnimStateDeadly){
-				PlayerMsg.send(player, "that animal is not sick!");
+			if(s != AnimStateSick){
+				PlayerMsg.send(player, this.getCommandSenderName() + " is not sick!");
 			}
 			else{
-				this.setAnimStateValue(17000);
+				this.setAnimStateValue(-12000);
 			}
 		}
 		
@@ -153,9 +159,8 @@ public class EntityVBChicken extends EntityVBAnimal
 	public boolean dropProduct(ItemStack tool,EntityPlayer player) {
 		if(tool == null || tool.getItem() == ModItems.itemChickenGloves){ // hands
 			
-			int products = this.getAnimProducts();
-			if(products > 0){
-				this.setAnimProducts(products - 1); 
+			if(this.hasProduct()){
+				this.harvestProdcut();
 				
 				if(tool == null)
 					this.dropItem(ModItems.itemVillageEgg, 1);

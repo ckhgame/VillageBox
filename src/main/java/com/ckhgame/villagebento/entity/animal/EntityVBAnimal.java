@@ -17,63 +17,66 @@ import net.minecraft.world.World;
 public abstract class EntityVBAnimal extends EntityAgeable
 {
 	public static final int AnimStateHappy = 0;
-	public static final int AnimStateNormal = 1;
+	public static final int AnimStateSad = 1;
 	public static final int AnimStateSick = 2;
-	public static final int AnimStateDeadly = 3;
-	
-	
-	
-	//0 - 24k, < 6k hungry
-	public int getAnimHunger(){return this.dataWatcher.getWatchableObjectInt(17);}
-    protected void setAnimHunger(int h){this.dataWatcher.updateObject(17, Math.max(0, Math.min(24000, h)));}
-    public float getAnimHungerPercent(){
-    	int h = this.dataWatcher.getWatchableObjectInt(17);
-    	return Math.max(0.0F, h * 1.0F / 24000.0F);
-    }
-    public void addAnimHunger(int food){
-    	int h = this.dataWatcher.getWatchableObjectInt(17);
-    	h = Math.min(24000, Math.max(0, this.isChild()?food * 2: food) + h);
-    	this.dataWatcher.updateObject(17, h);
-    }
     
-    //0 - 24k,>18k happy >12k normal 0-12k sick <=2k deadly(will keep reducing hp)
-    public int getAnimStateValue(){return this.dataWatcher.getWatchableObjectInt(18);}
-    protected void setAnimStateValue(int s){this.dataWatcher.updateObject(18, Math.max(0, Math.min(24000, s)));}  
+    //-max - 24k, >0 = happy, <0 sad(when it's < -24k, it's very easy to be sick..), -max = sick 
+    public int getAnimStateValue(){return this.dataWatcher.getWatchableObjectInt(17);}
+    protected void setAnimStateValue(int s){this.dataWatcher.updateObject(17,s);}  
     /**
      * returns the state , not the exact value..
      */
     public int getAnimState(){
-    	int s = this.dataWatcher.getWatchableObjectInt(18);
-    	if(s > 18000) return AnimStateHappy;
-    	else if(s > 12000) return AnimStateNormal;
-    	else if(s > 2000) return AnimStateSick;
-    	else return AnimStateDeadly;
+    	int s = this.dataWatcher.getWatchableObjectInt(17);
+    	if(s > 0) return AnimStateHappy;
+    	else if(s > -999999) return AnimStateSad;
+    	else return AnimStateSick;
     }
     
-    //1-n means how many products you can get from me! this will refresh everyday, and the number is depends on animState and animLove
-    public int getAnimProducts(){return this.dataWatcher.getWatchableObjectInt(19);}
-    protected void setAnimProducts(int p){this.dataWatcher.updateObject(19, p);}
-    public int getAnimProductsMax(){
-    	return this.isChild()?0:(getAnimLoveLvl() + 1);
+    public void feedAnimal(int foodValue){
+    	if(foodValue < 0){
+    		System.out.println("food value can not be < 0");
+    	}
+    	else{
+    		this.setAnimStateValue(Math.min(24000,foodValue));
+    	}
     }
     
-    public int getAnimLove(){return this.dataWatcher.getWatchableObjectInt(20);}
+    //animal hearts...
+    public int getAnimLove(){return this.dataWatcher.getWatchableObjectInt(18);}
     protected void setAnimLove(int l){
-    	this.dataWatcher.updateObject(20, Math.max(0, Math.min(loveEachLevel * 4, l)));
+    	this.dataWatcher.updateObject(18, l);
     }
-    private int loveEachLevel = 24000 * 7;
-    public int getAnimLoveLvl(){
-    	int l = this.dataWatcher.getWatchableObjectInt(20);
-    	return Math.min(4,l / loveEachLevel);
+    private static int[] loveToLevels = new int[]{24000*7, 24000 * 18, 24000 * 36, 24000 * 72};
+    public int getAnimLoveLevel(){
+    	int love = this.dataWatcher.getWatchableObjectInt(18);
+    	int lvl = 0;
+    	for(;lvl<loveToLevels.length;lvl++){
+    		if(love < loveToLevels[lvl])
+    			break;
+    	}
+    	return lvl;
     }
+    
+    //product
+    public boolean hasProduct(){
+    	int p = this.dataWatcher.getWatchableObjectInt(19);
+    	return (p > 0);
+    }
+    
+    public void generateProduct(){
+    	this.dataWatcher.updateObject(19, 1);
+    }
+    
+    public void harvestProdcut(){
+    	this.dataWatcher.updateObject(19, 0);
+    }   
+    //------------------------------------------------------------
     
     private long lastWorldTime = 0;
     private int productTimer = 0;
+    private static final int productTimeTotal = 24000;
     
-    private int oriProductTime = 12000;
-    public int getProductTime(){
-    	return this.oriProductTime - this.getAnimLoveLvl() * 1000;
-    }
 
     public EntityVBAnimal(World w)
     {
@@ -86,11 +89,9 @@ public abstract class EntityVBAnimal extends EntityAgeable
     protected void entityInit()
     {
         super.entityInit();
-        this.dataWatcher.addObject(17, new Integer(24000));
-        this.dataWatcher.addObject(18, new Integer(24000));
-        this.dataWatcher.addObject(19, new Integer(0));
-        this.dataWatcher.addObject(20, new Integer(0));
-        this.dataWatcher.addObject(21, new Integer(0));
+        this.dataWatcher.addObject(17, new Integer(24000)); // state
+        this.dataWatcher.addObject(18, new Integer(0)); // love
+        this.dataWatcher.addObject(19, new Integer(0)); // product
     }
 
     /**
@@ -108,71 +109,48 @@ public abstract class EntityVBAnimal extends EntityAgeable
         	this.lastWorldTime = currentTime;
         	
         	int s = this.getAnimState();
+        	int sv = this.getAnimStateValue();
         	
         	if(this.isChild()){
         		//update child animal ages
         		age += deltaTime;
         		this.setGrowingAge(age);
         	}
-        	else{
-        		//update animal products
-        		if(this.getAnimProducts() < this.getAnimProductsMax()){
-        			if(s == this.AnimStateNormal)
-            			this.productTimer += this.getRNG().nextInt((int)deltaTime + 1);
-            		else if(s == this.AnimStateHappy)
-            			this.productTimer += deltaTime;
-        			
-                	int pt = this.getProductTime();
-                	if(this.productTimer > pt){
-                		this.productTimer -= pt;
-                		int products = this.getAnimProducts();
-                		this.setAnimProducts(products + 1);
-                	}
+        	else if(s == this.AnimStateHappy && !this.hasProduct()){
+        		//update animal product
+        		this.productTimer += deltaTime;
+        		if(this.productTimer >= productTimeTotal){
+        			this.productTimer -= productTimeTotal;
+        			this.generateProduct();
         		}
-        		else{
-        			this.productTimer = 0;
-        		}
-        	}
-        	
-
-        	int h =  this.getAnimHunger();
+        	}       	
 	
-        	//update state
-        	int sv = this.getAnimStateValue();
-        	if(h < 1000 || s == AnimStateSick || s == AnimStateDeadly){
-        		sv -= this.getRNG().nextInt((int)deltaTime + 1);
+        	//love
+        	if(s == AnimStateHappy){
+        		int love = this.getAnimLove();
+        		love += deltaTime;
+        		this.setAnimLove(love);
         	}
-        	else{
-        		sv += deltaTime;
-        	}      	
-        	this.setAnimStateValue(sv);
-        	
-        	//update hunger
-        	if(h > 0){
-        		h = Math.max(0,h - (int)deltaTime);
-        	}
-        	this.setAnimHunger(h);
-        	
-        	//update love
-        	int l = this.getAnimLove();
-        	if(s == AnimStateHappy)
-        		l += deltaTime;
-        	else if(s == AnimStateNormal)
-        		l += this.getRNG().nextInt((int)deltaTime + 1);
-        	else if(s == AnimStateSick || s == AnimStateDeadly)
-        		l -= this.getRNG().nextInt((int)deltaTime + 1);
-        	
-        	this.setAnimLove(l);
         	
         	//hp
-        	if(s == AnimStateHappy && this.getHealth() < this.getMaxHealth() && this.ticksExisted % 40 * 12 == 0){
+        	if(s == AnimStateHappy&& this.getHealth() < this.getMaxHealth() && this.ticksExisted % 40 * 12 == 0){
         		this.heal(1.0F);
             }
-        	else if(s == AnimStateDeadly && this.ticksExisted % 300 * 12 == 0){
+        	
+        	if(s == AnimStateSick && this.ticksExisted % 500 * 12 == 0){
                 this.attackEntityFrom(DamageSource.starve, 1.0F);
-        	}	
+        	}
+        	
+        	//sad -> sick
+        	if(s == AnimStateSad && sv < -24000 && this.ticksExisted % 500 * 12 == 0){
+        		//set sick
+        		sv = -9999999;
+        	}
+        	
+        	//update state
+        	sv -= deltaTime;
+        	this.setAnimStateValue(sv);
         }
-        
     }
     
     /**
@@ -202,7 +180,7 @@ public abstract class EntityVBAnimal extends EntityAgeable
             
             //animal will drop state value when hit
             int sv = this.getAnimStateValue();
-        	sv -= (this.getRNG().nextInt(450) + 450);
+        	sv -= 24000;
         	this.setAnimStateValue(sv);
             
             return super.attackEntityFrom(p_70097_1_, p_70097_2_);
@@ -224,9 +202,8 @@ public abstract class EntityVBAnimal extends EntityAgeable
     public void writeEntityToNBT(NBTTagCompound p_70014_1_)
     {
         super.writeEntityToNBT(p_70014_1_);
-        p_70014_1_.setInteger(ConfigData.KeyAnimalHunger, this.getAnimHunger());
         p_70014_1_.setInteger(ConfigData.KeyAnimalState, this.getAnimStateValue());
-        p_70014_1_.setInteger(ConfigData.KeyAnimalProducts, this.getAnimProducts());
+        p_70014_1_.setBoolean(ConfigData.KeyAnimalProducts, this.hasProduct());
         p_70014_1_.setInteger(ConfigData.KeyAnimalProductTimer, this.productTimer);
         p_70014_1_.setInteger(ConfigData.KeyAnimalLove, this.getAnimLove());
     }
@@ -237,9 +214,8 @@ public abstract class EntityVBAnimal extends EntityAgeable
     public void readEntityFromNBT(NBTTagCompound p_70037_1_)
     {
         super.readEntityFromNBT(p_70037_1_);
-       	this.setAnimHunger(p_70037_1_.getInteger(ConfigData.KeyAnimalHunger));
     	this.setAnimStateValue(p_70037_1_.getInteger(ConfigData.KeyAnimalState));
-    	this.setAnimProducts(p_70037_1_.getInteger(ConfigData.KeyAnimalProducts));
+    	if(p_70037_1_.getBoolean(ConfigData.KeyAnimalProducts)) this.generateProduct();
     	this.productTimer = p_70037_1_.getInteger(ConfigData.KeyAnimalProductTimer);
         this.setAnimLove( p_70037_1_.getInteger(ConfigData.KeyAnimalLove));
     }

@@ -27,36 +27,38 @@ public class GuiSprite extends GuiElement{
 	
 	@Override
 	public void renderFront() {
-		Tessellator tessellator = Tessellator.instance;
-		Minecraft.getMinecraft().renderEngine.bindTexture(resource);
-    	tessellator.startDrawingQuads();
-    	GL11.glColor4f(r, g, b, 1.0F);
-    	tessellator.addVertexWithUV(x, -y-height, 0.0D,umin,vmin);
-		tessellator.addVertexWithUV(x, -y, 0.0D,umin,vmax);
-		tessellator.addVertexWithUV(x + width, -y, 0.0D,umax,vmax);
-		tessellator.addVertexWithUV(x + width, -y - height, 0.0D,umax,vmin);
-		tessellator.draw();
+		if(resource != null){
+			Tessellator tessellator = Tessellator.instance;
+			Minecraft.getMinecraft().renderEngine.bindTexture(resource);
+	    	tessellator.startDrawingQuads();
+	    	GL11.glColor4f(r, g, b, 1.0F);
+	    	tessellator.addVertexWithUV(x, -y-height, 0.0D,umin,vmin);
+			tessellator.addVertexWithUV(x, -y, 0.0D,umin,vmax);
+			tessellator.addVertexWithUV(x + width, -y, 0.0D,umax,vmax);
+			tessellator.addVertexWithUV(x + width, -y - height, 0.0D,umax,vmin);
+			tessellator.draw();
+		}
 	}
 
 	@Override
 	public void renderBack() {
-		Tessellator tessellator = Tessellator.instance;
-		Minecraft.getMinecraft().renderEngine.bindTexture(resource);
-    	tessellator.startDrawingQuads();
-    	GL11.glColor4f(r, g, b, 0.3F);
-    	tessellator.addVertexWithUV(x, -y-height, 0.0D,umin,vmin);
-		tessellator.addVertexWithUV(x, -y, 0.0D,umin,vmax);
-		tessellator.addVertexWithUV(x + width, -y, 0.0D,umax,vmax);
-		tessellator.addVertexWithUV(x + width, -y - height, 0.0D,umax,vmin);
-		tessellator.draw();
+		if(resource != null){
+			Tessellator tessellator = Tessellator.instance;
+			Minecraft.getMinecraft().renderEngine.bindTexture(resource);
+	    	tessellator.startDrawingQuads();
+	    	GL11.glColor4f(r, g, b, 0.3F);
+	    	tessellator.addVertexWithUV(x, -y-height, 0.0D,umin,vmin);
+			tessellator.addVertexWithUV(x, -y, 0.0D,umin,vmax);
+			tessellator.addVertexWithUV(x + width, -y, 0.0D,umax,vmax);
+			tessellator.addVertexWithUV(x + width, -y - height, 0.0D,umax,vmin);
+			tessellator.draw();
+		}
 	}
 
 
 
 	@Override
 	public void renderBackground() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

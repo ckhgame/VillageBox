@@ -99,17 +99,22 @@ public class EntityVBCow extends EntityVBAnimal
 			return false;
 		
 		if(food.getItem() == ModItems.itemCowFood){
-			this.addAnimHunger(8000);
-			System.out.println("cool");
+			int s = this.getAnimState();
+			if(s == AnimStateSick){
+				PlayerMsg.send(player, this.getCommandSenderName() + "is sick and doesn't like to eat anything!");
+			}
+			else{
+				this.feedAnimal(24000);
+			}		
 			return true;
 		}
 		else if(food.getItem() == ModItems.itemCowPotion){
 			int s = this.getAnimState();
-			if(s != AnimStateSick && s!= AnimStateDeadly){
-				PlayerMsg.send(player, "that animal is not sick!");
+			if(s != AnimStateSick){
+				PlayerMsg.send(player, this.getCommandSenderName() + " is not sick!");
 			}
 			else{
-				this.setAnimStateValue(17000);
+				this.setAnimStateValue(-12000);
 			}
 		}
 		
@@ -124,9 +129,8 @@ public class EntityVBCow extends EntityVBAnimal
 		
 		if(tool.getItem() == ModItems.itemMilkBottle){ // hands
 			
-			int products = this.getAnimProducts();
-			if(products > 0){
-				this.setAnimProducts(products - 1); 
+			if(this.hasProduct()){
+				this.harvestProdcut();
 				this.dropItem(ModItems.itemVillageMilk, 1);
 				--tool.stackSize;
 			}
