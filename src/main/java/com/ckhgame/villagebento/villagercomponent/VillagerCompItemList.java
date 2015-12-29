@@ -5,7 +5,6 @@ import java.util.Random;
 
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.guiold.GuiVillager;
 import com.ckhgame.villagebento.util.tool.VBRandom;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
@@ -19,8 +18,8 @@ import net.minecraftforge.common.util.Constants;
 
 public abstract class VillagerCompItemList extends VillagerComponent {
 	
-	public VillagerCompItemList(EntityVBVillager entityVillager, GuiVillager guiVillager) {
-		super(entityVillager,guiVillager);
+	public VillagerCompItemList(EntityVBVillager entityVillager) {
+		super(entityVillager);
 	}
 	
 	private class ItemRecord{

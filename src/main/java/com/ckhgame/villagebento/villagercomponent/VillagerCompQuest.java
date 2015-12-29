@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.guiold.GuiVillagerQuest;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
@@ -23,7 +22,7 @@ import net.minecraftforge.common.util.Constants;
 public class VillagerCompQuest extends VillagerComponent {
 	
 	public VillagerCompQuest(EntityVBVillager entityVillager) {
-		super(entityVillager,new GuiVillagerQuest());
+		super(entityVillager);
 	}
 	
 	private ArrayList<VillagerQuestDesign> questDesignList = new ArrayList<VillagerQuestDesign>();

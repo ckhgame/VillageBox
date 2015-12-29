@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.guiold.GuiVillagerAction;
 import com.ckhgame.villagebento.villagercomponent.villageraction.VillagerAction;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
@@ -12,10 +11,10 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class VillagerCompAction extends VillagerComponent {
+public class VillagerCompAction extends VillagerCompCustomDialog {
 
 	public VillagerCompAction(EntityVBVillager entityVBVillager) {
-		super(entityVBVillager, new GuiVillagerAction());
+		super(entityVBVillager);
 	}
 
 	private ArrayList<VillagerAction> actionListTotal = new ArrayList<VillagerAction>();

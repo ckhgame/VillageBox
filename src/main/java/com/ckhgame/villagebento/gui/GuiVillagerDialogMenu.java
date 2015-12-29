@@ -48,12 +48,14 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 			this.addDialogOptions(ButtonID_Quest, idx++, "Can I help you?");
 		}
 		//actions
-		if(this.entityVBVillager.getVillagerComponent(VillagerCompAction.class) != null){
-			this.addDialogOptions(ButtonID_Action,idx++, "Actions...");
+		VillagerCompAction compAction = (VillagerCompAction)this.entityVBVillager.getVillagerComponent(VillagerCompAction.class);
+		if(compAction != null){
+			this.addDialogOptions(ButtonID_Action,idx++, compAction.getDialogOptionText());
 		}
 		//works
-		if(this.entityVBVillager.getVillagerComponent(VillagerCompWork.class) != null){
-			this.addDialogOptions(ButtonID_Work, idx++, "please work for me");
+		VillagerCompWork compWork = (VillagerCompWork)this.entityVBVillager.getVillagerComponent(VillagerCompWork.class);
+		if(compWork != null){
+			this.addDialogOptions(ButtonID_Work, idx++,compWork.getDialogOptionText());
 		}
 		
 		this.addDialogOptions(ButtonID_Leave, idx++, "Bye bye!");

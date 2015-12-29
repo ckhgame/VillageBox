@@ -44,9 +44,10 @@ public class ProfessionCasinoManager extends Profession {
         
         //action
         VillagerCompAction compAction = new VillagerCompAction(villager);
-        compAction.addAction(new VillagerActionBet("Today is a good day!(bet:10)", 0, new Object[]{10}));
-        compAction.addAction(new VillagerActionBet("Test my luck(bet:50)", 1, new Object[]{50}));
-        compAction.addAction(new VillagerActionBet("I'm a lucky guy!(bet:100)", 2, new Object[]{100}));
+        compAction.setDialogOptionText("I want to test my luck");
+        compAction.addAction(new VillagerActionBet("Test my luck(bet:10)", 0, new Object[]{10}));
+        compAction.addAction(new VillagerActionBet("Text my luck(bet:50)", 0, new Object[]{50}));
+        compAction.addAction(new VillagerActionBet("I'm a lucky guy!(bet:100)", 1, new Object[]{100}));
         components.add(compAction);
 
 	}

@@ -2,9 +2,7 @@ package com.ckhgame.villagebento.villagercomponent;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.guiold.GuiVillagerSell;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.helper.HelperPlayer;
@@ -16,7 +14,7 @@ import net.minecraft.item.ItemStack;
 public class VillagerCompSell extends VillagerCompItemList {
 	
 	public VillagerCompSell(EntityVBVillager entityVillager) {
-		super(entityVillager,new GuiVillagerSell());
+		super(entityVillager);
 	}
 	
 	//-------------------------------------------------------

@@ -6,7 +6,6 @@ import java.util.Random;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.guiold.GuiVillagerWork;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.helper.HelperPlayer;
@@ -20,10 +19,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class VillagerCompWork extends VillagerComponent {
+public class VillagerCompWork extends VillagerCompCustomDialog {
 	
 	public VillagerCompWork(EntityVBVillager entityVillager) {
-		super(entityVillager,new GuiVillagerWork());
+		super(entityVillager);
 	}
 	
 	//------------Villager Sell List Generation-------------

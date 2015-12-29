@@ -5,7 +5,6 @@ import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.entity.villager.EntityVBGuard;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.guiold.GuiVillagerAbout;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
@@ -21,7 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public class VillagerCompAbout extends VillagerComponent {
 
 	public VillagerCompAbout(EntityVBVillager entityVillager) {
-		super(entityVillager,new GuiVillagerAbout());
+		super(entityVillager);
 	}
 
 	private String currentlyDoing = "";
