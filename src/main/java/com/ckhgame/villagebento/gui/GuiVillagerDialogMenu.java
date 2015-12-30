@@ -9,6 +9,7 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompWork;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.StatCollector;
 
 public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 
@@ -37,7 +38,7 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 		this.setDialogString("Hi, How is going");
 		int idx = 0;
 		//about
-		this.addDialogOptions(ButtonID_About, idx++, "Tell me about you");
+		this.addDialogOptions(ButtonID_About, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuAbout"));
 		//trade (buy & sell)
 		if(this.entityVBVillager.getVillagerComponent(VillagerCompBuy.class) != null ||
 			this.entityVBVillager.getVillagerComponent(VillagerCompSell.class) != null){

@@ -51,7 +51,7 @@ public class EntityFishHookVB extends Entity
     private int field_146047_aw;
     private int field_146045_ax;
     private int field_146040_ay;
-    private int field_146038_az;
+    private int field_146038_az; // total waiting time of fishing?
     private float field_146054_aA;
     public Entity field_146043_c;
     private int field_146055_aB;

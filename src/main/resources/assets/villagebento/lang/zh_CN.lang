@@ -141,3 +141,7 @@ item.ItemAnimalBook.name=动物百科全书
 item.ItemPlantBook.name=自然造物百科
 item.ItemBuildingsBook.name=建筑历史
 item.ItemNPCBook.name=职业指南
+
+
+#villager dialogs
+vbgui.dialogOption.menuAbout=请问你是谁？

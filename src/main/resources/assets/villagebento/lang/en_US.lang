@@ -143,3 +143,6 @@ item.ItemAnimalBook.name=Animal Encyclopedia
 item.ItemPlantBook.name=Nature Creations
 item.ItemBuildingsBook.name=The History of Architecture
 item.ItemNPCBook.name=Career Guide
+
+#villager dialogs
+vbgui.dialogOption.menuAbout=Talk about you..
