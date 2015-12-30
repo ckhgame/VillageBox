@@ -89,6 +89,9 @@ public class ModItems {
 	public static Item itemIronBox;
 	public static Item itemWoodBox;
 	public static Item itemGoldenBox;
+	public static Item itemFishingRodIron;
+	public static Item itemFishingRodGold;
+	public static Item itemFishingRodDiamond;
 	
 	//Books
 	public static Item itemPlantBook;
@@ -190,6 +193,9 @@ public class ModItems {
         GameRegistry.registerItem(itemWoodBox = new ItemVB("ItemWoodBox",null,CreativeTabs.tabMisc),"ItemWoodBox");
         GameRegistry.registerItem(itemIronBox = new ItemVB("ItemIronBox",null,CreativeTabs.tabMisc),"ItemIronBox");
         GameRegistry.registerItem(itemGoldenBox = new ItemVB("ItemGoldenBox",null,CreativeTabs.tabMisc),"ItemGoldenBox");
+        GameRegistry.registerItem(itemFishingRodIron = new ItemFishingRodVB("ItemFishingRodIron"), "ItemFishingRodIron");
+        GameRegistry.registerItem(itemFishingRodGold = new ItemFishingRodVB("ItemFishingRodGold"), "ItemFishingRodGold");
+        GameRegistry.registerItem(itemFishingRodDiamond = new ItemFishingRodVB("ItemFishingRodDiamond"), "ItemFishingRodDiamond");
 
         //Books
         GameRegistry.registerItem(itemPlantBook = new ItemVBBook("ItemPlantBook",null,CreativeTabs.tabMisc,"PlantBook"),"ItemPlantBook");

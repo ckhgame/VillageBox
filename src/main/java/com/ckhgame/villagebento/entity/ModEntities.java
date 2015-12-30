@@ -6,6 +6,7 @@ import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.entity.misc.EntityBlockMountable;
+import com.ckhgame.villagebento.entity.misc.EntityFishHookVB;
 import com.ckhgame.villagebento.entity.villager.EntityVBGuard;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
@@ -23,6 +24,8 @@ public class ModEntities {
         EntityRegistry.registerModEntity(EntityVBCow.class, "EntityVBCow", id++, Main.instance, 80, 3, true);
         
         EntityRegistry.registerModEntity(EntityBlockMountable.class, "EntityBlockMountable", id++, Main.instance, 64, 1, true);
+        
+        EntityRegistry.registerModEntity(EntityFishHookVB.class,"EntityFishHookVB", id++, Main.instance, 64,5,true);
         
         //entity manager
         VBVillagerMgr.get().init();

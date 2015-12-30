@@ -133,6 +133,9 @@ item.ItemIronFishingPole.name=Iron Fishing Pool
 item.ItemIronBox.name=Iron Box
 item.ItemWoodBox.name=Wooden Box
 item.ItemGoldenBox.name=Golden Box
+item.ItemFishingRodIron.name=Iron Fishing Rod
+item.ItemFishingRodGold.name=Gold Fishing Rod
+item.ItemFishingRodDiamond.name=Diamond Fishing Rod
 
 item.ItemCookingBookI.name=Cooking Guide I
 item.ItemCookingBookII.name=Cooking Guide II
