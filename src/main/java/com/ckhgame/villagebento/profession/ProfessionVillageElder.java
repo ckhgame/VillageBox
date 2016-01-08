@@ -93,9 +93,7 @@ public class ProfessionVillageElder extends Profession {
         
         //sell list
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Blocks.cobblestone, 64, 64, 0);
-        compSell.addItem(Blocks.cobblestone, 64, 64, 0);
-        compSell.addItem(Blocks.cobblestone, 30, 64, 0);
+        compSell.addItem(Blocks.cobblestone, 128, 200, 0);
         compSell.addItem(Blocks.log, 30, 40, 0, 0);
         compSell.addItem(Blocks.log, 30, 40, 0, 1);
         compSell.addItem(Blocks.log, 30, 40, 0, 2);
