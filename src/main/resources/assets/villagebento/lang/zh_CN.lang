@@ -182,76 +182,76 @@ vbgui.dialogString.menuTrade=有什么需要帮忙的么?
 
 vbgui.dialogString.aboutName=我的名字是 
 
-vbgui.dialogString.questNoQuest=Sorry, I don't have any quest for you now..
-vbgui.dialogString.questLookingfor=Yes, I'm just looking someone to help me..
-vbgui.dialogString.questThanks=Thank you so much!
+vbgui.dialogString.questNoQuest=不好意思，我现在没有任何需要帮忙的事情..
+vbgui.dialogString.questLookingfor=谢谢！那我正想找人帮我个忙..
+vbgui.dialogString.questThanks=非常的感谢你!
 
-vbgui.dialogString.sellNoItem=Sorry, I have nothing to sell...
-vbgui.dialogString.sellOutOpenHours=Sorry, It's out of my open hours now...
-vbgui.dialogString.sellWanttoBuy=What do you want to buy?
+vbgui.dialogString.sellNoItem=Sorry, 我没有可以交易的东西...
+vbgui.dialogString.sellOutOpenHours=对不起，现在还没到我的营业时间...
+vbgui.dialogString.sellWanttoBuy=你想要买些什么呢?
 
-vbgui.dialogString.buyNoItem=Sorry, I don't want to buy anything...
-vbgui.dialogString.buyOutOpenHours=Sorry, It's out of my open hours now...
-vbgui.dialogString.buyWanttoSell=What do you want to sell?
+vbgui.dialogString.buyNoItem=不好意思，我暂时不想买东西...
+vbgui.dialogString.buyOutOpenHours=对不起，我的营业时间过了...
+vbgui.dialogString.buyWanttoSell=你想要卖些什么呢?
 
-vbgui.dialogString.workNoWork=Sorry, I don't have any work...
-vbgui.dialogString.workOutOpenHours=Sorry, It's out of my open hours now...
-vbgui.dialogString.workNextWork=What can I do for you?
+vbgui.dialogString.workNoWork=不好意思，我现在手头上没有任何工作需要。。。
+vbgui.dialogString.workOutOpenHours=对不起，现在还没到我的营业时间...
+vbgui.dialogString.workNextWork=需要我帮你什么呢？
 
-vbgui.dialogString.actionNoAction=Sorry, I don't have any action..
-vbgui.dialogString.actionOutOpenHours=Sorry, It's out of my open hours now...
-vbgui.dialogString.actionNextAction=What can I do for you?
+vbgui.dialogString.actionNoAction=不好意思，我暂时没有举行任何的活动..
+vbgui.dialogString.actionOutOpenHours=对不起，我的营业时间过了...
+vbgui.dialogString.actionNextAction=你需要些什么呢?
 
 #--------------------------------
 #  GUI Texts
 #--------------------------------
 
-vbgui.dropCoins.askAmount=How much you want to drop?
-vbgui.dropCoins.invalid=Invalid Input!
-vbgui.dropCoins.tooMuch=It's too much!
+vbgui.dropCoins.askAmount=你想要丢弃多少?
+vbgui.dropCoins.invalid=数值不可用!
+vbgui.dropCoins.tooMuch=数值太大!
 
-vbgui.createAnim.nameBaby=Give the new baby a name
-vbgui.createAnim.tooLong=must have 1-10 characters
-vbgui.createAnim.invalid=please only use letters and numbers
+vbgui.createAnim.nameBaby=给小宝宝一个名字
+vbgui.createAnim.tooLong=需要1-10个字符
+vbgui.createAnim.invalid=请使用字符和数字
 
-vbgui.dialogAbout.upgradingTitle=Villager Upgrading
-vbgui.dialogAbout.upgradingReqs=Requirements
-vbgui.dialogAbout.reachedMaxLvl=Already reached the max level
-vbgui.dialogAbout.openHoursTitle=Open Hours
-vbgui.dialogAbout.weekdays=Mon,Tue,Wed,Thu,Fri,Sat,Sun
+vbgui.dialogAbout.upgradingTitle=村民升级中。。。
+vbgui.dialogAbout.upgradingReqs=所需的物品
+vbgui.dialogAbout.reachedMaxLvl=已经到达最高等级
+vbgui.dialogAbout.openHoursTitle=营业时间
+vbgui.dialogAbout.weekdays=星期一,星期二,星期三,星期四,星期五,星期六,星期日
 
-vbgui.dialogQuest.need=Need:
-vbgui.dialogQuest.reward=Reward:
+vbgui.dialogQuest.need=需要:
+vbgui.dialogQuest.reward=奖励:
 
-vbgui.dialogBuy.buyTitle=Buy items from 
+vbgui.dialogBuy.buyTitle=购买 
 
-vbgui.dialogSell.sellTitle=Sell items to 
+vbgui.dialogSell.sellTitle=卖出 
 
-vbgui.dialogWork.isWorking=Is Working
-vbgui.dialogWork.client=Client: 
-vbgui.dialogWork.hoursLeft=Hours Left: 
-vbgui.dialogWork.completed=Work Completed
-vbgui.dialogWork.expire=Expire in: 
+vbgui.dialogWork.isWorking=正在工作中。。。
+vbgui.dialogWork.client=玩家: 
+vbgui.dialogWork.hoursLeft=所需时间: 
+vbgui.dialogWork.completed=委托完成
+vbgui.dialogWork.expire=过期时间: 
 
 # --------------------------------
 # Villager Components
 # --------------------------------
 
-vcomp.buy.runout=That one is sold out...
-vcomp.buy.unaffordable=Hmmm... it's too expensive for you...
+vcomp.buy.runout=这个已经买完了...
+vcomp.buy.unaffordable=呃。这个看起来对你来说有点贵...
 
-vcomp.sell.runout=I don't need anymore of that...
-vcomp.sell.noitem=You don't have it...
+vcomp.sell.runout=我不需要更多的...
+vcomp.sell.noitem=我没有这个东西...
 
-vcomp.quest.runout=The quest is not existed...
-vcomp.quest.noitem=You don't have what I need..
-vcomp.quest.success=Thanks, take your reward!
+vcomp.quest.runout=这个任务已经不存在了...
+vcomp.quest.noitem=你没有携带我需要的全部物品..
+vcomp.quest.success=谢谢，请收下这个作为回礼!
 
-vcomp.work.wrongName=It's not yours...
-vcomp.work.unaffordable=You don't have enough money..
+vcomp.work.wrongName=这不是你的...
+vcomp.work.unaffordable=你没有足够的钱币..
 
-vcomp.about.noitem=Can't meet all requirements...
-vcomp.about.success=Leveling up!!!
+vcomp.about.noitem=没有达到所有的需求...
+vcomp.about.success=升级了!!!
 
 #--------------------------------
 #  Villager Texts
