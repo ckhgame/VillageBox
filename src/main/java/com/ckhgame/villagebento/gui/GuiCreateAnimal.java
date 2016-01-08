@@ -6,6 +6,7 @@ import com.ckhgame.villagebento.network.action.ActionDoCreateAnimal;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.util.StatCollector;
 
 public class GuiCreateAnimal extends GuiScreen {
 
@@ -32,7 +33,7 @@ public class GuiCreateAnimal extends GuiScreen {
 	}
 
 	int yOffset = 0;
-	String text = "Give the new baby a name:";
+	String text = StatCollector.translateToLocal("vbgui.createAnim.nameBaby");
 	int textColor = 0xFFFFFF;
 
 
@@ -89,16 +90,18 @@ public class GuiCreateAnimal extends GuiScreen {
 
 			if(name.length() <= 0 || name.length() >= 10)
 			{
-				text = "name must have 1-10 characters";
+				text = StatCollector.translateToLocal("vbgui.createAnim.tooLong");
 				textColor = 0xFFAAAA;
 			}
 			else if(!isOnlyLettersAndNumbers(name)){
-				text = "please only use letters and numbers";
+				text = StatCollector.translateToLocal("vbgui.createAnim.invalid");
 				textColor = 0xFFAAAA;
 			}
 			else{
 				Action.send(ActionDoCreateAnimal.class, new Object[]{playerEntityID,x,y,z,name});
 				created = true;
+				this.mc.displayGuiScreen((GuiScreen)null);
+	            this.mc.setIngameFocus();
 			}
 			
 		}

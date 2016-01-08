@@ -149,7 +149,8 @@ item.ItemNPCBook.name=Career Guide
 #  Gui Texts
 #--------------------------------
 
-#villager dialogs
+# villager dialog options
+
 vbgui.dialogOption.menuAbout=Tell me about you.
 vbgui.dialogOption.menuTrade=I want to trade with you.
 vbgui.dialogOption.menuQuest=Do you have any job offers?
@@ -173,10 +174,60 @@ vbgui.dialogOption.workBack=Back
 vbgui.dialogOption.questComplete=Complete
 vbgui.dialogOption.workTakeResult=Take All
 
+# villager dialog strings
 
 vbgui.dialogString.menuTrade=You find everything OK?
+
 vbgui.dialogString.aboutName=My name is 
 
+vbgui.dialogString.questNoQuest=Sorry, I don't have any quest for you now..
+vbgui.dialogString.questLookingfor=Yes, I'm just looking someone to help me..
+vbgui.dialogString.questThanks=Thank you so much!
+
+vbgui.dialogString.sellNoItem=Sorry, I have nothing to sell...
+vbgui.dialogString.sellOutOpenHours=Sorry, It's out of my open hours now...
+vbgui.dialogString.sellWanttoBuy=What do you want to buy?
+
+vbgui.dialogString.buyNoItem=Sorry, I don't want to buy anything...
+vbgui.dialogString.buyOutOpenHours=Sorry, It's out of my open hours now...
+vbgui.dialogString.buyWanttoSell=What do you want to sell?
+
+vbgui.dialogString.workNoWork=Sorry, I don't have any work...
+vbgui.dialogString.workOutOpenHours=Sorry, It's out of my open hours now...
+vbgui.dialogString.workNextWork=What can I do for you?
+
+vbgui.dialogString.actionNoAction=Sorry, I don't have any action..
+vbgui.dialogString.actionOutOpenHours=Sorry, It's out of my open hours now...
+vbgui.dialogString.actionNextAction=What can I do for you?
+
+# gui texts
+
+vbgui.dropCoins.askAmount=How much you want to drop?
+vbgui.dropCoins.invalid=Invalid Input!
+vbgui.dropCoins.tooMuch=It's too much!
+
+vbgui.createAnim.nameBaby=Give the new baby a name
+vbgui.createAnim.tooLong=must have 1-10 characters
+vbgui.createAnim.invalid=please only use letters and numbers
+
+vbgui.dialogAbout.upgradingTitle=Villager Upgrading
+vbgui.dialogAbout.upgradingReqs=Requirements
+vbgui.dialogAbout.reachedMaxLvl=Already reached the max level
+vbgui.dialogAbout.openHoursTitle=Open Hours
+vbgui.dialogAbout.weekdays=Mon,Tue,Wed,Thu,Fri,Sat,Sun
+
+vbgui.dialogQuest.need=Need:
+vbgui.dialogQuest.reward=Reward:
+
+vbgui.dialogBuy.buyTitle=Buy items from 
+
+vbgui.dialogSell.sellTitle=Sell items to 
+
+vbgui.dialogWork.isWorking=Is Working
+vbgui.dialogWork.client=Client: 
+vbgui.dialogWork.hoursLeft=Hours Left: 
+vbgui.dialogWork.completed=Work Completed
+vbgui.dialogWork.expire=Expire in: 
 
 # --------------------------------
 # Villager Components

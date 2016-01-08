@@ -101,9 +101,9 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 														0xFFFFFFFF, this.boundCenterContent.getIntW() - 16);
 		}
 		else if(centerContentID == ContentID_Upgrade){
-			this.drawCenteredString(this.fontRendererObj, "Villager Upgrading", this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
+			this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("vbgui.dialogAbout.upgradingTitle"), this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
 			ItemStack[] requirements = this.entityVBVillager.getProfession().getNextLevelRequirements(this.entityVBVillager.getLevel());
-			this.drawCenteredString(this.fontRendererObj, "Requirements:", this.boundCenterContent.getIntCenterX(), this.boundCenterContent.getIntY() + 24, 0xFFFFFF00);
+			this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("vbgui.dialogAbout.upgradingReqs"), this.boundCenterContent.getIntCenterX(), this.boundCenterContent.getIntY() + 24, 0xFFFFFF00);
 			if(requirements != null){
 				int dx = - 32 * requirements.length / 2;
 				for(int i = requirements.length - 1;i>=0;i--){ // to prevent the tool tip from being under others...rendering it from right to left 
@@ -115,13 +115,13 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 				}
 			}
 			else{
-				this.drawCenteredString(this.fontRendererObj, "Already reached the max level", this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntCenterY() - 8, 0xFFFFFFFF);
+				this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("vbgui.dialogAbout.reachedMaxLvl"), this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntCenterY() - 8, 0xFFFFFFFF);
 			}
 		}
 		else if(centerContentID == ContentID_OpenHours){
-			this.drawCenteredString(this.fontRendererObj, "Open Hours", this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
+			this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("vbgui.dialogAbout.openHoursTitle"), this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
 			String[] worktimes = this.entityVBVillager.getProfession().getTimeSchedule().getWorkTimeText();
-			String[] weekdays = new String[]{"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};
+			String[] weekdays = StatCollector.translateToLocal("vbgui.dialogAbout.weekdays").split(",");
 			//this.drawCenteredString(this.fontRendererObj, "--Hours--", fieldCompLeft + 100,fieldCompTop + 8, 0xFFFFFFEE);
 			for(int i =0;i<worktimes.length;i++){
 				int c = 0xFFEEEEEE;

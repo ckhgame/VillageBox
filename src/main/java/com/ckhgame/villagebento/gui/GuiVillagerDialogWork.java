@@ -42,12 +42,12 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 		this.villagerCompWork = (VillagerCompWork)this.entityVBVillager.getVillagerComponent(VillagerCompWork.class);
 		if(this.villagerCompWork == null){ // the villager doesn't have component work
 			this.hideCenterContent();
-			this.setDialogString("Sorry, I don't have any work...");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.workNoWork"));
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
 		}
 		else if(!this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){ // has component buy but is out of open hours now..
 			this.hideCenterContent();
-			this.setDialogString("Sorry, It's out of my open hours now...");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.workOutOpenHours"));
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
 		}
 		else{
@@ -75,7 +75,7 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 		else if(this.villagerCompWork.workIdx < 0){ //is open for new work
 			this.hideCenterContent();
 			this.clearAllDialogOptions();
-			this.setDialogString("What can I do for you?");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.workNextWork"));
 			
 			//options
 			int[] workIdxList = this.villagerCompWork.workIdxListCurrent;
@@ -102,19 +102,19 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 		if(centerContentID == ContentID_Working){
 			Work work = this.villagerCompWork.getWork(this.villagerCompWork.workIdx);
 			
-			this.drawCenteredString(fontRendererObj, "Is Working...", this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);	
+			this.drawCenteredString(fontRendererObj, StatCollector.translateToLocal("vbgui.dialogWork.isWorking"), this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);	
 			this.drawCenteredString(fontRendererObj,work.name, this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 36, 0xFFFFFFEE);
 			this.drawCenteredString(fontRendererObj,work.remark, this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 50, 0xFFAAAAAA);
-			this.drawCenteredString(fontRendererObj,"Client: " + this.villagerCompWork.playerName,this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 64, 0xFFFFFFFF);
-			this.drawCenteredString(fontRendererObj,"Hours Left: " + this.villagerCompWork.hoursLeft, this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 78, 0xFFFFFFFF);
+			this.drawCenteredString(fontRendererObj,StatCollector.translateToLocal("vbgui.dialogWork.client") + this.villagerCompWork.playerName,this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 64, 0xFFFFFFFF);
+			this.drawCenteredString(fontRendererObj,StatCollector.translateToLocal("vbgui.dialogWork.hoursLeft") + this.villagerCompWork.hoursLeft, this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 78, 0xFFFFFFFF);
 		}
 		else if(centerContentID == ContentID_WorkResult){
 			Work work = this.villagerCompWork.getWork(this.villagerCompWork.workIdx);
 			
-			this.drawCenteredString(fontRendererObj, "Work Completed!", this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);	
+			this.drawCenteredString(fontRendererObj, StatCollector.translateToLocal("vbgui.dialogWork.completed"), this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);	
 			this.drawCenteredString(fontRendererObj, work.name,  this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 36, 0xFFFFFFAA);
-			this.drawCenteredString(fontRendererObj,"Client: " + this.villagerCompWork.playerName,  this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 50, 0xFFFFFFFF);
-			this.drawCenteredString(fontRendererObj,"Expire in: " + (ConfigVillager.WorkOutputExpirationHours + this.villagerCompWork.hoursLeft) + " h",  this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 64, 0xFFFFFFFF);
+			this.drawCenteredString(fontRendererObj,StatCollector.translateToLocal("vbgui.dialogWork.client")+ this.villagerCompWork.playerName,  this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 50, 0xFFFFFFFF);
+			this.drawCenteredString(fontRendererObj,StatCollector.translateToLocal("vbgui.dialogWork.expire") + (ConfigVillager.WorkOutputExpirationHours + this.villagerCompWork.hoursLeft) + " h",  this.boundCenterContent.getIntCenterX(),  this.boundCenterContent.getIntY() + 64, 0xFFFFFFFF);
 		
 			if(this.villagerCompWork.output != null){
 				if(this.drawItem(mx, my, this.boundCenterContent.getIntCenterX() - 12,  this.boundCenterContent.getIntY() + 78, this.villagerCompWork.output)){

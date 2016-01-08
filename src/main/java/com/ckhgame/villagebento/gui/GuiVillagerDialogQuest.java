@@ -36,7 +36,7 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 		this.hideCenterContent();
 		this.villagerCompQuest = (VillagerCompQuest)this.entityVBVillager.getVillagerComponent(VillagerCompQuest.class);
 		if(villagerCompQuest == null){
-			this.setDialogString("Sorry, I don't have any quest for you now..");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.questNoQuest"));
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 		}
 		else{
@@ -52,13 +52,13 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 	public boolean updateWithVBCompResult(VBCompResult vbCompResult) {
 		if(!super.updateWithVBCompResult(vbCompResult)){
 			if(villagerCompQuest.getQuestListCurrent().size() < 1){
-				this.setDialogString("Sorry, I don't have any quest for you now..");
+				this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.questNoQuest"));
 				this.clearAllDialogOptions();
 				this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 			}
 			else{
 				this.clearAllDialogOptions();
-				this.setDialogString("Yes, I'm just looking someone to help me...");
+				this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.questLookingfor"));
 				this.addDialogOptions(ButtonID_Complete, 0, StatCollector.translateToLocal("vbgui.dialogOption.questCompleteQuest"));
 				this.addDialogOptions(ButtonID_Back, 1, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 				this.showCenterContent(ContentID_Quest);
@@ -67,7 +67,7 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 		}
 		else{
 			if(vbCompResult.vbResult == VBResult.SUCCESS){ //quest completed
-				this.setDialogString("Thank you so much!");
+				this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.questThanks"));
 				this.hideCenterContent();
 				this.clearAllDialogOptions();
 				this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
@@ -79,12 +79,12 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 	private void createDialogQuest(){
 		this.clearAllDialogOptions();
 		if(villagerCompQuest == null || villagerCompQuest.getQuestListCurrent().size() < 1){
-			this.setDialogString("Sorry, I don't have any quest for you now..");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.questNoQuest"));
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 		}
 		else{	
-			this.setDialogString("Yes, I'm just looking someone to help me...");
-			this.addDialogOptions(ButtonID_Complete, 0, "Complete the quest");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.questLookingfor"));
+			this.addDialogOptions(ButtonID_Complete, 0, StatCollector.translateToLocal("vbgui.dialogOption.questComplete"));
 			this.addDialogOptions(ButtonID_Back, 1, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 		}
 	}
@@ -99,14 +99,14 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 				this.drawCenteredString(fontRendererObj, quest.title, this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
 				this.drawWrappedString(fontRendererObj, quest.description, this.boundCenterContent.getIntX() + 8,this.boundCenterContent.getIntY() + 24, 0xFFFFFFFF,240);	
 				//needs
-				this.fontRendererObj.drawString("Need:", this.boundCenterContent.getIntX() + 8,this.boundCenterContent.getIntY() + 80, 0xFFAAAAAA);
+				this.fontRendererObj.drawString(StatCollector.translateToLocal("vbgui.dialogQuest.need"), this.boundCenterContent.getIntX() + 8,this.boundCenterContent.getIntY() + 80, 0xFFAAAAAA);
 				if(this.drawItem(mx, my, this.boundCenterContent.getIntX() + 28,this.boundCenterContent.getIntY() + 100,quest.need)){
 					List texts = new ArrayList();
 					texts.add(quest.need.getDisplayName());
 					this.setMouseHoverTexts(texts);
 				}
 				//rewards
-				this.fontRendererObj.drawString("Reward:", this.boundCenterContent.getIntX() + 128,this.boundCenterContent.getIntY() + 80, 0xFFAAAAAA);
+				this.fontRendererObj.drawString(StatCollector.translateToLocal("vbgui.dialogQuest.reward"), this.boundCenterContent.getIntX() + 128,this.boundCenterContent.getIntY() + 80, 0xFFAAAAAA);
 				if(this.drawItem(mx, my, this.boundCenterContent.getIntX() + 148,this.boundCenterContent.getIntY() + 100,quest.reward)){
 					List texts = new ArrayList();
 					texts.add(quest.reward.getDisplayName());

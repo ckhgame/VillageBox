@@ -11,6 +11,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class GuiDropCoins extends GuiScreen {
 
@@ -45,13 +46,13 @@ public class GuiDropCoins extends GuiScreen {
 		//GUI LAYOUT: Right Top Chat Field
 		drawFieldBackground(this.width/2 - 80,this.height/2 - 40,160,80);
 		if(this.dropState == DropState.Waiting){
-			this.drawCenteredString(this.fontRendererObj, "How much you want to drop?", this.width/2, this.height/2 - 30, 0xFFFFFFAA);
+			this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("vbgui.dropCoins.askAmount"), this.width/2, this.height/2 - 30, 0xFFFFFFAA);
 		}
 		else if(this.dropState == DropState.InvalidInput){
-			this.drawCenteredString(this.fontRendererObj,"Invalid Input!", this.width/2, this.height/2 - 30 + yOffset, 0xFFFFAAAA);
+			this.drawCenteredString(this.fontRendererObj,StatCollector.translateToLocal("vbgui.dropCoins.invalid"), this.width/2, this.height/2 - 30 + yOffset, 0xFFFFAAAA);
 		}
 		else if(this.dropState == DropState.MoreThanOwn){
-			this.drawCenteredString(this.fontRendererObj,"It's too much!", this.width/2, this.height/2 - 30 + yOffset, 0xFFFFAAAA);
+			this.drawCenteredString(this.fontRendererObj,StatCollector.translateToLocal("vbgui.dropCoins.tooMuch"), this.width/2, this.height/2 - 30 + yOffset, 0xFFFFAAAA);
 		}
 		textField.drawTextBox();
 		

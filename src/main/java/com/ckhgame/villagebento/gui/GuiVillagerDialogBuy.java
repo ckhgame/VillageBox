@@ -33,12 +33,12 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 		this.villagerCompBuy = (VillagerCompBuy)this.entityVBVillager.getVillagerComponent(VillagerCompBuy.class);
 		if(this.villagerCompBuy == null){ // the villager doesn't have component buy
 			this.hideCenterContent();
-			this.setDialogString("Sorry, I have nothing to sell...");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.sellNoItem"));
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.buyBack"));
 		}
 		else if(!this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){ // has component buy but is out of open hours now..
 			this.hideCenterContent();
-			this.setDialogString("Sorry, It's out of my open hours now...");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.sellOutOpenHours"));
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.buyBack"));
 		}
 		else{  // send a packet to query the item list, the buy gui will display after receiving
@@ -53,7 +53,7 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 	@Override
 	public boolean updateWithVBCompResult(VBCompResult vbCompResult) {
 		if(!super.updateWithVBCompResult(vbCompResult)){
-			this.setDialogString("What do you want to buy?");
+			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.sellWanttoBuy"));
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.buyBack"));
 			this.showCenterContent(ContentID_Buy);
 			return false;
@@ -98,7 +98,7 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 	protected void drawCenterContent(int centerContentID, int mx, int my, float f) {
 		super.drawCenterContent(centerContentID, mx, my, f);
 		if(centerContentID == ContentID_Buy){
-			this.drawCenteredString(this.fontRendererObj, "Buy items from " + this.entityVBVillager.getName(), this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
+			this.drawCenteredString(this.fontRendererObj, StatCollector.translateToLocal("vbgui.dialogBuy.buyTitle") + this.entityVBVillager.getName(), this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
 			this.drawGrid(mx, my);
 		}
 	}
