@@ -29,7 +29,9 @@ public class ItemPrice {
 		
 		register(Items.cooked_fished,10);
 		register(Items.fishing_rod,50);
-		register(ModItems.itemIronFishingPole,120);
+		register(ModItems.itemFishingRodIron,120);
+		register(ModItems.itemFishingRodGold,180);
+		register(ModItems.itemFishingRodDiamond,300);
 		register(Items.fish,6);
 
 		

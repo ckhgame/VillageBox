@@ -145,7 +145,9 @@ item.ItemBuildingsBook.name=The History of Architecture
 item.ItemNPCBook.name=Career Guide
 
 
-
+#--------------------------------
+#  Gui Texts
+#--------------------------------
 
 #villager dialogs
 vbgui.dialogOption.menuAbout=Tell me about you.
@@ -174,6 +176,32 @@ vbgui.dialogOption.workTakeResult=Take All
 
 vbgui.dialogString.menuTrade=You find everything OK?
 vbgui.dialogString.aboutName=My name is 
+
+
+# --------------------------------
+# Villager Components
+# --------------------------------
+
+vcomp.buy.runout=That one is sold out...
+vcomp.buy.unaffordable=Hmmm... it's too expensive for you...
+
+vcomp.sell.runout=I don't need anymore of that...
+vcomp.sell.noitem=You don't have it...
+
+vcomp.quest.runout=The quest is not existed...
+vcomp.quest.noitem=You don't have what I need..
+vcomp.quest.success=Thanks, take your reward!
+
+vcomp.work.wrongName=It's not yours...
+vcomp.work.unaffordable=You don't have enough money..
+
+vcomp.about.noitem=Can't meet all requirements...
+vcomp.about.success=Leveling up!!!
+
+# --------------------------------
+# Villager Texts
+# --------------------------------
+
 
 #villagers
 villager.villageElder.name=Villager Elder

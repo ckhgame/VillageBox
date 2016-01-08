@@ -10,6 +10,7 @@ import com.ckhgame.villagebento.util.village.ItemPrice;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class VillagerCompBuy extends VillagerCompItemList {
 	
@@ -40,10 +41,10 @@ public class VillagerCompBuy extends VillagerCompItemList {
 						return VBCompResult.getDefaultSuccess();
 					}
 					else
-						return new VBCompResult(VBResult.FAILED_UNAFFORDABLE,"Hmmm... it's too expensive for you...");
+						return new VBCompResult(VBResult.FAILED_UNAFFORDABLE,StatCollector.translateToLocal("vcomp.buy.unaffordable"));
 				}
 				else
-					return new VBCompResult(VBResult.FALLED_RUNOUT,"That one is sold out...");
+					return new VBCompResult(VBResult.FALLED_RUNOUT,StatCollector.translateToLocal("vcomp.buy.runout"));
 			}							
 		}
 		

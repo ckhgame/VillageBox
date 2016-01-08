@@ -16,6 +16,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.StatCollector;
 
 public class VillagerCompAbout extends VillagerComponent {
 
@@ -113,7 +114,7 @@ public class VillagerCompAbout extends VillagerComponent {
 		
 		for(ItemStack itemStack : requirements){
 			if(!HelperPlayer.playerHasItemStack(player, itemStack))
-				return new VBCompResult(VBResult.FAILED_NOITEM, "Can't meet all requirements :(");
+				return new VBCompResult(VBResult.FAILED_NOITEM, StatCollector.translateToLocal("vcomp.about.noitem"));
 		}
 		
 		for(ItemStack itemStack : requirements){
@@ -121,7 +122,7 @@ public class VillagerCompAbout extends VillagerComponent {
 		}
 		this.getVillager().upgradeLevel();
 		
-		return new VBCompResult(VBResult.SUCCESS,"Leveling up!!!");
+		return new VBCompResult(VBResult.SUCCESS,StatCollector.translateToLocal("vcomp.about.success"));
 	}
 	
 	

@@ -10,6 +10,7 @@ import com.ckhgame.villagebento.util.village.ItemPrice;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class VillagerCompSell extends VillagerCompItemList {
 	
@@ -40,10 +41,10 @@ public class VillagerCompSell extends VillagerCompItemList {
 						return VBCompResult.getDefaultSuccess();
 					}
 					else
-						return new VBCompResult(VBResult.FAILED_NOITEM,"You don't have that...");
+						return new VBCompResult(VBResult.FAILED_NOITEM,StatCollector.translateToLocal("vcomp.sell.noitem"));
 				}
 				else
-					return new VBCompResult(VBResult.FALLED_RUNOUT,"I don't need more of that..");
+					return new VBCompResult(VBResult.FALLED_RUNOUT,StatCollector.translateToLocal("vcomp.sell.runout"));
 			}							
 		}
 		

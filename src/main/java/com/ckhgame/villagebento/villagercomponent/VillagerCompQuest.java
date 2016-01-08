@@ -17,6 +17,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.Constants;
 
 public class VillagerCompQuest extends VillagerComponent {
@@ -166,10 +167,10 @@ public class VillagerCompQuest extends VillagerComponent {
 			
 		VillagerQuest quest = findQuestById(qid);
 		if(quest == null)
-			return new VBCompResult(VBResult.FALLED_RUNOUT,"The quest is not existed :(");
+			return new VBCompResult(VBResult.FALLED_RUNOUT,StatCollector.translateToLocal("vcomp.quest.runout"));
 		
 		if(!HelperPlayer.playerRemoveItemStack(player, quest.need)){
-			return new VBCompResult(VBResult.FAILED_NOITEM,"You don't have what I need..");
+			return new VBCompResult(VBResult.FAILED_NOITEM,StatCollector.translateToLocal("vcomp.quest.noitem"));
 		}
 		
 		if(quest.reward.getItem() == ModItems.itemVillageCurrency){
@@ -181,7 +182,7 @@ public class VillagerCompQuest extends VillagerComponent {
 		
 		this.questListCurrent.remove(quest);
 		
-		return new VBCompResult(VBResult.SUCCESS,"Thanks, take your reward!");
+		return new VBCompResult(VBResult.SUCCESS,StatCollector.translateToLocal("vcomp.quest.success"));
 		
 	}
 	
