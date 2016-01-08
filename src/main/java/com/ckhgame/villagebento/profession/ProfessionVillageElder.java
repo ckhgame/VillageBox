@@ -16,19 +16,20 @@ import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuestDes
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionVillageElder extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Village Elder";
+		return StatCollector.translateToLocal("villager.villageElder.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Living in Village Center";
+		return StatCollector.translateToLocal("villager.villageElder.description");
 	}
 
 	@Override
@@ -44,12 +45,18 @@ public class ProfessionVillageElder extends Profession {
         
         //quest
         VillagerCompQuest compQuest = new VillagerCompQuest(villager);
-        VillagerQuestDesign design = new VillagerQuestDesign("Beginner Quest","Hi, thank you so much for building the house for me. If you don't mind, could you keep helping with me?",0);
+
+        VillagerQuestDesign design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.quest0"),0);
         design.addNeeds(Items.apple, 2, 0);
         design.addNeeds(Blocks.log, 5, 0);
         design.addNeeds(Blocks.log, 5, 1);
+        design.addRewards(ModItems.itemVillageCurrency, 1, 50);
+        design.addRewards(ModItems.itemVillageCurrency, 1, 70);
+        compQuest.addQuestDesign(design);
+        
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.quest1"),0);
+        design.addNeeds(Items.rotten_flesh, 5, 0);
         design.addRewards(ModItems.itemVillageCurrency, 1, 100);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 150);
         compQuest.addQuestDesign(design);
         
         components.add(compQuest);
@@ -64,14 +71,29 @@ public class ProfessionVillageElder extends Profession {
         compBuy.addItem(ModBlocks.blockFishingStore, 1, 1, 0);
         compBuy.addItem(ModBlocks.blockSmallBakery, 1, 1, 0);
         compBuy.addItem(ModBlocks.blockMiningHouse, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockPlayerFieldSmall, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockArchitectsHome, 1, 1, 0);
+        
+        compBuy.addItem(ModBlocks.blockPlayerFieldSmall, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockDefenceTower, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockChickenShop, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockBlackSmithsShop, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockMarket, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockSmallHotel, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockHunterHouse, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockSmallMilitaryCamp, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockSheepShop, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockCowShop, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockSmallTavern, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockFarmland, 1, 1, 1);          
+        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 1, 1, 1);
+        
+        compBuy.addItem(ModBlocks.blockTailorStore, 1, 1, 2);
+        compBuy.addItem(ModBlocks.blockSmallCasino, 1, 1, 2); 
+        compBuy.addItem(ModBlocks.blockPlayerFieldMedium, 1, 1, 2);
         components.add(compBuy);
         
         //sell list
         VillagerCompSell compSell = new VillagerCompSell(villager);
         compSell.addItem(Blocks.cobblestone, 50, 60, 0);
-        compSell.addItem(Items.rotten_flesh, 7, 13, 0);
         compSell.addItem(Blocks.log, 20, 30, 0, 0);
         compSell.addItem(Blocks.log, 20, 30, 0, 1);
         compSell.addItem(Blocks.log, 20, 30, 0, 2);
@@ -103,9 +125,9 @@ public class ProfessionVillageElder extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "I'm an old man!");
-		villagerChat.add(0, "Glad to see you!");
-		villagerChat.add(0, "zzz...zzz...!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.villageElder.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.villageElder.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.villageElder.chat2"));
 		
 	}
 	
@@ -119,8 +141,8 @@ public class ProfessionVillageElder extends Profession {
 		
 		this.levelRequirements = new ItemStack[2][];
 		
-		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(Blocks.torch,16),
-																				new ItemStack(Items.bed,2)};
+		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(Blocks.torch,32),
+																				new ItemStack(Blocks.crafting_table,1)};
 		
 		this.levelRequirements[1] = new ItemStack[]{	new ItemStack(Items.apple,10),
 																				new ItemStack(Items.boat,1),

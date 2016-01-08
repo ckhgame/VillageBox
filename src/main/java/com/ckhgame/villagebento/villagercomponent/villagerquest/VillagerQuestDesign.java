@@ -16,6 +16,12 @@ public class VillagerQuestDesign {
 	private String description;
 	private int minLevel;
 	
+	public VillagerQuestDesign(String description, int minLevel){
+		this.title = "<empty>";
+		this.description = description;
+		this.minLevel = minLevel;
+	}
+	
 	public VillagerQuestDesign(String title, String description, int minLevel){
 		this.title = title;
 		this.description = description;

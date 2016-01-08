@@ -19,6 +19,7 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompWork.Work;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.util.StatCollector;
 
 public class GuiVillagerDialogWork extends GuiVillagerDialog{
 
@@ -42,12 +43,12 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 		if(this.villagerCompWork == null){ // the villager doesn't have component work
 			this.hideCenterContent();
 			this.setDialogString("Sorry, I don't have any work...");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
 		}
 		else if(!this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){ // has component buy but is out of open hours now..
 			this.hideCenterContent();
 			this.setDialogString("Sorry, It's out of my open hours now...");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
 		}
 		else{
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompWork);
@@ -63,13 +64,13 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 		if(this.villagerCompWork.workIdx >= 0 && this.villagerCompWork.hoursLeft > 0){ // is working
 			this.showCenterContent(this.ContentID_Working);
 			this.clearAllDialogOptions();
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
 		}
 		else if(this.villagerCompWork.workIdx >= 0 && this.villagerCompWork.hoursLeft <= 0){ // is waiting for taking
 			this.showCenterContent(this.ContentID_WorkResult);
 			this.clearAllDialogOptions();
-			this.addDialogOptions(ButtonID_TakeResult, 0, "Take all");
-			this.addDialogOptions(ButtonID_Back, 1, "Back");
+			this.addDialogOptions(ButtonID_TakeResult, 0, StatCollector.translateToLocal("vbgui.dialogOption.workTakeResult"));
+			this.addDialogOptions(ButtonID_Back, 1, StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
 		}
 		else if(this.villagerCompWork.workIdx < 0){ //is open for new work
 			this.hideCenterContent();
@@ -84,7 +85,7 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 				this.addDialogOptions(ButtonID_Work0 + i, i, work.name + "(" + work.price + " g)");
 			}		
 
-			this.addDialogOptions(ButtonID_Back, workIdxList.length, "Back");
+			this.addDialogOptions(ButtonID_Back, workIdxList.length, StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
 		}		
 	}
 	

@@ -143,5 +143,40 @@ item.ItemBuildingsBook.name=建筑历史
 item.ItemNPCBook.name=职业指南
 
 
+
+
 #villager dialogs
-vbgui.dialogOption.menuAbout=请问你是谁？
+vbgui.dialogOption.menuAbout=关于你的信息。
+vbgui.dialogOption.menuTrade=我想和你交易。
+vbgui.dialogOption.menuQuest=你需要帮忙么?
+vbgui.dialogOption.menuLeave=再见.
+vbgui.dialogOption.menuBuy=我想要买...
+vbgui.dialogOption.menuSell=我有些东西要卖..
+vbgui.dialogOption.menuBack=返回.
+
+vbgui.dialogOption.aboutStory=我想知道你的故事.
+vbgui.dialogOption.aboutCheckUpgrade=查询升级.
+vbgui.dialogOption.aboutOpenHours=营业时间.
+vbgui.dialogOption.aboutBack=返回.
+vbgui.dialogOption.aboutUpgrade=升级.
+
+vbgui.dialogOption.buyBack=返回
+vbgui.dialogOption.sellBack=返回
+vbgui.dialogOption.questBack=返回
+vbgui.dialogOption.actionBack=返回
+vbgui.dialogOption.workBack=返回
+
+vbgui.dialogOption.questComplete=完成任务
+vbgui.dialogOption.workTakeResult= 全部获取
+
+vbgui.dialogString.menuTrade=有什么需要帮忙的么?
+vbgui.dialogString.aboutName=我的名字是 
+
+#villagers
+villager.villageElder.name=村庄老者
+villager.villageElder.description=我熟知村庄的一切。
+villager.villageElder.chat0=你好呀！
+villager.villageElder.chat1=附近有个面包店很不错。
+villager.villageElder.chat2=希望你一切都好！
+villager.villageElder.quest0=你可以帮我找一下这些东西吗？
+villager.villageElder.quest1=晚上出现的僵尸令人十分苦恼，你能帮我除掉他们吗？

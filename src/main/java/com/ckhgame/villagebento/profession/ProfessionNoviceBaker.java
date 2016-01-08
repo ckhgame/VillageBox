@@ -10,19 +10,21 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Items;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionNoviceBaker extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Novice Baker";
+		return StatCollector.translateToLocal("villager.noviceBaker.name");
+
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Novice Level Baker";
+		return StatCollector.translateToLocal("villager.noviceBaker.description");
 	}
 	
 	@Override

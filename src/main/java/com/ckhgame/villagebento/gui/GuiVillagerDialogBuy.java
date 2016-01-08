@@ -14,6 +14,7 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 
@@ -33,12 +34,12 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 		if(this.villagerCompBuy == null){ // the villager doesn't have component buy
 			this.hideCenterContent();
 			this.setDialogString("Sorry, I have nothing to sell...");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.buyBack"));
 		}
 		else if(!this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){ // has component buy but is out of open hours now..
 			this.hideCenterContent();
 			this.setDialogString("Sorry, It's out of my open hours now...");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.buyBack"));
 		}
 		else{  // send a packet to query the item list, the buy gui will display after receiving
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompBuy);
@@ -53,7 +54,7 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 	public boolean updateWithVBCompResult(VBCompResult vbCompResult) {
 		if(!super.updateWithVBCompResult(vbCompResult)){
 			this.setDialogString("What do you want to buy?");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.buyBack"));
 			this.showCenterContent(ContentID_Buy);
 			return false;
 		}

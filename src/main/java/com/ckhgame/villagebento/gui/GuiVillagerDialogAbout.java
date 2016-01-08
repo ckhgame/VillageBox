@@ -22,6 +22,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 
@@ -62,18 +63,18 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 	
 	private void createDialogAbout(){
 		this.clearAllDialogOptions();
-		this.setDialogString("My name is " + this.entityVBVillager.getName());
-		this.addDialogOptions(ButtonID_Story, 0, "Your story");
-		this.addDialogOptions(ButtonID_CheckUpgrade, 1, "I want to upgrade you");
-		this.addDialogOptions(ButtonID_OpenHours, 2, "Your open hours");
-		this.addDialogOptions(ButtonID_Back, 3, "Back");
+		this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.aboutName") + this.entityVBVillager.getName());
+		this.addDialogOptions(ButtonID_Story, 0, StatCollector.translateToLocal("vbgui.dialogOption.aboutStory"));
+		this.addDialogOptions(ButtonID_CheckUpgrade, 1, StatCollector.translateToLocal("vbgui.dialogOption.aboutCheckUpgrade"));
+		this.addDialogOptions(ButtonID_OpenHours, 2, StatCollector.translateToLocal("vbgui.dialogOption.aboutOpenHours"));
+		this.addDialogOptions(ButtonID_Back, 3, StatCollector.translateToLocal("vbgui.dialogOption.aboutBack"));
 	}
 	
 	private void createDialogUpgrade(){
 		this.clearAllDialogOptions();
 		int btnIdx = 0;
-		this.addDialogOptions(ButtonID_Upgrade, btnIdx++, "Upgrade");
-		this.addDialogOptions(ButtonID_BackUpgrade, btnIdx++, "Back");
+		this.addDialogOptions(ButtonID_Upgrade, btnIdx++, StatCollector.translateToLocal("vbgui.dialogOption.aboutUpgrade"));
+		this.addDialogOptions(ButtonID_BackUpgrade, btnIdx++, StatCollector.translateToLocal("vbgui.dialogOption.aboutBack"));
 	}
 	
 	
@@ -95,8 +96,7 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 	protected void drawCenterContent(int centerContentID, int mx, int my, float f) {
 		super.drawCenterContent(centerContentID, mx, my, f);
 		if(centerContentID == ContentID_Story){
-			String text = "My dear owner, Thank you so much for summoning me from the void world, I was a village elder and I will help you to create a nice village!";
-			this.drawWrappedString(this.fontRendererObj, text, 
+			this.drawWrappedString(this.fontRendererObj, this.entityVBVillager.getProfession().getProfessionDescription(), 
 														this.boundCenterContent.getIntX() + 8, this.boundCenterContent.getIntY() + 8, 
 														0xFFFFFFFF, this.boundCenterContent.getIntW() - 16);
 		}

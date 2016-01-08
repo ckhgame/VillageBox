@@ -10,6 +10,7 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.util.StatCollector;
 
 public class GuiVillagerDialogAction extends GuiVillagerDialog{
 
@@ -32,12 +33,12 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 		if(this.villagerCompAction == null){ // the villager doesn't have component action
 			this.hideCenterContent();
 			this.setDialogString("Sorry, I don't have any action...");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.actionBack"));
 		}
 		else if(!this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNow()){ // has component buy but is out of open hours now..
 			this.hideCenterContent();
 			this.setDialogString("Sorry, It's out of my open hours now...");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.actionBack"));
 		}
 		else{
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompAction);
@@ -59,7 +60,7 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 		for(int i =0;i<actionIdxList.length;i++){
 			this.addDialogOptions(ButtonID_Action0 + i, i, this.villagerCompAction.getAction(actionIdxList[i]).text);
 		}
-		this.addDialogOptions(ButtonID_Back, actionIdxList.length, "Back");
+		this.addDialogOptions(ButtonID_Back, actionIdxList.length, StatCollector.translateToLocal("vbgui.dialogOption.actionBack"));
 	}
 	
 	@Override
@@ -70,7 +71,7 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 		}
 		else{
 			this.showCenterContent(ContentID_ActionResult);
-			this.addDialogOptions(ButtonID_BackFromResult, 0, "Back");
+			this.addDialogOptions(ButtonID_BackFromResult, 0, StatCollector.translateToLocal("vbgui.dialogOption.actionBack"));
 			return true;
 		}
 	}

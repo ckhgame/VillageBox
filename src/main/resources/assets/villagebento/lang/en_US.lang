@@ -144,5 +144,42 @@ item.ItemPlantBook.name=Nature Creations
 item.ItemBuildingsBook.name=The History of Architecture
 item.ItemNPCBook.name=Career Guide
 
+
+
+
 #villager dialogs
-vbgui.dialogOption.menuAbout=Talk about you..
+vbgui.dialogOption.menuAbout=Tell me about you.
+vbgui.dialogOption.menuTrade=I want to trade with you.
+vbgui.dialogOption.menuQuest=Do you have any job offers?
+vbgui.dialogOption.menuLeave=Good Bye.
+vbgui.dialogOption.menuBuy=I wanna buy...
+vbgui.dialogOption.menuSell=I have some goods to sell..
+vbgui.dialogOption.menuBack=Back.
+
+vbgui.dialogOption.aboutStory=Tell me your story.
+vbgui.dialogOption.aboutCheckUpgrade=Check Upgrade.
+vbgui.dialogOption.aboutOpenHours=Open hours.
+vbgui.dialogOption.aboutBack=Back.
+vbgui.dialogOption.aboutUpgrade=Upgrade.
+
+vbgui.dialogOption.buyBack=Back
+vbgui.dialogOption.sellBack=Back
+vbgui.dialogOption.questBack=Back
+vbgui.dialogOption.actionBack=Back
+vbgui.dialogOption.workBack=Back
+
+vbgui.dialogOption.questComplete=Complete
+vbgui.dialogOption.workTakeResult=Take All
+
+
+vbgui.dialogString.menuTrade=You find everything OK?
+vbgui.dialogString.aboutName=My name is 
+
+#villagers
+villager.villageElder.name=Villager Elder
+villager.villageElder.description=I knows everything about the village.
+villager.villageElder.chat0=Howdy!!
+villager.villageElder.chat1=It's better to have a bakery near here..
+villager.villageElder.chat2=I hope you everything is running well!
+villager.villageElder.quest0=Could you do me a favor for bringing me this?
+villager.villageElder.quest1=Really hate the zombies at night, could you slay them for me?

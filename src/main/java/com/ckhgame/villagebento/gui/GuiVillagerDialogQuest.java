@@ -16,6 +16,7 @@ import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuest;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.util.StatCollector;
 
 public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 
@@ -36,7 +37,7 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 		this.villagerCompQuest = (VillagerCompQuest)this.entityVBVillager.getVillagerComponent(VillagerCompQuest.class);
 		if(villagerCompQuest == null){
 			this.setDialogString("Sorry, I don't have any quest for you now..");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 		}
 		else{
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompQuest);
@@ -53,13 +54,13 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 			if(villagerCompQuest.getQuestListCurrent().size() < 1){
 				this.setDialogString("Sorry, I don't have any quest for you now..");
 				this.clearAllDialogOptions();
-				this.addDialogOptions(ButtonID_Back, 0, "Back");
+				this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 			}
 			else{
 				this.clearAllDialogOptions();
 				this.setDialogString("Yes, I'm just looking someone to help me...");
-				this.addDialogOptions(ButtonID_Complete, 0, "Complete the quest");
-				this.addDialogOptions(ButtonID_Back, 1, "Back");
+				this.addDialogOptions(ButtonID_Complete, 0, StatCollector.translateToLocal("vbgui.dialogOption.questCompleteQuest"));
+				this.addDialogOptions(ButtonID_Back, 1, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 				this.showCenterContent(ContentID_Quest);
 			}
 			return false;
@@ -69,7 +70,7 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 				this.setDialogString("Thank you so much!");
 				this.hideCenterContent();
 				this.clearAllDialogOptions();
-				this.addDialogOptions(ButtonID_Back, 0, "Back");
+				this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 			}
 			return true;
 		}
@@ -79,12 +80,12 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 		this.clearAllDialogOptions();
 		if(villagerCompQuest == null || villagerCompQuest.getQuestListCurrent().size() < 1){
 			this.setDialogString("Sorry, I don't have any quest for you now..");
-			this.addDialogOptions(ButtonID_Back, 0, "Back");
+			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 		}
 		else{	
 			this.setDialogString("Yes, I'm just looking someone to help me...");
 			this.addDialogOptions(ButtonID_Complete, 0, "Complete the quest");
-			this.addDialogOptions(ButtonID_Back, 1, "Back");
+			this.addDialogOptions(ButtonID_Back, 1, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 		}
 	}
 

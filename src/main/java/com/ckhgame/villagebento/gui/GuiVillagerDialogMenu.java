@@ -35,18 +35,18 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 
 	private void createDialogMain(){
 		this.clearAllDialogOptions();
-		this.setDialogString("Hi, How is going");
+		this.setDialogString(this.entityVBVillager.getProfession().getVillagerChat().getRandom(this.entityVBVillager.getLevel()));
 		int idx = 0;
 		//about
 		this.addDialogOptions(ButtonID_About, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuAbout"));
 		//trade (buy & sell)
 		if(this.entityVBVillager.getVillagerComponent(VillagerCompBuy.class) != null ||
 			this.entityVBVillager.getVillagerComponent(VillagerCompSell.class) != null){
-			this.addDialogOptions(ButtonID_Trade, idx++, "I want to trade with you");
+			this.addDialogOptions(ButtonID_Trade, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuTrade"));
 		}
 		//quest
 		if(this.entityVBVillager.getVillagerComponent(VillagerCompQuest.class) != null){
-			this.addDialogOptions(ButtonID_Quest, idx++, "Can I help you?");
+			this.addDialogOptions(ButtonID_Quest, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuQuest"));
 		}
 		//actions
 		VillagerCompAction compAction = (VillagerCompAction)this.entityVBVillager.getVillagerComponent(VillagerCompAction.class);
@@ -59,15 +59,15 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 			this.addDialogOptions(ButtonID_Work, idx++,compWork.getDialogOptionText());
 		}
 		
-		this.addDialogOptions(ButtonID_Leave, idx++, "Bye bye!");
+		this.addDialogOptions(ButtonID_Leave, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuLeave"));
 	}
 	
 	private void createDialogTrade(){
 		this.clearAllDialogOptions();
-		this.setDialogString("Glad to trade with you");
-		this.addDialogOptions(ButtonID_Buy, 0, "I want to buy");
-		this.addDialogOptions(ButtonID_Sell, 1, "I want to sell");
-		this.addDialogOptions(ButtonID_Back, 2, "Back");
+		this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.menuTrade"));
+		this.addDialogOptions(ButtonID_Buy, 0, StatCollector.translateToLocal("vbgui.dialogOption.menuBuy"));
+		this.addDialogOptions(ButtonID_Sell, 1, StatCollector.translateToLocal("vbgui.dialogOption.menuSell"));
+		this.addDialogOptions(ButtonID_Back, 2, StatCollector.translateToLocal("vbgui.dialogOption.menuBack"));
 	}
 
 	@Override
