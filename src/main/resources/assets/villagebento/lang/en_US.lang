@@ -235,3 +235,80 @@ villager.fmMerchant.chat0=Need anything to sell?
 villager.fmMerchant.chat1=Crops will bring you fortune if be treated as friends.
 villager.fmMerchant.chat2=What you bring to me today?
 
+villager.chikProductSeller.name=Chicken Product Seller
+villager.chikProductSeller.description=I sell chicken and their products.
+villager.chikProductSeller.chat0=Eggs make you strong.
+villager.chikProductSeller.chat1=Chicken are my friends.
+villager.chikProductSeller.chat2=Want a warm egg?
+
+villager.cowProductSeller.name=Cow Product Seller
+villager.cowProductSeller.description=I sell cow and their products.
+villager.cowProductSeller.chat0=Milk makes you healthy.
+villager.cowProductSeller.chat1=I drink a bottle of milk every morning.
+villager.cowProductSeller.chat2=cows are so cute.
+
+villager.sheepProductSeller.name=Sheep Product Seller
+villager.sheepProductSeller.description=I sell sheep and their products.
+villager.sheepProductSeller.chat0=sheep is so adorable.
+villager.sheepProductSeller.chat1=Need a new sweater?
+villager.sheepProductSeller.chat2=Sheep are gentle animals.
+
+villager.farmerSmall.name=Farm Assistant
+villager.farmerSmall.description=I sell seeds and farming tools.
+villager.farmerSmall.chat0=Watching seeds growing is fun.
+villager.farmerSmall.chat1=Don't forget the life energy in side those tiny seeds.
+villager.farmerSmall.chat2=Carefully treated the crops.
+
+villager.farmer.name=Farmer
+villager.farmer.description=I can do farm work for you.
+villager.farmer.chat0=I love my work..
+villager.farmer.chat1=Farming is always need strong body.
+villager.farmer.chat2=I prefer iron hoe rather then gold.
+villager.farmer.workDialog=Mining for me
+villager.farmer.work0.title=Basic Farming I
+villager.farmer.work0.description=get wheat, carrots or potatoes.
+villager.farmer.work1.title=Basic Farming II
+villager.farmer.work1.description=get apples, pumpkins or melons.
+villager.farmer.work2.title=Advanced Farming I
+villager.farmer.work2.description=get rice, cabbages or corns.
+villager.farmer.work3.title=Advanced Farming II
+villager.farmer.work3.description=get soybeans, grapes or chilies.
+
+villager.tavernOwner.name=Tavern Owner
+villager.tavernOwner.description=I sell drinks.
+villager.tavernOwner.chat0=Drinks are awesome.
+villager.tavernOwner.chat1=Want something to drink?
+villager.tavernOwner.chat2=How is going?
+
+villager.hotelOwner.name=Hotel Owner
+villager.hotelOwner.description=I provide the rooms for travelers.
+villager.hotelOwner.chat0=It's glad to see new visitors.
+villager.hotelOwner.chat1=Nice sleep is important.
+villager.hotelOwner.chat2=Sweet dream.
+
+villager.hunter.name=Hunter
+villager.hunter.description=I 'm selling hunting tools and fresh meats.
+villager.hunter.chat0=Do you like hunting?
+villager.hunter.chat1=I once was hurt by a starved wolf.
+villager.hunter.chat2=Focus and shot fast.
+
+villager.librarian.name=Librarian
+villager.librarian.description=Every book gives a new journey!
+villager.librarian.chat0=Where is my book?
+villager.librarian.chat1=I like reading, how about you?
+villager.librarian.chat2=Knowledge is powerful.
+
+villager.soldier.name=Soldier
+villager.soldier.description=Protect my villagers!!
+villager.soldier.chat0=I'm a soldier!
+villager.soldier.chat1=Protecting!
+villager.soldier.chat2=I can't talk to you now since I'm patrolling.
+
+villager.casinoMgr.name=Casino Manager
+villager.casinoMgr.description=I'm here for testing your luck...
+villager.casinoMgr.chat0=It's a Win-Win..... OK... just a joke..
+villager.casinoMgr.chat1=Lost money does not means you lost everything...
+villager.casinoMgr.chat2=Want to test your luck?
+villager.farmer.actionDialog=Mining for me
+villager.farmer.action0=Test my luck(bet:20)
+villager.farmer.action1=Test my luck(bet:100)

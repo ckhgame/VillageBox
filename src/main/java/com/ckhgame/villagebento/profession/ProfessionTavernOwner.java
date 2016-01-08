@@ -10,18 +10,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.util.StatCollector;
+
 public class ProfessionTavernOwner extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Tavern Owner";
+		return StatCollector.translateToLocal("villager.tavernOwner.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Wanna have a drink?";
+		return StatCollector.translateToLocal("villager.tavernOwner.description");
 	}
 	
 	@Override
@@ -72,9 +74,9 @@ public class ProfessionTavernOwner extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Got something to drink?");
-		villagerChat.add(0, "Sometime is better to get dunk...");
-		villagerChat.add(0, "Alcohol sloves everything.");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.tavernOwner.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.tavernOwner.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.tavernOwner.chat2"));
 		
 	}
 

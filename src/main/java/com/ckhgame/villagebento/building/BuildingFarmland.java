@@ -4,6 +4,7 @@ import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.profession.ProfessionFarmer;
+import com.ckhgame.villagebento.profession.ProfessionFarmerSmall;
 
 import net.minecraft.init.Blocks;
 
@@ -29,6 +30,7 @@ public class BuildingFarmland extends Building {
 		// TODO Auto-generated method stub
 		//add villager
 		bb.addVillager(ProfessionFarmer.class,0,0 );
+		bb.addVillager(ProfessionFarmerSmall.class,0,1 );
 	}
 
 	@Override

@@ -11,19 +11,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompWork;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Items;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionSoldier extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Soldier";
+		return StatCollector.translateToLocal("villager.soldier.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "In your order!";
+		return StatCollector.translateToLocal("villager.soldier.description");
 	}
 	
 	@Override
@@ -57,8 +58,9 @@ public class ProfessionSoldier extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Let me tell you a ture story...");
-		villagerChat.add(0, "Protect our homeland!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.soldier.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.soldier.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.soldier.chat2"));
 		
 	}
 

@@ -10,19 +10,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Items;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionHunter extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Hunter";
+		return StatCollector.translateToLocal("villager.hunter.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Hunting is fun!";
+		return StatCollector.translateToLocal("villager.hunter.description");
 	}
 	
 	@Override
@@ -63,9 +64,9 @@ public class ProfessionHunter extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Hunting a deer?");
-		villagerChat.add(0, "Go wild!");
-		villagerChat.add(0, "Need some arrows?");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.hunter.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.hunter.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.hunter.chat2"));
 		
 	}
 

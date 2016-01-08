@@ -10,18 +10,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 import com.ckhgame.villagebento.villagercomponent.villageraction.VillagerActionBet;
 
+import net.minecraft.util.StatCollector;
+
 public class ProfessionCasinoManager extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Casino Manager";
+		return StatCollector.translateToLocal("villager.casinoMgr.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Gambling is drug.";
+		return StatCollector.translateToLocal("villager.casinoMgr.description");
 	}
 	
 	@Override
@@ -44,10 +46,9 @@ public class ProfessionCasinoManager extends Profession {
         
         //action
         VillagerCompAction compAction = new VillagerCompAction(villager);
-        compAction.setDialogOptionText("I want to test my luck");
-        compAction.addAction(new VillagerActionBet("Test my luck(bet:10)", 0, new Object[]{10}));
-        compAction.addAction(new VillagerActionBet("Text my luck(bet:50)", 0, new Object[]{50}));
-        compAction.addAction(new VillagerActionBet("I'm a lucky guy!(bet:100)", 1, new Object[]{100}));
+        compAction.setDialogOptionText(StatCollector.translateToLocal("villager.farmer.actionDialog"));
+        compAction.addAction(new VillagerActionBet(StatCollector.translateToLocal("villager.farmer.action0"), 0, new Object[]{20}));
+        compAction.addAction(new VillagerActionBet(StatCollector.translateToLocal("villager.farmer.action1"), 0, new Object[]{100}));
         components.add(compAction);
 
 	}
@@ -55,9 +56,9 @@ public class ProfessionCasinoManager extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Wanna have fun?");
-		villagerChat.add(0, "Lost money does not means you lost everthing...");
-		villagerChat.add(0, "It is a Win-Win!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.casinoMgr.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.casinoMgr.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.casinoMgr.chat2"));
 		
 	}
 

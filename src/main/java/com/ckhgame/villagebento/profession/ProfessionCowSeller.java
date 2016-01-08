@@ -11,19 +11,21 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionCowSeller extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Cow Products Seller";
+		return StatCollector.translateToLocal("villager.cowProductSeller.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Selling Milk";
+		return StatCollector.translateToLocal("villager.cowProductSeller.description");
 	}
 	
 	@Override
@@ -58,8 +60,9 @@ public class ProfessionCowSeller extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "What you need?");
-		villagerChat.add(0, "Freash Milk!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.cowProductSeller.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.cowProductSeller.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.cowProductSeller.chat2"));
 		
 	}
 

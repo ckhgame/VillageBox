@@ -10,20 +10,23 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionChickenSeller extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Chicken Products Seller";
+		return StatCollector.translateToLocal("villager.chikProductSeller.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Chicken Run,Chicken Run!";
+		return StatCollector.translateToLocal("villager.chikProductSeller.description");
 	}
 	
 	@Override
@@ -48,10 +51,10 @@ public class ProfessionChickenSeller extends Profession {
         compBuy.addItem(ModBlocks.blockChicken, 1, 1, 0);
         compBuy.addItem(ModItems.itemChickenFood, 30, 50, 0);
         compBuy.addItem(ModItems.itemChickenPotion, 3, 5, 0);
-        compBuy.addItem(ModItems.itemChickenGloves, 1, 1, 0);
         compBuy.addItem(ModItems.itemVillageEgg, 5, 10, 0);
         compBuy.addItem(ModItems.itemVillageHeartEgg, 2, 5, 0);
         compBuy.addItem(Items.lead, 1, 2, 0);
+        compBuy.addItem(ModItems.itemChickenGloves, 1, 1, 1);
 
         components.add(compBuy);
 	}
@@ -59,12 +62,21 @@ public class ProfessionChickenSeller extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Need more eggs?");
-		villagerChat.add(0, "Chickens are cute!");
-		villagerChat.add(0, "Let's sing a chicken song!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.chikProductSeller.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.chikProductSeller.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.chikProductSeller.chat2"));
 		
 	}
 
+	@Override
+	protected void setILevelRequirements() {
+		
+		this.levelRequirements = new ItemStack[1][];
+		
+		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(ModItems.itemVillageEgg,8)};
+		
+	}
+	
 	@Override
 	public String getSkinName() {
 		return "chickenseller";

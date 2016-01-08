@@ -7,18 +7,20 @@ import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.util.StatCollector;
+
 public class ProfessionHotelOwner extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Hotel Owner";
+		return StatCollector.translateToLocal("villager.hotelOwner.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "The owner of the Hotel";
+		return StatCollector.translateToLocal("villager.hotelOwner.description");
 	}
 	
 	@Override
@@ -42,9 +44,9 @@ public class ProfessionHotelOwner extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Welcome!");
-		villagerChat.add(0, "Have a sweet dream!");
-		villagerChat.add(0, "Finding place to sleep?");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.hotelOwner.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.hotelOwner.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.hotelOwner.chat2"));
 		
 	}
 

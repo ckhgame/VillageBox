@@ -10,19 +10,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Items;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionLibrarian extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Librarian";
+		return StatCollector.translateToLocal("villager.librarian.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Every book gives a new journey.";
+		return StatCollector.translateToLocal("villager.librarian.description");
 	}
 	
 	@Override
@@ -59,9 +60,9 @@ public class ProfessionLibrarian extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Book is the most wonderful creature in the world. ");
-		villagerChat.add(0, "....");
-		villagerChat.add(0, "I love books!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.librarian.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.librarian.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.librarian.chat2"));
 		
 	}
 
