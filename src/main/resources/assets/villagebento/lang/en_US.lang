@@ -337,6 +337,6 @@ villager.casinoMgr.description=I'm here for testing your luck...
 villager.casinoMgr.chat0=It's a Win-Win..... OK... just a joke..
 villager.casinoMgr.chat1=Lost money does not means you lost everything...
 villager.casinoMgr.chat2=Want to test your luck?
-villager.farmer.actionDialog=Mining for me
+villager.farmer.actionDialog=Test my luck
 villager.farmer.action0=Test my luck(bet:20)
 villager.farmer.action1=Test my luck(bet:100)
