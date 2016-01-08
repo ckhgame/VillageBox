@@ -79,7 +79,6 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 	protected void onGridCellClicked(int idx) {
 		if(idx < this.villagerCompBuy.itemListCurrent.size()){
 			ItemStack itemStack = this.villagerCompBuy.itemListCurrent.get(idx);
-			System.out.println(itemStack.getDisplayName());
 			
 			ItemStack itemBuy = this.villagerCompBuy.itemListCurrent.get(idx).copy();
 			itemBuy.stackSize = 1;

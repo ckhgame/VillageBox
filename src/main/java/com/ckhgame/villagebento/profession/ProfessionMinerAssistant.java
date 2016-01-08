@@ -10,19 +10,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionMinerAssistant extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Miner Assistant";
+		return StatCollector.translateToLocal("villager.minerAssistant.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Sell Mining tools.......";
+		return StatCollector.translateToLocal("villager.minerAssistant.description");
 	}
 
 	@Override
@@ -39,8 +40,6 @@ public class ProfessionMinerAssistant extends Profession {
   
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
         compBuy.addItem(Items.iron_pickaxe, 1, 3, 0);
-        compBuy.addItem(Items.golden_pickaxe, 1, 2, 3);
-        compBuy.addItem(Items.diamond_pickaxe, 1, 1, 5);
         compBuy.addItem(Blocks.ladder, 1, 32, 0);
         compBuy.addItem(Blocks.torch, 1, 32, 0);
         compBuy.addItem(Blocks.rail, 1, 32, 0);
@@ -53,9 +52,9 @@ public class ProfessionMinerAssistant extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "I saw a big boom yesterday");
-		villagerChat.add(0, "Do you need help?");
-		villagerChat.add(0, "Hello there!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.minerAssistant.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.minerAssistant.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.minerAssistant.chat2"));
 		
 	}
 	

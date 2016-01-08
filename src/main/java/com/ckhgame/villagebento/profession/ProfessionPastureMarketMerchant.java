@@ -9,18 +9,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.util.StatCollector;
+
 public class ProfessionPastureMarketMerchant extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Pasture Product Merchant";
+		return StatCollector.translateToLocal("villager.pmMerchant.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Sell me your pasture products!";
+		return StatCollector.translateToLocal("villager.pmMerchant.description");
 	}
 
 	@Override
@@ -49,9 +51,9 @@ public class ProfessionPastureMarketMerchant extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Selling somehing new?");
-		villagerChat.add(0, "Do you remember feeding your animals?");
-		villagerChat.add(0, "What you want to sell to me today?");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.pmMerchant.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.pmMerchant.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.pmMerchant.chat2"));
 		
 	}
 

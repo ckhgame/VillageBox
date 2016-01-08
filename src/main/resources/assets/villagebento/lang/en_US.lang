@@ -183,3 +183,55 @@ villager.villageElder.chat1=It's better to have a bakery near here..
 villager.villageElder.chat2=I hope you everything is running well!
 villager.villageElder.quest0=Could you do me a favor for bringing me this?
 villager.villageElder.quest1=Really hate the zombies at night, could you slay them for me?
+
+villager.noviceBaker.name=Novice Baker
+villager.noviceBaker.description=I love baking.
+villager.noviceBaker.chat0=Fresh breads!!
+villager.noviceBaker.chat1=Are you hungry?
+villager.noviceBaker.chat2=Need some food?
+
+villager.fisherman.name=Fisherman
+villager.fisherman.description=My life is fishing....
+villager.fisherman.chat0=Large Fish, Small Fish and Tiny Fish..
+villager.fisherman.chat1=Good luck on your hook!
+villager.fisherman.chat2=Do you like eat fish?
+
+villager.miner.name=Miner
+villager.miner.description=I work as a miner.
+villager.miner.chat0=I like ores.
+villager.miner.chat1=It's dangerous under the ground.
+villager.miner.chat2=Stone is dumb, but I'm smart.
+villager.miner.workDialog=Mining for me
+villager.miner.work0.title=Coal mining
+villager.miner.work0.description=get some coals
+villager.miner.work1.title=Iron mining
+villager.miner.work1.description=get some irons
+villager.miner.work2.title=Gold mining
+villager.miner.work2.description=get some golds
+villager.miner.work3.title=Diamond mining
+villager.miner.work3.description=get some diamonds
+
+villager.minerAssistant.name=Miner Assistant
+villager.minerAssistant.description=I'm helping the miners.
+villager.minerAssistant.chat0=I'm leaning mining from my master.
+villager.minerAssistant.chat1=I can't mine for you, but I sell everything you need on mining.
+villager.minerAssistant.chat2=Considering before you step into the dark cave.
+
+villager.blackSmith.name=Blacksmith
+villager.blackSmith.description=Making tools with irons.
+villager.blackSmith.chat0=Need a new weapon?
+villager.blackSmith.chat1=Need a new tool?
+villager.blackSmith.chat2=Irons make you a better life, believe me!
+
+villager.pmMerchant.name=Pasture Market Merchant
+villager.pmMerchant.description=I will exchange golds for your pasture products.
+villager.pmMerchant.chat0=Need anything to sell?
+villager.pmMerchant.chat1=Animals will bring you fortune if be treated as friends.
+villager.pmMerchant.chat2=What you bring to me today?
+
+villager.fmMerchant.name=Farm Market Merchant
+villager.fmMerchant.description=I will exchange golds for your farm products.
+villager.fmMerchant.chat0=Need anything to sell?
+villager.fmMerchant.chat1=Crops will bring you fortune if be treated as friends.
+villager.fmMerchant.chat2=What you bring to me today?
+

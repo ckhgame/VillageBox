@@ -9,7 +9,9 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 public class ProfessionNoviceBaker extends Profession {
@@ -45,28 +47,38 @@ public class ProfessionNoviceBaker extends Profession {
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
         compBuy.addItem(Items.bread, 2, 3, 0);
-        compBuy.addItem(Items.cookie, 1, 2, 0);
-        compBuy.addItem(Items.baked_potato, 2, 3, 0);
+        compBuy.addItem(Items.cookie, 1, 2, 1);
+        compBuy.addItem(Items.baked_potato, 2, 3, 1);
 
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Items.wheat_seeds, 10, 20, 0);
+        compSell.addItem(Items.wheat_seeds, 10, 20, 1);
         components.add(compSell);
 	}
 	
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Fresh bread!");
-		villagerChat.add(0, "Are you hungury!");
-		villagerChat.add(0, "Hello!!!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.noviceBaker.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.noviceBaker.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.noviceBaker.chat2"));
 		
 	}
 
 	@Override
 	public String getSkinName() {
 		return "novicebaker";
+	}
+	
+	@Override
+	protected void setILevelRequirements() {
+		
+		this.levelRequirements = new ItemStack[1][];
+		
+		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(Items.wheat_seeds,16),
+																				new ItemStack(Items.milk_bucket,1)};
+		
 	}
 	
 }

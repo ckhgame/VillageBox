@@ -10,20 +10,23 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionFisherman extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Fisherman";
+		return StatCollector.translateToLocal("villager.fisherman.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Fishing is fun...";
+		return StatCollector.translateToLocal("villager.fisherman.description");
 	}
 
 	@Override
@@ -42,7 +45,9 @@ public class ProfessionFisherman extends Profession {
         compBuy.addItem(Items.cooked_fished, 4, 6, 0, 1);
         compBuy.addItem(ModItems.itemSeaweed,7, 10, 0);
         compBuy.addItem(Items.fishing_rod, 1, 1, 0);
-        compBuy.addItem(ModItems.itemIronFishingPole, 1, 1, 0);
+        compBuy.addItem(ModItems.itemFishingRodIron, 1, 1, 1);
+        compBuy.addItem(ModItems.itemFishingRodGold, 1, 1, 1);
+        compBuy.addItem(ModItems.itemFishingRodDiamond, 1, 1, 2);
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
@@ -57,15 +62,29 @@ public class ProfessionFisherman extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Everybody needs a rod!");
-		villagerChat.add(0, "Hi!");
-		villagerChat.add(0, "Wish you luck");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.fisherman.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.fisherman.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.fisherman.chat2"));
 		
 	}
 
 	@Override
 	public String getSkinName() {
 		return "fisherman";
+	}
+	
+	@Override
+	protected void setILevelRequirements() {
+		
+		this.levelRequirements = new ItemStack[2][];
+		
+		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(Items.stick,32),
+																				new ItemStack(Items.string,8)};
+		
+		this.levelRequirements[1] = new ItemStack[]{	new ItemStack(Items.stick,64),
+																				new ItemStack(Items.iron_ingot,16),
+																				new ItemStack(Items.gold_ingot,16)};
+		
 	}
 	
 }
