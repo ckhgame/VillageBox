@@ -1,4 +1,7 @@
 < zh_CN.lang - English localization file for the mod Tutorial >
+#--------------------------------
+#  Blocks
+#--------------------------------
 tile.BlockGroundworkOnlySmall.name=小型地基
 tile.BlockGroundworkOnlyMedium.name=中型地基
 tile.BlockGroundworkOnlyLarge.name=大型地基
@@ -36,11 +39,8 @@ tile.BlockArchitectsHome.name=建筑师的家
 tile.BlockProArchitectsHouse.name=高级建筑师之家
 tile.BlockLibrary.name=图书馆
 tile.BlockTailorStore.name=服装店
-
-item.ItemVillageStick.name=村庄短杖
-item.ItemVillageCurrency.name=村庄货币
-
-
+tile.BlockTownSquareSmall.name=村庄广场
+tile.BlockTownSquareLarge.name=城镇广场
 
 tile.BlockAutumnGarden.name=秋之花园
 tile.BlockPeacefulGarden.name=青蓝之园
@@ -50,7 +50,12 @@ tile.BlockTeaChair.name=茶会花园
 tile.BlockRosePath.name=玫瑰小径
 tile.BlockRoseBridge.name=花桥园
 
+#--------------------------------
+#  Items
+#--------------------------------
 
+item.ItemVillageStick.name=村庄短杖
+item.ItemVillageCurrency.name=村庄货币
 
 tile.BlockChicken.name=小鸡盒子
 tile.BlockSheep.name=小羊盒子
@@ -142,10 +147,10 @@ item.ItemPlantBook.name=自然造物百科
 item.ItemBuildingsBook.name=建筑历史
 item.ItemNPCBook.name=职业指南
 
+#--------------------------------
+#  Villager Dialog Options
+#--------------------------------
 
-
-
-#villager dialogs
 vbgui.dialogOption.menuAbout=关于你的信息。
 vbgui.dialogOption.menuTrade=我想和你交易。
 vbgui.dialogOption.menuQuest=你需要帮忙么?
@@ -169,10 +174,89 @@ vbgui.dialogOption.workBack=返回
 vbgui.dialogOption.questComplete=完成任务
 vbgui.dialogOption.workTakeResult= 全部获取
 
+#--------------------------------
+#  Villager Dialog Strings
+#--------------------------------
+
 vbgui.dialogString.menuTrade=有什么需要帮忙的么?
+
 vbgui.dialogString.aboutName=我的名字是 
 
-#villagers
+vbgui.dialogString.questNoQuest=Sorry, I don't have any quest for you now..
+vbgui.dialogString.questLookingfor=Yes, I'm just looking someone to help me..
+vbgui.dialogString.questThanks=Thank you so much!
+
+vbgui.dialogString.sellNoItem=Sorry, I have nothing to sell...
+vbgui.dialogString.sellOutOpenHours=Sorry, It's out of my open hours now...
+vbgui.dialogString.sellWanttoBuy=What do you want to buy?
+
+vbgui.dialogString.buyNoItem=Sorry, I don't want to buy anything...
+vbgui.dialogString.buyOutOpenHours=Sorry, It's out of my open hours now...
+vbgui.dialogString.buyWanttoSell=What do you want to sell?
+
+vbgui.dialogString.workNoWork=Sorry, I don't have any work...
+vbgui.dialogString.workOutOpenHours=Sorry, It's out of my open hours now...
+vbgui.dialogString.workNextWork=What can I do for you?
+
+vbgui.dialogString.actionNoAction=Sorry, I don't have any action..
+vbgui.dialogString.actionOutOpenHours=Sorry, It's out of my open hours now...
+vbgui.dialogString.actionNextAction=What can I do for you?
+
+#--------------------------------
+#  GUI Texts
+#--------------------------------
+
+vbgui.dropCoins.askAmount=How much you want to drop?
+vbgui.dropCoins.invalid=Invalid Input!
+vbgui.dropCoins.tooMuch=It's too much!
+
+vbgui.createAnim.nameBaby=Give the new baby a name
+vbgui.createAnim.tooLong=must have 1-10 characters
+vbgui.createAnim.invalid=please only use letters and numbers
+
+vbgui.dialogAbout.upgradingTitle=Villager Upgrading
+vbgui.dialogAbout.upgradingReqs=Requirements
+vbgui.dialogAbout.reachedMaxLvl=Already reached the max level
+vbgui.dialogAbout.openHoursTitle=Open Hours
+vbgui.dialogAbout.weekdays=Mon,Tue,Wed,Thu,Fri,Sat,Sun
+
+vbgui.dialogQuest.need=Need:
+vbgui.dialogQuest.reward=Reward:
+
+vbgui.dialogBuy.buyTitle=Buy items from 
+
+vbgui.dialogSell.sellTitle=Sell items to 
+
+vbgui.dialogWork.isWorking=Is Working
+vbgui.dialogWork.client=Client: 
+vbgui.dialogWork.hoursLeft=Hours Left: 
+vbgui.dialogWork.completed=Work Completed
+vbgui.dialogWork.expire=Expire in: 
+
+# --------------------------------
+# Villager Components
+# --------------------------------
+
+vcomp.buy.runout=That one is sold out...
+vcomp.buy.unaffordable=Hmmm... it's too expensive for you...
+
+vcomp.sell.runout=I don't need anymore of that...
+vcomp.sell.noitem=You don't have it...
+
+vcomp.quest.runout=The quest is not existed...
+vcomp.quest.noitem=You don't have what I need..
+vcomp.quest.success=Thanks, take your reward!
+
+vcomp.work.wrongName=It's not yours...
+vcomp.work.unaffordable=You don't have enough money..
+
+vcomp.about.noitem=Can't meet all requirements...
+vcomp.about.success=Leveling up!!!
+
+#--------------------------------
+#  Villager Texts
+#--------------------------------
+
 villager.villageElder.name=村庄老者
 villager.villageElder.description=我熟知村庄的一切。
 villager.villageElder.chat0=你好呀！

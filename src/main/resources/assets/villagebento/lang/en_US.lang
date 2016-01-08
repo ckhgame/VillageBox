@@ -1,4 +1,7 @@
 < en_US.lang - English localization file for the mod Tutorial >
+#--------------------------------
+#  Blocks
+#--------------------------------
 tile.BlockGroundworkOnlySmall.name=Small Base
 tile.BlockGroundworkOnlyMedium.name=Medium Base
 tile.BlockGroundworkOnlyLarge.name=Large Base
@@ -22,6 +25,7 @@ tile.BlockLargeMilitaryCamp.name=Large Military Camp
 tile.BlockHunterHouse.name=Hunter's House
 tile.BlockDefenceTower.name=Defense Tower
 tile.BlockFarmland.name=Farm land
+tile.BlockFarmlandSmall.name=Small Farm
 tile.BlockMarket.name=Market
 tile.BlockPotionStore.name=Potion Store
 tile.BlockSmallCasino.name=Small Casino
@@ -38,12 +42,6 @@ tile.BlockTailorStore.name=Tailor Store
 tile.BlockTownSquareSmall.name=Village Square
 tile.BlockTownSquareLarge.name=Town Square
 
-item.ItemVillageStick.name=Village Stick
-item.ItemVillageCurrency.name=Village Coins
-tile.BlockFarmlandSmall.name=Small Farm
-
-
-
 tile.BlockAutumnGarden.name=Autumn Garden
 tile.BlockPeacefulGarden.name=Small Flower Park
 tile.BlockChristmas.name=Christmas Park
@@ -52,7 +50,12 @@ tile.BlockTeaChair.name=Tea Party Garden
 tile.BlockRosePath.name=Rose Path Park
 tile.BlockRoseBridge.name=Rose Bridge Park
 
+#--------------------------------
+#  Items
+#--------------------------------
 
+item.ItemVillageStick.name=Village Stick
+item.ItemVillageCurrency.name=Village Coins
 
 tile.BlockChicken.name=Chicken Box
 tile.BlockSheep.name=Sheep Box
@@ -144,12 +147,9 @@ item.ItemPlantBook.name=Nature Creations
 item.ItemBuildingsBook.name=The History of Architecture
 item.ItemNPCBook.name=Career Guide
 
-
 #--------------------------------
-#  Gui Texts
+#  Villager Dialog Options
 #--------------------------------
-
-# villager dialog options
 
 vbgui.dialogOption.menuAbout=Tell me about you.
 vbgui.dialogOption.menuTrade=I want to trade with you.
@@ -174,7 +174,9 @@ vbgui.dialogOption.workBack=Back
 vbgui.dialogOption.questComplete=Complete
 vbgui.dialogOption.workTakeResult=Take All
 
-# villager dialog strings
+#--------------------------------
+#  Villager Dialog Strings
+#--------------------------------
 
 vbgui.dialogString.menuTrade=You find everything OK?
 
@@ -200,7 +202,9 @@ vbgui.dialogString.actionNoAction=Sorry, I don't have any action..
 vbgui.dialogString.actionOutOpenHours=Sorry, It's out of my open hours now...
 vbgui.dialogString.actionNextAction=What can I do for you?
 
-# gui texts
+#--------------------------------
+#  GUI Texts
+#--------------------------------
 
 vbgui.dropCoins.askAmount=How much you want to drop?
 vbgui.dropCoins.invalid=Invalid Input!
@@ -253,8 +257,6 @@ vcomp.about.success=Leveling up!!!
 # Villager Texts
 # --------------------------------
 
-
-#villagers
 villager.villageElder.name=Villager Elder
 villager.villageElder.description=I knows everything about the village.
 villager.villageElder.chat0=Howdy!!
