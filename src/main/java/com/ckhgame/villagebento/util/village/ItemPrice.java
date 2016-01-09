@@ -14,26 +14,6 @@ public class ItemPrice {
 	
 	
 	public static void init(){
-		register(Blocks.log,2);
-		register(Blocks.log2,2);
-		register(Blocks.cobblestone,2);
-		
-		register(Items.rotten_flesh,4);
-		register(ModBlocks.blockArchitectsHome,250);
-		register(ModBlocks.blockMiningHouse,100);
-		register(ModBlocks.blockSmallBakery,70);
-		register(ModBlocks.blockFishingStore,150);
-		
-		register(Items.bread,10);
-		register(Items.wheat_seeds,4);
-		
-		register(Items.cooked_fished,10);
-		register(Items.fishing_rod,50);
-		register(ModItems.itemFishingRodIron,120);
-		register(ModItems.itemFishingRodGold,180);
-		register(ModItems.itemFishingRodDiamond,300);
-		register(Items.fish,6);
-
 		
 		//examples:
 		//register(Items.book,10);
@@ -41,6 +21,21 @@ public class ItemPrice {
 		//register(ModItems.itemVillageStick,999);
 		//register(ModBlocks.blockGroundworkOnlySmall,100);
 		
+		register(Blocks.log,4);
+		register(Blocks.log2,4);
+		register(Blocks.cobblestone,2);
+		
+		register(Items.rotten_flesh,4);
+		
+		register(Items.bread,20);
+		register(Items.wheat_seeds,4);
+		
+		register(Items.cooked_fished,20);
+		register(Items.fishing_rod,50);
+		register(ModItems.itemFishingRodIron,200);
+		register(ModItems.itemFishingRodGold,400);
+		register(ModItems.itemFishingRodDiamond,800);
+		register(Items.fish,20);		
 		
 		register(Items.iron_pickaxe,64);
 		register(Items.golden_pickaxe,98);
@@ -54,8 +49,6 @@ public class ItemPrice {
 		register(Items.iron_axe,62);
 		register(Items.golden_sword,86);
 		register(Items.golden_axe,92);
-		register(Items.iron_ingot,18);
-		register(Items.gold_ingot,30);
 		register(Items.iron_hoe,64);
 		register(Items.golden_hoe,98);
 		register(Items.bow,45);
@@ -65,37 +58,46 @@ public class ItemPrice {
 		register(Items.beef,25);
 		register(Items.stick,2);
 		
+		register(Items.flint,8);
+		register(Items.coal,12);
+		register(Items.iron_ingot,24);
+		register(Items.gold_ingot,48);
+		
 		register(Items.paper,4);
 		
-		register(Items.reeds,10);
-		register(Items.wheat,12);
+		register(Items.reeds,6);
+		register(Items.wheat,6);
 		register(Items.apple,18);
-		register(Items.golden_apple,48);
-		register(Blocks.melon_block,26);
-		register(Blocks.pumpkin,22);
-		register(Items.carrot,18);
-		register(Items.golden_carrot,38);
-		register(Items.potato,18);
+		register(Items.golden_apple,100);
+		register(Blocks.melon_block,6);
+		register(Blocks.pumpkin,6);
+		register(Items.carrot,4);
+		register(Items.golden_carrot,100);
+		register(Items.potato,4);
 		register(Items.cake,36);
 		register(Items.pumpkin_pie,32);
 		register(Items.baked_potato,20);
 		register(Items.cookie,18);
 		
-		register(Blocks.wool,24);
-		register(Items.egg,24);
-		register(Items.milk_bucket,28);
+		register(Blocks.wool,4);
+		register(Items.egg,4);
+		register(ModItems.itemBottleOfMilk,4);
 		register(Items.feather,16);
 		register(Items.string,16);
 		register(Items.lead,26);
 		
-		register(Items.pumpkin_seeds,12);
-		register(Items.melon_seeds,12);
+		register(Items.pumpkin_seeds,20);
+		register(Items.melon_seeds,20);
 		
 		register(Items.glass_bottle,10);
 		register(Items.flower_pot,15);
 		register(Items.potionitem,180);
 		register(Items.experience_bottle,240);
 		
+		register(ModBlocks.blockArchitectsHome,250);
+		register(ModBlocks.blockMiningHouse,100);
+		register(ModBlocks.blockSmallBakery,70);
+		register(ModBlocks.blockFishingStore,150);
 		
 		register(ModBlocks.blockGroundworkOnlySmall,200);
 		register(ModBlocks.blockBuildingDestroyer,400);
@@ -140,21 +142,21 @@ public class ItemPrice {
 		register(ModBlocks.blockCow,300);
 		register(ModBlocks.blockSheep,300);
 		register(ModItems.itemChickenFood,2);
-		register(ModItems.itemSheepFood,2);
-		register(ModItems.itemCowFood,2);
+		register(ModItems.itemSheepFood,3);
+		register(ModItems.itemCowFood,3);
 		register(ModItems.itemChickenPotion,150);
 		register(ModItems.itemSheepPotion,150);
 		register(ModItems.itemCowPotion,150);
-		register(ModItems.itemChickenGloves,100);
-		register(ModItems.itemWoolShears,150);
+		register(ModItems.itemChickenGloves,200);
+		register(ModItems.itemWoolShears,200);
 		register(ModItems.itemMilkBottle,5);
-		register(ModItems.itemVillageEgg,10);
-		register(ModItems.itemVillageHeartEgg,12);
-		register(ModItems.itemVillageSilverEgg,30);
-		register(ModItems.itemVillageGoldenEgg,60);
-		register(ModItems.itemVillageEasterEgg,70);
-		register(ModItems.itemVillageMilk,25);
-		register(ModItems.itemVillageWool,20);
+		register(ModItems.itemVillageEgg,20);
+		register(ModItems.itemVillageHeartEgg,30);
+		register(ModItems.itemVillageSilverEgg,25);
+		register(ModItems.itemVillageGoldenEgg,100);
+		register(ModItems.itemVillageEasterEgg,50);
+		register(ModItems.itemVillageMilk,40);
+		register(ModItems.itemVillageWool,36);
 		
 		
 		register(ModItems.itemGauze,4);

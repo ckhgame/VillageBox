@@ -153,13 +153,13 @@ public class ProfessionVillageElder extends Profession {
 	
 	@Override
 	protected void setTimeSchedule(){
-		timeSchedule.setWorkTime(0, new RangeInt(8,16));		//Monday
-		timeSchedule.setWorkTime(1, new RangeInt(8,16));		//Tuesday
-		timeSchedule.setWorkTime(2, new RangeInt(8,16));		//Wednesday
-		timeSchedule.setWorkTime(3, new RangeInt(8,16));		//Thursday
-		timeSchedule.setWorkTime(4, new RangeInt(8,16));		//Friday
-																										//Saturday
-																										//Sunday
+		timeSchedule.setWorkTime(0, new RangeInt(8,17));	
+		timeSchedule.setWorkTime(1, new RangeInt(8,17));	
+		timeSchedule.setWorkTime(2, new RangeInt(8,17));	
+		timeSchedule.setWorkTime(3, new RangeInt(8,17));	
+		timeSchedule.setWorkTime(4, new RangeInt(8,17));	
+		timeSchedule.setWorkTime(5, new RangeInt(9,12));	
+		timeSchedule.setWorkTime(6, new RangeInt(9,12));	
 		
 		timeSchedule.setSleeptime(new RangeInt(22,30));
 	}

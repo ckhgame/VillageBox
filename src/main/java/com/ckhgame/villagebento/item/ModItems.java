@@ -30,6 +30,7 @@ public class ModItems {
 	public static Item itemVillageMilk;
 	public static Item itemGauze;
 	public static Item itemSeaweed;
+	public static Item itemBottleOfMilk; // buket of milk -> 2 bottle of milk
 	
 	//seeds
 	public static Item itemCabbageSeed;
@@ -131,6 +132,7 @@ public class ModItems {
         GameRegistry.registerItem(itemGauze = new ItemVB("ItemGauze",null,CreativeTabs.tabMaterials),"ItemGauze");
         GameRegistry.registerItem(itemSeaweed = new ItemVB("ItemSeaweed",null,CreativeTabs.tabMaterials),"ItemSeaweed");
         
+        GameRegistry.registerItem(itemBottleOfMilk = new ItemVB("ItemBottleOfMilk",null,CreativeTabs.tabMaterials),"ItemBottleOfMilk");// bucket of milk -> 2 bottle of milk
         
 
         
@@ -165,6 +167,7 @@ public class ModItems {
         GameRegistry.registerItem(itemSalt = new ItemVB("ItemSalt",null,CreativeTabs.tabMaterials),"ItemSalt");
         GameRegistry.registerItem(itemUdon = new ItemVB("ItemUdon",null,CreativeTabs.tabFood),"ItemUdon");
         GameRegistry.registerItem(itemWheatFlour = new ItemVB("ItemWheatFlour",null,CreativeTabs.tabMaterials),"ItemWheatFlour");
+        
         
         GameRegistry.registerItem(itemNoodleSoup = new ItemVB("ItemNoodleSoup",null,CreativeTabs.tabFood),"ItemNoodleSoup");
         GameRegistry.registerItem(itemBeefNoodleSoup = new ItemVB("ItemBeefNoodleSoup",null,CreativeTabs.tabFood),"ItemBeefNoodleSoup");

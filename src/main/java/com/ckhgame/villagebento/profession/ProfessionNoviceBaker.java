@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.profession;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
@@ -53,7 +54,7 @@ public class ProfessionNoviceBaker extends Profession {
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Items.wheat_seeds, 1);
+        compSell.addItem(Items.wheat_seeds, 0);
         components.add(compSell);
 	}
 	
@@ -79,6 +80,19 @@ public class ProfessionNoviceBaker extends Profession {
 		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(Items.wheat_seeds,16),
 																				new ItemStack(Items.milk_bucket,1)};
 		
+	}
+	
+	@Override
+	protected void setTimeSchedule(){
+		timeSchedule.setWorkTime(0, new RangeInt(11,17));	
+		timeSchedule.setWorkTime(1, new RangeInt(11,17));	
+
+		timeSchedule.setWorkTime(3, new RangeInt(11,17));	
+		timeSchedule.setWorkTime(4, new RangeInt(11,17));	
+		timeSchedule.setWorkTime(5, new RangeInt(11,17));	
+		timeSchedule.setWorkTime(6, new RangeInt(11,17));	
+		
+		timeSchedule.setSleeptime(new RangeInt(22,30));
 	}
 	
 }

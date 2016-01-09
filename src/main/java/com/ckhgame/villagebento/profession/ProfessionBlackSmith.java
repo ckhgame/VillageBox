@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.profession;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
@@ -47,6 +48,7 @@ public class ProfessionBlackSmith extends Profession {
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
+        compSell.addItem(Items.coal, 0);
         compSell.addItem(Items.iron_ingot, 0);
         compSell.addItem(Items.gold_ingot, 1);
         components.add(compSell);
@@ -74,6 +76,19 @@ public class ProfessionBlackSmith extends Profession {
 	@Override
 	public String getSkinName() {
 		return "blacksmith";
+	}
+	
+	@Override
+	protected void setTimeSchedule(){
+		timeSchedule.setWorkTime(0, new RangeInt(10,16));	
+
+		timeSchedule.setWorkTime(2, new RangeInt(10,16));	
+		timeSchedule.setWorkTime(3, new RangeInt(10,16));	
+		timeSchedule.setWorkTime(4, new RangeInt(10,16));	
+		timeSchedule.setWorkTime(5, new RangeInt(10,16));	
+		timeSchedule.setWorkTime(6, new RangeInt(10,16));	
+		
+		timeSchedule.setSleeptime(new RangeInt(22,30));
 	}
 
 }

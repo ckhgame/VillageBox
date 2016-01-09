@@ -225,7 +225,11 @@ public class ModRecipes {
 				'B',ModItems.itemGrapes,
 				'C',Items.glass_bottle);
 		
-
+		//village wool -> 2 wool
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wool,6), new ItemStack(ModItems.itemVillageWool));
+		
+		//bucket of milk -> bucket + 2 bottle of milk
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemBottleOfMilk,2), new ItemStack(Items.milk_bucket));
 
 	}
 }

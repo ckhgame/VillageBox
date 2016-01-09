@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
@@ -70,6 +71,19 @@ public class ProfessionSheepSeller extends Profession {
 	@Override
 	public String getSkinName() {
 		return "sheepseller";
+	}
+	
+	@Override
+	protected void setTimeSchedule(){
+		timeSchedule.setWorkTime(0, new RangeInt(9,17));	
+
+		timeSchedule.setWorkTime(2, new RangeInt(9,17));	
+		timeSchedule.setWorkTime(3, new RangeInt(9,17));	
+		timeSchedule.setWorkTime(4, new RangeInt(9,17));	
+		timeSchedule.setWorkTime(5, new RangeInt(9,17));	
+		timeSchedule.setWorkTime(6, new RangeInt(9,17));	
+		
+		timeSchedule.setSleeptime(new RangeInt(22,30));
 	}
 
 }

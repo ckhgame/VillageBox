@@ -80,6 +80,8 @@ item.ItemCowFood.name=牛饲料
 item.ItemMilkBottle.name=牛奶瓶
 item.ItemVillageMilk.name=村庄牛奶
 
+item.ItemBottleOfMilk.name=瓶装牛奶
+
 item.ItemGauze.name=纱布
 item.ItemCabbageSeed.name=卷心菜种子
 item.ItemGrapeSeed.name=葡萄种子

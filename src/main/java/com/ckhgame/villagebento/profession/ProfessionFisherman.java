@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
@@ -49,13 +50,6 @@ public class ProfessionFisherman extends Profession {
         compBuy.addItem(ModItems.itemFishingRodGold, 1);
         compBuy.addItem(ModItems.itemFishingRodDiamond, 2);
         components.add(compBuy);
-        
-        VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Items.fish, 0, 0);
-        compSell.addItem(Items.fish, 0, 1);
-        compSell.addItem(Items.fish, 0, 2);
-        compSell.addItem(Items.fish, 0, 3);
-        components.add(compSell);
 
 	}
 	
@@ -85,6 +79,19 @@ public class ProfessionFisherman extends Profession {
 																				new ItemStack(Items.iron_ingot,16),
 																				new ItemStack(Items.gold_ingot,16)};
 		
+	}
+	
+	@Override
+	protected void setTimeSchedule(){
+		timeSchedule.setWorkTime(0, new RangeInt(4,12));	
+		timeSchedule.setWorkTime(1, new RangeInt(4,12));	
+		timeSchedule.setWorkTime(2, new RangeInt(4,12));	
+		timeSchedule.setWorkTime(3, new RangeInt(4,12));	
+		timeSchedule.setWorkTime(4, new RangeInt(4,12));	
+
+		timeSchedule.setWorkTime(6, new RangeInt(4,12));	
+		
+		timeSchedule.setSleeptime(new RangeInt(19,27));
 	}
 	
 }

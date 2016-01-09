@@ -3,9 +3,11 @@ package com.ckhgame.villagebento.profession;
 import java.util.ArrayList;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Blocks;
@@ -47,6 +49,9 @@ public class ProfessionMinerAssistant extends Profession {
         compBuy.addItem(Items.compass, 0);
         components.add(compBuy);
         
+        VillagerCompSell compSell = new VillagerCompSell(villager);
+        compSell.addItem(Items.flint, 0);
+        components.add(compSell);
 	}
 
 	@Override
@@ -61,6 +66,19 @@ public class ProfessionMinerAssistant extends Profession {
 	@Override
 	public String getSkinName() {
 		return "minerassistant";
+	}
+	
+	@Override
+	protected void setTimeSchedule(){
+		timeSchedule.setWorkTime(0, new RangeInt(11,17));	
+		timeSchedule.setWorkTime(1, new RangeInt(11,17));	
+		timeSchedule.setWorkTime(2, new RangeInt(11,17));	
+		timeSchedule.setWorkTime(3, new RangeInt(11,17));	
+		timeSchedule.setWorkTime(4, new RangeInt(11,17));	
+
+		timeSchedule.setWorkTime(6, new RangeInt(11,17));	
+		
+		timeSchedule.setSleeptime(new RangeInt(22,30));
 	}
 
 }

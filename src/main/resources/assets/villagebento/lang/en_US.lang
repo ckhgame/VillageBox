@@ -80,6 +80,8 @@ item.ItemCowFood.name=Cow Food
 item.ItemMilkBottle.name=Milk Bottle
 item.ItemVillageMilk.name=Village Milk
 
+item.ItemBottleOfMilk.name=Bottle of Milk
+
 item.ItemGauze.name=Gauze
 item.ItemSeaweed.name=Seaweed
 item.ItemCabbageSeed.name=Cabbage Seed
