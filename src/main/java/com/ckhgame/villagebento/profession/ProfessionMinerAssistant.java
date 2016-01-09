@@ -39,12 +39,12 @@ public class ProfessionMinerAssistant extends Profession {
         
   
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(Items.iron_pickaxe, 1, 3, 0);
-        compBuy.addItem(Blocks.ladder, 1, 32, 0);
-        compBuy.addItem(Blocks.torch, 1, 32, 0);
-        compBuy.addItem(Blocks.rail, 1, 32, 0);
-        compBuy.addItem(Items.minecart, 1, 2, 0);
-        compBuy.addItem(Items.compass, 1, 2, 0);
+        compBuy.addItem(Items.iron_pickaxe, 0);
+        compBuy.addItem(Blocks.ladder, 0);
+        compBuy.addItem(Blocks.torch, 0);
+        compBuy.addItem(Blocks.rail, 0);
+        compBuy.addItem(Items.minecart, 0);
+        compBuy.addItem(Items.compass, 0);
         components.add(compBuy);
         
 	}

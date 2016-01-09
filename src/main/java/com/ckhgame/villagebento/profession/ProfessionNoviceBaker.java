@@ -46,14 +46,14 @@ public class ProfessionNoviceBaker extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(Items.bread, 2, 3, 0);
-        compBuy.addItem(Items.cookie, 1, 2, 1);
-        compBuy.addItem(Items.baked_potato, 2, 3, 1);
+        compBuy.addItem(Items.bread, 0);
+        compBuy.addItem(Items.cookie, 1);
+        compBuy.addItem(Items.baked_potato, 1);
 
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Items.wheat_seeds, 10, 20, 1);
+        compSell.addItem(Items.wheat_seeds, 1);
         components.add(compSell);
 	}
 	

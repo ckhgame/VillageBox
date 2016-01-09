@@ -8,12 +8,15 @@ import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerBuy;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
 import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
@@ -42,6 +45,7 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.buyBack"));
 		}
 		else{  // send a packet to query the item list, the buy gui will display after receiving
+			this.villagerCompBuy.refreshItemListCurrent();
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompBuy);
 			if(compIdx < 0)
 				System.out.println("Can not find the village component! idx < 0");
@@ -58,14 +62,23 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 			this.showCenterContent(ContentID_Buy);
 			return false;
 		}
-		return true;
+		else{
+			if(VBResult.isSuccess(vbCompResult.vbResult)){
+				this.playSound("random.pop");
+			}
+			else{
+				this.playSound("random.bow");
+			}
+			return true;
+		}
+		
 	}
 	
 	@Override
 	protected void drawGridCell(int idx, int mx, int my, int x, int y) {
 		if(idx < this.villagerCompBuy.itemListCurrent.size()){
 			ItemStack itemStack = this.villagerCompBuy.itemListCurrent.get(idx);
-			boolean hover = this.drawItem(mx, my, x + 3, y + 3, itemStack);
+			boolean hover = this.drawItem(mx, my, x + 3, y + 3, itemStack," ");
 			if(hover){
 				List texts = new ArrayList();
 				texts.add(itemStack.getDisplayName());
@@ -81,7 +94,7 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 			ItemStack itemStack = this.villagerCompBuy.itemListCurrent.get(idx);
 			
 			ItemStack itemBuy = this.villagerCompBuy.itemListCurrent.get(idx).copy();
-			itemBuy.stackSize = 1;
+			itemBuy.stackSize =  this.isShiftKeyDown()?10:1;
 
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompBuy);
 			if(compIdx < 0)

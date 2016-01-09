@@ -36,22 +36,22 @@ public class ProfessionArchitect extends Profession {
         components.add(new VillagerCompAbout(villager));
 
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModBlocks.blockDefenceTower, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockChickenShop, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockBlackSmithsShop, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockMarket, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockSmallHotel, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockHunterHouse, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockSmallMilitaryCamp, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockSheepShop, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockCowShop, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockTailorStore, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockSmallTavern, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockFarmland, 1, 1, 0);          
-        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockPlayerFieldMedium, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockSmallCasino, 1, 1, 0);            
-        compBuy.addItem(ModBlocks.blockProArchitectsHouse, 1, 1, 0);
+        compBuy.addItem(ModBlocks.blockDefenceTower,  0);
+        compBuy.addItem(ModBlocks.blockChickenShop,  0);
+        compBuy.addItem(ModBlocks.blockBlackSmithsShop,  0);
+        compBuy.addItem(ModBlocks.blockMarket,  0);
+        compBuy.addItem(ModBlocks.blockSmallHotel,  0);
+        compBuy.addItem(ModBlocks.blockHunterHouse,  0);
+        compBuy.addItem(ModBlocks.blockSmallMilitaryCamp, 0);
+        compBuy.addItem(ModBlocks.blockSheepShop, 0);
+        compBuy.addItem(ModBlocks.blockCowShop, 0);
+        compBuy.addItem(ModBlocks.blockTailorStore, 0);
+        compBuy.addItem(ModBlocks.blockSmallTavern, 0);
+        compBuy.addItem(ModBlocks.blockFarmland, 0);          
+        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 0);
+        compBuy.addItem(ModBlocks.blockPlayerFieldMedium, 0);
+        compBuy.addItem(ModBlocks.blockSmallCasino, 0);            
+        compBuy.addItem(ModBlocks.blockProArchitectsHouse, 0);
         components.add(compBuy);
             
 

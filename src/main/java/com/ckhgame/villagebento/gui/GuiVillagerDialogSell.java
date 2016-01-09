@@ -8,6 +8,8 @@ import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerSell;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
 import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.data.VBResult;
+import com.ckhgame.villagebento.util.helper.HelperPlayer;
 import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 
@@ -42,6 +44,7 @@ public class GuiVillagerDialogSell extends GuiVillagerDialogGrid{
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.sellBack"));
 		}
 		else{  // send a packet to query the item list, the sell gui will display after receiving
+			this.villagerCompSell.refreshItemListCurrent();
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompSell);
 			if(compIdx < 0)
 				System.out.println("Can not find the village component! idx < 0");
@@ -58,14 +61,22 @@ public class GuiVillagerDialogSell extends GuiVillagerDialogGrid{
 			this.showCenterContent(ContentID_Sell);
 			return false;
 		}
-		return true;
+		else{
+			if(VBResult.isSuccess(vbCompResult.vbResult)){
+				this.playSound("random.orb");
+			}
+			else{
+				this.playSound("random.bow");
+			}
+			return true;
+		}
 	}
 	
 	@Override
 	protected void drawGridCell(int idx, int mx, int my, int x, int y) {
 		if(idx < this.villagerCompSell.itemListCurrent.size()){
 			ItemStack itemStack = this.villagerCompSell.itemListCurrent.get(idx);
-			boolean hover = this.drawItem(mx, my, x + 3, y + 3, itemStack);
+			boolean hover = this.drawItem(mx, my, x + 3, y + 3, itemStack,String.valueOf(HelperPlayer.getItemTotalInInventory(Minecraft.getMinecraft().thePlayer, itemStack)));
 			if(hover){
 				List texts = new ArrayList();
 				texts.add(itemStack.getDisplayName());
@@ -81,7 +92,7 @@ public class GuiVillagerDialogSell extends GuiVillagerDialogGrid{
 			ItemStack itemStack = this.villagerCompSell.itemListCurrent.get(idx);
 			
 			ItemStack itemSell = this.villagerCompSell.itemListCurrent.get(idx).copy();
-			itemSell.stackSize = 1;
+			itemSell.stackSize = this.isShiftKeyDown()?10:1;
 
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompSell);
 			if(compIdx < 0)

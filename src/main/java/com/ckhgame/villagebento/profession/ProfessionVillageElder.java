@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
@@ -68,38 +69,38 @@ public class ProfessionVillageElder extends Profession {
         
         //buy list
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModBlocks.blockFishingStore, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockSmallBakery, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockMiningHouse, 1, 1, 0);
+        compBuy.addItem(ModBlocks.blockFishingStore, 0);
+        compBuy.addItem(ModBlocks.blockSmallBakery, 0);
+        compBuy.addItem(ModBlocks.blockMiningHouse, 0);
         
-        compBuy.addItem(ModBlocks.blockPlayerFieldSmall, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockDefenceTower, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockChickenShop, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockBlackSmithsShop, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockMarket, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockSmallHotel, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockHunterHouse, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockSmallMilitaryCamp, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockSheepShop, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockCowShop, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockSmallTavern, 1, 1, 1);
-        compBuy.addItem(ModBlocks.blockFarmland, 1, 1, 1);          
-        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 1, 1, 1);
+        compBuy.addItem(ModBlocks.blockPlayerFieldSmall, 1);
+        compBuy.addItem(ModBlocks.blockDefenceTower, 1);
+        compBuy.addItem(ModBlocks.blockChickenShop, 1);
+        compBuy.addItem(ModBlocks.blockBlackSmithsShop, 1);
+        compBuy.addItem(ModBlocks.blockMarket, 1);
+        compBuy.addItem(ModBlocks.blockSmallHotel, 1);
+        compBuy.addItem(ModBlocks.blockHunterHouse, 1);
+        compBuy.addItem(ModBlocks.blockSmallMilitaryCamp, 1);
+        compBuy.addItem(ModBlocks.blockSheepShop, 1);
+        compBuy.addItem(ModBlocks.blockCowShop, 1);
+        compBuy.addItem(ModBlocks.blockSmallTavern, 1);
+        compBuy.addItem(ModBlocks.blockFarmland, 1);          
+        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 1);
         
-        compBuy.addItem(ModBlocks.blockTailorStore, 1, 1, 2);
-        compBuy.addItem(ModBlocks.blockSmallCasino, 1, 1, 2); 
-        compBuy.addItem(ModBlocks.blockPlayerFieldMedium, 1, 1, 2);
+        compBuy.addItem(ModBlocks.blockTailorStore, 2);
+        compBuy.addItem(ModBlocks.blockSmallCasino, 2); 
+        compBuy.addItem(ModBlocks.blockPlayerFieldMedium, 2);
         components.add(compBuy);
         
         //sell list
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Blocks.cobblestone, 128, 200, 0);
-        compSell.addItem(Blocks.log, 30, 40, 0, 0);
-        compSell.addItem(Blocks.log, 30, 40, 0, 1);
-        compSell.addItem(Blocks.log, 30, 40, 0, 2);
-        compSell.addItem(Blocks.log, 30, 40, 0, 3);
-        compSell.addItem(Blocks.log2, 30, 40, 0, 0);
-        compSell.addItem(Blocks.log2, 30, 40, 0, 1);
+        compSell.addItem(Blocks.cobblestone, 0);
+        compSell.addItem(Blocks.log, 0, 0);
+        compSell.addItem(Blocks.log, 0, 1);
+        compSell.addItem(Blocks.log, 0, 2);
+        compSell.addItem(Blocks.log, 0, 3);
+        compSell.addItem(Blocks.log2, 0, 0);
+        compSell.addItem(Blocks.log2, 0, 1);
         components.add(compSell);
         
         //work
@@ -150,6 +151,18 @@ public class ProfessionVillageElder extends Profession {
 		
 	}
 	
+	@Override
+	protected void setTimeSchedule(){
+		timeSchedule.setWorkTime(0, new RangeInt(8,16));		//Monday
+		timeSchedule.setWorkTime(1, new RangeInt(8,16));		//Tuesday
+		timeSchedule.setWorkTime(2, new RangeInt(8,16));		//Wednesday
+		timeSchedule.setWorkTime(3, new RangeInt(8,16));		//Thursday
+		timeSchedule.setWorkTime(4, new RangeInt(8,16));		//Friday
+																										//Saturday
+																										//Sunday
+		
+		timeSchedule.setSleeptime(new RangeInt(22,30));
+	}
 	
 
 }

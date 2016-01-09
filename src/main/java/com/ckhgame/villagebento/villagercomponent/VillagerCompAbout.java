@@ -114,7 +114,7 @@ public class VillagerCompAbout extends VillagerComponent {
 		
 		for(ItemStack itemStack : requirements){
 			if(!HelperPlayer.playerHasItemStack(player, itemStack))
-				return new VBCompResult(VBResult.FAILED_NOITEM, StatCollector.translateToLocal("vcomp.about.noitem"));
+				return new VBCompResult(VBResult.FAILED_NOITEM,"vcomp.about.noitem");
 		}
 		
 		for(ItemStack itemStack : requirements){
@@ -122,7 +122,7 @@ public class VillagerCompAbout extends VillagerComponent {
 		}
 		this.getVillager().upgradeLevel();
 		
-		return new VBCompResult(VBResult.SUCCESS,StatCollector.translateToLocal("vcomp.about.success"));
+		return new VBCompResult(VBResult.SUCCESS,"vcomp.about.success");
 	}
 	
 	

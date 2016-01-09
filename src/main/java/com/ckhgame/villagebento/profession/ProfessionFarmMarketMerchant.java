@@ -39,21 +39,21 @@ public class ProfessionFarmMarketMerchant extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Items.reeds, 12, 22, 0);
-        compSell.addItem(Items.wheat, 12, 22, 0);
-        compSell.addItem(Items.apple, 5, 9, 0);
-        compSell.addItem(Items.carrot, 7, 12, 0, 0);
-        compSell.addItem(Items.potato, 7, 12, 0, 0);
-        compSell.addItem(Blocks.pumpkin, 5, 7, 0, 0);
-        compSell.addItem(Blocks.melon_block, 5, 7, 0, 0);
-        compSell.addItem(Items.golden_apple, 1, 3, 0, 0);
-        compSell.addItem(Items.golden_carrot, 1, 3, 0, 0);
-        compSell.addItem(ModItems.itemCorn, 10, 20, 0);
-        compSell.addItem(ModItems.itemChili, 10, 20, 0);
-        compSell.addItem(ModItems.itemCabbage, 10, 20, 0);
-        compSell.addItem(ModItems.itemGrapes, 10, 20, 0);
-        compSell.addItem(ModItems.itemRice, 10, 20, 0);
-        compSell.addItem(ModItems.itemSoybeans, 10, 20, 0);
+        compSell.addItem(Items.reeds, 0);
+        compSell.addItem(Items.wheat, 0);
+        compSell.addItem(Items.apple, 0);
+        compSell.addItem(Items.carrot, 0, 0);
+        compSell.addItem(Items.potato, 0, 0);
+        compSell.addItem(Blocks.pumpkin, 0, 0);
+        compSell.addItem(Blocks.melon_block, 0, 0);
+        compSell.addItem(Items.golden_apple, 0, 0);
+        compSell.addItem(Items.golden_carrot, 0, 0);
+        compSell.addItem(ModItems.itemCorn,  0);
+        compSell.addItem(ModItems.itemChili, 0);
+        compSell.addItem(ModItems.itemCabbage, 0);
+        compSell.addItem(ModItems.itemGrapes, 0);
+        compSell.addItem(ModItems.itemRice, 0);
+        compSell.addItem(ModItems.itemSoybeans, 0);
         components.add(compSell);
 
 	}

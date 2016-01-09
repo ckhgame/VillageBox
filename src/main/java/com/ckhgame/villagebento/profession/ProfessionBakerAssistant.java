@@ -36,10 +36,10 @@ public class ProfessionBakerAssistant extends Profession {
         
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(ModItems.itemWheatFlour, 9, 16, 0);
-        compSell.addItem(ModItems.itemRiceFlour, 9, 16, 0);
-        compSell.addItem(ModItems.itemSalt, 6, 10, 0);
-        compSell.addItem(ModItems.itemOil, 6, 10, 0);
+        compSell.addItem(ModItems.itemWheatFlour, 0);
+        compSell.addItem(ModItems.itemRiceFlour, 0);
+        compSell.addItem(ModItems.itemSalt, 0);
+        compSell.addItem(ModItems.itemOil, 0);
         components.add(compSell);
 	}
 	

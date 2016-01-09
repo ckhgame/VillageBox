@@ -24,27 +24,21 @@ public class VillagerCompBuy extends VillagerCompItemList {
 	//-------------------------------------------------------
 	
 	
-	public VBCompResult buyItem(EntityPlayer player,ItemStack itemBuy){
-		
+	public VBCompResult buyItem(EntityPlayer player,ItemStack itemBuy){	
+		this.refreshItemListCurrent();
 		ArrayList<ItemStack> itemStacks = this.itemListCurrent;
-		if(itemStacks == null)
+		if(itemStacks == null || itemBuy.stackSize <= 0)
 			return VBCompResult.getDefaultFailed();
 		
 		//buy process			
 		for(ItemStack itemStack : itemStacks ){
 			if(itemStack.isItemEqual(itemBuy)){
-				if(itemStack.stackSize >= itemBuy.stackSize){
-					if(HelperPlayer.addCurrency(player,-ItemPrice.getBuyPrice(itemBuy.getItem()))){
-						itemStack.stackSize -= itemBuy.stackSize;
-						player.inventory.addItemStackToInventory(itemBuy);
-						//this.getVillager().addExp(ConfigVillager.TradingExp);						
-						return VBCompResult.getDefaultSuccess();
-					}
-					else
-						return new VBCompResult(VBResult.FAILED_UNAFFORDABLE,StatCollector.translateToLocal("vcomp.buy.unaffordable"));
+				if(HelperPlayer.addCurrency(player,-ItemPrice.getBuyPrice(itemBuy.getItem()) * itemBuy.stackSize)){
+					player.inventory.addItemStackToInventory(itemBuy);			
+					return VBCompResult.getDefaultSuccess();
 				}
 				else
-					return new VBCompResult(VBResult.FALLED_RUNOUT,StatCollector.translateToLocal("vcomp.buy.runout"));
+					return new VBCompResult(VBResult.FAILED_UNAFFORDABLE,"vcomp.buy.unaffordable");
 			}							
 		}
 		

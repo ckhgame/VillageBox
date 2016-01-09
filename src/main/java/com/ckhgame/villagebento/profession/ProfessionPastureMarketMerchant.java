@@ -37,13 +37,13 @@ public class ProfessionPastureMarketMerchant extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(ModItems.itemVillageEgg, 10, 20, 0);
-        compSell.addItem(ModItems.itemVillageHeartEgg, 10, 20, 0);
-        compSell.addItem(ModItems.itemVillageSilverEgg, 4, 8, 0);
-        compSell.addItem(ModItems.itemVillageGoldenEgg, 2, 5, 0);
-        compSell.addItem(ModItems.itemVillageEasterEgg, 2, 5, 0);
-        compSell.addItem(ModItems.itemVillageWool, 10, 20, 0);
-        compSell.addItem(ModItems.itemVillageMilk, 10, 20, 0);
+        compSell.addItem(ModItems.itemVillageEgg, 0);
+        compSell.addItem(ModItems.itemVillageHeartEgg, 0);
+        compSell.addItem(ModItems.itemVillageSilverEgg, 0);
+        compSell.addItem(ModItems.itemVillageGoldenEgg, 0);
+        compSell.addItem(ModItems.itemVillageEasterEgg, 0);
+        compSell.addItem(ModItems.itemVillageWool, 0);
+        compSell.addItem(ModItems.itemVillageMilk, 0);
         components.add(compSell);
 
 	}

@@ -40,15 +40,15 @@ public class ProfessionBlackSmith extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(Items.iron_sword, 1, 3, 0);
-        compBuy.addItem(Items.iron_axe, 1, 3, 0);
-        compBuy.addItem(Items.golden_sword, 1, 3, 1);
-        compBuy.addItem(Items.golden_axe, 1, 3, 1);
+        compBuy.addItem(Items.iron_sword, 0);
+        compBuy.addItem(Items.iron_axe, 0);
+        compBuy.addItem(Items.golden_sword, 1);
+        compBuy.addItem(Items.golden_axe, 1);
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Items.iron_ingot, 8, 12, 0);
-        compSell.addItem(Items.gold_ingot, 5, 8, 1);
+        compSell.addItem(Items.iron_ingot, 0);
+        compSell.addItem(Items.gold_ingot, 1);
         components.add(compSell);
 
 	}

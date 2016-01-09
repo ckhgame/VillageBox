@@ -41,24 +41,24 @@ public class ProfessionFarmerSmall extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(Items.iron_hoe, 1, 1, 0);
+        compBuy.addItem(Items.iron_hoe, 0);
 
-        compBuy.addItem(Items.wheat_seeds, 1, 5, 0);
-        compBuy.addItem(Items.carrot, 1, 2, 0);
-        compBuy.addItem(Items.potato, 1, 2, 0);
-        compBuy.addItem(Items.apple, 1, 1, 0);
+        compBuy.addItem(Items.wheat_seeds, 0);
+        compBuy.addItem(Items.carrot, 0);
+        compBuy.addItem(Items.potato, 0);
+        compBuy.addItem(Items.apple, 0);
         
-        compBuy.addItem(Items.pumpkin_seeds, 1, 2, 1);
-        compBuy.addItem(Items.melon_seeds, 1, 2, 1);
-        compBuy.addItem(Items.golden_hoe, 1, 1, 1);
+        compBuy.addItem(Items.pumpkin_seeds, 1);
+        compBuy.addItem(Items.melon_seeds, 1);
+        compBuy.addItem(Items.golden_hoe, 1);
         
-        compBuy.addItem(ModItems.itemCornSeed, 10, 20, 1);
-        compBuy.addItem(ModItems.itemRiceSeed, 10, 20, 1);
-        compBuy.addItem(ModItems.itemCabbageSeed, 10, 20, 1);
+        compBuy.addItem(ModItems.itemCornSeed, 1);
+        compBuy.addItem(ModItems.itemRiceSeed, 1);
+        compBuy.addItem(ModItems.itemCabbageSeed, 1);
         
-        compBuy.addItem(ModItems.itemSoybeanSeed, 10, 20, 2);
-        compBuy.addItem(ModItems.itemChiliSeed, 10, 20, 2);
-        compBuy.addItem(ModItems.itemGrapeSeed, 10, 20, 2);
+        compBuy.addItem(ModItems.itemSoybeanSeed, 2);
+        compBuy.addItem(ModItems.itemChiliSeed, 2);
+        compBuy.addItem(ModItems.itemGrapeSeed, 2);
 
         components.add(compBuy);
 

@@ -42,17 +42,17 @@ public class ProfessionProBaker extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModItems.itemAppleCandy, 2, 2, 0);
-        compBuy.addItem(ModItems.itemCornChips, 2, 5, 0);
-        compBuy.addItem(ModItems.itemMayonaise, 2, 10, 0);
-        compBuy.addItem(Items.cake, 2, 2, 0);
-        compBuy.addItem(ModItems.itemCarrotCake, 2, 2, 0);
-        compBuy.addItem(Items.pumpkin_pie, 1, 1, 0);
-        compBuy.addItem(ModItems.itemHambuger, 2, 2, 0);
-        compBuy.addItem(ModItems.itemUdon, 2, 2, 0);
-        compBuy.addItem(ModItems.itemPorkRamen, 2, 2, 0);
-        compBuy.addItem(ModItems.itemCongee, 2, 2, 0);
-        compBuy.addItem(ModItems.itemNoodleSoup, 2, 2, 0);
+        compBuy.addItem(ModItems.itemAppleCandy, 0);
+        compBuy.addItem(ModItems.itemCornChips, 0);
+        compBuy.addItem(ModItems.itemMayonaise, 0);
+        compBuy.addItem(Items.cake, 0);
+        compBuy.addItem(ModItems.itemCarrotCake, 0);
+        compBuy.addItem(Items.pumpkin_pie, 0);
+        compBuy.addItem(ModItems.itemHambuger, 0);
+        compBuy.addItem(ModItems.itemUdon, 0);
+        compBuy.addItem(ModItems.itemPorkRamen, 0);
+        compBuy.addItem(ModItems.itemCongee, 0);
+        compBuy.addItem(ModItems.itemNoodleSoup, 0);
 
 
 

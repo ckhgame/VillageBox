@@ -49,9 +49,9 @@ public class ProfessionTavernOwner extends Profession {
 
         components.add(new VillagerCompAbout(villager));
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModItems.itemCockTail, 1, 5, 0);
-        compBuy.addItem(ModItems.itemCookVine, 1, 10, 0);
-        compBuy.addItem(ModItems.itemBeer, 1, 3, 0);
+        compBuy.addItem(ModItems.itemCockTail, 0);
+        compBuy.addItem(ModItems.itemCookVine, 0);
+        compBuy.addItem(ModItems.itemBeer, 0);
 
         components.add(compBuy);
 

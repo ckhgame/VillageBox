@@ -46,12 +46,12 @@ public class ProfessionCowSeller extends Profession {
 
         components.add(new VillagerCompAbout(villager));
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModBlocks.blockCow, 1, 1, 0);
-        compBuy.addItem(ModItems.itemCowFood, 30, 50, 0);
-        compBuy.addItem(ModItems.itemCowPotion, 3, 5, 0);
-        compBuy.addItem(ModItems.itemMilkBottle, 20, 30, 0);
-        compBuy.addItem(ModItems.itemVillageMilk, 5, 10, 0);
-        compBuy.addItem(Items.lead, 1, 2, 0);
+        compBuy.addItem(ModBlocks.blockCow, 0);
+        compBuy.addItem(ModItems.itemCowFood, 0);
+        compBuy.addItem(ModItems.itemCowPotion, 0);
+        compBuy.addItem(ModItems.itemMilkBottle, 0);
+        compBuy.addItem(ModItems.itemVillageMilk, 0);
+        compBuy.addItem(Items.lead, 0);
 
         components.add(compBuy);
 

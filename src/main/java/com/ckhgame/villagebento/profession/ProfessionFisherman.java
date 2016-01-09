@@ -41,20 +41,20 @@ public class ProfessionFisherman extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(Items.cooked_fished, 4, 6, 0, 0);
-        compBuy.addItem(Items.cooked_fished, 4, 6, 0, 1);
-        compBuy.addItem(ModItems.itemSeaweed,7, 10, 0);
-        compBuy.addItem(Items.fishing_rod, 1, 1, 0);
-        compBuy.addItem(ModItems.itemFishingRodIron, 1, 1, 1);
-        compBuy.addItem(ModItems.itemFishingRodGold, 1, 1, 1);
-        compBuy.addItem(ModItems.itemFishingRodDiamond, 1, 1, 2);
+        compBuy.addItem(Items.cooked_fished, 0, 0);
+        compBuy.addItem(Items.cooked_fished, 0, 1);
+        compBuy.addItem(ModItems.itemSeaweed, 0);
+        compBuy.addItem(Items.fishing_rod, 0);
+        compBuy.addItem(ModItems.itemFishingRodIron, 1);
+        compBuy.addItem(ModItems.itemFishingRodGold, 1);
+        compBuy.addItem(ModItems.itemFishingRodDiamond, 2);
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Items.fish, 4, 6, 0, 0);
-        compSell.addItem(Items.fish, 4, 6, 0, 1);
-        compSell.addItem(Items.fish, 4, 6, 0, 2);
-        compSell.addItem(Items.fish, 4, 6, 0, 3);
+        compSell.addItem(Items.fish, 0, 0);
+        compSell.addItem(Items.fish, 0, 1);
+        compSell.addItem(Items.fish, 0, 2);
+        compSell.addItem(Items.fish, 0, 3);
         components.add(compSell);
 
 	}

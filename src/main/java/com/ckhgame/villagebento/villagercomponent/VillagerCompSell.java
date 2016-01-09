@@ -23,28 +23,23 @@ public class VillagerCompSell extends VillagerCompItemList {
 	//-------------------------------------------------------
 	
 	public VBCompResult sellItem(EntityPlayer player,ItemStack itemSell){
-		
+		this.refreshItemListCurrent();
 		ArrayList<ItemStack> itemStacks = this.itemListCurrent;
-		if(itemStacks == null)
+		if(itemStacks == null || itemSell.stackSize <= 0)
 			return VBCompResult.getDefaultFailed();
 		
 		//sell process			
 		for(ItemStack itemStack : itemStacks ){
 			if(itemStack.isItemEqual(itemSell)){
-				if(itemStack.stackSize >= itemSell.stackSize){
-					if(HelperPlayer.playerHasItemStack(player, itemSell)){
-						itemStack.stackSize -= itemSell.stackSize;
-						HelperPlayer.playerRemoveItemStack(player, itemSell);
-						HelperPlayer.addCurrency(player,ItemPrice.getSellPrice(itemSell.getItem()));
-						//this.getVillager().addExp(ConfigVillager.TradingExp);
-					
-						return VBCompResult.getDefaultSuccess();
-					}
-					else
-						return new VBCompResult(VBResult.FAILED_NOITEM,StatCollector.translateToLocal("vcomp.sell.noitem"));
+				if(HelperPlayer.playerHasItemStack(player, itemSell)){
+					int num = HelperPlayer.getItemTotalInInventory(player, itemSell);
+					if(itemSell.stackSize > num) itemSell.stackSize = num;
+					HelperPlayer.playerRemoveItemStack(player, itemSell);
+					HelperPlayer.addCurrency(player,ItemPrice.getSellPrice(itemSell.getItem()) * itemSell.stackSize);
+					return VBCompResult.getDefaultSuccess();
 				}
 				else
-					return new VBCompResult(VBResult.FALLED_RUNOUT,StatCollector.translateToLocal("vcomp.sell.runout"));
+					return new VBCompResult(VBResult.FAILED_NOITEM,"vcomp.sell.noitem");
 			}							
 		}
 		

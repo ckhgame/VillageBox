@@ -256,7 +256,7 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 			return VBCompResult.getDefaultFailed();
 			
 		if(!HelperPlayer.addCurrency(player, -this.workListTotal.get(wIdx).price))
-			return new VBCompResult(VBResult.FAILED_UNAFFORDABLE,StatCollector.translateToLocal("vcomp.work.unaffordable"));
+			return new VBCompResult(VBResult.FAILED_UNAFFORDABLE,"vcomp.work.unaffordable");
 		
 		this.workIdx = wIdx;
 		this.playerName = player.getDisplayName();
@@ -280,7 +280,7 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 				
 				if(!name1.equals(name2)){
 					
-					return new VBCompResult(VBResult.FAILED_WRONGNAME,StatCollector.translateToLocal("vcomp.work.wrongName"));
+					return new VBCompResult(VBResult.FAILED_WRONGNAME,"vcomp.work.wrongName");
 				}
 					
 				

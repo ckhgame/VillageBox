@@ -44,13 +44,13 @@ public class ProfessionLibrarian extends Profession {
         components.add(new VillagerCompAbout(villager));
 
             VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-            compBuy.addItem(Items.paper, 1, 10, 0);
-            compBuy.addItem(ModItems.itemCookingBookI, 1, 1, 0);
-            compBuy.addItem(ModItems.itemCookingBookII, 1, 1, 0);
-            compBuy.addItem(ModItems.itemAnimalBook, 1, 1, 0);
-            compBuy.addItem(ModItems.itemPlantBook, 1, 1, 0);
-            compBuy.addItem(ModItems.itemBuildingsBook, 1, 1, 0);
-            compBuy.addItem(ModItems.itemNPCBook, 1, 1, 0);
+            compBuy.addItem(Items.paper, 0);
+            compBuy.addItem(ModItems.itemCookingBookI, 0);
+            compBuy.addItem(ModItems.itemCookingBookII, 0);
+            compBuy.addItem(ModItems.itemAnimalBook, 0);
+            compBuy.addItem(ModItems.itemPlantBook, 0);
+            compBuy.addItem(ModItems.itemBuildingsBook, 0);
+            compBuy.addItem(ModItems.itemNPCBook, 0);
 
             components.add(compBuy);
             

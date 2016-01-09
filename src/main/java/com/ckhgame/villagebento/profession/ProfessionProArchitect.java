@@ -37,14 +37,14 @@ public class ProfessionProArchitect extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModBlocks.blockLargeMilitaryCamp, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockLargeTavern, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockLargeHotel, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockLargeCasino, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockLargeBakery, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockFlowerShop, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockPotionStore, 1, 1, 0);
-        compBuy.addItem(ModBlocks.blockPlayerFieldLarge, 1, 1, 0);
+        compBuy.addItem(ModBlocks.blockLargeMilitaryCamp, 0);
+        compBuy.addItem(ModBlocks.blockLargeTavern, 0);
+        compBuy.addItem(ModBlocks.blockLargeHotel, 0);
+        compBuy.addItem(ModBlocks.blockLargeCasino, 0);
+        compBuy.addItem(ModBlocks.blockLargeBakery, 0);
+        compBuy.addItem(ModBlocks.blockFlowerShop, 0);
+        compBuy.addItem(ModBlocks.blockPotionStore, 0);
+        compBuy.addItem(ModBlocks.blockPlayerFieldLarge, 0);
         components.add(compBuy);
 
 	}

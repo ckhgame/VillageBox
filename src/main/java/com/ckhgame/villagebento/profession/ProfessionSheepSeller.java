@@ -46,13 +46,13 @@ public class ProfessionSheepSeller extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModBlocks.blockSheep, 1, 1, 0);
-        compBuy.addItem(ModItems.itemSheepFood, 30, 50, 0);
-        compBuy.addItem(ModItems.itemSheepPotion, 3, 5, 0);
-        compBuy.addItem(ModItems.itemWoolShears, 1, 1, 0);
-        compBuy.addItem(ModItems.itemGauze, 30, 50, 0);
-        compBuy.addItem(ModItems.itemVillageWool, 5, 10, 0);
-        compBuy.addItem(Items.lead, 1, 2, 0);
+        compBuy.addItem(ModBlocks.blockSheep, 0);
+        compBuy.addItem(ModItems.itemSheepFood, 0);
+        compBuy.addItem(ModItems.itemSheepPotion, 0);
+        compBuy.addItem(ModItems.itemWoolShears, 0);
+        compBuy.addItem(ModItems.itemGauze, 0);
+        compBuy.addItem(ModItems.itemVillageWool, 0);
+        compBuy.addItem(Items.lead, 0);
 
         components.add(compBuy);
 

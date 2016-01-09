@@ -10,11 +10,14 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 
 public abstract class GuiVillagerDialog extends GuiScreen{
 
@@ -113,7 +116,7 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 	 */
 	public boolean updateWithVBCompResult(VBCompResult vbCompResult){
 		if(vbCompResult.chatContent != null && vbCompResult.chatContent != ""){
-			this.setDialogString(vbCompResult.chatContent);
+			this.setDialogString(StatCollector.translateToLocal(vbCompResult.chatContent));
 			return true;
 		}
 		return false;
@@ -243,7 +246,7 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 	 * 
 	 * @return true: the mouse is currenly on the item
 	 */
-	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack){
+	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack, String customText){
 		//item icon
 		int left = x + 2;
 		int top = y + 2;
@@ -257,11 +260,11 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		RenderHelper.enableGUIStandardItemLighting();
 		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left, top);
 		if(itemStack.getItem() == ModItems.itemVillageCurrency){
-			String num = "x" + itemStack.getItemDamage();
+			String num = "x" + (customText==null?itemStack.getItemDamage():customText);
 			fontRendererObj.drawString(num, left + 20, top + 6, 0xFFFFFFFF);
 		}
 		else{
-			String num = String.valueOf(itemStack.stackSize);
+			String num = customText==null?String.valueOf( (itemStack.stackSize)): customText;
 			itemRender.renderItemOverlayIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left, top, num);
 		}
 		
@@ -274,5 +277,12 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		
 		return true;
 	}
+	
+	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack){
+		return drawItem(mx,my,x,y,itemStack,null);
+	}
 
+	protected void playSound(String sound){
+		this.mc.getSoundHandler().playSound(PositionedSoundRecord.func_147674_a(new ResourceLocation(sound), 1.0F));
+	}
 }

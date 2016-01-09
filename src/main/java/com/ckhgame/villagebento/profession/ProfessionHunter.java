@@ -45,17 +45,17 @@ public class ProfessionHunter extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(Items.bow, 1, 1, 0);
-        compBuy.addItem(Items.arrow, 1, 99, 0);
-        compBuy.addItem(Items.leather, 1, 3, 0);
-        compBuy.addItem(Items.porkchop, 1, 2, 0);
-        compBuy.addItem(Items.beef, 1, 2, 0);
+        compBuy.addItem(Items.bow, 0);
+        compBuy.addItem(Items.arrow, 0);
+        compBuy.addItem(Items.leather, 0);
+        compBuy.addItem(Items.porkchop, 0);
+        compBuy.addItem(Items.beef, 0);
         components.add(compBuy);
         
         VillagerCompSell compSell = new VillagerCompSell(villager);
-        compSell.addItem(Items.stick, 8, 12, 0);
-        compSell.addItem(Items.feather, 5, 8, 0);
-        compSell.addItem(Items.bread, 1, 3, 0);
+        compSell.addItem(Items.stick, 0);
+        compSell.addItem(Items.feather, 0);
+        compSell.addItem(Items.bread, 0);
 
         components.add(compSell);
 

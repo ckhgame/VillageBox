@@ -8,6 +8,7 @@ import com.ckhgame.villagebento.util.data.VBParticles;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.ForgeHooks;
@@ -16,6 +17,21 @@ public class HelperPlayer {
 	
 	public static EntityPlayer getPlayer(String name){
 		return MinecraftServer.getServer().worldServerForDimension(0).getPlayerEntityByName(name);
+	}
+	
+	public static int getItemTotalInInventory(EntityPlayer entityPlayer, ItemStack itemStack){
+		int i;
+		InventoryPlayer ip = entityPlayer.inventory;
+
+		int num = 0;
+		
+		for (i = 0; i < ip.mainInventory.length; ++i) {
+			if (ip.mainInventory[i] != null && ip.mainInventory[i].isItemEqual(itemStack)) {
+				num += ip.mainInventory[i].stackSize;
+			}
+		}
+		
+		return num;
 	}
 	
 	public static boolean playerHasItemStack(EntityPlayer entityPlayer, ItemStack itemStack) {

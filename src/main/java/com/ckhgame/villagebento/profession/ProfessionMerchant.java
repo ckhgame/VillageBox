@@ -36,9 +36,9 @@ public class ProfessionMerchant extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(Items.glass_bottle, 1, 10, 0);
-        compBuy.addItem(Items.potionitem, 1, 3, 3);
-        compBuy.addItem(Items.experience_bottle, 1, 1, 8);
+        compBuy.addItem(Items.glass_bottle, 0);
+        compBuy.addItem(Items.potionitem, 3);
+        compBuy.addItem(Items.experience_bottle, 8);
         components.add(compBuy);
 
 	}
