@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.block;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.building.Building;
+import com.ckhgame.villagebento.config.ConfigBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.network.VBNetwork;
 import com.ckhgame.villagebento.network.message.MessageVillageOutlinesChanged;
@@ -12,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class BlockVillageBuilding extends Block {
@@ -49,7 +51,37 @@ public class BlockVillageBuilding extends Block {
 		if(!world.isRemote || world.provider.dimensionId !=0){
 			//the player must be very close to the block to use it
 			if(player.getDistance(x, y, z) < 1.5){
-				if(Building.build(world, player, x, y, z, this.buildingClass,hasOwner)){
+				
+				int sizeType = Building.registry.get(this.buildingClass).getSizeType();
+				int xs = 0;
+				switch(sizeType){
+				case ConfigBuilding.SizeType_Small:
+					xs = ConfigBuilding.GroundWorkSmallSizeX;
+					break;
+				case ConfigBuilding.SizeType_Medium:
+					xs = ConfigBuilding.GroundWorkMediumSizeX;
+					break;
+				case ConfigBuilding.SizeType_Large:
+					xs = ConfigBuilding.GroundWorkLargeSizeX;
+					break;
+				}
+				
+				int bx = x;
+				int by = y;
+				int bz = z;
+				
+				Vec3 lv = player.getLookVec();
+				if(Math.abs(lv.xCoord) >= Math.abs(lv.yCoord)){
+					if(lv.xCoord < 0) bx -= xs;
+					else bx += xs;
+				}
+				else{
+					if(lv.zCoord < 0) bz -= xs;
+					else bz += xs;
+				}
+				
+				if(Building.build(world, player, bx, by, bz, this.buildingClass,hasOwner)){
+					
 					//refresh village outlines
 					DataVillageBento dataVB = DataVillageBento.get();			
 					MessageVillageOutlinesChanged msg = new MessageVillageOutlinesChanged();
