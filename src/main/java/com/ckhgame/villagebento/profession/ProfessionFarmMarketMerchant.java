@@ -53,7 +53,7 @@ public class ProfessionFarmMarketMerchant extends Profession {
         compSell.addItem(ModItems.itemChili, 0);
         compSell.addItem(ModItems.itemCabbage, 0);
         compSell.addItem(ModItems.itemGrapes, 0);
-        compSell.addItem(ModItems.itemRice, 0);
+        compSell.addItem(ModItems.itemRiceplant, 0);
         compSell.addItem(ModItems.itemSoybeans, 0);
         components.add(compSell);
 

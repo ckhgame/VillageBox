@@ -51,13 +51,13 @@ public class ProfessionVillageElder extends Profession {
         design.addNeeds(Items.apple, 2, 0);
         design.addNeeds(Blocks.log, 5, 0);
         design.addNeeds(Blocks.log, 5, 1);
+        design.addRewards(ModItems.itemVillageCurrency, 1, 40);
         design.addRewards(ModItems.itemVillageCurrency, 1, 50);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 70);
         compQuest.addQuestDesign(design);
         
         design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.quest1"),0);
         design.addNeeds(Items.rotten_flesh, 5, 0);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 100);
+        design.addRewards(ModItems.itemVillageCurrency, 1, 50);
         compQuest.addQuestDesign(design);
         
         components.add(compQuest);

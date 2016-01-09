@@ -42,7 +42,6 @@ public class ProfessionPastureMarketMerchant extends Profession {
         VillagerCompSell compSell = new VillagerCompSell(villager);
         compSell.addItem(Items.egg, 0);
         compSell.addItem(Blocks.wool, 0);
-        compSell.addItem(ModItems.itemBottleOfMilk,0);
         compSell.addItem(ModItems.itemVillageEgg, 0);
         compSell.addItem(ModItems.itemVillageHeartEgg, 0);
         compSell.addItem(ModItems.itemVillageSilverEgg, 0);

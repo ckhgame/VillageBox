@@ -105,6 +105,11 @@ public class EntityVBCow extends EntityVBAnimal
 			}
 			else{
 				this.feedAnimal(24000);
+				--food.stackSize;
+                if (food.stackSize <= 0)
+                {
+                    player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
+                }
 			}		
 			return true;
 		}

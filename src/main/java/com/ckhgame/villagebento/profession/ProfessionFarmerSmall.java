@@ -85,7 +85,7 @@ public class ProfessionFarmerSmall extends Profession {
 		
 		this.levelRequirements[1] = new ItemStack[]{	new ItemStack(ModItems.itemCorn,24),
 																						new ItemStack(ModItems.itemCabbage,24),
-																						new ItemStack(ModItems.itemRice,24)};
+																						new ItemStack(ModItems.itemRiceplant,24)};
 		
 	}
 

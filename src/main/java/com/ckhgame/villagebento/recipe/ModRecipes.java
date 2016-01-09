@@ -225,6 +225,9 @@ public class ModRecipes {
 				'B',ModItems.itemGrapes,
 				'C',Items.glass_bottle);
 		
+		//riceplant -> rice
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemRice), new ItemStack(ModItems.itemRiceplant));
+		
 		//village wool -> 2 wool
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wool,6), new ItemStack(ModItems.itemVillageWool));
 		
