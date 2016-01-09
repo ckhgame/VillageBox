@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL12;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.tool.VBRandom;
 
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.FontRenderer;
@@ -283,6 +284,6 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 	}
 
 	protected void playSound(String sound){
-		this.mc.getSoundHandler().playSound(PositionedSoundRecord.func_147674_a(new ResourceLocation(sound), 1.0F));
+		this.mc.getSoundHandler().playSound(PositionedSoundRecord.func_147674_a(new ResourceLocation(sound), ((VBRandom.getRand().nextFloat() - VBRandom.getRand().nextFloat()) * 0.7F + 1.0F) * 2.0F));
 	}
 }
