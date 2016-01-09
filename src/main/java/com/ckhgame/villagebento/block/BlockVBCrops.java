@@ -8,6 +8,7 @@ import java.util.Random;
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.config.ConfigFarming;
 import com.ckhgame.villagebento.tileentity.TileEntityVBCrops;
+import com.ckhgame.villagebento.util.tool.VBRandom;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -165,7 +166,12 @@ public class BlockVBCrops extends BlockContainer implements IPlantable
      */
     public int quantityDropped(Random p_149745_1_)
     {
-        return 1;
+    	int r = VBRandom.getRand().nextInt(6);
+    	int q = 1;
+    	if(r < 3) q= 1;
+    	else if(r < 5) q = 2;
+    	else if(r < 6) q = 3;
+        return q;
     }
 
     /**
