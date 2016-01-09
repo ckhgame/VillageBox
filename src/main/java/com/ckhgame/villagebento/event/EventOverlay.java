@@ -9,19 +9,21 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 
 public class EventOverlay {
 	
 	@SubscribeEvent
     public void overlayEventPost(RenderGameOverlayEvent.Post event) {
-		Minecraft mc = Minecraft.getMinecraft();
-		int w = event.resolution.getScaledWidth();
-		int h = event.resolution.getScaledHeight();
-		String text = VBDataTime.getDataTimeString();
-		int tw = mc.fontRenderer.getStringWidth(text);
-		drawFieldBackground(w / 2 - tw / 2 - 2,2,tw + 4,10);
-		mc.fontRenderer.drawString(text, w / 2 - tw / 2, 3, 0xFFFFFFFF);
-		
+		if(event.type == ElementType.ALL){
+			Minecraft mc = Minecraft.getMinecraft();
+			int w = event.resolution.getScaledWidth();
+			int h = event.resolution.getScaledHeight();
+			String text = VBDataTime.getDataTimeString();
+			int tw = mc.fontRenderer.getStringWidth(text);
+			drawFieldBackground(w / 2 - tw / 2 - 2,2,tw + 4,10);
+			mc.fontRenderer.drawString(text, w / 2 - tw / 2, 3, 0xFFFFFFFF);
+		}
     }
 	
 	private void drawFieldBackground(int left,int top,int width,int height){
