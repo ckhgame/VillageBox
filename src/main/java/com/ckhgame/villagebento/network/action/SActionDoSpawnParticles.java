@@ -60,7 +60,8 @@ public class SActionDoSpawnParticles extends Action {
 		
 		Entity entity = world.getEntityByID(entityID);
 		
-		VBParticles.spawnParticle(world,entity, fxid, x, y, z);
+		if(entity != null)
+			VBParticles.spawnParticle(world,entity, fxid, x, y, z);
 		
 		return null;
 	}

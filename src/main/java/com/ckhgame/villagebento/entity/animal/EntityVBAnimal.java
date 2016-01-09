@@ -33,6 +33,10 @@ public abstract class EntityVBAnimal extends EntityAgeable
     	else return AnimStateSick;
     }
     
+    public boolean needFeed(){
+    	return (this.getAnimStateValue() < 20000);
+    }
+    
     public void feedAnimal(int foodValue){
     	if(foodValue < 0){
     		System.out.println("food value can not be < 0");
@@ -151,6 +155,12 @@ public abstract class EntityVBAnimal extends EntityAgeable
         	sv -= deltaTime;
         	this.setAnimStateValue(sv);
         }
+        else{
+        	//effect
+        	if(this.getAnimState() == AnimStateSick){
+        		this.worldObj.spawnParticle("mobSpell", this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + 0.0D + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, 0.699999988079071D, 0.699999988079071D, 0.6999999761581421D);
+        	}
+        }
     }
     
     /**
@@ -261,7 +271,9 @@ public abstract class EntityVBAnimal extends EntityAgeable
     		return true;
     	}
 
-    	return super.interact(p_70085_1_);
+    	return true;
+    	
+    	//return super.interact(p_70085_1_);
     }
     
     @Override

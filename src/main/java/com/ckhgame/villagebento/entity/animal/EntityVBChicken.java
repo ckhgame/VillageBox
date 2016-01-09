@@ -1,6 +1,7 @@
 package com.ckhgame.villagebento.entity.animal;
 
 import com.ckhgame.villagebento.item.ModItems;
+import com.ckhgame.villagebento.util.data.VBParticles;
 import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import net.minecraft.block.Block;
@@ -135,9 +136,13 @@ public class EntityVBChicken extends EntityVBAnimal
 		if(food.getItem() == ModItems.itemChickenFood){
 			int s = this.getAnimState();
 			if(s == AnimStateSick){
-				PlayerMsg.send(player, this.getCommandSenderName() + "is sick and doesn't like to eat anything!");
+				PlayerMsg.send(player, this.getCommandSenderName() + " is sick and doesn't like to eat anything!");
+			}
+			else if(!this.needFeed()){
+				PlayerMsg.send(player, this.getCommandSenderName() + " is not feeling hungry!");
 			}
 			else{
+				VBParticles.spawnParticleFromServer(this, VBParticles.Fx_Heart, this.posX, this.posY, this.posZ);
 				this.feedAnimal(24000);
 				--food.stackSize;
                 if (food.stackSize <= 0)
@@ -153,7 +158,13 @@ public class EntityVBChicken extends EntityVBAnimal
 				PlayerMsg.send(player, this.getCommandSenderName() + " is not sick!");
 			}
 			else{
+				VBParticles.spawnParticleFromServer(this, VBParticles.Fx_Happy, this.posX, this.posY, this.posZ);
 				this.setAnimStateValue(-12000);
+				--food.stackSize;
+                if (food.stackSize <= 0)
+                {
+                    player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
+                }
 			}
 		}
 		

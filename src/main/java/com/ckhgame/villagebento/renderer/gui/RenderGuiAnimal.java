@@ -23,7 +23,7 @@ public class RenderGuiAnimal extends RenderGuiLiving{
 	private ResourceLocation texProduct;
 	private ResourceLocation texFood;
 	
-	private GuiSprite food,state,heart,products;
+	private GuiSprite food,state,stateBack,heart,products;
 	
 	public RenderGuiAnimal(ResourceLocation textProduct,ResourceLocation textFood){
 		this.texProduct = textProduct;
@@ -54,12 +54,22 @@ public class RenderGuiAnimal extends RenderGuiLiving{
 		case EntityVBAnimal.AnimStateSad:state.resource = texAnimSad;break;
 		case EntityVBAnimal.AnimStateSick:state.resource = texAnimSick;break;
 		}
+		
+		int v = entity.getAnimStateValue();
+		float f = 0.95F;
+		if(v > 0){
+			f = 0.05F + v * 0.9F / 24000;
+		}
+		state.height = 8.0D * f;
+		state.vmin = 1.0D - f;
 	}
 
 	@Override
 	protected void init() {    
 		super.init();
 		heart = this.addSprite(-12, 8, 8, 8, texHeart0);
+		stateBack = this.addSprite(-4, 8, 8, 8, texAnimHappy);
+		stateBack.r = 0.5F;stateBack.g = 0.5F;stateBack.b = 0.5F;
 		state = this.addSprite(-4, 8, 8, 8, texAnimHappy);
 		products = this.addSprite(4, 8, 8, 8, texProduct);
 	}
