@@ -91,7 +91,6 @@ public class EntityFishHookVB extends Entity
         this.field_146048_h = -1;
         this.field_146050_i = -1;
         this.ignoreFrustumCheck = true;
-        System.out.println("Client:" + p_i1766_1_.isRemote + "set player!!!!1222222");
         this.field_146042_b = p_i1766_2_;
         PlayerFishHookVB.set(this.field_146042_b, this);
         this.setSize(0.25F, 0.25F);
@@ -474,6 +473,7 @@ public class EntityFishHookVB extends Entity
                         {
                             this.field_146040_ay = MathHelper.getRandomIntegerInRange(this.rand, 100, 900);
                             this.field_146040_ay -= EnchantmentHelper.func_151387_h(this.field_146042_b) * 20 * 5;
+                            this.field_146040_ay -= fishSpeedUp();
                         }
                     }
 
@@ -583,9 +583,11 @@ public class EntityFishHookVB extends Entity
 
     private ItemStack func_146033_f()
     {
-    	if(true)
-    		return new ItemStack(Items.apple,1);
+    	ItemStack chest = this.fishedChest();
+    	if(chest != null)
+    		return chest;
     	
+    	//if it isn't chest, then move to the default list
         float f = this.worldObj.rand.nextFloat();
         int i = EnchantmentHelper.func_151386_g(this.field_146042_b);
         int j = EnchantmentHelper.func_151387_h(this.field_146042_b);
@@ -634,6 +636,34 @@ public class EntityFishHookVB extends Entity
         {
         	PlayerFishHookVB.set(this.field_146042_b, null);
         }
+    }
+    
+    private ItemStack fishedChest(){
+    	int r = this.rand.nextInt(100);
+    	if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodIron){
+    		if(r < 20) return new ItemStack(ModItems.itemWoodBox);
+    		else return null;
+    	}
+    	else if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodGold){
+    		if(r < 15) return new ItemStack(ModItems.itemWoodBox);
+    		else if(r < 10) return new ItemStack(ModItems.itemIronBox);
+    		else return null;
+    	}
+    	else if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodDiamond){
+    		if(r < 15) return new ItemStack(ModItems.itemIronBox);
+    		else if(r < 10) return new ItemStack(ModItems.itemGoldenBox);
+    		else return null;
+    	}
+    	return null;
+    }
+    
+    private int fishSpeedUp(){
+    	//5 * 20 ==> 5s
+    	int l = 0;
+    	if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodIron) l = 3;
+    	else if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodGold) l = 4;
+    	else if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodDiamond) l = 6;
+    	return l * 5 * 20;
     }
     
     

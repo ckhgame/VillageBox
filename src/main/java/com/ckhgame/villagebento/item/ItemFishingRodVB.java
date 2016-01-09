@@ -6,6 +6,7 @@ import com.ckhgame.villagebento.util.data.PlayerFishHookVB;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -83,11 +84,15 @@ public class ItemFishingRodVB extends Item
         this.theIcon = p_94581_1_.registerIcon(this.getIconString() + "_cast");
     }
 
-    @SideOnly(Side.CLIENT)
-    public IIcon func_94597_g()
-    {
-        return this.theIcon;
-    }
+    
+    
+    @Override
+	public IIcon getIconFromDamage(int p_77617_1_) {
+    	if(PlayerFishHookVB.get(Minecraft.getMinecraft().thePlayer) != null)
+    		return this.theIcon;
+    	else
+    		return this.itemIcon;
+	}
 
     /**
      * Checks isDamagable and if it cannot be stacked

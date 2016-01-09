@@ -191,9 +191,9 @@ public class ModItems {
         GameRegistry.registerItem(itemVodka = new ItemVB("ItemVodka",null,CreativeTabs.tabFood),"ItemVodka");
         
         //Fishing
-        GameRegistry.registerItem(itemWoodBox = new ItemVB("ItemWoodBox",null,CreativeTabs.tabMisc),"ItemWoodBox");
-        GameRegistry.registerItem(itemIronBox = new ItemVB("ItemIronBox",null,CreativeTabs.tabMisc),"ItemIronBox");
-        GameRegistry.registerItem(itemGoldenBox = new ItemVB("ItemGoldenBox",null,CreativeTabs.tabMisc),"ItemGoldenBox");
+        GameRegistry.registerItem(itemWoodBox = new ItemVBChest("ItemWoodBox",null,CreativeTabs.tabMisc,ItemVBChest.randChestWood),"ItemWoodBox");
+        GameRegistry.registerItem(itemIronBox = new ItemVBChest("ItemIronBox",null,CreativeTabs.tabMisc,ItemVBChest.randChestIron),"ItemIronBox");
+        GameRegistry.registerItem(itemGoldenBox = new ItemVBChest("ItemGoldenBox",null,CreativeTabs.tabMisc,ItemVBChest.randChestGolden),"ItemGoldenBox");
         GameRegistry.registerItem(itemFishingRodIron = new ItemFishingRodVB("ItemFishingRodIron"), "ItemFishingRodIron");
         GameRegistry.registerItem(itemFishingRodGold = new ItemFishingRodVB("ItemFishingRodGold"), "ItemFishingRodGold");
         GameRegistry.registerItem(itemFishingRodDiamond = new ItemFishingRodVB("ItemFishingRodDiamond"), "ItemFishingRodDiamond");
