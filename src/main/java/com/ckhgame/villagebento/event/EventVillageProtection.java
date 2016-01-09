@@ -44,6 +44,9 @@ public class EventVillageProtection {
 	 @SubscribeEvent
     public void blockPlaceEvent(BlockEvent.PlaceEvent event)
     {	 
+		if(event.world.isRemote)
+			 return;
+		
 		if(event.world.provider.dimensionId != 0)
 			return;
 		 
@@ -67,6 +70,9 @@ public class EventVillageProtection {
 	@SubscribeEvent
     public void blockBreakEvent(BlockEvent.BreakEvent event)
     {
+		if(event.world.isRemote)
+			 return;
+		
 		if(event.world.provider.dimensionId != 0)
 			return;
 		
@@ -89,6 +95,9 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
 	public void onExplosionStart(ExplosionEvent.Start event) {		
+		if(event.world.isRemote)
+			 return;
+		
 		if(event.world.provider.dimensionId != 0)
 			return;
 		
@@ -113,6 +122,9 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
     public void entityInteractEvent(EntityInteractEvent event) {	
+		if(event.target.worldObj.isRemote)
+			 return;
+		
 		if(event.target.worldObj.provider.dimensionId != 0)
 			return;
 		
@@ -134,6 +146,9 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
     public void entityAttackEvent(AttackEntityEvent event) {	
+		if(event.target.worldObj.isRemote)
+			 return;		
+		
 		if(event.target.worldObj.provider.dimensionId != 0)
 			return;
 		
@@ -155,6 +170,9 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
     public void blockInteractEvent(PlayerInteractEvent event) {	
+		if(event.world.isRemote)
+			 return;
+		
 		if(event.world.provider.dimensionId != 0)
 			return;
 		
@@ -215,6 +233,8 @@ public class EventVillageProtection {
 	
 	@SubscribeEvent
     public void fillBucketEvent(FillBucketEvent event) {
+		if(event.world.isRemote)
+			 return;
 		
 		DataVillageBento dataVB = DataVillageBento.get();
 		
