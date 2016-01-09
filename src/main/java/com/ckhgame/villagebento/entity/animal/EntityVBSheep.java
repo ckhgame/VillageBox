@@ -161,7 +161,16 @@ public class EntityVBSheep extends EntityVBAnimal
 			
 			if(this.hasProduct()){
 				this.harvestProdcut();
-				this.dropItem(ModItems.itemVillageWool, 1);
+				
+				int n = 1;
+				int r = this.rand.nextInt(this.getAnimLoveLevel() * 10);
+				if(r < 15) n = 1;
+				else if(r < 30) n = 2;
+				else n = 3;
+				
+				for(int i =0;i<n;i++)
+					this.dropItem(ModItems.itemVillageWool, 1);
+				
 				this.playSound("mob.sheep.shear", 1.0F, 1.0F);
 			}
 		}

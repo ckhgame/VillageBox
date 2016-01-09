@@ -176,25 +176,35 @@ public class EntityVBChicken extends EntityVBAnimal
 		if(tool == null || tool.getItem() == ModItems.itemChickenGloves){ // hands
 			
 			if(this.hasProduct()){
+				System.out.println("PPP: " + this.hasProduct());
 				this.harvestProdcut();
+				System.out.println("PPP: " + this.hasProduct());
+				int n = 1;
+				int r = this.rand.nextInt(this.getAnimLoveLevel() * 10);
+				if(r < 15) n = 1;
+				else if(r < 30) n = 2;
+				else n = 3;
 				
-				if(tool == null)
-					this.dropItem(ModItems.itemVillageEgg, 1);
-				else{
-					int r = this.getRNG().nextInt(100);
-					if(r < 80){
-						this.dropItem(ModItems.itemVillageHeartEgg, 1);
-					}
-					else if(r < 90){
-						this.dropItem(ModItems.itemVillageSilverEgg, 1);
-					}
-					else if(r < 95){
-						this.dropItem(ModItems.itemVillageGoldenEgg, 1);
-					}
-					else if(r < 100){
-						this.dropItem(ModItems.itemVillageEasterEgg, 1);
+				for(int i =0;i<n;i++){
+					if(tool == null)
+						this.dropItem(ModItems.itemVillageEgg, 1);
+					else{
+						r = this.getRNG().nextInt(100);
+						if(r < 80){
+							this.dropItem(ModItems.itemVillageHeartEgg, 1);
+						}
+						else if(r < 90){
+							this.dropItem(ModItems.itemVillageSilverEgg, 1);
+						}
+						else if(r < 95){
+							this.dropItem(ModItems.itemVillageGoldenEgg, 1);
+						}
+						else if(r < 100){
+							this.dropItem(ModItems.itemVillageEasterEgg, 1);
+						}
 					}
 				}
+				
 			}
 		}
 		return false;

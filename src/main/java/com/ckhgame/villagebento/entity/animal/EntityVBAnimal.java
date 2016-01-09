@@ -124,7 +124,7 @@ public abstract class EntityVBAnimal extends EntityAgeable
         		//update animal product
         		this.productTimer += deltaTime;
         		if(this.productTimer >= productTimeTotal){
-        			this.productTimer -= productTimeTotal;
+        			this.productTimer %= productTimeTotal;
         			this.generateProduct();
         		}
         	}       	
