@@ -284,7 +284,9 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 				}
 					
 				
-				player.inventory.addItemStackToInventory(this.output);
+				if(!player.inventory.addItemStackToInventory(this.output)){
+					player.dropPlayerItemWithRandomChoice(this.output, false);
+				}
 				this.output = null;
 				this.workIdx = -1;
 				

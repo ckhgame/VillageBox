@@ -177,7 +177,9 @@ public class VillagerCompQuest extends VillagerComponent {
 			HelperPlayer.addCurrency(player, quest.reward.getItemDamage());
 		}
 		else{
-			player.inventory.addItemStackToInventory(quest.reward);
+			if(!player.inventory.addItemStackToInventory(quest.reward)){
+				player.dropPlayerItemWithRandomChoice(quest.reward, false);
+			}
 		}
 		
 		this.questListCurrent.remove(quest);

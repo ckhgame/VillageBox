@@ -115,7 +115,10 @@ public class HelperPlayer {
 			if (currency < 0) {
 				return false;
 			} else {
-				ip.addItemStackToInventory(new ItemStack(ModItems.itemVillageCurrency, 1, currency));
+				ItemStack itemStackCurreny = new ItemStack(ModItems.itemVillageCurrency, 1, currency);
+				if(!ip.addItemStackToInventory(new ItemStack(ModItems.itemVillageCurrency, 1, currency))){
+					entityPlayer.dropPlayerItemWithRandomChoice(itemStackCurreny, false);
+				}
 				return true;
 			}
 

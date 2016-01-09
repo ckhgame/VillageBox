@@ -34,7 +34,9 @@ public class VillagerCompBuy extends VillagerCompItemList {
 		for(ItemStack itemStack : itemStacks ){
 			if(itemStack.isItemEqual(itemBuy)){
 				if(HelperPlayer.addCurrency(player,-ItemPrice.getBuyPrice(itemBuy.getItem()) * itemBuy.stackSize)){
-					player.inventory.addItemStackToInventory(itemBuy);			
+					if(!player.inventory.addItemStackToInventory(itemBuy)){
+						player.dropPlayerItemWithRandomChoice(itemBuy, false);
+					}
 					return VBCompResult.getDefaultSuccess();
 				}
 				else
