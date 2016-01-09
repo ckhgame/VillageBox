@@ -87,4 +87,8 @@ public class ConfigData {
 	//tile entity crops
 	public static final String KeyCropsGrowingTimer					= "cgt";
 	public static final String KeyCropsUpdateTimer					= "cut";
+	
+	//entity building indicator
+	public static final String KeyBuildingIndicatorSizeX			= "bisx";
+	public static final String KeyBuildingIndicatorSizeZ		= "bisz";
 }

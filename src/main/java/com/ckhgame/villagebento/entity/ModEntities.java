@@ -6,6 +6,9 @@ import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.entity.misc.EntityBlockMountable;
+import com.ckhgame.villagebento.entity.misc.EntityBuildingIndicatorLarge;
+import com.ckhgame.villagebento.entity.misc.EntityBuildingIndicatorMedium;
+import com.ckhgame.villagebento.entity.misc.EntityBuildingIndicatorSmall;
 import com.ckhgame.villagebento.entity.misc.EntityFishHookVB;
 import com.ckhgame.villagebento.entity.villager.EntityVBGuard;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
@@ -23,9 +26,13 @@ public class ModEntities {
         EntityRegistry.registerModEntity(EntityVBSheep.class, "EntityVBSheep", id++, Main.instance, 80, 3, true);
         EntityRegistry.registerModEntity(EntityVBCow.class, "EntityVBCow", id++, Main.instance, 80, 3, true);
         
-        EntityRegistry.registerModEntity(EntityBlockMountable.class, "EntityBlockMountable", id++, Main.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityBlockMountable.class, "EntityBlockMountable", id++, Main.instance, 64, 1, false);
         
         EntityRegistry.registerModEntity(EntityFishHookVB.class,"EntityFishHookVB", id++, Main.instance, 64,5,true);
+        
+        EntityRegistry.registerModEntity(EntityBuildingIndicatorSmall.class,"EntityBuildingIndicatorSmall", id++, Main.instance, 64,1,false);
+        EntityRegistry.registerModEntity(EntityBuildingIndicatorMedium.class,"EntityBuildingIndicatorMedium", id++, Main.instance, 64,1,false);
+        EntityRegistry.registerModEntity(EntityBuildingIndicatorLarge.class,"EntityBuildingIndicatorLarge", id++, Main.instance, 64,1,false);
         
         //entity manager
         VBVillagerMgr.get().init();

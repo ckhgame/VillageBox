@@ -3,6 +3,7 @@ package com.ckhgame.villagebento.renderer;
 import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
+import com.ckhgame.villagebento.entity.misc.EntityBuildingIndicator;
 import com.ckhgame.villagebento.entity.misc.EntityFishHookVB;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.renderer.block.RenderBlockCustom;
@@ -24,6 +25,8 @@ public class ModRenderers {
 		RenderingRegistry.registerEntityRenderingHandler(EntityVBCow.class, new RenderVBCow());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityFishHookVB.class, new RenderFishVB());
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityBuildingIndicator.class, new RenderVBBuildingIndicator());
 		
 		renderBlockCustom = new  RenderBlockCustom();
 		RenderingRegistry.registerBlockHandler(renderBlockCustom);
