@@ -574,6 +574,9 @@ public class EntityVBVillager extends EntityAgeable {
 				DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(), this.getBuildingID());
 				db.returnBed(this.bedIdx);
 			}
+			
+			//death message
+			PlayerMsg.sendToAll(this.getName() + "died is killed by " + p_70645_1_.getDamageType());
 		}
 	}
 
