@@ -70,17 +70,24 @@ public class BlockCustom extends BlockContainer {
 		}
 	}
 
-	@Override
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-		this.tileEntityBlockCustom = (this.model == null?null: new TileEntityBlockCustom());
-		if(this.tileEntityBlockCustom != null){
-			this.tileEntityBlockCustom.setModel(this.model);
-			this.tileEntityBlockCustom.setTexture(this.texture);
+	public TileEntityBlockCustom createOrGetTileEntity(){
+		if(tileEntityBlockCustom == null){
+			this.tileEntityBlockCustom = (this.model == null?null: new TileEntityBlockCustom());
+			if(this.tileEntityBlockCustom != null){
+				this.tileEntityBlockCustom.setModel(this.model);
+				this.tileEntityBlockCustom.setTexture(this.texture);
+			}
 		}
+		
 		return this.tileEntityBlockCustom;
 	}
 	
+	@Override
+	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+		return createOrGetTileEntity();
+	}
+	
 	public TileEntityBlockCustom getTileEntityBlockCustom(){
-		return this.tileEntityBlockCustom;
+		return this.createOrGetTileEntity();
 	}
 }
