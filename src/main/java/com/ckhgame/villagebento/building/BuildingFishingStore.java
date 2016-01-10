@@ -61,14 +61,15 @@ public class BuildingFishingStore extends Building {
 		bb.buildBlock(-4,0,2,Blocks.planks,1);bb.buildBlock(-4,0,3,Blocks.planks,1);bb.buildBlock(-4,0,4,Blocks.planks,1);
 		bb.buildBlock(-3,0,-4,Blocks.planks,1);bb.buildBlock(-3,0,-1,Blocks.planks,1);bb.buildBlock(-3,0,2,Blocks.bed,0);
 		bb.buildBlock(-3,0,3,Blocks.bed,8);bb.buildBlock(-3,0,4,Blocks.planks,1);bb.buildBlock(-2,0,-4,Blocks.planks,1);
-		bb.buildBlock(-2,0,-1,Blocks.wooden_door,1);bb.buildBlock(-2,0,3,Blocks.trapped_chest,2);bb.buildBlock(-2,0,4,Blocks.planks,1);bb.buildBlock(-1,0,-4,Blocks.planks,1);bb.buildBlock(-1,0,-1,Blocks.planks,1);
-		bb.buildBlock(-1,0,3,Blocks.trapped_chest,2);bb.buildBlock(-1,0,4,Blocks.planks,1);bb.buildBlock(0,0,-4,Blocks.planks,1);bb.buildBlock(0,0,-2,Blocks.planks,2);
+		bb.buildBlock(-2,0,-1,Blocks.wooden_door,1);bb.buildBlock(-2,0,3,Blocks.chest,2);bb.buildBlock(-2,0,4,Blocks.planks,1);bb.buildBlock(-1,0,-4,Blocks.planks,1);bb.buildBlock(-1,0,-1,Blocks.planks,1);
+		bb.buildBlock(-1,0,3,Blocks.chest,2);bb.buildBlock(-1,0,4,Blocks.planks,1);bb.buildBlock(0,0,-4,Blocks.planks,1);bb.buildBlock(0,0,-2,Blocks.planks,2);
 		bb.buildBlock(0,0,-1,Blocks.planks,2);bb.buildBlock(0,0,0,Blocks.planks,1);bb.buildBlock(0,0,1,Blocks.planks,1);
 		bb.buildBlock(0,0,2,Blocks.planks,1);bb.buildBlock(0,0,3,Blocks.planks,1);bb.buildBlock(0,0,4,Blocks.planks,1);
-		bb.buildBlock(1,0,-4,Blocks.planks,1);bb.buildBlock(1,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(1,0,4,Blocks.planks,1);bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,4,Blocks.planks,1);
-		bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,-3,Blocks.flower_pot,1);bb.addTileEntityPot(3,0,-3,38,1);
+		bb.buildBlock(1,0,-4,Blocks.planks,1);bb.buildBlock(1,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(1,0,4,Blocks.planks,1);bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,3,Blocks.planks,0);
+		bb.buildBlock(2,0,4,Blocks.planks,1);bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,-3,Blocks.flower_pot,1);
+		bb.addTileEntityPot(3,0,-3,38,1);
 		bb.buildBlock(3,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);bb.buildBlock(4,0,-3,Blocks.planks,1);
-		bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.wooden_door,2);bb.buildBlock(4,0,0,Blocks.planks,1);
+		bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.wooden_door,6);bb.buildBlock(4,0,0,Blocks.planks,1);
 		bb.buildBlock(4,0,1,Blocks.planks,1);bb.buildBlock(4,0,2,Blocks.planks,1);bb.buildBlock(4,0,3,Blocks.planks,1);
 		bb.buildBlock(4,0,4,Blocks.planks,1);bb.buildBlock(-4,1,-4,Blocks.planks,1);bb.buildBlock(-4,1,-3,Blocks.planks,1);
 		bb.buildBlock(-4,1,-2,Blocks.planks,1);bb.buildBlock(-4,1,-1,Blocks.planks,1);bb.buildBlock(-4,1,0,Blocks.planks,1);
@@ -166,13 +167,13 @@ public class BuildingFishingStore extends Building {
 		bb.buildBlock(-1,3,0,Blocks.torch,2);bb.buildBlock(-1,3,3,Blocks.torch,2);bb.buildBlock(0,3,-1,Blocks.torch,1);
 		bb.buildBlock(1,3,2,Blocks.torch,1);bb.buildBlock(3,3,-2,Blocks.torch,2);bb.buildBlock(3,3,2,Blocks.torch,2);
 		bb.addEntityPainting(-2,2,4,2,"Aztec2");
-		bb.addEntityItemFrame(-1,2,-1,3,ModItems.itemFishingRodIron);
-		bb.addEntityItemFrame(0,2,2,3,Items.fish);
-		bb.addEntityItemFrame(0,1,2,3,Items.fish);
-		bb.addEntityItemFrame(0,1,1,3,Items.fish);
-		bb.addEntityItemFrame(0,2,1,3,Items.fish);
-		bb.addEntityItemFrame(-1,1,-1,3,Items.fishing_rod);
-		bb.addEntityItemFrame(4,1,0,3,ModBlocks.blockFishingStore);
+		bb.addEntityItemFrame(-1,2,-1,3,ModItems.itemFishingRodIron,0);
+		bb.addEntityItemFrame(-1,1,-1,3,Items.fishing_rod,0);
+		bb.addEntityItemFrame(4,1,0,3,ModBlocks.blockFishingStore,0);
+		bb.addEntityItemFrame(0,2,2,3,Items.fish,3);
+		bb.addEntityItemFrame(0,1,2,3,Items.fish,1);
+		bb.addEntityItemFrame(0,1,1,3,Items.fish,0);
+		bb.addEntityItemFrame(0,2,1,3,Items.fish,2);
 	}
 
 }

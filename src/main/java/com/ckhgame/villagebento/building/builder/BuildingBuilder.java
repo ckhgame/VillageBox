@@ -166,15 +166,23 @@ public class BuildingBuilder {
 	}
 	
 	public void addEntityItemFrame(int dx, int dy, int dz, int dir, Item item){
-		Vec3Int fv = getFinalPos(dx,dy,dz);
-		EntityItemFrame eItemFrame = new EntityItemFrame(world,data.x + fv.x, data.y + fv.y, data.z + fv.z,
-														FixDirection.fix(EntityItemFrame.class, dir, facing));
-		eItemFrame.setDisplayedItem(new ItemStack(item));
-		world.spawnEntityInWorld(eItemFrame);
+		addEntityItemFrame(dx,dy,dx,dir,item,0);
 	}
 	
 	public void addEntityItemFrame(int dx, int dy, int dz, int dir, Block block){
-		addEntityItemFrame(dx,dy,dz,dir,Item.getItemFromBlock(block));
+		addEntityItemFrame(dx,dy,dz,dir,block, 0);
+	}
+	
+	public void addEntityItemFrame(int dx, int dy, int dz, int dir, Item item, int meta){
+		Vec3Int fv = getFinalPos(dx,dy,dz);
+		EntityItemFrame eItemFrame = new EntityItemFrame(world,data.x + fv.x, data.y + fv.y, data.z + fv.z,
+														FixDirection.fix(EntityItemFrame.class, dir, facing));
+		eItemFrame.setDisplayedItem(new ItemStack(item,1,meta));
+		world.spawnEntityInWorld(eItemFrame);
+	}
+	
+	public void addEntityItemFrame(int dx, int dy, int dz, int dir, Block block, int meta){
+		addEntityItemFrame(dx,dy,dz,dir,Item.getItemFromBlock(block), meta);
 	}
 
 	public void removeBuildingEntities(){

@@ -184,6 +184,7 @@ public class BlockBuildingScanner extends Block {
 					EntityItemFrame eItemFrame = (EntityItemFrame)e;
 					ItemStack itemStack = eItemFrame.getDisplayedItem();
 					int itemID = itemStack == null?-1:Item.getIdFromItem(itemStack.getItem());
+					int meta = itemStack == null? 0:itemStack.getItemDamage();
 					String path = null;
 					Block block = (Block)Block.blockRegistry.getObjectById(itemID);
 					if(block != null && block != Blocks.air){
@@ -193,9 +194,9 @@ public class BlockBuildingScanner extends Block {
 						Item item = Item.getItemById(itemID);
 						path = HelperScanning.getInstancePath(item);
 					}				
-					System.out.format("bb.addEntityItemFrame(%d,%d,%d,%d,%s);\n",	
+					System.out.format("bb.addEntityItemFrame(%d,%d,%d,%d,%s,%d);\n",	
 							eItemFrame.field_146063_b - prefab.bX,eItemFrame.field_146064_c - prefab.bY,eItemFrame.field_146062_d - prefab.bZ,
-							eItemFrame.hangingDirection,path);
+							eItemFrame.hangingDirection,path,meta);
 				}
 			}
 			
