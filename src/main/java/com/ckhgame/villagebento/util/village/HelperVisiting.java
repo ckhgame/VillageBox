@@ -19,9 +19,13 @@ import net.minecraft.util.Vec3;
 public class HelperVisiting {
 	public static Vec3 findNextMovingTargetInBuilding(int buildingID){
 		
+		// ============= notice ==============
+		// if canVisitorRandomWalking is disabled, only buildings has 
+		// mountable objects(such as wooden chairs) will be visited...
+		
 		Vec3 p = null;
 		
-		//find a random mountable 
+		//find a random mountable  
 		DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(), buildingID);
 		if(db != null){
 			Vec3Int v  = db.getRandomAvailableMoutable();
@@ -40,23 +44,15 @@ public class HelperVisiting {
 	public static void startRandomVisiting(EntityVBVillager villager){
 		int r = villager.getRNG().nextInt(100);
 		
-		if(r < 30) { //%30 chances go to taverns... 
+		if(r < 30) { //%25 chances go to taverns... 
 			startVisitRandomTavern(villager);
 		}
-		else{ //%70
+		else if(r < 40){ //%45 changes go to square
 			startVisitRandomSquare(villager);
 		}
-		
-//		if(r < 20) { //%20 chances go to taverns... 
-//			startVisitRandomTavern(villager);
-//		}
-//		else if(r < 60){ //%40
-//			startVisitRandomSquare(villager);
-//		}
-//		else{ //%40
-//			startVisitRandomBuilding(villager);
-//		}
-			
+		else{
+			startVisitRandomBuilding(villager);
+		}	
 	}
 	
 	private static void startVisitRandomTavern(EntityVBVillager villager){

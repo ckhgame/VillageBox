@@ -24,55 +24,14 @@ public class VillagerCompAbout extends VillagerComponent {
 		super(entityVillager);
 	}
 
-	private String currentlyDoing = "";
 	
-	public void freshCurrentlyDoing(){
-		
-		if(this.getVillager().isVisiting()){
-			DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(),this.getVillager().getVisitingBuildingID());
-			if(db != null){
-				Building b = Building.registry.get(db.type);
-				this.setCurrentlyDoing("Visiting " + b.getName());
-				return;
-			}
-		}
-		
-		Profession pro = this.getVillager().getProfession();
-		if(pro.getTimeSchedule().isSleepTimeNow()){
-			this.setCurrentlyDoing("Going to sleep..");
-			return;
-		}
-		
-		if(pro.getTimeSchedule().isWorkTimeNow()){
-			this.setCurrentlyDoing("Working...");
-			return;
-		}
-		
-		if(this.getVillager() instanceof EntityVBGuard){
-			this.setCurrentlyDoing("Patrolling...");
-			return;
-		}
-		
-		this.setCurrentlyDoing("Relaxing...");
-	}
-	
-	public String getCurrentlyDoing(){
-		return this.currentlyDoing;
-	}
-	
-	private void setCurrentlyDoing(String doing){
-		this.currentlyDoing = doing;
-	}
 	
 	@Override
 	public void syneWrite(ByteBuf buf) {
-		freshCurrentlyDoing();
-		ByteBufUtils.writeUTF8String(buf, currentlyDoing);
 	}
 
 	@Override
 	public void syneRead(ByteBuf buf) {
-		currentlyDoing = ByteBufUtils.readUTF8String(buf);
 	}
 	
 	@Override

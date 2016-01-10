@@ -8,6 +8,7 @@ import com.ckhgame.villagebento.ai.villager.VillagerAIVisitMount;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchInteractTarget;
+import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigDev;
 import com.ckhgame.villagebento.config.ConfigVillager;
@@ -604,10 +605,11 @@ public class EntityVBVillager extends EntityAgeable {
 	private void debugUpdate(){
 		if(!this.worldObj.isRemote){
 			if(this.getNavigator().noPath())
-				setDebugText("No Path");
+				setDebugText("No Path, " + this.getCurrentlyDoing());
 			else{
 				PathPoint p = this.getNavigator().getPath().getFinalPathPoint();
-				setDebugText(String.format("Move to %d, %d, %d", p.xCoord, p.yCoord, p.zCoord));
+				
+				setDebugText(String.format("Move to %d,%d,%d, %s", p.xCoord, p.yCoord, p.zCoord, this.getCurrentlyDoing()));
 			}
 		}
 	}
@@ -622,5 +624,33 @@ public class EntityVBVillager extends EntityAgeable {
 	
 	public String getDebugText(){
 		return this.dataWatcher.getWatchableObjectString(31);
+	}
+	
+private String currentlyDoing = "";
+	
+	public String getCurrentlyDoing(){
+		
+		if(this.isVisiting()){
+			DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(),this.getVisitingBuildingID());
+			if(db != null){
+				Building b = Building.registry.get(db.type);
+				return "Visiting " + b.getName();
+			}
+		}
+		
+		Profession pro = this.getProfession();
+		if(pro.getTimeSchedule().isSleepTimeNow()){
+			return "Going to sleep..";
+		}
+		
+		if(pro.getTimeSchedule().isWorkTimeNow()){
+			return "Working...";
+		}
+		
+		if(this instanceof EntityVBGuard){
+			return "Patrolling..";
+		}
+		
+		return "Wandering...";
 	}
 }
