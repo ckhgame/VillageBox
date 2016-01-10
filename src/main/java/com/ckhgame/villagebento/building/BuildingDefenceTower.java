@@ -27,8 +27,6 @@ public class BuildingDefenceTower extends Building {
 	@Override
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
-		//add villager
-		bb.addVillager(ProfessionMarksman.class,-1,0 );
 	}
 
 	@Override
@@ -110,7 +108,7 @@ public class BuildingDefenceTower extends Building {
 		bb.buildBlock(3,8,-3,Blocks.stonebrick,0);bb.buildBlock(3,8,-2,Blocks.fence,0);bb.buildBlock(3,8,-1,Blocks.fence,0);
 		bb.buildBlock(3,8,0,Blocks.fence,0);bb.buildBlock(3,8,1,Blocks.fence,0);bb.buildBlock(3,8,2,Blocks.fence,0);
 		bb.buildBlock(3,8,3,Blocks.stonebrick,0);bb.buildBlock(-3,9,-3,Blocks.stonebrick,0);bb.buildBlock(-3,9,3,Blocks.stonebrick,0);
-		bb.buildBlock(0,9,1,Blocks.bed,9);bb.buildBlock(1,9,1,Blocks.bed,1);bb.buildBlock(3,9,-3,Blocks.stonebrick,0);
+		bb.buildBlock(3,9,-3,Blocks.stonebrick,0);
 		bb.buildBlock(3,9,3,Blocks.stonebrick,0);bb.buildBlock(-3,10,-3,Blocks.stonebrick,0);bb.buildBlock(-3,10,3,Blocks.stonebrick,0);
 		bb.buildBlock(3,10,-3,Blocks.stonebrick,0);bb.buildBlock(3,10,3,Blocks.stonebrick,0);bb.buildBlock(-3,11,-3,Blocks.stonebrick,0);
 		bb.buildBlock(-3,11,-2,Blocks.fence,0);bb.buildBlock(-3,11,-1,Blocks.fence,0);bb.buildBlock(-3,11,0,Blocks.fence,0);

@@ -29,7 +29,7 @@ public class BuildingSmallBakery extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addVillager(ProfessionNoviceBaker.class,1,2);
+		bb.addVillager(ProfessionNoviceBaker.class,-1,-2);
 	}
 
 	@Override

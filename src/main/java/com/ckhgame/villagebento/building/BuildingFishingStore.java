@@ -30,7 +30,7 @@ public class BuildingFishingStore extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addVillager(ProfessionFisherman.class,-1,-1 );
+		bb.addVillager(ProfessionFisherman.class,-1,-2 );
 	}
 
 	@Override
