@@ -206,6 +206,7 @@ public class BuildingVillageCenter extends Building {
 		bb.buildBlock(-3,5,0,Blocks.torch,4);bb.buildBlock(0,5,0,Blocks.torch,4);bb.buildBlock(3,5,0,Blocks.torch,4);
 		bb.addEntityPainting(0,2,1,0,"Plant");
 		bb.addEntityPainting(2,2,1,2,"Creebet");
+		bb.addEntityItemFrame(4,1,0,3,ModBlocks.blockVillageCenter);
 	}
 
 }
