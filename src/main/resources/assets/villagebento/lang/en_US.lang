@@ -50,6 +50,9 @@ tile.BlockTeaChair.name=Tea Party Garden
 tile.BlockRosePath.name=Rose Path Park
 tile.BlockRoseBridge.name=Rose Bridge Park
 
+tile.BlockWineShelf.name=Wine Shelf
+tile.BlockWineBucket.name=Wine Bucket
+
 #--------------------------------
 #  Items
 #--------------------------------

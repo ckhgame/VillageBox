@@ -123,6 +123,10 @@ public final class ModBlocks {
     public static BlockVBCrops blockCorn;
     public static BlockVBCrops blockGrapes;
     
+    //decorations
+    public static BlockTopSides blockWineShelf;
+    public static BlockTopSides blockWineBucket;
+    
     //furniture
     //mountable
     public static BlockMountable blockWoodenChair;
@@ -199,6 +203,10 @@ public final class ModBlocks {
        	GameRegistry.registerBlock(blockSoybeans = new BlockVBCrops("BlockSoybeans","ItemSoybeanSeed","ItemSoybeans"),"BlockSoybeans");
        	GameRegistry.registerBlock(blockCorn = new BlockVBCrops("BlockCorn","ItemCornSeed","ItemCorn"),"BlockCorn");
        	GameRegistry.registerBlock(blockGrapes = new BlockVBCrops("BlockGrapes","ItemGrapeSeed","ItemGrapes"),"BlockGrapes");
+       	
+       	//decoration
+       	GameRegistry.registerBlock(blockWineShelf = new BlockTopSides("BlockWineShelf"),"BlockWineShelf");
+       	GameRegistry.registerBlock(blockWineBucket = new BlockTopSides("BlockWineBucket"),"BlockWineBucket");
        	
        	//furniture
        	// ** mountable
