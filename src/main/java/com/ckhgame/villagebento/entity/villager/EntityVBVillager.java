@@ -440,7 +440,7 @@ public class EntityVBVillager extends EntityAgeable {
 		if (this.getDistanceSqToEntity(p_70085_1_) <= ConfigVillager.MaxInteractDistanceSq) {
 			if (this.isSleeping()) {
 				if (this.worldObj.isRemote)
-					PlayerMsg.send(p_70085_1_, "This villager is sleeping now...");
+					PlayerMsg.sendTranslation(p_70085_1_, "villagebento.msg.villagerIsSleeping", this.getName());
 			} else {
 				if (this.worldObj.isRemote) {
 					this.openVillagerGui();
@@ -451,7 +451,7 @@ public class EntityVBVillager extends EntityAgeable {
 			}
 		} else {
 			if (this.worldObj.isRemote)
-				PlayerMsg.send(p_70085_1_, "too far from the villager..");
+				PlayerMsg.sendTranslation(p_70085_1_, "villagebento.msg.villagerTooFar");
 		}
 
 		return true;
@@ -576,7 +576,7 @@ public class EntityVBVillager extends EntityAgeable {
 			}
 			
 			//death message
-			PlayerMsg.sendToAll(this.getName() + "died is killed by " + p_70645_1_.getDamageType());
+			PlayerMsg.sendToAllTranslation("villagebento.msg.villagerDeathMessage",this.getName(),p_70645_1_.getDamageType());
 		}
 	}
 

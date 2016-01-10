@@ -33,7 +33,7 @@ public class BlockVillagerHomeTP extends Block {
 				HelperDataVB.tpEntityVillagersInbuildingToInitPos(db);
 			}
 			else{
-				PlayerMsg.send(player, "You can't use it here!");
+				PlayerMsg.sendTranslation(player, "villagebento.msg.itemCantUse");
 			}
 		}	
 		return true;

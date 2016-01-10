@@ -142,11 +142,11 @@ public class BlockVillageBuilding extends Block {
 					VBNetwork.networkWrapper.sendToAll(msg);
 				}
 				else{
-					PlayerMsg.send(player, "Sorry, You can't build it here!");
+					PlayerMsg.sendTranslation(player, "villagebento.msg.buildingCantBuild");
 				}
 			} 
 			else{
-				PlayerMsg.send(player, "Please get closer to the block");
+				PlayerMsg.sendTranslation(player, "villagebento.msg.buildingCloserToBlock");
 			}
 		}	
 		return true;

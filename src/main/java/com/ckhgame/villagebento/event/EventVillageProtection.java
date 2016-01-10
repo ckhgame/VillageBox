@@ -190,7 +190,7 @@ public class EventVillageProtection {
 				if(HelperDataVB.isNearVillage(dv,x,z,s)){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
 						if(HelperDataVB.isNearBuilding(db,x,y,z,s)){
-							PlayerMsg.send(event.entityPlayer, "Can not set fire near any village building...");
+							PlayerMsg.sendTranslation(event.entityPlayer, "villagebento.msg.cantSetFire");
 							event.setCanceled(true);
 							return;
 						}
@@ -206,7 +206,7 @@ public class EventVillageProtection {
 				if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
 						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
-							PlayerMsg.send(event.entityPlayer, "You can't hang it here!");
+							PlayerMsg.sendTranslation(event.entityPlayer, "villagebento.msg.cantHang");
 							event.setCanceled(true);
 							return;
 						}
@@ -221,7 +221,7 @@ public class EventVillageProtection {
 				if(HelperDataVB.isInVillage(dv,event.x,event.z)){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
 						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
-							PlayerMsg.send(event.entityPlayer, "It's not your chest!");
+							PlayerMsg.sendTranslation(event.entityPlayer, "villagebento.msg.notMyChest");
 							event.setCanceled(true);
 							return;
 						}
@@ -242,7 +242,7 @@ public class EventVillageProtection {
 			if(HelperDataVB.isInVillage(dv,event.target.blockX,event.target.blockZ)){
 				for(DataBuilding db : dv.mapDataBuilding.values()){
 					if(HelperDataVB.isInBuilding(db,event.target.blockX,event.target.blockY,event.target.blockZ)){
-						PlayerMsg.send(event.entityPlayer, "Bukkets are not allowed here....");
+						PlayerMsg.sendTranslation(event.entityPlayer, "villagebento.msg.bucketNotAllowed");
 						event.setCanceled(true);
 						return;
 					}

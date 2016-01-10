@@ -24,7 +24,7 @@ public class EventPlayerBedSleep {
 					for(DataBuilding db : dv.mapDataBuilding.values()){
 						if(HelperDataVB.isInBuilding(db,event.x,event.y,event.z)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
 							event.result = EnumStatus.OTHER_PROBLEM;
-							PlayerMsg.send(event.entityPlayer, "It's not your bed!");
+							PlayerMsg.sendTranslation(event.entityPlayer, "villagebento.msg.notMyBed");
 							return;
 						}
 					}

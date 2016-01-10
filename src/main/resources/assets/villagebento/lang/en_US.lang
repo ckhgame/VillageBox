@@ -400,3 +400,31 @@ villager.casinoMgr.chat2=Want to test your luck?
 villager.farmer.actionDialog=Test my luck
 villager.farmer.action0=Test my luck(bet:20)
 villager.farmer.action1=Test my luck(bet:100)
+
+# --------------------------------
+# Messages
+# --------------------------------
+
+villagebento.msg.villagerDeathMessage=%s has been killed by %s.
+villagebento.msg.villagerIsSleeping=%s is sleeping now...
+villagebento.msg.villagerTooFar=I'm to far away.
+
+villagebento.msg.animalFeedWhenSick=%s is sick and doesn't like to eat anything...
+villagebento.msg.animalFeedNotHungery=%s is not  hungry...
+villagebento.msg.animalIsntSick=%s isn't sick..
+villagebento.msg.animalRecoved=%s is recovered!!
+villagebento.msg.animalCantSpawn=I can't spawn it here.
+
+villagebento.msg.buildingCantBuild=I can't build it here.
+villagebento.msg.buildingCloserToBlock=I have to get closer to the block.
+
+villagebento.msg.itemCantUse=I can't use it here.
+
+villagebento.msg.TravelerArrived=A traveler has arrived.
+villagebento.msg.TravelerDeparted=A traveler has departed.
+
+villagebento.msg.notMyBed=It's not my bed, I can't sleep on it..
+villagebento.msg.notMyChest=It's not my chest, I'd better not open it.
+villagebento.msg.cantSetFire=Can't set fire near other's home.
+villagebento.msg.cantHang=Can't hang anything on other's home.
+villagebento.msg.bucketNotAllowed=Buckets are not allowed to use on here.

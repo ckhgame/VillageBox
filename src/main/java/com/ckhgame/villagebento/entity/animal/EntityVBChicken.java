@@ -136,10 +136,10 @@ public class EntityVBChicken extends EntityVBAnimal
 		if(food.getItem() == ModItems.itemChickenFood){
 			int s = this.getAnimState();
 			if(s == AnimStateSick){
-				PlayerMsg.send(player, this.getCommandSenderName() + " is sick and doesn't like to eat anything!");
+				PlayerMsg.sendTranslation(player, "villagebento.msg.animalFeedWhenSick", this.getCommandSenderName());
 			}
 			else if(!this.needFeed()){
-				PlayerMsg.send(player, this.getCommandSenderName() + " is not feeling hungry!");
+				PlayerMsg.sendTranslation(player, "villagebento.msg.animalFeedNotHungery", this.getCommandSenderName());
 			}
 			else{
 				VBParticles.spawnParticleFromServer(this, VBParticles.Fx_Heart, this.posX, this.posY, this.posZ);
@@ -155,10 +155,11 @@ public class EntityVBChicken extends EntityVBAnimal
 		else if(food.getItem() == ModItems.itemChickenPotion){
 			int s = this.getAnimState();
 			if(s != AnimStateSick){
-				PlayerMsg.send(player, this.getCommandSenderName() + " is not sick!");
+				PlayerMsg.sendTranslation(player, "villagebento.msg.animalIsntSick", this.getCommandSenderName());
 			}
 			else{
 				VBParticles.spawnParticleFromServer(this, VBParticles.Fx_Happy, this.posX, this.posY, this.posZ);
+				PlayerMsg.sendTranslation(player, "villagebento.msg.animalRecoved", this.getCommandSenderName());
 				this.setAnimStateValue(-12000);
 				--food.stackSize;
                 if (food.stackSize <= 0)

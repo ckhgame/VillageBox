@@ -62,7 +62,7 @@ public class BlockVillageAnimal extends Block {
 				world.setBlockToAir(x, y, z);
 			}
 			else{
-				PlayerMsg.send(player, "Sorry, You can't spawn it here!");
+				PlayerMsg.sendTranslation(player, "villagebento.msg.animalCantSpawn");
 			}
 		}
 	}

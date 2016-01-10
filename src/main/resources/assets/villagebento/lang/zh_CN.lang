@@ -400,3 +400,31 @@ villager.casinoMgr.chat2=想要测试你的运气么？
 villager.farmer.actionDialog=试试手气
 villager.farmer.action0=试试运气(赌注:20)
 villager.farmer.action1=测试运气(赌注:100)
+
+# --------------------------------
+# Messages
+# --------------------------------
+
+villagebento.msg.villagerDeathMessage=%s 被 %s 杀死了.
+villagebento.msg.villagerIsSleeping=%s 正在呼呼大睡...
+villagebento.msg.villagerTooFar=我离的太远了.
+
+villagebento.msg.animalFeedWhenSick=%s 生病了，一点都不想吃东西...
+villagebento.msg.animalFeedNotHungery=%s 一点也不饿...
+villagebento.msg.animalIsntSick=%s 没有生病..
+villagebento.msg.animalRecoved=%s 恢复了!!
+villagebento.msg.animalCantSpawn=我不能在这里释放它.
+
+villagebento.msg.buildingCantBuild=我不能在这里建造.
+villagebento.msg.buildingCloserToBlock=我离得太远了.
+
+villagebento.msg.itemCantUse=我不能在这里使用它.
+
+villagebento.msg.TravelerArrived=一位旅行者刚刚抵达.
+villagebento.msg.TravelerDeparted=一位旅行者离开了.
+
+villagebento.msg.notMyBed=我不能睡别人的床.
+villagebento.msg.notMyChest=我不能随便开别人的箱子.
+villagebento.msg.cantSetFire=我不能在别人家附近放火.
+villagebento.msg.cantHang=我不能在别人家里挂东西.
+villagebento.msg.bucketNotAllowed=这里不允许用水桶.

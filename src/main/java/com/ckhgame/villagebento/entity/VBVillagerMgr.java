@@ -94,7 +94,7 @@ public class VBVillagerMgr {
 			VBVillagerMgr.get().removeVillager(villager);
 			DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(), villager.getBuildingID());
 			db.returnBed(villager.bedIdx);
-			PlayerMsg.sendToAll(villager.getName() + "Has departed!");
+			PlayerMsg.sendToAllTranslation("villagebento.msg.TravelerDeparted");
 		}
 		
 	}
@@ -155,7 +155,7 @@ public class VBVillagerMgr {
 	    						if(villager != null){
 	    							villager.bedIdx = bedIdx;
 	    							villager.setTraveler(ConfigVillage.TravelerStayTime);
-	    							PlayerMsg.sendToAll("A Traveler has arrived!");
+	    							PlayerMsg.sendToAllTranslation("villagebento.msg.TravelerArrived");
 	    						}
 	    						else{
 	    							db.returnBed(bedIdx);

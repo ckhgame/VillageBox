@@ -3,13 +3,14 @@ package com.ckhgame.villagebento.util.village;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChatComponentTranslation;
 
-public class PlayerMsg {
-	public static void send(EntityPlayer player,String text){
-		player.addChatMessage(new ChatComponentText("[to " + player.getDisplayName() + "]: " + text));
+public class PlayerMsg {	
+	public static void sendTranslation(EntityPlayer player, String unlocalized,Object... params){
+		player.addChatMessage(new ChatComponentTranslation(unlocalized, params));
 	}
 	
-	public static void sendToAll(String text){
-		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentText(text));
+	public static void sendToAllTranslation(String unlocalized, Object... params){
+		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(unlocalized, params));
 	}
 }
