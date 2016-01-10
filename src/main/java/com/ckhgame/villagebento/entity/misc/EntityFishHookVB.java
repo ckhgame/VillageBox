@@ -641,17 +641,17 @@ public class EntityFishHookVB extends Entity
     private ItemStack fishedChest(){
     	int r = this.rand.nextInt(100);
     	if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodIron){
-    		if(r < 20) return new ItemStack(ModItems.itemWoodBox);
+    		if(r < 20) return new ItemStack(ModItems.itemIronBox);
     		else return null;
     	}
     	else if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodGold){
-    		if(r < 15) return new ItemStack(ModItems.itemWoodBox);
-    		else if(r < 10) return new ItemStack(ModItems.itemIronBox);
+    		if(r < 10) return new ItemStack(ModItems.itemIronBox);
+    		else if(r < 10) return new ItemStack(ModItems.itemGoldenBox);
     		else return null;
     	}
     	else if(this.field_146042_b.getHeldItem().getItem() == ModItems.itemFishingRodDiamond){
-    		if(r < 15) return new ItemStack(ModItems.itemIronBox);
-    		else if(r < 10) return new ItemStack(ModItems.itemGoldenBox);
+    		if(r < 15) return new ItemStack(ModItems.itemGoldenBox);
+    		else if(r < 5) return new ItemStack(ModItems.itemDiamondBox);
     		else return null;
     	}
     	return null;

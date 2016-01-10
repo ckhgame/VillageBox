@@ -87,8 +87,8 @@ public class ModItems {
 	
 	//Fishing
 	public static Item itemIronBox;
-	public static Item itemWoodBox;
 	public static Item itemGoldenBox;
+	public static Item itemDiamondBox;
 	public static Item itemFishingRodIron;
 	public static Item itemFishingRodGold;
 	public static Item itemFishingRodDiamond;
@@ -191,9 +191,9 @@ public class ModItems {
         GameRegistry.registerItem(itemVodka = new ItemVB("ItemVodka",null,CreativeTabs.tabFood),"ItemVodka");
         
         //Fishing
-        GameRegistry.registerItem(itemWoodBox = new ItemVBChest("ItemWoodBox",null,CreativeTabs.tabMisc,ItemVBChest.randChestWood),"ItemWoodBox");
         GameRegistry.registerItem(itemIronBox = new ItemVBChest("ItemIronBox",null,CreativeTabs.tabMisc,ItemVBChest.randChestIron),"ItemIronBox");
         GameRegistry.registerItem(itemGoldenBox = new ItemVBChest("ItemGoldenBox",null,CreativeTabs.tabMisc,ItemVBChest.randChestGolden),"ItemGoldenBox");
+        GameRegistry.registerItem(itemDiamondBox = new ItemVBChest("ItemDiamondBox",null,CreativeTabs.tabMisc,ItemVBChest.randChestDiamond),"ItemDiamondBox");
         GameRegistry.registerItem(itemFishingRodIron = new ItemFishingRodVB("ItemFishingRodIron"), "ItemFishingRodIron");
         GameRegistry.registerItem(itemFishingRodGold = new ItemFishingRodVB("ItemFishingRodGold"), "ItemFishingRodGold");
         GameRegistry.registerItem(itemFishingRodDiamond = new ItemFishingRodVB("ItemFishingRodDiamond"), "ItemFishingRodDiamond");
