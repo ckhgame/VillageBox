@@ -31,7 +31,7 @@ public class BuildingMiningHouse extends Building {
 		// TODO Auto-generated method stub
 		//add villager
 		bb.addVillager(ProfessionMiner.class,1,2 );
-		bb.addVillager(ProfessionMinerAssistant.class,-1,0 );
+		bb.addVillager(ProfessionMinerAssistant.class,1,0 );
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class BuildingSheepShop extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addVillager(ProfessionSheepSeller.class,0,0 );
+		bb.addVillager(ProfessionSheepSeller.class,-1,1 );
 	}
 
 	@Override

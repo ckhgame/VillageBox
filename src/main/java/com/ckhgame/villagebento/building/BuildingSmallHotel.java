@@ -28,7 +28,7 @@ public class BuildingSmallHotel extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addVillager(ProfessionHotelOwner.class,-1,1);
+		bb.addVillager(ProfessionHotelOwner.class,0,-1);
 	}
 
 	@Override

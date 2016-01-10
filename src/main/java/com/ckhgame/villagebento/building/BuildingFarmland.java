@@ -29,8 +29,8 @@ public class BuildingFarmland extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addVillager(ProfessionFarmer.class,0,0 );
-		bb.addVillager(ProfessionFarmerSmall.class,0,1 );
+		bb.addVillager(ProfessionFarmer.class,1,0 );
+		bb.addVillager(ProfessionFarmerSmall.class,2,-4 );
 	}
 
 	@Override
@@ -122,8 +122,8 @@ public class BuildingFarmland extends Building {
 		bb.buildBlock(-6,0,-4,Blocks.planks,1);bb.buildBlock(-6,0,-3,Blocks.planks,1);bb.buildBlock(-6,0,-2,Blocks.planks,1);
 		bb.buildBlock(-6,0,1,Blocks.fence,0);bb.buildBlock(-6,0,2,Blocks.fence,0);bb.buildBlock(-6,0,3,Blocks.fence,0);
 		bb.buildBlock(-6,0,4,Blocks.fence,0);bb.buildBlock(-6,0,5,Blocks.fence,0);bb.buildBlock(-6,0,6,Blocks.fence,0);
-		bb.buildBlock(-6,0,7,Blocks.fence,0);bb.buildBlock(-5,0,-6,Blocks.planks,1);bb.buildBlock(-5,0,-5,Blocks.bed,9);
-		bb.buildBlock(-5,0,-4,Blocks.chest,5);bb.buildBlock(-5,0,-3,Blocks.bed,9);bb.buildBlock(-5,0,-2,Blocks.planks,1);bb.buildBlock(-5,0,1,Blocks.fence,0);
+		bb.buildBlock(-6,0,7,Blocks.fence,0);bb.buildBlock(-5,0,-6,Blocks.planks,1);bb.buildBlock(-5,0,-4,Blocks.chest,5);
+		bb.buildBlock(-5,0,-3,Blocks.bed,9);bb.buildBlock(-5,0,-2,Blocks.planks,1);bb.buildBlock(-5,0,1,Blocks.fence,0);
 		bb.buildBlock(-5,0,2,Blocks.wheat,7);bb.buildBlock(-5,0,3,Blocks.wheat,7);bb.buildBlock(-5,0,4,Blocks.wheat,7);
 		bb.buildBlock(-5,0,5,Blocks.wheat,7);bb.buildBlock(-5,0,6,Blocks.fence,0);bb.buildBlock(-5,0,7,Blocks.fence,0);
 		bb.buildBlock(-4,0,-6,Blocks.planks,1);bb.buildBlock(-4,0,-5,Blocks.bed,1);bb.buildBlock(-4,0,-4,Blocks.carpet,14);
@@ -152,37 +152,34 @@ public class BuildingFarmland extends Building {
 		bb.buildBlock(3,0,1,Blocks.fence,0);bb.buildBlock(3,0,2,Blocks.wheat,7);bb.buildBlock(3,0,3,Blocks.wheat,7);
 		bb.buildBlock(3,0,4,Blocks.wheat,7);bb.buildBlock(3,0,5,Blocks.wheat,7);bb.buildBlock(3,0,6,Blocks.fence,0);
 		bb.buildBlock(3,0,7,Blocks.fence,0);bb.buildBlock(4,0,-6,Blocks.planks,1);bb.buildBlock(4,0,-2,Blocks.wooden_door,3);
-		bb.buildBlock(4,0,6,Blocks.fence,0);bb.buildBlock(4,0,7,Blocks.fence,0);bb.buildBlock(5,0,-6,Blocks.planks,1);
-		bb.buildBlock(5,0,-2,Blocks.planks,1);bb.buildBlock(5,0,1,Blocks.fence,0);bb.buildBlock(5,0,2,Blocks.wheat,7);
-		bb.buildBlock(5,0,3,Blocks.wheat,7);bb.buildBlock(5,0,4,Blocks.wheat,7);bb.buildBlock(5,0,5,Blocks.wheat,7);
-		bb.buildBlock(5,0,6,Blocks.fence,0);bb.buildBlock(5,0,7,Blocks.fence,0);bb.buildBlock(6,0,-6,Blocks.planks,1);
-		bb.buildBlock(6,0,-5,Blocks.wooden_door,6);bb.buildBlock(6,0,-4,Blocks.wooden_door,2);bb.buildBlock(6,0,-3,Blocks.planks,1);
-		bb.buildBlock(6,0,-2,Blocks.planks,1);bb.buildBlock(6,0,1,Blocks.fence,0);bb.buildBlock(6,0,2,Blocks.fence,0);
-		bb.buildBlock(6,0,3,Blocks.fence,0);bb.buildBlock(6,0,4,Blocks.fence,0);bb.buildBlock(6,0,5,Blocks.fence,0);
-		bb.buildBlock(6,0,6,Blocks.fence,0);bb.buildBlock(6,0,7,Blocks.fence,0);bb.buildBlock(7,0,-2,Blocks.fence,0);
-		bb.buildBlock(7,0,-1,Blocks.fence,0);bb.buildBlock(7,0,0,Blocks.fence,0);bb.buildBlock(7,0,1,Blocks.fence,0);
-		bb.buildBlock(7,0,2,Blocks.fence,0);bb.buildBlock(7,0,3,Blocks.fence,0);bb.buildBlock(7,0,4,Blocks.fence,0);
-		bb.buildBlock(7,0,5,Blocks.fence,0);bb.buildBlock(7,0,6,Blocks.fence,0);bb.buildBlock(7,0,7,Blocks.fence,0);
-		bb.buildBlock(-6,1,-6,Blocks.planks,1);bb.buildBlock(-6,1,-5,Blocks.planks,1);bb.buildBlock(-6,1,-4,Blocks.planks,1);
-		bb.buildBlock(-6,1,-3,Blocks.planks,1);bb.buildBlock(-6,1,-2,Blocks.planks,1);bb.buildBlock(-6,1,1,Blocks.fence,0);
-		bb.buildBlock(-6,1,2,Blocks.fence,0);bb.buildBlock(-6,1,3,Blocks.fence,0);bb.buildBlock(-6,1,4,Blocks.fence,0);
-		bb.buildBlock(-6,1,5,Blocks.fence,0);bb.buildBlock(-6,1,6,Blocks.fence,0);bb.buildBlock(-5,1,-6,Blocks.planks,1);
-		bb.buildBlock(-5,1,-2,Blocks.planks,1);bb.buildBlock(-5,1,1,Blocks.fence,0);bb.buildBlock(-5,1,6,Blocks.fence,0);
-		bb.buildBlock(-4,1,-6,Blocks.planks,1);bb.buildBlock(-4,1,-2,Blocks.planks,1);bb.buildBlock(-4,1,1,Blocks.fence,0);
-		bb.buildBlock(-4,1,6,Blocks.fence,0);bb.buildBlock(-3,1,-6,Blocks.planks,1);bb.buildBlock(-3,1,-2,Blocks.wooden_door,9);
-		bb.buildBlock(-3,1,1,Blocks.fence,0);bb.buildBlock(-3,1,6,Blocks.fence,0);bb.buildBlock(-2,1,-6,Blocks.planks,1);
-		bb.buildBlock(-2,1,-2,Blocks.planks,1);bb.buildBlock(-2,1,1,Blocks.fence,0);bb.buildBlock(-2,1,6,Blocks.fence,0);
+		bb.buildBlock(4,0,1,Blocks.fence,0);bb.buildBlock(4,0,6,Blocks.fence,0);bb.buildBlock(4,0,7,Blocks.fence,0);
+		bb.buildBlock(5,0,-6,Blocks.planks,1);bb.buildBlock(5,0,-2,Blocks.planks,1);bb.buildBlock(5,0,1,Blocks.fence,0);
+		bb.buildBlock(5,0,2,Blocks.wheat,7);bb.buildBlock(5,0,3,Blocks.wheat,7);bb.buildBlock(5,0,4,Blocks.wheat,7);
+		bb.buildBlock(5,0,5,Blocks.wheat,7);bb.buildBlock(5,0,6,Blocks.fence,0);bb.buildBlock(5,0,7,Blocks.fence,0);
+		bb.buildBlock(6,0,-6,Blocks.planks,1);bb.buildBlock(6,0,-5,Blocks.wooden_door,2);bb.buildBlock(6,0,-4,Blocks.wooden_door,2);
+		bb.buildBlock(6,0,-3,Blocks.planks,1);bb.buildBlock(6,0,-2,Blocks.planks,1);bb.buildBlock(6,0,1,Blocks.fence,0);
+		bb.buildBlock(6,0,2,Blocks.fence,0);bb.buildBlock(6,0,3,Blocks.fence,0);bb.buildBlock(6,0,4,Blocks.fence,0);
+		bb.buildBlock(6,0,5,Blocks.fence,0);bb.buildBlock(6,0,6,Blocks.fence,0);bb.buildBlock(6,0,7,Blocks.fence,0);
+		bb.buildBlock(7,0,-2,Blocks.fence,0);bb.buildBlock(7,0,-1,Blocks.fence,0);bb.buildBlock(7,0,0,Blocks.fence,0);
+		bb.buildBlock(7,0,1,Blocks.fence,0);bb.buildBlock(7,0,2,Blocks.fence,0);bb.buildBlock(7,0,3,Blocks.fence,0);
+		bb.buildBlock(7,0,4,Blocks.fence,0);bb.buildBlock(7,0,5,Blocks.fence,0);bb.buildBlock(7,0,6,Blocks.fence,0);
+		bb.buildBlock(7,0,7,Blocks.fence,0);bb.buildBlock(-6,1,-6,Blocks.planks,1);bb.buildBlock(-6,1,-5,Blocks.planks,1);
+		bb.buildBlock(-6,1,-4,Blocks.planks,1);bb.buildBlock(-6,1,-3,Blocks.planks,1);bb.buildBlock(-6,1,-2,Blocks.planks,1);
+		bb.buildBlock(-6,1,1,Blocks.fence,0);bb.buildBlock(-6,1,2,Blocks.fence,0);bb.buildBlock(-6,1,3,Blocks.fence,0);
+		bb.buildBlock(-6,1,4,Blocks.fence,0);bb.buildBlock(-6,1,5,Blocks.fence,0);bb.buildBlock(-6,1,6,Blocks.fence,0);
+		bb.buildBlock(-5,1,-6,Blocks.planks,1);bb.buildBlock(-5,1,-2,Blocks.planks,1);bb.buildBlock(-5,1,6,Blocks.fence,0);
+		bb.buildBlock(-4,1,-6,Blocks.planks,1);bb.buildBlock(-4,1,-2,Blocks.planks,1);bb.buildBlock(-4,1,6,Blocks.fence,0);
+		bb.buildBlock(-3,1,-6,Blocks.planks,1);bb.buildBlock(-3,1,-2,Blocks.wooden_door,9);bb.buildBlock(-3,1,6,Blocks.fence,0);
+		bb.buildBlock(-2,1,-6,Blocks.planks,1);bb.buildBlock(-2,1,-2,Blocks.planks,1);bb.buildBlock(-2,1,6,Blocks.fence,0);
 		bb.buildBlock(-1,1,-6,Blocks.planks,1);bb.buildBlock(-1,1,-4,Blocks.flower_pot,3);bb.addTileEntityPot(-1,1,-4,38,3);
-		bb.buildBlock(-1,1,-2,Blocks.planks,1);bb.buildBlock(-1,1,1,Blocks.fence,0);bb.buildBlock(-1,1,6,Blocks.fence,0);
-		bb.buildBlock(0,1,-6,Blocks.planks,1);bb.buildBlock(0,1,-5,Blocks.planks,2);bb.buildBlock(0,1,-4,Blocks.planks,2);
-		bb.buildBlock(0,1,-3,Blocks.planks,2);bb.buildBlock(0,1,-2,Blocks.planks,1);bb.buildBlock(0,1,1,Blocks.fence,0);
-		bb.buildBlock(0,1,6,Blocks.fence,0);bb.buildBlock(1,1,-6,Blocks.planks,1);bb.buildBlock(1,1,-2,Blocks.planks,1);
-		bb.buildBlock(1,1,1,Blocks.fence,0);bb.buildBlock(1,1,6,Blocks.fence,0);bb.buildBlock(2,1,-6,Blocks.glass_pane,0);
-		bb.buildBlock(2,1,-2,Blocks.planks,1);bb.buildBlock(2,1,1,Blocks.fence,0);bb.buildBlock(2,1,6,Blocks.fence,0);
-		bb.buildBlock(3,1,-6,Blocks.glass_pane,0);bb.buildBlock(3,1,-2,Blocks.planks,1);bb.buildBlock(3,1,1,Blocks.fence,0);
-		bb.buildBlock(3,1,6,Blocks.fence,0);bb.buildBlock(4,1,-6,Blocks.glass_pane,0);bb.buildBlock(4,1,-2,Blocks.wooden_door,8);
-		bb.buildBlock(4,1,6,Blocks.fence,0);bb.buildBlock(5,1,-6,Blocks.planks,1);bb.buildBlock(5,1,-2,Blocks.planks,1);
-		bb.buildBlock(5,1,1,Blocks.fence,0);bb.buildBlock(5,1,6,Blocks.fence,0);bb.buildBlock(6,1,-6,Blocks.planks,1);
+		bb.buildBlock(-1,1,-2,Blocks.planks,1);bb.buildBlock(-1,1,6,Blocks.fence,0);bb.buildBlock(0,1,-6,Blocks.planks,1);
+		bb.buildBlock(0,1,-5,Blocks.planks,2);bb.buildBlock(0,1,-4,Blocks.planks,2);bb.buildBlock(0,1,-3,Blocks.planks,2);
+		bb.buildBlock(0,1,-2,Blocks.planks,1);bb.buildBlock(0,1,6,Blocks.fence,0);bb.buildBlock(1,1,-6,Blocks.planks,1);
+		bb.buildBlock(1,1,-2,Blocks.planks,1);bb.buildBlock(1,1,6,Blocks.fence,0);bb.buildBlock(2,1,-6,Blocks.glass_pane,0);
+		bb.buildBlock(2,1,-2,Blocks.planks,1);bb.buildBlock(2,1,6,Blocks.fence,0);bb.buildBlock(3,1,-6,Blocks.glass_pane,0);
+		bb.buildBlock(3,1,-2,Blocks.planks,1);bb.buildBlock(3,1,6,Blocks.fence,0);bb.buildBlock(4,1,-6,Blocks.glass_pane,0);
+		bb.buildBlock(4,1,-2,Blocks.wooden_door,8);bb.buildBlock(4,1,6,Blocks.fence,0);bb.buildBlock(5,1,-6,Blocks.planks,1);
+		bb.buildBlock(5,1,-2,Blocks.planks,1);bb.buildBlock(5,1,6,Blocks.fence,0);bb.buildBlock(6,1,-6,Blocks.planks,1);
 		bb.buildBlock(6,1,-5,Blocks.wooden_door,9);bb.buildBlock(6,1,-4,Blocks.wooden_door,8);bb.buildBlock(6,1,-3,Blocks.planks,1);
 		bb.buildBlock(6,1,-2,Blocks.planks,1);bb.buildBlock(6,1,1,Blocks.fence,0);bb.buildBlock(6,1,2,Blocks.fence,0);
 		bb.buildBlock(6,1,3,Blocks.fence,0);bb.buildBlock(6,1,4,Blocks.fence,0);bb.buildBlock(6,1,5,Blocks.fence,0);

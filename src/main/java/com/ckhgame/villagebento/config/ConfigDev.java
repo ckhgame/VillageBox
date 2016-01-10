@@ -9,5 +9,5 @@ import net.minecraft.init.Blocks;
  * Only Used For Development!!!!
  */
 public class ConfigDev {	
-	public static final boolean IsDevMod = true;
+	public static final boolean IsDevMod = false;
 }
