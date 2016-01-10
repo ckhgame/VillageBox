@@ -41,6 +41,8 @@ public class RenderVBBuildingIndicator extends RenderEntity
 		GL11.glEnable(GL11.GL_BLEND);
         GL11.glDisable(GL11.GL_CULL_FACE);        
 		
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
+        
         EntityPlayer player = Minecraft.getMinecraft().thePlayer;
         Vec3 lv = Vec3.createVectorHelper(indicator.posX - player.posX, indicator.posY - player.posY, indicator.posZ - player.posZ);
 		if(Math.abs(lv.xCoord) >= Math.abs(lv.zCoord)){
