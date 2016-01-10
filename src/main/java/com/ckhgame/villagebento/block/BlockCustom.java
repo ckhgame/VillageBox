@@ -22,8 +22,8 @@ public class BlockCustom extends BlockContainer {
 	 * if model is null, the block will render as a standard block, else the custom rendering will be triggered...
 	 * if mcTexture is null, a custom texture will be loaded based on the block name, else it will load the default mc texture for rendering
 	 */
-	protected BlockCustom(String name, ModelBase model, String mcTexture) {
-		super(Material.wood);
+	protected BlockCustom(String name, ModelBase model, String mcTexture,Material mat) {
+		super(mat);
 		this.setBlockName(name);
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setStepSound(soundTypeWood);

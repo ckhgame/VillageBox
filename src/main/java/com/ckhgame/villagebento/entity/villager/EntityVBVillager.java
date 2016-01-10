@@ -9,6 +9,7 @@ import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchInteractTarget;
 import com.ckhgame.villagebento.config.ConfigData;
+import com.ckhgame.villagebento.config.ConfigDev;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.data.DataBuilding;
 import com.ckhgame.villagebento.data.DataVillageBento;
@@ -34,6 +35,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
@@ -89,6 +91,10 @@ public class EntityVBVillager extends EntityAgeable {
         this.dataWatcher.addObject(17, new Integer(-1));	//profession
         this.dataWatcher.addObject(18, new Integer(-1));	//sleeping <0: false, others: true ( >= 0indicates the sleep orientation as well:0 90 180 270)
         this.dataWatcher.addObject(19, new Integer(0));	//level
+        
+        if(ConfigDev.VillagerDebugEnabled){
+        	this.debugInit();
+        }
     }
 	
 	@Override
@@ -479,6 +485,10 @@ public class EntityVBVillager extends EntityAgeable {
 		if (this.getHealth() < this.getMaxHealth() && this.ticksExisted % 80 * 12 == 0) {
 			this.heal(1.0F);
 		}
+		
+		if(ConfigDev.VillagerDebugEnabled){
+			this.debugUpdate();
+		}
 	}
 
 	protected void attackEntity(Entity entity, float distance) {
@@ -588,7 +598,29 @@ public class EntityVBVillager extends EntityAgeable {
 	}
 	
 	
+	//-----------------------------
+	// Debug
+	//-----------------------------
+	private void debugUpdate(){
+		if(!this.worldObj.isRemote){
+			if(this.getNavigator().noPath())
+				setDebugText("No Path");
+			else{
+				PathPoint p = this.getNavigator().getPath().getFinalPathPoint();
+				setDebugText(String.format("Move to %d, %d, %d", p.xCoord, p.yCoord, p.zCoord));
+			}
+		}
+	}
 	
+	private void debugInit(){
+		this.dataWatcher.addObject(31, "Debug Text");
+	}
 	
-
+	public void setDebugText(String text){
+		this.dataWatcher.updateObject(31, "[Debug] " + text);
+	}
+	
+	public String getDebugText(){
+		return this.dataWatcher.getWatchableObjectString(31);
+	}
 }

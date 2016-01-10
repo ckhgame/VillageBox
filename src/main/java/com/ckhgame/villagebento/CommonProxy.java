@@ -57,7 +57,7 @@ public class CommonProxy {
 		 MinecraftForge.EVENT_BUS.register(new EventOverlay());
 		 
 		 //if it's in development, we don't want to restrict block placing&breaking, all items are avaliable to use as well...
-		 if(!ConfigDev.IsDevMod){
+		 if(!ConfigDev.UnprotectVillageEnabled){
 			 MinecraftForge.EVENT_BUS.register(new EventVillageProtection());
 		 }
 	}

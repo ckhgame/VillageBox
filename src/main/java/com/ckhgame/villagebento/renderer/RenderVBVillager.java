@@ -1,16 +1,22 @@
 package com.ckhgame.villagebento.renderer;
 
+import java.nio.file.Path;
+
 import org.lwjgl.opengl.GL11;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.renderer.gui.RenderGuiLiving;
+import com.ckhgame.villagebento.renderer.gui.RenderGuiVillager;
 
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.pathfinding.PathEntity;
+import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderVBVillager extends RenderBiped
@@ -20,14 +26,14 @@ public class RenderVBVillager extends RenderBiped
     /** Model of the villager. */
     protected ModelBiped villagerModel;
     
-    private RenderGuiLiving renderGui;   
+    private RenderGuiVillager renderGui;   
 
     public RenderVBVillager()
     {
         super(new ModelBiped(), 0.5F);
         this.villagerModel = (ModelBiped)this.mainModel;
         
-        renderGui = new RenderGuiLiving();
+        renderGui = new RenderGuiVillager();
     }
 
     /**
@@ -47,6 +53,7 @@ public class RenderVBVillager extends RenderBiped
     public void doRender(EntityVBVillager p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
     {    	
         super.doRender((EntityLiving)p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
+       // this.doRender_Debug(p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
     }
 
     /**
@@ -176,14 +183,66 @@ public class RenderVBVillager extends RenderBiped
         }
     }
 	
-	
-	
 	@Override
 	protected void passSpecialRender(EntityLivingBase p_77033_1_, double p_77033_2_, double p_77033_4_,double p_77033_6_) {
 		// TODO Auto-generated method stub
 		super.passSpecialRender(p_77033_1_, p_77033_2_, p_77033_4_, p_77033_6_);
 		
 		renderGui.render(p_77033_1_, p_77033_2_, p_77033_4_, p_77033_6_);
-		
 	}
+	
+	//----------------------------
+	// Debug Rendering
+	//----------------------------
+	
+	public void doRender_Debug(EntityVBVillager villager, double x, double y, double z, float p_76986_8_, float p_76986_9_)
+    {
+
+        //renderOffsetAABB(villager.boundingBox, x - villager.lastTickPosX, y - villager.lastTickPosY, z - villager.lastTickPosZ);
+		//renderNavPath(villager,x - villager.lastTickPosX, y - villager.lastTickPosY, z - villager.lastTickPosZ);
+    }
+	
+		 private static void drawDebugBox(Tessellator tessellator, double x, double y,double z, double size, boolean normal){
+			 	
+			 double minX = x - size * 0.5D;
+			 double minY = y - size * 0.5D;
+			 double minZ = z - size * 0.5D;
+			 double maxX = x + size * 0.5D;
+			 double maxY = y + size * 0.5D;
+			 double maxZ = z + size * 0.5D;
+			
+			tessellator.startDrawingQuads();
+			if(normal) tessellator.setNormal(0.0F, 0.0F, -1.0F);
+			tessellator.addVertex(minX, maxY, minZ);
+			tessellator.addVertex(maxX, maxY, minZ);
+			tessellator.addVertex(maxX, minY, minZ);
+			tessellator.addVertex(minX, minY, minZ);
+			if(normal) tessellator.setNormal(0.0F, 0.0F, 1.0F);
+			tessellator.addVertex(minX, minY, maxZ);
+			tessellator.addVertex(maxX, minY, maxZ);
+			tessellator.addVertex(maxX, maxY, maxZ);
+			tessellator.addVertex(minX, maxY, maxZ);
+			if(normal) tessellator.setNormal(0.0F, -1.0F, 0.0F);
+			tessellator.addVertex(minX, minY, minZ);
+			tessellator.addVertex(maxX, minY, minZ);
+			tessellator.addVertex(maxX, minY, maxZ);
+			tessellator.addVertex(minX, minY, maxZ);
+			if(normal) tessellator.setNormal(0.0F, 1.0F, 0.0F);
+			tessellator.addVertex(minX, maxY, maxZ);
+			tessellator.addVertex(maxX, maxY, maxZ);
+			tessellator.addVertex(maxX, maxY, minZ);
+			tessellator.addVertex(minX, maxY, minZ);
+			if(normal) tessellator.setNormal(-1.0F, 0.0F, 0.0F);
+			tessellator.addVertex(minX, minY, maxZ);
+			tessellator.addVertex(minX, maxY, maxZ);
+			tessellator.addVertex(minX, maxY, minZ);
+			tessellator.addVertex(minX, minY, minZ);
+			if(normal) tessellator.setNormal(1.0F, 0.0F, 0.0F);
+			tessellator.addVertex(maxX, minY, minZ);
+			tessellator.addVertex(maxX, maxY, minZ);
+			tessellator.addVertex(maxX, maxY, maxZ);
+			tessellator.addVertex(maxX, minY, maxZ);
+			tessellator.draw();
+		 }
+	 
 }

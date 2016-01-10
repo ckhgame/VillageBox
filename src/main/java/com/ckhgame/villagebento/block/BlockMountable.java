@@ -6,6 +6,7 @@ import com.ckhgame.villagebento.entity.misc.EntityBlockMountable;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.PlayerMsg;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
@@ -14,7 +15,7 @@ import net.minecraft.world.World;
 public class BlockMountable extends BlockCustom{
 		
 		protected BlockMountable(String name, ModelBase model, String mcTexture) {
-			super(name, model, mcTexture);
+			super(name, model, mcTexture,Material.wood);
 			this.setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 0.5F, 0.875F);
 		}
 
