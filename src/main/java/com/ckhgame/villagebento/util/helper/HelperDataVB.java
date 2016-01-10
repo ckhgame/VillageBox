@@ -15,6 +15,7 @@ import com.ckhgame.villagebento.entity.VBVillagerMgr;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.profession.Profession;
 import com.ckhgame.villagebento.util.data.BoxWithColor;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
 import com.ckhgame.villagebento.util.village.VillagerSpawner;
 
 import net.minecraft.entity.Entity;
@@ -337,6 +338,7 @@ public class HelperDataVB {
 			if(ddvr.timer >= ConfigVillager.VillagerRevivingDuration){
 				removes.add(ddvr);
 				VillagerSpawner.spawn(dataVB.world, Profession.registry.get(ddvr.professionID).getClass(), ddvr.buildingID, ddvr.initX, ddvr.initY, ddvr.initZ,ddvr.name);
+				PlayerMsg.sendToAllTranslation("villagebento.msg.villagerRevived",ddvr.name);
 			}
 		}
 		

@@ -406,6 +406,7 @@ villager.farmer.action1=测试运气(赌注:100)
 # --------------------------------
 
 villagebento.msg.villagerDeathMessage=%s 被 %s 杀死了.
+villagebento.msg.villagerRevived=%s 复活了!
 villagebento.msg.villagerIsSleeping=%s 正在呼呼大睡...
 villagebento.msg.villagerTooFar=我离的太远了.
 

@@ -10,5 +10,5 @@ import net.minecraft.init.Blocks;
  */
 public class ConfigDev {	
 	public static final boolean UnprotectVillageEnabled = false;
-	public static final boolean VillagerDebugEnabled = true;
+	public static final boolean VillagerDebugEnabled = false;
 }

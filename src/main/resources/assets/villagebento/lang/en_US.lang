@@ -406,6 +406,7 @@ villager.farmer.action1=Test my luck(bet:100)
 # --------------------------------
 
 villagebento.msg.villagerDeathMessage=%s has been killed by %s.
+villagebento.msg.villagerRevived=%s is revived!
 villagebento.msg.villagerIsSleeping=%s is sleeping now...
 villagebento.msg.villagerTooFar=I'm to far away.
 
