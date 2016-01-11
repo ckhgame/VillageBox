@@ -1,7 +1,7 @@
 package com.ckhgame.villagebento.event;
 
 import com.ckhgame.villagebento.data.DataVillageBento;
-import com.ckhgame.villagebento.util.village.VBDataTime;
+import com.ckhgame.villagebento.util.village.VBDateTime;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.event.world.WorldEvent;
@@ -15,7 +15,7 @@ public class EventWorld {
 		}
 		
 		if(event.world.provider.dimensionId == 0){
-			VBDataTime.init(event.world);
+			VBDateTime.init(event.world);
 		}
     }
 }

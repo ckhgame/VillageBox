@@ -2,7 +2,7 @@ package com.ckhgame.villagebento.event;
 
 import org.lwjgl.opengl.GL11;
 
-import com.ckhgame.villagebento.util.village.VBDataTime;
+import com.ckhgame.villagebento.util.village.VBDateTime;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
@@ -19,7 +19,7 @@ public class EventOverlay {
 			Minecraft mc = Minecraft.getMinecraft();
 			int w = event.resolution.getScaledWidth();
 			int h = event.resolution.getScaledHeight();
-			String text = VBDataTime.getDataTimeString();
+			String text = VBDateTime.getDataTimeString();
 			int tw = mc.fontRenderer.getStringWidth(text);
 			drawFieldBackground(w / 2 - tw / 2 - 2,2,tw + 4,10);
 			mc.fontRenderer.drawString(text, w / 2 - tw / 2, 3, 0xFFFFFFFF);

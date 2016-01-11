@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.util.village;
 
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 /**
@@ -17,7 +18,7 @@ import net.minecraft.world.World;
  * Like the real world, VB has 7 days per week from Monday to Sunday. (Sunday is not the first day of a week here :P)
  * The earliest moment in VB is Monday 6:00 PM (0 tick in MC)
  */
-public class VBDataTime {
+public class VBDateTime {
 	
 	
 	private static World world = null;
@@ -94,22 +95,14 @@ public class VBDataTime {
 	
 	public static String getDataTimeString(){
 		refreshTick();
-		String day = "";
-		switch(dayInWeek){
-		case 0:day = "Monday";break;
-		case 1:day = "Tuesday";break;
-		case 2:day = "Wednesday";break;
-		case 3:day = "Thursday";break;
-		case 4:day = "Friday";break;
-		case 5:day = "Saturday";break;
-		case 6:day = "Sunday";break;
-		}
+		String[] weekdays = StatCollector.translateToLocal("villagebento.misc.dateTimeWeekdays").split(",");
+		String day = weekdays[dayInWeek];
 		
 		int h12 = hour%12;
 		if(h12 == 0) h12 = 12;
 		
 		String hour12 = String.format("%02d:%02d%s", h12, 10 * (minites/10), hour >= 12?"PM":"AM");
 		
-		return String.format("Week%d | %s | %s", week + 1,day,hour12);
+		return String.format(StatCollector.translateToLocal("villagebento.misc.dateTimeFormat"), week + 1,day,hour12);
 	}
 }

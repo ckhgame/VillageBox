@@ -8,7 +8,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.BlockFinder;
 import com.ckhgame.villagebento.util.village.HelperVisiting;
 import com.ckhgame.villagebento.util.village.VBRandomPositionGenerator;
-import com.ckhgame.villagebento.util.village.VBDataTime;
+import com.ckhgame.villagebento.util.village.VBDateTime;
 import com.ckhgame.villagebento.util.village.VillagerNavigator;
 
 import net.minecraft.entity.ai.EntityAIBase;
@@ -48,7 +48,7 @@ public class VillagerAIMovement extends EntityAIBase
     			}
     			else{
     				if(this.entity.isVisiting()){
-    					if(!VBDataTime.isDayTime() && !this.entity.isVisitingSkipSleeping()){
+    					if(!VBDateTime.isDayTime() && !this.entity.isVisitingSkipSleeping()){
     						this.entity.cancelVisiting();
     					}
     					else{
@@ -64,7 +64,7 @@ public class VillagerAIMovement extends EntityAIBase
     						this.entity.startRandomVisiting();
     					}
     					if(!this.entity.isVisiting()){
-    						if(VBDataTime.isDayTime()){
+    						if(VBDateTime.isDayTime()){
     							vec3 = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
     						}
     						else{

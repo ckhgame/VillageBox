@@ -3,7 +3,7 @@ package com.ckhgame.villagebento.util.data;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.ckhgame.villagebento.util.village.VBDataTime;
+import com.ckhgame.villagebento.util.village.VBDateTime;
 
 public class VillagerSchedule {
 	
@@ -33,8 +33,8 @@ public class VillagerSchedule {
 	}
 	
 	public int isWorkTimeNowResult(){
-		int h = VBDataTime.getHourOfDay();
-		int day = VBDataTime.getDayInWeek();
+		int h = VBDateTime.getHourOfDay();
+		int day = VBDateTime.getDayInWeek();
 		int prev = day > 0?day - 1:6;
 		
 		//check yesterday
@@ -51,7 +51,7 @@ public class VillagerSchedule {
 		return No;
 	}
 	public boolean isSleepTimeNow(){
-		int h = VBDataTime.getHourOfDay();
+		int h = VBDateTime.getHourOfDay();
 		if(sleeptime != null){
 			if(sleeptime.inRange(h)){
 				return true;

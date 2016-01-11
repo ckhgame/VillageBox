@@ -466,3 +466,10 @@ villagebento.msg.cantHang=Can't hang anything on other's home.
 villagebento.msg.bucketNotAllowed=Buckets are not allowed to use on here.
 
 villagebento.msg.openFishingChest=I find %s ( %d ) in the chest.
+
+# --------------------------------
+# Misc
+# --------------------------------
+
+villagebento.misc.dateTimeWeekdays=Mon,Tue,Wed,Thu,Fri,Sat,Sun
+villagebento.misc.dateTimeFormat=Week %d | %s | %s

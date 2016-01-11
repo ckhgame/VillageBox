@@ -14,7 +14,7 @@ import com.ckhgame.villagebento.profession.ProfessionVillagerFolkBase;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.data.VillagerSchedule;
-import com.ckhgame.villagebento.util.village.VBDataTime;
+import com.ckhgame.villagebento.util.village.VBDateTime;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
 
@@ -129,9 +129,9 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 			//this.drawCenteredString(this.fontRendererObj, "--Hours--", fieldCompLeft + 100,fieldCompTop + 8, 0xFFFFFFEE);
 			for(int i =0;i<worktimes.length;i++){
 				int c = 0xFFEEEEEE;
-				int today = VBDataTime.getDayInWeek();
+				int today = VBDateTime.getDayInWeek();
 				int prev = today == 0?6:today - 1; 
-				int h =VBDataTime.getHourOfDay();
+				int h =VBDateTime.getHourOfDay();
 				if(i == today || i == prev){
 					int result = this.entityVBVillager.getProfession().getTimeSchedule().isWorkTimeNowResult();
 					if(result == VillagerSchedule.YesToday && i ==today ||result == VillagerSchedule.YesYesterday && i == prev){

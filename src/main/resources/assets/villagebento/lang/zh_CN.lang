@@ -466,3 +466,10 @@ villagebento.msg.cantHang=我不能在别人家里挂东西.
 villagebento.msg.bucketNotAllowed=这里不允许用水桶.
 
 villagebento.msg.openFishingChest=我在箱子里找到了 %s ( %d ).
+
+# --------------------------------
+# Misc
+# --------------------------------
+
+villagebento.misc.dateTimeWeekdays=周一,周二,周三,周四,周五,周六,周日
+villagebento.misc.dateTimeFormat=第%d周 | %s | %s
