@@ -88,10 +88,7 @@ public class ItemFishingRodVB extends Item
     
     @Override
 	public IIcon getIconFromDamage(int p_77617_1_) {
-    	if(PlayerFishHookVB.get(Minecraft.getMinecraft().thePlayer) != null)
     		return this.theIcon;
-    	else
-    		return this.itemIcon;
 	}
 
     /**

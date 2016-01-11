@@ -175,6 +175,7 @@ public class EntityFishHookVB extends Entity
     {
         super.onUpdate();
         
+        //find the player
         if(!this.worldObj.isRemote){
         	if(this.dataWatcher.getWatchableObjectInt(2) < 0 && this.field_146042_b != null){
             	this.dataWatcher.updateObject(2, this.field_146042_b.getEntityId());
