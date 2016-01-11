@@ -41,6 +41,7 @@ tile.BlockLibrary.name=Library
 tile.BlockTailorStore.name=Tailor Store
 tile.BlockTownSquareSmall.name=Village Square
 tile.BlockTownSquareLarge.name=Town Square
+tile.BlockChurch.name=Church
 tile.BlockFolkHouse.name=Folk House
 
 tile.BlockAutumnGarden.name=Autumn Garden
@@ -401,6 +402,12 @@ villager.casinoMgr.chat2=Want to test your luck?
 villager.casinoMgr.actionDialog=Test my luck
 villager.casinoMgr.action0=Test my luck(bet:20)
 villager.casinoMgr.action1=Test my luck(bet:100)
+
+villager.priest.name=Priest
+villager.priest.description=I will lead you the path..
+villager.priest.chat0=God bless this village..
+villager.priest.chat1=Love your enemies.
+villager.priest.chat2=Everyday is a gift... 
 
 villager.villagerfolk.name=Village Folk
 villager.villagerfolk.description=I live in this village

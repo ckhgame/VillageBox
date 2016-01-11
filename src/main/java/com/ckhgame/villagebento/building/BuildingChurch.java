@@ -28,7 +28,7 @@ public class BuildingChurch extends Building {
 	protected void generateVillagers(BuildingBuilder bb) {
 		// TODO Auto-generated method stub
 		//add villager
-		bb.addVillager(ProfessionPriest.class,-2,0 );
+		bb.addVillager(ProfessionPriest.class,-1,0 );
 	}
 
 	@Override

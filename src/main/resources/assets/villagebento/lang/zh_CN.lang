@@ -41,6 +41,7 @@ tile.BlockLibrary.name=图书馆
 tile.BlockTailorStore.name=服装店
 tile.BlockTownSquareSmall.name=村庄广场
 tile.BlockTownSquareLarge.name=城镇广场
+tile.BlockChurch.name=教堂
 tile.BlockFolkHouse.name=民宿
 
 tile.BlockAutumnGarden.name=秋之花园
@@ -401,6 +402,12 @@ villager.casinoMgr.chat2=想要测试你的运气么？
 villager.casinoMgr.actionDialog=试试手气
 villager.casinoMgr.action0=试试运气(赌注:20)
 villager.casinoMgr.action1=测试运气(赌注:100)
+
+villager.priest.name=牧师
+villager.priest.description=让我引领你的道路
+villager.priest.chat0=愿上帝保佑这座村庄.
+villager.priest.chat1=善待你的敌人.
+villager.priest.chat2=每一天都是上帝的恩赐. 
 
 villager.villagerfolk.name=村庄居民
 villager.villagerfolk.description=我生活在这个村庄里。
