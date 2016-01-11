@@ -17,6 +17,7 @@ import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
@@ -132,7 +133,7 @@ public class EventVillageProtection {
 		if(c == EntityPainting.class || c == EntityItemFrame.class){
 			DataVillageBento dataVB = DataVillageBento.get();
 			for(DataVillage dv : dataVB.mapDataVillage.values()){
-				if(HelperDataVB.isInVillage(dv,(int)event.target.posX,(int)event.target.posZ)){
+				if(HelperDataVB.isInVillage(dv,MathHelper.floor_double(event.target.posX),MathHelper.floor_double(event.target.posZ))){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
 						if(HelperDataVB.isEntityInBuilding(db,event.target)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
 							event.setCanceled(true);
@@ -156,7 +157,7 @@ public class EventVillageProtection {
 		if(c == EntityPainting.class || c == EntityItemFrame.class){
 			DataVillageBento dataVB = DataVillageBento.get();
 			for(DataVillage dv : dataVB.mapDataVillage.values()){
-				if(HelperDataVB.isInVillage(dv,(int)event.target.posX,(int)event.target.posZ)){
+				if(HelperDataVB.isInVillage(dv,MathHelper.floor_double(event.target.posX),MathHelper.floor_double(event.target.posZ))){
 					for(DataBuilding db : dv.mapDataBuilding.values()){
 						if(HelperDataVB.isEntityInBuilding(db,event.target)&&!HelperDataVB.PlayerOwnsBuilding(event.entityPlayer, db)){
 							event.setCanceled(true);

@@ -22,6 +22,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldServer;
 
@@ -370,8 +371,8 @@ public class HelperDataVB {
 		for(DataVillage dv : dataVB.mapDataVillage.values()){
 			//village
 			aabb = dv.cacheVillageBoundary;
-			b = new BoxWithColor(	(int)aabb.minX,(int)aabb.minY,(int)aabb.minZ,
-									(int)aabb.maxX + 1,(int)aabb.maxY + 1,(int)aabb.maxZ + 1,
+			b = new BoxWithColor(	MathHelper.floor_double(aabb.minX),MathHelper.floor_double(aabb.minY),MathHelper.floor_double(aabb.minZ),
+														MathHelper.floor_double(aabb.maxX) + 1,MathHelper.floor_double(aabb.maxY) + 1,MathHelper.floor_double(aabb.maxZ) + 1,
 									cv[0],cv[1],cv[2],cv[3]);
 			bs.add(b);
 			
