@@ -65,9 +65,12 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 	private void createDialogTrade(){
 		this.clearAllDialogOptions();
 		this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.menuTrade"));
-		this.addDialogOptions(ButtonID_Buy, 0, StatCollector.translateToLocal("vbgui.dialogOption.menuBuy"));
-		this.addDialogOptions(ButtonID_Sell, 1, StatCollector.translateToLocal("vbgui.dialogOption.menuSell"));
-		this.addDialogOptions(ButtonID_Back, 2, StatCollector.translateToLocal("vbgui.dialogOption.menuBack"));
+		int idx = 0;
+		if(this.entityVBVillager.getVillagerComponent(VillagerCompBuy.class) != null)
+			this.addDialogOptions(ButtonID_Buy, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuBuy"));
+		if(this.entityVBVillager.getVillagerComponent(VillagerCompSell.class) != null)
+			this.addDialogOptions(ButtonID_Sell, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuSell"));
+		this.addDialogOptions(ButtonID_Back, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuBack"));
 	}
 
 	@Override

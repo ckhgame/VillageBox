@@ -296,7 +296,7 @@ public class BuildingFolkHouse extends Building {
 		bb.buildBlock(3,0,-2,Blocks.oak_stairs,1);bb.buildBlock(3,0,3,Blocks.oak_stairs,1);bb.buildBlock(-3,1,-3,Blocks.planks,1);
 		bb.buildBlock(-3,1,-2,Blocks.planks,1);bb.buildBlock(-3,1,-1,Blocks.planks,1);bb.buildBlock(-3,1,0,Blocks.glass_pane,0);
 		bb.buildBlock(-3,1,1,Blocks.planks,1);bb.buildBlock(-3,1,2,Blocks.planks,1);bb.buildBlock(-3,1,3,Blocks.planks,1);
-		bb.buildBlock(-2,1,-3,Blocks.planks,1);bb.buildBlock(-2,1,1,Blocks.flower_pot,5);bb.addTileEntityPot(-2,1,1,38,5);
+		bb.buildBlock(-2,1,-3,Blocks.planks,1);
 		bb.buildBlock(-2,1,2,Blocks.bookshelf,0);bb.buildBlock(-2,1,3,Blocks.planks,1);bb.buildBlock(-1,1,-3,Blocks.planks,1);
 		bb.buildBlock(-1,1,2,Blocks.chest,2);bb.buildBlock(-1,1,3,Blocks.planks,1);bb.buildBlock(0,1,-3,Blocks.glass_pane,0);bb.buildBlock(0,1,3,Blocks.planks,1);
 		bb.buildBlock(1,1,-3,Blocks.glass_pane,0);bb.buildBlock(1,1,3,Blocks.planks,1);bb.buildBlock(2,1,-3,Blocks.planks,1);

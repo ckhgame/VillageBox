@@ -63,36 +63,6 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
         compQuest.addQuestDesign(design);
         
         components.add(compQuest);
-        
-        
-        //buy & sell
-        //params:
-        //1.Block or Item 2. min 3.max 4.minlevel  5.meta
-        
-        //buy list
-        VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        
-        //sell list
-        VillagerCompSell compSell = new VillagerCompSell(villager);
-        
-        //work
-        /*
-         
-        VillagerCompWork compWork = new VillagerCompWork(villager);
-        int workIdx;
-        
-        //work1
-        workIdx = compWork.createWork("Not Enough Torch", "get some coal...",0 , 10, 15); //params: 1. title 2.remark, 3.minlevel 4.hours(mc world) 5.price
-        compWork.addWorkOutput(workIdx, Items.coal, 7, 15);
-        compWork.addWorkOutput(workIdx, Items.wood, 3, 16);//param: 1. workIdx 2.ITem/Block 3.min 4.max
-        
-        //work2
-        workIdx = compWork.createWork("Iron Finder", "a little bit iron taste..", 1, 10, 50);
-        compWork.addWorkOutput(workIdx, Blocks.iron_ore, 3, 5); 
-        
-        components.add(compWork);
-        
-         */
 	}
 	
 	@Override

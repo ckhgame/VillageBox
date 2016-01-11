@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
+import com.ckhgame.villagebento.entity.villager.EntityVBGuard;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerUpgrade;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
+import com.ckhgame.villagebento.profession.ProfessionVillagerFolkBase;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.data.VillagerSchedule;
@@ -64,10 +66,12 @@ public class GuiVillagerDialogAbout extends GuiVillagerDialog{
 	private void createDialogAbout(){
 		this.clearAllDialogOptions();
 		this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.aboutName") + this.entityVBVillager.getName());
-		this.addDialogOptions(ButtonID_Story, 0, StatCollector.translateToLocal("vbgui.dialogOption.aboutStory"));
-		this.addDialogOptions(ButtonID_CheckUpgrade, 1, StatCollector.translateToLocal("vbgui.dialogOption.aboutCheckUpgrade"));
-		this.addDialogOptions(ButtonID_OpenHours, 2, StatCollector.translateToLocal("vbgui.dialogOption.aboutOpenHours"));
-		this.addDialogOptions(ButtonID_Back, 3, StatCollector.translateToLocal("vbgui.dialogOption.aboutBack"));
+		int idx = 0;
+		this.addDialogOptions(ButtonID_Story, idx++, StatCollector.translateToLocal("vbgui.dialogOption.aboutStory"));
+		this.addDialogOptions(ButtonID_CheckUpgrade, idx++, StatCollector.translateToLocal("vbgui.dialogOption.aboutCheckUpgrade"));
+		if(!(this.entityVBVillager.getProfession() instanceof ProfessionVillagerFolkBase || this.entityVBVillager instanceof EntityVBGuard))
+			this.addDialogOptions(ButtonID_OpenHours, idx++, StatCollector.translateToLocal("vbgui.dialogOption.aboutOpenHours"));
+		this.addDialogOptions(ButtonID_Back, idx++, StatCollector.translateToLocal("vbgui.dialogOption.aboutBack"));
 	}
 	
 	private void createDialogUpgrade(){
