@@ -76,11 +76,6 @@ public class EntityFishHookVB extends Entity
         this.field_146050_i = -1;
         this.setSize(0.25F, 0.25F);
         this.ignoreFrustumCheck = true;
-        
-        if(p_i1764_1_.isRemote){
-        	this.field_146042_b = Minecraft.getMinecraft().thePlayer;
-            PlayerFishHookVB.set(this.field_146042_b, this);
-        }
         		
     }
 
@@ -107,7 +102,9 @@ public class EntityFishHookVB extends Entity
         this.func_146035_c(this.motionX, this.motionY, this.motionZ, 1.5F, 1.0F);
     }
 
-    protected void entityInit() {}
+    protected void entityInit() {
+    	this.dataWatcher.addObject(2, new Integer(-1));
+    }
 
     public void func_146035_c(double p_146035_1_, double p_146035_3_, double p_146035_5_, float p_146035_7_, float p_146035_8_)
     {
@@ -177,7 +174,25 @@ public class EntityFishHookVB extends Entity
     public void onUpdate()
     {
         super.onUpdate();
-
+        
+        if(!this.worldObj.isRemote){
+        	if(this.dataWatcher.getWatchableObjectInt(2) < 0 && this.field_146042_b != null){
+            	this.dataWatcher.updateObject(2, this.field_146042_b.getEntityId());
+            }
+        }
+        else{
+        	if(this.field_146042_b == null){
+        		int id = this.dataWatcher.getWatchableObjectInt(2);
+        		if(id >= 0){
+        			Entity entity = this.worldObj.getEntityByID(id);
+        			if(entity instanceof EntityPlayer){
+        				this.field_146042_b = (EntityPlayer)entity;
+        			}
+        		}
+        	}
+        }
+        
+        
         if (this.field_146055_aB > 0)
         {
             double d7 = this.posX + (this.field_146056_aC - this.posX) / (double)this.field_146055_aB;
