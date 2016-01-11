@@ -40,7 +40,8 @@ public class ModProfessions {
 		Profession.registry.register(id++, new ProfessionPastureMarketMerchant());
 		Profession.registry.register(id++, new ProfessionFarmerSmall());
 		Profession.registry.register(id++, new ProfessionLibrarian());
-
+		Profession.registry.register(id++, new ProfessionPriest());
+		
 		Profession.registry.register(id++, new ProfessionVillagerFolk0());
 		Profession.registry.register(id++, new ProfessionVillagerFolk1());
 		Profession.registry.register(id++, new ProfessionVillagerFolk2());

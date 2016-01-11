@@ -38,7 +38,6 @@ public class ModBuildings {
 		
 		
 		
-		
 		Building.registry.register(37,new BuildingAutumnGarden());
 		Building.registry.register(38,new BuildingTeaChair());
 		Building.registry.register(39,new BuildingRoseBridge());
@@ -50,6 +49,8 @@ public class ModBuildings {
 		Building.registry.register(45,new BuildingTailorStore());
 		Building.registry.register(46,new BuildingTownSquareSmall());
 		Building.registry.register(47,new BuildingTownSquareLarge());
+		
+		Building.registry.register(48,new BuildingChurch());
 
 		Building.registry.register(500,new BuildingFolkHouse());
 		

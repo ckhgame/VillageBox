@@ -5,6 +5,7 @@ import com.ckhgame.villagebento.building.BuildingAutumnGarden;
 import com.ckhgame.villagebento.building.BuildingBlacksmithsShop;
 import com.ckhgame.villagebento.building.BuildingChickenShop;
 import com.ckhgame.villagebento.building.BuildingChristmas;
+import com.ckhgame.villagebento.building.BuildingChurch;
 import com.ckhgame.villagebento.building.BuildingCowShop;
 import com.ckhgame.villagebento.building.BuildingDefenceTower;
 import com.ckhgame.villagebento.building.BuildingFarmland;
@@ -96,6 +97,7 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockTailorStore;
     public static BlockVillageBuilding blockTownSquareSmall;
     public static BlockVillageBuilding blockTownSquareLarge;
+    public static BlockVillageBuilding blockChurch;
     
     public static BlockVillageBuilding blockFolkHouse;;
     
@@ -177,6 +179,7 @@ public final class ModBlocks {
        	registerVillageBlock(blockTailorStore = new BlockVillageBuilding(BuildingTailorStore.class,"BlockTailorStore"),"BlockTailorStore");
        	registerVillageBlock(blockTownSquareSmall = new BlockVillageBuilding(BuildingTownSquareSmall.class,"BlockTownSquareSmall"),"BlockTownSquareSmall");
        	registerVillageBlock(blockTownSquareLarge = new BlockVillageBuilding(BuildingTownSquareLarge.class,"BlockTownSquareLarge"),"BlockTownSquareLarge");
+       	registerVillageBlock(blockChurch = new BlockVillageBuilding(BuildingChurch.class,"BlockChurch"),"BlockChurch");
        	
        	registerVillageBlock(blockFolkHouse = new BlockVillageBuilding(BuildingFolkHouse.class,"BlockFolkHouse"),"BlockFolkHouse");
        	
