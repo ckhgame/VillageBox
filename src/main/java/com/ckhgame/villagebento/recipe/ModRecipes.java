@@ -76,14 +76,38 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemFries, 1), 
 				new Object[] { Items.potato,ModItems.itemOil});
 		
+		//item Mayonaise
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemMayonaise, 1), 
+				new Object[] { Items.sugar,ModItems.itemVillageEgg});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemMayonaise, 1), 
+				new Object[] { Items.sugar,Items.egg});
+		
+		//item Boiled Egg
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemBoiledEgg, 1), 
+				new Object[] { Items.egg,Items.water_bucket});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemBoiledEgg, 1), 
+				new Object[] { ModItems.itemVillageEgg,Items.water_bucket});
+		
 		//item melon ice
 		GameRegistry.addRecipe(new ItemStack(ModItems.itemMelonIce), 
 				" A ",
-				" B ",
+				" BD",
 				" C ",
 				'A',ModItems.itemMayonaise,
 				'B',Items.snowball,
-				'C',Items.melon);		
+				'C',Items.melon,
+				'D',ModItems.itemVillageMilk);
+		
+		GameRegistry.addRecipe(new ItemStack(ModItems.itemMelonIce), 
+				" A ",
+				" BD",
+				" C ",
+				'A',ModItems.itemMayonaise,
+				'B',Items.snowball,
+				'C',Items.melon,
+				'D',ModItems.itemBottleOfMilk);	
 
 		//item apple candy
 		GameRegistry.addRecipe(new ItemStack(ModItems.itemAppleCandy), 
@@ -98,6 +122,9 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemCheese, 1), 
 				new Object[] { ModItems.itemVillageMilk,ModItems.itemVillageMilk,ModItems.itemVillageMilk});	
 		
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemCheese, 1), 
+				new Object[] { ModItems.itemBottleOfMilk, ModItems.itemBottleOfMilk, ModItems.itemBottleOfMilk});
+		
 		//item salt
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemSalt, 1), 
 				new Object[] { Items.water_bucket,ModItems.itemGauze});
@@ -105,6 +132,10 @@ public class ModRecipes {
 		//item rice flour
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemRiceFlour, 1), 
 				new Object[] {Items.stick,ModItems.itemRiceplant});
+		
+		//item rice Bowl
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemRice, 1), 
+				new Object[] {Items.coal,ModItems.itemRiceplant});
 		
 		//item noodle soup
 		GameRegistry.addRecipe(new ItemStack(ModItems.itemNoodleSoup), 
