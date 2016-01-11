@@ -398,9 +398,22 @@ villager.casinoMgr.description=我之所以会在这是为了检测你的幸运�
 villager.casinoMgr.chat0=这是双赢。。好吧。。我只是说笑。。。
 villager.casinoMgr.chat1=输钱不代表你失去了所有。。。
 villager.casinoMgr.chat2=想要测试你的运气么？
-villager.farmer.actionDialog=试试手气
-villager.farmer.action0=试试运气(赌注:20)
-villager.farmer.action1=测试运气(赌注:100)
+villager.casinoMgr.actionDialog=试试手气
+villager.casinoMgr.action0=试试运气(赌注:20)
+villager.casinoMgr.action1=测试运气(赌注:100)
+
+villager.villagerfolk.name=村庄居民
+villager.villagerfolk.description=我生活在这个村庄里。
+villager.villagerfolk.chat0=我希望我所在的村子变得更好。
+villager.villagerfolk.chat1=生活就是不断的重复...
+villager.villagerfolk.chat2=我想要去村庄广场玩. 
+villager.villagerfolk.chat3=僵尸实在让人困扰!
+villager.villagerfolk.chat4=你好啊.
+villager.villagerfolk.chat5=欢迎回家!
+villager.villagerfolk.chat6=工作后的啤酒让日子变得美好!
+villager.villagerfolk.chat7=我早餐喜欢吃面包和牛奶. 
+villager.villagerfolk.chat8=每日一苹果，健康每一天.
+villager.villagerfolk.chat9=很高兴见到你.
 
 # --------------------------------
 # Messages

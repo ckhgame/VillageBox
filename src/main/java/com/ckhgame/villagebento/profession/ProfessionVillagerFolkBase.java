@@ -74,7 +74,10 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
 		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat3"));
 		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat4"));
 		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat5"));
-		
+		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat6"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat7"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat8"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat9"));
 	}
 	
 	@Override

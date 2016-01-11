@@ -398,9 +398,22 @@ villager.casinoMgr.description=I'm here for testing your luck...
 villager.casinoMgr.chat0=It's a Win-Win..... OK... just a joke..
 villager.casinoMgr.chat1=Lost money does not means you lost everything...
 villager.casinoMgr.chat2=Want to test your luck?
-villager.farmer.actionDialog=Test my luck
-villager.farmer.action0=Test my luck(bet:20)
-villager.farmer.action1=Test my luck(bet:100)
+villager.casinoMgr.actionDialog=Test my luck
+villager.casinoMgr.action0=Test my luck(bet:20)
+villager.casinoMgr.action1=Test my luck(bet:100)
+
+villager.villagerfolk.name=Village Folk
+villager.villagerfolk.description=I live in this village
+villager.villagerfolk.chat0=I hope my village gets better.
+villager.villagerfolk.chat1=Life is repeats same work day by day...
+villager.villagerfolk.chat2=I want to go village square. 
+villager.villagerfolk.chat3=Zombies are annoyance!
+villager.villagerfolk.chat4=Hello.
+villager.villagerfolk.chat5=Welcome home!
+villager.villagerfolk.chat6=A beer after work make my whole day!
+villager.villagerfolk.chat7=I love to eat bread and milk for breakfast. 
+villager.villagerfolk.chat8=An apple a day make doctor away.
+villager.villagerfolk.chat9=Nice to see you.
 
 # --------------------------------
 # Messages
