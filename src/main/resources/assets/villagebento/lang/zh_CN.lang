@@ -421,6 +421,19 @@ villager.villagerfolk.chat6=工作后的啤酒让日子变得美好!
 villager.villagerfolk.chat7=我早餐喜欢吃面包和牛奶. 
 villager.villagerfolk.chat8=每日一苹果，健康每一天.
 villager.villagerfolk.chat9=很高兴见到你.
+villager.villagerfolk.questEasyFood=我有点饿，你能帮我带点食物么?
+villager.villagerfolk.questEasyHunting=我的弓坏掉了，能麻烦你帮我去打猎么?
+villager.villagerfolk.questEasySlaying=我正在悬赏那些讨厌的怪物，你能帮我除掉一些么!
+villager.villagerfolk.questEasyFishing=那些鱼看起来好好吃，你可以帮我钓一些上来么?
+villager.villagerfolk.questEasyGathering=你能帮我采集一些需要的材料么?
+villager.villagerfolk.questEasyMining=我很害怕黑暗，能麻烦你帮我去采矿么?
+villager.villagerfolk.questEasyFarming=我实在很忙没时间照看我的田地，你能帮帮我么?
+villager.villagerfolk.questAdvFood=我在寻找美食，你有什么好的建议么?
+villager.villagerfolk.questAdvPotion=我准备要去冒险，你觉得我需要准备些什么呢？
+villager.villagerfolk.questAdvMining=看起来你一个好的矿工，可以麻烦你帮我挖矿么?
+villager.villagerfolk.questAdvFarming=我缺少了一些料理的食材，你可以帮我收集以下么?
+villager.villagerfolk.questAdvFeeding=我听说放牧很有趣，你可以告诉我更多的事情么?
+
 
 # --------------------------------
 # Messages

@@ -421,6 +421,18 @@ villager.villagerfolk.chat6=A beer after work make my whole day!
 villager.villagerfolk.chat7=I love to eat bread and milk for breakfast. 
 villager.villagerfolk.chat8=An apple a day make doctor away.
 villager.villagerfolk.chat9=Nice to see you.
+villager.villagerfolk.questEasyFood=I'm so hungry, could you bring me some food?
+villager.villagerfolk.questEasyHunting=My bow is broken, could you help me to do a hunting?
+villager.villagerfolk.questEasySlaying=I hate those mobs, kill some of them and I will pay for you!
+villager.villagerfolk.questEasyFishing=Fish tastes delicious, could you bring me some?
+villager.villagerfolk.questEasyGathering=Could you help me gather some materials that I need?
+villager.villagerfolk.questEasyMining=I'm scary of darkness, could you mining for me?
+villager.villagerfolk.questEasyFarming=I am too busy to take care my farm, could you help me out?
+villager.villagerfolk.questAdvFood=I'm looking for nice food, do you have any suggestion?
+villager.villagerfolk.questAdvPotion=I am going on a adventure, what you think I need prepare
+villager.villagerfolk.questAdvMining=Looks like you are a good miner, could you mine for me?
+villager.villagerfolk.questAdvFarming=I need some materials for my cooking, could you help me out?
+villager.villagerfolk.questAdvFeeding=I heard pasturing animals are fun, could you tell me more about it?
 
 # --------------------------------
 # Messages
