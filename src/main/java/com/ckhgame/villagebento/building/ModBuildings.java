@@ -51,7 +51,8 @@ public class ModBuildings {
 		Building.registry.register(46,new BuildingTownSquareSmall());
 		Building.registry.register(47,new BuildingTownSquareLarge());
 
-
+		Building.registry.register(500,new BuildingFolkHouse());
+		
 		Building.registry.register(1000,new BuildingPlayerFieldSmall());
 		Building.registry.register(1001,new BuildingPlayerFieldMedium());
 		Building.registry.register(1002,new BuildingPlayerFieldLarge());
