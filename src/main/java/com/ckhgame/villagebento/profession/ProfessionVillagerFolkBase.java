@@ -18,6 +18,7 @@ import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuestDes
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
@@ -48,21 +49,128 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
         
         //quest
         VillagerCompQuest compQuest = new VillagerCompQuest(villager);
-
-        VillagerQuestDesign design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerelder.quest0"),0);
-        design.addNeeds(Items.apple, 2, 0);
-        design.addNeeds(Blocks.log, 5, 0);
-        design.addNeeds(Blocks.log, 5, 1);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 40);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 50);
+        VillagerQuestDesign design = null;
+        
+        //easy - food
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFood"),0);
+        design.addNeeds(Items.cake,1,0);	design.addNeeds(Items.bread,5,0);	design.addNeeds(Items.cookie,5,0);
+        design.addNeeds(Items.pumpkin_pie,2,0);	design.addNeeds(Items.cooked_fished,5,0);	design.addNeeds(Items.cooked_fished,5,1);
+        design.addNeeds(Items.baked_potato,5,0); design.addNeeds(Items.cooked_chicken,3,0); design.addNeeds(Items.cooked_beef,3,0); 
+        design.addNeeds(Items.cooked_porkchop,3,0); design.addNeeds(Items.mushroom_stew, 2, 0);
+        design.addNeeds(Items.apple,3,0);
+        addEasyQuestRewards(design);
         compQuest.addQuestDesign(design);
         
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerelder.quest1"),0);
-        design.addNeeds(Items.rotten_flesh, 5, 0);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 50);
+        //easy - hunting
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyHunting"),0);
+        design.addNeeds(Items.beef,3,0);	design.addNeeds(Items.porkchop,3,0);	design.addNeeds(Items.chicken,3,0);
+        design.addNeeds(Items.leather,2,0);
+        addEasyQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //easy - slaying
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasySlaying"),0);
+        design.addNeeds(Items.rotten_flesh,8,0);	design.addNeeds(Items.bone,5,0);	design.addNeeds(Items.spider_eye,3,0);
+        design.addNeeds(Items.gunpowder,3,0);
+        addEasyQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //easy - fishing
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFishing"),0);
+        design.addNeeds(Items.fish,3,0);	design.addNeeds(Items.fish,3,1);	design.addNeeds(Items.fish,3,2);
+        design.addNeeds(Items.fish,3,3);
+        addEasyQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //easy - gathering
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyGathering"),0);
+        design.addNeeds(Blocks.red_flower,5,0);	 design.addNeeds(Blocks.red_flower,5,1); design.addNeeds(Blocks.red_flower,5,2);
+        design.addNeeds(Blocks.red_flower,5,3);	 design.addNeeds(Blocks.red_flower,5,4); design.addNeeds(Blocks.red_flower,5,5);
+        design.addNeeds(Blocks.red_flower,5,6);	 design.addNeeds(Blocks.red_flower,5,7); design.addNeeds(Blocks.red_flower,5,8);
+        design.addNeeds(Blocks.yellow_flower,5,0); 
+        design.addNeeds(Blocks.double_plant,2,0); design.addNeeds(Blocks.double_plant,2,1); design.addNeeds(Blocks.double_plant,2,4);
+        design.addNeeds(Blocks.double_plant,2,5);
+        design.addNeeds(Blocks.brown_mushroom,3,0);design.addNeeds(Blocks.red_mushroom,3,0);
+        addEasyQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //easy - mining
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyMining"),0);
+        design.addNeeds(Items.coal,15,0);	 design.addNeeds(Items.iron_ingot,5,0); 
+        addEasyQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //easy - farming
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFarming"),0);
+        design.addNeeds(Items.wheat,5,0);	 design.addNeeds(Items.potato,5,0); design.addNeeds(Items.carrot,5,0); 
+        design.addNeeds(Blocks.pumpkin,2,0); design.addNeeds(Items.reeds,6,0); design.addNeeds(Blocks.melon_block,1,0); 
+        addEasyQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //easy - feeding
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFeeding"),0);
+        design.addNeeds(Items.egg,5,0);	 design.addNeeds(ModItems.itemBottleOfMilk,5,0); design.addNeeds(Blocks.wool,5,0); 
+        addEasyQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //-------------------------------------------
+        
+        //advanced - food
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFood"),0);
+        design.addNeeds(ModItems.itemCarrotCake,2,0);	 design.addNeeds(ModItems.itemUdon,2,0);design.addNeeds(ModItems.itemBoiledEgg,5,0);	 
+        design.addNeeds(ModItems.itemCreamyCorn,3,0);	 design.addNeeds(ModItems.itemFries,3,0);	 design.addNeeds(ModItems.itemCongee,2,0);	 
+        design.addNeeds(ModItems.itemCockTail,2,0);	 design.addNeeds(ModItems.itemAppleCandy,5,0);	 
+        addAdvancedQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //advanced - potion
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvPotion"),0);
+        design.addNeeds(Items.potionitem,1,8197);	
+        addAdvancedQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //advanced - mining
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvMining"),0);
+        design.addNeeds(Items.gold_ingot,5,0);	 design.addNeeds(Items.redstone,30,0);
+        addAdvancedQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //advanced - farming
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFarming"),0);
+        design.addNeeds(ModItems.itemChili,3,0);design.addNeeds(ModItems.itemSoybeans,3,0);design.addNeeds(ModItems.itemGrapes,3,0);
+        design.addNeeds(ModItems.itemRiceplant,5,0);design.addNeeds(ModItems.itemCorn,5,0);design.addNeeds(ModItems.itemCabbage,5,0);
+        addAdvancedQuestRewards(design);
+        compQuest.addQuestDesign(design);
+        
+        //advanced - feeding
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFeeding"),0);
+        design.addNeeds(ModItems.itemVillageWool,3,0);design.addNeeds(ModItems.itemVillageEgg,3,0);design.addNeeds(ModItems.itemVillageHeartEgg,3,0);
+        design.addNeeds(ModItems.itemVillageMilk,3,0);
+        addAdvancedQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         components.add(compQuest);
+	}
+	
+	private void addEasyQuestRewards(VillagerQuestDesign design){
+		design.addRewards(ModItems.itemVillageCurrency, 1, 40);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 40);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 40);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 50);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 50);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 50);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 60);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 60);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 60);
+		design.addRewards(ModBlocks.blockFolkHouse, 1, 0);//10%
+	}
+	
+	private void addAdvancedQuestRewards(VillagerQuestDesign design){
+		design.addRewards(ModItems.itemVillageCurrency, 1, 100);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 110);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 120);
+		design.addRewards(ModItems.itemVillageCurrency, 1, 90);
+		design.addRewards(ModBlocks.blockFolkHouse, 1, 0);//20%
 	}
 	
 	@Override
