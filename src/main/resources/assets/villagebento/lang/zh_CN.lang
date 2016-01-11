@@ -263,6 +263,9 @@ vcomp.work.unaffordable=你没有足够的钱币..
 vcomp.about.noitem=没有达到所有的需求...
 vcomp.about.success=升级了!!!
 
+vcomp.default.success=谢谢!
+vcomp.default.failed=好像哪里错了...
+
 #--------------------------------
 #  Villager Texts
 #--------------------------------

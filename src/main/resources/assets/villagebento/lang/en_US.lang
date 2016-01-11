@@ -263,6 +263,9 @@ vcomp.work.unaffordable=You don't have enough money..
 vcomp.about.noitem=Can't meet all requirements...
 vcomp.about.success=Leveling up!!!
 
+vcomp.default.success=Thank you!
+vcomp.default.failed=Something is wrong...
+
 # --------------------------------
 # Villager Texts
 # --------------------------------

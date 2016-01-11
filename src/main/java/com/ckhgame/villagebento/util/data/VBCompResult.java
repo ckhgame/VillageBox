@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.util.data;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.util.StatCollector;
 
 public class VBCompResult {
 	public int vbResult;
@@ -32,11 +33,11 @@ public class VBCompResult {
 	}
 	
 	public static VBCompResult getDefaultSuccess(){
-		return new VBCompResult(VBResult.SUCCESS,"Thank you!");
+		return new VBCompResult(VBResult.SUCCESS,StatCollector.translateToLocal("vcomp.default.success") );
 	}
 	
 	public static VBCompResult getDefaultFailed(){
-		return new VBCompResult(VBResult.FAILED,"Something is wrong...");
+		return new VBCompResult(VBResult.FAILED,StatCollector.translateToLocal("vcomp.default.failed") );
 	}
 	
 	public static VBCompResult getDefaultSuccessNoChat(){
