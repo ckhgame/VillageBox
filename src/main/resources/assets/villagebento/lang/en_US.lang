@@ -41,6 +41,7 @@ tile.BlockLibrary.name=Library
 tile.BlockTailorStore.name=Tailor Store
 tile.BlockTownSquareSmall.name=Village Square
 tile.BlockTownSquareLarge.name=Town Square
+tile.BlockFolkHouse.name=Folk House
 
 tile.BlockAutumnGarden.name=Autumn Garden
 tile.BlockPeacefulGarden.name=Small Flower Park
