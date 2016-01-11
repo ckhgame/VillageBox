@@ -61,20 +61,6 @@ public class ProfessionPriest extends Profession {
 	public String getSkinName() {
 		return "priest";
 	}
-
-	@Override
-	protected void setILevelRequirements() {
-		
-		this.levelRequirements = new ItemStack[2][];
-		
-		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(Blocks.torch,32),
-																				new ItemStack(Blocks.crafting_table,1)};
-		
-		this.levelRequirements[1] = new ItemStack[]{	new ItemStack(Items.apple,10),
-																				new ItemStack(Items.boat,1),
-																				new ItemStack(Items.beef,10)};
-		
-	}
 	
 	@Override
 	protected void setTimeSchedule(){

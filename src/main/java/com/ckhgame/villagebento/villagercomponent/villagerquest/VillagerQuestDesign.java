@@ -8,21 +8,24 @@ import com.ckhgame.villagebento.util.tool.VBRandom;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandom;
 
-public class VillagerQuestDesign {
+public class VillagerQuestDesign extends WeightedRandom.Item{
 	private ArrayList<ItemStack> needs = new ArrayList<ItemStack>();
 	private ArrayList<ItemStack> rewards = new ArrayList<ItemStack>();
 	private String title;
 	private String description;
 	private int minLevel;
 	
-	public VillagerQuestDesign(String description, int minLevel){
+	public VillagerQuestDesign(String description, int minLevel,int weight){
+		super(weight);
 		this.title = "<empty>";
 		this.description = description;
 		this.minLevel = minLevel;
 	}
 	
-	public VillagerQuestDesign(String title, String description, int minLevel){
+	public VillagerQuestDesign(String title, String description, int minLevel,int weight){
+		super(weight);
 		this.title = title;
 		this.description = description;
 		this.minLevel = minLevel;

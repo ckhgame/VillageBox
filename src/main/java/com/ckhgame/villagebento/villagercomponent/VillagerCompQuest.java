@@ -8,6 +8,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
+import com.ckhgame.villagebento.util.data.WRChestItem;
 import com.ckhgame.villagebento.util.helper.HelperPlayer;
 import com.ckhgame.villagebento.util.tool.VBRandom;
 import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuest;
@@ -18,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.StatCollector;
+import net.minecraft.util.WeightedRandom;
 import net.minecraftforge.common.util.Constants;
 
 public class VillagerCompQuest extends VillagerComponent {
@@ -76,7 +78,7 @@ public class VillagerCompQuest extends VillagerComponent {
 						}
 					}
 					if(designs.size() > 0){
-						VillagerQuestDesign selected = designs.get(VBRandom.getRand().nextInt(designs.size()));
+						VillagerQuestDesign selected = (VillagerQuestDesign)WeightedRandom.getRandomItem(VBRandom.getRand(),designs);
 						VillagerQuest quest = selected.generateRandomQuest(this.getNextId());
 						if(quest != null){
 							questListCurrent.add(quest);

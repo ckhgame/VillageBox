@@ -59,7 +59,7 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 			else{
 				this.clearAllDialogOptions();
 				this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.questLookingfor"));
-				this.addDialogOptions(ButtonID_Complete, 0, StatCollector.translateToLocal("vbgui.dialogOption.questCompleteQuest"));
+				this.addDialogOptions(ButtonID_Complete, 0, StatCollector.translateToLocal("vbgui.dialogOption.questComplete"));
 				this.addDialogOptions(ButtonID_Back, 1, StatCollector.translateToLocal("vbgui.dialogOption.questBack"));
 				this.showCenterContent(ContentID_Quest);
 			}
@@ -96,7 +96,7 @@ public class GuiVillagerDialogQuest extends GuiVillagerDialog{
 			VillagerQuest quest = this.villagerCompQuest.getQuestListCurrent().get(0);
 			if(quest != null){
 				//texts
-				this.drawCenteredString(fontRendererObj, quest.title, this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
+				this.drawCenteredString(fontRendererObj, StatCollector.translateToLocal("vbgui.dialogQuest.timeLeft") + quest.timeLeft + "h", this.boundCenterContent.getIntCenterX(),this.boundCenterContent.getIntY() + 8, 0xFFFFFF00);
 				this.drawWrappedString(fontRendererObj, quest.description, this.boundCenterContent.getIntX() + 8,this.boundCenterContent.getIntY() + 24, 0xFFFFFFFF,240);	
 				//needs
 				this.fontRendererObj.drawString(StatCollector.translateToLocal("vbgui.dialogQuest.need"), this.boundCenterContent.getIntX() + 8,this.boundCenterContent.getIntY() + 80, 0xFFAAAAAA);

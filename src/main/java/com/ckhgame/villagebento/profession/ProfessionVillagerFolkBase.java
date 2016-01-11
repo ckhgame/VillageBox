@@ -52,7 +52,7 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
         VillagerQuestDesign design = null;
         
         //easy - food
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFood"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFood"),0,3);
         design.addNeeds(Items.cake,1,0);	design.addNeeds(Items.bread,5,0);	design.addNeeds(Items.cookie,5,0);
         design.addNeeds(Items.pumpkin_pie,2,0);	design.addNeeds(Items.cooked_fished,5,0);	design.addNeeds(Items.cooked_fished,5,1);
         design.addNeeds(Items.baked_potato,5,0); design.addNeeds(Items.cooked_chicken,3,0); design.addNeeds(Items.cooked_beef,3,0); 
@@ -62,28 +62,28 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
         compQuest.addQuestDesign(design);
         
         //easy - hunting
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyHunting"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyHunting"),0,3);
         design.addNeeds(Items.beef,3,0);	design.addNeeds(Items.porkchop,3,0);	design.addNeeds(Items.chicken,3,0);
         design.addNeeds(Items.leather,2,0);
         addEasyQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         //easy - slaying
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasySlaying"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasySlaying"),0,3);
         design.addNeeds(Items.rotten_flesh,8,0);	design.addNeeds(Items.bone,5,0);	design.addNeeds(Items.spider_eye,3,0);
         design.addNeeds(Items.gunpowder,3,0);
         addEasyQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         //easy - fishing
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFishing"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFishing"),0,3);
         design.addNeeds(Items.fish,3,0);	design.addNeeds(Items.fish,3,1);	design.addNeeds(Items.fish,3,2);
         design.addNeeds(Items.fish,3,3);
         addEasyQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         //easy - gathering
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyGathering"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyGathering"),0,3);
         design.addNeeds(Blocks.red_flower,5,0);	 design.addNeeds(Blocks.red_flower,5,1); design.addNeeds(Blocks.red_flower,5,2);
         design.addNeeds(Blocks.red_flower,5,3);	 design.addNeeds(Blocks.red_flower,5,4); design.addNeeds(Blocks.red_flower,5,5);
         design.addNeeds(Blocks.red_flower,5,6);	 design.addNeeds(Blocks.red_flower,5,7); design.addNeeds(Blocks.red_flower,5,8);
@@ -95,20 +95,20 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
         compQuest.addQuestDesign(design);
         
         //easy - mining
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyMining"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyMining"),0,3);
         design.addNeeds(Items.coal,15,0);	 design.addNeeds(Items.iron_ingot,5,0); 
         addEasyQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         //easy - farming
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFarming"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFarming"),0,3);
         design.addNeeds(Items.wheat,5,0);	 design.addNeeds(Items.potato,5,0); design.addNeeds(Items.carrot,5,0); 
         design.addNeeds(Blocks.pumpkin,2,0); design.addNeeds(Items.reeds,6,0); design.addNeeds(Blocks.melon_block,1,0); 
         addEasyQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         //easy - feeding
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFeeding"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questEasyFeeding"),0,3);
         design.addNeeds(Items.egg,5,0);	 design.addNeeds(ModItems.itemBottleOfMilk,5,0); design.addNeeds(Blocks.wool,5,0); 
         addEasyQuestRewards(design);
         compQuest.addQuestDesign(design);
@@ -116,7 +116,7 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
         //-------------------------------------------
         
         //advanced - food
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFood"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFood"),0,1);
         design.addNeeds(ModItems.itemCarrotCake,2,0);	 design.addNeeds(ModItems.itemUdon,2,0);design.addNeeds(ModItems.itemBoiledEgg,5,0);	 
         design.addNeeds(ModItems.itemCreamyCorn,3,0);	 design.addNeeds(ModItems.itemFries,3,0);	 design.addNeeds(ModItems.itemCongee,2,0);	 
         design.addNeeds(ModItems.itemCockTail,2,0);	 design.addNeeds(ModItems.itemAppleCandy,5,0);	 
@@ -124,26 +124,26 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
         compQuest.addQuestDesign(design);
         
         //advanced - potion
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvPotion"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvPotion"),0,1);
         design.addNeeds(Items.potionitem,1,8197);	
         addAdvancedQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         //advanced - mining
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvMining"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvMining"),0,1);
         design.addNeeds(Items.gold_ingot,5,0);	 design.addNeeds(Items.redstone,30,0);
         addAdvancedQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         //advanced - farming
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFarming"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFarming"),0,1);
         design.addNeeds(ModItems.itemChili,3,0);design.addNeeds(ModItems.itemSoybeans,3,0);design.addNeeds(ModItems.itemGrapes,3,0);
         design.addNeeds(ModItems.itemRiceplant,5,0);design.addNeeds(ModItems.itemCorn,5,0);design.addNeeds(ModItems.itemCabbage,5,0);
         addAdvancedQuestRewards(design);
         compQuest.addQuestDesign(design);
         
         //advanced - feeding
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFeeding"),0);
+        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villagerfolk.questAdvFeeding"),0,1);
         design.addNeeds(ModItems.itemVillageWool,3,0);design.addNeeds(ModItems.itemVillageEgg,3,0);design.addNeeds(ModItems.itemVillageHeartEgg,3,0);
         design.addNeeds(ModItems.itemVillageMilk,3,0);
         addAdvancedQuestRewards(design);

@@ -229,6 +229,7 @@ vbgui.dialogAbout.reachedMaxLvl=Already reached the max level
 vbgui.dialogAbout.openHoursTitle=Open Hours
 vbgui.dialogAbout.weekdays=Mon,Tue,Wed,Thu,Fri,Sat,Sun
 
+vbgui.dialogQuest.timeLeft=Time left: 
 vbgui.dialogQuest.need=Need:
 vbgui.dialogQuest.reward=Reward:
 
@@ -271,8 +272,9 @@ villager.villageElder.description=I knows everything about the village.
 villager.villageElder.chat0=Howdy!!
 villager.villageElder.chat1=It's better to have a bakery near here..
 villager.villageElder.chat2=I hope you everything is running well!
-villager.villageElder.quest0=Could you do me a favor for bringing me this?
-villager.villageElder.quest1=Really hate the zombies at night, could you slay them for me?
+villager.villageElder.questZombie=Walking in the night is horrible, could you kill zombies for me?
+villager.villageElder.questWantWoods=I need a lot of woods, could you help me?
+villager.villageElder.questWantStones=Stones are needed, could you help bring some to me?
 
 villager.noviceBaker.name=Novice Baker
 villager.noviceBaker.description=I love baking.
@@ -428,11 +430,11 @@ villager.villagerfolk.questEasyFishing=Fish tastes delicious, could you bring me
 villager.villagerfolk.questEasyGathering=Could you help me gather some materials that I need?
 villager.villagerfolk.questEasyMining=I'm scary of darkness, could you mining for me?
 villager.villagerfolk.questEasyFarming=I am too busy to take care my farm, could you help me out?
-villager.villagerfolk.questAdvFood=I'm looking for nice food, do you have any suggestion?
+villager.villagerfolk.questAdvFood=I'm looking for nice food, can you help me?
 villager.villagerfolk.questAdvPotion=I am going on a adventure, what you think I need prepare
 villager.villagerfolk.questAdvMining=Looks like you are a good miner, could you mine for me?
 villager.villagerfolk.questAdvFarming=I need some materials for my cooking, could you help me out?
-villager.villagerfolk.questAdvFeeding=I heard pasturing animals are fun, could you tell me more about it?
+villager.villagerfolk.questAdvFeeding=I want some animal products, could you do me a favor?
 
 # --------------------------------
 # Messages
