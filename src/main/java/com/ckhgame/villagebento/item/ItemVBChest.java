@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.ckhgame.villagebento.util.data.WRChestItem;
+import com.ckhgame.villagebento.util.helper.HelperPlayer;
+import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import cpw.mods.fml.common.toposort.ModSorter;
 import net.minecraft.client.Minecraft;
@@ -13,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.world.World;
@@ -80,11 +83,24 @@ public class ItemVBChest extends ItemVB {
 		if(!world.isRemote){	
 			if(this.itemList != null){
 				--itemStack.stackSize;
-				ItemStack newItem = ((WRChestItem)WeightedRandom.getRandomItem(world.rand, this.itemList)).getItemStack();
+				ItemStack newItem = ((WRChestItem)WeightedRandom.getRandomItem(world.rand, this.itemList)).getItemStack().copy();
 				world.playSoundAtEntity(player, "random.pop", 0.2F, ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-				if(!player.inventory.addItemStackToInventory(newItem)){
-					player.dropPlayerItemWithRandomChoice(newItem, false);
+				
+				int num = 0;				
+				
+				if(newItem.getItem() == ModItems.itemVillageCurrency){
+					num = newItem.getItemDamage();
+					HelperPlayer.addCurrency(player, newItem.getItemDamage());
 				}
+				else{
+					num = newItem.stackSize;
+					if(!player.inventory.addItemStackToInventory(newItem)){
+						player.dropPlayerItemWithRandomChoice(newItem, false);
+					}
+				}			
+				
+				PlayerMsg.sendTranslation(player, "villagebento.msg.openFishingChest",  new ChatComponentTranslation(newItem.getUnlocalizedName() + ".name"), num);
+				
 			}
 		}
 		return super.onItemRightClick(itemStack, world, player);

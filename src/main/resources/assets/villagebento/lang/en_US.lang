@@ -464,3 +464,5 @@ villagebento.msg.notMyChest=It's not my chest, I'd better not open it.
 villagebento.msg.cantSetFire=Can't set fire near other's home.
 villagebento.msg.cantHang=Can't hang anything on other's home.
 villagebento.msg.bucketNotAllowed=Buckets are not allowed to use on here.
+
+villagebento.msg.openFishingChest=I find %s ( %d ) in the chest.

@@ -436,7 +436,6 @@ villager.villagerfolk.questAdvMining=看起来你一个好的矿工，可以麻�
 villager.villagerfolk.questAdvFarming=我缺少了一些料理的食材，你可以帮我收集以下么?
 villager.villagerfolk.questAdvFeeding=我需要一些牧产品，你可以帮我一下么?
 
-
 # --------------------------------
 # Messages
 # --------------------------------
@@ -465,3 +464,5 @@ villagebento.msg.notMyChest=我不能随便开别人的箱子.
 villagebento.msg.cantSetFire=我不能在别人家附近放火.
 villagebento.msg.cantHang=我不能在别人家里挂东西.
 villagebento.msg.bucketNotAllowed=这里不允许用水桶.
+
+villagebento.msg.openFishingChest=我在箱子里找到了 %s ( %d ).
