@@ -97,6 +97,7 @@ public class ProfessionVillageElder extends Profession {
         compBuy.addItem(ModBlocks.blockCowShop, 1);
         compBuy.addItem(ModBlocks.blockSmallTavern, 1);
         compBuy.addItem(ModBlocks.blockFarmland, 1);          
+        compBuy.addItem(ModBlocks.blockChurch, 1);
         compBuy.addItem(ModBlocks.blockBuildingDestroyer, 1);
         
         compBuy.addItem(ModBlocks.blockTailorStore, 2);

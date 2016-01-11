@@ -115,6 +115,7 @@ public class ItemPrice {
 		register(ModBlocks.blockSheepShop,460);
 		register(ModBlocks.blockCowShop,480);
 		register(ModBlocks.blockLibrary,480);
+		register(ModBlocks.blockLibrary,400);
 		register(ModBlocks.blockProArchitectsHouse,648);
 		register(ModBlocks.blockGroundworkOnlyMedium,500);
 		
