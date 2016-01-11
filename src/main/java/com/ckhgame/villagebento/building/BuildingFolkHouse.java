@@ -3,7 +3,11 @@ package com.ckhgame.villagebento.building;
 import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.building.builder.BuildingBuilder;
 import com.ckhgame.villagebento.config.ConfigBuilding;
-import com.ckhgame.villagebento.profession.ProfessionFlowerShopOwner;
+import com.ckhgame.villagebento.profession.ProfessionVillagerFolk0;
+import com.ckhgame.villagebento.profession.ProfessionVillagerFolk1;
+import com.ckhgame.villagebento.profession.ProfessionVillagerFolk2;
+import com.ckhgame.villagebento.profession.ProfessionVillagerFolk3;
+import com.ckhgame.villagebento.profession.ProfessionVillagerFolk4;
 import com.ckhgame.villagebento.util.tool.VBRandom;
 
 import net.minecraft.init.Blocks;
@@ -27,9 +31,12 @@ public class BuildingFolkHouse extends Building {
 	
 	@Override
 	protected void generateVillagers(BuildingBuilder bb) {
-		// TODO Auto-generated method stub
-		//add villager
-		bb.addVillager(ProfessionFlowerShopOwner.class,0,-1 );
+		int r = VBRandom.getRand().nextInt(5);
+		if(r == 0) bb.addVillager(ProfessionVillagerFolk0.class,0,-1 );
+		else if(r == 1) bb.addVillager(ProfessionVillagerFolk1.class,0,-1 );
+		else if(r == 2) bb.addVillager(ProfessionVillagerFolk2.class,0,-1 );
+		else if(r == 3) bb.addVillager(ProfessionVillagerFolk3.class,0,-1 );
+		else if(r == 4) bb.addVillager(ProfessionVillagerFolk4.class,0,-1 );
 	}
 
 	@Override

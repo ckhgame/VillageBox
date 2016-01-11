@@ -21,7 +21,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-public abstract class ProfessionVillagerFolk1 extends ProfessionVillagerFolkBase {
+public class ProfessionVillagerFolk1 extends ProfessionVillagerFolkBase {
 
 	@Override
 	public String getSkinName() {

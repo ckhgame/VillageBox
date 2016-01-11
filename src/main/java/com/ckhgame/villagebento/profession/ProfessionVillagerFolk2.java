@@ -21,11 +21,15 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-public abstract class ProfessionVillagerFolk2 extends ProfessionVillagerFolkBase {
+public class ProfessionVillagerFolk2 extends ProfessionVillagerFolkBase {
 
 	@Override
 	public String getSkinName() {
 		return "villager2";
 	}
 
+	@Override
+	public boolean isMale(){
+		return false;
+	}
 }
