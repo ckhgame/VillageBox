@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.gui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.lwjgl.opengl.GL11;
@@ -11,6 +12,7 @@ import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
 import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.client.Minecraft;
@@ -21,13 +23,30 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class GuiTextButton extends GuiButton {
 
+	private String extraText = null;
+	public GuiScreen guiScreen = null;
+	
 	public GuiTextButton(Minecraft mc,int id, int x, int y, String text) {
+		this(mc, id, x, y, text, null);
+	}
+	
+	public GuiTextButton(Minecraft mc,int id, int x, int y, String text, String extraText) {
 		super(id, x, y,mc.fontRenderer.getStringWidth(text),mc.fontRenderer.FONT_HEIGHT,text);
+		this.extraText = extraText;
 	}
 
+	public String getExtraText(){
+		return this.extraText;
+	}
+	
+	public boolean isMouseOn(){
+		return this.field_146123_n;
+	}
+	
 	@Override
 	public void drawButton(Minecraft mc, int p_146112_2_, int p_146112_3_) {
 		 if (this.visible)
@@ -44,7 +63,7 @@ public class GuiTextButton extends GuiButton {
 	            }
 	            else if (!this.enabled)
 	            {
-	                l = 0xFF777777;
+	                l = 0xFF999999;
 	            }
 	            else if (this.field_146123_n)
 	            {

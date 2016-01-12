@@ -78,14 +78,14 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.workNextWork"));
 			
 			//options
-			int[] workIdxList = this.villagerCompWork.workIdxListCurrent;
 			Work work;
-			for(int i =0;i<workIdxList.length;i++){
-				work = this.villagerCompWork.getWork(workIdxList[i]);
-				this.addDialogOptions(ButtonID_Work0 + i, i, work.name + "(" + work.price + " g)");
+			for(int i =0;i<this.villagerCompWork.getWorkListSize();i++){
+				work = this.villagerCompWork.getWork(i);
+				boolean available = this.villagerCompWork.isWorkAvailable(work);
+				this.addDialogOptions(ButtonID_Work0 + i, i, work.name ,available, available?(work.price + " G"):(StatCollector.translateToLocal("vbgui.common.needLevel") + (work.minLevel + 1)));
 			}		
 
-			this.addDialogOptions(ButtonID_Back, workIdxList.length, StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
+			this.addDialogOptions(ButtonID_Back, this.villagerCompWork.getWorkListSize(), StatCollector.translateToLocal("vbgui.dialogOption.workBack"));
 		}		
 	}
 	
@@ -130,9 +130,8 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 	protected void actionPerformed(GuiButton guiButton) {
 		super.actionPerformed(guiButton);
 		
-		if(this.villagerCompWork != null &&  this.villagerCompWork.workIdxListCurrent != null){
-			int[] workIdxList = this.villagerCompWork.workIdxListCurrent;
-			for(int i =0;i<workIdxList.length;i++){
+		if(this.villagerCompWork != null){
+			for(int i =0;i<this.villagerCompWork.getWorkListSize();i++){
 				if(guiButton.id == ButtonID_Work0 + i){
 					int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompWork);
 					if(compIdx < 0)
@@ -141,7 +140,7 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 						Action.send(ActionDoVillagerStartWork.class, new Object[]{	this.entityVBVillager.getEntityId(),
 								compIdx, 
 								Minecraft.getMinecraft().thePlayer.getEntityId(),
-								new Object[]{this.villagerCompWork.workIdxListCurrent[i]}});
+								new Object[]{i}});
 						this.clearAllDialogOptions();
 					}
 				}

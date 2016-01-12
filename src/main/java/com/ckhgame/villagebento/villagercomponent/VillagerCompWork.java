@@ -81,8 +81,16 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 		addWorkOutput(widx,item,min,max,0);
 	}
 
+	public int getWorkListSize(){
+		return this.workListTotal.size();
+	}
+	
 	public Work getWork(int idx){
 		return this.workListTotal.get(idx);
+	}
+	
+	public boolean isWorkAvailable(Work work){
+		return work.minLevel <= this.getVillager().getLevel();
 	}
 	
 	//-------------------------------------------------------
@@ -97,7 +105,6 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 	public int workIdx = -1;
 	public int hoursLeft = -1;
 	public ItemStack output = null;
-	public int[] workIdxListCurrent = null;
 
 	public void refreshOutput(){
 
@@ -111,28 +118,6 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 		Work w = this.workListTotal.get(workIdx);	
 		WorkOutput workOutput = w.outputs.get(rand.nextInt(w.outputs.size()));
 		this.output = new ItemStack(workOutput.item,rand.nextInt(workOutput.max - workOutput.min + 1) + workOutput.min,workOutput.meta);
-	}
-	
-	public void refreshWorkIdxListCurrent(){
-		int vrLvl = this.getVillager().getLevel();
-		int[] tempArr = new int[this.workListTotal.size()];
-		int count = 0;
-		Work work;
-		for(int i =0;i<this.workListTotal.size();i++){
-			work = this.workListTotal.get(i);
-			if(work.minLevel <= vrLvl){
-				tempArr[count++] = i;
-			}
-		}
-		
-		if(count == 0)
-			this.workIdxListCurrent = null;
-		else{
-			this.workIdxListCurrent = new int[count];
-			for(int i=0;i<count;i++){
-				workIdxListCurrent[i] = tempArr[i];
-			}
-		}
 	}
 	
 	public void workTimeStep(){		
@@ -154,12 +139,6 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 		if(hasOutput){
 			ByteBufUtils.writeItemStack(buf, output);
 		}
-		
-		int workIdxSize = (this.workIdxListCurrent == null?0:this.workIdxListCurrent.length);
-		buf.writeInt(workIdxSize);
-		for(int i =0;i<workIdxSize;i++){
-			buf.writeInt(this.workIdxListCurrent[i]);
-		}
 	}
 
 	@Override
@@ -171,12 +150,6 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 		boolean hasOutput = buf.readBoolean();
 		if(hasOutput){
 			this.output = ByteBufUtils.readItemStack(buf);
-		}
-		
-		int workIdxSize = buf.readInt();
-		this.workIdxListCurrent = (workIdxSize>0?new int[workIdxSize]:null);
-		for(int i =0;i<workIdxSize;i++){
-			this.workIdxListCurrent[i] = buf.readInt();
 		}
 	}
 
@@ -196,14 +169,6 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 			if(compound.hasKey(ConfigData.KeyVillagerCompWorkOutput))
 				compound.removeTag(ConfigData.KeyVillagerCompWorkOutput);
 		}
-		
-		if(this.workIdxListCurrent != null){
-			compound.setIntArray(ConfigData.KeyVillagerCompWorkCurrentIdxList, this.workIdxListCurrent);
-		}
-		else{
-			if(compound.hasKey(ConfigData.KeyVillagerCompWorkCurrentIdxList))
-				compound.removeTag(ConfigData.KeyVillagerCompWorkCurrentIdxList);
-		}
 	}
 
 	@Override
@@ -216,11 +181,6 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 			this.output = ItemStack.loadItemStackFromNBT(compound.getCompoundTag(ConfigData.KeyVillagerCompWorkOutput));
 		else
 			this.output = null;
-		
-		if(compound.hasKey(ConfigData.KeyVillagerCompWorkCurrentIdxList))
-			this.workIdxListCurrent = compound.getIntArray(ConfigData.KeyVillagerCompWorkCurrentIdxList);
-		else
-			this.workIdxListCurrent = null;
 	}
 
 	@Override
@@ -229,15 +189,10 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 		workIdx = -1;
 		hoursLeft = -1;
 		ItemStack output = null;
-		refreshWorkIdxListCurrent();
 	}
 
 	@Override
-	public void update(int time) {
-		if(time == 0){
-			refreshWorkIdxListCurrent();
-		}
-		
+	public void update(int time) {		
 		workTimeStep();
 	} 
 	
@@ -253,6 +208,9 @@ public class VillagerCompWork extends VillagerCompCustomDialog {
 			return VBCompResult.getDefaultFailed();
 		
 		if(workIdx >= this.workListTotal.size())
+			return VBCompResult.getDefaultFailed();
+		
+		if(!this.isWorkAvailable(this.workListTotal.get(wIdx)))
 			return VBCompResult.getDefaultFailed();
 			
 		if(!HelperPlayer.addCurrency(player, -this.workListTotal.get(wIdx).price))

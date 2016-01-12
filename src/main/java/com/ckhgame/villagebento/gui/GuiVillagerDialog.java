@@ -10,9 +10,11 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.tool.VBRandom;
+import com.ckhgame.villagebento.util.village.ItemPrice;
 
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
@@ -62,6 +64,10 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 	}
 	
 	protected void addDialogOptions(int id, int idx, String text){
+		this.addDialogOptions(id, idx, text, true,null);
+	}
+	
+	protected void addDialogOptions(int id, int idx, String text,boolean enabled, String extraText){
 		String prefix = "> ";
 		int maxCol = 2;
 		int yOffset = 28;
@@ -69,12 +75,29 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		int lineHeight = 10;
 		int x = this.boundDialogBar.getIntX()  + xOffset + (idx % maxCol) * this.boundDialogBar.getIntW() / 2;
 		int y = this.boundDialogBar.getIntY() + yOffset + (idx / maxCol) * lineHeight;
-		this.buttonList.add(new GuiTextButton(this.mc, id, x, y, prefix + text));
+		GuiTextButton btn = new GuiTextButton(this.mc, id, x, y, prefix + text,extraText);
+		btn.enabled = enabled;
+		this.buttonList.add(btn);
 	}
 	
 	protected void setDialogString(String dialog){
 		this.dialogSource = dialog;
 		this.dialogDisplay = "";
+	}
+	
+	protected void updateAllDialogStringHover(){
+		GuiTextButton btn = null;
+		for(Object obj : this.buttonList){
+			if(obj instanceof GuiTextButton){
+				btn = (GuiTextButton)obj;
+				if(btn.visible && btn.getExtraText() != null && btn.isMouseOn()){
+					List texts = new ArrayList();
+					texts.add(btn.getExtraText());
+					this.setMouseHoverTexts(texts);
+					break;
+				}
+			}
+		}
 	}
 	
 	protected void drawDialogBar(int mx, int my, float f){
@@ -150,6 +173,9 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 			this.drawCenterContent(this.centerContentID,mx, my, f);
 		}
 		super.drawScreen(mx, my, f);
+		
+		this.updateAllDialogStringHover();
+		
 		this.drawMouseHoverTexts(mx, my);
 	}
 	@Override
