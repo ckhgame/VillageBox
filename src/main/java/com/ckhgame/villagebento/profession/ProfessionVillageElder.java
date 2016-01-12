@@ -79,28 +79,32 @@ public class ProfessionVillageElder extends Profession {
         
         //buy list
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModBlocks.blockFishingStore, 0);
         compBuy.addItem(ModBlocks.blockSmallBakery, 0);
+        compBuy.addItem(ModBlocks.blockFishingStore, 0);
+        compBuy.addItem(ModBlocks.blockBlackSmithsShop, 0);
+        compBuy.addItem(ModBlocks.blockMarket, 0);
+        compBuy.addItem(ModBlocks.blockArchitectsHome, 0);
+        compBuy.addItem(ModBlocks.blockHunterHouse, 0);
         compBuy.addItem(ModBlocks.blockMiningHouse, 0);
+        compBuy.addItem(ModBlocks.blockChurch, 0);
         
-        compBuy.addItem(ModBlocks.blockPlayerFieldSmall, 1);
-        compBuy.addItem(ModBlocks.blockDefenceTower, 1);
+        compBuy.addItem(ModBlocks.blockVillagerHomeTP, 1);
+        compBuy.addItem(ModBlocks.blockFarmland, 1);
         compBuy.addItem(ModBlocks.blockChickenShop, 1);
-        compBuy.addItem(ModBlocks.blockBlackSmithsShop, 1);
-        compBuy.addItem(ModBlocks.blockMarket, 1);
-        compBuy.addItem(ModBlocks.blockSmallHotel, 1);
-        compBuy.addItem(ModBlocks.blockHunterHouse, 1);
-        compBuy.addItem(ModBlocks.blockSmallMilitaryCamp, 1);
         compBuy.addItem(ModBlocks.blockSheepShop, 1);
         compBuy.addItem(ModBlocks.blockCowShop, 1);
+        compBuy.addItem(ModBlocks.blockLibrary, 1);
+        compBuy.addItem(ModBlocks.blockSmallMilitaryCamp, 1);
+        compBuy.addItem(ModBlocks.blockSmallHotel, 1);
         compBuy.addItem(ModBlocks.blockSmallTavern, 1);
-        compBuy.addItem(ModBlocks.blockFarmland, 1);          
-        compBuy.addItem(ModBlocks.blockChurch, 1);
-        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 1);
-        
-        compBuy.addItem(ModBlocks.blockTailorStore, 2);
+        compBuy.addItem(ModBlocks.blockPotionStore, 1);
+               
+        compBuy.addItem(ModBlocks.blockLargeBakery, 2);
+        compBuy.addItem(ModBlocks.blockFlowerShop, 2); 
+        compBuy.addItem(ModBlocks.blockProArchitectsHouse, 2);
         compBuy.addItem(ModBlocks.blockSmallCasino, 2); 
-        compBuy.addItem(ModBlocks.blockPlayerFieldMedium, 2);
+        compBuy.addItem(ModBlocks.blockTailorStore, 2);
+
         components.add(compBuy);
         
         //sell list

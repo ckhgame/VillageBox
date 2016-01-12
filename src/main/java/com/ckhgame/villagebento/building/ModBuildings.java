@@ -10,7 +10,7 @@ public class ModBuildings {
 		Building.registry.register(10,new BuildingVillageCenter());
 		
 		Building.registry.register(11,new BuildingBlacksmithsShop());
-		Building.registry.register(12,new BuildingArchitectsHome());
+		Building.registry.register(12,new BuidlingArchitectsHome());
 		Building.registry.register(13,new BuildingFishingStore());
 		Building.registry.register(14,new BuildingMiningHouse());
 		Building.registry.register(15,new BuildingSmallBakery());

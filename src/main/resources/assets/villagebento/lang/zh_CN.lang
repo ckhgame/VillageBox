@@ -429,6 +429,24 @@ villager.priest.chat0=愿上帝保佑这座村庄.
 villager.priest.chat1=善待你的敌人.
 villager.priest.chat2=每一天都是上帝的恩赐. 
 
+villager.tailor.name=裁缝师
+villager.tailor.description=我只是个热爱时尚的人
+villager.tailor.chat0=想要买新的衣服么？
+villager.tailor.chat1=看这是最新的款式
+villager.tailor.chat2=这件怎么样？穿在你身上很不错
+
+villager.merchant.name=药水商人
+villager.merchant.description=药水向来是旅行的必备品
+villager.merchant.chat0=准备买些什么呢？
+villager.merchant.chat1=你找到你想要的东西了么？
+villager.merchant.chat2=这是今天的特价商品!
+
+villager.librarian.name=图书管理员
+villager.librarian.description=......我喜欢读书和写作.
+villager.librarian.chat0=请早这里保持安静.
+villager.librarian.chat1=我希望你喜欢这本书.
+villager.librarian.chat2=知识就是力量.
+
 villager.villagerfolk.name=村庄居民
 villager.villagerfolk.description=我生活在这个村庄里。
 villager.villagerfolk.chat0=我希望我所在的村子变得更好。

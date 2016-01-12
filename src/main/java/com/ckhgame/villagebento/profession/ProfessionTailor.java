@@ -9,18 +9,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.util.StatCollector;
+
 public class ProfessionTailor extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Tailor";
+		return StatCollector.translateToLocal("villager.Tailor.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Tailoring.";
+		return StatCollector.translateToLocal("villager.Tailor.description");
 	}
 
 	@Override
@@ -45,9 +47,9 @@ public class ProfessionTailor extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Look at this new design...");
-		villagerChat.add(0, "Wanna warm clothes?");
-		villagerChat.add(0, "How about this one?");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.Tailor.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.Tailor.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.Tailor.chat2"));
 		
 	}
 

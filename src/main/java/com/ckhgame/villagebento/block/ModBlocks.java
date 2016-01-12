@@ -1,6 +1,6 @@
 package com.ckhgame.villagebento.block;
 
-import com.ckhgame.villagebento.building.BuildingArchitectsHome;
+import com.ckhgame.villagebento.building.BuidlingArchitectsHome;
 import com.ckhgame.villagebento.building.BuildingAutumnGarden;
 import com.ckhgame.villagebento.building.BuildingBlacksmithsShop;
 import com.ckhgame.villagebento.building.BuildingChickenShop;
@@ -150,7 +150,7 @@ public final class ModBlocks {
         
         registerVillageBlock(blockVillageCenter = new BlockVillageBuilding(BuildingVillageCenter.class,"BlockVillageCenter"),"BlockVillageCenter");
         registerVillageBlock(blockBlackSmithsShop = new BlockVillageBuilding(BuildingBlacksmithsShop.class,"BlockBlackSmithsShop"),"BlockBlackSmithsShop");
-        registerVillageBlock(blockArchitectsHome = new BlockVillageBuilding(BuildingArchitectsHome.class,"BlockArchitectsHome"),"BlockArchitectsHome");
+        registerVillageBlock(blockArchitectsHome = new BlockVillageBuilding(BuidlingArchitectsHome.class,"BlockArchitectsHome"),"BlockArchitectsHome");
         registerVillageBlock(blockFishingStore = new BlockVillageBuilding(BuildingFishingStore.class,"BlockFishingStore"),"BlockFishingStore");
         registerVillageBlock(blockMiningHouse = new BlockVillageBuilding(BuildingMiningHouse.class,"BlockMiningHouse"),"BlockMiningHouse");
         registerVillageBlock(blockSmallBakery = new BlockVillageBuilding(BuildingSmallBakery.class,"BlockSmallBakery"),"BlockSmallBakery");

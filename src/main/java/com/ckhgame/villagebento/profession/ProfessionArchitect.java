@@ -36,22 +36,12 @@ public class ProfessionArchitect extends Profession {
         components.add(new VillagerCompAbout(villager));
 
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModBlocks.blockDefenceTower,  0);
-        compBuy.addItem(ModBlocks.blockChickenShop,  0);
-        compBuy.addItem(ModBlocks.blockBlackSmithsShop,  0);
-        compBuy.addItem(ModBlocks.blockMarket,  0);
-        compBuy.addItem(ModBlocks.blockSmallHotel,  0);
-        compBuy.addItem(ModBlocks.blockHunterHouse,  0);
-        compBuy.addItem(ModBlocks.blockSmallMilitaryCamp, 0);
-        compBuy.addItem(ModBlocks.blockSheepShop, 0);
-        compBuy.addItem(ModBlocks.blockCowShop, 0);
-        compBuy.addItem(ModBlocks.blockTailorStore, 0);
-        compBuy.addItem(ModBlocks.blockSmallTavern, 0);
-        compBuy.addItem(ModBlocks.blockFarmland, 0);          
-        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 0);
-        compBuy.addItem(ModBlocks.blockPlayerFieldMedium, 0);
-        compBuy.addItem(ModBlocks.blockSmallCasino, 0);            
-        compBuy.addItem(ModBlocks.blockProArchitectsHouse, 0);
+        compBuy.addItem(ModBlocks.blockPlayerFieldSmall, 0);
+        compBuy.addItem(ModBlocks.blockDefenceTower, 0);
+        compBuy.addItem(ModBlocks.blockTownSquareSmall, 0);
+        compBuy.addItem(ModBlocks.blockPlayerFieldMedium, 1);
+        compBuy.addItem(ModBlocks.blockTownSquareLarge, 1);
+        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 1);
         components.add(compBuy);
             
 
