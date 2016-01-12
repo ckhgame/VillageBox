@@ -53,7 +53,7 @@ public class BuildingBlacksmithsShop extends Building {
 		bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,-3,Blocks.monster_egg,2);bb.buildBlock(2,0,4,Blocks.planks,1);
 		bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,-3,Blocks.monster_egg,2);bb.buildBlock(3,0,1,ModBlocks.blockWoodenChair,0);
 		bb.buildBlock(3,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);bb.buildBlock(4,0,-3,Blocks.planks,1);
-		bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.planks,1);bb.buildBlock(4,0,0,Blocks.wooden_door,6);
+		bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.planks,1);bb.buildBlock(4,0,0,Blocks.wooden_door,2);
 		bb.buildBlock(4,0,1,Blocks.planks,1);bb.buildBlock(4,0,2,Blocks.planks,1);bb.buildBlock(4,0,3,Blocks.planks,1);
 		bb.buildBlock(4,0,4,Blocks.planks,1);bb.buildBlock(-4,1,-4,Blocks.planks,1);bb.buildBlock(-4,1,-3,Blocks.planks,1);
 		bb.buildBlock(-4,1,-2,Blocks.planks,1);bb.buildBlock(-4,1,-1,Blocks.planks,1);bb.buildBlock(-4,1,0,Blocks.planks,1);
@@ -148,13 +148,11 @@ public class BuildingBlacksmithsShop extends Building {
 		bb.buildBlock(-2,7,2,Blocks.stonebrick,0);bb.buildBlock(-2,7,3,Blocks.stonebrick,0);bb.buildBlock(-3,2,1,Blocks.torch,1);
 		bb.buildBlock(-2,2,-3,Blocks.torch,3);bb.buildBlock(1,2,-3,Blocks.torch,3);bb.buildBlock(3,2,-3,Blocks.torch,3);
 		bb.buildBlock(3,2,3,Blocks.torch,4);bb.addEntityPainting(-1,1,4,2,"Plant");
-		bb.addEntityItemFrame(2,2,-4,0,Items.iron_ingot);
-		bb.addEntityItemFrame(0,2,-1,3,Items.iron_helmet);
-		bb.addEntityItemFrame(0,2,-2,3,Items.iron_sword);
-		bb.addEntityItemFrame(2,1,-4,0,Items.gold_ingot);
-		bb.addEntityItemFrame(0,1,-1,3,Items.golden_helmet);
-		bb.addEntityItemFrame(0,1,-2,3,Items.golden_sword);
-		bb.addEntityItemFrame(4,1,1,3,ModBlocks.blockBlackSmithsShop);
+		bb.addEntityItemFrame(1,1,-4,0,Items.iron_helmet,0);
+		bb.addEntityItemFrame(2,2,-4,0,Items.iron_sword,0);
+		bb.addEntityItemFrame(2,1,-4,0,Items.golden_sword,0);
+		bb.addEntityItemFrame(3,1,-4,0,Items.golden_helmet,0);
+		bb.addEntityItemFrame(4,1,1,3,ModBlocks.blockBlackSmithsShop,0);
 	}
 
 }
