@@ -10,7 +10,9 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompWork;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 public class ProfessionSoldier extends Profession {
@@ -72,6 +74,26 @@ public class ProfessionSoldier extends Profession {
 	@Override
 	protected void setTimeSchedule(){	
 		timeSchedule.setSleeptime(new  RangeInt(6,14));
+	}
+	
+	@Override
+	protected void setILevelRequirements() {
+		
+		this.levelRequirements = new ItemStack[2][];
+		
+		this.levelRequirements[0] = new ItemStack[]{	new ItemStack(Items.stone_sword),
+																						new ItemStack(Items.leather_boots),
+																						new ItemStack(Items.leather_helmet),
+																						new ItemStack(Items.leather_chestplate),
+																						new ItemStack(Items.leather_leggings)};
+		
+		this.levelRequirements[1] = new ItemStack[]{	new ItemStack(Items.iron_sword),
+																						new ItemStack(Items.iron_boots),
+																						new ItemStack(Items.iron_helmet),
+																						new ItemStack(Items.iron_chestplate),
+																						new ItemStack(Items.iron_leggings)};
+
+		
 	}
 
 }

@@ -95,32 +95,10 @@ public class VillagerAIGuardPatrol extends EntityAIBase
      */
     public void startExecuting()
     {
-    	equipWeaponAndArmors(true);
     	if(VillagerNavigator.tryMoveToXYZ(entity, this.xPosition, this.yPosition, this.zPosition)){
     		hasTarget = false;
     	}
     		
-    }
-    
-    private void equipWeaponAndArmors(boolean equip){
-    	if(equip){
-    		if(this.entity.getEquipmentInSlot(0) == null){
-        		this.entity.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword));
-            	this.entity.setCurrentItemOrArmor(1, new ItemStack(Items.iron_boots));
-            	this.entity.setCurrentItemOrArmor(2, new ItemStack(Items.iron_chestplate));
-            	this.entity.setCurrentItemOrArmor(3, new ItemStack(Items.iron_helmet));
-            	this.entity.setCurrentItemOrArmor(4, new ItemStack(Items.iron_leggings));
-    		}
-    	}
-    	else{
-    		if(this.entity.getEquipmentInSlot(0) != null){
-    			this.entity.setCurrentItemOrArmor(0, null);
-        		this.entity.setCurrentItemOrArmor(1, null);
-        		this.entity.setCurrentItemOrArmor(2, null);
-        		this.entity.setCurrentItemOrArmor(3, null);
-        		this.entity.setCurrentItemOrArmor(4, null);
-    		}
-    	}
     }
     
 }
