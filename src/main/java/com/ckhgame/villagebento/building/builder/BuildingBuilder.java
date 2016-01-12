@@ -166,7 +166,7 @@ public class BuildingBuilder {
 	}
 	
 	public void addEntityItemFrame(int dx, int dy, int dz, int dir, Item item){
-		addEntityItemFrame(dx,dy,dx,dir,item,0);
+		addEntityItemFrame(dx,dy,dz,dir,item,0);
 	}
 	
 	public void addEntityItemFrame(int dx, int dy, int dz, int dir, Block block){
