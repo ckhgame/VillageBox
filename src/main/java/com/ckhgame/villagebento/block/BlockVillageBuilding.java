@@ -91,8 +91,10 @@ public class BlockVillageBuilding extends Block {
 			int oldmeta) {
 		
 		List l = world.getEntitiesWithinAABB(EntityBuildingIndicator.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1.0D, y + 1.5D, z + 1.0D));
-		for(Object obj : l){
-			world.removeEntity(((EntityBuildingIndicator)obj));
+		if(l != null){
+			for(Object obj : l){
+				world.removeEntity(((EntityBuildingIndicator)obj));
+			}
 		}
 		
 		super.onBlockPreDestroy(world, x, y, z, oldmeta);

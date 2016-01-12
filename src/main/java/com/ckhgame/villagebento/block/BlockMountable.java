@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.ckhgame.villagebento.entity.misc.EntityBlockMountable;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
-import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.model.ModelBase;
@@ -40,6 +39,20 @@ public class BlockMountable extends BlockCustom{
 		public boolean isRiddenByEntity(World world, int x, int y,int z){
 			List l = world.getEntitiesWithinAABB(EntityBlockMountable.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1.0D, y + 1.0D, z + 1.0D));
 			return !(l == null || l.size() == 0);
+		}
+		
+		@Override
+		public void onBlockPreDestroy(World world, int x, int y, int z,
+				int oldmeta) {
+			
+			List l = world.getEntitiesWithinAABB(EntityBlockMountable.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1.0D, y + 1.0D, z + 1.0D));
+			if(l != null){
+				for(Object obj : l){
+					world.removeEntity(((EntityBlockMountable)obj));
+				}
+			}
+			
+			super.onBlockPreDestroy(world, x, y, z, oldmeta);
 		}
 		
 		public boolean activedByEntityVBVillager(EntityVBVillager villager, int x, int y, int z){
