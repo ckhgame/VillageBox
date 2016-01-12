@@ -7,7 +7,7 @@ import com.ckhgame.villagebento.profession.ProfessionArchitect;
 
 import net.minecraft.init.Blocks;
 
-public class BuildingArchitectsHome extends Building {
+public class BuidlingArchitectsHome extends Building {
 
 	@Override
 	public String getName() {

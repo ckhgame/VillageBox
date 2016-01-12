@@ -16,7 +16,7 @@ public class BuildingLibrary extends Building {
 
 	@Override
 	public String getDescription() {
-		return "Please keep slience..";
+		return "This is a place to get knowledge from books";
 	}
 
 	@Override
@@ -148,31 +148,31 @@ public class BuildingLibrary extends Building {
 		bb.buildBlock(4,4,0,Blocks.planks,1);bb.buildBlock(4,4,1,Blocks.planks,1);bb.buildBlock(4,4,2,Blocks.planks,1);
 		bb.buildBlock(4,4,3,Blocks.planks,1);bb.buildBlock(4,4,4,Blocks.planks,1);bb.buildBlock(4,4,5,Blocks.planks,1);
 		bb.buildBlock(5,4,-4,Blocks.planks,1);bb.buildBlock(5,4,-3,Blocks.planks,1);bb.buildBlock(5,4,3,Blocks.planks,1);
-		bb.buildBlock(5,4,4,Blocks.planks,1);bb.buildBlock(-5,5,-5,Blocks.stone_brick_stairs,0);bb.buildBlock(-5,5,-4,Blocks.stone_brick_stairs,0);
-		bb.buildBlock(-5,5,-3,Blocks.stone_brick_stairs,0);bb.buildBlock(-5,5,-2,Blocks.stone_brick_stairs,0);bb.buildBlock(-5,5,-1,Blocks.stone_brick_stairs,0);
-		bb.buildBlock(-5,5,0,Blocks.stone_brick_stairs,0);bb.buildBlock(-5,5,1,Blocks.stone_brick_stairs,0);bb.buildBlock(-5,5,2,Blocks.stone_brick_stairs,0);
-		bb.buildBlock(-5,5,3,Blocks.stone_brick_stairs,0);bb.buildBlock(-5,5,4,Blocks.stone_brick_stairs,0);bb.buildBlock(-5,5,5,Blocks.stone_brick_stairs,0);
-		bb.buildBlock(-4,5,-5,Blocks.stone_brick_stairs,2);bb.buildBlock(-4,5,5,Blocks.stone_brick_stairs,3);bb.buildBlock(-3,5,-5,Blocks.stone_brick_stairs,2);
-		bb.buildBlock(-3,5,5,Blocks.stone_brick_stairs,3);bb.buildBlock(-2,5,-5,Blocks.stone_brick_stairs,2);bb.buildBlock(-2,5,-4,Blocks.planks,1);
+		bb.buildBlock(5,4,4,Blocks.planks,1);bb.buildBlock(-5,5,-5,Blocks.acacia_stairs,2);bb.buildBlock(-5,5,-4,Blocks.acacia_stairs,0);
+		bb.buildBlock(-5,5,-3,Blocks.acacia_stairs,0);bb.buildBlock(-5,5,-2,Blocks.acacia_stairs,0);bb.buildBlock(-5,5,-1,Blocks.acacia_stairs,0);
+		bb.buildBlock(-5,5,0,Blocks.acacia_stairs,0);bb.buildBlock(-5,5,1,Blocks.acacia_stairs,0);bb.buildBlock(-5,5,2,Blocks.acacia_stairs,0);
+		bb.buildBlock(-5,5,3,Blocks.acacia_stairs,0);bb.buildBlock(-5,5,4,Blocks.acacia_stairs,0);bb.buildBlock(-5,5,5,Blocks.acacia_stairs,0);
+		bb.buildBlock(-4,5,-5,Blocks.acacia_stairs,2);bb.buildBlock(-4,5,5,Blocks.acacia_stairs,3);bb.buildBlock(-3,5,-5,Blocks.acacia_stairs,2);
+		bb.buildBlock(-3,5,5,Blocks.acacia_stairs,3);bb.buildBlock(-2,5,-5,Blocks.acacia_stairs,2);bb.buildBlock(-2,5,-4,Blocks.planks,1);
 		bb.buildBlock(-2,5,-3,Blocks.planks,1);bb.buildBlock(-2,5,-2,Blocks.planks,1);bb.buildBlock(-2,5,-1,Blocks.planks,1);
 		bb.buildBlock(-2,5,0,Blocks.planks,1);bb.buildBlock(-2,5,1,Blocks.planks,1);bb.buildBlock(-2,5,2,Blocks.planks,1);
-		bb.buildBlock(-2,5,3,Blocks.wooden_door,2);bb.buildBlock(-2,5,4,Blocks.planks,1);bb.buildBlock(-2,5,5,Blocks.stone_brick_stairs,3);
-		bb.buildBlock(-1,5,-5,Blocks.stone_brick_stairs,2);bb.buildBlock(-1,5,-4,Blocks.planks,1);bb.buildBlock(-1,5,-3,Blocks.bed,9);
-		bb.buildBlock(-1,5,4,Blocks.planks,1);bb.buildBlock(-1,5,5,Blocks.stone_brick_stairs,3);bb.buildBlock(0,5,-5,Blocks.stone_brick_stairs,2);
+		bb.buildBlock(-2,5,3,Blocks.wooden_door,2);bb.buildBlock(-2,5,4,Blocks.planks,1);bb.buildBlock(-2,5,5,Blocks.acacia_stairs,3);
+		bb.buildBlock(-1,5,-5,Blocks.acacia_stairs,2);bb.buildBlock(-1,5,-4,Blocks.planks,1);bb.buildBlock(-1,5,-3,Blocks.bed,9);
+		bb.buildBlock(-1,5,4,Blocks.planks,1);bb.buildBlock(-1,5,5,Blocks.acacia_stairs,3);bb.buildBlock(0,5,-5,Blocks.acacia_stairs,2);
 		bb.buildBlock(0,5,-4,Blocks.planks,1);bb.buildBlock(0,5,-3,Blocks.bed,1);bb.buildBlock(0,5,4,Blocks.planks,1);
-		bb.buildBlock(0,5,5,Blocks.stone_brick_stairs,3);bb.buildBlock(1,5,-5,Blocks.stone_brick_stairs,2);bb.buildBlock(1,5,-4,Blocks.planks,1);
+		bb.buildBlock(0,5,5,Blocks.acacia_stairs,3);bb.buildBlock(1,5,-5,Blocks.acacia_stairs,2);bb.buildBlock(1,5,-4,Blocks.planks,1);
 		bb.buildBlock(1,5,-3,Blocks.bookshelf,0);bb.buildBlock(1,5,-2,Blocks.bookshelf,0);bb.buildBlock(1,5,2,Blocks.bookshelf,0);
-		bb.buildBlock(1,5,3,Blocks.bookshelf,0);bb.buildBlock(1,5,4,Blocks.planks,1);bb.buildBlock(1,5,5,Blocks.stone_brick_stairs,3);
-		bb.buildBlock(2,5,-5,Blocks.stone_brick_stairs,2);bb.buildBlock(2,5,-4,Blocks.planks,1);bb.buildBlock(2,5,-3,Blocks.planks,1);
+		bb.buildBlock(1,5,3,Blocks.bookshelf,0);bb.buildBlock(1,5,4,Blocks.planks,1);bb.buildBlock(1,5,5,Blocks.acacia_stairs,3);
+		bb.buildBlock(2,5,-5,Blocks.acacia_stairs,2);bb.buildBlock(2,5,-4,Blocks.planks,1);bb.buildBlock(2,5,-3,Blocks.planks,1);
 		bb.buildBlock(2,5,-2,Blocks.planks,1);bb.buildBlock(2,5,-1,Blocks.planks,1);bb.buildBlock(2,5,0,Blocks.wooden_door,0);
 		bb.buildBlock(2,5,1,Blocks.planks,1);bb.buildBlock(2,5,2,Blocks.planks,1);bb.buildBlock(2,5,3,Blocks.planks,1);
-		bb.buildBlock(2,5,4,Blocks.planks,1);bb.buildBlock(2,5,5,Blocks.stone_brick_stairs,3);bb.buildBlock(3,5,-5,Blocks.stone_brick_stairs,2);
-		bb.buildBlock(3,5,5,Blocks.stone_brick_stairs,3);bb.buildBlock(4,5,-5,Blocks.stone_brick_stairs,2);bb.buildBlock(4,5,-3,Blocks.stone_brick_stairs,3);
-		bb.buildBlock(4,5,-2,Blocks.stone_brick_stairs,1);bb.buildBlock(4,5,-1,Blocks.stone_brick_stairs,1);bb.buildBlock(4,5,0,Blocks.stone_brick_stairs,1);
-		bb.buildBlock(4,5,1,Blocks.stone_brick_stairs,1);bb.buildBlock(4,5,2,Blocks.stone_brick_stairs,1);bb.buildBlock(4,5,3,Blocks.stone_brick_stairs,2);
-		bb.buildBlock(4,5,5,Blocks.stone_brick_stairs,3);bb.buildBlock(5,5,-5,Blocks.stone_brick_stairs,1);bb.buildBlock(5,5,-4,Blocks.stone_brick_stairs,1);
-		bb.buildBlock(5,5,-3,Blocks.stone_brick_stairs,1);bb.buildBlock(5,5,3,Blocks.stone_brick_stairs,1);bb.buildBlock(5,5,4,Blocks.stone_brick_stairs,1);
-		bb.buildBlock(5,5,5,Blocks.stone_brick_stairs,1);bb.buildBlock(-5,6,-5,Blocks.fence,0);bb.buildBlock(-5,6,-4,Blocks.fence,0);
+		bb.buildBlock(2,5,4,Blocks.planks,1);bb.buildBlock(2,5,5,Blocks.acacia_stairs,3);bb.buildBlock(3,5,-5,Blocks.acacia_stairs,2);
+		bb.buildBlock(3,5,5,Blocks.acacia_stairs,3);bb.buildBlock(4,5,-5,Blocks.acacia_stairs,2);bb.buildBlock(4,5,-3,Blocks.acacia_stairs,3);
+		bb.buildBlock(4,5,-2,Blocks.acacia_stairs,1);bb.buildBlock(4,5,-1,Blocks.acacia_stairs,1);bb.buildBlock(4,5,0,Blocks.acacia_stairs,1);
+		bb.buildBlock(4,5,1,Blocks.acacia_stairs,1);bb.buildBlock(4,5,2,Blocks.acacia_stairs,1);bb.buildBlock(4,5,3,Blocks.acacia_stairs,2);
+		bb.buildBlock(4,5,5,Blocks.acacia_stairs,3);bb.buildBlock(5,5,-5,Blocks.acacia_stairs,1);bb.buildBlock(5,5,-4,Blocks.acacia_stairs,1);
+		bb.buildBlock(5,5,-3,Blocks.acacia_stairs,3);bb.buildBlock(5,5,3,Blocks.acacia_stairs,1);bb.buildBlock(5,5,4,Blocks.acacia_stairs,1);
+		bb.buildBlock(5,5,5,Blocks.acacia_stairs,3);bb.buildBlock(-5,6,-5,Blocks.fence,0);bb.buildBlock(-5,6,-4,Blocks.fence,0);
 		bb.buildBlock(-5,6,-3,Blocks.fence,0);bb.buildBlock(-5,6,-2,Blocks.fence,0);bb.buildBlock(-5,6,-1,Blocks.fence,0);
 		bb.buildBlock(-5,6,0,Blocks.fence,0);bb.buildBlock(-5,6,1,Blocks.fence,0);bb.buildBlock(-5,6,2,Blocks.fence,0);
 		bb.buildBlock(-5,6,3,Blocks.fence,0);bb.buildBlock(-5,6,4,Blocks.fence,0);bb.buildBlock(-5,6,5,Blocks.fence,0);
@@ -202,22 +202,22 @@ public class BuildingLibrary extends Building {
 		bb.buildBlock(1,7,-4,Blocks.planks,1);bb.buildBlock(1,7,4,Blocks.planks,1);bb.buildBlock(2,7,-4,Blocks.planks,1);
 		bb.buildBlock(2,7,-3,Blocks.planks,1);bb.buildBlock(2,7,-2,Blocks.planks,1);bb.buildBlock(2,7,-1,Blocks.planks,1);
 		bb.buildBlock(2,7,0,Blocks.planks,1);bb.buildBlock(2,7,1,Blocks.planks,1);bb.buildBlock(2,7,2,Blocks.planks,1);
-		bb.buildBlock(2,7,3,Blocks.planks,1);bb.buildBlock(2,7,4,Blocks.planks,1);bb.buildBlock(-2,8,-4,Blocks.dark_oak_stairs,0);
-		bb.buildBlock(-2,8,-3,Blocks.dark_oak_stairs,0);bb.buildBlock(-2,8,-2,Blocks.dark_oak_stairs,0);bb.buildBlock(-2,8,-1,Blocks.dark_oak_stairs,0);
-		bb.buildBlock(-2,8,0,Blocks.dark_oak_stairs,0);bb.buildBlock(-2,8,1,Blocks.dark_oak_stairs,0);bb.buildBlock(-2,8,2,Blocks.dark_oak_stairs,0);
-		bb.buildBlock(-2,8,3,Blocks.dark_oak_stairs,0);bb.buildBlock(-2,8,4,Blocks.dark_oak_stairs,3);bb.buildBlock(-1,8,-4,Blocks.dark_oak_stairs,2);
-		bb.buildBlock(-1,8,4,Blocks.dark_oak_stairs,3);bb.buildBlock(0,8,-4,Blocks.dark_oak_stairs,2);bb.buildBlock(0,8,4,Blocks.dark_oak_stairs,3);
-		bb.buildBlock(1,8,-4,Blocks.dark_oak_stairs,2);bb.buildBlock(1,8,4,Blocks.dark_oak_stairs,3);bb.buildBlock(2,8,-4,Blocks.dark_oak_stairs,2);
-		bb.buildBlock(2,8,-3,Blocks.dark_oak_stairs,1);bb.buildBlock(2,8,-2,Blocks.dark_oak_stairs,1);bb.buildBlock(2,8,-1,Blocks.dark_oak_stairs,1);
-		bb.buildBlock(2,8,0,Blocks.dark_oak_stairs,1);bb.buildBlock(2,8,1,Blocks.dark_oak_stairs,1);bb.buildBlock(2,8,2,Blocks.dark_oak_stairs,1);
-		bb.buildBlock(2,8,3,Blocks.dark_oak_stairs,1);bb.buildBlock(2,8,4,Blocks.dark_oak_stairs,3);bb.buildBlock(-1,9,-3,Blocks.dark_oak_stairs,0);
-		bb.buildBlock(-1,9,-2,Blocks.dark_oak_stairs,0);bb.buildBlock(-1,9,-1,Blocks.dark_oak_stairs,0);bb.buildBlock(-1,9,0,Blocks.dark_oak_stairs,0);
-		bb.buildBlock(-1,9,1,Blocks.dark_oak_stairs,0);bb.buildBlock(-1,9,2,Blocks.dark_oak_stairs,0);bb.buildBlock(-1,9,3,Blocks.dark_oak_stairs,3);
-		bb.buildBlock(0,9,-3,Blocks.dark_oak_stairs,2);bb.buildBlock(0,9,-2,Blocks.planks,1);bb.buildBlock(0,9,-1,Blocks.planks,1);
+		bb.buildBlock(2,7,3,Blocks.planks,1);bb.buildBlock(2,7,4,Blocks.planks,1);bb.buildBlock(-2,8,-4,Blocks.acacia_stairs,2);
+		bb.buildBlock(-2,8,-3,Blocks.acacia_stairs,0);bb.buildBlock(-2,8,-2,Blocks.acacia_stairs,0);bb.buildBlock(-2,8,-1,Blocks.acacia_stairs,0);
+		bb.buildBlock(-2,8,0,Blocks.acacia_stairs,0);bb.buildBlock(-2,8,1,Blocks.acacia_stairs,0);bb.buildBlock(-2,8,2,Blocks.acacia_stairs,0);
+		bb.buildBlock(-2,8,3,Blocks.acacia_stairs,0);bb.buildBlock(-2,8,4,Blocks.acacia_stairs,0);bb.buildBlock(-1,8,-4,Blocks.acacia_stairs,2);
+		bb.buildBlock(-1,8,4,Blocks.acacia_stairs,3);bb.buildBlock(0,8,-4,Blocks.acacia_stairs,2);bb.buildBlock(0,8,4,Blocks.acacia_stairs,3);
+		bb.buildBlock(1,8,-4,Blocks.acacia_stairs,2);bb.buildBlock(1,8,4,Blocks.acacia_stairs,3);bb.buildBlock(2,8,-4,Blocks.acacia_stairs,1);
+		bb.buildBlock(2,8,-3,Blocks.acacia_stairs,1);bb.buildBlock(2,8,-2,Blocks.acacia_stairs,1);bb.buildBlock(2,8,-1,Blocks.acacia_stairs,1);
+		bb.buildBlock(2,8,0,Blocks.acacia_stairs,1);bb.buildBlock(2,8,1,Blocks.acacia_stairs,1);bb.buildBlock(2,8,2,Blocks.acacia_stairs,1);
+		bb.buildBlock(2,8,3,Blocks.acacia_stairs,1);bb.buildBlock(2,8,4,Blocks.acacia_stairs,1);bb.buildBlock(-1,9,-3,Blocks.acacia_stairs,0);
+		bb.buildBlock(-1,9,-2,Blocks.acacia_stairs,0);bb.buildBlock(-1,9,-1,Blocks.acacia_stairs,0);bb.buildBlock(-1,9,0,Blocks.acacia_stairs,0);
+		bb.buildBlock(-1,9,1,Blocks.acacia_stairs,0);bb.buildBlock(-1,9,2,Blocks.acacia_stairs,0);bb.buildBlock(-1,9,3,Blocks.acacia_stairs,0);
+		bb.buildBlock(0,9,-3,Blocks.acacia_stairs,2);bb.buildBlock(0,9,-2,Blocks.planks,1);bb.buildBlock(0,9,-1,Blocks.planks,1);
 		bb.buildBlock(0,9,0,Blocks.planks,1);bb.buildBlock(0,9,1,Blocks.planks,1);bb.buildBlock(0,9,2,Blocks.planks,1);
-		bb.buildBlock(0,9,3,Blocks.dark_oak_stairs,3);bb.buildBlock(1,9,-3,Blocks.dark_oak_stairs,2);bb.buildBlock(1,9,-2,Blocks.dark_oak_stairs,1);
-		bb.buildBlock(1,9,-1,Blocks.dark_oak_stairs,1);bb.buildBlock(1,9,0,Blocks.dark_oak_stairs,1);bb.buildBlock(1,9,1,Blocks.dark_oak_stairs,1);
-		bb.buildBlock(1,9,2,Blocks.dark_oak_stairs,1);bb.buildBlock(1,9,3,Blocks.dark_oak_stairs,1);bb.buildBlock(-1,2,-2,Blocks.torch,2);
+		bb.buildBlock(0,9,3,Blocks.acacia_stairs,3);bb.buildBlock(1,9,-3,Blocks.acacia_stairs,2);bb.buildBlock(1,9,-2,Blocks.acacia_stairs,1);
+		bb.buildBlock(1,9,-1,Blocks.acacia_stairs,1);bb.buildBlock(1,9,0,Blocks.acacia_stairs,1);bb.buildBlock(1,9,1,Blocks.acacia_stairs,1);
+		bb.buildBlock(1,9,2,Blocks.acacia_stairs,1);bb.buildBlock(1,9,3,Blocks.acacia_stairs,1);bb.buildBlock(-1,2,-2,Blocks.torch,2);
 		bb.buildBlock(-1,2,2,Blocks.torch,2);bb.buildBlock(-4,3,-4,Blocks.torch,3);bb.buildBlock(-1,3,-4,Blocks.torch,3);
 		bb.buildBlock(-1,3,4,Blocks.torch,4);bb.buildBlock(0,3,-1,Blocks.torch,3);bb.buildBlock(0,3,1,Blocks.torch,4);
 		bb.buildBlock(2,3,-4,Blocks.torch,3);bb.buildBlock(2,3,4,Blocks.torch,4);bb.buildBlock(4,3,-4,Blocks.torch,3);
@@ -226,12 +226,10 @@ public class BuildingLibrary extends Building {
 		bb.buildBlock(-5,7,2,Blocks.torch,5);bb.buildBlock(-5,7,5,Blocks.torch,5);bb.buildBlock(-2,7,-5,Blocks.torch,5);
 		bb.buildBlock(-2,7,5,Blocks.torch,5);bb.buildBlock(2,7,-5,Blocks.torch,5);bb.buildBlock(2,7,5,Blocks.torch,5);
 		bb.buildBlock(5,7,-5,Blocks.torch,5);bb.buildBlock(5,7,-3,Blocks.torch,5);bb.buildBlock(5,7,3,Blocks.torch,5);
-		bb.buildBlock(5,7,5,Blocks.torch,5);bb.buildBlock(-1,8,-3,Blocks.torch,1);bb.buildBlock(-1,8,0,Blocks.torch,1);
-		bb.buildBlock(-1,8,3,Blocks.torch,1);bb.buildBlock(1,8,-3,Blocks.torch,2);bb.buildBlock(1,8,0,Blocks.torch,2);
-		bb.buildBlock(1,8,3,Blocks.torch,2);bb.addEntityPainting(-2,6,1,3,"Aztec2");
-		bb.addEntityPainting(-2,6,0,3,"Alban");
+		bb.buildBlock(5,7,5,Blocks.torch,5);bb.addEntityPainting(-2,6,0,3,"Alban");
 		bb.addEntityPainting(-2,6,-1,3,"Plant");
-		bb.addEntityItemFrame(4,1,1,3,ModBlocks.blockLibrary);
+		bb.addEntityPainting(-2,6,1,3,"Aztec2");
+		bb.addEntityItemFrame(4,1,1,3,ModBlocks.blockLibrary,0);
 	}
 
 }

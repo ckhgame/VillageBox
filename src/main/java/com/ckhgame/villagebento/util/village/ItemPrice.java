@@ -28,8 +28,8 @@ public class ItemPrice {
 		register(Items.rotten_flesh,4);
 		
 		register(Items.bread,20);
-		register(Items.wheat_seeds,4);
 		
+		//Fishing
 		register(Items.cooked_fished,20);
 		register(Items.fishing_rod,50);
 		register(ModItems.itemFishingRodIron,200);
@@ -86,42 +86,49 @@ public class ItemPrice {
 		register(Items.string,16);
 		register(Items.lead,26);
 		
-		register(Items.pumpkin_seeds,20);
-		register(Items.melon_seeds,20);
 		
 		register(Items.glass_bottle,10);
 		register(Items.flower_pot,15);
 		register(Items.potionitem,180);
 		register(Items.experience_bottle,240);
 		
-		register(ModBlocks.blockArchitectsHome,250);
-		register(ModBlocks.blockMiningHouse,100);
-		register(ModBlocks.blockSmallBakery,70);
-		register(ModBlocks.blockFishingStore,150);
+		//Village Building Blocks
+		register(ModBlocks.blockSmallBakery,50);
+		register(ModBlocks.blockFishingStore,100);
+		register(ModBlocks.blockBlackSmithsShop,150);
+		register(ModBlocks.blockArchitectsHome,150);
+		register(ModBlocks.blockMarket,150);
+		register(ModBlocks.blockHunterHouse,200);
+		register(ModBlocks.blockMiningHouse,200);
+		register(ModBlocks.blockChurch,300);
 		
-		register(ModBlocks.blockGroundworkOnlySmall,200);
+		register(ModBlocks.blockVillagerHomeTP,300);
+		register(ModBlocks.blockFarmland,350);
+		register(ModBlocks.blockChickenShop,350);
+		register(ModBlocks.blockSheepShop,350);
+		register(ModBlocks.blockCowShop,350);
+		register(ModBlocks.blockLibrary,500);
+		register(ModBlocks.blockSmallMilitaryCamp,500);
+		register(ModBlocks.blockSmallHotel,700);
+		register(ModBlocks.blockSmallTavern,700);
+		register(ModBlocks.blockPotionStore,700);
+		
+		register(ModBlocks.blockLargeBakery,1000);
+		register(ModBlocks.blockFlowerShop,1000);
+		register(ModBlocks.blockProArchitectsHouse,1000);
+		register(ModBlocks.blockSmallCasino,1000);
+		register(ModBlocks.blockTailorStore,1000);
+
+		// Builder's House
+		register(ModBlocks.blockPlayerFieldSmall,150);
+		register(ModBlocks.blockDefenceTower,250);
+		register(ModBlocks.blockTownSquareSmall,300);
+		register(ModBlocks.blockPlayerFieldMedium,500);
+		register(ModBlocks.blockTownSquareLarge,800);
 		register(ModBlocks.blockBuildingDestroyer,400);
-		register(ModBlocks.blockBlackSmithsShop,360);
-		register(ModBlocks.blockSmallHotel,420);
-		register(ModBlocks.blockHunterHouse,420);
-		register(ModBlocks.blockTailorStore,480);
-		register(ModBlocks.blockSmallTavern,480);
-		register(ModBlocks.blockSmallMilitaryCamp,420);
-		register(ModBlocks.blockSmallCasino,520);
-		register(ModBlocks.blockDefenceTower,320);
-		register(ModBlocks.blockFarmland,520);
-		register(ModBlocks.blockMarket,440);
-		register(ModBlocks.blockChickenShop,420);
-		register(ModBlocks.blockSheepShop,460);
-		register(ModBlocks.blockCowShop,480);
-		register(ModBlocks.blockLibrary,480);
-		register(ModBlocks.blockLibrary,400);
-		register(ModBlocks.blockProArchitectsHouse,648);
-		register(ModBlocks.blockGroundworkOnlyMedium,500);
 		
-		register(ModBlocks.blockLargeBakery,780);
-		register(ModBlocks.blockFlowerShop,780);
-		register(ModBlocks.blockPotionStore,860);
+		
+		//Large Buildings
 		register(ModBlocks.blockLargeMilitaryCamp,880);
 		register(ModBlocks.blockLargeHotel,890);
 		register(ModBlocks.blockLargeTavern,890);
@@ -129,13 +136,13 @@ public class ItemPrice {
 		
 		
 		//Decorations
-		register(ModBlocks.blockSunflower,280);
-		register(ModBlocks.blockTeaChair,320);
-		register(ModBlocks.blockAutumnGarden,340);
-		register(ModBlocks.blockPeacefulGarden,280);
-		register(ModBlocks.blockRoseBridge,340);
-		register(ModBlocks.blockRosePath,380);
-		register(ModBlocks.blockChristmas,380);
+		register(ModBlocks.blockSunflower,180);
+		register(ModBlocks.blockTeaChair,220);
+		register(ModBlocks.blockAutumnGarden,280);
+		register(ModBlocks.blockPeacefulGarden,180);
+		register(ModBlocks.blockRoseBridge,220);
+		register(ModBlocks.blockRosePath,280);
+		register(ModBlocks.blockChristmas,280);
 		
 		
 		//Animals
@@ -158,11 +165,14 @@ public class ItemPrice {
 		register(ModItems.itemVillageEasterEgg,50);
 		register(ModItems.itemVillageMilk,40);
 		register(ModItems.itemVillageWool,36);
-		
-		
+				
 		register(ModItems.itemGauze,4);
 		register(ModItems.itemSeaweed,8);
+
 		//Seeds
+		register(Items.wheat_seeds,4);
+		register(Items.pumpkin_seeds,20);
+		register(Items.melon_seeds,20);
 		register(ModItems.itemCabbageSeed,14);
 		register(ModItems.itemGrapeSeed,28);
 		register(ModItems.itemCornSeed,14);
@@ -192,9 +202,7 @@ public class ItemPrice {
 		register(ModItems.itemRiceFlour,40);
 		register(ModItems.itemSalt,30);
 		register(ModItems.itemUdon,40);
-		register(ModItems.itemWheatFlour,30);
-		
-		
+		register(ModItems.itemWheatFlour,30);				
 		register(ModItems.itemNoodleSoup,60);
 		register(ModItems.itemBeefNoodleSoup,50);
 		register(ModItems.itemBoiledFish,80);
@@ -207,9 +215,7 @@ public class ItemPrice {
 		register(ModItems.itemOil,30);
 		register(ModItems.itemSoySauce,40);
 		register(ModItems.itemTofu,30);
-		
-		
-		
+				
 		//Wine
 		register(ModItems.itemCockTail,42);
 		register(ModItems.itemBeer,40);

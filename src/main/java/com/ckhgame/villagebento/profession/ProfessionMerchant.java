@@ -10,19 +10,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Items;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionMerchant extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Potion Merchant";
+		return StatCollector.translateToLocal("villager.Merchant.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "It is a Deal!";
+		return StatCollector.translateToLocal("villager.Merchant.description");
 	}
 
 	@Override
@@ -46,10 +47,9 @@ public class ProfessionMerchant extends Profession {
 
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
-
-		villagerChat.add(0, "Trying to buy somthing?");
-		villagerChat.add(0, "You find everthing Ok?");
-		villagerChat.add(0, "This is today's speacial!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.Merchant.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.Merchant.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.Merchant.chat2"));
 		
 	}
 

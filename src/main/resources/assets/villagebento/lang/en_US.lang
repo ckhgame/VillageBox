@@ -427,6 +427,24 @@ villager.priest.chat0=God bless this village..
 villager.priest.chat1=Love your enemies.
 villager.priest.chat2=Everyday is a gift... 
 
+villager.tailor.name=Tailor
+villager.tailor.description=I am a person who care about fashion design.
+villager.tailor.chat0=Wanna new clothes?
+villager.tailor.chat1=Look at this new design...
+villager.tailor.chat2=How about this one? It looks nice on you!
+
+villager.merchant.name=Potion Merchant
+villager.merchant.description=Potions are always required in your adventure.
+villager.merchant.chat0=Trying to buy somthing?
+villager.merchant.chat1=You find everthing Ok?
+villager.merchant.chat2=This is today's speacial!
+
+villager.librarian.name=Librarian
+villager.librarian.description=......I love reading and writing.
+villager.librarian.chat0=Please be quiet in here.
+villager.librarian.chat1=I hope you love this book.
+villager.librarian.chat2=Knowledge is power.
+
 villager.villagerfolk.name=Village Folk
 villager.villagerfolk.description=I live in this village
 villager.villagerfolk.chat0=I hope my village gets better.
