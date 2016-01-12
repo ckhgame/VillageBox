@@ -22,19 +22,17 @@ public abstract class VillagerCompItemList extends VillagerComponent {
 		super(entityVillager);
 	}
 	
-	private class ItemRecord{
-		public Item item;
+	public class ItemRecord{
+		public ItemStack itemStack;
 		public int minLevel;
-		public int meta;
 	}
 	
-	private ArrayList<ItemRecord> itemRecords = new ArrayList<ItemRecord>();
+	public ArrayList<ItemRecord> itemRecords = new ArrayList<ItemRecord>();
 	
 	public void addItem(Item item,int minLevel,int meta){
 		ItemRecord records = new ItemRecord();
-		records.item = item;
+		records.itemStack = new ItemStack(item,1,meta);
 		records.minLevel = minLevel;
-		records.meta = meta;
 		itemRecords.add(records);
 	}
 	
@@ -50,21 +48,12 @@ public abstract class VillagerCompItemList extends VillagerComponent {
 		addItem(item,minLevel,0);
 	}
 	
-	//-------------------------------------------------------
-	//--------------------Data-------------------------------
-	//-------------------------------------------------------
+	public ArrayList<ItemRecord> getItemList(){
+		return this.itemRecords;
+	}
 	
-	public ArrayList<ItemStack> itemListCurrent = new ArrayList<ItemStack>();
-
-	public void refreshItemListCurrent(){
-		int vrLvl = this.getVillager().getLevel();
-		this.itemListCurrent.clear();
-		Random rand = VBRandom.getRand();
-		for(ItemRecord record : this.itemRecords){
-			if(record.minLevel <= vrLvl){
-				this.itemListCurrent.add(new ItemStack(record.item, 1, record.meta));
-			}
-		}
+	public boolean isItemRecoardAvailable(ItemRecord record){
+		return (record.minLevel <= this.getVillager().getLevel());
 	}
 
 	@Override
@@ -87,7 +76,7 @@ public abstract class VillagerCompItemList extends VillagerComponent {
 	
 	@Override
 	public void firstTimeInit() {
-		refreshItemListCurrent();
+		
 	}
 
 	@Override

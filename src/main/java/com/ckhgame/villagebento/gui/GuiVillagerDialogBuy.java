@@ -11,6 +11,7 @@ import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompItemList.ItemRecord;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -45,7 +46,6 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 			this.addDialogOptions(ButtonID_Back, 0, StatCollector.translateToLocal("vbgui.dialogOption.buyBack"));
 		}
 		else{  // send a packet to query the item list, the buy gui will display after receiving
-			this.villagerCompBuy.refreshItemListCurrent();
 			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompBuy);
 			if(compIdx < 0)
 				System.out.println("Can not find the village component! idx < 0");
@@ -76,13 +76,18 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 	
 	@Override
 	protected void drawGridCell(int idx, int mx, int my, int x, int y) {
-		if(idx < this.villagerCompBuy.itemListCurrent.size()){
-			ItemStack itemStack = this.villagerCompBuy.itemListCurrent.get(idx);
-			boolean hover = this.drawItem(mx, my, x + 3, y + 3, itemStack," ");
+		if(idx < this.villagerCompBuy.getItemList().size()){
+			ItemRecord itemRecord = this.villagerCompBuy.getItemList().get(idx);
+			boolean hover = this.drawItem(mx, my, x + 3, y + 3, itemRecord.itemStack," ",this.villagerCompBuy.isItemRecoardAvailable(itemRecord));
 			if(hover){
 				List texts = new ArrayList();
-				texts.add(itemStack.getDisplayName());
-				texts.add(ItemPrice.getBuyPrice(itemStack.getItem()) + " G");
+				texts.add(itemRecord.itemStack.getDisplayName());
+				if(this.villagerCompBuy.isItemRecoardAvailable(itemRecord)){				
+					texts.add(ItemPrice.getBuyPrice(itemRecord.itemStack.getItem()) + " G");
+				}
+				else{
+					texts.add(StatCollector.translateToLocal("vbgui.common.needLevel") + (itemRecord.minLevel + 1));
+				}
 				this.setMouseHoverTexts(texts);
 			}
 		}
@@ -90,20 +95,21 @@ public class GuiVillagerDialogBuy extends GuiVillagerDialogGrid{
 	
 	@Override
 	protected void onGridCellClicked(int idx) {
-		if(idx < this.villagerCompBuy.itemListCurrent.size()){
-			ItemStack itemStack = this.villagerCompBuy.itemListCurrent.get(idx);
-			
-			ItemStack itemBuy = this.villagerCompBuy.itemListCurrent.get(idx).copy();
-			itemBuy.stackSize =  this.isShiftKeyDown()?10:1;
+		if(idx < this.villagerCompBuy.getItemList().size()){
+			ItemRecord itemRecord = this.villagerCompBuy.getItemList().get(idx);
+			if(this.villagerCompBuy.isItemRecoardAvailable(itemRecord)){
+				ItemStack itemBuy = itemRecord.itemStack.copy();
+				itemBuy.stackSize =  this.isShiftKeyDown()?10:1;
 
-			int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompBuy);
-			if(compIdx < 0)
-				System.out.println("Can not find the village component! idx < 0");
-			else
-				Action.send(ActionDoVillagerBuy.class, new Object[]{	this.entityVBVillager.getEntityId(),
-																		compIdx, 
-																		Minecraft.getMinecraft().thePlayer.getEntityId(),
-																		new Object[]{itemBuy}});
+				int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompBuy);
+				if(compIdx < 0)
+					System.out.println("Can not find the village component! idx < 0");
+				else
+					Action.send(ActionDoVillagerBuy.class, new Object[]{	this.entityVBVillager.getEntityId(),
+																			compIdx, 
+																			Minecraft.getMinecraft().thePlayer.getEntityId(),
+																			new Object[]{itemBuy}});
+			}
 		}
 	}
 

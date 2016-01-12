@@ -247,7 +247,7 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 	 * 
 	 * @return true: the mouse is currenly on the item
 	 */
-	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack, String customText){
+	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack, String customText, boolean available){
 		//item icon
 		int left = x + 2;
 		int top = y + 2;
@@ -273,14 +273,29 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 		GL11.glDisable(GL11.GL_LIGHTING);
 		
+		if(!available){
+             GL11.glDisable(GL11.GL_DEPTH_TEST);
+ 			drawRect(left, top, left + w, top + h, 0xAA000000);	
+             GL11.glEnable(GL11.GL_DEPTH_TEST);
+             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		}
+		
 		if(mx < left || my < top || mx > left + w || my > top + h)
 			return false;
 		
 		return true;
 	}
 	
+	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack, String customText){
+		return drawItem(mx,my,x,y,itemStack,customText,true);
+	}
+	
 	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack){
-		return drawItem(mx,my,x,y,itemStack,null);
+		return drawItem(mx,my,x,y,itemStack,null,true);
+	}
+	
+	protected boolean drawItem(int mx, int my, int x, int y, ItemStack itemStack,boolean available){
+		return drawItem(mx,my,x,y,itemStack,null,available);
 	}
 
 	protected void playSound(String sound){

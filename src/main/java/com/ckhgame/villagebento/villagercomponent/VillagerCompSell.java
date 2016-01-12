@@ -23,14 +23,12 @@ public class VillagerCompSell extends VillagerCompItemList {
 	//-------------------------------------------------------
 	
 	public VBCompResult sellItem(EntityPlayer player,ItemStack itemSell){
-		this.refreshItemListCurrent();
-		ArrayList<ItemStack> itemStacks = this.itemListCurrent;
-		if(itemStacks == null || itemSell.stackSize <= 0)
+		if(this.itemRecords == null || itemSell.stackSize <= 0)
 			return VBCompResult.getDefaultFailed();
 		
 		//sell process			
-		for(ItemStack itemStack : itemStacks ){
-			if(itemStack.isItemEqual(itemSell)){
+		for(ItemRecord itemRecord : this.itemRecords ){
+			if(this.isItemRecoardAvailable(itemRecord) && itemRecord.itemStack.isItemEqual(itemSell)){
 				if(HelperPlayer.playerHasItemStack(player, itemSell)){
 					int num = HelperPlayer.getItemTotalInInventory(player, itemSell);
 					if(itemSell.stackSize > num) itemSell.stackSize = num;

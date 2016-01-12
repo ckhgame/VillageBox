@@ -10,7 +10,6 @@ import com.ckhgame.villagebento.util.village.ItemPrice;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
 
 public class VillagerCompBuy extends VillagerCompItemList {
 	
@@ -25,14 +24,12 @@ public class VillagerCompBuy extends VillagerCompItemList {
 	
 	
 	public VBCompResult buyItem(EntityPlayer player,ItemStack itemBuy){	
-		this.refreshItemListCurrent();
-		ArrayList<ItemStack> itemStacks = this.itemListCurrent;
-		if(itemStacks == null || itemBuy.stackSize <= 0)
+		if(this.itemRecords == null || itemBuy.stackSize <= 0)
 			return VBCompResult.getDefaultFailed();
 		
 		//buy process			
-		for(ItemStack itemStack : itemStacks ){
-			if(itemStack.isItemEqual(itemBuy)){
+		for(ItemRecord itemRecord : this.itemRecords ){
+			if(this.isItemRecoardAvailable(itemRecord) && itemRecord.itemStack.isItemEqual(itemBuy)){
 				if(HelperPlayer.addCurrency(player,-ItemPrice.getBuyPrice(itemBuy.getItem()) * itemBuy.stackSize)){
 					if(!player.inventory.addItemStackToInventory(itemBuy)){
 						player.dropPlayerItemWithRandomChoice(itemBuy, false);

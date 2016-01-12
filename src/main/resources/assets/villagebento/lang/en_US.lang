@@ -242,6 +242,8 @@ vbgui.dialogWork.hoursLeft=Hours Left:
 vbgui.dialogWork.completed=Work Completed
 vbgui.dialogWork.expire=Expire in: 
 
+vbgui.common.needLevel=Need Level 
+
 # --------------------------------
 # Villager Components
 # --------------------------------

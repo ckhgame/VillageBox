@@ -242,6 +242,8 @@ vbgui.dialogWork.hoursLeft=所需时间:
 vbgui.dialogWork.completed=委托完成
 vbgui.dialogWork.expire=过期时间: 
 
+vbgui.common.needLevel=需要等级 
+
 # --------------------------------
 # Villager Components
 # --------------------------------
