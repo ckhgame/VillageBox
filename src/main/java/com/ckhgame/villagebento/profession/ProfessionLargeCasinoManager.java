@@ -43,8 +43,8 @@ public class ProfessionLargeCasinoManager extends Profession {
 
         //action
         VillagerCompAction compAction = new VillagerCompAction(villager);
-        compAction.addAction(new VillagerActionBet("I'm..CRAZY!!!(bet:1000)", 0, new Object[]{1000}));
-        compAction.addAction(new VillagerActionBet("I'm..SUPER CRAZY!!!(bet:2000)", 1, new Object[]{2000}));
+       // compAction.addAction(new VillagerActionBet("I'm..CRAZY!!!(bet:1000)", 0, new Object[]{1000}));
+       // compAction.addAction(new VillagerActionBet("I'm..SUPER CRAZY!!!(bet:2000)", 1, new Object[]{2000}));
         components.add(compAction);
 	}
 

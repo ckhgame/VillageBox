@@ -7,6 +7,7 @@ import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
+import com.ckhgame.villagebento.villagercomponent.villageraction.VillagerAction;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -56,11 +57,13 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 		this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.actionNextAction"));
 		
 		//options
-		int[] actionIdxList = this.villagerCompAction.actionIdxListCurrent;
-		for(int i =0;i<actionIdxList.length;i++){
-			this.addDialogOptions(ButtonID_Action0 + i, i, this.villagerCompAction.getAction(actionIdxList[i]).text);
+		VillagerAction action;
+		for(int i =0;i<this.villagerCompAction.getActionListSize();i++){
+			action = this.villagerCompAction.getAction(i);
+			boolean available = this.villagerCompAction.isActionAvailable(action);
+			this.addDialogOptions(ButtonID_Action0 + i, i, action.text,available, available?action.info:(StatCollector.translateToLocal("vbgui.common.needLevel") + (action.minLevel + 1)));
 		}
-		this.addDialogOptions(ButtonID_Back, actionIdxList.length, StatCollector.translateToLocal("vbgui.dialogOption.actionBack"));
+		this.addDialogOptions(ButtonID_Back, this.villagerCompAction.getActionListSize(), StatCollector.translateToLocal("vbgui.dialogOption.actionBack"));
 	}
 	
 	@Override
@@ -90,8 +93,7 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 		super.actionPerformed(guiButton);
 		
 		if(this.villagerCompAction != null){
-			int[] actionIdxList = this.villagerCompAction.actionIdxListCurrent;
-			for(int i =0;i<actionIdxList.length;i++){
+			for(int i =0;i<this.villagerCompAction.getActionListSize();i++){
 				if(guiButton.id == ButtonID_Action0 + i){
 					int compIdx = this.entityVBVillager.findVillagerComponentIdx(this.villagerCompAction);
 					if(compIdx < 0)

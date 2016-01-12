@@ -46,9 +46,9 @@ public class ProfessionCasinoManager extends Profession {
         
         //action
         VillagerCompAction compAction = new VillagerCompAction(villager);
-        compAction.setDialogOptionText(StatCollector.translateToLocal("villager.farmer.actionDialog"));
-        compAction.addAction(new VillagerActionBet(StatCollector.translateToLocal("villager.farmer.action0"), 0, new Object[]{20}));
-        compAction.addAction(new VillagerActionBet(StatCollector.translateToLocal("villager.farmer.action1"), 0, new Object[]{100}));
+        compAction.setDialogOptionText(StatCollector.translateToLocal("villager.casinoMgr.actionDialog"));
+        compAction.addAction(new VillagerActionBet(StatCollector.translateToLocal("villager.casinoMgr.action0.text"),StatCollector.translateToLocal("villager.casinoMgr.action0.info"), 0, new Object[]{20}));
+        compAction.addAction(new VillagerActionBet(StatCollector.translateToLocal("villager.casinoMgr.action1.text"),StatCollector.translateToLocal("villager.casinoMgr.action1.info"), 1, new Object[]{100}));
         components.add(compAction);
 
 	}

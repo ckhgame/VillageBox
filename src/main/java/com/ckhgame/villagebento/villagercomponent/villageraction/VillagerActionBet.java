@@ -11,6 +11,7 @@ import com.ckhgame.villagebento.util.tool.VBRandom;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.StatCollector;
 
 /**
  * 
@@ -18,8 +19,8 @@ import net.minecraft.entity.player.EntityPlayer;
  */
 public class VillagerActionBet extends VillagerAction {
 
-	public VillagerActionBet(String text, int minLevel, Object[] vaParams) {
-		super(text, minLevel, vaParams);
+	public VillagerActionBet(String text, String info, int minLevel, Object[] vaParams) {
+		super(text, info, minLevel, vaParams);
 	}
 	
 	@Override
@@ -50,28 +51,28 @@ public class VillagerActionBet extends VillagerAction {
 			String title = "null";
 			String content = "null";
 			if(times < 0){
-				title = "Hmmm...";
-				content = String.format("You need %d for this bet...",bet);
+				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result0.title");
+				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result0.content"),bet);
 			}
 			else if(times == 0){
-				title = "Unfortunately...";
-				content = String.format("You are not lucky this time... You Totally lost %d.",bet);
+				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result1.title");
+				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result1.content"),bet);
 			}
 			else if(times == 1){
-				title = "All good..";
-				content = String.format("You spend %d and just won it back..",bet);
+				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result2.title");
+				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result2.content"),bet);
 			}
 			else if(times == 2){
-				title = "Winning!!";
-				content = String.format("You spend %d and won %d from it.",bet,bet * times);
+				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result3.title");
+				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result345.content"),bet,bet * times);
 			}
 			else if(times == 4){
-				title = "A Big Win!";
-				content = String.format("You spend %d and won %d from it.",bet,bet * times);
+				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result4.title");
+				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result345.content"),bet,bet * times);
 			}
 			else if(times == 8){
-				title = "Oh God!";
-				content = String.format("You spend %d and won %d from it!!",bet,bet * times);
+				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result5.title");
+				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result345.content"),bet,bet * times);
 			}
 			
 			component.setResult(title, content, null);

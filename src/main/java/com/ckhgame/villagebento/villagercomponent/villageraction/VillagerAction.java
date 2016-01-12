@@ -11,13 +11,15 @@ import net.minecraft.entity.player.EntityPlayer;
  */
 public abstract class VillagerAction {
 	
-	public VillagerAction(String text, int minLevel, Object[] vaParams){
+	public VillagerAction(String text, String info, int minLevel, Object[] vaParams){
 		this.text = text;
+		this.info = info;
 		this.minLevel = minLevel;
 		this.vaParams = vaParams;
 	}
 	
 	public String text;
+	public String info;
 	public Object[] vaParams;
 	public int minLevel;
 	

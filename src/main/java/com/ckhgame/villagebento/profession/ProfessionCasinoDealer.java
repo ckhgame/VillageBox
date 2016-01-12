@@ -48,8 +48,8 @@ public class ProfessionCasinoDealer extends Profession {
 
         //action
         VillagerCompAction compAction = new VillagerCompAction(villager);
-        compAction.addAction(new VillagerActionBet("I'm so lucky!(bet:200)", 0, new Object[]{200}));
-        compAction.addAction(new VillagerActionBet("I want W-I-N!(bet:500)", 1, new Object[]{500}));
+      //  compAction.addAction(new VillagerActionBet("I'm so lucky!","200G", 0, new Object[]{200}));
+      //  compAction.addAction(new VillagerActionBet("I want W-I-N!","200G", 1, new Object[]{500}));
         components.add(compAction);
 	}
 
