@@ -47,7 +47,7 @@ public class ProfessionVillageElder extends Profession {
         //quest
         VillagerCompQuest compQuest = new VillagerCompQuest(villager);
 
-        VillagerQuestDesign design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.questZombie"),0,6);
+        VillagerQuestDesign design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.questZombie"),0,3);
         design.addNeeds(Items.rotten_flesh, 3, 0);
         design.addRewards(ModItems.itemVillageCurrency, 1, 15);
         design.addRewards(ModItems.itemVillageCurrency, 1, 20);
@@ -60,15 +60,13 @@ public class ProfessionVillageElder extends Profession {
         design.addNeeds(Blocks.log, 30, 3);
         design.addNeeds(Blocks.log2, 30, 0);
         design.addNeeds(Blocks.log2, 30, 1);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 70);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 80);
+        design.addRewards(ModItems.itemVillageCurrency, 1, 75);
         design.addRewards(ModBlocks.blockFolkHouse,1,0);
         compQuest.addQuestDesign(design);
         
         design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.questWantStones"),0,1);
         design.addNeeds(Blocks.stonebrick, 40, 0);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 70);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 80);
+        design.addRewards(ModItems.itemVillageCurrency, 1, 75);
         design.addRewards(ModBlocks.blockFolkHouse,1,0);
         compQuest.addQuestDesign(design);
         
