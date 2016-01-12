@@ -22,10 +22,11 @@ public class ItemFoodVB extends ItemFood{
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 	    super.onFoodEaten(stack, world, player);
-	        
-	    for (int i = 0; i < effects.length; i ++) {
-	        if (!world.isRemote && effects[i] != null && effects[i].getPotionID() > 0)
-	            player.addPotionEffect(new PotionEffect(this.effects[i].getPotionID(), this.effects[i].getDuration(), this.effects[i].getAmplifier(), this.effects[i].getIsAmbient()));
+	    if(!world.isRemote){
+		    for (int i = 0; i < effects.length; i ++) {
+		        if (!world.isRemote && effects[i] != null && effects[i].getPotionID() > 0)
+		            player.addPotionEffect(new PotionEffect(this.effects[i].getPotionID(), this.effects[i].getDuration(), this.effects[i].getAmplifier(), this.effects[i].getIsAmbient()));
+		    }
 	    }
 	}
 }

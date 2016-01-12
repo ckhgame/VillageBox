@@ -6,8 +6,6 @@ import com.ckhgame.villagebento.block.ModBlocks;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 
 public class ModItems {
   
@@ -184,13 +182,12 @@ public class ModItems {
         GameRegistry.registerItem(itemNigiri = new ItemFoodVB(4,0.3F,"ItemNigiri"),"ItemNigiri");
         GameRegistry.registerItem(itemTofu = new ItemFoodVB(4,0.3F,"ItemTofu"),"ItemTofu");
         
-        
         //Wine
-        GameRegistry.registerItem(itemCockTail = new ItemFoodVB(0,0,"ItemCockTail",new PotionEffect(Potion.heal.id, -1, 0)),"ItemCockTail");  
-        GameRegistry.registerItem(itemBeer = new ItemVB("ItemBeer",null,CreativeTabs.tabFood),"ItemBeer");
-        GameRegistry.registerItem(itemGrapeVine = new ItemVB("ItemGrapeVine",null,CreativeTabs.tabFood),"ItemGrapeVine");
-        GameRegistry.registerItem(itemWhisky = new ItemVB("ItemWhisky",null,CreativeTabs.tabFood),"ItemWhisky");
-        GameRegistry.registerItem(itemVodka = new ItemVB("ItemVodka",null,CreativeTabs.tabFood),"ItemVodka");
+        GameRegistry.registerItem(itemCockTail = new ItemWine(2,"ItemCockTail"),"ItemCockTail");
+        GameRegistry.registerItem(itemBeer = new ItemWine(4,"ItemBeer"),"ItemBeer");
+        GameRegistry.registerItem(itemGrapeVine = new ItemWine(6,"ItemGrapeVine"),"ItemGrapeVine");
+        GameRegistry.registerItem(itemWhisky = new ItemWine(8,"ItemWhisky"),"ItemWhisky");
+        GameRegistry.registerItem(itemVodka = new ItemWine(10,"ItemVodka"),"ItemVodka");
         
         GameRegistry.registerItem(itemCookVine = new ItemVB("ItemCookVine",null,CreativeTabs.tabMaterials),"ItemCookVine");
         
