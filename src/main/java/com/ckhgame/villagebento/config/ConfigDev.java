@@ -9,6 +9,6 @@ import net.minecraft.init.Blocks;
  * Only Used For Development!!!!
  */
 public class ConfigDev {	
-	public static final boolean UnprotectVillageEnabled = true;
+	public static final boolean UnprotectVillageEnabled = false;
 	public static final boolean VillagerDebugEnabled = false;
 }
