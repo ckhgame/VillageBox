@@ -2,12 +2,10 @@ package com.ckhgame.villagebento.entity.villager;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.ai.villager.VillagerAIMovement;
-import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
-import com.ckhgame.villagebento.ai.villager.VillagerAIVisitMount;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest2;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWatchInteractTarget;
+import com.ckhgame.villagebento.ai.villager2.VillagerAISleeping;
+import com.ckhgame.villagebento.ai.villager2.VillagerAIVisiting;
+import com.ckhgame.villagebento.ai.villager2.VillagerAIWandering;
+import com.ckhgame.villagebento.ai.villager2.VillagerAIWorking;
 import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigDev;
@@ -27,7 +25,6 @@ import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -76,14 +73,10 @@ public class EntityVBVillager extends EntityAgeable {
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 6.0F, 0.4D, 0.4D));
 		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
-		this.tasks.addTask(3, new VillagerAISleep(this));
-		this.tasks.addTask(4, new VillagerAIVisitMount(this));
-		
-		this.tasks.addTask(5, new VillagerAIWatchInteractTarget(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
-		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 0.02F));
-		this.tasks.addTask(5, new VillagerAIWatchClosest2(this, EntityVBVillager.class, 2.0F, 0.02F));
-		this.tasks.addTask(6, new VillagerAIMovement(this));
-		this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 5.0F));
+		this.tasks.addTask(3, new VillagerAISleeping(this));
+		this.tasks.addTask(4, new VillagerAIWorking(this));
+		this.tasks.addTask(5, new VillagerAIVisiting(this));
+		this.tasks.addTask(6, new VillagerAIWandering(this));
 	}
 	
 	protected void entityInit()
@@ -290,15 +283,15 @@ public class EntityVBVillager extends EntityAgeable {
 	}
 
 	//-- visiting --	
-	public void startRandomVisiting(){
-		
+	public void startRandomVisiting(){	
 	 HelperVisiting.startRandomVisiting(this);
-	 System.out.println(this.getName() + " Started visiting...");
 	}
 	
 	public void cancelVisiting(){
 		this.visitingBuildingID = -1;
-		System.out.println(this.getName() + " Canceled visiting...");
+		if(this.isRiding()){
+			this.mountEntity(null);
+		}
 	}
 	
 	public boolean isVisiting(){
@@ -351,8 +344,6 @@ public class EntityVBVillager extends EntityAgeable {
 	public int bedIdx = -1;
 	public Vec3Int bedPosition = null;
 	public int bedOritation;
-	public double aiMovingTargetX, aiMovingTargetY, aiMovingTargetZ;
-	public boolean hasAIMovingTarget;
 	
 	private void refreshBuildingCaches(){
 		if(!this.worldObj.isRemote){//server only
@@ -606,6 +597,7 @@ public class EntityVBVillager extends EntityAgeable {
 	// Debug
 	//-----------------------------
 	private void debugUpdate(){
+		if(true) return;
 		if(!this.worldObj.isRemote){
 			if(this.getNavigator().noPath())
 				setDebugText("No Path, " + this.getCurrentlyDoing());

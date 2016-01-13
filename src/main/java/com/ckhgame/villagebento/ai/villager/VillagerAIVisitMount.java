@@ -23,33 +23,33 @@ public class VillagerAIVisitMount extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-    	if(this.entity.isRiding()){
-    		return true;
-    	}
-    	
-    	if(this.entity.getRNG().nextInt(5) != 0)
-    		return false;
-    	
-    	//sleep only at late night
-    	if(!this.entity.isVisiting())
-    		return false;
-    	
-    	double d = entity.getDistance(this.entity.aiMovingTargetX, this.entity.aiMovingTargetY, this.entity.aiMovingTargetZ);
-    	if(d > 1.5D)
-    		return false;
-    	
-    	int x = MathHelper.floor_double(this.entity.aiMovingTargetX);
-    	int y = MathHelper.floor_double(this.entity.aiMovingTargetY);
-    	int z = MathHelper.floor_double(this.entity.aiMovingTargetZ);
-    	
-    	Block b = this.entity.worldObj.getBlock(x, y, z); 
-    	if(!(b instanceof BlockMountable))
-    		return false;
-    	
-    	if(!((BlockMountable)b).activedByEntityVBVillager(this.entity, x, y, z)){
-    		return false;
-    	}
-    		
+//    	if(this.entity.isRiding()){
+//    		return true;
+//    	}
+//    	
+//    	if(this.entity.getRNG().nextInt(5) != 0)
+//    		return false;
+//    	
+//    	//sleep only at late night
+//    	if(!this.entity.isVisiting())
+//    		return false;
+//    	
+//    	double d = entity.getDistance(this.entity.aiMovingTargetX, this.entity.aiMovingTargetY, this.entity.aiMovingTargetZ);
+//    	if(d > 1.5D)
+//    		return false;
+//    	
+//    	int x = MathHelper.floor_double(this.entity.aiMovingTargetX);
+//    	int y = MathHelper.floor_double(this.entity.aiMovingTargetY);
+//    	int z = MathHelper.floor_double(this.entity.aiMovingTargetZ);
+//    	
+//    	Block b = this.entity.worldObj.getBlock(x, y, z); 
+//    	if(!(b instanceof BlockMountable))
+//    		return false;
+//    	
+//    	if(!((BlockMountable)b).activedByEntityVBVillager(this.entity, x, y, z)){
+//    		return false;
+//    	}
+//    		
     	
     	return true;
     }

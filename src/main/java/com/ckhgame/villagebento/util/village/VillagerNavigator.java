@@ -11,13 +11,9 @@ import net.minecraft.util.Vec3;
 public class VillagerNavigator {
 	public static boolean tryMoveToXYZ(EntityVBVillager entity, double x,double y,double z){
 		
-		boolean removeTarget = entity.getNavigator().tryMoveToXYZ(x,y,z,ConfigVillager.VillagerMoveSpeed);
-		if(!removeTarget){
-			//System.out.println(entity.worldObj.getBlock((int)x, (int)y, (int)z) + ":" + x + "," + y + "," + z);
-		//System.out.println("Cant find the path!!!!!!!!");
-			removeTarget = !tryMoveTowardsTheTarget(entity,x,y,z);
-		}
-		return removeTarget;
+		if(!entity.getNavigator().tryMoveToXYZ(x,y,z,ConfigVillager.VillagerMoveSpeed))
+			return tryMoveTowardsTheTarget(entity,x,y,z);
+		return true;
 	}
 	
 	public static boolean tryMoveTowardsTheTarget(EntityVBVillager entity, double x, double y, double z){		
@@ -59,19 +55,5 @@ public class VillagerNavigator {
 		else{
 			return true;// do not remove the moving target
 		}
-	}
-	
-	public static void tryMoveTowardsSelfBuilding(EntityVBVillager entity){
-		Vec3 dir = Vec3.createVectorHelper(	entity.buildingX - entity.posX,
-											entity.buildingY - entity.posY,
-											entity.buildingZ - entity.posZ)
-						.normalize();
-		double d = ConfigVillager.VillagerMoveTowardsDistance;
-		int r = ConfigVillager.VillagerMoveTowardsRange;
-		Random rand = entity.getRNG();
-		entity.getNavigator().tryMoveToXYZ(	entity.posX + dir.xCoord * d + rand.nextInt(r *2+ 1) - r,
-											entity.posY + dir.yCoord * d + rand.nextInt(r *2+ 1) - r,
-											entity.posZ + dir.zCoord * d + rand.nextInt(r *2+ 1) - r,
-											ConfigVillager.VillagerMoveSpeed);
 	}
 }
