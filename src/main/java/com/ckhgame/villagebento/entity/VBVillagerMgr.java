@@ -11,7 +11,7 @@ import com.ckhgame.villagebento.data.DataVillage;
 import com.ckhgame.villagebento.data.DataVillageBento;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.profession.Profession;
-import com.ckhgame.villagebento.profession.ProfessionArchitect;
+import com.ckhgame.villagebento.profession.ProfessionBuilder;
 import com.ckhgame.villagebento.profession.ProfessionBlackSmith;
 import com.ckhgame.villagebento.profession.ProfessionFlowerShopOwner;
 import com.ckhgame.villagebento.profession.ProfessionHunter;
@@ -108,7 +108,7 @@ public class VBVillagerMgr {
 		
 		//traveler will appear in small tavern
 		travelerClassSets[0] = new Class[]{
-				ProfessionArchitect.class,
+				ProfessionBuilder.class,
 				ProfessionBlackSmith.class,
 				ProfessionHunter.class
 		};

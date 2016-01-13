@@ -96,7 +96,7 @@ public class ItemPrice {
 		register(ModBlocks.blockSmallBakery,50);
 		register(ModBlocks.blockFishingStore,100);
 		register(ModBlocks.blockBlackSmithsShop,150);
-		register(ModBlocks.blockArchitectsHome,150);
+		register(ModBlocks.blockBuildersHome,150);
 		register(ModBlocks.blockMarket,150);
 		register(ModBlocks.blockHunterHouse,200);
 		register(ModBlocks.blockMiningHouse,200);
@@ -115,7 +115,7 @@ public class ItemPrice {
 		
 		register(ModBlocks.blockLargeBakery,1000);
 		register(ModBlocks.blockFlowerShop,1000);
-		register(ModBlocks.blockProArchitectsHouse,1000);
+		register(ModBlocks.blockFurnitureStore,1000);
 		register(ModBlocks.blockSmallCasino,1000);
 		register(ModBlocks.blockTailorStore,1000);
 
@@ -127,7 +127,15 @@ public class ItemPrice {
 		register(ModBlocks.blockTownSquareLarge,800);
 		register(ModBlocks.blockBuildingDestroyer,400);
 		
-		
+		//Furniture Store
+		register(Blocks.bookshelf,100);
+		register(Items.bed,100);
+		register(Blocks.chest,100);
+		register(ModBlocks.blockWineBucket,200);
+		register(ModBlocks.blockWineShelf,250);
+		register(ModBlocks.blockWoodenChair,300);
+
+			
 		//Large Buildings
 		register(ModBlocks.blockLargeMilitaryCamp,880);
 		register(ModBlocks.blockLargeHotel,890);

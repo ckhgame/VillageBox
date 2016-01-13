@@ -10,7 +10,7 @@ public class ModBuildings {
 		Building.registry.register(10,new BuildingVillageCenter());
 		
 		Building.registry.register(11,new BuildingBlacksmithsShop());
-		Building.registry.register(12,new BuidlingArchitectsHome());
+		Building.registry.register(12,new BuidlingBuildersHome());
 		Building.registry.register(13,new BuildingFishingStore());
 		Building.registry.register(14,new BuildingMiningHouse());
 		Building.registry.register(15,new BuildingSmallBakery());
@@ -30,7 +30,7 @@ public class ModBuildings {
 		Building.registry.register(25,new BuildingLargeCasino());
 		Building.registry.register(31,new BuildingLargeMilitaryCamp());
 		Building.registry.register(18,new BuildingLargeTavern());
-		Building.registry.register(32,new BuildingProArchitectsHouse());
+		Building.registry.register(32,new BuildingFurnitureStore());
 		Building.registry.register(33,new BuildingLargeBakery());
 		Building.registry.register(34,new BuildingLargeHotel());
 		Building.registry.register(35,new BuildingMarket());

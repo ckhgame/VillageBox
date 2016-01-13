@@ -11,19 +11,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
 import net.minecraft.init.Items;
+import net.minecraft.util.StatCollector;
 
 public class ProfessionFlowerShopOwner extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Flower Shop Owner";
+		return StatCollector.translateToLocal("villager.flowershopowner.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Flower makes you smiling!";
+		return StatCollector.translateToLocal("villager.flowershopowner.description");
 	}
 	
 	@Override
@@ -60,9 +61,11 @@ public class ProfessionFlowerShopOwner extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Beautiful!");
-		villagerChat.add(0, "Flowers make your life better!");
-		villagerChat.add(0, "Flowers are the gifts from the nature.");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.flowershopowner.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.flowershopowner.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.flowershopowner.chat2"));
+		
+
 		
 	}
 

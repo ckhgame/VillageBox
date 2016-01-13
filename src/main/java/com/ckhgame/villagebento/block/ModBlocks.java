@@ -1,6 +1,6 @@
 package com.ckhgame.villagebento.block;
 
-import com.ckhgame.villagebento.building.BuidlingArchitectsHome;
+import com.ckhgame.villagebento.building.BuidlingBuildersHome;
 import com.ckhgame.villagebento.building.BuildingAutumnGarden;
 import com.ckhgame.villagebento.building.BuildingBlacksmithsShop;
 import com.ckhgame.villagebento.building.BuildingChickenShop;
@@ -30,7 +30,7 @@ import com.ckhgame.villagebento.building.BuildingPlayerFieldLarge;
 import com.ckhgame.villagebento.building.BuildingPlayerFieldMedium;
 import com.ckhgame.villagebento.building.BuildingPlayerFieldSmall;
 import com.ckhgame.villagebento.building.BuildingPotionStore;
-import com.ckhgame.villagebento.building.BuildingProArchitectsHouse;
+import com.ckhgame.villagebento.building.BuildingFurnitureStore;
 import com.ckhgame.villagebento.building.BuildingRoseBridge;
 import com.ckhgame.villagebento.building.BuildingRosePath;
 import com.ckhgame.villagebento.building.BuildingSheepShop;
@@ -71,7 +71,7 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockMiningHouse;
     public static BlockVillageBuilding blockBlackSmithsShop;
     public static BlockVillageBuilding blockSmallBakery;
-    public static BlockVillageBuilding blockArchitectsHome;
+    public static BlockVillageBuilding blockBuildersHome;
     public static BlockVillageBuilding blockFishingStore;
     public static BlockVillageBuilding blockSmallHotel;
     public static BlockVillageBuilding blockSmallTavern;
@@ -89,7 +89,7 @@ public final class ModBlocks {
     public static BlockVillageBuilding blockLargeMilitaryCamp;
     public static BlockVillageBuilding blockLargeCasino;
     public static BlockVillageBuilding blockLargeBakery;
-    public static BlockVillageBuilding blockProArchitectsHouse;
+    public static BlockVillageBuilding blockFurnitureStore;
     public static BlockVillageBuilding blockLargeHotel;
     public static BlockVillageBuilding blockMarket;
     public static BlockVillageBuilding blockFarmlandSmall;
@@ -150,7 +150,7 @@ public final class ModBlocks {
         
         registerVillageBlock(blockVillageCenter = new BlockVillageBuilding(BuildingVillageCenter.class,"BlockVillageCenter"),"BlockVillageCenter");
         registerVillageBlock(blockBlackSmithsShop = new BlockVillageBuilding(BuildingBlacksmithsShop.class,"BlockBlackSmithsShop"),"BlockBlackSmithsShop");
-        registerVillageBlock(blockArchitectsHome = new BlockVillageBuilding(BuidlingArchitectsHome.class,"BlockArchitectsHome"),"BlockArchitectsHome");
+        registerVillageBlock(blockBuildersHome = new BlockVillageBuilding(BuidlingBuildersHome.class,"BlockBuildersHome"),"BlockBuildersHome");
         registerVillageBlock(blockFishingStore = new BlockVillageBuilding(BuildingFishingStore.class,"BlockFishingStore"),"BlockFishingStore");
         registerVillageBlock(blockMiningHouse = new BlockVillageBuilding(BuildingMiningHouse.class,"BlockMiningHouse"),"BlockMiningHouse");
         registerVillageBlock(blockSmallBakery = new BlockVillageBuilding(BuildingSmallBakery.class,"BlockSmallBakery"),"BlockSmallBakery");
@@ -172,7 +172,7 @@ public final class ModBlocks {
         registerVillageBlock(blockLargeTavern = new BlockVillageBuilding(BuildingLargeTavern.class,"BlockLargeTavern"),"BlockLargeTavern");
         registerVillageBlock(blockLargeCasino = new BlockVillageBuilding(BuildingLargeCasino.class,"BlockLargeCasino"),"BlockLargeCasino");
         registerVillageBlock(blockLargeBakery = new BlockVillageBuilding(BuildingLargeBakery.class,"BlockLargeBakery"),"BlockLargeBakery");
-        registerVillageBlock(blockProArchitectsHouse = new BlockVillageBuilding(BuildingProArchitectsHouse.class,"BlockProArchitectsHouse"),"BlockProArchitectsHouse");
+        registerVillageBlock(blockFurnitureStore = new BlockVillageBuilding(BuildingFurnitureStore.class,"BlockFurnitureStore"),"BlockFurnitureStore");
         registerVillageBlock(blockLargeHotel = new BlockVillageBuilding(BuildingLargeHotel.class,"BlockLargeHotel"),"BlockLargeHotel");
         registerVillageBlock(blockMarket = new BlockVillageBuilding(BuildingMarket.class,"BlockMarket"),"BlockMarket");
        	registerVillageBlock(blockLibrary = new BlockVillageBuilding(BuildingLibrary.class,"BlockLibrary"),"BlockLibrary");

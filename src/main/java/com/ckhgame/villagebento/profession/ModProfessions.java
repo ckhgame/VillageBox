@@ -9,7 +9,7 @@ public class ModProfessions {
 		Profession.registry.register(id++, new ProfessionMiner());
 		Profession.registry.register(id++, new ProfessionMinerAssistant());
 		Profession.registry.register(id++, new ProfessionNoviceBaker());
-		Profession.registry.register(id++, new ProfessionArchitect());
+		Profession.registry.register(id++, new ProfessionBuilder());
 		Profession.registry.register(id++, new ProfessionFisherman());
 		Profession.registry.register(id++, new ProfessionHotelOwner());
 		Profession.registry.register(id++, new ProfessionTavernOwner());
@@ -31,7 +31,7 @@ public class ModProfessions {
 		Profession.registry.register(id++, new ProfessionMarksman());
 		Profession.registry.register(id++, new ProfessionMerchant());
 		Profession.registry.register(id++, new ProfessionProBaker());
-		Profession.registry.register(id++, new ProfessionProArchitect());
+		Profession.registry.register(id++, new ProfessionFurnitureSeller());
 		Profession.registry.register(id++, new ProfessionLargeTavernOwner());
 		Profession.registry.register(id++, new ProfessionSoldier());
 		Profession.registry.register(id++, new ProfessionCaptainSoldier());

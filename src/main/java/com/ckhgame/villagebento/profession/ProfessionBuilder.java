@@ -9,18 +9,20 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
-public class ProfessionArchitect extends Profession {
+import net.minecraft.util.StatCollector;
+
+public class ProfessionBuilder extends Profession {
 
 	@Override
 	public String getProfessionName() {
-		
-		return "Architect";
+				
+		return StatCollector.translateToLocal("villager.builder.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Let's building";
+		return StatCollector.translateToLocal("villager.builder.description");
 	}
 
 	@Override
@@ -50,15 +52,15 @@ public class ProfessionArchitect extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Need any help on building?!");
-		villagerChat.add(0, "Glad to see you!");
-		villagerChat.add(0, "I'm nature artist!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.builder.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.builder.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.builder.chat2"));
 		
 	}
 
 	@Override
 	public String getSkinName() {
-		return "architect";
+		return "builder";
 	}
 
 }

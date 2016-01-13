@@ -9,18 +9,22 @@ import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
-public class ProfessionProArchitect extends Profession {
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.util.StatCollector;
+
+public class ProfessionFurnitureSeller extends Profession {
 
 	@Override
 	public String getProfessionName() {
 		
-		return "Professional Architect";
+		return StatCollector.translateToLocal("villager.furnitureseller.name");
 	}
 
 	@Override
 	public String getProfessionDescription() {
 		
-		return "Get some buidlings.";
+		return StatCollector.translateToLocal("villager.furnitureseller.description");
 	}
 
 	@Override
@@ -37,14 +41,13 @@ public class ProfessionProArchitect extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-        compBuy.addItem(ModBlocks.blockLargeMilitaryCamp, 0);
-        compBuy.addItem(ModBlocks.blockLargeTavern, 0);
-        compBuy.addItem(ModBlocks.blockLargeHotel, 0);
-        compBuy.addItem(ModBlocks.blockLargeCasino, 0);
-        compBuy.addItem(ModBlocks.blockLargeBakery, 0);
-        compBuy.addItem(ModBlocks.blockFlowerShop, 0);
-        compBuy.addItem(ModBlocks.blockPotionStore, 0);
-        compBuy.addItem(ModBlocks.blockPlayerFieldLarge, 0);
+
+        compBuy.addItem(Blocks.bookshelf, 0);
+        compBuy.addItem(Items.bed, 0);
+        compBuy.addItem(Blocks.chest, 0);
+        compBuy.addItem(ModBlocks.blockWineBucket, 0);
+        compBuy.addItem(ModBlocks.blockWineShelf, 0);
+        compBuy.addItem(ModBlocks.blockWoodenChair, 0);
         components.add(compBuy);
 
 	}
@@ -52,15 +55,15 @@ public class ProfessionProArchitect extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, "Which place you want to build?");
-		villagerChat.add(0, "Let's make some art works on the ground!");
-		villagerChat.add(0, "The beauty of engineering!");
+		villagerChat.add(0, StatCollector.translateToLocal("villager.furnitureseller.chat0"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.furnitureseller.chat1"));
+		villagerChat.add(0, StatCollector.translateToLocal("villager.furnitureseller.chat2"));
 		
 	}
 
 	@Override
 	public String getSkinName() {
-		return "proarchitect";
+		return "furnitureseller";
 	}
 
 }

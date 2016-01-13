@@ -35,8 +35,8 @@ tile.BlockCowShop.name=Cow Shop
 tile.BlockSheepShop.name=Sheep Shop
 tile.BlockChickenShop.name=Chicken Shop
 tile.BlockFishingStore.name=Fishing Store
-tile.BlockArchitectsHome.name=Architect's Home
-tile.BlockProArchitectsHouse.name=Professional Architect's Home
+tile.BlockBuildersHome.name=Builder's Home
+tile.BlockFurnitureStore.name=Furniture Store
 tile.BlockLibrary.name=Library
 tile.BlockTailorStore.name=Tailor Store
 tile.BlockTownSquareSmall.name=Village Square
@@ -399,6 +399,24 @@ villager.soldier.description=Protect my villagers!!
 villager.soldier.chat0=I'm a soldier!
 villager.soldier.chat1=Protecting!
 villager.soldier.chat2=I can't talk to you now since I'm patrolling.
+
+villager.builder.name=Builder
+villager.builder.description=I  help you build your own house!
+villager.builder.chat0=What materials you want to use for your house!
+villager.builder.chat1=Stone bricks are the basic materials of a building!
+villager.builder.chat2=You could buy a small filed and rebuild it in your style.
+
+villager.furnitureseller.name=Furniture Seller
+villager.furnitureseller.description=I sell furniture to you.
+villager.furnitureseller.chat0=Most of the furnitures are only for decoration.
+villager.furnitureseller.chat1=I offer you the cheapest price... 
+villager.furnitureseller.chat2=Nice to see you again.
+
+villager.flowershopowner.name=Flower Shop Owner
+villager.flowershopowner.description=I could sell you different flower gardens.
+villager.flowershopowner.chat0=Beautiful.
+villager.flowershopowner.chat1=Flowers make your life better! 
+villager.flowershopowner.chat2=Flowers are the gifts from the nature.
 
 villager.casinoMgr.name=Casino Manager
 villager.casinoMgr.description=I'm here for testing your luck...
