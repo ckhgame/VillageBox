@@ -426,6 +426,22 @@ villager.priest.description=I will lead you the path..
 villager.priest.chat0=God bless this village..
 villager.priest.chat1=Love your enemies.
 villager.priest.chat2=Everyday is a gift... 
+villager.priest.actionDialog=I need your help!
+villager.priest.action0.text=Listening a story...
+villager.priest.action0.info=Listening a story
+villager.priest.action1.text=I want to donate..
+villager.priest.action1.info=donation: 20G
+villager.priest.action2.text=I want to donate more!
+villager.priest.action2.info=donation: 50G
+villager.priest.actionDonation.result0.dialog=No, my child. It's too much for you.
+villager.priest.actionDonation.result0.content=You need %sG to complete this donation.
+villager.priest.actionDonation.result1.dialog=Thanks for your kindness!
+villager.priest.actionDonation.result1.content=You donated %sG to the church and received some kind of blessing...
+villager.priest.actionStory.result.dialog=Listen , my child!
+villager.priest.actionStory.result.content0=story0
+villager.priest.actionStory.result.content1=story1
+villager.priest.actionStory.result.content2=story2
+
 
 villager.tailor.name=Tailor
 villager.tailor.description=I am a person who care about fashion design.

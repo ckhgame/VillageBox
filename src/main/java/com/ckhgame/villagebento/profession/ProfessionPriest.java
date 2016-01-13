@@ -8,10 +8,14 @@ import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
+import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompQuest;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompSell;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
+import com.ckhgame.villagebento.villagercomponent.villageraction.VillagerActionBet;
+import com.ckhgame.villagebento.villagercomponent.villageraction.VillagerActionPriestDonation;
+import com.ckhgame.villagebento.villagercomponent.villageraction.VillagerActionPriestStory;
 import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuestDesign;
 
 import net.minecraft.init.Blocks;
@@ -44,8 +48,13 @@ public class ProfessionPriest extends Profession {
 		
         components.add(new VillagerCompAbout(villager));
         
-        //healing...
-        //...
+        //action
+        VillagerCompAction compAction = new VillagerCompAction(villager);
+        compAction.setDialogOptionText("villager.priest.actionDialog");
+        compAction.addAction(new VillagerActionPriestStory("villager.priest.action0.text","villager.priest.action0.info", 0, null));
+        compAction.addAction(new VillagerActionPriestDonation("villager.priest.action1.text","villager.priest.action1.info", 0, new Object[]{20}));
+        compAction.addAction(new VillagerActionPriestDonation("villager.priest.action2.text","villager.priest.action2.info", 0, new Object[]{50}));
+        components.add(compAction);
 	}
 	
 	@Override
