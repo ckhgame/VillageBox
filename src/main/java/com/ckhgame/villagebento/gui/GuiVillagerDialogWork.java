@@ -82,7 +82,9 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 			for(int i =0;i<this.villagerCompWork.getWorkListSize();i++){
 				work = this.villagerCompWork.getWork(i);
 				boolean available = this.villagerCompWork.isWorkAvailable(work);
-				this.addDialogOptions(ButtonID_Work0 + i, i, work.name ,available, available?(work.price + " G"):(StatCollector.translateToLocal("vbgui.common.needLevel") + (work.minLevel + 1)));
+				this.addDialogOptions(ButtonID_Work0 + i, i, StatCollector.translateToLocal(work.name) ,available, 
+														StatCollector.translateToLocal(work.remark),
+														available?(work.price + " G"):(StatCollector.translateToLocal("vbgui.common.needLevel") + (work.minLevel + 1)));
 			}		
 
 			this.addDialogOptions(ButtonID_Back, this.villagerCompWork.getWorkListSize(), StatCollector.translateToLocal("vbgui.dialogOption.workBack"));

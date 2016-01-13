@@ -42,16 +42,6 @@ public class ProfessionKnight extends Profession {
 	public void createVillagerComponents(ArrayList<VillagerComponent> components,EntityVBVillager villager) {
 
         components.add(new VillagerCompAbout(villager));
-
-        components.add(new VillagerCompAbout(villager));
-        
-        VillagerCompWork compWork = new VillagerCompWork(villager);
-        int workIdx;
-        workIdx = compWork.createWork("Protect our homeland!", "Get somthing to prove..",0 , 18, 28);
-        compWork.addWorkOutput(workIdx, Items.rotten_flesh, 7, 12);
-        
-       
-        components.add(compWork);
 	}
 
 	@Override

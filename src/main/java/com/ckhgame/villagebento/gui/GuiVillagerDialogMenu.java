@@ -35,7 +35,7 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 
 	private void createDialogMain(){
 		this.clearAllDialogOptions();
-		this.setDialogString(this.entityVBVillager.getProfession().getVillagerChat().getRandom(this.entityVBVillager.getLevel()));
+		this.setDialogString(StatCollector.translateToLocal(this.entityVBVillager.getProfession().getVillagerChat().getRandom(this.entityVBVillager.getLevel())));
 		int idx = 0;
 		//about
 		this.addDialogOptions(ButtonID_About, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuAbout"));
@@ -51,12 +51,12 @@ public class GuiVillagerDialogMenu extends GuiVillagerDialog{
 		//actions
 		VillagerCompAction compAction = (VillagerCompAction)this.entityVBVillager.getVillagerComponent(VillagerCompAction.class);
 		if(compAction != null){
-			this.addDialogOptions(ButtonID_Action,idx++, compAction.getDialogOptionText());
+			this.addDialogOptions(ButtonID_Action,idx++, StatCollector.translateToLocal(compAction.getDialogOptionText()));
 		}
 		//works
 		VillagerCompWork compWork = (VillagerCompWork)this.entityVBVillager.getVillagerComponent(VillagerCompWork.class);
 		if(compWork != null){
-			this.addDialogOptions(ButtonID_Work, idx++,compWork.getDialogOptionText());
+			this.addDialogOptions(ButtonID_Work, idx++,StatCollector.translateToLocal(compWork.getDialogOptionText()));
 		}
 		
 		this.addDialogOptions(ButtonID_Leave, idx++, StatCollector.translateToLocal("vbgui.dialogOption.menuLeave"));

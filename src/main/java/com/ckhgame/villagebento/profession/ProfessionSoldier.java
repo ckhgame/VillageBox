@@ -46,23 +46,15 @@ public class ProfessionSoldier extends Profession {
 	public void createVillagerComponents(ArrayList<VillagerComponent> components,EntityVBVillager villager) {
 
         components.add(new VillagerCompAbout(villager));
-        
-        VillagerCompWork compWork = new VillagerCompWork(villager);
-        int workIdx;
-        workIdx = compWork.createWork("Protect our homeland!", "Get somthing to prove..",0 , 18, 28);
-        compWork.addWorkOutput(workIdx, Items.rotten_flesh, 7, 12);
-        
-       
-        components.add(compWork);
 
 	}
 
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, StatCollector.translateToLocal("villager.soldier.chat0"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.soldier.chat1"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.soldier.chat2"));
+		villagerChat.add(0, "villager.soldier.chat0");
+		villagerChat.add(0, "villager.soldier.chat1");
+		villagerChat.add(0, "villager.soldier.chat2");
 		
 	}
 

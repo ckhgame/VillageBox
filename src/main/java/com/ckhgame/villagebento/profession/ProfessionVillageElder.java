@@ -141,9 +141,9 @@ public class ProfessionVillageElder extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villageElder.chat0"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villageElder.chat1"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villageElder.chat2"));
+		villagerChat.add(0, "villager.villageElder.chat0");
+		villagerChat.add(0, "villager.villageElder.chat1");
+		villagerChat.add(0, "villager.villageElder.chat2");
 		
 	}
 	

@@ -40,20 +40,21 @@ public class VillagerCompAction extends VillagerCompCustomDialog {
 	// --------------------Data-------------------------------
 	// -------------------------------------------------------
 
-	public String resultTitle = "<empty>";
 	public String resultContent = "<empty>";
 	public ItemStack resultItem = null;
 	
-	public void setResult(String title, String content, ItemStack item){
-		this.resultTitle = title;
+	public void setResult(String content, ItemStack item){
 		this.resultContent = content;
 		this.resultItem = item;
+	}
+	
+	public String getTranslatedResultContent(){
+		return VillagerAction.translateFormatted(this.resultContent);
 	}
 
 	@Override
 	public void syneWrite(ByteBuf buf) {
 		//results
-		ByteBufUtils.writeUTF8String(buf, this.resultTitle);
 		ByteBufUtils.writeUTF8String(buf, this.resultContent);
 		boolean hasResultItem = (this.resultItem != null);
 		buf.writeBoolean(hasResultItem);
@@ -65,7 +66,6 @@ public class VillagerCompAction extends VillagerCompCustomDialog {
 	@Override
 	public void syneRead(ByteBuf buf) {
 		//results
-		this.resultTitle = ByteBufUtils.readUTF8String(buf);
 		this.resultContent = ByteBufUtils.readUTF8String(buf);
 		boolean hasResultItem = buf.readBoolean();
 		if(hasResultItem){

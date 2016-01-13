@@ -67,7 +67,7 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		this.addDialogOptions(id, idx, text, true,null);
 	}
 	
-	protected void addDialogOptions(int id, int idx, String text,boolean enabled, String extraText){
+	protected void addDialogOptions(int id, int idx, String text,boolean enabled, String...extraTexts){
 		String prefix = "> ";
 		int maxCol = 2;
 		int yOffset = 28;
@@ -75,7 +75,7 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		int lineHeight = 10;
 		int x = this.boundDialogBar.getIntX()  + xOffset + (idx % maxCol) * this.boundDialogBar.getIntW() / 2;
 		int y = this.boundDialogBar.getIntY() + yOffset + (idx / maxCol) * lineHeight;
-		GuiTextButton btn = new GuiTextButton(this.mc, id, x, y, prefix + text,extraText);
+		GuiTextButton btn = new GuiTextButton(this.mc, id, x, y, prefix + text,extraTexts);
 		btn.enabled = enabled;
 		this.buttonList.add(btn);
 	}
@@ -90,9 +90,11 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		for(Object obj : this.buttonList){
 			if(obj instanceof GuiTextButton){
 				btn = (GuiTextButton)obj;
-				if(btn.visible && btn.getExtraText() != null && btn.isMouseOn()){
+				if(btn.visible && btn.getExtraTexts() != null && btn.isMouseOn()){
 					List texts = new ArrayList();
-					texts.add(btn.getExtraText());
+					for(String extraText : btn.getExtraTexts()){
+						texts.add(extraText);
+					}
 					this.setMouseHoverTexts(texts);
 					break;
 				}

@@ -40,18 +40,18 @@ public class ProfessionMiner extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompWork compWork = new VillagerCompWork(villager);
-        compWork.setDialogOptionText(StatCollector.translateToLocal("villager.miner.workDialog"));
+        compWork.setDialogOptionText("villager.miner.workDialog");
         int workIdx;
-        workIdx = compWork.createWork(StatCollector.translateToLocal("villager.miner.work0.title"), StatCollector.translateToLocal("villager.miner.work0.description"),0 , 7, 15);
+        workIdx = compWork.createWork("villager.miner.work0.title", "villager.miner.work0.description",0 , 7, 15);
         compWork.addWorkOutput(workIdx, Items.coal, 7, 12);
         
-        workIdx = compWork.createWork(StatCollector.translateToLocal("villager.miner.work1.title"), StatCollector.translateToLocal("villager.miner.work1.description"), 1, 10, 50);
+        workIdx = compWork.createWork("villager.miner.work1.title", "villager.miner.work1.description", 1, 10, 50);
         compWork.addWorkOutput(workIdx, Blocks.iron_ore, 5, 8); 
         
-        workIdx = compWork.createWork(StatCollector.translateToLocal("villager.miner.work2.title"), StatCollector.translateToLocal("villager.miner.work2.description"), 2, 12, 120);
+        workIdx = compWork.createWork("villager.miner.work2.title", "villager.miner.work2.description", 2, 12, 120);
         compWork.addWorkOutput(workIdx, Blocks.gold_ore, 3, 6); 
         
-        workIdx = compWork.createWork(StatCollector.translateToLocal("villager.miner.work3.title"), StatCollector.translateToLocal("villager.miner.work3.description"), 3, 20, 180);
+        workIdx = compWork.createWork("villager.miner.work3.title", "villager.miner.work3.description", 3, 20, 180);
         compWork.addWorkOutput(workIdx, Items.diamond, 1, 4); 
         
         components.add(compWork);
@@ -60,9 +60,9 @@ public class ProfessionMiner extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, StatCollector.translateToLocal("villager.miner.chat0"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.miner.chat1"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.miner.chat2"));
+		villagerChat.add(0, "villager.miner.chat0");
+		villagerChat.add(0, "villager.miner.chat1");
+		villagerChat.add(0, "villager.miner.chat2");
 		
 	}
 	

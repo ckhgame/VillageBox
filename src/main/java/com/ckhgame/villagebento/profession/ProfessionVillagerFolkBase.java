@@ -176,16 +176,16 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat0"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat1"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat2"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat3"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat4"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat5"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat6"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat7"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat8"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.villagerfolk.chat9"));
+		villagerChat.add(0, "villager.villagerfolk.chat0");
+		villagerChat.add(0, "villager.villagerfolk.chat1");
+		villagerChat.add(0, "villager.villagerfolk.chat2");
+		villagerChat.add(0, "villager.villagerfolk.chat3");
+		villagerChat.add(0, "villager.villagerfolk.chat4");
+		villagerChat.add(0, "villager.villagerfolk.chat5");
+		villagerChat.add(0, "villager.villagerfolk.chat6");
+		villagerChat.add(0, "villager.villagerfolk.chat7");
+		villagerChat.add(0, "villager.villagerfolk.chat8");
+		villagerChat.add(0, "villager.villagerfolk.chat9");
 	}
 	
 	@Override

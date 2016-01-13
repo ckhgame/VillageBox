@@ -45,9 +45,9 @@ public class ProfessionHotelOwner extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, StatCollector.translateToLocal("villager.hotelOwner.chat0"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.hotelOwner.chat1"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.hotelOwner.chat2"));
+		villagerChat.add(0, "villager.hotelOwner.chat0");
+		villagerChat.add(0, "villager.hotelOwner.chat1");
+		villagerChat.add(0, "villager.hotelOwner.chat2");
 		
 	}
 

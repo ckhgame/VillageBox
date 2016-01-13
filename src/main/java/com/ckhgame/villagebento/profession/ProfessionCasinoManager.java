@@ -46,9 +46,9 @@ public class ProfessionCasinoManager extends Profession {
         
         //action
         VillagerCompAction compAction = new VillagerCompAction(villager);
-        compAction.setDialogOptionText(StatCollector.translateToLocal("villager.casinoMgr.actionDialog"));
-        compAction.addAction(new VillagerActionBet(StatCollector.translateToLocal("villager.casinoMgr.action0.text"),StatCollector.translateToLocal("villager.casinoMgr.action0.info"), 0, new Object[]{20}));
-        compAction.addAction(new VillagerActionBet(StatCollector.translateToLocal("villager.casinoMgr.action1.text"),StatCollector.translateToLocal("villager.casinoMgr.action1.info"), 1, new Object[]{100}));
+        compAction.setDialogOptionText("villager.casinoMgr.actionDialog");
+        compAction.addAction(new VillagerActionBet("villager.casinoMgr.action0.text","villager.casinoMgr.action0.info", 0, new Object[]{20}));
+        compAction.addAction(new VillagerActionBet("villager.casinoMgr.action1.text","villager.casinoMgr.action1.info", 1, new Object[]{100}));
         components.add(compAction);
 
 	}
@@ -56,9 +56,9 @@ public class ProfessionCasinoManager extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, StatCollector.translateToLocal("villager.casinoMgr.chat0"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.casinoMgr.chat1"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.casinoMgr.chat2"));
+		villagerChat.add(0, "villager.casinoMgr.chat0");
+		villagerChat.add(0, "villager.casinoMgr.chat1");
+		villagerChat.add(0, "villager.casinoMgr.chat2");
 		
 	}
 

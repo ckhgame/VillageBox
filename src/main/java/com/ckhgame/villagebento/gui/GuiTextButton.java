@@ -27,20 +27,16 @@ import net.minecraft.util.StatCollector;
 
 public class GuiTextButton extends GuiButton {
 
-	private String extraText = null;
+	private String[] extraTexts = null;
 	public GuiScreen guiScreen = null;
 	
-	public GuiTextButton(Minecraft mc,int id, int x, int y, String text) {
-		this(mc, id, x, y, text, null);
-	}
-	
-	public GuiTextButton(Minecraft mc,int id, int x, int y, String text, String extraText) {
+	public GuiTextButton(Minecraft mc,int id, int x, int y, String text, String...extraTexts) {
 		super(id, x, y,mc.fontRenderer.getStringWidth(text),mc.fontRenderer.FONT_HEIGHT,text);
-		this.extraText = extraText;
+		this.extraTexts = extraTexts;
 	}
 
-	public String getExtraText(){
-		return this.extraText;
+	public String[] getExtraTexts(){
+		return this.extraTexts;
 	}
 	
 	public boolean isMouseOn(){

@@ -27,6 +27,10 @@ public class VillagerActionBet extends VillagerAction {
 	public VBCompResult doAction(EntityPlayer player, EntityVBVillager villager, VillagerCompAction component, Object[] params) {
 		int bet = (Integer) params[0];
 
+		int vbResult = 0;
+		String dialog = "null";
+		String content = "null";
+		
 		if (HelperPlayer.addCurrency(player, -bet)) {
 
 			//villager.addExp(ConfigVillager.BetExp);
@@ -48,46 +52,40 @@ public class VillagerActionBet extends VillagerAction {
 
 			HelperPlayer.addCurrency(player, bet * times);
 			
-			String title = "null";
-			String content = "null";
-			if(times < 0){
-				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result0.title");
-				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result0.content"),bet);
-			}
-			else if(times == 0){
-				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result1.title");
-				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result1.content"),bet);
+			if(times == 0){
+				dialog = "villager.casinoMgr.actionBet.result1.dialog";
+				content = format("villager.casinoMgr.actionBet.result1.content",String.valueOf(bet));
+				vbResult = VBResult.SUCCESS;
 			}
 			else if(times == 1){
-				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result2.title");
-				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result2.content"),bet);
+				dialog = "villager.casinoMgr.actionBet.result2.dialog";
+				content = format("villager.casinoMgr.actionBet.result2.content",String.valueOf(bet));
+				vbResult = VBResult.SUCCESS;
 			}
 			else if(times == 2){
-				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result3.title");
-				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result345.content"),bet,bet * times);
+				dialog = "villager.casinoMgr.actionBet.result3.dialog";
+				content = format("villager.casinoMgr.actionBet.result345.content",String.valueOf(bet),String.valueOf(bet * times));
+				vbResult = VBResult.SUCCESS;
 			}
 			else if(times == 4){
-				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result4.title");
-				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result345.content"),bet,bet * times);
+				dialog = "villager.casinoMgr.actionBet.result4.dialog";
+				content = format("villager.casinoMgr.actionBet.result345.content",String.valueOf(bet),String.valueOf(bet * times));
+				vbResult = VBResult.SUCCESS;
 			}
 			else if(times == 8){
-				title = StatCollector.translateToLocal("villager.casinoMgr.actionBet.result5.title");
-				content = String.format(StatCollector.translateToLocal("villager.casinoMgr.actionBet.result345.content"),bet,bet * times);
-			}
-			
-			component.setResult(title, content, null);
-			
-			if(times == 0){
-				return new VBCompResult(VBResult.SUCCESS,"I'm sorry....");
-			}	
-			else if(times == 1){
-				return new VBCompResult(VBResult.SUCCESS,"Ok...");
-			}
-			else{
-				return new VBCompResult(VBResult.SUCCESS,"Congratulations!!!");
-			}			
+				dialog = "villager.casinoMgr.actionBet.result5.dialog";
+				content = format("villager.casinoMgr.actionBet.result345.content",String.valueOf(bet),String.valueOf(bet * times));
+				vbResult = VBResult.SUCCESS;
+			}		
 			
 		}
-		return new VBCompResult(VBResult.FAILED_UNAFFORDABLE,"It's too expensive for you..");
+		else{
+			dialog = "villager.casinoMgr.actionBet.result0.dialog";
+			content = format("villager.casinoMgr.actionBet.result0.content", String.valueOf(bet));
+			vbResult = VBResult.FAILED_UNAFFORDABLE;
+		}
+		
+		component.setResult(content, null);
+		return new VBCompResult(vbResult,dialog);
 	}
 }

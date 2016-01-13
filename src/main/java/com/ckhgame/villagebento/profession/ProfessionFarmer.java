@@ -42,25 +42,25 @@ public class ProfessionFarmer extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompWork compWork = new VillagerCompWork(villager);
-        compWork.setDialogOptionText(StatCollector.translateToLocal("villager.farmer.workDialog"));
+        compWork.setDialogOptionText("villager.farmer.workDialog");
         int workIdx;
         
-        workIdx = compWork.createWork(StatCollector.translateToLocal("villager.farmer.work0.title"), StatCollector.translateToLocal("villager.farmer.work0.description"),0 , 10, 45);
+        workIdx = compWork.createWork("villager.farmer.work0.title", "villager.farmer.work0.description",0 , 10, 45);
         compWork.addWorkOutput(workIdx, Items.wheat, 5, 10);
         compWork.addWorkOutput(workIdx, Items.carrot, 5, 8); 
         compWork.addWorkOutput(workIdx, Items.potato, 5, 8); 
         
-        workIdx = compWork.createWork(StatCollector.translateToLocal("villager.farmer.work1.title"), StatCollector.translateToLocal("villager.farmer.work1.description"), 0, 15, 50);
+        workIdx = compWork.createWork("villager.farmer.work1.title", "villager.farmer.work1.description", 0, 15, 50);
         compWork.addWorkOutput(workIdx, Items.apple, 5, 8); 
         compWork.addWorkOutput(workIdx, Blocks.pumpkin, 8, 12);
         compWork.addWorkOutput(workIdx, Blocks.melon_block, 8, 12); 
         
-        workIdx = compWork.createWork(StatCollector.translateToLocal("villager.farmer.work2.title"), StatCollector.translateToLocal("villager.farmer.work2.description"),1 , 10, 70);
+        workIdx = compWork.createWork("villager.farmer.work2.title", "villager.farmer.work2.description",1 , 10, 70);
         compWork.addWorkOutput(workIdx, ModItems.itemRiceplant, 5, 10);
         compWork.addWorkOutput(workIdx, ModItems.itemCabbage, 5, 8); 
         compWork.addWorkOutput(workIdx, ModItems.itemCorn, 5, 8); 
         
-        workIdx = compWork.createWork(StatCollector.translateToLocal("villager.farmer.work3.title"), StatCollector.translateToLocal("villager.farmer.work3.description"), 2, 15, 100);
+        workIdx = compWork.createWork("villager.farmer.work3.title", "villager.farmer.work3.description", 2, 15, 100);
         compWork.addWorkOutput(workIdx, ModItems.itemSoybeans, 3, 8); 
         compWork.addWorkOutput(workIdx, ModItems.itemGrapes, 3, 8); 
         compWork.addWorkOutput(workIdx, ModItems.itemChili, 3, 8); 
@@ -72,9 +72,9 @@ public class ProfessionFarmer extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, StatCollector.translateToLocal("villager.farmer.chat0"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.farmer.chat1"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.farmer.chat2"));
+		villagerChat.add(0, "villager.farmer.chat0");
+		villagerChat.add(0, "villager.farmer.chat1");
+		villagerChat.add(0, "villager.farmer.chat2");
 		
 	}
 	

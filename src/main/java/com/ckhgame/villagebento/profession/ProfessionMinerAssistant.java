@@ -57,9 +57,9 @@ public class ProfessionMinerAssistant extends Profession {
 	@Override
 	public void initVillagerChat(VillagerChat villagerChat) {
 
-		villagerChat.add(0, StatCollector.translateToLocal("villager.minerAssistant.chat0"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.minerAssistant.chat1"));
-		villagerChat.add(0, StatCollector.translateToLocal("villager.minerAssistant.chat2"));
+		villagerChat.add(0, "villager.minerAssistant.chat0");
+		villagerChat.add(0, "villager.minerAssistant.chat1");
+		villagerChat.add(0, "villager.minerAssistant.chat2");
 		
 	}
 	

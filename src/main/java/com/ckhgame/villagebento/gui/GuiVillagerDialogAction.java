@@ -61,7 +61,7 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 		for(int i =0;i<this.villagerCompAction.getActionListSize();i++){
 			action = this.villagerCompAction.getAction(i);
 			boolean available = this.villagerCompAction.isActionAvailable(action);
-			this.addDialogOptions(ButtonID_Action0 + i, i, action.text,available, available?action.info:(StatCollector.translateToLocal("vbgui.common.needLevel") + (action.minLevel + 1)));
+			this.addDialogOptions(ButtonID_Action0 + i, i, StatCollector.translateToLocal(action.text),available, available?StatCollector.translateToLocal(action.info):(StatCollector.translateToLocal("vbgui.common.needLevel") + (action.minLevel + 1)));
 		}
 		this.addDialogOptions(ButtonID_Back, this.villagerCompAction.getActionListSize(), StatCollector.translateToLocal("vbgui.dialogOption.actionBack"));
 	}
@@ -83,8 +83,7 @@ public class GuiVillagerDialogAction extends GuiVillagerDialog{
 	protected void drawCenterContent(int centerContentID, int mx, int my, float f) {
 		super.drawCenterContent(centerContentID, mx, my, f);
 		if(centerContentID == ContentID_ActionResult){
-			this.drawCenteredString(fontRendererObj, this.villagerCompAction.resultTitle, this.boundCenterContent.getIntCenterX(), this.boundCenterContent.getIntY()  + 8, 0xFFFFFF00);
-			this.drawWrappedString(fontRendererObj, this.villagerCompAction.resultContent, this.boundCenterContent.getIntX() + 8 , this.boundCenterContent.getIntY()  + 24, 0xFFDDDDDD, 240);
+			this.drawWrappedString(fontRendererObj, this.villagerCompAction.getTranslatedResultContent(), this.boundCenterContent.getIntX() + 8 , this.boundCenterContent.getIntY()  + 24, 0xFFDDDDDD, 240);
 		}
 	}
 
