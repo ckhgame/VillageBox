@@ -11,6 +11,7 @@ import com.ckhgame.villagebento.network.action.ActionDoVillagerStartWork;
 import com.ckhgame.villagebento.network.action.ActionDoVillagerTakeWorkOutput;
 import com.ckhgame.villagebento.network.action.ActionSyncVillagerComp;
 import com.ckhgame.villagebento.util.data.VBCompResult;
+import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.village.ItemPrice;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAction;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
@@ -59,7 +60,7 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 		}
 	}
 	
-	private void createDialogWork(){
+	private void createDialogWork(boolean isUnaffordable){
 		
 		if(this.villagerCompWork.workIdx >= 0 && this.villagerCompWork.hoursLeft > 0){ // is working
 			this.showCenterContent(this.ContentID_Working);
@@ -75,7 +76,8 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 		else if(this.villagerCompWork.workIdx < 0){ //is open for new work
 			this.hideCenterContent();
 			this.clearAllDialogOptions();
-			this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.workNextWork"));
+			if(!isUnaffordable)
+				this.setDialogString(StatCollector.translateToLocal("vbgui.dialogString.workNextWork"));
 			
 			//options
 			Work work;
@@ -93,9 +95,16 @@ public class GuiVillagerDialogWork extends GuiVillagerDialog{
 	
 	@Override
 	public boolean updateWithVBCompResult(VBCompResult vbCompResult) {
-		boolean b = super.updateWithVBCompResult(vbCompResult);
-		this.createDialogWork();
-		return b;
+		if(!super.updateWithVBCompResult(vbCompResult)){
+			this.createDialogWork(false);
+			return false;
+		}
+		else{
+			if(!VBResult.isSuccess(vbCompResult.vbResult)){
+				this.createDialogWork(true);
+			}
+			return true;
+		}
 	}
 
 	@Override
