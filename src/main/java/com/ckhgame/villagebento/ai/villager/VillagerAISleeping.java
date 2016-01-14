@@ -5,6 +5,7 @@ import java.util.Random;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.VBDateTime;
+import com.ckhgame.villagebento.util.village.VillagerEmoji;
 import com.ckhgame.villagebento.util.village.VillagerNavigator;
 
 import net.minecraft.entity.ai.EntityAIBase;
@@ -45,6 +46,7 @@ public class VillagerAISleeping extends VillagerAIMoving
     			return false;
     		else{
     			this.targetPos = this.entity.bedPosition.toVec3();
+    			this.entity.playEmoji(VillagerEmoji.EmojiSleepy, 9999);
     			return true;
     		}
     	}

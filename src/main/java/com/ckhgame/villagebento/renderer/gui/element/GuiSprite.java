@@ -60,5 +60,11 @@ public class GuiSprite extends GuiElement{
 	@Override
 	public void renderBackground() {
 	}
+
+
+
+	@Override
+	public void update(float dt) {		
+	}
 	
 }

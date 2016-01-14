@@ -41,6 +41,7 @@ public class ConfigData {
 	
 	//villager entity
 	public static final String KeyVillagerSleeping					= "vrs";
+	public static final String KeyVillagerEmoji						= "vre";
 	public static final String KeyVillagerProfessionID				= "vrpid";
 	public static final String KeyVillagerBuildingID				= "vrbid";
 	public static final String KeyVillagerLevel						= "vrl";

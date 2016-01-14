@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.renderer.gui.element.GuiElement;
 import com.ckhgame.villagebento.renderer.gui.element.GuiSprite;
+import com.ckhgame.villagebento.renderer.gui.element.GuiSpriteAnim;
 import com.ckhgame.villagebento.renderer.gui.element.GuiText;
 
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -36,6 +37,12 @@ public abstract class RenderGui {
 		return guiSprite;
 	}
 	
+	protected GuiSpriteAnim addSpriteAnim(double x,double y,double w,double h,ResourceLocation resource, float frameInterval, int frameCount){
+		GuiSpriteAnim guiSpriteAnim = new GuiSpriteAnim(x,y,w,h,resource,frameInterval,frameCount);
+		addElement(guiSpriteAnim);
+		return guiSpriteAnim;
+	}
+	
 	public void render(Entity entity,double gx,double gy,double gz){		
 		
 		if(this.elements == null){
@@ -49,6 +56,9 @@ public abstract class RenderGui {
 		if (d > ConfigVillager.MaxRenderGuiDrawDistanceSq) 
 			return;
 		
+		for(GuiElement element : this.elements){
+			element.update(0.03F);
+		}
 		this.update(entity);
 		
 		float f = 1.6F;

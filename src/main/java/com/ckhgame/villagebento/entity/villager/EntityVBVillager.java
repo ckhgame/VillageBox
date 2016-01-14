@@ -94,6 +94,7 @@ public class EntityVBVillager extends EntityAgeable {
         this.dataWatcher.addObject(17, new Integer(-1));	//profession
         this.dataWatcher.addObject(18, new Integer(-1));	//sleeping <0: false, others: true ( >= 0indicates the sleep orientation as well:0 90 180 270)
         this.dataWatcher.addObject(19, new Integer(0));	//level
+        this.dataWatcher.addObject(20, new Integer(0x000000FF));	//emoji
         
         if(ConfigDev.VillagerDebugEnabled){
         	this.debugInit();
@@ -212,6 +213,7 @@ public class EntityVBVillager extends EntityAgeable {
 			this.setSleeping(true);
 			this.getNavigator().clearPathEntity();
 			this.setPosition(this.bedPosition.x + 0.5D, this.bedPosition.y + 1.0D, this.bedPosition.z + 0.5D);
+			this.stopEmoji();
 		}
 	}
 	
@@ -222,7 +224,7 @@ public class EntityVBVillager extends EntityAgeable {
 			if(this.isNearBed()){
 				Vec3 p = HelperVillager.findWalkableBlockNearPos(this.worldObj,this.bedPosition.x,this.bedPosition.y, this.bedPosition.z);
 				this.setPosition(p.xCoord,p.yCoord,p.zCoord);
-			}	
+			}
 		}
 	}
 	
@@ -344,6 +346,62 @@ public class EntityVBVillager extends EntityAgeable {
 	
 	public void stepTravelTimer(){
 		this.travelTimer--;
+	}
+	
+	//emoji
+	public byte getEmojiID(){
+		return (byte)(this.dataWatcher.getWatchableObjectInt(20) & 0x000000FF);
+	}
+	
+	public void setEmojiID(byte id){
+		this.dataWatcher.updateObject(20, this.dataWatcher.getWatchableObjectInt(20) & 0xFFFFFF00 | id);
+	}
+	
+	public int getEmojiTimer(){
+		return this.dataWatcher.getWatchableObjectInt(20)>>8 & 0x00FFFFFF;
+	}
+	
+	public void setEmojiTimer(int duration){
+		this.dataWatcher.updateObject(20, (this.dataWatcher.getWatchableObjectInt(20) & 0x000000FF) | (duration << 8));
+	}
+	
+	private void setEmojiData(int data){
+		this.dataWatcher.updateObject(20,data);
+	}
+	
+	public int getEmojiData()
+	{
+		return this.dataWatcher.getWatchableObjectInt(20);
+	}
+	
+	public boolean hasEmoji(){
+		if(this.getEmojiID() < 0)
+			return false;
+		if(this.getEmojiTimer() <= 0)
+			return false;
+		return true;
+	}
+	
+	public void stopEmoji(){
+		this.setEmojiID((byte)-1);
+	}
+	
+	public void playEmoji(byte emoji, int duration){
+		this.setEmojiID(emoji);
+		this.setEmojiTimer(duration);
+	}
+	
+	public void updateEmoji(){
+		if(!this.worldObj.isRemote){
+			int timer = this.getEmojiTimer();
+			if(timer > 0){
+				timer--;
+				this.setEmojiTimer(timer);
+				if(timer <= 0){
+					this.stopEmoji();
+				}
+			}
+		}
 	}
 	
 	// temp caches
@@ -487,6 +545,8 @@ public class EntityVBVillager extends EntityAgeable {
 			this.heal(1.0F);
 		}
 		
+		this.updateEmoji();
+		
 		if(ConfigDev.VillagerDebugEnabled){
 			this.debugUpdate();
 		}
@@ -532,6 +592,7 @@ public class EntityVBVillager extends EntityAgeable {
 		p_70014_1_.setInteger(ConfigData.KeyVillagerInitZ, this.initPosZ);
 		p_70014_1_.setInteger(ConfigData.KeyVillagerLevel, this.getLevel());
 		p_70014_1_.setInteger(ConfigData.KeyVillagerSleeping, this.getSleepingValue());
+		p_70014_1_.setInteger(ConfigData.KeyVillagerEmoji, this.getEmojiData());
 		p_70014_1_.setInteger(ConfigData.KeyVillagerVisitingBuildingID, this.getVisitingBuildingID());
 		p_70014_1_.setBoolean(ConfigData.KeyVillagerVisitingSkipSleep, this.isVisitingSkipSleeping());
 		p_70014_1_.setBoolean(ConfigData.KeyVillagerIsTraveler, this.isTraveler());
@@ -551,6 +612,7 @@ public class EntityVBVillager extends EntityAgeable {
 		this.initPosZ = p_70037_1_.getInteger(ConfigData.KeyVillagerInitZ);
 		this.setLevel(p_70037_1_.getInteger(ConfigData.KeyVillagerLevel));
 		this.setSleepingValue(p_70037_1_.getInteger(ConfigData.KeyVillagerSleeping));
+		this.setEmojiData(p_70037_1_.getInteger(ConfigData.KeyVillagerEmoji));
 		this.visitingBuildingID = p_70037_1_.getInteger(ConfigData.KeyVillagerVisitingBuildingID);
 		this.visitingSkipSleep = p_70037_1_.getBoolean(ConfigData.KeyVillagerVisitingSkipSleep);
 		this.isTraveler = p_70037_1_.getBoolean(ConfigData.KeyVillagerIsTraveler);

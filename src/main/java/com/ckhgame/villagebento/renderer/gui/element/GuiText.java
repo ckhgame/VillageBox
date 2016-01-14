@@ -53,4 +53,8 @@ public class GuiText extends GuiElement {
 		tessellator.draw();
 		
 	}
+	
+	@Override
+	public void update(float dt) {		
+	}
 }
