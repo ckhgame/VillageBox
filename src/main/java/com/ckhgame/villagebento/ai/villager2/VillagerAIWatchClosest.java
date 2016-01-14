@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.ai.villager;
+package com.ckhgame.villagebento.ai.villager2;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.HelperVillager;
@@ -58,10 +58,6 @@ public class VillagerAIWatchClosest extends EntityAIBase
             if (this.watchedClass == EntityPlayer.class)
             {
                 this.closestEntity = this.theWatcher.worldObj.getClosestPlayerToEntity(this.theWatcher, (double)this.maxDistanceForPlayer);
-            }
-            if(this.watchedClass == EntityVBVillager.class)
-            {
-            	this.closestEntity = HelperVillager.findNearestVillagerWithinAABB( this.theWatcher.boundingBox.expand((double)this.maxDistanceForPlayer, 3.0D, (double)this.maxDistanceForPlayer), this.theWatcher);
             }
             else
             {

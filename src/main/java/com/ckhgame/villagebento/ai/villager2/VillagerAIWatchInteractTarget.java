@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.ai.villager;
+package com.ckhgame.villagebento.ai.villager2;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
@@ -7,10 +7,9 @@ import net.minecraft.entity.EntityLiving;
 public class VillagerAIWatchInteractTarget extends VillagerAIWatchClosest
 {
 
-    public VillagerAIWatchInteractTarget(EntityVBVillager p_i1629_1_, Class p_i1629_2_, float p_i1629_3_, float p_i1629_4_)
+    public VillagerAIWatchInteractTarget(EntityVBVillager p_i1629_1_, float p_i1629_3_)
     {
-        super(p_i1629_1_, p_i1629_2_, p_i1629_3_, p_i1629_4_);
-        this.setMutexBits(3);
+        super(p_i1629_1_, null, p_i1629_3_, 0);
     }
 
 	@Override
@@ -24,7 +23,7 @@ public class VillagerAIWatchInteractTarget extends VillagerAIWatchClosest
 
 	@Override
 	public boolean continueExecuting() {
-		return super.continueExecuting() & (this.theWatcher.InteractTarget!=null);
+		return super.continueExecuting() & (this.theWatcher.InteractTarget!=null && this.closestEntity == this.theWatcher.InteractTarget);
 	}
     
 }

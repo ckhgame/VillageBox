@@ -4,8 +4,8 @@ import com.ckhgame.villagebento.ai.villager.VillageAINearestAttackableTarget;
 import com.ckhgame.villagebento.ai.villager.VillagerAIAttackOnCollide;
 import com.ckhgame.villagebento.ai.villager.VillagerAIGuardPatrol;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleep;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWatchInteractTarget;
+import com.ckhgame.villagebento.ai.villager2.VillagerAIWatchClosest;
+import com.ckhgame.villagebento.ai.villager2.VillagerAIWatchInteractTarget;
 import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.util.village.HelperVillager;
 
@@ -33,7 +33,7 @@ public class EntityVBGuard extends EntityVBVillager {
 		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
 		this.tasks.addTask(3, new VillagerAISleep(this));
 		
-		this.tasks.addTask(5, new VillagerAIWatchInteractTarget(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
+		this.tasks.addTask(5, new VillagerAIWatchInteractTarget(this, ConfigVillager.MaxInteractDistance));
 		this.tasks.addTask(6, new VillagerAIGuardPatrol(this));
 		this.tasks.addTask(7, new VillagerAIWatchClosest(this, EntityLiving.class, 6.0F));
 		

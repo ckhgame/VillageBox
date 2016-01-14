@@ -38,6 +38,11 @@ public abstract class VillagerAIMoving extends EntityAIBase
      */
     public boolean continueExecuting()
     {
+    	if(this.entity.InteractTarget != null){
+    		this.entity.getNavigator().clearPathEntity();
+    		return true;
+    	}
+    	
     	if(this.entity.getNavigator().noPath()){  		
     		if(this.targetPos == null)
     			return false;

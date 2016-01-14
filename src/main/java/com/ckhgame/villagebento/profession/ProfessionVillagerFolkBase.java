@@ -190,7 +190,17 @@ public abstract class ProfessionVillagerFolkBase extends Profession {
 	
 	@Override
 	protected void setTimeSchedule(){			
-		timeSchedule.setSleeptime(new RangeInt(22,30));
+		
+		//a trick way to avoid that the folks stay on tavern forever
+		timeSchedule.setWorkTime(0, new RangeInt(7,8));		//Monday
+		timeSchedule.setWorkTime(1, new RangeInt(7,8));		//Tuesday
+		timeSchedule.setWorkTime(2, new RangeInt(7,8));		//Wednesday
+		timeSchedule.setWorkTime(3, new RangeInt(7,8));		//Thursday
+		timeSchedule.setWorkTime(4, new RangeInt(7,8));		//Friday
+		timeSchedule.setWorkTime(5, new RangeInt(7,8));		//Saturday
+		timeSchedule.setWorkTime(6, new RangeInt(7,8));		//Sunday
+		
+		timeSchedule.setSleeptime(new RangeInt(22,31));
 	}
 	
 

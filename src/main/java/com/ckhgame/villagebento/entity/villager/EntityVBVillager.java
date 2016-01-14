@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.ckhgame.villagebento.ai.villager2.VillagerAISleeping;
 import com.ckhgame.villagebento.ai.villager2.VillagerAIVisiting;
 import com.ckhgame.villagebento.ai.villager2.VillagerAIWandering;
+import com.ckhgame.villagebento.ai.villager2.VillagerAIWatchClosest;
+import com.ckhgame.villagebento.ai.villager2.VillagerAIWatchInteractTarget;
 import com.ckhgame.villagebento.ai.villager2.VillagerAIWorking;
 import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.config.ConfigData;
@@ -25,6 +27,7 @@ import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -73,10 +76,16 @@ public class EntityVBVillager extends EntityAgeable {
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 6.0F, 0.4D, 0.4D));
 		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
-		this.tasks.addTask(3, new VillagerAISleeping(this));
-		this.tasks.addTask(4, new VillagerAIWorking(this));
-		this.tasks.addTask(5, new VillagerAIVisiting(this));
-		this.tasks.addTask(6, new VillagerAIWandering(this));
+
+		this.tasks.addTask(3, new VillagerAIWatchInteractTarget(this, ConfigVillager.MaxInteractDistance));
+		this.tasks.addTask(3, new VillagerAIWatchClosest(this, EntityPlayer.class, ConfigVillager.MaxInteractDistance, 1.0F));
+		this.tasks.addTask(3, new VillagerAIWatchClosest(this, EntityVBVillager.class, 5.0F, 0.02F));
+		this.tasks.addTask(3, new VillagerAIWatchClosest(this, EntityLiving.class, 8.0F, 0.02F));
+		
+		this.tasks.addTask(4, new VillagerAISleeping(this));
+		this.tasks.addTask(5, new VillagerAIWorking(this));
+		this.tasks.addTask(6, new VillagerAIVisiting(this));
+		this.tasks.addTask(7, new VillagerAIWandering(this));
 	}
 	
 	protected void entityInit()

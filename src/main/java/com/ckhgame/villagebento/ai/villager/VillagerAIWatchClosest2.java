@@ -1,5 +1,6 @@
 package com.ckhgame.villagebento.ai.villager;
 
+import com.ckhgame.villagebento.ai.villager2.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 
 import net.minecraft.entity.EntityLiving;
