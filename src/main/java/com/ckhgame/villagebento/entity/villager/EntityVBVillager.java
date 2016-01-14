@@ -61,7 +61,7 @@ public class EntityVBVillager extends EntityAgeable {
 	
 	public EntityVBVillager(World w) {
 		super(w);
-		this.setSize(0.2F, 1.8F);
+		this.setSize(0.4F, 1.8F);
 		this.getNavigator().setAvoidsWater(true);
 		this.getNavigator().setBreakDoors(true);
 		this.getNavigator().setEnterDoors(true);
