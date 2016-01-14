@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.ai.villager2;
+package com.ckhgame.villagebento.ai.villager;
 
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 

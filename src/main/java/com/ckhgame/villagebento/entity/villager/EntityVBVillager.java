@@ -2,12 +2,12 @@ package com.ckhgame.villagebento.entity.villager;
 
 import java.util.ArrayList;
 
-import com.ckhgame.villagebento.ai.villager2.VillagerAISleeping;
-import com.ckhgame.villagebento.ai.villager2.VillagerAIVisiting;
-import com.ckhgame.villagebento.ai.villager2.VillagerAIWandering;
-import com.ckhgame.villagebento.ai.villager2.VillagerAIWatchClosest;
-import com.ckhgame.villagebento.ai.villager2.VillagerAIWatchInteractTarget;
-import com.ckhgame.villagebento.ai.villager2.VillagerAIWorking;
+import com.ckhgame.villagebento.ai.villager.VillagerAISleeping;
+import com.ckhgame.villagebento.ai.villager.VillagerAIVisiting;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWandering;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWatchInteractTarget;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWorking;
 import com.ckhgame.villagebento.building.Building;
 import com.ckhgame.villagebento.config.ConfigData;
 import com.ckhgame.villagebento.config.ConfigDev;

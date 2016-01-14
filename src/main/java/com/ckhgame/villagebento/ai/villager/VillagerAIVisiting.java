@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.ai.villager2;
+package com.ckhgame.villagebento.ai.villager;
 
 import java.util.Random;
 
@@ -27,18 +27,18 @@ public class VillagerAIVisiting extends VillagerAIMoving
      */
     public boolean shouldExecute()
     {
+		if(this.entity.isVisiting()){
+			if(this.entity.getProfession().getTimeSchedule().isSleepTimeNow() && !this.entity.isVisitingSkipSleeping()){
+				this.entity.cancelVisiting();
+				return false;
+			}
+			else{
+				this.targetPos = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
+				return true;
+			}
+		}
+    	
     	if(this.entity.getRNG().nextInt(30) == 0){
-    		
-    		if(this.entity.isVisiting()){
-    			if(this.entity.getProfession().getTimeSchedule().isSleepTimeNow() && !this.entity.isVisitingSkipSleeping()){
-    				this.entity.cancelVisiting();
-    				return false;
-    			}
-    			else{
-    				this.targetPos = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
-    				return true;
-    			}
-    		}
     		
     		if(this.entity.getProfession().getTimeSchedule().isWorkTimeNow())
     			return false;

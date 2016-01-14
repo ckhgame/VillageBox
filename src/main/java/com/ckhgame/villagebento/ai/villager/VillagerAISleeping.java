@@ -1,4 +1,4 @@
-package com.ckhgame.villagebento.ai.villager2;
+package com.ckhgame.villagebento.ai.villager;
 
 import java.util.Random;
 
@@ -22,6 +22,10 @@ public class VillagerAISleeping extends VillagerAIMoving
      */
     public boolean shouldExecute()
     {
+    	//if the one has already been sleeping, just let it keep sleeping... 
+    	if(this.entity.isSleeping())
+    		return true;
+    	
     	if(this.entity.getRNG().nextInt(30) == 0){
 	    	//sleep only at late night
 	    	if(!this.entity.getProfession().getTimeSchedule().isSleepTimeNow())
@@ -36,18 +40,13 @@ public class VillagerAISleeping extends VillagerAIMoving
 	    		}
 	    	}
 	    		
-	    	//if the one has already been sleeping, just let it keep sleeping... 
-	    	if(this.entity.isSleeping())
-	    		return true;
-	    	else{
-	    		//if now it's not sleeping, we need to move it to the bed 
-	    		if(entity.bedPosition==null)
-	    			return false;
-	    		else{
-	    			this.targetPos = this.entity.bedPosition.toVec3();
-	    			return true;
-	    		}
-	    	}
+    		//need to move it to the bed 
+    		if(entity.bedPosition==null)
+    			return false;
+    		else{
+    			this.targetPos = this.entity.bedPosition.toVec3();
+    			return true;
+    		}
     	}
     	else{
     		return false;
