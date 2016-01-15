@@ -44,35 +44,6 @@ public class ProfessionVillageElder extends Profession {
 		
         components.add(new VillagerCompAbout(villager));
         
-        //quest
-        VillagerCompQuest compQuest = new VillagerCompQuest(villager);
-
-        VillagerQuestDesign design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.questZombie"),0,3);
-        design.addNeeds(Items.rotten_flesh, 3, 0);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 15);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 20);
-        compQuest.addQuestDesign(design);
-        
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.questWantWoods"),0,1);
-        design.addNeeds(Blocks.log, 30, 0);
-        design.addNeeds(Blocks.log, 30, 1);
-        design.addNeeds(Blocks.log, 30, 2);
-        design.addNeeds(Blocks.log, 30, 3);
-        design.addNeeds(Blocks.log2, 30, 0);
-        design.addNeeds(Blocks.log2, 30, 1);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 75);
-        design.addRewards(ModBlocks.blockFolkHouse,1,0);
-        compQuest.addQuestDesign(design);
-        
-        design = new VillagerQuestDesign(StatCollector.translateToLocal("villager.villageElder.questWantStones"),0,1);
-        design.addNeeds(Blocks.stonebrick, 40, 0);
-        design.addRewards(ModItems.itemVillageCurrency, 1, 75);
-        design.addRewards(ModBlocks.blockFolkHouse,1,0);
-        compQuest.addQuestDesign(design);
-        
-        components.add(compQuest);
-        
-        
         //buy & sell
         //params:
         //1.Block or Item 2. min 3.max 4.minlevel  5.meta
@@ -88,7 +59,7 @@ public class ProfessionVillageElder extends Profession {
         compBuy.addItem(ModBlocks.blockMiningHouse, 0);
         compBuy.addItem(ModBlocks.blockChurch, 0);
         
-        compBuy.addItem(ModBlocks.blockVillagerHomeTP, 1);
+        compBuy.addItem(ModBlocks.blockFolkHouse, 1);
         compBuy.addItem(ModBlocks.blockFarmland, 1);
         compBuy.addItem(ModBlocks.blockChickenShop, 1);
         compBuy.addItem(ModBlocks.blockSheepShop, 1);
@@ -105,6 +76,9 @@ public class ProfessionVillageElder extends Profession {
         compBuy.addItem(ModBlocks.blockSmallCasino, 2); 
         compBuy.addItem(ModBlocks.blockTailorStore, 2);
 
+        compBuy.addItem(ModBlocks.blockVillagerHomeTP, 0);
+        compBuy.addItem(ModBlocks.blockBuildingDestroyer, 0);
+        
         components.add(compBuy);
         
         //sell list

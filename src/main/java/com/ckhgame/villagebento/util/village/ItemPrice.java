@@ -99,10 +99,9 @@ public class ItemPrice {
 		register(ModBlocks.blockBuildersHome,150);
 		register(ModBlocks.blockMarket,150);
 		register(ModBlocks.blockHunterHouse,200);
-		register(ModBlocks.blockMiningHouse,200);
-		register(ModBlocks.blockChurch,300);
+		register(ModBlocks.blockMiningHouse,200);	
 		
-		register(ModBlocks.blockVillagerHomeTP,300);
+		register(ModBlocks.blockFolkHouse,300);		
 		register(ModBlocks.blockFarmland,350);
 		register(ModBlocks.blockChickenShop,350);
 		register(ModBlocks.blockSheepShop,350);
@@ -112,6 +111,7 @@ public class ItemPrice {
 		register(ModBlocks.blockSmallHotel,700);
 		register(ModBlocks.blockSmallTavern,700);
 		register(ModBlocks.blockPotionStore,700);
+		register(ModBlocks.blockChurch,800);
 		
 		register(ModBlocks.blockLargeBakery,1000);
 		register(ModBlocks.blockFlowerShop,1000);
@@ -126,6 +126,10 @@ public class ItemPrice {
 		register(ModBlocks.blockPlayerFieldMedium,500);
 		register(ModBlocks.blockTownSquareLarge,800);
 		register(ModBlocks.blockBuildingDestroyer,400);
+		
+		//misc
+		register(ModBlocks.blockVillagerHomeTP,500);
+		register(ModBlocks.blockBuildingDestroyer,1000);
 		
 		//Furniture Store
 		register(Blocks.bookshelf,100);
