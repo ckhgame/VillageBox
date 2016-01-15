@@ -124,10 +124,6 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 			this.fontRendererObj.drawString(name, this.boundDialogBar.getIntX() + 4,this.boundDialogBar.getIntY() + yOffset, 0xFFFFFF00,true);
 			this.fontRendererObj.drawString(info, this.boundDialogBar.getIntX() + 8 + this.fontRendererObj.getStringWidth(name), this.boundDialogBar.getIntY() + yOffset, 0xFFFFAA00,true);
 			
-			//dialog animation
-			if(this.dialogDisplay.length() < this.dialogSource.length()){
-				this.dialogDisplay = this.dialogSource.substring(0, this.dialogDisplay.length() + 1);
-			}
 			yOffset = 15;
 			this.fontRendererObj.drawString(this.dialogDisplay, this.boundDialogBar.getIntX() + 8,this.boundDialogBar.getIntY() + yOffset, 0xFFFFFFEE,true);
 	}
@@ -136,6 +132,13 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		this.boundDialogBar = new GuiBoundary(this.width / 2 - 128, this.height - 64, 320, 64);
 		this.boundPortrait = new GuiBoundary(this.width / 2 - 192, this.height - 64,64, 64);
 		this.boundCenterContent = new GuiBoundary(this.width / 2 - 128, this.height / 2 - 96, 256, 128);
+	}
+	
+	protected void updateDialogAnimation(){
+		//dialog animation
+		if(this.dialogDisplay.length() < this.dialogSource.length()){
+			this.dialogDisplay = this.dialogSource.substring(0, this.dialogDisplay.length() + 1);
+		}
 	}
 	
 	/**
@@ -190,6 +193,7 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 	@Override
 	public void updateScreen() {
 		super.updateScreen();
+		updateDialogAnimation();
 	}
 	@Override
 	public void onGuiClosed() {
@@ -247,9 +251,9 @@ public abstract class GuiVillagerDialog extends GuiScreen{
         if(this.dialogSource != null && this.dialogDisplay != null){
         	int lc = this.dialogSource.length();
             int lcd = this.dialogDisplay.length();
-            if(lcd < lc - 5){
-            	int d = lcd % 10;
-            	if(d < 5){
+            if(lcd < lc - 2){
+            	int d = lcd % 4;
+            	if(d < 2){
                     GL11.glColor4f(0.5F, 0.2F, 0.2F, 1.0F);
                     double mx = left + 0.375D * width;
                     double my = top + 0.875D * height;
