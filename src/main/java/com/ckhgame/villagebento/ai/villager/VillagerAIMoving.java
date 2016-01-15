@@ -31,6 +31,7 @@ public abstract class VillagerAIMoving extends EntityAIBase
     @Override
 	public void resetTask() {
 		this.targetPos = null;
+		this.entity.getNavigator().clearPathEntity();
 	}
 
 	/**

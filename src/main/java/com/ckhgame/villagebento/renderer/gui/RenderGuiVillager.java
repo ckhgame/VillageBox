@@ -60,7 +60,7 @@ public class RenderGuiVillager extends RenderGuiLiving {
 		if(ConfigDev.VillagerDebugEnabled){
 			debugText = this.addText(0, 20, "Debug Test", true, false);
 		}
-		emoji = this.addSpriteAnim(-6, 8, 12, 12, null,1.0F, 5);
+		emoji = this.addSpriteAnim(-6, 8, 12, 12, null,500, 5);
 	}
 	
 }

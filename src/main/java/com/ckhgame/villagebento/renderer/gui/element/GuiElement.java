@@ -18,5 +18,5 @@ public abstract class GuiElement{
 	public abstract void renderBackground();
 	public abstract void renderFront();
 	public abstract void renderBack();
-	public abstract void update(float dt);
+	public abstract void update();
 }

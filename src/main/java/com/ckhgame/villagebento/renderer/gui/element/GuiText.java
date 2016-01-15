@@ -55,6 +55,6 @@ public class GuiText extends GuiElement {
 	}
 	
 	@Override
-	public void update(float dt) {		
+	public void update() {		
 	}
 }

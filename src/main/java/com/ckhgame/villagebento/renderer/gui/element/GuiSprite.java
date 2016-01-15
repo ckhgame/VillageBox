@@ -64,7 +64,7 @@ public class GuiSprite extends GuiElement{
 
 
 	@Override
-	public void update(float dt) {		
+	public void update() {		
 	}
 	
 }
