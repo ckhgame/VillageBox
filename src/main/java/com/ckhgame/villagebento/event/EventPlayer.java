@@ -12,7 +12,7 @@ public class EventPlayer {
     public void itemPickupEvent(EntityItemPickupEvent event) {
 		//if we pickup the village currency, we have to make sure that the player onlyhave  one current itemstack in the inventory
         if (event.item.getEntityItem().getItem() == ModItems.itemVillageCurrency){
-        	HelperPlayer.addCurrency(event.entityPlayer, event.item.getEntityItem().getItemDamage());
+        	HelperPlayer.addCurrency(event.entityPlayer, event.item.getEntityItem());
         	event.item.getEntityItem().stackSize = 0;
         }
     }

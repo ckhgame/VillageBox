@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ckhgame.villagebento.util.data.WRChestItem;
 import com.ckhgame.villagebento.util.helper.HelperPlayer;
+import com.ckhgame.villagebento.util.village.HelperVillageCurrency;
 import com.ckhgame.villagebento.util.village.PlayerMsg;
 
 import cpw.mods.fml.common.toposort.ModSorter;
@@ -89,8 +90,8 @@ public class ItemVBChest extends ItemVB {
 				int num = 0;				
 				
 				if(newItem.getItem() == ModItems.itemVillageCurrency){
-					num = newItem.getItemDamage();
-					HelperPlayer.addCurrency(player, newItem.getItemDamage());
+					num = HelperVillageCurrency.getAmount(newItem);
+					HelperPlayer.addCurrency(player, num);
 				}
 				else{
 					num = newItem.stackSize;

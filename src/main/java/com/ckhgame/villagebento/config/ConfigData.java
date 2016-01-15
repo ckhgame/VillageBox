@@ -92,4 +92,7 @@ public class ConfigData {
 	//entity building indicator
 	public static final String KeyBuildingIndicatorSizeX			= "bisx";
 	public static final String KeyBuildingIndicatorSizeZ		= "bisz";
+	
+	//village currency
+	public static final String KeyVillageCurrency					= "vcy";
 }

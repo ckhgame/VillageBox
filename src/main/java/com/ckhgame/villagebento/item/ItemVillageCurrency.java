@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ckhgame.villagebento.Main;
 import com.ckhgame.villagebento.gui.GuiDropCoins;
+import com.ckhgame.villagebento.util.village.HelperVillageCurrency;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
@@ -32,7 +33,7 @@ public class ItemVillageCurrency extends Item {
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer p_77624_2_, List list, boolean p_77624_4_) {
 		// TODO Auto-generated method stub
-		list.add("Total:" + itemStack.getItemDamage());
+		list.add("Total:" + HelperVillageCurrency.getAmount(itemStack));
 		super.addInformation(itemStack, p_77624_2_, list, p_77624_4_);
 	}
 	

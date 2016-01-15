@@ -1,6 +1,8 @@
 package com.ckhgame.villagebento.util.data;
 
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.tool.VBRandom;
+import com.ckhgame.villagebento.util.village.HelperVillageCurrency;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -47,7 +49,10 @@ public class WRChestItem extends WeightedRandom.Item{
 	}
 	
 	public ItemStack getItemStack(){
-		if(min == max)
+		
+		if(this.item == ModItems.itemVillageCurrency)
+			return HelperVillageCurrency.create(this.meta);
+		else if(min == max)
 			return new ItemStack(this.item, this.min, this.meta);
 		else
 			return new ItemStack(this.item, this.min + VBRandom.getRand().nextInt(this.max - this.min),this.meta);

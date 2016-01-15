@@ -3,7 +3,9 @@ package com.ckhgame.villagebento.villagercomponent.villagerquest;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.tool.VBRandom;
+import com.ckhgame.villagebento.util.village.HelperVillageCurrency;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -44,7 +46,10 @@ public class VillagerQuestDesign extends WeightedRandom.Item{
 	}
 	
 	public VillagerQuestDesign addNeeds(Item item, int num, int meta){
-		this.needs.add(new ItemStack(item,num,meta));
+		if(item == ModItems.itemVillageCurrency)
+			this.rewards.add(HelperVillageCurrency.create(meta));
+		else
+			this.needs.add(new ItemStack(item,num,meta));
 		return this;
 	}
 	
@@ -53,7 +58,10 @@ public class VillagerQuestDesign extends WeightedRandom.Item{
 	}
 	
 	public VillagerQuestDesign addRewards(Item item, int num, int meta){
-		this.rewards.add(new ItemStack(item,num,meta));
+		if(item == ModItems.itemVillageCurrency)
+			this.rewards.add(HelperVillageCurrency.create(meta));
+		else
+			this.rewards.add(new ItemStack(item,num,meta));
 		return this;
 	}
 	

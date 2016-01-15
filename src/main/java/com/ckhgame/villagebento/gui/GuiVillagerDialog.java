@@ -10,6 +10,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.VBCompResult;
 import com.ckhgame.villagebento.util.tool.VBRandom;
+import com.ckhgame.villagebento.util.village.HelperVillageCurrency;
 import com.ckhgame.villagebento.util.village.ItemPrice;
 
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -289,7 +290,7 @@ public abstract class GuiVillagerDialog extends GuiScreen{
 		RenderHelper.enableGUIStandardItemLighting();
 		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, this.mc.getTextureManager(), itemStack, left, top);
 		if(itemStack.getItem() == ModItems.itemVillageCurrency){
-			String num = "x" + (customText==null?itemStack.getItemDamage():customText);
+			String num = "x" + (customText==null?HelperVillageCurrency.getAmount(itemStack):customText);
 			fontRendererObj.drawString(num, left + 20, top + 6, 0xFFFFFFFF);
 		}
 		else{

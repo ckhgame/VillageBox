@@ -4,6 +4,7 @@ import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.ActionDoDropCoins;
 import com.ckhgame.villagebento.util.tool.HelperString;
+import com.ckhgame.villagebento.util.village.HelperVillageCurrency;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -117,7 +118,7 @@ public class GuiDropCoins extends GuiScreen {
 	            }
 	        }
 			
-			if(itemStackCurrency == null || itemStackCurrency.getItemDamage() < num ){
+			if(itemStackCurrency == null || HelperVillageCurrency.getAmount(itemStackCurrency)< num ){
 				this.dropState = DropState.MoreThanOwn;
 				return;
 			}

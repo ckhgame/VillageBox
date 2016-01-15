@@ -5,6 +5,7 @@ import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.network.action.Action;
 import com.ckhgame.villagebento.network.action.SActionDoSpawnParticles;
 import com.ckhgame.villagebento.util.data.VBParticles;
+import com.ckhgame.villagebento.util.village.HelperVillageCurrency;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -79,13 +80,20 @@ public class HelperPlayer {
 	public static boolean dropCurrency(EntityPlayer entityPlayer, int currency) {
 		if (addCurrency(entityPlayer, -currency)) {
 
-			ForgeHooks.onPlayerTossEvent(entityPlayer, new ItemStack(ModItems.itemVillageCurrency, 1, currency), true);
+			ForgeHooks.onPlayerTossEvent(entityPlayer, HelperVillageCurrency.create(currency), true);
 
 			return true;
 		}
 		return false;
 	}
 
+	public static boolean addCurrency(EntityPlayer entityPlayer, ItemStack itemStackCurrency){
+		if(itemStackCurrency.getItem() == ModItems.itemVillageCurrency){
+			return addCurrency(entityPlayer, HelperVillageCurrency.getAmount(itemStackCurrency));
+		}
+		return false;
+	}
+	
 	public static boolean addCurrency(EntityPlayer entityPlayer, int currency) {
 
 		InventoryPlayer ip = entityPlayer.inventory;
@@ -100,9 +108,9 @@ public class HelperPlayer {
 
 		if (itemStackCurrency != null) {
 			// the player already have the curreny item
-			int newCurrency = itemStackCurrency.getItemDamage() + currency;
+			int newCurrency = HelperVillageCurrency.getAmount(itemStackCurrency) + currency;
 			if (newCurrency > 0) {
-				itemStackCurrency.setItemDamage(newCurrency);
+				HelperVillageCurrency.setAmount(itemStackCurrency, newCurrency);
 				return true;
 			} else if (newCurrency == 0) {
 				ip.mainInventory[i] = null;
@@ -115,8 +123,8 @@ public class HelperPlayer {
 			if (currency < 0) {
 				return false;
 			} else {
-				ItemStack itemStackCurreny = new ItemStack(ModItems.itemVillageCurrency, 1, currency);
-				if(!ip.addItemStackToInventory(new ItemStack(ModItems.itemVillageCurrency, 1, currency))){
+				ItemStack itemStackCurreny = HelperVillageCurrency.create(currency);
+				if(!ip.addItemStackToInventory(itemStackCurreny)){
 					entityPlayer.dropPlayerItemWithRandomChoice(itemStackCurreny, false);
 				}
 				return true;

@@ -11,6 +11,7 @@ import com.ckhgame.villagebento.util.data.VBResult;
 import com.ckhgame.villagebento.util.data.WRChestItem;
 import com.ckhgame.villagebento.util.helper.HelperPlayer;
 import com.ckhgame.villagebento.util.tool.VBRandom;
+import com.ckhgame.villagebento.util.village.HelperVillageCurrency;
 import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuest;
 import com.ckhgame.villagebento.villagercomponent.villagerquest.VillagerQuestDesign;
 
@@ -176,7 +177,7 @@ public class VillagerCompQuest extends VillagerComponent {
 		}
 		
 		if(quest.reward.getItem() == ModItems.itemVillageCurrency){
-			HelperPlayer.addCurrency(player, quest.reward.getItemDamage());
+			HelperPlayer.addCurrency(player, HelperVillageCurrency.getAmount(quest.reward));
 		}
 		else{
 			if(!player.inventory.addItemStackToInventory(quest.reward)){
