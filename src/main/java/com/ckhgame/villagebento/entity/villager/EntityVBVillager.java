@@ -228,6 +228,17 @@ public class EntityVBVillager extends EntityAgeable {
 		}
 	}
 	
+	protected void updateSleeping(){
+		if(this.isSleeping() && this.height > 1.0F){
+			this.setSize(0.8F, 0.3F);
+			this.setScale(1.0F);
+		}
+		else if(!this.isSleeping() && this.height < 1.0F){
+			this.setSize(0.4F, 1.8F);
+			this.setScale(1.0F);
+		}
+	}
+	
 	//-- init position --
 	public void setInitPos(int x, int y, int z){
 		this.initPosX = x;
@@ -544,6 +555,8 @@ public class EntityVBVillager extends EntityAgeable {
 		if (this.getHealth() < this.getMaxHealth() && this.ticksExisted % 80 * 12 == 0) {
 			this.heal(1.0F);
 		}
+		
+		this.updateSleeping();
 		
 		this.updateEmoji();
 		

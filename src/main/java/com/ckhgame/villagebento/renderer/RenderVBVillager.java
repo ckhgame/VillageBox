@@ -53,7 +53,6 @@ public class RenderVBVillager extends RenderBiped
     public void doRender(EntityVBVillager p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
     {    	
         super.doRender((EntityLiving)p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
-       // this.doRender_Debug(p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
     }
 
     /**
@@ -175,7 +174,7 @@ public class RenderVBVillager extends RenderBiped
             GL11.glRotatef(p.getSleepingOrientation(), 0.0F, 1.0F, 0.0F);
             GL11.glRotatef(this.getDeathMaxRotation(p), 0.0F, 0.0F, 1.0F);
             GL11.glRotatef(270.0F, 0.0F, 1.0F, 0.0F);
-            GL11.glTranslatef(0, -0.5F, -0.1F);
+            GL11.glTranslatef(0, -1.5F, -0.1F);
         }
         else
         {

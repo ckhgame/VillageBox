@@ -70,7 +70,7 @@ public class DataBuilding implements IData{
 	private void generatCacheBedsInfo(){
 		this.cacheBedsInfo = new ArrayList<BedInfo>();
 		World world = DataVillageBento.get().world;
-		Vec3Int[] arr = BlockFinder.findBlock(world, this.x, this.y, this.z,this.sizeX,this.sizeZ, Blocks.bed, new int[] { 0, 1, 2, 3 }, false);
+		Vec3Int[] arr = BlockFinder.findBlock(world, this.x, this.y, this.z,this.sizeX,this.sizeZ, Blocks.bed, new int[] { 8, 9, 10, 11 }, false);
 		BedInfo bedInfo;
 		for(Vec3Int vec : arr){
 			bedInfo = new BedInfo();
