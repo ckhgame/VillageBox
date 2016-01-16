@@ -80,11 +80,11 @@ public class BuildingTownSquareSmall extends Building {
 		bb.buildBlock(-4,0,-4,Blocks.red_flower,4);bb.buildBlock(-4,0,-3,Blocks.red_flower,6);bb.buildBlock(-4,0,-2,Blocks.red_flower,7);
 		bb.buildBlock(-4,0,-1,Blocks.red_flower,6);bb.buildBlock(-4,0,0,Blocks.red_flower,5);bb.buildBlock(-4,0,1,Blocks.red_flower,6);
 		bb.buildBlock(-4,0,2,Blocks.red_flower,7);bb.buildBlock(-4,0,3,Blocks.red_flower,6);bb.buildBlock(-4,0,4,Blocks.red_flower,4);
-		bb.buildBlock(-3,0,-4,Blocks.red_flower,6);bb.buildBlock(-3,0,-3,ModBlocks.blockWoodenChair,0);bb.buildBlock(-3,0,0,ModBlocks.blockWoodenChair,0);bb.buildBlock(-3,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(-3,0,4,Blocks.red_flower,6);bb.buildBlock(-2,0,-4,Blocks.red_flower,7);bb.buildBlock(-2,0,4,Blocks.red_flower,7);
+		bb.buildBlock(-3,0,-4,Blocks.red_flower,6);bb.buildBlock(-3,0,-3,ModBlocks.blockOakChair,0);bb.buildBlock(-3,0,0,ModBlocks.blockOakChair,0);bb.buildBlock(-3,0,3,ModBlocks.blockOakChair,0);bb.buildBlock(-3,0,4,Blocks.red_flower,6);bb.buildBlock(-2,0,-4,Blocks.red_flower,7);bb.buildBlock(-2,0,4,Blocks.red_flower,7);
 		bb.buildBlock(-1,0,-4,Blocks.red_flower,6);bb.buildBlock(-1,0,4,Blocks.red_flower,6);bb.buildBlock(0,0,-4,Blocks.red_flower,5);
-		bb.buildBlock(0,0,-3,ModBlocks.blockWoodenChair,0);bb.buildBlock(0,0,0,Blocks.fence,0);bb.buildBlock(0,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(0,0,4,Blocks.red_flower,5);bb.buildBlock(1,0,-4,Blocks.red_flower,6);bb.buildBlock(1,0,-3,ModBlocks.blockWoodenChair,0);
-		bb.buildBlock(1,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(1,0,4,Blocks.red_flower,6);bb.buildBlock(2,0,-4,Blocks.red_flower,4);bb.buildBlock(2,0,4,Blocks.red_flower,4);
-		bb.buildBlock(3,0,-4,Blocks.red_flower,6);bb.buildBlock(3,0,-3,ModBlocks.blockWoodenChair,0);bb.buildBlock(3,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(3,0,4,Blocks.red_flower,6);bb.buildBlock(4,0,-4,Blocks.red_flower,7);bb.buildBlock(4,0,-3,Blocks.red_flower,6);
+		bb.buildBlock(0,0,-3,ModBlocks.blockOakChair,0);bb.buildBlock(0,0,0,Blocks.fence,0);bb.buildBlock(0,0,3,ModBlocks.blockOakChair,0);bb.buildBlock(0,0,4,Blocks.red_flower,5);bb.buildBlock(1,0,-4,Blocks.red_flower,6);bb.buildBlock(1,0,-3,ModBlocks.blockOakChair,0);
+		bb.buildBlock(1,0,3,ModBlocks.blockOakChair,0);bb.buildBlock(1,0,4,Blocks.red_flower,6);bb.buildBlock(2,0,-4,Blocks.red_flower,4);bb.buildBlock(2,0,4,Blocks.red_flower,4);
+		bb.buildBlock(3,0,-4,Blocks.red_flower,6);bb.buildBlock(3,0,-3,ModBlocks.blockOakChair,0);bb.buildBlock(3,0,3,ModBlocks.blockOakChair,0);bb.buildBlock(3,0,4,Blocks.red_flower,6);bb.buildBlock(4,0,-4,Blocks.red_flower,7);bb.buildBlock(4,0,-3,Blocks.red_flower,6);
 		bb.buildBlock(4,0,-2,Blocks.red_flower,5);bb.buildBlock(4,0,-1,Blocks.red_flower,6);bb.buildBlock(4,0,1,Blocks.red_flower,6);
 		bb.buildBlock(4,0,2,Blocks.red_flower,5);bb.buildBlock(4,0,3,Blocks.red_flower,6);bb.buildBlock(4,0,4,Blocks.red_flower,7);
 		bb.buildBlock(5,0,-5,Blocks.fence,0);bb.buildBlock(5,0,5,Blocks.fence,0);bb.buildBlock(-5,1,-5,Blocks.fence,0);

@@ -145,7 +145,7 @@ public class DataBuilding implements IData{
 	private void generatCacheMountables(){
 		cacheMountables = new  ArrayList<Vec3Int>();
 		World world = DataVillageBento.get().world;
-		Vec3Int[] arr = BlockFinder.findBlock(world, this.x, this.y, this.z,this.sizeX,this.sizeZ, ModBlocks.blockWoodenChair, new int[] {0}, false);
+		Vec3Int[] arr = BlockFinder.findBlock(world, this.x, this.y, this.z,this.sizeX,this.sizeZ, ModBlocks.blockOakChair, new int[] {0}, false);
 		if(arr != null){
 			for(Vec3Int v3 : arr){
 				cacheMountables.add(v3);

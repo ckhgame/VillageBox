@@ -16,12 +16,9 @@ public class RendererTileEntityBlockCustom extends TileEntitySpecialRenderer{
 		TileEntityBlockCustom tileEntityBlockCustom = (TileEntityBlockCustom)tileEntity;
 		
 		GL11.glPushMatrix();
-        GL11.glTranslatef((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
+		GL11.glTranslated(x, y, z);
         Minecraft.getMinecraft().renderEngine.bindTexture(tileEntityBlockCustom.getTexture());                       
-        GL11.glPushMatrix();
-        GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-        tileEntityBlockCustom.getModel().render(tileEntityBlockCustom.getTarget(), 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        GL11.glPopMatrix();
+        tileEntityBlockCustom.getModel().render(tileEntityBlockCustom.getTarget(), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
         GL11.glPopMatrix();
 	}
 

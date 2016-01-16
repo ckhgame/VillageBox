@@ -15,11 +15,8 @@ public class RenderBlockCustom extends RenderBlockBase {
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
 		
 		BlockCustom blockCustom = (BlockCustom)block;
-		
-		GL11.glPushMatrix();
-		GL11.glTranslatef(-0.5F, -0.6F, -0.5F);
+
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(blockCustom.getTileEntityBlockCustom(), 0.0D, 0.0D, 0.0D, 0.0F);
-		GL11.glPopMatrix();
 	}
 
 	@Override

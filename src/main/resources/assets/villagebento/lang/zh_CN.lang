@@ -55,7 +55,10 @@ tile.BlockRoseBridge.name=花桥园
 tile.BlockWineShelf.name=酒架
 tile.BlockWineBucket.name=酒桶
 
-tile.BlockWoodenChair.name=木椅
+tile.BlockOakChair.name=橡木椅子
+tile.BlockOakTable.name=橡木桌子
+tile.BlockBirchChair.name=白桦木椅子
+tile.BlockBirchTable.name=白桦木桌子
 
 #--------------------------------
 #  Items

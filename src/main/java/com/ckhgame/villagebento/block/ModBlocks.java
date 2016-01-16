@@ -50,9 +50,11 @@ import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
 import com.ckhgame.villagebento.item.ItemBlockVillageBuilding;
 import com.ckhgame.villagebento.model.ModelChair;
+import com.ckhgame.villagebento.model.ModelTable;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 
 public final class ModBlocks {
     
@@ -132,9 +134,11 @@ public final class ModBlocks {
     public static BlockTopSides blockWineShelf;
     public static BlockTopSides blockWineBucket;
     
-    //furniture
-    //mountable
-    public static BlockMountable blockWoodenChair;
+    //furnitures
+    public static BlockMountable blockOakChair;
+    public static BlockCustom blockOakTable;
+    public static BlockMountable blockBirchChair;
+    public static BlockCustom blockBirchTable;
     
     public static final void init() {
         
@@ -217,7 +221,10 @@ public final class ModBlocks {
        	
        	//furniture
        	// ** mountable
-       	GameRegistry.registerBlock(blockWoodenChair = new BlockMountable("BlockWoodenChair",new ModelChair(),"planks_jungle"),"BlockWoodenChair");
+       	GameRegistry.registerBlock(blockOakChair = new BlockMountable("BlockOakChair",new ModelChair(),"planks_oak"),"BlockOakChair");
+       	GameRegistry.registerBlock(blockOakTable = new BlockCustom("BlockOakTable",new ModelTable(),"planks_oak",Material.wood),"BlockOakTable");
+    	GameRegistry.registerBlock(blockBirchChair = new BlockMountable("BlockBirchChair",new ModelChair(),"planks_birch"),"BlockBirchChair");
+       	GameRegistry.registerBlock(blockBirchTable = new BlockCustom("BlockBirchTable",new ModelTable(),"planks_birch",Material.wood),"BlockBirchTable");
     }
     
     private static void registerVillageBlock(Block block,String name){

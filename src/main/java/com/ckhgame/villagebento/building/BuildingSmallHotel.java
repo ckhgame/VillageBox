@@ -70,9 +70,9 @@ public class BuildingSmallHotel extends Building {
 		bb.buildBlock(1,0,-4,Blocks.planks,1);bb.buildBlock(1,0,-3,Blocks.planks,1);bb.buildBlock(1,0,-2,Blocks.planks,1);
 		bb.buildBlock(1,0,-1,Blocks.planks,1);bb.buildBlock(1,0,0,Blocks.planks,1);bb.buildBlock(1,0,1,Blocks.flower_pot,0);
 		bb.addTileEntityPot(1,0,1,38,0);
-		bb.buildBlock(1,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(1,0,4,Blocks.planks,1);bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,-3,Blocks.carpet,14);
+		bb.buildBlock(1,0,3,ModBlocks.blockOakChair,0);bb.buildBlock(1,0,4,Blocks.planks,1);bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,-3,Blocks.carpet,14);
 		bb.buildBlock(2,0,-2,Blocks.carpet,14);bb.buildBlock(2,0,-1,Blocks.carpet,14);bb.buildBlock(2,0,0,Blocks.carpet,14);
-		bb.buildBlock(2,0,4,Blocks.planks,1);bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,3,ModBlocks.blockWoodenChair,0);
+		bb.buildBlock(2,0,4,Blocks.planks,1);bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,3,ModBlocks.blockOakChair,0);
 		bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);bb.buildBlock(4,0,-3,Blocks.planks,1);
 		bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.wooden_door,2);bb.buildBlock(4,0,0,Blocks.wooden_door,2);
 		bb.buildBlock(4,0,1,Blocks.planks,1);bb.buildBlock(4,0,2,Blocks.planks,1);bb.buildBlock(4,0,3,Blocks.planks,1);

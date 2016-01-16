@@ -70,8 +70,8 @@ public class BuildingSmallCasino extends Building {
 		bb.buildBlock(0,0,2,Blocks.chest,4);bb.buildBlock(0,0,3,Blocks.bed,11);bb.buildBlock(0,0,4,Blocks.planks,1);bb.buildBlock(1,0,-4,Blocks.planks,1);
 		bb.buildBlock(1,0,-3,Blocks.planks,1);bb.buildBlock(1,0,-2,Blocks.planks,1);bb.buildBlock(1,0,-1,Blocks.planks,1);
 		bb.buildBlock(1,0,1,Blocks.planks,1);bb.buildBlock(1,0,2,Blocks.planks,1);bb.buildBlock(1,0,3,Blocks.planks,1);
-		bb.buildBlock(1,0,4,Blocks.planks,1);bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,-2,ModBlocks.blockWoodenChair,0);
-		bb.buildBlock(2,0,4,Blocks.planks,1);bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,3,ModBlocks.blockWoodenChair,0);
+		bb.buildBlock(1,0,4,Blocks.planks,1);bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,-2,ModBlocks.blockOakChair,0);
+		bb.buildBlock(2,0,4,Blocks.planks,1);bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,3,ModBlocks.blockOakChair,0);
 		bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);bb.buildBlock(4,0,-3,Blocks.planks,1);
 		bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.wooden_door,2);bb.buildBlock(4,0,0,Blocks.planks,1);
 		bb.buildBlock(4,0,1,Blocks.planks,1);bb.buildBlock(4,0,2,Blocks.planks,1);bb.buildBlock(4,0,3,Blocks.planks,1);

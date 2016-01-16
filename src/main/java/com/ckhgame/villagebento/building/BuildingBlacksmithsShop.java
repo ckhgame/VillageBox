@@ -51,8 +51,8 @@ public class BuildingBlacksmithsShop extends Building {
 		bb.buildBlock(0,0,1,Blocks.planks,1);bb.buildBlock(0,0,2,Blocks.planks,1);bb.buildBlock(0,0,4,Blocks.planks,1);
 		bb.buildBlock(1,0,-4,Blocks.planks,1);bb.buildBlock(1,0,-3,Blocks.monster_egg,2);bb.buildBlock(1,0,4,Blocks.planks,1);
 		bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,-3,Blocks.monster_egg,2);bb.buildBlock(2,0,4,Blocks.planks,1);
-		bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,-3,Blocks.monster_egg,2);bb.buildBlock(3,0,1,ModBlocks.blockWoodenChair,0);
-		bb.buildBlock(3,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);bb.buildBlock(4,0,-3,Blocks.planks,1);
+		bb.buildBlock(3,0,-4,Blocks.planks,1);bb.buildBlock(3,0,-3,Blocks.monster_egg,2);bb.buildBlock(3,0,1,ModBlocks.blockOakChair,0);
+		bb.buildBlock(3,0,3,ModBlocks.blockOakChair,0);bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);bb.buildBlock(4,0,-3,Blocks.planks,1);
 		bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.planks,1);bb.buildBlock(4,0,0,Blocks.wooden_door,2);
 		bb.buildBlock(4,0,1,Blocks.planks,1);bb.buildBlock(4,0,2,Blocks.planks,1);bb.buildBlock(4,0,3,Blocks.planks,1);
 		bb.buildBlock(4,0,4,Blocks.planks,1);bb.buildBlock(-4,1,-4,Blocks.planks,1);bb.buildBlock(-4,1,-3,Blocks.planks,1);

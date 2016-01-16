@@ -137,7 +137,10 @@ public class ItemPrice {
 		register(Blocks.chest,100);
 		register(ModBlocks.blockWineBucket,200);
 		register(ModBlocks.blockWineShelf,250);
-		register(ModBlocks.blockWoodenChair,300);
+		register(ModBlocks.blockOakChair,300);
+		register(ModBlocks.blockOakTable,500);
+		register(ModBlocks.blockBirchChair,300);
+		register(ModBlocks.blockBirchTable,500);
 
 			
 		//Large Buildings

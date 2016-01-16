@@ -47,7 +47,10 @@ public class ProfessionFurnitureSeller extends Profession {
         compBuy.addItem(Blocks.chest, 0);
         compBuy.addItem(ModBlocks.blockWineBucket, 0);
         compBuy.addItem(ModBlocks.blockWineShelf, 0);
-        compBuy.addItem(ModBlocks.blockWoodenChair, 0);
+        compBuy.addItem(ModBlocks.blockOakChair, 0);
+        compBuy.addItem(ModBlocks.blockBirchChair, 0);
+        compBuy.addItem(ModBlocks.blockOakTable, 0);
+        compBuy.addItem(ModBlocks.blockBirchTable, 0);
         components.add(compBuy);
 
 	}

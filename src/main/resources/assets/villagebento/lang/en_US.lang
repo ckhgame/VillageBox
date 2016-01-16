@@ -55,7 +55,10 @@ tile.BlockRoseBridge.name=Rose Bridge Park
 tile.BlockWineShelf.name=Wine Shelf
 tile.BlockWineBucket.name=Wine Bucket
 
-tile.BlockWoodenChair.name=Wooden Chair
+tile.BlockOakChair.name=Oak Chair
+tile.BlockOakTable.name=Oak Table
+tile.BlockBirchChair.name=Birch Chair
+tile.BlockBirchTable.name=Birch Table
 
 #--------------------------------
 #  Items

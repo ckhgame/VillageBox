@@ -63,7 +63,7 @@ public class BuildingFolkHouse extends Building {
 		bb.buildBlock(-2,0,0,Blocks.planks,1);bb.buildBlock(-2,0,1,Blocks.planks,1);bb.buildBlock(-2,0,2,Blocks.planks,1);
 		bb.buildBlock(-2,0,3,Blocks.planks,1);bb.buildBlock(-1,0,-3,Blocks.planks,1);bb.buildBlock(-1,0,-2,Blocks.bed,9);
 		bb.buildBlock(-1,0,2,Blocks.bookshelf,0);bb.buildBlock(-1,0,3,Blocks.planks,1);bb.buildBlock(0,0,-3,Blocks.planks,1);
-		bb.buildBlock(0,0,-2,Blocks.bed,1);bb.buildBlock(0,0,1,ModBlocks.blockWoodenChair,0);bb.buildBlock(0,0,2,Blocks.planks,1);bb.buildBlock(0,0,3,Blocks.planks,1);bb.buildBlock(1,0,-3,Blocks.planks,1);
+		bb.buildBlock(0,0,-2,Blocks.bed,1);bb.buildBlock(0,0,1,ModBlocks.blockOakChair,0);bb.buildBlock(0,0,2,Blocks.planks,1);bb.buildBlock(0,0,3,Blocks.planks,1);bb.buildBlock(1,0,-3,Blocks.planks,1);
 		bb.buildBlock(1,0,-2,Blocks.planks,0);bb.buildBlock(1,0,2,Blocks.planks,1);bb.buildBlock(1,0,3,Blocks.planks,1);
 		bb.buildBlock(2,0,-3,Blocks.planks,1);bb.buildBlock(2,0,-2,Blocks.planks,1);bb.buildBlock(2,0,-1,Blocks.planks,1);
 		bb.buildBlock(2,0,0,Blocks.wooden_door,2);bb.buildBlock(2,0,1,Blocks.planks,1);bb.buildBlock(2,0,2,Blocks.planks,1);
@@ -116,7 +116,7 @@ public class BuildingFolkHouse extends Building {
 		bb.buildBlock(-3,0,3,Blocks.planks,1);bb.buildBlock(-2,0,-3,Blocks.planks,1);bb.buildBlock(-2,0,-2,Blocks.planks,1);
 		bb.buildBlock(-2,0,-1,Blocks.planks,1);bb.buildBlock(-2,0,0,Blocks.planks,1);bb.buildBlock(-2,0,1,Blocks.planks,1);
 		bb.buildBlock(-2,0,2,Blocks.bed,9);bb.buildBlock(-2,0,3,Blocks.planks,1);bb.buildBlock(-1,0,-3,Blocks.planks,1);
-		bb.buildBlock(-1,0,-2,ModBlocks.blockWoodenChair,0);bb.buildBlock(-1,0,0,Blocks.planks,1);bb.buildBlock(-1,0,2,Blocks.bed,1);bb.buildBlock(-1,0,3,Blocks.planks,1);
+		bb.buildBlock(-1,0,-2,ModBlocks.blockOakChair,0);bb.buildBlock(-1,0,0,Blocks.planks,1);bb.buildBlock(-1,0,2,Blocks.bed,1);bb.buildBlock(-1,0,3,Blocks.planks,1);
 		bb.buildBlock(0,0,-3,Blocks.planks,1);bb.buildBlock(0,0,0,Blocks.planks,1);bb.buildBlock(0,0,3,Blocks.planks,1);
 		bb.buildBlock(1,0,-3,Blocks.planks,1);bb.buildBlock(1,0,0,Blocks.wooden_door,1);bb.buildBlock(1,0,3,Blocks.planks,1);
 		bb.buildBlock(2,0,-3,Blocks.planks,1);bb.buildBlock(2,0,0,Blocks.planks,1);bb.buildBlock(2,0,1,Blocks.bookshelf,0);
@@ -178,7 +178,7 @@ public class BuildingFolkHouse extends Building {
 		bb.buildBlock(-2,0,-2,Blocks.bed,10);bb.buildBlock(-2,0,-1,Blocks.bed,2);bb.buildBlock(-2,0,2,Blocks.planks,1);
 		bb.buildBlock(-2,0,3,Blocks.planks,1);bb.buildBlock(-1,0,-3,Blocks.planks,1);bb.buildBlock(-1,0,-2,Blocks.bookshelf,0);
 		bb.buildBlock(-1,0,3,Blocks.planks,1);bb.buildBlock(0,0,-3,Blocks.planks,1);bb.buildBlock(0,0,-2,Blocks.planks,1);
-		bb.buildBlock(0,0,-1,ModBlocks.blockWoodenChair,0);bb.buildBlock(0,0,3,Blocks.planks,1);bb.buildBlock(1,0,-3,Blocks.planks,1);bb.buildBlock(1,0,-2,Blocks.planks,1);
+		bb.buildBlock(0,0,-1,ModBlocks.blockOakChair,0);bb.buildBlock(0,0,3,Blocks.planks,1);bb.buildBlock(1,0,-3,Blocks.planks,1);bb.buildBlock(1,0,-2,Blocks.planks,1);
 		bb.buildBlock(1,0,2,Blocks.planks,1);bb.buildBlock(1,0,3,Blocks.planks,1);bb.buildBlock(2,0,-3,Blocks.planks,1);
 		bb.buildBlock(2,0,-2,Blocks.bookshelf,0);bb.buildBlock(2,0,2,Blocks.planks,1);bb.buildBlock(2,0,3,Blocks.planks,1);
 		bb.buildBlock(3,0,-2,Blocks.planks,1);bb.buildBlock(3,0,-1,Blocks.planks,1);bb.buildBlock(3,0,0,Blocks.planks,1);
@@ -236,7 +236,7 @@ public class BuildingFolkHouse extends Building {
 		bb.buildBlock(-2,0,-2,Blocks.planks,1);bb.buildBlock(-2,0,-1,Blocks.planks,1);bb.buildBlock(-2,0,0,Blocks.planks,1);
 		bb.buildBlock(-2,0,1,Blocks.planks,1);bb.buildBlock(-2,0,2,Blocks.planks,1);bb.buildBlock(-1,0,-3,Blocks.planks,1);
 		bb.buildBlock(-1,0,-2,Blocks.bookshelf,0);bb.buildBlock(-1,0,1,Blocks.planks,1);bb.buildBlock(-1,0,2,Blocks.planks,1);
-		bb.buildBlock(0,0,-3,Blocks.planks,1);bb.buildBlock(0,0,-2,Blocks.planks,1);bb.buildBlock(0,0,-1,ModBlocks.blockWoodenChair,0);
+		bb.buildBlock(0,0,-3,Blocks.planks,1);bb.buildBlock(0,0,-2,Blocks.planks,1);bb.buildBlock(0,0,-1,ModBlocks.blockOakChair,0);
 		bb.buildBlock(0,0,1,Blocks.bed,3);bb.buildBlock(0,0,2,Blocks.planks,1);bb.buildBlock(1,0,-3,Blocks.planks,1);
 		bb.buildBlock(1,0,-2,Blocks.planks,1);bb.buildBlock(1,0,1,Blocks.bed,11);bb.buildBlock(1,0,2,Blocks.planks,1);
 		bb.buildBlock(2,0,-3,Blocks.planks,1);bb.buildBlock(2,0,-2,Blocks.planks,1);bb.buildBlock(2,0,-1,Blocks.wooden_door,2);
@@ -288,7 +288,7 @@ public class BuildingFolkHouse extends Building {
 		bb.buildBlock(-2,0,-2,Blocks.bed,9);bb.buildBlock(-2,0,0,Blocks.planks,1);bb.buildBlock(-2,0,1,Blocks.bookshelf,0);
 		bb.buildBlock(-2,0,2,Blocks.planks,1);bb.buildBlock(-2,0,3,Blocks.planks,1);bb.buildBlock(-1,0,-3,Blocks.planks,1);
 		bb.buildBlock(-1,0,-2,Blocks.bed,1);bb.buildBlock(-1,0,2,Blocks.planks,1);bb.buildBlock(-1,0,3,Blocks.planks,1);
-		bb.buildBlock(0,0,-3,Blocks.planks,1);bb.buildBlock(0,0,-2,Blocks.planks,1);bb.buildBlock(0,0,-1,ModBlocks.blockWoodenChair,0);
+		bb.buildBlock(0,0,-3,Blocks.planks,1);bb.buildBlock(0,0,-2,Blocks.planks,1);bb.buildBlock(0,0,-1,ModBlocks.blockOakChair,0);
 		bb.buildBlock(0,0,3,Blocks.planks,1);bb.buildBlock(1,0,-3,Blocks.planks,1);bb.buildBlock(1,0,-2,Blocks.planks,1);
 		bb.buildBlock(1,0,3,Blocks.planks,1);bb.buildBlock(2,0,-3,Blocks.planks,1);bb.buildBlock(2,0,-2,Blocks.planks,1);
 		bb.buildBlock(2,0,-1,Blocks.planks,1);bb.buildBlock(2,0,0,Blocks.planks,1);bb.buildBlock(2,0,1,Blocks.wooden_door,2);
@@ -345,7 +345,7 @@ public class BuildingFolkHouse extends Building {
 		bb.buildBlock(-3,0,3,Blocks.planks,1);bb.buildBlock(-2,0,-3,Blocks.planks,1);bb.buildBlock(-2,0,-2,Blocks.planks,1);
 		bb.buildBlock(-2,0,-1,Blocks.planks,1);bb.buildBlock(-2,0,0,Blocks.planks,1);bb.buildBlock(-2,0,1,Blocks.planks,1);
 		bb.buildBlock(-2,0,2,Blocks.bed,9);bb.buildBlock(-2,0,3,Blocks.planks,1);bb.buildBlock(-1,0,-3,Blocks.planks,1);
-		bb.buildBlock(-1,0,-2,ModBlocks.blockWoodenChair,0);bb.buildBlock(-1,0,0,Blocks.planks,1);bb.buildBlock(-1,0,1,Blocks.carpet,1);bb.buildBlock(-1,0,2,Blocks.bed,1);
+		bb.buildBlock(-1,0,-2,ModBlocks.blockOakChair,0);bb.buildBlock(-1,0,0,Blocks.planks,1);bb.buildBlock(-1,0,1,Blocks.carpet,1);bb.buildBlock(-1,0,2,Blocks.bed,1);
 		bb.buildBlock(-1,0,3,Blocks.planks,1);bb.buildBlock(0,0,-3,Blocks.planks,1);bb.buildBlock(0,0,0,Blocks.planks,1);
 		bb.buildBlock(0,0,1,Blocks.carpet,8);bb.buildBlock(0,0,2,Blocks.carpet,1);bb.buildBlock(0,0,3,Blocks.planks,1);
 		bb.buildBlock(1,0,-3,Blocks.planks,1);bb.buildBlock(1,0,0,Blocks.wooden_door,1);bb.buildBlock(1,0,1,Blocks.carpet,1);

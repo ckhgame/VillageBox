@@ -70,7 +70,7 @@ public class BuildingFurnitureStore extends Building {
 		bb.buildBlock(0,0,2,Blocks.planks,1);bb.buildBlock(0,0,3,Blocks.planks,1);bb.buildBlock(0,0,4,Blocks.planks,1);
 		bb.buildBlock(1,0,-4,Blocks.planks,1);bb.buildBlock(1,0,3,Blocks.birch_stairs,2);bb.buildBlock(1,0,4,Blocks.planks,1);
 		bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,4,Blocks.planks,1);bb.buildBlock(3,0,-4,Blocks.planks,1);
-		bb.buildBlock(3,0,-2,ModBlocks.blockWoodenChair,0);bb.buildBlock(3,0,3,ModBlocks.blockWoodenChair,0);bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);bb.buildBlock(4,0,-3,Blocks.planks,1);
+		bb.buildBlock(3,0,-2,ModBlocks.blockOakChair,0);bb.buildBlock(3,0,3,ModBlocks.blockOakChair,0);bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);bb.buildBlock(4,0,-3,Blocks.planks,1);
 		bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.planks,1);bb.buildBlock(4,0,0,Blocks.wooden_door,2);
 		bb.buildBlock(4,0,1,Blocks.planks,1);bb.buildBlock(4,0,2,Blocks.planks,1);bb.buildBlock(4,0,3,Blocks.planks,1);
 		bb.buildBlock(4,0,4,Blocks.planks,1);bb.buildBlock(-4,1,-4,Blocks.planks,1);bb.buildBlock(-4,1,-3,Blocks.planks,1);
@@ -156,7 +156,7 @@ public class BuildingFurnitureStore extends Building {
 		bb.buildBlock(4,4,3,Blocks.acacia_stairs,1);bb.buildBlock(4,4,4,Blocks.acacia_stairs,1);bb.buildBlock(-3,3,-3,Blocks.torch,3);
 		bb.buildBlock(-3,3,-1,Blocks.torch,4);bb.buildBlock(-3,3,1,Blocks.torch,3);bb.buildBlock(-2,3,1,Blocks.torch,3);
 		bb.buildBlock(-1,3,1,Blocks.torch,3);bb.buildBlock(0,3,-3,Blocks.torch,3);bb.buildBlock(1,3,3,Blocks.torch,4);
-		bb.buildBlock(3,3,-3,Blocks.torch,3);bb.buildBlock(3,3,3,Blocks.torch,4);bb.addEntityItemFrame(0,2,2,3,ModBlocks.blockWoodenChair,0);
+		bb.buildBlock(3,3,-3,Blocks.torch,3);bb.buildBlock(3,3,3,Blocks.torch,4);bb.addEntityItemFrame(0,2,2,3,ModBlocks.blockOakChair,0);
 		bb.addEntityItemFrame(0,2,1,3,ModBlocks.blockWineShelf,0);
 		bb.addEntityItemFrame(0,1,2,3,ModBlocks.blockWineBucket,0);
 		bb.addEntityItemFrame(0,1,1,3,Items.painting,0);

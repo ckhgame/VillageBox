@@ -113,7 +113,7 @@ public class BuildingTownSquareLarge extends Building {
 		bb.buildBlock(-7,0,5,Blocks.double_plant,4);bb.buildBlock(-7,0,6,Blocks.double_plant,4);bb.buildBlock(-7,0,7,Blocks.double_plant,4);
 		bb.buildBlock(-6,0,-7,Blocks.double_plant,4);bb.buildBlock(-6,0,-1,Blocks.jungle_stairs,1);bb.buildBlock(-6,0,0,Blocks.jungle_stairs,1);
 		bb.buildBlock(-6,0,1,Blocks.jungle_stairs,1);bb.buildBlock(-6,0,7,Blocks.double_plant,4);bb.buildBlock(-5,0,-7,Blocks.double_plant,4);
-		bb.buildBlock(-5,0,-6,ModBlocks.blockWoodenChair,0);bb.buildBlock(-5,0,-5,Blocks.planks,3);bb.buildBlock(-5,0,-4,ModBlocks.blockWoodenChair,0);bb.buildBlock(-5,0,4,ModBlocks.blockWoodenChair,0);bb.buildBlock(-5,0,5,Blocks.planks,3);bb.buildBlock(-5,0,6,ModBlocks.blockWoodenChair,0);bb.buildBlock(-5,0,7,Blocks.double_plant,4);bb.buildBlock(-4,0,-7,Blocks.double_plant,4);bb.buildBlock(-4,0,-3,Blocks.red_flower,3);
+		bb.buildBlock(-5,0,-6,ModBlocks.blockOakChair,0);bb.buildBlock(-5,0,-5,Blocks.planks,3);bb.buildBlock(-5,0,-4,ModBlocks.blockOakChair,0);bb.buildBlock(-5,0,4,ModBlocks.blockOakChair,0);bb.buildBlock(-5,0,5,Blocks.planks,3);bb.buildBlock(-5,0,6,ModBlocks.blockOakChair,0);bb.buildBlock(-5,0,7,Blocks.double_plant,4);bb.buildBlock(-4,0,-7,Blocks.double_plant,4);bb.buildBlock(-4,0,-3,Blocks.red_flower,3);
 		bb.buildBlock(-4,0,-2,Blocks.yellow_flower,0);bb.buildBlock(-4,0,-1,Blocks.red_flower,3);bb.buildBlock(-4,0,0,Blocks.yellow_flower,0);
 		bb.buildBlock(-4,0,1,Blocks.red_flower,3);bb.buildBlock(-4,0,2,Blocks.yellow_flower,0);bb.buildBlock(-4,0,7,Blocks.double_plant,4);
 		bb.buildBlock(-3,0,-7,Blocks.double_plant,5);bb.buildBlock(-3,0,-4,Blocks.red_flower,3);bb.buildBlock(-3,0,4,Blocks.yellow_flower,0);
@@ -136,8 +136,8 @@ public class BuildingTownSquareLarge extends Building {
 		bb.buildBlock(2,0,1,Blocks.sandstone,2);bb.buildBlock(2,0,2,Blocks.quartz_block,2);bb.buildBlock(2,0,4,Blocks.red_flower,3);
 		bb.buildBlock(2,0,7,Blocks.double_plant,5);bb.buildBlock(3,0,-7,Blocks.double_plant,5);bb.buildBlock(3,0,-4,Blocks.red_flower,3);
 		bb.buildBlock(3,0,4,Blocks.yellow_flower,0);bb.buildBlock(3,0,7,Blocks.double_plant,5);bb.buildBlock(4,0,-7,Blocks.double_plant,4);
-		bb.buildBlock(4,0,7,Blocks.double_plant,4);bb.buildBlock(5,0,-7,Blocks.double_plant,4);bb.buildBlock(5,0,-6,ModBlocks.blockWoodenChair,0);
-		bb.buildBlock(5,0,-5,Blocks.planks,3);bb.buildBlock(5,0,-4,ModBlocks.blockWoodenChair,0);bb.buildBlock(5,0,4,ModBlocks.blockWoodenChair,0);bb.buildBlock(5,0,5,Blocks.planks,3);bb.buildBlock(5,0,6,ModBlocks.blockWoodenChair,0);bb.buildBlock(5,0,7,Blocks.double_plant,4);bb.buildBlock(6,0,-7,Blocks.double_plant,4);bb.buildBlock(6,0,7,Blocks.double_plant,4);
+		bb.buildBlock(4,0,7,Blocks.double_plant,4);bb.buildBlock(5,0,-7,Blocks.double_plant,4);bb.buildBlock(5,0,-6,ModBlocks.blockOakChair,0);
+		bb.buildBlock(5,0,-5,Blocks.planks,3);bb.buildBlock(5,0,-4,ModBlocks.blockOakChair,0);bb.buildBlock(5,0,4,ModBlocks.blockOakChair,0);bb.buildBlock(5,0,5,Blocks.planks,3);bb.buildBlock(5,0,6,ModBlocks.blockOakChair,0);bb.buildBlock(5,0,7,Blocks.double_plant,4);bb.buildBlock(6,0,-7,Blocks.double_plant,4);bb.buildBlock(6,0,7,Blocks.double_plant,4);
 		bb.buildBlock(7,0,-7,Blocks.double_plant,4);bb.buildBlock(7,0,-6,Blocks.double_plant,4);bb.buildBlock(7,0,-5,Blocks.double_plant,4);
 		bb.buildBlock(7,0,-4,Blocks.double_plant,4);bb.buildBlock(7,0,-3,Blocks.double_plant,5);bb.buildBlock(7,0,-2,Blocks.double_plant,5);
 		bb.buildBlock(7,0,2,Blocks.double_plant,5);bb.buildBlock(7,0,3,Blocks.double_plant,5);bb.buildBlock(7,0,4,Blocks.double_plant,4);
@@ -218,7 +218,7 @@ public class BuildingTownSquareLarge extends Building {
 		bb.buildBlock(-2,9,-3,Blocks.gold_block,0);bb.buildBlock(-2,9,-2,Blocks.flower_pot,3);bb.addTileEntityPot(-2,9,-2,38,3);
 		bb.buildBlock(-2,9,2,Blocks.flower_pot,3);bb.addTileEntityPot(-2,9,2,38,3);
 		bb.buildBlock(-2,9,3,Blocks.gold_block,0);bb.buildBlock(-1,9,-3,Blocks.gold_block,0);bb.buildBlock(-1,9,3,Blocks.gold_block,0);
-		bb.buildBlock(0,9,-3,Blocks.gold_block,0);bb.buildBlock(0,9,-2,ModBlocks.blockWoodenChair,0);bb.buildBlock(0,9,2,ModBlocks.blockWoodenChair,0);bb.buildBlock(0,9,3,Blocks.gold_block,0);bb.buildBlock(1,9,-3,Blocks.gold_block,0);bb.buildBlock(1,9,3,Blocks.gold_block,0);
+		bb.buildBlock(0,9,-3,Blocks.gold_block,0);bb.buildBlock(0,9,-2,ModBlocks.blockOakChair,0);bb.buildBlock(0,9,2,ModBlocks.blockOakChair,0);bb.buildBlock(0,9,3,Blocks.gold_block,0);bb.buildBlock(1,9,-3,Blocks.gold_block,0);bb.buildBlock(1,9,3,Blocks.gold_block,0);
 		bb.buildBlock(2,9,-3,Blocks.gold_block,0);bb.buildBlock(2,9,-2,Blocks.flower_pot,3);bb.addTileEntityPot(2,9,-2,38,3);
 		bb.buildBlock(2,9,2,Blocks.flower_pot,3);bb.addTileEntityPot(2,9,2,38,3);
 		bb.buildBlock(2,9,3,Blocks.gold_block,0);bb.buildBlock(3,9,-2,Blocks.gold_block,0);bb.buildBlock(3,9,-1,Blocks.gold_block,0);

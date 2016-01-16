@@ -10,17 +10,17 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 
 @SideOnly(Side.CLIENT)
-public class ModelChair extends ModelBase
+public class ModelTable extends ModelBase
 {
-    public ModelRenderer chair;
+    public ModelRenderer table;
     private static final String __OBFID = "CL_00000832";
 
-    public ModelChair()
+    public ModelTable()
     {
-    	this.chair = new ModelRenderer(this, 0, 0).setTextureSize(16, 16);
-    	this.chair.addBox(5, 0, 5, 6, 1, 6);
-    	this.chair.addBox(7, 1, 7, 2, 6, 2);
-    	this.chair.addBox(4, 7, 4, 8, 1, 8);
+    	this.table = new ModelRenderer(this, 0, 0).setTextureSize(16, 16);
+    	this.table.addBox(4, 0, 4, 8, 1, 8);
+    	this.table.addBox(6, 1, 6, 4, 14, 4);
+    	this.table.addBox(0, 15, 0, 16, 1, 16);
     }
 
     /**
@@ -28,6 +28,6 @@ public class ModelChair extends ModelBase
      */
     public void render(Entity entity, float p_78088_2_, float p_78088_3_, float p_78088_4_, float p_78088_5_, float p_78088_6_, float p_78088_7_)
     {    	
-        this.chair.render(p_78088_7_);
+        this.table.render(p_78088_7_);
     }
 }
