@@ -25,7 +25,7 @@ public class VBRandomPositionGenerator{
 		int d = ConfigVillager.AIWanderDistanceMaxNearBuilding;
 		int sx = evr.buildingSizeX + d;
 		int sz = evr.buildingSizeZ + d;
-		int sy = ConfigVillager.AIWanderDistanceMaxY;;
+		int sy = ConfigVillager.AIWanderDistanceMaxY;
 
 		int x = 0,y = 0,z = 0;
 		Block b;
@@ -52,8 +52,8 @@ public class VBRandomPositionGenerator{
 		int d = ConfigVillager.ALWanderInBuildingWallOffset;
 		int sx = Math.max(0,evr.buildingSizeX - d);
 		int sz = Math.max(0,evr.buildingSizeZ - d);
-		int sh = ConfigBuilding.BuildingMaxHeight;
-		int sd = ConfigBuilding.BuildingGroundWorkDepth;
+		//int sh = ConfigBuilding.BuildingMaxHeight;
+		//int sd = ConfigBuilding.BuildingGroundWorkDepth;
        
 		int x = 0,y = 0,z = 0;
 		Block b;
@@ -62,7 +62,7 @@ public class VBRandomPositionGenerator{
         for(t =0;t<tryTimes;t++){
             x = random.nextInt(2 * sx + 1) - sx + bx;
             z = random.nextInt(2 * sz + 1) - sz + bz;
-            y = random.nextInt(sd + sh) - sd + by;
+            y =  by;
             b = evr.worldObj.getBlock(x, y, z);
             if(!b.getMaterial().blocksMovement() && !b.getMaterial().isLiquid())
             	break;
