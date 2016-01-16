@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import com.ckhgame.villagebento.ai.villager.VillagerAISleeping;
 import com.ckhgame.villagebento.ai.villager.VillagerAIVisiting;
-import com.ckhgame.villagebento.ai.villager.VillagerAIWandering;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWanderingInHouse;
+import com.ckhgame.villagebento.ai.villager.VillagerAIWanderingNearHouse;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchClosest;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWatchInteractTarget;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWorking;
@@ -84,7 +85,8 @@ public class EntityVBVillager extends EntityAgeable {
 		this.tasks.addTask(4, new VillagerAISleeping(this));
 		this.tasks.addTask(5, new VillagerAIWorking(this));
 		this.tasks.addTask(6, new VillagerAIVisiting(this));
-		this.tasks.addTask(7, new VillagerAIWandering(this));
+		this.tasks.addTask(7, new VillagerAIWanderingInHouse(this));
+		this.tasks.addTask(8, new VillagerAIWanderingNearHouse(this));
 	}
 	
 	protected void entityInit()

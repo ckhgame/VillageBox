@@ -85,6 +85,7 @@ public class VillagerAISleeping extends VillagerAIMoving
 	public void resetTask() {
 		if(this.entity.isSleeping())
 			this.entity.endSleeping();
+		super.resetTask();
 	}
     
 	@Override

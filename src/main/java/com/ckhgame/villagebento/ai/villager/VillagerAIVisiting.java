@@ -86,7 +86,7 @@ public class VillagerAIVisiting extends VillagerAIMoving
 
     public boolean continueExecuting()
     {
-    	if(this.entity.isVisiting() && this.entity.worldObj.isRaining()){
+    	if(this.entity.isVisiting() && this.entity.worldObj.isRaining() && !this.entity.isVisitingSkipSleeping()){
     		return false;
     	}
     	else if(this.entity.isVisiting() && this.entity.isRiding()){

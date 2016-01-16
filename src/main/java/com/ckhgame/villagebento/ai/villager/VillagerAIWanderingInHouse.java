@@ -11,9 +11,9 @@ import com.ckhgame.villagebento.util.village.VillagerNavigator;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.Vec3;
 
-public class VillagerAIWandering extends VillagerAIMoving
+public class VillagerAIWanderingInHouse extends VillagerAIMoving
 {
-    public VillagerAIWandering(EntityVBVillager entity)
+    public VillagerAIWanderingInHouse(EntityVBVillager entity)
     {
     	super(entity);
     }
@@ -33,30 +33,16 @@ public class VillagerAIWandering extends VillagerAIMoving
     		
     		if(!VBDateTime.isDayTime() || this.entity.worldObj.isRaining()){
     			this.targetPos = VBRandomPositionGenerator.findRandomTargetInBuildingFast(this.entity);
-    		}
-    		else{
-    			this.targetPos = VBRandomPositionGenerator.findRandomTargetNearBuildingFast(this.entity);
-    		}
-    		if(this.entity.isVisiting()) this.entity.cancelVisiting();
-    		return true;
-    		
+        		if(this.entity.isVisiting()) this.entity.cancelVisiting();
+        		return true;
+    		}    		
     	}
     	return false;
     }
     
     @Override
 	public void startExecuting() {
-		this.entity.setDebugText("Wandering...");
-	}
-
-	@Override
-	public void updateTask() {
-		super.updateTask();
-	}
-
-	@Override
-	public void resetTask() {
-		super.resetTask();
+		this.entity.setDebugText("Wandering(In House)...");
 	}
     
     
