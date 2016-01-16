@@ -45,7 +45,6 @@ public class RenderGuiVillager extends RenderGuiLiving {
 		}
 		
 		if(entity.hasEmoji()){
-			System.out.println(entity.getEmojiID());
 			emoji.resource = emojis[entity.getEmojiID()];
 		}else{
 			emoji.resource = null;

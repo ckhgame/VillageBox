@@ -84,7 +84,18 @@ public class VillagerAIVisiting extends VillagerAIMoving
     	}
     }
 
-    
+    public boolean continueExecuting()
+    {
+    	if(this.entity.isVisiting() && this.entity.worldObj.isRaining()){
+    		return false;
+    	}
+    	else if(this.entity.isVisiting() && this.entity.isRiding()){
+    		return true;
+    	}
+    	else{
+    		return super.continueExecuting();
+    	}
+    }
     	
 	@Override
 	public void resetTask() {

@@ -21,7 +21,8 @@ public abstract class VillagerAIMoving extends EntityAIBase
 {
 	protected EntityVBVillager entity;
     protected Vec3 targetPos = null;
-
+    protected int stayTimer = 0;
+    
     public VillagerAIMoving(EntityVBVillager entity)
     {
         this.entity = entity;
@@ -44,17 +45,29 @@ public abstract class VillagerAIMoving extends EntityAIBase
     		return true;
     	}
     	
-    	if(this.entity.getNavigator().noPath()){  		
-    		if(this.targetPos == null)
+    	if(this.entity.getNavigator().noPath()){
+    		if(this.targetPos == null){
     			return false;
+    		}
+    			
     		Vec3 pos = Vec3.createVectorHelper(this.entity.posX - this.targetPos.xCoord,this.entity.posY - this.targetPos.yCoord,this.entity.posZ - this.targetPos.zCoord);
-    		if(pos.lengthVector() < 1.0D)
+    		if(pos.lengthVector() < 1.0D){
     			return false; // reached the target
+    		}	
     		else{
     			return VillagerNavigator.tryMoveToXYZ(entity, this.targetPos.xCoord, this.targetPos.yCoord, this.targetPos.zCoord);	
     		}	
     	}
     	else{
+    		if(MathHelper.floor_double(this.entity.posX) == MathHelper.floor_double(this.entity.lastTickPosX) &&
+    			MathHelper.floor_double(this.entity.posZ) == MathHelper.floor_double(this.entity.lastTickPosZ) ){
+    			if(++stayTimer > 100){
+    				System.out.println("This villager is stuck...reset task");
+    				return false;
+    			}
+    		}
+    		
+    		stayTimer = 0;
     		return true;
     	}
     }

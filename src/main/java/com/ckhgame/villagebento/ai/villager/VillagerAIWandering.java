@@ -48,5 +48,16 @@ public class VillagerAIWandering extends VillagerAIMoving
 	public void startExecuting() {
 		this.entity.setDebugText("Wandering...");
 	}
+
+	@Override
+	public void updateTask() {
+		super.updateTask();
+	}
+
+	@Override
+	public void resetTask() {
+		super.resetTask();
+	}
+    
     
 }

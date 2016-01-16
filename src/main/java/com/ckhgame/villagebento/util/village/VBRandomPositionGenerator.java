@@ -10,6 +10,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.helper.HelperDataVB;
 import com.ckhgame.villagebento.util.tool.VBRandom;
 
+import net.minecraft.block.Block;
 import net.minecraft.util.Vec3;
 
 public class VBRandomPositionGenerator{
@@ -26,79 +27,25 @@ public class VBRandomPositionGenerator{
 		int sz = evr.buildingSizeZ + d;
 		int sy = ConfigVillager.AIWanderDistanceMaxY;;
 
-        int x = random.nextInt(2 * sx + 1) - sx + bx;
-        int z = random.nextInt(2 * sz + 1) - sz + bz;
-        int y = random.nextInt(2 * sy + 1) - sy + by;
-
-        return Vec3.createVectorHelper((double)x, (double)y, (double)z);
-	}
-	
-	public static Vec3 findRandomTargetNearBuilding(EntityVBVillager evr){
-		
-		Random random = evr.getRNG();
-		
-		int bx = evr.buildingX;
-		int by = evr.buildingY;
-		int bz = evr.buildingZ;
-		int d = ConfigVillager.AIWanderDistanceMaxNearBuilding;
-		int sx = evr.buildingSizeX + d;
-		int sz = evr.buildingSizeZ + d;
-		int sy = ConfigVillager.AIWanderDistanceMaxY;;
-        
-		float maxWeight = -99999;
-		int fx = bz;
-		int fy = by;
-		int fz = bz;
-		boolean found = false;
-		
-        for (int i = 0; i < 10; i++)
-        {
-            int x = random.nextInt(2 * sx + 1) - sx + bx;
-            int z = random.nextInt(2 * sz + 1) - sz + bz;
-            int y = random.nextInt(2 * sy + 1) - sy + by;
-
-            float weight = evr.getBlockPathWeight(x, y, z);
-
-            if (weight > maxWeight)
-            {
-            	maxWeight = weight;
-                fx = x;
-                fy = y;
-                fz = z;
-                found = true;
-            }
+		int x = 0,y = 0,z = 0;
+		Block b;
+		int t;
+        int tryTimes = 5;
+        for(t =0;t<tryTimes;t++){
+            x = random.nextInt(2 * sx + 1) - sx + bx;
+            z = random.nextInt(2 * sz + 1) - sz + bz;
+            y = random.nextInt(2 * sy + 1) - sy + by;
+            b = evr.worldObj.getBlock(x, y, z);
+            if(!b.getMaterial().blocksMovement() && !b.getMaterial().isLiquid())
+            	break;
         }
-
-        return found?Vec3.createVectorHelper((double)fx, (double)fy, (double)fz):null;
+       
+    	return t < tryTimes?Vec3.createVectorHelper((double)x, (double)y, (double)z):null;
 	}
-	
-	public static Vec3 findRandomTargetInBuildingFast(int BuildingID, boolean isVisiting)
-    {
-		DataBuilding db = HelperDataVB.findBuildingByID(DataVillageBento.get(), BuildingID);
-		if(db == null) return null;
-		
-		int bx = db.x;
-		int by = db.y;
-		int bz = db.z;
-		int d = ConfigVillager.ALWanderInBuildingWallOffset;
-		int sx = Math.max(0,db.sizeX - d);
-		int sz = Math.max(0,db.sizeZ - d);
-		int sh = isVisiting?ConfigVillager.VisitingMaxSearchHeight:ConfigBuilding.BuildingMaxHeight;
-		int sd = isVisiting?0:ConfigBuilding.BuildingGroundWorkDepth;
-
-		Random rand = VBRandom.getRand();
-        int x = rand.nextInt(2 * sx + 1) - sx + bx;
-        int z = rand.nextInt(2 * sz + 1) - sz + bz;
-        int y = rand.nextInt(sd + sh) - sd + by;
-
-        return Vec3.createVectorHelper((double)x + 0.5D, (double)y + 0.1D, (double)z + 0.5D);
-    }
 	
 	public static Vec3 findRandomTargetInBuildingFast(EntityVBVillager evr)
     {
-		
 		Random random = evr.getRNG();
-		
 		int bx = evr.buildingX;
 		int by = evr.buildingY;
 		int bz = evr.buildingZ;
@@ -107,52 +54,21 @@ public class VBRandomPositionGenerator{
 		int sz = Math.max(0,evr.buildingSizeZ - d);
 		int sh = ConfigBuilding.BuildingMaxHeight;
 		int sd = ConfigBuilding.BuildingGroundWorkDepth;
-
-        int x = random.nextInt(2 * sx + 1) - sx + bx;
-        int z = random.nextInt(2 * sz + 1) - sz + bz;
-        int y = random.nextInt(sd + sh) - sd + by;
-
-        return Vec3.createVectorHelper((double)x, (double)y, (double)z);
-    }
-	
-	public static Vec3 findRandomTargetInBuilding(EntityVBVillager evr)
-    {
-		
-		Random random = evr.getRNG();
-		
-		int bx = evr.buildingX;
-		int by = evr.buildingY;
-		int bz = evr.buildingZ;
-		int sx = evr.buildingSizeX;
-		int sz = evr.buildingSizeZ;
-		int sh = ConfigBuilding.BuildingMaxHeight;
-		int sd = ConfigBuilding.BuildingGroundWorkDepth;
-        
-		float maxWeight = -99999;
-		int fx = bx;
-		int fy = by;
-		int fz = bz;
-		boolean found = false;
-		
-        for (int i = 0; i < 10; i++)
-        {
-            int x = random.nextInt(2 * sx + 1) - sx + bx;
-            int z = random.nextInt(2 * sz + 1) - sz + bz;
-            int y = random.nextInt(sd + sh) - sd + by;
-
-            float weight = evr.getBlockPathWeight(x, y, z);
-
-            if (weight > maxWeight)
-            {
-            	maxWeight = weight;
-                fx = x;
-                fy = y;
-                fz = z;
-                found = true;
-            }
+       
+		int x = 0,y = 0,z = 0;
+		Block b;
+		int t;
+        int tryTimes = 5;
+        for(t =0;t<tryTimes;t++){
+            x = random.nextInt(2 * sx + 1) - sx + bx;
+            z = random.nextInt(2 * sz + 1) - sz + bz;
+            y = random.nextInt(sd + sh) - sd + by;
+            b = evr.worldObj.getBlock(x, y, z);
+            if(!b.getMaterial().blocksMovement() && !b.getMaterial().isLiquid())
+            	break;
         }
-
-        return found?Vec3.createVectorHelper((double)fx, (double)fy, (double)fz):null;
+       
+    	return t < tryTimes?Vec3.createVectorHelper((double)x, (double)y, (double)z):null;
     }
 
 	public static Vec3 findRandomTargetGuardPatrol(EntityVBVillager evr){

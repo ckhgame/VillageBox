@@ -33,11 +33,6 @@ public class HelperVisiting {
 				p = Vec3.createVectorHelper((double)v.x + 0.5D, (double)v.y + 0.1D, (double)v.z + 0.5D);
 		}
 		
-		//find a random position
-		boolean canVisitorRandomWalking = false;
-		if(p == null && canVisitorRandomWalking) {
-			p = VBRandomPositionGenerator.findRandomTargetInBuildingFast(buildingID,true);
-		}
 		return p;
 	}
 	

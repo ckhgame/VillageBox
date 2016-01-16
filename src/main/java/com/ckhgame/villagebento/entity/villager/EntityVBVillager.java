@@ -65,7 +65,6 @@ public class EntityVBVillager extends EntityAgeable {
 		this.getNavigator().setAvoidsWater(true);
 		this.getNavigator().setBreakDoors(true);
 		this.getNavigator().setEnterDoors(true);
-		this.initAITasks();	
 		this.setAlwaysRenderNameTag(true);
 		if(!w.isRemote){
 			VBVillagerMgr.get().addVillager(this);
@@ -422,11 +421,13 @@ public class EntityVBVillager extends EntityAgeable {
 	public int bedIdx = -1;
 	public Vec3Int bedPosition = null;
 	public int bedOritation;
+	public boolean buildingCachesInited = false;
 	
 	private void refreshBuildingCaches(){
 		if(!this.worldObj.isRemote){//server only
 			DataVillageBento dataVB = DataVillageBento.get();
 			DataBuilding db = HelperDataVB.findBuildingByID(dataVB, this.getBuildingID());
+			buildingCachesInited = true;
 			buildingX = db.x;
 			buildingY = db.y;
 			buildingZ = db.z;
@@ -538,6 +539,7 @@ public class EntityVBVillager extends EntityAgeable {
 	private boolean isFirstTimeLivingUpdate = true;
 	private void onFirstTimeLivingUpdate(){
 		this.refreshBuildingCaches();
+		this.initAITasks();	
 	}
 	
 	@Override

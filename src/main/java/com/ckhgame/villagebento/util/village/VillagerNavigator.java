@@ -27,33 +27,24 @@ public class VillagerNavigator {
 		double dz = tz - entity.posZ;
 		double l = Math.sqrt(dx * dx + dy * dy + dz * dz);
 		
-		if(l > d){
-			
-			while(d > 1.0D){
-				double r = d / l;
-				tx = entity.posX + dx * r;
-				ty = entity.posY + dy * r;
-				tz = entity.posZ + dz * r;
-				if(!entity.getNavigator().tryMoveToXYZ(tx,ty,tz,ConfigVillager.VillagerMoveSpeed)){
-				//	System.out.println("d:"+d + ", l:" + l + ",r:" + r);
-					//System.out.println(entity.worldObj.getBlock((int)tx, (int)ty, (int)tz) + ":" + tx + "," + ty + "," + tz);
-					d *= 0.5D;
-				}
-				else{
-					break;
-				}
-			}
-			
-			if(d > 1.0D){
-				return true; // do not remove the moving target
+		while(d > 1.0D){
+			double r = d / l;
+			tx = entity.posX + dx * r;
+			ty = entity.posY + dy * r;
+			tz = entity.posZ + dz * r;
+			if(!entity.getNavigator().tryMoveToXYZ(tx,ty,tz,ConfigVillager.VillagerMoveSpeed)){
+				d *= 0.5D;
 			}
 			else{
-			//	System.out.println("22222 Cant find the path!!!!!!!!");
-				return false;// remove the moving target
+				break;
 			}
 		}
+			
+		if(d > 1.0D){
+			return true; 
+		}
 		else{
-			return true;// do not remove the moving target
+			return false;
 		}
 	}
 }
