@@ -18,11 +18,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockVillageCarpet extends BlockMeta
+public class BlockVillageNiceCarpet extends BlockMeta
 {
-    protected BlockVillageCarpet(String blockName,String textureName)
+    protected BlockVillageNiceCarpet()
     {
-        super(blockName,Main.MODID + ":" + textureName,Material.carpet,16);
+        super("BlockVillageNiceCarpet",Main.MODID + ":" + "carpet",Material.carpet,33);
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
         this.setTickRandomly(true);
         this.setCreativeTab(CreativeTabs.tabDecorations);

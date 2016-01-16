@@ -94,6 +94,40 @@ tile.BlockVillageCarpet_13.name=Green Village Carpet
 tile.BlockVillageCarpet_14.name=Red Village Carpet
 tile.BlockVillageCarpet_15.name=Black Village Carpet
 
+tile.BlockVillageCarpet1_0.name=Baby Blue Village Carpet
+tile.BlockVillageCarpet1_1.name=Banana Village Carpet
+tile.BlockVillageCarpet1_2.name=Bear Village Carpet
+tile.BlockVillageCarpet1_3.name=Nice Black Village Carpet
+tile.BlockVillageCarpet1_4.name=Nice Green Village Carpet
+tile.BlockVillageCarpet1_5.name=Nice Gray Village Carpet
+tile.BlockVillageCarpet1_6.name=Heart Village Carpet
+tile.BlockVillageCarpet1_7.name=Nice Lime Village Carpet
+tile.BlockVillageCarpet1_8.name=Moon Village Carpet
+tile.BlockVillageCarpet1_9.name=Orange Village Carpet
+tile.BlockVillageCarpet1_10.name=Nice Pink Village Carpet
+tile.BlockVillageCarpet1_11.name=Rabbit Village Carpet
+tile.BlockVillageCarpet1_12.name=Square Village Carpet (Pattern I)
+tile.BlockVillageCarpet1_13.name=Square Village Carpet (Pattern II)
+tile.BlockVillageCarpet1_14.name=Square Village Carpet (Pattern III)
+tile.BlockVillageCarpet1_15.name=Square Village Carpet (Pattern IV)
+
+tile.BlockVillageCarpet2_0.name=Square Village Carpet (Pattern V)
+tile.BlockVillageCarpet2_1.name=Square Village Carpet (Pattern VI)
+tile.BlockVillageCarpet2_2.name=Water Drop Village Carpet
+tile.BlockVillageCarpet2_3.name=Whale Village Carpet
+tile.BlockVillageCarpet2_4.name=Nice Red Village Carpet (Pattern I)
+tile.BlockVillageCarpet2_5.name=Nice Red Village Carpet (Pattern II)
+tile.BlockVillageCarpet2_6.name=Nice Red Village Carpet (Pattern III)
+tile.BlockVillageCarpet2_7.name=Nice Red Village Carpet (Pattern IV)
+tile.BlockVillageCarpet2_8.name=Nice Red Village Carpet (Pattern V)
+tile.BlockVillageCarpet2_9.name=Nice Red Village Carpet (Pattern VI)
+tile.BlockVillageCarpet2_10.name=Nice White Village Carpet (Pattern I)
+tile.BlockVillageCarpet2_11.name=Nice White Village Carpet (Pattern II)
+tile.BlockVillageCarpet2_12.name=Nice White Village Carpet (Pattern III)
+tile.BlockVillageCarpet2_13.name=Nice White Village Carpet (Pattern IV)
+tile.BlockVillageCarpet2_14.name=Nice White Village Carpet (Pattern V)
+tile.BlockVillageCarpet2_15.name=Nice White Village Carpet (Pattern VI)
+
 #--------------------------------
 #  Items
 #--------------------------------

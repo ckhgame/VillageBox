@@ -94,6 +94,40 @@ tile.BlockVillageCarpet_13.name=绿色村庄地毯
 tile.BlockVillageCarpet_14.name=红色村庄地毯
 tile.BlockVillageCarpet_15.name=黑色村庄地毯
 
+tile.BlockVillageCarpet1_0.name=婴儿蓝村庄地毯
+tile.BlockVillageCarpet1_1.name=香蕉图案村庄地毯
+tile.BlockVillageCarpet1_2.name=小熊图案村庄地毯
+tile.BlockVillageCarpet1_3.name=高级黑色村庄地毯
+tile.BlockVillageCarpet1_4.name=高级绿色村庄地毯
+tile.BlockVillageCarpet1_5.name=高级灰色村庄地毯
+tile.BlockVillageCarpet1_6.name=爱心图案村庄地毯
+tile.BlockVillageCarpet1_7.name=高级浅绿村庄地毯
+tile.BlockVillageCarpet1_8.name=月亮图案村庄地毯
+tile.BlockVillageCarpet1_9.name=橙子图案村庄地毯
+tile.BlockVillageCarpet1_10.name=高级粉红村庄地毯
+tile.BlockVillageCarpet1_11.name=兔子图案村庄地毯
+tile.BlockVillageCarpet1_12.name=方格图案村庄地毯(样式 I)
+tile.BlockVillageCarpet1_13.name=方格图案村庄地毯(样式 II)
+tile.BlockVillageCarpet1_14.name=方格图案村庄地毯(样式 III)
+tile.BlockVillageCarpet1_15.name=方格图案村庄地毯(样式 IV)
+
+tile.BlockVillageCarpet2_0.name=方格图案村庄地毯(样式 V)
+tile.BlockVillageCarpet2_1.name=方格图案村庄地毯(样式 VI)
+tile.BlockVillageCarpet2_2.name=水滴图案村庄地毯
+tile.BlockVillageCarpet2_3.name=鲸鱼图案村庄地毯
+tile.BlockVillageCarpet2_4.name=高级红色村庄地毯(样式 I)
+tile.BlockVillageCarpet2_5.name=高级红色村庄地毯(样式 II)
+tile.BlockVillageCarpet2_6.name=高级红色村庄地毯(样式 III)
+tile.BlockVillageCarpet2_7.name=高级红色村庄地毯(样式 IV)
+tile.BlockVillageCarpet2_8.name=高级红色村庄地毯(样式 V)
+tile.BlockVillageCarpet2_9.name=高级红色村庄地毯(样式 VI)
+tile.BlockVillageCarpet2_10.name=高级白色村庄地毯(样式 I)
+tile.BlockVillageCarpet2_11.name=高级白色村庄地毯(样式 II)
+tile.BlockVillageCarpet2_12.name=高级白色村庄地毯(样式 III)
+tile.BlockVillageCarpet2_13.name=高级白色村庄地毯(样式 IV)
+tile.BlockVillageCarpet2_14.name=高级白色村庄地毯(样式 V)
+tile.BlockVillageCarpet2_15.name=高级白色村庄地毯(样式 VI)
+
 #--------------------------------
 #  Items
 #--------------------------------
