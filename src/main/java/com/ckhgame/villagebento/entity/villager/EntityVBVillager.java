@@ -2,6 +2,7 @@ package com.ckhgame.villagebento.entity.villager;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.ai.villager.VillagerAIAvoidEntity;
 import com.ckhgame.villagebento.ai.villager.VillagerAISleeping;
 import com.ckhgame.villagebento.ai.villager.VillagerAIVisiting;
 import com.ckhgame.villagebento.ai.villager.VillagerAIWanderingInHouse;
@@ -74,7 +75,7 @@ public class EntityVBVillager extends EntityAgeable {
 	
 	public void initAITasks(){
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityMob.class, 6.0F, 0.4D, 0.4D));
+		this.tasks.addTask(1, new VillagerAIAvoidEntity(this, EntityMob.class, 6.0F, 0.4D, 0.4D));
 		this.tasks.addTask(2, new EntityAIOpenDoor(this, true));
 
 		this.tasks.addTask(3, new VillagerAIWatchInteractTarget(this, ConfigVillager.MaxInteractDistance));
@@ -306,8 +307,8 @@ public class EntityVBVillager extends EntityAgeable {
 	}
 
 	//-- visiting --	
-	public void startRandomVisiting(){	
-	 HelperVisiting.startRandomVisiting(this);
+	public int startRandomVisiting(){	
+		return HelperVisiting.startRandomVisiting(this);
 	}
 	
 	public void cancelVisiting(){
@@ -539,7 +540,7 @@ public class EntityVBVillager extends EntityAgeable {
 	}
 
 	private boolean isFirstTimeLivingUpdate = true;
-	private void onFirstTimeLivingUpdate(){
+	protected void onFirstTimeLivingUpdate(){
 		this.refreshBuildingCaches();
 		this.initAITasks();	
 	}

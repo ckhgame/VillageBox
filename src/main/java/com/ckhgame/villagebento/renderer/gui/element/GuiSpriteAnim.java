@@ -9,8 +9,8 @@ import net.minecraft.util.ResourceLocation;
 public class GuiSpriteAnim extends GuiSprite{
 
 	private int frame;
-	private int frameInterval;
-	private int frameCount;
+	public int frameInterval;
+	public int frameCount;
 	
 	public GuiSpriteAnim(double x, double y ,double w, double h,ResourceLocation resource, int frameInterval, int frameCount) {
 		super(x, y, w, h, resource);

@@ -55,7 +55,13 @@ public class EntityVBGuard extends EntityVBVillager {
 		}
 	}
 	
-    protected void equipWeaponAndArmors(boolean equip){
+    @Override
+	protected void onFirstTimeLivingUpdate() {
+		super.onFirstTimeLivingUpdate();
+		this.equipWeaponAndArmors(!this.isSleeping());
+	}
+
+	protected void equipWeaponAndArmors(boolean equip){
     	
     	Item[] armorSets = new Item[]{null,null,null,null,null};
     	

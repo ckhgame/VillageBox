@@ -79,11 +79,18 @@ public class VillagerAISleeping extends VillagerAIMoving
 		if(!this.entity.isSleeping() && this.entity.isNearBed()){
 			this.entity.startSleeping();
 		}
+		
+		if(this.entity.isSleeping()){
+			if(this.entity.getRNG().nextInt(300) == 0){
+				this.entity.playEmoji(VillagerEmoji.EmojiDream, 100);
+	    	}
+		}
 	}
 
 	@Override
 	public void resetTask() {
 		if(this.entity.isSleeping())
+			this.entity.playEmoji(VillagerEmoji.EmojiHappy, 50);
 			this.entity.endSleeping();
 		super.resetTask();
 	}

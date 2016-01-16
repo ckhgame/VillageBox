@@ -6,6 +6,7 @@ import com.ckhgame.villagebento.config.ConfigVillager;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.VBDateTime;
 import com.ckhgame.villagebento.util.village.VBRandomPositionGenerator;
+import com.ckhgame.villagebento.util.village.VillagerEmoji;
 import com.ckhgame.villagebento.util.village.VillagerNavigator;
 
 import net.minecraft.entity.ai.EntityAIBase;
@@ -13,6 +14,14 @@ import net.minecraft.util.Vec3;
 
 public class VillagerAIWanderingInHouse extends VillagerAIMoving
 {
+	private static byte[] emojis = {
+			VillagerEmoji.EmojiHappy,
+			VillagerEmoji.EmojiMusic,
+			VillagerEmoji.EmojiLove,
+			VillagerEmoji.EmojiLonely,
+			VillagerEmoji.EmojiThinking,
+	};
+	
     public VillagerAIWanderingInHouse(EntityVBVillager entity)
     {
     	super(entity);
@@ -44,6 +53,14 @@ public class VillagerAIWanderingInHouse extends VillagerAIMoving
 	public void startExecuting() {
 		this.entity.setDebugText("Wandering(In House)...");
 	}
+    
+    @Override
+	public void updateTask() {
+    	
+    	if(this.entity.getRNG().nextInt(200) == 0){
+    		this.entity.playEmoji(emojis[this.entity.getRNG().nextInt(emojis.length)], 100);
+    	}
+    }
     
     
 }

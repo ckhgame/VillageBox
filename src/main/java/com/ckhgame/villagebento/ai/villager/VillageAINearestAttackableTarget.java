@@ -5,6 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.ckhgame.villagebento.ai.villager.VillagerAITarget;
+import com.ckhgame.villagebento.entity.villager.EntityVBGuard;
+import com.ckhgame.villagebento.util.village.VillagerEmoji;
 
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
@@ -87,6 +89,10 @@ public class VillageAINearestAttackableTarget extends VillagerAITarget
     public void startExecuting()
     {
         this.taskOwner.setAttackTarget(this.targetEntity);
+        //emoji
+        if(this.taskOwner instanceof EntityVBGuard){
+        	((EntityVBGuard)this.taskOwner).playEmoji(VillagerEmoji.EmojiSurprised, 100);
+        }
         super.startExecuting();
     }
 

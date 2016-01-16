@@ -22,12 +22,46 @@ public class RenderGuiVillager extends RenderGuiLiving {
 	private static final ResourceLocation texEmojiLove = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_love.png");
 	private static final ResourceLocation texEmojiSad = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_sad.png");
 	private static final ResourceLocation texEmojiSleepy = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_sleepy.png");
+	private static final ResourceLocation texEmojiLonely = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_lonely.png");
+	private static final ResourceLocation texEmojiBeer = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_beer.png");
+	private static final ResourceLocation texEmojiBread = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_bread.png");
+	private static final ResourceLocation texEmojiConfused = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_confused.png");
+	private static final ResourceLocation texEmojiCry = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_cry.png");
+	private static final ResourceLocation texEmojiHappy = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_happy.png");
+	private static final ResourceLocation texEmojiMusic = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_music.png");
+	private static final ResourceLocation texEmojiPark = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_park.png");
+	private static final ResourceLocation texEmojiSurprised = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_surprised.png");
+	private static final ResourceLocation texEmojiCoin = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_coin.png");
+	private static final ResourceLocation texEmojiDream = new ResourceLocation(Main.MODID + ":" + "textures/render/gui/emoji_dream.png");
 	
-	private static ResourceLocation[] emojis= new ResourceLocation[]{
-			texEmojiThinking,
-			texEmojiLove,
-			texEmojiSad,
-			texEmojiSleepy
+	private static class EmojiInfo{
+		public ResourceLocation resource;
+		public int frameInterval;
+		public int frameCount;
+		public EmojiInfo(ResourceLocation resource, int frameInterval, int frameCount){
+			this.resource = resource;
+			this.frameInterval = frameInterval;
+			this.frameCount = frameCount;
+		}
+	}
+	
+	private static EmojiInfo[] emojis= new EmojiInfo[]{
+			new EmojiInfo(texEmojiThinking, 500, 5),
+			new EmojiInfo(texEmojiLove, 500, 5),
+			new EmojiInfo(texEmojiSad, 500, 5),
+			new EmojiInfo(texEmojiSleepy, 500, 5),
+			new EmojiInfo(texEmojiLonely, 500, 5),
+			new EmojiInfo(texEmojiBeer, 500, 5),
+			new EmojiInfo(texEmojiBread, 500, 5),
+			new EmojiInfo(texEmojiConfused, 500, 5),
+			new EmojiInfo(texEmojiCry, 500, 5),
+			new EmojiInfo(texEmojiHappy, 500, 5),
+			new EmojiInfo(texEmojiMusic, 500, 5),
+			new EmojiInfo(texEmojiPark, 500, 5),
+			new EmojiInfo(texEmojiSurprised, 500, 5),
+			new EmojiInfo(texEmojiCoin, 500, 5),
+			new EmojiInfo(texEmojiDream, 1500, 5),
+			new EmojiInfo(texEmojiHappy, 500, 5)
 	};
 	
 	
@@ -45,7 +79,10 @@ public class RenderGuiVillager extends RenderGuiLiving {
 		}
 		
 		if(entity.hasEmoji()){
-			emoji.resource = emojis[entity.getEmojiID()];
+			EmojiInfo emojiInfo = emojis[entity.getEmojiID()];
+			emoji.resource = emojiInfo.resource;
+			emoji.frameCount = emojiInfo.frameCount;
+			emoji.frameInterval = emojiInfo.frameInterval;
 		}else{
 			emoji.resource = null;
 		}

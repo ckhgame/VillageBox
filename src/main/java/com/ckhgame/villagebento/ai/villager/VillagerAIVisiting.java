@@ -8,6 +8,7 @@ import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
 import com.ckhgame.villagebento.util.village.HelperVisiting;
 import com.ckhgame.villagebento.util.village.VBDateTime;
 import com.ckhgame.villagebento.util.village.VBRandomPositionGenerator;
+import com.ckhgame.villagebento.util.village.VillagerEmoji;
 import com.ckhgame.villagebento.util.village.VillagerNavigator;
 
 import net.minecraft.block.Block;
@@ -17,6 +18,17 @@ import net.minecraft.util.Vec3;
 
 public class VillagerAIVisiting extends VillagerAIMoving
 {
+	private static byte[] emojis = {
+			VillagerEmoji.EmojiBread,
+			VillagerEmoji.EmojiConfused,
+			VillagerEmoji.EmojiHappy,
+			VillagerEmoji.EmojiSad,
+			VillagerEmoji.EmojiLove,
+			VillagerEmoji.EmojiThinking,
+			VillagerEmoji.EmojiCoin
+	};
+	
+	
     public VillagerAIVisiting(EntityVBVillager entity)
     {
     	super(entity);
@@ -53,8 +65,13 @@ public class VillagerAIVisiting extends VillagerAIMoving
     			return false;
     		
     		if(this.entity.getRNG().nextInt(ConfigVillager.VisitingChance) == 0){
-    			this.entity.startRandomVisiting();
+    			int visitingType = this.entity.startRandomVisiting();				
         		this.targetPos = HelperVisiting.findNextMovingTargetInBuilding(this.entity.getVisitingBuildingID());
+        		
+    			//play emoji
+    			if(visitingType == HelperVisiting.VisitingTarget_Tavern) this.entity.playEmoji(VillagerEmoji.EmojiBeer, 9999);
+    			else if(visitingType == HelperVisiting.VisitingTarget_Square) this.entity.playEmoji(VillagerEmoji.EmojiPark, 9999);
+
         		return true; 		
     		}
     		else{
@@ -81,6 +98,10 @@ public class VillagerAIVisiting extends VillagerAIMoving
     	    		}
     	    	}
     		}
+    	}
+    	
+    	if(this.entity.isRiding() &&  this.entity.getRNG().nextInt(200) == 0){
+    		this.entity.playEmoji(emojis[this.entity.getRNG().nextInt(emojis.length)], 100);
     	}
     }
 

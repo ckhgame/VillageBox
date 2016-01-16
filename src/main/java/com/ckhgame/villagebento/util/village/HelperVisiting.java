@@ -17,6 +17,11 @@ import com.ckhgame.villagebento.util.helper.HelperDataVB;
 import net.minecraft.util.Vec3;
 
 public class HelperVisiting {
+	
+	public static final int VisitingTarget_Tavern = 0;
+	public static final int VisitingTarget_Square = 1;
+	public static final int VisitingTargeT_Others = 2;
+	
 	public static Vec3 findNextMovingTargetInBuilding(int buildingID){
 		
 		// ============= notice ==============
@@ -36,17 +41,20 @@ public class HelperVisiting {
 		return p;
 	}
 	
-	public static void startRandomVisiting(EntityVBVillager villager){
+	public static int startRandomVisiting(EntityVBVillager villager){
 		int r = villager.getRNG().nextInt(100);
 		
 		if(r < 30) { //%25 chances go to taverns... 
 			startVisitRandomTavern(villager);
+			return VisitingTarget_Tavern;
 		}
 		else if(r < 40){ //%45 changes go to square
 			startVisitRandomSquare(villager);
+			return VisitingTarget_Square;
 		}
 		else{
 			startVisitRandomBuilding(villager);
+			return VisitingTargeT_Others;
 		}	
 	}
 	
