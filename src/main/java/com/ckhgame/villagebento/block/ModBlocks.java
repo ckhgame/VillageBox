@@ -13,6 +13,7 @@ import com.ckhgame.villagebento.building.BuildingFarmlandSmall;
 import com.ckhgame.villagebento.building.BuildingFishingStore;
 import com.ckhgame.villagebento.building.BuildingFlowerShop;
 import com.ckhgame.villagebento.building.BuildingFolkHouse;
+import com.ckhgame.villagebento.building.BuildingFurnitureStore;
 import com.ckhgame.villagebento.building.BuildingGroundworkLarge;
 import com.ckhgame.villagebento.building.BuildingGroundworkMedium;
 import com.ckhgame.villagebento.building.BuildingGroundworkSmall;
@@ -30,7 +31,6 @@ import com.ckhgame.villagebento.building.BuildingPlayerFieldLarge;
 import com.ckhgame.villagebento.building.BuildingPlayerFieldMedium;
 import com.ckhgame.villagebento.building.BuildingPlayerFieldSmall;
 import com.ckhgame.villagebento.building.BuildingPotionStore;
-import com.ckhgame.villagebento.building.BuildingFurnitureStore;
 import com.ckhgame.villagebento.building.BuildingRoseBridge;
 import com.ckhgame.villagebento.building.BuildingRosePath;
 import com.ckhgame.villagebento.building.BuildingSheepShop;
@@ -48,6 +48,7 @@ import com.ckhgame.villagebento.building.BuildingVillageCenter;
 import com.ckhgame.villagebento.entity.animal.EntityVBChicken;
 import com.ckhgame.villagebento.entity.animal.EntityVBCow;
 import com.ckhgame.villagebento.entity.animal.EntityVBSheep;
+import com.ckhgame.villagebento.item.ItemBlockMeta;
 import com.ckhgame.villagebento.item.ItemBlockVillageBuilding;
 import com.ckhgame.villagebento.model.ModelChair;
 import com.ckhgame.villagebento.model.ModelTable;
@@ -140,6 +141,9 @@ public final class ModBlocks {
     public static BlockMountable blockBirchChair;
     public static BlockCustom blockBirchTable;
     
+    public static BlockVillageWool blockVillageWool;
+    public static BlockVillageCarpet blockVillageCarpet;
+    
     public static final void init() {
         
     	GameRegistry.registerBlock(blockBuildingScanner = new BlockBuildingScanner(), "BlockBuildingScanner");
@@ -218,6 +222,9 @@ public final class ModBlocks {
        	//decoration
        	GameRegistry.registerBlock(blockWineShelf = new BlockTopSides("BlockWineShelf"),"BlockWineShelf");
        	GameRegistry.registerBlock(blockWineBucket = new BlockTopSides("BlockWineBucket"),"BlockWineBucket");
+       	
+       	GameRegistry.registerBlock(blockVillageWool = new BlockVillageWool(),ItemBlockMeta.class,"BlockVillageWool");
+       	GameRegistry.registerBlock(blockVillageCarpet = new BlockVillageCarpet(),ItemBlockMeta.class,"BlockVillageCarpet");
        	
        	//furniture
        	// ** mountable

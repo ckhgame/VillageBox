@@ -16,6 +16,7 @@ public class BlockMountable extends BlockCustom{
 		protected BlockMountable(String name, ModelBase model, String mcTexture) {
 			super(name, model, mcTexture,Material.carpet);
 			this.setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 0.5F, 0.875F);
+			this.setHardness(0.5F);
 		}
 
 		@Override

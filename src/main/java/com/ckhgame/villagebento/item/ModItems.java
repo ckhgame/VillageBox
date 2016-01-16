@@ -4,8 +4,11 @@ package com.ckhgame.villagebento.item;
 import com.ckhgame.villagebento.block.ModBlocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemCloth;
 
 public class ModItems {
   
@@ -205,9 +208,6 @@ public class ModItems {
         GameRegistry.registerItem(itemCookingBookI = new ItemVBBook("ItemCookingBookI",null,CreativeTabs.tabMisc,"CookingBookI"),"ItemCookingBookI");
         GameRegistry.registerItem(itemCookingBookII = new ItemVBBook("ItemCookingBookII",null,CreativeTabs.tabMisc,"CookingBookII"),"ItemCookingBookII");
         GameRegistry.registerItem(itemBuildingsBook = new ItemVBBook("ItemBuildingsBook",null,CreativeTabs.tabMisc,"BuildingsBook"),"ItemBuildingsBook");
-        GameRegistry.registerItem(itemNPCBook = new ItemVBBook("ItemNPCBook",null,CreativeTabs.tabMisc,"NPCBook"),"ItemNPCBook");
-
-        
-        
+        GameRegistry.registerItem(itemNPCBook = new ItemVBBook("ItemNPCBook",null,CreativeTabs.tabMisc,"NPCBook"),"ItemNPCBook");           
     }
 }

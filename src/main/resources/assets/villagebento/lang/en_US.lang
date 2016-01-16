@@ -60,6 +60,40 @@ tile.BlockOakTable.name=Oak Table
 tile.BlockBirchChair.name=Birch Chair
 tile.BlockBirchTable.name=Birch Table
 
+tile.BlockVillageWool_0.name=White Village Wool
+tile.BlockVillageWool_1.name=Orange Village Wool
+tile.BlockVillageWool_2.name=Magenta Village Wool
+tile.BlockVillageWool_3.name=Light Blue Village Wool
+tile.BlockVillageWool_4.name=Yelow Village Wool
+tile.BlockVillageWool_5.name=Lime Village Wool
+tile.BlockVillageWool_6.name=Pink Village Wool
+tile.BlockVillageWool_7.name=Gray Village Wool
+tile.BlockVillageWool_8.name=Light Gray Village Wool
+tile.BlockVillageWool_9.name=Cyan Village Wool
+tile.BlockVillageWool_10.name=Purple Village Wool
+tile.BlockVillageWool_11.name=Blue Village Wool
+tile.BlockVillageWool_12.name=Brown Village Wool
+tile.BlockVillageWool_13.name=Green Village Wool
+tile.BlockVillageWool_14.name=Red Village Wool
+tile.BlockVillageWool_15.name=Black Village Wool
+
+tile.BlockVillageCarpet_0.name=White Village Carpet
+tile.BlockVillageCarpet_1.name=Orange Village Carpet
+tile.BlockVillageCarpet_2.name=Magenta Village Carpet
+tile.BlockVillageCarpet_3.name=Light Blue Village Carpet
+tile.BlockVillageCarpet_4.name=Yelow Village Carpet
+tile.BlockVillageCarpet_5.name=Lime Village Carpet
+tile.BlockVillageCarpet_6.name=Pink Village Carpet
+tile.BlockVillageCarpet_7.name=Gray Village Carpet
+tile.BlockVillageCarpet_8.name=Light Gray Village Carpet
+tile.BlockVillageCarpet_9.name=Cyan Village Carpet
+tile.BlockVillageCarpet_10.name=Purple Village Carpet
+tile.BlockVillageCarpet_11.name=Blue Village Carpet
+tile.BlockVillageCarpet_12.name=Brown Village Carpet
+tile.BlockVillageCarpet_13.name=Green Village Carpet
+tile.BlockVillageCarpet_14.name=Red Village Carpet
+tile.BlockVillageCarpet_15.name=Black Village Carpet
+
 #--------------------------------
 #  Items
 #--------------------------------

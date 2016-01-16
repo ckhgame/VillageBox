@@ -31,6 +31,7 @@ public class BlockVillageBuilding extends Block {
         this.setCreativeTab(CreativeTabs.tabBlock);
         this.setBlockTextureName(Main.MODID + ":"+name);
         this.setStepSound(soundTypeWood);
+        this.setHardness(1.0F);
         
         this.hasOwner = hasOwner;
         
