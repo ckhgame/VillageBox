@@ -143,8 +143,8 @@ public final class ModBlocks {
     
     public static BlockVillageWool blockVillageWool;
     public static BlockVillageCarpet blockVillageCarpet;
+    public static BlockVillageCarpet blockVillageCarpet1;
     public static BlockVillageCarpet blockVillageCarpet2;
-    public static BlockVillageCarpet blockVillageCarpet3;
     
     public static final void init() {
         
@@ -227,8 +227,8 @@ public final class ModBlocks {
        	
        	GameRegistry.registerBlock(blockVillageWool = new BlockVillageWool(),ItemBlockMeta.class,"BlockVillageWool");
        	GameRegistry.registerBlock(blockVillageCarpet = new BlockVillageCarpet("BlockVillageCarpet","villageWool"),ItemBlockMeta.class,"BlockVillageCarpet");
-       	GameRegistry.registerBlock(blockVillageCarpet2 = new BlockVillageCarpet("BlockVillageCarpet1","carpet"),ItemBlockMeta.class,"BlockVillageCarpet1");
-       	GameRegistry.registerBlock(blockVillageCarpet3 = new BlockVillageCarpet("BlockVillageCarpet2","carpet2"),ItemBlockMeta.class,"BlockVillageCarpet2");
+       	GameRegistry.registerBlock(blockVillageCarpet1 = new BlockVillageCarpet("BlockVillageCarpet1","carpet"),ItemBlockMeta.class,"BlockVillageCarpet1");
+       	GameRegistry.registerBlock(blockVillageCarpet2 = new BlockVillageCarpet("BlockVillageCarpet2","carpet2"),ItemBlockMeta.class,"BlockVillageCarpet2");
        	
        	//furniture
        	// ** mountable

@@ -57,9 +57,8 @@ public class ProfessionVillageElder extends Profession {
         compBuy.addItem(ModBlocks.blockBuildersHome, 0);
         compBuy.addItem(ModBlocks.blockHunterHouse, 0);
         compBuy.addItem(ModBlocks.blockMiningHouse, 0);
-        compBuy.addItem(ModBlocks.blockChurch, 0);
+        compBuy.addItem(ModBlocks.blockFolkHouse, 0);
         
-        compBuy.addItem(ModBlocks.blockFolkHouse, 1);
         compBuy.addItem(ModBlocks.blockFarmland, 1);
         compBuy.addItem(ModBlocks.blockChickenShop, 1);
         compBuy.addItem(ModBlocks.blockSheepShop, 1);
@@ -69,6 +68,7 @@ public class ProfessionVillageElder extends Profession {
         compBuy.addItem(ModBlocks.blockSmallHotel, 1);
         compBuy.addItem(ModBlocks.blockSmallTavern, 1);
         compBuy.addItem(ModBlocks.blockPotionStore, 1);
+        compBuy.addItem(ModBlocks.blockChurch, 1);
                
         compBuy.addItem(ModBlocks.blockLargeBakery, 2);
         compBuy.addItem(ModBlocks.blockFlowerShop, 2); 
@@ -76,6 +76,7 @@ public class ProfessionVillageElder extends Profession {
         compBuy.addItem(ModBlocks.blockSmallCasino, 2); 
         compBuy.addItem(ModBlocks.blockTailorStore, 2);
 
+        compBuy.addItem(ModItems.itemVillageStick, 0);
         compBuy.addItem(ModBlocks.blockVillagerHomeTP, 0);
         compBuy.addItem(ModBlocks.blockBuildingDestroyer, 0);
         

@@ -21,244 +21,236 @@ public class ItemPrice {
 		//register(ModItems.itemVillageStick,999);
 		//register(ModBlocks.blockGroundworkOnlySmall,100);
 		
-		register(Blocks.log,4);
-		register(Blocks.log2,4);
-		register(Blocks.cobblestone,2);
+		register(Blocks.log,24);
+		register(Blocks.log2,24);
+		register(Blocks.cobblestone,10);
 		
-		register(Items.rotten_flesh,4);
+		register(ModItems.itemVillageStick,100);
 		
-		register(Items.bread,20);
+		register(Items.bread,80);
 		
 		//Fishing
-		register(Items.cooked_fished,20);
-		register(Items.fishing_rod,50);
-		register(ModItems.itemFishingRodIron,200);
-		register(ModItems.itemFishingRodGold,400);
-		register(ModItems.itemFishingRodDiamond,800);
-		register(Items.fish,20);		
+		register(Items.cooked_fished,80);
+		register(Items.fishing_rod,240);
+		register(ModItems.itemFishingRodIron,2500);
+		register(ModItems.itemFishingRodGold,5000);
+		register(ModItems.itemFishingRodDiamond,12000);
+		register(Items.fish,200);		
 		
-		register(Items.iron_pickaxe,64);
-		register(Items.golden_pickaxe,98);
-		register(Items.diamond_pickaxe,126);
-		register(Blocks.ladder,3);
-		register(Blocks.rail,6);
-		register(Items.compass,122);
-		register(Blocks.torch,3);
-		register(Items.minecart,76);
-		register(Items.iron_sword,58);
-		register(Items.iron_axe,62);
-		register(Items.golden_sword,86);
-		register(Items.golden_axe,92);
-		register(Items.iron_hoe,64);
-		register(Items.golden_hoe,98);
-		register(Items.bow,45);
-		register(Items.arrow,15);
-		register(Items.leather,30);
-		register(Items.porkchop,20);
-		register(Items.beef,25);
-		register(Items.stick,2);
+		register(Items.iron_pickaxe,960);
+		register(Items.golden_pickaxe,1500);
+		register(Items.diamond_pickaxe,15000);
+		register(Blocks.ladder,50);
+		register(Blocks.rail,100);
+		register(Items.compass,600);
+		register(Blocks.torch,50);
+		register(Items.minecart,600);
+		register(Items.iron_sword,640);
+		register(Items.iron_axe,960);
+		register(Items.golden_sword,1000);
+		register(Items.golden_axe,1500);
+		register(Items.iron_hoe,640);
+		register(Items.golden_hoe,960);
+		register(Items.bow,240);
+		register(Items.arrow,80);
+		register(Items.leather,300);
+		register(Items.porkchop,250);
+		register(Items.beef,300);
+		register(Items.stick,25);
 		
-		register(Items.flint,8);
-		register(Items.coal,12);
-		register(Items.iron_ingot,24);
-		register(Items.gold_ingot,48);
+		register(Items.flint,12);
+		register(Items.coal,120);
+		register(Items.iron_ingot,260);
+		register(Items.gold_ingot,420);
 		
-		register(Items.paper,4);
+		register(Items.paper,150);
 		
-		register(Items.reeds,6);
-		register(Items.wheat,6);
-		register(Items.apple,18);
-		register(Items.golden_apple,100);
-		register(Blocks.melon_block,6);
-		register(Blocks.pumpkin,6);
-		register(Items.carrot,4);
-		register(Items.golden_carrot,100);
-		register(Items.potato,4);
-		register(Items.cake,36);
-		register(Items.pumpkin_pie,32);
-		register(Items.baked_potato,20);
-		register(Items.cookie,18);
+		register(Items.reeds,30);
+		register(Items.wheat,30);
+		register(Items.apple,180);
+		register(Items.golden_apple,1000);
+		register(Blocks.melon_block,60);
+		register(Blocks.pumpkin,60);
+		register(Items.carrot,30);
+		register(Items.golden_carrot,500);
+		register(Items.potato,30);
+		register(Items.cake,600);
+		register(Items.pumpkin_pie,200);
+		register(Items.baked_potato,80);
+		register(Items.cookie,70);
 		
-		register(Blocks.wool,4);
-		register(Items.egg,4);
-		register(ModItems.itemBottleOfMilk,4);
-		register(Items.feather,16);
-		register(Items.string,16);
-		register(Items.lead,26);
+		register(Blocks.wool,30);
+		register(Items.egg,30);
+		register(ModItems.itemBottleOfMilk,30);
+		register(Items.feather,260);
+		register(Items.string,100);
+		register(Items.lead,500);
 		
 		
 		register(Items.glass_bottle,10);
-		register(Items.flower_pot,15);
-		register(Items.potionitem,180);
-		register(Items.experience_bottle,240);
+		register(Items.flower_pot,200);
+		register(Items.potionitem,900);
+		register(Items.experience_bottle,2400);
 		
 		//Village Building Blocks
-		register(ModBlocks.blockSmallBakery,50);
-		register(ModBlocks.blockFishingStore,100);
-		register(ModBlocks.blockBlackSmithsShop,150);
-		register(ModBlocks.blockBuildersHome,150);
-		register(ModBlocks.blockMarket,150);
-		register(ModBlocks.blockHunterHouse,200);
-		register(ModBlocks.blockMiningHouse,200);	
+		register(ModBlocks.blockSmallBakery,150);
+		register(ModBlocks.blockFishingStore,300);
+		register(ModBlocks.blockBlackSmithsShop,750);
+		register(ModBlocks.blockBuildersHome,750);
+		register(ModBlocks.blockMarket,750);
+		register(ModBlocks.blockHunterHouse,1000);
+		register(ModBlocks.blockMiningHouse,1000);	
 		
-		register(ModBlocks.blockFolkHouse,300);		
-		register(ModBlocks.blockFarmland,350);
-		register(ModBlocks.blockChickenShop,350);
-		register(ModBlocks.blockSheepShop,350);
-		register(ModBlocks.blockCowShop,350);
-		register(ModBlocks.blockLibrary,500);
-		register(ModBlocks.blockSmallMilitaryCamp,500);
-		register(ModBlocks.blockSmallHotel,700);
-		register(ModBlocks.blockSmallTavern,700);
-		register(ModBlocks.blockPotionStore,700);
-		register(ModBlocks.blockChurch,800);
+		register(ModBlocks.blockFolkHouse,5000);		
+		register(ModBlocks.blockFarmland,4500);
+		register(ModBlocks.blockChickenShop,4500);
+		register(ModBlocks.blockSheepShop,4500);
+		register(ModBlocks.blockCowShop,4500);
+		register(ModBlocks.blockLibrary,10000);
+		register(ModBlocks.blockSmallMilitaryCamp,10000);
+		register(ModBlocks.blockSmallHotel,24000);
+		register(ModBlocks.blockSmallTavern,24000);
+		register(ModBlocks.blockPotionStore,25000);
+		register(ModBlocks.blockChurch,30000);
 		
-		register(ModBlocks.blockLargeBakery,1000);
-		register(ModBlocks.blockFlowerShop,1000);
-		register(ModBlocks.blockFurnitureStore,1000);
-		register(ModBlocks.blockSmallCasino,1000);
-		register(ModBlocks.blockTailorStore,1000);
+		register(ModBlocks.blockLargeBakery,60000);
+		register(ModBlocks.blockFlowerShop,70000);
+		register(ModBlocks.blockFurnitureStore,80000);
+		register(ModBlocks.blockSmallCasino,60000);
+		register(ModBlocks.blockTailorStore,80000);
 
 		// Builder's House
-		register(ModBlocks.blockPlayerFieldSmall,150);
-		register(ModBlocks.blockDefenceTower,250);
-		register(ModBlocks.blockTownSquareSmall,300);
-		register(ModBlocks.blockPlayerFieldMedium,500);
-		register(ModBlocks.blockTownSquareLarge,800);
-		register(ModBlocks.blockBuildingDestroyer,400);
+		register(ModBlocks.blockPlayerFieldSmall,1000);
+		register(ModBlocks.blockDefenceTower,3000);
+		register(ModBlocks.blockTownSquareSmall,5000);
+		register(ModBlocks.blockPlayerFieldMedium,20000);
+		register(ModBlocks.blockTownSquareLarge,30000);
 		
 		//misc
-		register(ModBlocks.blockVillagerHomeTP,500);
-		register(ModBlocks.blockBuildingDestroyer,1000);
+		register(ModBlocks.blockVillagerHomeTP,5000);
+		register(ModBlocks.blockBuildingDestroyer,30000);
 		
 		//Furniture Store
-		register(Blocks.bookshelf,100);
-		register(Items.bed,100);
-		register(Blocks.chest,100);
-		register(ModBlocks.blockWineBucket,200);
-		register(ModBlocks.blockWineShelf,250);
-		register(ModBlocks.blockOakChair,300);
-		register(ModBlocks.blockOakTable,500);
-		register(ModBlocks.blockBirchChair,300);
-		register(ModBlocks.blockBirchTable,500);
+		register(Blocks.bookshelf,2500);
+		register(Items.bed,1000);
+		register(Blocks.chest,500);
+		register(ModBlocks.blockWineBucket,5000);
+		register(ModBlocks.blockWineShelf,5000);
+		register(ModBlocks.blockOakChair,3000);
+		register(ModBlocks.blockOakTable,4000);
+		register(ModBlocks.blockBirchChair,3000);
+		register(ModBlocks.blockBirchTable,4000);
 
 			
 		//Large Buildings
-		register(ModBlocks.blockLargeMilitaryCamp,880);
-		register(ModBlocks.blockLargeHotel,890);
-		register(ModBlocks.blockLargeTavern,890);
-		register(ModBlocks.blockLargeCasino,1200);
+		//register(ModBlocks.blockLargeMilitaryCamp,880);
+		//register(ModBlocks.blockLargeHotel,890);
+		//register(ModBlocks.blockLargeTavern,890);
+		//register(ModBlocks.blockLargeCasino,1200);
 		
 		
 		//Decorations
-		register(ModBlocks.blockSunflower,180);
-		register(ModBlocks.blockTeaChair,220);
-		register(ModBlocks.blockAutumnGarden,280);
-		register(ModBlocks.blockPeacefulGarden,180);
-		register(ModBlocks.blockRoseBridge,220);
-		register(ModBlocks.blockRosePath,280);
-		register(ModBlocks.blockChristmas,280);
+		register(ModBlocks.blockSunflower,12000);
+		register(ModBlocks.blockTeaChair,15000);
+		register(ModBlocks.blockAutumnGarden,17500);
+		register(ModBlocks.blockPeacefulGarden,22000);
+		register(ModBlocks.blockRoseBridge,26000);
+		register(ModBlocks.blockRosePath,30000);
+		register(ModBlocks.blockChristmas,42000);
 		
 		
 		//Animals
-		register(ModBlocks.blockChicken,200);
-		register(ModBlocks.blockCow,300);
-		register(ModBlocks.blockSheep,300);
-		register(ModItems.itemChickenFood,2);
-		register(ModItems.itemSheepFood,3);
-		register(ModItems.itemCowFood,3);
-		register(ModItems.itemChickenPotion,150);
-		register(ModItems.itemSheepPotion,150);
-		register(ModItems.itemCowPotion,150);
+		register(ModBlocks.blockChicken,2000);
+		register(ModBlocks.blockCow,3000);
+		register(ModBlocks.blockSheep,3000);
+		register(ModItems.itemChickenFood,30);
+		register(ModItems.itemSheepFood,40);
+		register(ModItems.itemCowFood,40);
+		register(ModItems.itemChickenPotion,1500);
+		register(ModItems.itemSheepPotion,1500);
+		register(ModItems.itemCowPotion,1500);
 		register(ModItems.itemChickenGloves,200);
 		register(ModItems.itemWoolShears,200);
 		register(ModItems.itemMilkBottle,5);
-		register(ModItems.itemVillageEgg,20);
-		register(ModItems.itemVillageHeartEgg,30);
-		register(ModItems.itemVillageSilverEgg,25);
-		register(ModItems.itemVillageGoldenEgg,100);
-		register(ModItems.itemVillageEasterEgg,50);
-		register(ModItems.itemVillageMilk,40);
-		register(ModItems.itemVillageWool,36);
+		register(ModItems.itemVillageEgg,560);
+		register(ModItems.itemVillageHeartEgg,800);
+		register(ModItems.itemVillageSilverEgg,1500);
+		register(ModItems.itemVillageGoldenEgg,2000);
+		register(ModItems.itemVillageEasterEgg,1000);
+		register(ModItems.itemVillageMilk,1200);
+		register(ModItems.itemVillageWool,1200);
 				
-		register(ModItems.itemGauze,4);
-		register(ModItems.itemSeaweed,8);
+		register(ModItems.itemGauze,500);
+		register(ModItems.itemSeaweed,600);
 
 		//Seeds
-		register(Items.wheat_seeds,4);
-		register(Items.pumpkin_seeds,20);
-		register(Items.melon_seeds,20);
-		register(ModItems.itemCabbageSeed,14);
-		register(ModItems.itemGrapeSeed,28);
-		register(ModItems.itemCornSeed,14);
-		register(ModItems.itemChiliSeed,24);
-		register(ModItems.itemRiceSeed,16);
-		register(ModItems.itemSoybeanSeed,20);
+		register(Items.wheat_seeds,20);
+		register(Items.pumpkin_seeds,100);
+		register(Items.melon_seeds,100);
+		register(ModItems.itemCabbageSeed,200);
+		register(ModItems.itemRiceSeed,200);
+		register(ModItems.itemCornSeed,200);
+		register(ModItems.itemChiliSeed,300);
+		register(ModItems.itemGrapeSeed,300);
+		register(ModItems.itemSoybeanSeed,300);
 
 		//Crops
-		register(ModItems.itemCabbage,30);
-		register(ModItems.itemChili,50);
-		register(ModItems.itemGrapes,80);
-		register(ModItems.itemRiceplant,30);
-		register(ModItems.itemSoybeans,40);
-		register(ModItems.itemCorn,30);
+		register(ModItems.itemRiceplant,600);
+		register(ModItems.itemCorn,600);
+		register(ModItems.itemCabbage,600);
+		register(ModItems.itemSoybeans,900);
+		register(ModItems.itemChili,900);
+		register(ModItems.itemGrapes,900);
 		
 		//Food
-		register(ModItems.itemAppleCandy,30);
-		register(ModItems.itemBoiledEgg,50);
-		register(ModItems.itemCarrotCake,40);
-		register(ModItems.itemCheese,30);
-		register(ModItems.itemFries,40);
-		register(ModItems.itemHambuger,30);
-		register(ModItems.itemMayonaise,30);
-		register(ModItems.itemMelonIce,50);
-		register(ModItems.itemPorkRamen,80);
-		register(ModItems.itemRice,30);
-		register(ModItems.itemRiceFlour,40);
-		register(ModItems.itemSalt,30);
-		register(ModItems.itemUdon,40);
-		register(ModItems.itemWheatFlour,30);				
-		register(ModItems.itemNoodleSoup,60);
-		register(ModItems.itemBeefNoodleSoup,50);
-		register(ModItems.itemBoiledFish,80);
-		register(ModItems.itemBouquetLamb,76);
-		register(ModItems.itemCongee,50);
-		register(ModItems.itemCornChips,30);
-		register(ModItems.itemCreamyCorn,30);
-		register(ModItems.itemMapoTofu,52);
-		register(ModItems.itemNigiri,52);
-		register(ModItems.itemOil,30);
-		register(ModItems.itemSoySauce,40);
-		register(ModItems.itemTofu,30);
+		register(ModItems.itemAppleCandy,300);
+		register(ModItems.itemBoiledEgg,500);
+		register(ModItems.itemCarrotCake,400);
+		register(ModItems.itemCheese,300);
+		register(ModItems.itemFries,400);
+		register(ModItems.itemHambuger,300);
+		register(ModItems.itemMayonaise,300);
+		register(ModItems.itemMelonIce,500);
+		register(ModItems.itemPorkRamen,800);
+		register(ModItems.itemRice,300);
+		register(ModItems.itemRiceFlour,400);
+		register(ModItems.itemSalt,300);
+		register(ModItems.itemUdon,400);
+		register(ModItems.itemWheatFlour,300);				
+		register(ModItems.itemNoodleSoup,600);
+		register(ModItems.itemBeefNoodleSoup,500);
+		register(ModItems.itemBoiledFish,800);
+		register(ModItems.itemBouquetLamb,760);
+		register(ModItems.itemCongee,500);
+		register(ModItems.itemCornChips,300);
+		register(ModItems.itemCreamyCorn,300);
+		register(ModItems.itemMapoTofu,520);
+		register(ModItems.itemNigiri,520);
+		register(ModItems.itemOil,300);
+		register(ModItems.itemSoySauce,400);
+		register(ModItems.itemTofu,300);
 				
 		//Wine
-		register(ModItems.itemCockTail,42);
-		register(ModItems.itemBeer,40);
-		register(ModItems.itemGrapeVine,46);
-		register(ModItems.itemWhisky,54);
-		register(ModItems.itemVodka,68);
-		register(ModItems.itemCookVine,30);
+		register(ModItems.itemCockTail,840);
+		register(ModItems.itemBeer,800);
+		register(ModItems.itemGrapeVine,920);
+		register(ModItems.itemWhisky,1080);
+		register(ModItems.itemVodka,1360);
+		register(ModItems.itemCookVine,600);
 		
 		//Books
-		register(ModItems.itemCookingBookI,30);
-		register(ModItems.itemCookingBookII,52);
-		register(ModItems.itemAnimalBook,52);
-		register(ModItems.itemPlantBook,52);
-		register(ModItems.itemBuildingsBook,68);
-		register(ModItems.itemNPCBook,64);
+		register(ModItems.itemCookingBookI,900);
+		register(ModItems.itemCookingBookII,1520);
+		register(ModItems.itemAnimalBook,1560);
+		register(ModItems.itemPlantBook,1600);
+		register(ModItems.itemBuildingsBook,2200);
+		register(ModItems.itemNPCBook,1800);
 		
-		
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+		//carpets
+		register(ModBlocks.blockVillageCarpet,2000);
+		register(ModBlocks.blockVillageCarpet1,5000);
+		register(ModBlocks.blockVillageCarpet2,5000);
+	}	
 	
 	private static HashMap<Item,Integer> mapItemPrice = new HashMap<Item,Integer>();
 	

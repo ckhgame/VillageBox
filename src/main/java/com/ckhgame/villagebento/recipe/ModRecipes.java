@@ -259,11 +259,18 @@ public class ModRecipes {
 		//riceplant -> rice
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemRice), new ItemStack(ModItems.itemRiceplant));
 		
-		//village wool -> 2 wool
-		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wool,6), new ItemStack(ModItems.itemVillageWool));
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockVillageWool), 
+				"AAA",
+				"AAA",
+				"AAA",
+				'A',ModItems.itemVillageWool);
 		
 		//bucket of milk -> bucket + 2 bottle of milk
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemBottleOfMilk,2), new ItemStack(Items.milk_bucket));
 
+		//village wool -> village wool block
+		for(int i =0;i<16;i++){
+			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.blockVillageWool,1,15-i),new ItemStack(Items.dye, 1, i),ModBlocks.blockVillageWool);
+		}		
 	}
 }
