@@ -171,13 +171,13 @@ public class ItemPrice {
 		register(ModItems.itemCowPotion,1500);
 		register(ModItems.itemChickenGloves,200);
 		register(ModItems.itemWoolShears,200);
-		register(ModItems.itemMilkBottle,5);
+		register(ModItems.itemMilkBottle,100);
 		register(ModItems.itemVillageEgg,560);
 		register(ModItems.itemVillageHeartEgg,800);
 		register(ModItems.itemVillageSilverEgg,1500);
 		register(ModItems.itemVillageGoldenEgg,2000);
 		register(ModItems.itemVillageEasterEgg,1000);
-		register(ModItems.itemVillageMilk,1200);
+		register(ModItems.itemVillageMilk,1300);
 		register(ModItems.itemVillageWool,1200);
 				
 		register(ModItems.itemGauze,500);
