@@ -63,9 +63,9 @@ public class BuildingCowShop extends Building {
 		bb.buildBlock(-1,0,0,Blocks.planks,1);bb.buildBlock(-1,0,4,Blocks.planks,1);bb.buildBlock(0,0,-4,Blocks.planks,1);
 		bb.buildBlock(0,0,0,Blocks.planks,1);bb.buildBlock(0,0,1,Blocks.planks,1);bb.buildBlock(0,0,2,Blocks.planks,1);
 		bb.buildBlock(0,0,4,Blocks.planks,1);bb.buildBlock(1,0,-4,Blocks.planks,1);bb.buildBlock(1,0,0,Blocks.planks,1);
-		bb.buildBlock(1,0,4,Blocks.planks,1);bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,-3,Blocks.bed,3);
+		bb.buildBlock(1,0,4,Blocks.planks,1);bb.buildBlock(2,0,-4,Blocks.planks,1);bb.buildBlock(2,0,-1,Blocks.bed,3);
 		bb.buildBlock(2,0,0,Blocks.planks,1);bb.buildBlock(2,0,4,Blocks.planks,1);bb.buildBlock(3,0,-4,Blocks.planks,1);
-		bb.buildBlock(3,0,-3,Blocks.bed,11);bb.buildBlock(3,0,-2,Blocks.bookshelf,0);bb.buildBlock(3,0,-1,Blocks.bookshelf,0);
+		bb.buildBlock(3,0,-3,Blocks.bookshelf,0);bb.buildBlock(3,0,-2,Blocks.bookshelf,0);bb.buildBlock(3,0,-1,Blocks.bed,11);
 		bb.buildBlock(3,0,0,Blocks.planks,1);bb.buildBlock(3,0,4,Blocks.planks,1);bb.buildBlock(4,0,-4,Blocks.planks,1);
 		bb.buildBlock(4,0,-3,Blocks.planks,1);bb.buildBlock(4,0,-2,Blocks.planks,1);bb.buildBlock(4,0,-1,Blocks.planks,1);
 		bb.buildBlock(4,0,0,Blocks.planks,1);bb.buildBlock(4,0,1,Blocks.planks,1);bb.buildBlock(4,0,2,Blocks.wooden_door,2);
@@ -89,8 +89,8 @@ public class BuildingCowShop extends Building {
 		bb.buildBlock(2,1,0,Blocks.planks,1);bb.buildBlock(2,1,4,Blocks.planks,1);bb.buildBlock(2,1,5,Blocks.wooden_slab,12);
 		bb.buildBlock(3,1,-5,Blocks.acacia_stairs,2);bb.buildBlock(3,1,-4,Blocks.planks,1);bb.buildBlock(3,1,0,Blocks.planks,1);
 		bb.buildBlock(3,1,4,Blocks.planks,1);bb.buildBlock(3,1,5,Blocks.wooden_slab,12);bb.buildBlock(4,1,-5,Blocks.acacia_stairs,2);
-		bb.buildBlock(4,1,-4,Blocks.planks,1);bb.buildBlock(4,1,-3,Blocks.planks,1);bb.buildBlock(4,1,-2,Blocks.glass_pane,0);
-		bb.buildBlock(4,1,-1,Blocks.glass_pane,0);bb.buildBlock(4,1,0,Blocks.planks,1);bb.buildBlock(4,1,1,Blocks.planks,1);
+		bb.buildBlock(4,1,-4,Blocks.planks,1);bb.buildBlock(4,1,-3,Blocks.glass_pane,0);bb.buildBlock(4,1,-2,Blocks.glass_pane,0);
+		bb.buildBlock(4,1,-1,Blocks.planks,1);bb.buildBlock(4,1,0,Blocks.planks,1);bb.buildBlock(4,1,1,Blocks.planks,1);
 		bb.buildBlock(4,1,2,Blocks.wooden_door,8);bb.buildBlock(4,1,3,Blocks.planks,1);bb.buildBlock(4,1,4,Blocks.planks,1);
 		bb.buildBlock(4,1,5,Blocks.wooden_slab,12);bb.buildBlock(5,1,-5,Blocks.acacia_stairs,2);bb.buildBlock(5,1,-4,Blocks.acacia_stairs,7);
 		bb.buildBlock(5,1,4,Blocks.wooden_slab,12);bb.buildBlock(5,1,5,Blocks.wooden_slab,12);bb.buildBlock(-5,2,-4,Blocks.acacia_stairs,2);
@@ -150,9 +150,9 @@ public class BuildingCowShop extends Building {
 		bb.buildBlock(5,4,-1,Blocks.acacia_stairs,1);bb.buildBlock(5,4,0,Blocks.wooden_slab,4);bb.buildBlock(-2,1,-3,Blocks.torch,3);
 		bb.buildBlock(1,1,-3,Blocks.torch,3);bb.buildBlock(-3,2,2,Blocks.torch,1);bb.buildBlock(-1,2,1,Blocks.torch,3);
 		bb.buildBlock(3,2,1,Blocks.torch,3);bb.addEntityPainting(-1,1,-4,0,"Sunset");
-		bb.addEntityItemFrame(4,1,0,3,ModBlocks.blockCowShop);
-		bb.addEntityItemFrame(0,2,0,0,ModItems.itemMilkBottle);
-		bb.addEntityItemFrame(0,1,0,0,ModItems.itemVillageMilk);
+		bb.addEntityItemFrame(4,1,0,3,ModBlocks.blockCowShop,0);
+		bb.addEntityItemFrame(0,1,0,0,ModItems.itemVillageMilk,0);
+		bb.addEntityItemFrame(0,2,0,0,ModItems.itemMilkBottle,0);
 	}
 
 }
