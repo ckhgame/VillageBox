@@ -2,13 +2,16 @@ package com.ckhgame.villagebento.profession;
 
 import java.util.ArrayList;
 
+import com.ckhgame.villagebento.block.ModBlocks;
 import com.ckhgame.villagebento.entity.villager.EntityVBVillager;
+import com.ckhgame.villagebento.item.ModItems;
 import com.ckhgame.villagebento.util.data.RangeInt;
 import com.ckhgame.villagebento.util.data.VillagerChat;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompAbout;
 import com.ckhgame.villagebento.villagercomponent.VillagerCompBuy;
 import com.ckhgame.villagebento.villagercomponent.VillagerComponent;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.util.StatCollector;
 
 public class ProfessionTailor extends Profession {
@@ -39,7 +42,11 @@ public class ProfessionTailor extends Profession {
         components.add(new VillagerCompAbout(villager));
         
         VillagerCompBuy compBuy = new VillagerCompBuy(villager);
-
+        for(int i =0;i<16;i++)
+        	compBuy.addItem(ModBlocks.blockVillageCarpet1, 0, i);
+        for(int i =0;i<16;i++)
+        	compBuy.addItem(ModBlocks.blockVillageCarpet2, 0, i);
+        
         components.add(compBuy);
 
 	}

@@ -54,6 +54,8 @@ public class ProfessionSheepSeller extends Profession {
         compBuy.addItem(ModItems.itemGauze, 0);
         compBuy.addItem(ModItems.itemVillageWool, 0);
         compBuy.addItem(Items.lead, 0);
+        for(int i =0;i<16;i++)
+        	compBuy.addItem(ModBlocks.blockVillageCarpet, 0, i);
 
         components.add(compBuy);
 
