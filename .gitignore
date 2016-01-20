@@ -1,20 +1,22 @@
-#################
-## Village Bento
-#################
-
-# forge
-
-.gradle/
-.settings/
-bin/
-build/
-eclipse/
-gradle/
-
+# eclipse
+bin
+*.launch
+.settings
+.metadata
 .classpath
 .project
-build.gradle
-gradlew
 
-*.txt
-*.bat
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
