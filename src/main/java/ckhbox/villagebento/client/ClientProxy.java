@@ -1,5 +1,6 @@
 package ckhbox.villagebento.client;
 
+import ckhbox.villagebento.client.renderer.ModRenderers;
 import ckhbox.villagebento.common.CommonProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -10,6 +11,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
+		ModRenderers.init();
 	}
 
 	@Override
