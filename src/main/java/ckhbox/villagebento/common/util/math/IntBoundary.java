@@ -11,6 +11,16 @@ public class IntBoundary {
 		this.maxz = maxz;
 	}
 
+	public IntVec3 center(){
+		IntVec3 center = new IntVec3((this.minx + this.maxx)/2, (this.miny + this.maxy)/2, (this.minz + this.maxz)/2);
+		return center;
+	}
+	
+	public IntVec3 size(){
+		IntVec3 size = new IntVec3(this.maxx - this.minx + 1, this.maxy - this.miny + 1, this.maxz - this.minz + 1);
+		return size;
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("from:[%d,%d,%d] to:[%d,%d,%d] size:[%d,%d,%d]", 
