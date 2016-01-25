@@ -1,14 +1,22 @@
 package ckhbox.villagebento.client.gui.villager;
 
+import java.io.IOException;
 import java.util.List;
 
+import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.client.gui.GuiTextButton;
+import ckhbox.villagebento.common.network.ModNetwork;
+import ckhbox.villagebento.common.network.message.MessageGuiActionPerformed;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class GuiVillagerMain extends GuiScreen{
 	
 	private static final ResourceLocation VillagerMainGuiTexture = new ResourceLocation(PathHelper.full("textures/gui/villager/main.png"));
@@ -33,9 +41,14 @@ public class GuiVillagerMain extends GuiScreen{
         int y = (this.height - this.ySize) / 2;  
         
         for(int i =0;i<4;i++){
-        	this.buttonList.add(new GuiTextButton(this.mc, 1, x + offsetX, y + playerChatOptionsOffsetY + i * playerChatOptionHeight, "> chat option " + i));
+        	this.buttonList.add(new GuiTextButton(this.mc, i, x + offsetX, y + playerChatOptionsOffsetY + i * playerChatOptionHeight, "> chat option " + i));
         }
         
+    }
+    
+    public boolean doesGuiPauseGame()
+    {
+        return false;
     }
 
     
@@ -51,9 +64,8 @@ public class GuiVillagerMain extends GuiScreen{
         this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
 		
         String name = "Mike";
-        String job = "Novice Builder";
-        this.drawCenteredStringNoshadow(this.mc.fontRendererObj, name, this.width / 2, y + villagerNameOffsetY, 6316128);
-        this.drawCenteredStringNoshadow(this.mc.fontRendererObj, job, this.width / 2, y + villagerNameOffsetY + 10, 8421504);
+        String profession = "Novice Builder";
+        GuiHelper.drawNameAndProfession(this.mc.fontRendererObj, name, profession, this.width / 2, y + villagerNameOffsetY);
         
         String text = "Hello! welcome to villageb bento, I'm a villager in your village!";
         //this.drawWrappedString(this.mc.fontRendererObj, "test text....",x + offsetX, y + villagerTextOffsetY, 16777120, this.xSize - offsetX * 2);
@@ -61,17 +73,17 @@ public class GuiVillagerMain extends GuiScreen{
         
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
+
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException {
+
+		ModNetwork.getInstance().sendToServer(new MessageGuiActionPerformed(0, button.id));
+		
+		super.actionPerformed(button);
+	}
     
-	protected void drawWrappedString(FontRenderer renderer, String drawing, int x, int y, int color, int wrap)
-    {
-        List<String> lines = renderer.listFormattedStringToWidth(drawing, wrap);
-        for (int i = 0; i < lines.size(); i++)
-            renderer.drawString(lines.get(i), x, y + (i * 9), color, false);
-    }
 	
-	public void drawCenteredStringNoshadow(FontRenderer fontRendererIn, String text, int x, int y, int color)
-    {
-        fontRendererIn.drawString(text, x - fontRendererIn.getStringWidth(text) / 2, y, color);
-    }
+	
+	
 	
 }
