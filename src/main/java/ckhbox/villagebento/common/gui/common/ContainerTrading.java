@@ -1,29 +1,36 @@
-package ckhbox.villagebento.common.gui.villager;
+package ckhbox.villagebento.common.gui.common;
 
-import net.minecraft.entity.IMerchant;
+import ckhbox.villagebento.common.village.trading.ITrading;
+import ckhbox.villagebento.common.village.trading.InventoryTrading;
+import ckhbox.villagebento.common.village.trading.SlotTradingOutput;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryMerchant;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotMerchantResult;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerVillagerTrading extends Container{
+public class ContainerTrading extends Container
+{
+    private ITrading trader;
+    private InventoryTrading tradingInventory;
     /** Instance of World. */
-    private final World theWorld;
+    private final World world;
 
-    public ContainerVillagerTrading(InventoryPlayer playerInventory, World worldIn)
+    public ContainerTrading(InventoryPlayer playerInventory, ITrading trader, World world)
     {
-        this.theWorld = worldIn;
-        //this.addSlotToContainer(new Slot(this.merchantInventory, 0, 36, 53));
-        //this.addSlotToContainer(new Slot(this.merchantInventory, 1, 62, 53));
-        //this.addSlotToContainer(new SlotMerchantResult(playerInventory.player, merchant, this.merchantInventory, 2, 120, 53));
+        this.trader = trader;
+        this.world = world;
+        this.tradingInventory = new InventoryTrading(playerInventory.player, trader);
+        this.addSlotToContainer(new Slot(this.tradingInventory, 0, 23, 53));
+        this.addSlotToContainer(new Slot(this.tradingInventory, 1, 41, 53));
+        this.addSlotToContainer(new Slot(this.tradingInventory, 2, 59, 53));
+        this.addSlotToContainer(new Slot(this.tradingInventory, 3, 77, 53));
+        this.addSlotToContainer(new SlotTradingOutput(playerInventory.player, trader, this.tradingInventory, 4, 132, 53));
 
         for (int i = 0; i < 3; ++i)
         {
@@ -37,6 +44,11 @@ public class ContainerVillagerTrading extends Container{
         {
             this.addSlotToContainer(new Slot(playerInventory, k, 8 + k * 18, 142));
         }
+    }
+
+    public InventoryTrading getTradingInventory()
+    {
+        return this.tradingInventory;
     }
 
     public void onCraftGuiOpened(ICrafting listener)
@@ -57,13 +69,13 @@ public class ContainerVillagerTrading extends Container{
      */
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
-        //this.merchantInventory.resetRecipeAndSlots();
+        this.tradingInventory.resetRecipeAndSlots();
         super.onCraftMatrixChanged(inventoryIn);
     }
 
     public void setCurrentRecipeIndex(int currentRecipeIndex)
     {
-        //this.merchantInventory.setCurrentRecipeIndex(currentRecipeIndex);
+       this.tradingInventory.setCurrentRecipeIndex(currentRecipeIndex);
     }
 
     @SideOnly(Side.CLIENT)
@@ -73,47 +85,44 @@ public class ContainerVillagerTrading extends Container{
 
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-    	return true;
-       // return this.theMerchant.getCustomer() == playerIn;
+        return this.tradingInventory.isUseableByPlayer(playerIn);
     }
 
-    /**
-     * Take a stack from the specified inventory slot.
-     */
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = null;
         Slot slot = (Slot)this.inventorySlots.get(index);
-
+        
         if (slot != null && slot.getHasStack())
         {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index == 2)
+            if (index == 4)
             {
-                if (!this.mergeItemStack(itemstack1, 3, 39, true))
+                if (!this.mergeItemStack(itemstack1, 5, 41, true))
                 {
                     return null;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
             }
-            else if (index != 0 && index != 1)
+            else if (index >= 4)
             {
-                if (index >= 3 && index < 30)
+                if (index >= 5 && index < 32)
                 {
-                    if (!this.mergeItemStack(itemstack1, 30, 39, false))
+                    if (!this.mergeItemStack(itemstack1, 32, 41, false))
                     {
                         return null;
                     }
                 }
-                else if (index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
+                else if (index >= 32 && index < 41 && !this.mergeItemStack(itemstack1, 5, 32, false))
                 {
                     return null;
                 }
             }
-            else if (!this.mergeItemStack(itemstack1, 3, 39, false))
+            else if (!this.mergeItemStack(itemstack1, 5, 41, false))
             {
                 return null;
             }
@@ -144,24 +153,15 @@ public class ContainerVillagerTrading extends Container{
     public void onContainerClosed(EntityPlayer playerIn)
     {
         super.onContainerClosed(playerIn);
-        //this.theMerchant.setCustomer((EntityPlayer)null);
-        super.onContainerClosed(playerIn);
-
-//        if (!this.theWorld.isRemote)
-//        {
-//            ItemStack itemstack = this.merchantInventory.removeStackFromSlot(0);
-//
-//            if (itemstack != null)
-//            {
-//                playerIn.dropPlayerItemWithRandomChoice(itemstack, false);
-//            }
-//
-//            itemstack = this.merchantInventory.removeStackFromSlot(1);
-//
-//            if (itemstack != null)
-//            {
-//                playerIn.dropPlayerItemWithRandomChoice(itemstack, false);
-//            }
-//        }
+    
+        if (!this.world.isRemote)
+        {
+        	for(int i =0;i<4;i++){
+        		if (this.tradingInventory.getStackInSlot(i) != null)
+                {
+                    playerIn.dropPlayerItemWithRandomChoice(this.tradingInventory.getStackInSlot(i), false);
+                }
+        	}
+        }
     }
 }

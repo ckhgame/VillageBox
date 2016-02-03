@@ -1,6 +1,7 @@
 package ckhbox.villagebento.common.network;
 
 import ckhbox.villagebento.common.network.message.MessageGuiActionPerformed;
+import ckhbox.villagebento.common.network.message.MessageGuiSelectTradeRecipeIndex;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,6 +20,8 @@ public class ModNetwork {
 	}
 	
 	private static void initMessages(){
-		instance.registerMessage(MessageGuiActionPerformed.Handler.class, MessageGuiActionPerformed.class, 0, Side.SERVER);
+		int id = 0;
+		instance.registerMessage(MessageGuiActionPerformed.Handler.class, MessageGuiActionPerformed.class, id++, Side.SERVER);
+		instance.registerMessage(MessageGuiSelectTradeRecipeIndex.Handler.class, MessageGuiSelectTradeRecipeIndex.class, id++, Side.SERVER);
 	}
 }

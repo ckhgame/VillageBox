@@ -8,26 +8,22 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageGuiActionPerformed implements IMessage {
 
-	private int guiID;
 	private int buttonID;
 	
 	public MessageGuiActionPerformed(){
 	}
 	
-	public MessageGuiActionPerformed(int guiID, int buttonID){
-		this.guiID = guiID;
+	public MessageGuiActionPerformed(int buttonID){
 		this.buttonID = buttonID;
 	}
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		this.guiID = buf.readInt();
 		this.buttonID = buf.readInt();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-		buf.writeInt(guiID);
 		buf.writeInt(buttonID);
 	}
 

@@ -1,17 +1,17 @@
 package ckhbox.villagebento.client.gui.villager;
 
 import java.io.IOException;
-import java.util.List;
 
 import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.client.gui.GuiTextButton;
+import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.network.message.MessageGuiActionPerformed;
 import ckhbox.villagebento.common.util.helper.PathHelper;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -28,9 +28,14 @@ public class GuiVillagerMain extends GuiScreen{
     protected int playerChatOptionHeight = 18;
     protected int offsetX = 12;
     
-	public GuiVillagerMain()
+    private EntityPlayer player;
+    private EntityVillager villager;
+    
+	public GuiVillagerMain(EntityPlayer player, EntityVillager villager)
     {
         super();
+        this.player = player;
+        this.villager = villager;
     }
 
     public void initGui()
@@ -77,7 +82,7 @@ public class GuiVillagerMain extends GuiScreen{
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 
-		ModNetwork.getInstance().sendToServer(new MessageGuiActionPerformed(0, button.id));
+		ModNetwork.getInstance().sendToServer(new MessageGuiActionPerformed(button.id));
 		
 		super.actionPerformed(button);
 	}

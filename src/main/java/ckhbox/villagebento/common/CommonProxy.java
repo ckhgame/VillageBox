@@ -5,6 +5,7 @@ import ckhbox.villagebento.common.block.ModBlocks;
 import ckhbox.villagebento.common.entity.ModEntities;
 import ckhbox.villagebento.common.gui.GuiHandler;
 import ckhbox.villagebento.common.network.ModNetwork;
+import ckhbox.villagebento.common.village.profession.Profession;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -21,9 +22,13 @@ public class CommonProxy {
 		
 		//messages
 		ModNetwork.init();
+		
+		//profession
+		Profession.init();
     }
 
     public void init(FMLInitializationEvent e) {
+    	
     	
     	
     }
