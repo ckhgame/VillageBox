@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import ckhbox.villagebento.common.gui.common.ContainerTrading;
 import ckhbox.villagebento.common.network.ModNetwork;
-import ckhbox.villagebento.common.network.message.MessageGuiActionPerformed;
+import ckhbox.villagebento.common.network.message.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.network.message.MessageGuiSelectTradeRecipeIndex;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.trading.ITrading;
@@ -32,7 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiTrading extends GuiContainer{
 	
-	private static final ResourceLocation VillagerTradeGuiTexture = new ResourceLocation(PathHelper.full("textures/gui/villager/trade.png"));
+	private static final ResourceLocation TradeGuiTexture = new ResourceLocation(PathHelper.full("textures/gui/villager/trade.png"));
 
 	private ITrading trader;
     private TradeButton nextButton;
@@ -63,7 +63,7 @@ public class GuiTrading extends GuiContainer{
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.getTextureManager().bindTexture(VillagerTradeGuiTexture);
+        this.mc.getTextureManager().bindTexture(TradeGuiTexture);
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);		
@@ -194,7 +194,7 @@ public class GuiTrading extends GuiContainer{
         {
             if (this.visible)
             {
-                mc.getTextureManager().bindTexture(VillagerTradeGuiTexture);
+                mc.getTextureManager().bindTexture(TradeGuiTexture);
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 boolean flag = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
                 int i = 0;

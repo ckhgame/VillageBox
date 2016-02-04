@@ -1,0 +1,20 @@
+language.name=English
+language.region=US
+language.code=en_US
+
+# Professions
+villagebento:profession.villager.name=Villager
+villagebento:profession.novicefarmer.name=Novice Farmer
+villagebento:profession.noviceminer.name=Novice Miner
+villagebento:profession.novicebaker.name=Novice Baker
+
+# Villager Attributes
+villagebento:villager.attribute.strength=Strength
+villagebento:villager.attribute.intelligence=Intelligence
+villagebento:villager.attribute.crafting=Crafting
+
+# Gui
+villagebento:gui.villagerstatus.buttongift.title=Gift
+villagebento:gui.villagerstatus.buttongift.desc=Send a gift to this villager
+villagebento:gui.villagerstatus.buttonupgrade.title=Upgrade
+villagebento:gui.villagerstatus.buttonupgrade.desc=Upgrade this villager
