@@ -4,6 +4,7 @@ import ckhbox.villagebento.VillageBentoMod;
 import ckhbox.villagebento.client.gui.villager.GuiVillagerMain;
 import ckhbox.villagebento.common.gui.GuiIDs;
 import ckhbox.villagebento.common.util.helper.PathHelper;
+import ckhbox.villagebento.common.util.tool.NameGenerator;
 import ckhbox.villagebento.common.village.attribute.VillagerAttribute;
 import ckhbox.villagebento.common.village.attribute.AttributeList;
 import ckhbox.villagebento.common.village.profession.ProVillager;
@@ -26,7 +27,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 
 	private Profession profession;
 	private AttributeList attributeList;
-	private String name;
 	
 	public EntityVillager(World worldIn) {
 		super(worldIn);		
@@ -46,7 +46,9 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.refreshProfession();
 		
 		//temp
-		this.name = "TOM";
+		if(!this.hasCustomName()){
+			this.setCustomNameTag(NameGenerator.getRandomMaleName());
+		}
 	}
 
 	@Override
@@ -93,7 +95,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	}
 	
 	public String getName(){
-		return this.name;
+		return this.getCustomNameTag();
 	}
 	
 	public boolean isProficiencyFull(){
