@@ -2,6 +2,7 @@ package ckhbox.villagebento.common.village.trading;
 
 import java.util.ArrayList;
 
+import ckhbox.villagebento.common.util.helper.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 
 public class TradingRecipe {
@@ -37,67 +38,11 @@ public class TradingRecipe {
 	}
 	
 	public boolean match(ItemStack[] items){
-		return this.match(items, false);
+		return ItemStackHelper.match(items, this.itemsInput, 4);
 	}
 	
 	public boolean trade(ItemStack[] items){
-		return this.match(items,true);
-	}
-	
-	private boolean match(ItemStack[] items, boolean isTrading){
-		int[] tempStackSizes = null;
-		if(isTrading){
-			tempStackSizes = new int[items.length];
-		}
-		
-		ArrayList<ItemStack> waitForMatching = new ArrayList<ItemStack>();
-		for(int i = 0;i<this.itemsInput.length;i++){
-			if(this.itemsInput[i] != null){
-				waitForMatching.add(this.itemsInput[i]);
-			}
-		}
-		
-		boolean found;
-		ItemStack item,target;
-		for(int i =0;i<4;i++){
-			//find item in inputs
-			found = false;
-			item = items[i];
-			if(item == null)
-				continue;
-			for(int j = 0;j < waitForMatching.size();j++){
-				target = waitForMatching.get(j);
-				if(item.isItemEqual(target) && item.stackSize >= target.stackSize){
-					found = true;
-					if(isTrading){
-						tempStackSizes[i] = item.stackSize - target.stackSize;
-					}
-					waitForMatching.remove(j);
-					break;
-				}
-			}
-			if(!found){
-				return false;
-			}
-		}
-		
-		if(waitForMatching.size() > 0)
-			return false;
-		
-		if(isTrading){
-			for(int i =0;i<items.length;i++){
-				if(items != null){
-					if(tempStackSizes[i] == 0){
-						items[i] = null;
-					}
-					else{
-						items[i].stackSize = tempStackSizes[i];
-					}
-				}
-			}
-		}
-		
-		return true;
+		return ItemStackHelper.consume(items, this.itemsInput, 4);
 	}
 	
 }

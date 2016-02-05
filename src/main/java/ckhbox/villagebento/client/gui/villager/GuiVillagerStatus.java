@@ -10,6 +10,7 @@ import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.network.message.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.attribute.VillagerAttribute;
+import ckhbox.villagebento.common.village.profession.Profession;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -49,11 +50,14 @@ public class GuiVillagerStatus extends GuiScreen{
         super.initGui();
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
-        buttonGift = new ImageButton(0, x + 44, y + 106, 32);
-        buttonUpgrade = new ImageButton(1, x + 100, y + 106, 0);
+        this.buttonGift = new ImageButton(0, x + 44, y + 106, 32);
+        this.buttonUpgrade = new ImageButton(1, x + 100, y + 106, 0);
         
-        this.buttonList.add(buttonGift);
-        this.buttonList.add(buttonUpgrade);
+        this.buttonList.add(this.buttonGift);
+        this.buttonList.add(this.buttonUpgrade);
+        
+        Profession[] upgradeOptions = this.villager.getProfession().getUpgradeToNextOptions();
+        this.buttonUpgrade.enabled = (upgradeOptions != null && upgradeOptions.length > 0);
     }
     
     public boolean doesGuiPauseGame()
@@ -88,7 +92,8 @@ public class GuiVillagerStatus extends GuiScreen{
         String strGiftTitle = StatCollector.translateToLocal(PathHelper.full("gui.villagerstatus.buttongift.title"));
         String strGiftDesc = StatCollector.translateToLocal(PathHelper.full("gui.villagerstatus.buttongift.desc"));
         String strUpgradeTitle = StatCollector.translateToLocal(PathHelper.full("gui.villagerstatus.buttonupgrade.title"));
-        String strUpgradeDesc = StatCollector.translateToLocal(PathHelper.full("gui.villagerstatus.buttonupgrade.desc"));
+        String strUpgradeDesc = this.buttonUpgrade.enabled?	StatCollector.translateToLocal(PathHelper.full("gui.villagerstatus.buttonupgrade.desc")):
+        													StatCollector.translateToLocal(PathHelper.full("gui.villagerstatus.buttonupgrade.desc.disable"));
         
         this.drawButtonHoverText(this.buttonGift, mouseX, mouseY, strGiftTitle, strGiftDesc);
         this.drawButtonHoverText(this.buttonUpgrade, mouseX, mouseY, strUpgradeTitle, strUpgradeDesc);
@@ -158,7 +163,10 @@ public class GuiVillagerStatus extends GuiScreen{
                 int i = 0;
                 int j = 176 + this.u;
 
-                if(flag){
+                if(!this.enabled){
+                	i += 64;
+                }
+                else if(flag){
                 	i += 32;
                 }
 

@@ -5,9 +5,13 @@ import java.util.ArrayList;
 
 import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
+import ckhbox.villagebento.common.gui.GuiIDs;
 import ckhbox.villagebento.common.gui.villager.ContainerUpgrading;
 import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.network.message.MessageGuiSelectTradeRecipeIndex;
+import ckhbox.villagebento.common.network.message.MessageGuiSelectUpgradeOptionIndex;
+import ckhbox.villagebento.common.network.message.MessageGuiVillagerOpen;
+import ckhbox.villagebento.common.network.message.MessageGuiVillagerUpgrade;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.profession.Profession;
 import net.minecraft.client.Minecraft;
@@ -37,6 +41,9 @@ public class GuiVillagerUpgrading extends GuiContainer{
     private int selectedUpgradeOptionIdx;
     private boolean noUpgradeOption;
     
+    private boolean meetItemsNeed;
+    private boolean hasFullExp;
+    
 	public GuiVillagerUpgrading(InventoryPlayer playerInventory, EntityVillager villager, World worldIn)
     {
         super(new ContainerUpgrading(playerInventory, villager, worldIn));
@@ -61,6 +68,7 @@ public class GuiVillagerUpgrading extends GuiContainer{
             this.buttonList.add(this.upgradeButton = new UpgradeButton(3, x + 82, y + 41));
             this.nextButton.enabled = false;
             this.previousButton.enabled = false;
+            this.upgradeButton.enabled = false;
         }
         
     }
@@ -78,7 +86,10 @@ public class GuiVillagerUpgrading extends GuiContainer{
         	Profession[] nextUpgradeOptions = this.villager.getProfession().getUpgradeToNextOptions();
         	Profession currentOption = nextUpgradeOptions[this.selectedUpgradeOptionIdx];
         	this.villager.previewProfession = currentOption;
-        	this.drawEntityOnScreen(x + 139, y + 73, 20, this.villager);
+        	float r = (mouseX - x) * 1.0F / this.xSize - 0.5F;
+        	r = Math.max(r, -0.5F);
+        	r = Math.min(r, 0.5F);
+        	this.drawEntityOnScreen(x + 139, y + 73, 20,r, this.villager);
         	this.villager.previewProfession = null;
         }
 	}
@@ -152,7 +163,7 @@ public class GuiVillagerUpgrading extends GuiContainer{
 		this.drawFieldHoverText(button.xPosition, button.yPosition, button.width, button.height, mouseX, mouseY, title, desc);
 	}
 	
-	public void drawEntityOnScreen(int posX, int posY, int scale, EntityLivingBase ent)
+	public void drawEntityOnScreen(int posX, int posY, int scale,float r, EntityLivingBase ent)
     {
         GlStateManager.enableColorMaterial();
         GlStateManager.pushMatrix();
@@ -166,7 +177,10 @@ public class GuiVillagerUpgrading extends GuiContainer{
         float f4 = ent.rotationYawHead;
         GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
         RenderHelper.enableStandardItemLighting();
-       // GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
+        ent.renderYawOffset = -45.0F * r;
+        ent.rotationYaw = -30.0F * r;
+        ent.rotationPitch = 0;
         ent.rotationYawHead = ent.rotationYaw;
         ent.prevRotationYawHead = ent.rotationYaw;
         GlStateManager.translate(0.0F, 0.0F, 0.0F);
@@ -200,6 +214,11 @@ public class GuiVillagerUpgrading extends GuiContainer{
 	            this.nextButton.enabled = this.selectedUpgradeOptionIdx < nextUpgradeOptions.length - 1;
 	            this.previousButton.enabled = this.selectedUpgradeOptionIdx > 0;
 	        }
+	        
+	        //upgrade button
+	        this.meetItemsNeed = ((ContainerUpgrading)this.inventorySlots).getUpgradingInventory().canUpgrade();
+	        this.hasFullExp = true;
+	        this.upgradeButton.enabled = (this.meetItemsNeed && this.hasFullExp);
         }
     }
 
@@ -235,11 +254,11 @@ public class GuiVillagerUpgrading extends GuiContainer{
         if (flag)
         {
             ((ContainerUpgrading)this.inventorySlots).setCurrentUpgradeOptionIndex(this.selectedUpgradeOptionIdx);
-            ModNetwork.getInstance().sendToServer(new MessageGuiSelectTradeRecipeIndex(this.selectedUpgradeOptionIdx));
+            ModNetwork.getInstance().sendToServer(new MessageGuiSelectUpgradeOptionIndex(this.selectedUpgradeOptionIdx));
         }
         
         if(button == this.upgradeButton){
-        	System.out.println("upgrade...");//test
+        	ModNetwork.getInstance().sendToServer(new MessageGuiVillagerUpgrade());
         }
     }
 	

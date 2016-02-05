@@ -1,6 +1,7 @@
 package ckhbox.villagebento.common.gui.villager;
 
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
+import ckhbox.villagebento.common.util.helper.ItemStackHelper;
 import ckhbox.villagebento.common.village.trading.ITrading;
 import ckhbox.villagebento.common.village.trading.InventoryTrading;
 import ckhbox.villagebento.common.village.trading.SlotTradingOutput;
@@ -88,6 +89,10 @@ public class ContainerUpgrading extends Container
         return this.upgradingInventory.isUseableByPlayer(playerIn);
     }
 
+    public void upgrade(){
+    	this.upgradingInventory.upgrade();
+    }
+    
     @Override
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {

@@ -20,3 +20,4 @@ villagebento:gui.villagerstatus.buttongift.title=Gift
 villagebento:gui.villagerstatus.buttongift.desc=Send a gift to this villager
 villagebento:gui.villagerstatus.buttonupgrade.title=Upgrade
 villagebento:gui.villagerstatus.buttonupgrade.desc=Upgrade this villager
+villagebento:gui.villagerstatus.buttonupgrade.desc.disable=No more upgrades

@@ -1,6 +1,7 @@
 package ckhbox.villagebento.common.village.villager;
 
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
+import ckhbox.villagebento.common.util.helper.ItemStackHelper;
 import ckhbox.villagebento.common.village.profession.Profession;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -17,6 +18,8 @@ public class InventoryUpgrading implements IInventory{
 	
 	private int currentUpgradeOptionIndex;
 	private Profession currentUpgradeOption;
+	
+	private boolean canUpgrade = false;
 	
 	public InventoryUpgrading(EntityPlayer player, EntityVillager villager){
 		this.villager = villager;
@@ -42,7 +45,7 @@ public class InventoryUpgrading implements IInventory{
 	public int getSizeInventory() {
 		return this.inventoryItems.length;
 	}
-
+	
 	@Override
 	public ItemStack getStackInSlot(int index) {
 		return index >= this.getSizeInventory() ? null : this.inventoryItems[index];
@@ -104,7 +107,7 @@ public class InventoryUpgrading implements IInventory{
             stack.stackSize = this.getInventoryStackLimit();
         }
 
-            this.resetUpgradeOptionAndSlots();
+        this.resetUpgradeOptionAndSlots();
 	}
 
 	@Override
@@ -160,22 +163,32 @@ public class InventoryUpgrading implements IInventory{
         }
 	}
 
+	public boolean canUpgrade(){
+		return this.canUpgrade;
+	}
+	
+	public void upgrade(){
+    	boolean fullexp = true;
+    	if(this.canUpgrade() && fullexp){
+    		if(ItemStackHelper.consume(this.inventoryItems, this.currentUpgradeOption.getUpgradeToCurentNeeds(), 3)){
+    			this.villager.setProfession(this.currentUpgradeOption.getRegID());
+    			this.player.closeScreen();
+    		}
+    	}
+	}
+	
 	public void resetUpgradeOptionAndSlots()
-    {
-//		int count = 0;
-//        for(int i =0;i<4;i++){
-//        	if(this.inventoryItems[i] != null)
-//        		count++;
-//        }
-//      
+    {     
         Profession[] options = this.villager.getProfession().getUpgradeToNextOptions();
         this.currentUpgradeOption = options == null?null:options[this.currentUpgradeOptionIndex];
  
-//        ItemStack output = null;
-//        if(this.currentRecipe.match(this.inventoryItems)){
-//        	output = this.currentRecipe.getItemOutput().copy();
-//        }
-//        this.setInventorySlotContents(4, output);
+        this.canUpgrade = false;
+        if(this.currentUpgradeOption != null){
+        	if(ItemStackHelper.match(this.inventoryItems, this.currentUpgradeOption.getUpgradeToCurentNeeds(), 3)){
+            	this.canUpgrade = true;
+            }
+        }  
+
     }
 	
 	public void setCurrentUpgradeOptionIndex(int currentUpgradeOptionIndex)
