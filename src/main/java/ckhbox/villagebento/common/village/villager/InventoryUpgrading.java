@@ -168,10 +168,11 @@ public class InventoryUpgrading implements IInventory{
 	}
 	
 	public void upgrade(){
-    	boolean fullexp = true;
-    	if(this.canUpgrade() && fullexp){
+    	boolean fullProficiency = this.villager.isProficiencyFull();
+    	if(this.canUpgrade() && fullProficiency){
     		if(ItemStackHelper.consume(this.inventoryItems, this.currentUpgradeOption.getUpgradeToCurentNeeds(), 3)){
     			this.villager.setProfession(this.currentUpgradeOption.getRegID());
+    			this.villager.clearProficiency();
     			this.player.closeScreen();
     		}
     	}

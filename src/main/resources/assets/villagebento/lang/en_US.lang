@@ -5,19 +5,24 @@ language.code=en_US
 # Professions
 villagebento:profession.villager.name=Villager
 villagebento:profession.villager.desc=A common villager
-villagebento:profession.farmer.name=Novice Farmer
+villagebento:profession.farmer.name=Farmer
 villagebento:profession.farmer.desc=Has basic farming skills
-villagebento:profession.miner.name=Novice Miner
+villagebento:profession.miner.name=Miner
 villagebento:profession.miner.desc=Mining basic ores 
 
 # Villager Attributes
-villagebento:villager.attribute.strength=Strength
-villagebento:villager.attribute.intelligence=Intelligence
-villagebento:villager.attribute.crafting=Crafting
+villagebento:villager.attribute.energy=Energy
+villagebento:villager.attribute.happiness=Happiness
+villagebento:villager.attribute.proficiency=Proficiency
 
-# Gui
+# Guimatch
 villagebento:gui.villagerstatus.buttongift.title=Gift
 villagebento:gui.villagerstatus.buttongift.desc=Send a gift to this villager
 villagebento:gui.villagerstatus.buttonupgrade.title=Upgrade
 villagebento:gui.villagerstatus.buttonupgrade.desc=Upgrade this villager
 villagebento:gui.villagerstatus.buttonupgrade.desc.disable=No more upgrades
+
+villagebento:gui.villagerupgrade.buttonupgrade.title=Upgrade
+villagebento:gui.villagerupgrade.buttonupgrade.desc=Upgrade to the advanced profession
+villagebento:gui.villagerupgrade.buttonupgrade.desc.disable0=Unmatched items
+villagebento:gui.villagerupgrade.buttonupgrade.desc.disable1=Need more Proficiency

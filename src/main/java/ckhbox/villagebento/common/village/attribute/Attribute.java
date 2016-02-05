@@ -19,6 +19,10 @@ public abstract class Attribute<T> {
 	
 	public abstract void setValue(T value);
 	
+	public abstract T getMaxValue();
+	
+	public abstract void setMaxValue(T maxValue);
+	
 	public abstract T getValueGrowing();
 	
 	public abstract void setValueGrowing(T valueGrowing);

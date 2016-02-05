@@ -1,7 +1,11 @@
 package ckhbox.villagebento.client.gui.villager;
 
 import java.io.IOException;
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.lwjgl.opengl.GL11;
 
 import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
@@ -25,6 +29,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -42,7 +47,9 @@ public class GuiVillagerUpgrading extends GuiContainer{
     private boolean noUpgradeOption;
     
     private boolean meetItemsNeed;
-    private boolean hasFullExp;
+    private boolean hasFullProficiency;
+    
+    protected int villagerNameOffsetY = 6;
     
 	public GuiVillagerUpgrading(InventoryPlayer playerInventory, EntityVillager villager, World worldIn)
     {
@@ -80,18 +87,20 @@ public class GuiVillagerUpgrading extends GuiContainer{
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);		
-               
+        
         //upgrading preview
         if(!this.noUpgradeOption){
         	Profession[] nextUpgradeOptions = this.villager.getProfession().getUpgradeToNextOptions();
         	Profession currentOption = nextUpgradeOptions[this.selectedUpgradeOptionIdx];
         	this.villager.previewProfession = currentOption;
-        	float r = (mouseX - x) * 1.0F / this.xSize - 0.5F;
-        	r = Math.max(r, -0.5F);
-        	r = Math.min(r, 0.5F);
+        	float r = (mouseX - x) * 1.0F / this.xSize - 0.8F;
+        	r = Math.max(r, -0.8F);
+        	r = Math.min(r, 0.2F);
         	this.drawEntityOnScreen(x + 139, y + 73, 20,r, this.villager);
         	this.villager.previewProfession = null;
         }
+        
+        GuiHelper.drawNameAndProfession(this.mc.fontRendererObj, villager, this.width / 2, y + villagerNameOffsetY);
 	}
 	
 	@Override
@@ -146,21 +155,45 @@ public class GuiVillagerUpgrading extends GuiContainer{
             this.drawFieldHoverText(i + 122, j + 27, 35, 49, mouseX, mouseY, currentOption.getDisplayName(), currentOption.getDescription());
             
             //upgrade button hover text
-            this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, "Upgrade", "Upgrade the villager");            
+            ArrayList<String> list = new ArrayList<String>();
+            if(this.hasFullProficiency && this.meetItemsNeed){
+            	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, 
+            			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")),
+            			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc"))); 
+            }
+            else{
+            	list.add("§c" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")));
+            	if(!this.hasFullProficiency){        		
+            		list.add("§7" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable1")));
+            	}
+            	if(!this.meetItemsNeed){
+            		list.add("§7" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable0")));
+            	}
+            	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, list);
+            }
+                       
         }
     }
 	
-	private void drawFieldHoverText(int x, int y, int w, int h, int mouseX, int mouseY, String title, String desc){	
+	private void drawFieldHoverText(int x, int y, int w, int h, int mouseX, int mouseY, List texts){	
 		if(GuiHelper.isPointInRegion(x, y, w, h, mouseX, mouseY)){
-			ArrayList<String> list = new ArrayList<String>();
-			list.add("§e" + title);
-			list.add("§f" + desc);
-			this.drawHoveringText(list, mouseX, mouseY, this.fontRendererObj);
+			this.drawHoveringText(texts, mouseX, mouseY, this.fontRendererObj);
 		}
+	}
+	
+	private void drawFieldHoverText(int x, int y, int w, int h, int mouseX, int mouseY, String title, String desc){	
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("§e" + title);
+		list.add("§f" + desc);		
+		drawFieldHoverText(x,y,w,h,mouseX,mouseY,list);
 	}
 	
 	private void drawButtonHoverText(GuiButton button, int mouseX, int mouseY, String title, String desc){	
 		this.drawFieldHoverText(button.xPosition, button.yPosition, button.width, button.height, mouseX, mouseY, title, desc);
+	}
+	
+	private void drawButtonHoverText(GuiButton button, int mouseX, int mouseY, List list){	
+		this.drawFieldHoverText(button.xPosition, button.yPosition, button.width, button.height, mouseX, mouseY, list);
 	}
 	
 	public void drawEntityOnScreen(int posX, int posY, int scale,float r, EntityLivingBase ent)
@@ -178,8 +211,10 @@ public class GuiVillagerUpgrading extends GuiContainer{
         GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
         RenderHelper.enableStandardItemLighting();
         GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
-        ent.renderYawOffset = -45.0F * r;
-        ent.rotationYaw = -30.0F * r;
+        //ent.renderYawOffset = -30.0F * r;
+        //ent.rotationYaw = -75.0F * r;
+        ent.renderYawOffset = 45.0F;
+        ent.rotationYaw = 45.0F;
         ent.rotationPitch = 0;
         ent.rotationYawHead = ent.rotationYaw;
         ent.prevRotationYawHead = ent.rotationYaw;
@@ -217,8 +252,8 @@ public class GuiVillagerUpgrading extends GuiContainer{
 	        
 	        //upgrade button
 	        this.meetItemsNeed = ((ContainerUpgrading)this.inventorySlots).getUpgradingInventory().canUpgrade();
-	        this.hasFullExp = true;
-	        this.upgradeButton.enabled = (this.meetItemsNeed && this.hasFullExp);
+	        this.hasFullProficiency = this.villager.isProficiencyFull();
+	        this.upgradeButton.enabled = (this.meetItemsNeed && this.hasFullProficiency);
         }
     }
 

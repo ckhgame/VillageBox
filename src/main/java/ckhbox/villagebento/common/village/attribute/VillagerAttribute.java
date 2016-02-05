@@ -9,6 +9,8 @@ public class VillagerAttribute extends Attribute<Integer>{
 	private int dataId;
 	private int attributeIdx;
 	private int iconIdx;
+	private int maxValue;
+	private int valueGrowing;
 	
 	public VillagerAttribute(String unlocalizedName, int iconIdx, EntityVillager villager, int dataId, int attributeIdx) {
 		super(unlocalizedName, iconIdx);
@@ -36,17 +38,30 @@ public class VillagerAttribute extends Attribute<Integer>{
 
 	@Override
 	public void setValue(Integer value) {
-		villager.getDataWatcher().updateObject(dataId, value);
+		villager.getDataWatcher().updateObject(dataId, Math.min(value,this.getMaxValue()));
 	}
 
 	@Override
 	public Integer getValueGrowing() {
-		return this.villager.getProfession().getAttributesGrowing()[this.attributeIdx];
+		return this.valueGrowing;
 	}
 
 	@Override
 	public void setValueGrowing(Integer valueGrowing) {		
-		//doesn't do anything
+		this.valueGrowing = valueGrowing;
+	}
+
+	@Override
+	public Integer getMaxValue() {
+		return this.maxValue;
+	}
+
+	@Override
+	public void setMaxValue(Integer maxValue) {
+		this.maxValue = maxValue;
+		if(this.getValue() > this.maxValue){
+			this.setValue(this.maxValue);
+		}
 	}
 
 }

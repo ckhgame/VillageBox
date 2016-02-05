@@ -10,8 +10,6 @@ import net.minecraft.util.StatCollector;
 public abstract class Profession implements IRegistrable{
 	
 	private int regID;
-	protected int[] attributesGrowing;
-	protected int[] attributesNeeded;
 	//trading recipe list
 	protected TradingRecipeList tradingRecipeList = new TradingRecipeList();
 	//texture
@@ -22,6 +20,9 @@ public abstract class Profession implements IRegistrable{
 	protected Profession[] upgradeToNextOptions;//this will be automatically generated based on option classes
 	//what items are needed to upgrade to this profession(usually only gems, maximum: 3 stacks)
 	protected ItemStack[] upgradeToCurentNeeds;
+	
+	protected int maxEnegy;
+	protected int maxProficiency;
 	
 	@Override
 	public int getRegID() {
@@ -56,16 +57,16 @@ public abstract class Profession implements IRegistrable{
 		return this.upgradeToCurentNeeds;
 	}
 	
+	public int getMaxEnegy(){
+		return this.maxEnegy;
+	}
+	
+	public int getMaxProficiency(){
+		return this.maxProficiency;
+	}
+	
 	public ResourceLocation getTexture(){
 		return this.texture;
-	}
-	
-	public int[] getAttributesNeeded(){
-		return this.attributesNeeded;
-	}
-	
-	public int[] getAttributesGrowing(){
-		return this.attributesGrowing;
 	}
 	
 	public TradingRecipeList getTradingRecipeList(){

@@ -31,9 +31,17 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	public EntityVillager(World worldIn) {
 		super(worldIn);		
 		this.attributeList = new AttributeList();
-		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.strength"),0,this,17,0));
-		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.intelligence"),1,this,18,1));
-		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.crafting"),2,this,19,2));
+		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.energy"),0,this,17,0));
+		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.happiness"),1,this,18,1));
+		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.proficiency"),2,this,19,2));
+		
+		//set max happiness to 100 
+		this.attributeList.get(1).setMaxValue(100);
+		
+		//set attribute growing
+		this.attributeList.get(0).setValueGrowing(10);
+		this.attributeList.get(1).setValueGrowing(3);
+		this.attributeList.get(2).setValueGrowing(1);
 		
 		this.refreshProfession();
 		
@@ -70,21 +78,31 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	public Profession getProfession(){
 		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
 			this.profession = Profession.registry.get(this.getDataWatcher().getWatchableObjectInt(16));
+			this.refreshProfession();
 		}
 		return this.profession;
 	}
 	
 	public void setProfession(int proid){
 		this.getDataWatcher().updateObject(16, proid);
-		this.profession = Profession.registry.get(proid);
+		this.refreshProfession();
 	}
 	
 	public AttributeList getAttributes(){
 		return this.attributeList;
 	}
-
+	
 	public String getName(){
 		return this.name;
+	}
+	
+	public boolean isProficiencyFull(){
+		VillagerAttribute attribute = (VillagerAttribute)this.attributeList.get(2);
+		return (attribute.getValue() >= attribute.getMaxValue());
+	}
+	
+	public void clearProficiency(){
+		this.attributeList.get(2).setValue(0);
 	}
 	
 	@Override
@@ -92,7 +110,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		super.onUpdate();
 		//update profession
 		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
-			this.profession = Profession.registry.get(this.getDataWatcher().getWatchableObjectInt(16));
+			this.setProfession(this.getDataWatcher().getWatchableObjectInt(16));
 		}
 		//update attributes
 		this.attributeList.update();
@@ -101,26 +119,27 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	public void refreshProfession(){
 		int proid = this.getDataWatcher().getWatchableObjectInt(16);
 		this.profession = Profession.registry.get(proid);
+		this.attributeList.get(0).setMaxValue(this.profession.getMaxEnegy());
+		this.attributeList.get(2).setMaxValue(this.profession.getMaxProficiency());
 	}
 	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tagCompound) {
 		super.writeEntityToNBT(tagCompound);
 		tagCompound.setInteger("proid", this.getDataWatcher().getWatchableObjectInt(16));
-		tagCompound.setInteger("attr_str", (Integer)this.attributeList.get(0).getValue());
-		tagCompound.setInteger("attr_int", (Integer)this.attributeList.get(1).getValue());
-		tagCompound.setInteger("attr_cra", (Integer)this.attributeList.get(2).getValue());
+		tagCompound.setInteger("attr_eng", (Integer)this.attributeList.get(0).getValue());
+		tagCompound.setInteger("attr_hap", (Integer)this.attributeList.get(1).getValue());
+		tagCompound.setInteger("attr_pro", (Integer)this.attributeList.get(2).getValue());
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tagCompund) {
 		super.readEntityFromNBT(tagCompund);
-		int proID = tagCompund.getInteger("proid");
-		this.getDataWatcher().updateObject(16, proID);
-		refreshProfession();
-		this.attributeList.get(0).setValue(tagCompund.getInteger("attr_str"));
-		this.attributeList.get(1).setValue(tagCompund.getInteger("attr_int"));
-		this.attributeList.get(2).setValue(tagCompund.getInteger("attr_cra"));
+		int proid = tagCompund.getInteger("proid");
+		this.setProfession(proid);
+		this.attributeList.get(0).setValue(tagCompund.getInteger("attr_eng"));
+		this.attributeList.get(1).setValue(tagCompund.getInteger("attr_hap"));
+		this.attributeList.get(2).setValue(tagCompund.getInteger("attr_pro"));
 	}
 	
 	

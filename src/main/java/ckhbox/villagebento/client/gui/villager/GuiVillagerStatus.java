@@ -30,7 +30,7 @@ public class GuiVillagerStatus extends GuiScreen{
     protected int ySize = 166;
     protected int villagerAttributesOffsetY = 30;
     protected int villagerNameOffsetY = 6;
-    protected int offsetX = 50;
+    protected int offsetX = 20;
     
     private ImageButton buttonGift;
     private ImageButton buttonUpgrade;
@@ -103,7 +103,7 @@ public class GuiVillagerStatus extends GuiScreen{
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(VillagerAttributeIconsTexture);
 		this.drawTexturedModalRect(x, y, attribute.getIconIdx() * 16, 0, 16, 16);
-		String text = String.format("§e%d §f(§a%d§f)", attribute.getValue(), attribute.getValueGrowing()); 
+		String text = String.format("§e%d §f(§a%d§f) / §e%d", attribute.getValue(), attribute.getValueGrowing(), attribute.getMaxValue()); 
 		this.drawString(this.fontRendererObj, text, x + 20, y + 4, 0);
 	}
 	

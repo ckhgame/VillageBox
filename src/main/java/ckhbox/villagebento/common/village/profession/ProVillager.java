@@ -24,12 +24,8 @@ public class ProVillager extends Profession{
 
 	@Override
 	protected void initAttributes() {
-		this.attributesNeeded = new int[]{
-				0,0,0
-		};
-		this.attributesGrowing = new int[]{
-				1,1,1
-		};
+		this.maxEnegy = 45;
+		this.maxProficiency = 30;
 	}
 
 	@Override

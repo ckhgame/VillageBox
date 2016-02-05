@@ -24,12 +24,8 @@ public class ProMiner extends Profession{
 
 	@Override
 	protected void initAttributes() {
-		this.attributesNeeded = new int[]{
-				0,0,1
-		};
-		this.attributesGrowing = new int[]{
-				1,1,1
-		};
+		this.maxEnegy = 100;
+		this.maxProficiency = 200;
 	}
 
 	@Override

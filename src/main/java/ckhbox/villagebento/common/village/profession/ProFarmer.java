@@ -24,12 +24,8 @@ public class ProFarmer extends Profession{
 
 	@Override
 	protected void initAttributes() {
-		this.attributesNeeded = new int[]{
-				100,0,0
-		};
-		this.attributesGrowing = new int[]{
-				1,1,1
-		};
+		this.maxEnegy = 120;
+		this.maxProficiency = 240;
 	}
 
 	@Override
