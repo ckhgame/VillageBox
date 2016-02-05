@@ -12,8 +12,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderVillager extends RenderBiped<EntityVillager>{
-
-	private static final ResourceLocation testTexture = new ResourceLocation(PathHelper.full("textures/entity/villager/testvillagernohead.png"));
 	
 	public RenderVillager(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelVillager(), 0.5F, 1.0F);
@@ -26,7 +24,10 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityVillager entity) {
-		return testTexture;
+		if(entity.previewProfession != null)
+			return entity.previewProfession.getTexture();
+		else
+			return entity.getProfession().getTexture();
 	}
 	
 	

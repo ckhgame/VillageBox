@@ -1,7 +1,10 @@
 package ckhbox.villagebento.client.gui;
 
+import java.util.ArrayList;
+
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

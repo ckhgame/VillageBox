@@ -126,7 +126,7 @@ public class GuiVillagerStatus extends GuiScreen{
 			//ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerTrading,villager.dimension,villager.getEntityId()));
 		}
 		else if(button.id == buttonUpgrade.id){//upgrade
-			//ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerTrading,villager.dimension,villager.getEntityId()));
+			ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerUpgrading,villager.dimension,villager.getEntityId()));
 		}
 		
 		

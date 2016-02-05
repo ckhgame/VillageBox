@@ -3,6 +3,7 @@ package ckhbox.villagebento.common.village.profession;
 import ckhbox.villagebento.common.util.registry.IRegistrable;
 import ckhbox.villagebento.common.util.registry.Registry;
 import ckhbox.villagebento.common.village.trading.TradingRecipeList;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
@@ -15,6 +16,12 @@ public abstract class Profession implements IRegistrable{
 	protected TradingRecipeList tradingRecipeList = new TradingRecipeList();
 	//texture
 	protected ResourceLocation texture;
+	
+	//what professions can upgrade from this profession
+	protected Class<? extends Profession>[] upgradeToNextOptionClasses;
+	protected Profession[] upgradeToNextOptions;//this will be automatically generated based on option classes
+	//what items are needed to upgrade to this profession(usually only gems, maximum: 3 stacks)
+	protected ItemStack[] upgradeToCurentNeeds;
 	
 	@Override
 	public int getRegID() {
@@ -29,6 +36,28 @@ public abstract class Profession implements IRegistrable{
 	public Profession(){
 		this.initTradingRecipeList();
 		this.initAttributes();
+		this.initTexture();
+		this.initUpgradeOptions();
+	}
+	
+	public Profession[] getUpgradeToNextOptions(){
+		if(this.upgradeToNextOptions == null){
+			if(this.upgradeToNextOptionClasses != null && this.upgradeToNextOptionClasses.length > 0){
+				this.upgradeToNextOptions = new Profession[this.upgradeToNextOptionClasses.length];
+				for(int i = 0;i<this.upgradeToNextOptionClasses.length;i++){
+					this.upgradeToNextOptions[i] = Profession.registry.get(this.upgradeToNextOptionClasses[i]);
+				}
+			}
+		}
+		return this.upgradeToNextOptions;
+	}
+	
+	public ItemStack[] getUpgradeToCurentNeeds(){
+		return this.upgradeToCurentNeeds;
+	}
+	
+	public ResourceLocation getTexture(){
+		return this.texture;
 	}
 	
 	public int[] getAttributesNeeded(){
@@ -44,7 +73,11 @@ public abstract class Profession implements IRegistrable{
 	}
 	
 	public String getDisplayName(){
-		return StatCollector.translateToLocal(this.getUnlocalizedName());
+		return StatCollector.translateToLocal(this.getUnlocalized() + ".name");
+	}
+	
+	public String getDescription(){
+		return StatCollector.translateToLocal(this.getUnlocalized() + ".desc");
 	}
 	
 	
@@ -52,7 +85,8 @@ public abstract class Profession implements IRegistrable{
 	protected abstract void initTradingRecipeList();
 	protected abstract void initAttributes();
 	protected abstract void initTexture();
-	protected abstract String getUnlocalizedName();
+	protected abstract void initUpgradeOptions();
+	protected abstract String getUnlocalized();
 	
 	
 	//---------------------------------
@@ -62,6 +96,8 @@ public abstract class Profession implements IRegistrable{
 	public static void init(){
 		int id = 0;
 		registry.register(id++, new ProVillager());
+		registry.register(id++, new ProFarmer());
+		registry.register(id++, new ProMiner());
 	}
 
 }

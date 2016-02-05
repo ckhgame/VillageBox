@@ -4,9 +4,11 @@ language.code=en_US
 
 # Professions
 villagebento:profession.villager.name=Villager
-villagebento:profession.novicefarmer.name=Novice Farmer
-villagebento:profession.noviceminer.name=Novice Miner
-villagebento:profession.novicebaker.name=Novice Baker
+villagebento:profession.villager.desc=A common villager
+villagebento:profession.farmer.name=Novice Farmer
+villagebento:profession.farmer.desc=Has basic farming skills
+villagebento:profession.miner.name=Novice Miner
+villagebento:profession.miner.desc=Mining basic ores 
 
 # Villager Attributes
 villagebento:villager.attribute.strength=Strength

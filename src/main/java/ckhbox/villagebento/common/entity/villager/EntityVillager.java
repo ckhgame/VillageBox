@@ -19,6 +19,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityVillager extends EntityCreature implements ITrading{
 
@@ -123,7 +125,11 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	
 
-
+	
+	//----------------------------------
+	//upgrading preview
+	@SideOnly(Side.CLIENT)
+	public Profession previewProfession;
 
 	
 }

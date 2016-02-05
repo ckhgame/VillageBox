@@ -7,7 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProVillager extends Profession{
+public class ProFarmer extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
@@ -25,7 +25,7 @@ public class ProVillager extends Profession{
 	@Override
 	protected void initAttributes() {
 		this.attributesNeeded = new int[]{
-				0,0,0
+				100,0,0
 		};
 		this.attributesGrowing = new int[]{
 				1,1,1
@@ -34,21 +34,21 @@ public class ProVillager extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/villager.png"));
+		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/farmer.png"));
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.villager");
+		return PathHelper.full("profession.farmer");
 	}
 
 	@Override
 	protected void initUpgradeOptions() {
-		this.upgradeToCurentNeeds = null;
-		this.upgradeToNextOptionClasses = new Class[]{
-				ProFarmer.class,
-				ProMiner.class
-				};
+		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.emerald,20)
+		};
+		
+		this.upgradeToNextOptions = null;
 	}
 
 }
