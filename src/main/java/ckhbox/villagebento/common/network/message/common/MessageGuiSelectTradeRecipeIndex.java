@@ -1,4 +1,4 @@
-package ckhbox.villagebento.common.network.message;
+package ckhbox.villagebento.common.network.message.common;
 
 import ckhbox.villagebento.VillageBentoMod;
 import ckhbox.villagebento.common.gui.common.ContainerTrading;

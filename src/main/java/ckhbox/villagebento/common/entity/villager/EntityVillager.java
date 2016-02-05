@@ -1,25 +1,31 @@
 package ckhbox.villagebento.common.entity.villager;
 
 import ckhbox.villagebento.VillageBentoMod;
-import ckhbox.villagebento.client.gui.villager.GuiVillagerMain;
 import ckhbox.villagebento.common.gui.GuiIDs;
+import ckhbox.villagebento.common.network.ModNetwork;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowing;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.util.tool.NameGenerator;
-import ckhbox.villagebento.common.village.attribute.VillagerAttribute;
 import ckhbox.villagebento.common.village.attribute.AttributeList;
-import ckhbox.villagebento.common.village.profession.ProVillager;
+import ckhbox.villagebento.common.village.attribute.VillagerAttribute;
 import ckhbox.villagebento.common.village.profession.Profession;
 import ckhbox.villagebento.common.village.trading.ITrading;
-import ckhbox.villagebento.common.village.trading.TradingRecipe;
 import ckhbox.villagebento.common.village.trading.TradingRecipeList;
 import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
+import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
+import net.minecraft.entity.ai.EntityAIOpenDoor;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.EntityAIWatchClosest2;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,9 +33,15 @@ public class EntityVillager extends EntityCreature implements ITrading{
 
 	private Profession profession;
 	private AttributeList attributeList;
+	//the player this villager is currently interacting with
+	private EntityPlayer interacting;
+	private EntityPlayer following;
 	
 	public EntityVillager(World worldIn) {
 		super(worldIn);		
+		
+		this.setSize(0.6F, 1.8F);
+		
 		this.attributeList = new AttributeList();
 		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.energy"),0,this,17,0));
 		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.happiness"),1,this,18,1));
@@ -49,6 +61,25 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		if(!this.hasCustomName()){
 			this.setCustomNameTag(NameGenerator.getRandomMaleName());
 		}
+		
+		this.initAI();
+	}
+	
+	protected void initAI(){
+		((PathNavigateGround)this.getNavigator()).setBreakDoors(true);
+        ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
+        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
+        //this.tasks.addTask(1, new EntityAITradePlayer(this));
+        //this.tasks.addTask(1, new EntityAILookAtTradePlayer(this));
+        //this.tasks.addTask(2, new EntityAIMoveIndoors(this));
+        //this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
+        this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.3D));
+        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
+        //this.tasks.addTask(9, new EntityAIVillagerInteract(this));
+        this.tasks.addTask(9, new EntityAIWander(this, 0.3D));
+        this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 	}
 
 	@Override
@@ -65,8 +96,14 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	@Override
 	protected boolean interact(EntityPlayer player) {
 		
-		if(player.worldObj.isRemote){
-			FMLCommonHandler.instance().showGuiScreen(new GuiVillagerMain(player, this));
+		if(!player.worldObj.isRemote){
+			if(	(this.isInteracting() && this.interacting != player) ||
+				(this.isFollowing() && this.following != player)){
+				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.isbusy")));
+			}
+			else{
+				player.openGui(VillageBentoMod.instance, GuiIDs.VillagerMain, player.worldObj, player.dimension, this.getEntityId(), 0);
+			}
 		}
 		
 		return super.interact(player);
@@ -76,6 +113,27 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	public TradingRecipeList getTradingRecipeList() {
 		return this.profession.getTradingRecipeList();
 	}
+	
+	public void setInteracting(EntityPlayer player){
+		if(!this.worldObj.isRemote){
+			this.interacting = player;
+		}
+	}
+	
+	public boolean isInteracting(){
+		return (this.interacting != null);
+	}
+	
+	public void setFollowing(EntityPlayer player){
+		this.following = player;
+		if(this.worldObj.isRemote){
+			ModNetwork.getInstance().sendToServer(new MessageGuiSetFollowing(this.getEntityId(), this.dimension, (player != null)));
+		}
+	}
+	
+	public boolean isFollowing(){
+		return (this.following != null);
+	}	
 	
 	public Profession getProfession(){
 		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
@@ -116,6 +174,10 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		}
 		//update attributes
 		this.attributeList.update();
+		
+		if(!this.worldObj.isRemote){
+			this.setCustomNameTag("info:"+ this.isInteracting() + "," + this.isFollowing());
+		}
 	}
 
 	public void refreshProfession(){

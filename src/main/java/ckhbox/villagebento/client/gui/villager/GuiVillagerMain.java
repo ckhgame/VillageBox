@@ -7,13 +7,16 @@ import ckhbox.villagebento.client.gui.GuiTextButton;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.gui.GuiIDs;
 import ckhbox.villagebento.common.network.ModNetwork;
-import ckhbox.villagebento.common.network.message.MessageGuiVillagerOpen;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowing;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -30,6 +33,11 @@ public class GuiVillagerMain extends GuiScreen{
     protected int playerChatOptionHeight = 18;
     protected int offsetX = 12;
     
+    GuiTextButton buttonViewStatus;
+    GuiTextButton buttonTrade;
+    GuiTextButton buttonFollow;
+    GuiTextButton buttonSetHome;
+    
     private EntityPlayer player;
     private EntityVillager villager;
     
@@ -38,6 +46,8 @@ public class GuiVillagerMain extends GuiScreen{
         super();
         this.player = player;
         this.villager = villager;
+        
+        ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, true));
     }
 
     public void initGui()
@@ -47,12 +57,18 @@ public class GuiVillagerMain extends GuiScreen{
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;  
         
-        String[] strOptions = new String[]{"> View Status","> Trading","> Option 3","> Option 4"};
+        String[] strOptions = new String[]{
+        		StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.viewstatus")),
+        		StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.trade")),
+        		StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.sethome"))
+        		};
         
-        for(int i =0;i<4;i++){
-        	this.buttonList.add(new GuiTextButton(this.mc, i, x + offsetX, y + playerChatOptionsOffsetY + i * playerChatOptionHeight, strOptions[i]));
-        }
+        this.buttonList.add(buttonViewStatus = new GuiTextButton(this.mc, 0, x + offsetX, y + playerChatOptionsOffsetY + 0 * playerChatOptionHeight, strOptions[0]));
+        this.buttonList.add(buttonTrade = new GuiTextButton(this.mc, 1, x + offsetX, y + playerChatOptionsOffsetY + 1 * playerChatOptionHeight, strOptions[1]));
+        this.buttonList.add(buttonFollow = new GuiTextButton(this.mc, 2, x + offsetX, y + playerChatOptionsOffsetY + 2 * playerChatOptionHeight, ""));
+        this.buttonList.add(buttonSetHome = new GuiTextButton(this.mc, 3, x + offsetX, y + playerChatOptionsOffsetY + 3 * playerChatOptionHeight, strOptions[2]));
         
+        this.refreshFollowButton(); 		
     }
     
     public boolean doesGuiPauseGame()
@@ -60,7 +76,10 @@ public class GuiVillagerMain extends GuiScreen{
         return false;
     }
 
-    
+    private void refreshFollowButton(){
+    	String f = this.villager.isFollowing()?"stop":"start";
+    	buttonFollow.setText(StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.follow." + f)));
+    }
     
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -84,18 +103,30 @@ public class GuiVillagerMain extends GuiScreen{
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 
-		if(button.id == 0){//trade
-			FMLCommonHandler.instance().showGuiScreen(new GuiVillagerStatus(this.player, this.villager));
+		if(button.id == 0){//view status
+			ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerStatus,villager.dimension,villager.getEntityId()));
 		}
-		else if(button.id == 1){
+		else if(button.id == 1){//trade
 			ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerTrading,villager.dimension,villager.getEntityId()));
 		}
-		
+		else if(button.id == 2){//follow
+			boolean enable = !this.villager.isFollowing();
+			ModNetwork.getInstance().sendToServer(new MessageGuiSetFollowing(this.villager.getEntityId(), this.villager.dimension, enable));
+			this.villager.setFollowing(this.villager.isFollowing()?null:this.player);
+			this.refreshFollowButton();
+		}
 		
 		super.actionPerformed(button);
 	}
-    
-	
+
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException {
+		super.keyTyped(typedChar, keyCode);
+		
+		if (keyCode == 1){
+			ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
+		}
+	}
 	
 	
 	

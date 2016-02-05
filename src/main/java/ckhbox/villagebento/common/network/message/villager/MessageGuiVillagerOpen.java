@@ -1,4 +1,4 @@
-package ckhbox.villagebento.common.network.message;
+package ckhbox.villagebento.common.network.message.villager;
 
 import ckhbox.villagebento.VillageBentoMod;
 import io.netty.buffer.ByteBuf;

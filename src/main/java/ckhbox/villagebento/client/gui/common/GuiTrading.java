@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import ckhbox.villagebento.common.gui.common.ContainerTrading;
 import ckhbox.villagebento.common.network.ModNetwork;
-import ckhbox.villagebento.common.network.message.MessageGuiVillagerOpen;
-import ckhbox.villagebento.common.network.message.MessageGuiSelectTradeRecipeIndex;
+import ckhbox.villagebento.common.network.message.common.MessageGuiSelectTradeRecipeIndex;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.trading.ITrading;
 import ckhbox.villagebento.common.village.trading.TradingRecipe;

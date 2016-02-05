@@ -17,14 +17,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerUpgrading extends Container
+public class ContainerVillagerUpgrading extends Container
 {
     private EntityVillager villager;
     private InventoryUpgrading upgradingInventory;	
     /** Instance of World. */
     private final World world;
 
-    public ContainerUpgrading(InventoryPlayer playerInventory, EntityVillager villager, World world)
+    public ContainerVillagerUpgrading(InventoryPlayer playerInventory, EntityVillager villager, World world)
     {
         this.villager = villager;
         this.world = world;

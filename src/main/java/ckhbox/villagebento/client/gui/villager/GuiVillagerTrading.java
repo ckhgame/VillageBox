@@ -1,8 +1,12 @@
 package ckhbox.villagebento.client.gui.villager;
 
+import java.io.IOException;
+
 import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.client.gui.common.GuiTrading;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
+import ckhbox.villagebento.common.network.ModNetwork;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.world.World;
 
@@ -25,6 +29,21 @@ public class GuiVillagerTrading extends GuiTrading{
 		
         GuiHelper.drawNameAndProfession(this.mc.fontRendererObj, villager, this.width / 2, y + villagerNameOffsetY);
 		
+	}
+	
+	@Override
+	public void onGuiClosed() {
+		super.onGuiClosed();
+		
+		ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
+	}
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException {
+		super.keyTyped(typedChar, keyCode);
+		
+		if (keyCode == 1){
+			ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
+		}
 	}
 
 }

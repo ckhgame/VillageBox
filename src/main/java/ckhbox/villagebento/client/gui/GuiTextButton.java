@@ -10,8 +10,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiTextButton extends GuiButton{
 	
+	private Minecraft mc;
+	
 	public GuiTextButton(Minecraft mc,int id, int x, int y, String text) {
 		super(id, x, y,mc.fontRendererObj.getStringWidth(text),mc.fontRendererObj.FONT_HEIGHT,text);
+		this.mc = mc;
+	}
+	
+	public void setText(String text){
+		this.displayString = text;
+		this.width = this.mc.fontRendererObj.getStringWidth(text);
 	}
 	
 	public boolean isMouseOn(){

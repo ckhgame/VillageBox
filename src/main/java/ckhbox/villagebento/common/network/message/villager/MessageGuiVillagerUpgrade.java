@@ -1,7 +1,7 @@
-package ckhbox.villagebento.common.network.message;
+package ckhbox.villagebento.common.network.message.villager;
 
 import ckhbox.villagebento.VillageBentoMod;
-import ckhbox.villagebento.common.gui.villager.ContainerUpgrading;
+import ckhbox.villagebento.common.gui.villager.ContainerVillagerUpgrading;
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -31,8 +31,8 @@ public class MessageGuiVillagerUpgrade implements IMessage {
         public IMessage onMessage(MessageGuiVillagerUpgrade message, MessageContext ctx) {
             
         	//upgrade villager
-        	if(ctx.getServerHandler().playerEntity.openContainer instanceof ContainerUpgrading){
-        		((ContainerUpgrading)ctx.getServerHandler().playerEntity.openContainer).upgrade();
+        	if(ctx.getServerHandler().playerEntity.openContainer instanceof ContainerVillagerUpgrading){
+        		((ContainerVillagerUpgrading)ctx.getServerHandler().playerEntity.openContainer).upgrade();
         	}
         	
             return null;

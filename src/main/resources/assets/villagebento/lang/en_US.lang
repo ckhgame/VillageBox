@@ -15,7 +15,14 @@ villagebento:villager.attribute.energy=Energy
 villagebento:villager.attribute.happiness=Happiness
 villagebento:villager.attribute.proficiency=Proficiency
 
-# Guimatch
+# Gui
+
+villagebento:gui.villagermain.menu.viewstatus=View Status
+villagebento:gui.villagermain.menu.trade=Trade
+villagebento:gui.villagermain.menu.follow.start=Follow me
+villagebento:gui.villagermain.menu.follow.stop=Stop following me
+villagebento:gui.villagermain.menu.sethome=Set home here
+
 villagebento:gui.villagerstatus.buttongift.title=Gift
 villagebento:gui.villagerstatus.buttongift.desc=Send a gift to this villager
 villagebento:gui.villagerstatus.buttonupgrade.title=Upgrade
@@ -26,3 +33,7 @@ villagebento:gui.villagerupgrade.buttonupgrade.title=Upgrade
 villagebento:gui.villagerupgrade.buttonupgrade.desc=Upgrade to the advanced profession
 villagebento:gui.villagerupgrade.buttonupgrade.desc.disable0=Unmatched items
 villagebento:gui.villagerupgrade.buttonupgrade.desc.disable1=Need more Proficiency
+
+# Message
+
+villagebento:message.villager.isbusy=This villager is busy now...

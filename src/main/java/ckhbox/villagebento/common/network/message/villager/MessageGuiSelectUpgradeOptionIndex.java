@@ -1,8 +1,8 @@
-package ckhbox.villagebento.common.network.message;
+package ckhbox.villagebento.common.network.message.villager;
 
 import ckhbox.villagebento.VillageBentoMod;
 import ckhbox.villagebento.common.gui.common.ContainerTrading;
-import ckhbox.villagebento.common.gui.villager.ContainerUpgrading;
+import ckhbox.villagebento.common.gui.villager.ContainerVillagerUpgrading;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.inventory.Container;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -38,8 +38,8 @@ public class MessageGuiSelectUpgradeOptionIndex implements IMessage {
         public IMessage onMessage(MessageGuiSelectUpgradeOptionIndex message, MessageContext ctx) {
         	
         	Container container = ctx.getServerHandler().playerEntity.openContainer;
-        	if(container instanceof ContainerUpgrading){
-        		((ContainerUpgrading)container).setCurrentUpgradeOptionIndex(message.currentUpgradeOptionIndex);
+        	if(container instanceof ContainerVillagerUpgrading){
+        		((ContainerVillagerUpgrading)container).setCurrentUpgradeOptionIndex(message.currentUpgradeOptionIndex);
         	}
 
             return null;

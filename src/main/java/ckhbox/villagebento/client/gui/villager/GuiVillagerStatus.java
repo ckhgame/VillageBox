@@ -7,7 +7,8 @@ import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.gui.GuiIDs;
 import ckhbox.villagebento.common.network.ModNetwork;
-import ckhbox.villagebento.common.network.message.MessageGuiVillagerOpen;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.attribute.VillagerAttribute;
 import ckhbox.villagebento.common.village.profession.Profession;
@@ -174,6 +175,22 @@ public class GuiVillagerStatus extends GuiScreen{
             }
         }
     }
+	
+	@Override
+	public void onGuiClosed() {
+		super.onGuiClosed();
+		
+		ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
+	}
+	
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException {
+		super.keyTyped(typedChar, keyCode);
+		
+		if (keyCode == 1){
+			ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
+		}
+	}
 	
 	
 }

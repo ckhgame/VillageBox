@@ -10,12 +10,13 @@ import org.lwjgl.opengl.GL11;
 import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.gui.GuiIDs;
-import ckhbox.villagebento.common.gui.villager.ContainerUpgrading;
+import ckhbox.villagebento.common.gui.villager.ContainerVillagerUpgrading;
 import ckhbox.villagebento.common.network.ModNetwork;
-import ckhbox.villagebento.common.network.message.MessageGuiSelectTradeRecipeIndex;
-import ckhbox.villagebento.common.network.message.MessageGuiSelectUpgradeOptionIndex;
-import ckhbox.villagebento.common.network.message.MessageGuiVillagerOpen;
-import ckhbox.villagebento.common.network.message.MessageGuiVillagerUpgrade;
+import ckhbox.villagebento.common.network.message.common.MessageGuiSelectTradeRecipeIndex;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSelectUpgradeOptionIndex;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerUpgrade;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.profession.Profession;
 import net.minecraft.client.Minecraft;
@@ -53,7 +54,7 @@ public class GuiVillagerUpgrading extends GuiContainer{
     
 	public GuiVillagerUpgrading(InventoryPlayer playerInventory, EntityVillager villager, World worldIn)
     {
-        super(new ContainerUpgrading(playerInventory, villager, worldIn));
+        super(new ContainerVillagerUpgrading(playerInventory, villager, worldIn));
         this.villager = villager;
     }
 	
@@ -251,7 +252,7 @@ public class GuiVillagerUpgrading extends GuiContainer{
 	        }
 	        
 	        //upgrade button
-	        this.meetItemsNeed = ((ContainerUpgrading)this.inventorySlots).getUpgradingInventory().canUpgrade();
+	        this.meetItemsNeed = ((ContainerVillagerUpgrading)this.inventorySlots).getUpgradingInventory().canUpgrade();
 	        this.hasFullProficiency = this.villager.isProficiencyFull();
 	        this.upgradeButton.enabled = (this.meetItemsNeed && this.hasFullProficiency);
         }
@@ -288,7 +289,7 @@ public class GuiVillagerUpgrading extends GuiContainer{
 
         if (flag)
         {
-            ((ContainerUpgrading)this.inventorySlots).setCurrentUpgradeOptionIndex(this.selectedUpgradeOptionIdx);
+            ((ContainerVillagerUpgrading)this.inventorySlots).setCurrentUpgradeOptionIndex(this.selectedUpgradeOptionIdx);
             ModNetwork.getInstance().sendToServer(new MessageGuiSelectUpgradeOptionIndex(this.selectedUpgradeOptionIdx));
         }
         
@@ -296,6 +297,22 @@ public class GuiVillagerUpgrading extends GuiContainer{
         	ModNetwork.getInstance().sendToServer(new MessageGuiVillagerUpgrade());
         }
     }
+	
+	@Override
+	public void onGuiClosed() {
+		super.onGuiClosed();
+		
+		ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
+	}
+	
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException {
+		super.keyTyped(typedChar, keyCode);
+		
+		if (keyCode == 1){
+			ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
+		}
+	}
 	
 	@SideOnly(Side.CLIENT)
     static class ArrowButton extends GuiButton
