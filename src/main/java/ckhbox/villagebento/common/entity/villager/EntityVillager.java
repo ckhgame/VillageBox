@@ -1,9 +1,9 @@
 package ckhbox.villagebento.common.entity.villager;
 
 import ckhbox.villagebento.VillageBentoMod;
+import ckhbox.villagebento.common.entity.ai.VillagerAIFollowing;
 import ckhbox.villagebento.common.gui.GuiIDs;
-import ckhbox.villagebento.common.network.ModNetwork;
-import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowing;
+import ckhbox.villagebento.common.util.helper.BitHelper;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.util.tool.NameGenerator;
 import ckhbox.villagebento.common.village.attribute.AttributeList;
@@ -13,6 +13,7 @@ import ckhbox.villagebento.common.village.trading.ITrading;
 import ckhbox.villagebento.common.village.trading.TradingRecipeList;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
@@ -20,6 +21,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityAIWatchClosest2;
+import net.minecraft.entity.ai.EntityJumpHelper;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -65,6 +67,24 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.initAI();
 	}
 	
+	
+	
+	@Override
+	public EntityJumpHelper getJumpHelper() {
+		// TODO Auto-generated method stub
+		return super.getJumpHelper();
+	}
+
+
+
+	@Override
+	protected float getJumpUpwardsMotion() {
+		// TODO Auto-generated method stub
+		return super.getJumpUpwardsMotion();
+	}
+
+
+
 	protected void initAI(){
 		((PathNavigateGround)this.getNavigator()).setBreakDoors(true);
         ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
@@ -75,13 +95,20 @@ public class EntityVillager extends EntityCreature implements ITrading{
         //this.tasks.addTask(2, new EntityAIMoveIndoors(this));
         //this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+        this.tasks.addTask(5, new VillagerAIFollowing(this,0.6F));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.3D));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
         //this.tasks.addTask(9, new EntityAIVillagerInteract(this));
-        this.tasks.addTask(9, new EntityAIWander(this, 0.3D));
+        this.tasks.addTask(9, new EntityAIWander(this, 0.4D));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 	}
 
+	protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
+    }
+	
 	@Override
 	protected void entityInit() {
 		super.entityInit();
@@ -91,6 +118,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.getDataWatcher().addObject(17, 0);
 		this.getDataWatcher().addObject(18, 0);
 		this.getDataWatcher().addObject(19, 0);
+		//data flags(interacting.following,etc.)
+		this.getDataWatcher().addObject(20, 0);
 	}
 
 	@Override
@@ -114,27 +143,54 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		return this.profession.getTradingRecipeList();
 	}
 	
+	//data flags
+	
+	/**
+	 * POS: 0=Interacting, 1=Following
+	 */
+	protected void setDataFlag(int pos, boolean flag){
+		int data = this.getDataWatcher().getWatchableObjectInt(20);
+		data = BitHelper.writeBit(data, pos, flag);
+		this.getDataWatcher().updateObject(20, data);
+	}
+	
+	/**
+	 * POS: 0=Interacting, 1=Following
+	 */
+	protected boolean getDataFlag(int pos){
+		int data = this.getDataWatcher().getWatchableObjectInt(20);
+		return BitHelper.readBit(data, pos);
+	}
+	
+	//interacting and following	
 	public void setInteracting(EntityPlayer player){
 		if(!this.worldObj.isRemote){
 			this.interacting = player;
+			this.setDataFlag(0, (this.interacting != null));
 		}
 	}
 	
 	public boolean isInteracting(){
-		return (this.interacting != null);
+		return this.getDataFlag(0);
 	}
 	
 	public void setFollowing(EntityPlayer player){
-		this.following = player;
-		if(this.worldObj.isRemote){
-			ModNetwork.getInstance().sendToServer(new MessageGuiSetFollowing(this.getEntityId(), this.dimension, (player != null)));
+		if(!this.worldObj.isRemote){
+			this.following = player;
+			this.setDataFlag(1, (this.following != null));
 		}
 	}
 	
 	public boolean isFollowing(){
-		return (this.following != null);
+		return this.getDataFlag(1);
 	}	
 	
+	public EntityPlayer getFollowing(){
+		return this.following;
+	}
+	
+	
+	//profession
 	public Profession getProfession(){
 		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
 			this.profession = Profession.registry.get(this.getDataWatcher().getWatchableObjectInt(16));
@@ -185,6 +241,11 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.profession = Profession.registry.get(proid);
 		this.attributeList.get(0).setMaxValue(this.profession.getMaxEnegy());
 		this.attributeList.get(2).setMaxValue(this.profession.getMaxProficiency());
+	}
+	
+	@Override
+	public boolean allowLeashing() {
+		return false;
 	}
 	
 	@Override

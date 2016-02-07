@@ -112,7 +112,6 @@ public class GuiVillagerMain extends GuiScreen{
 		else if(button.id == 2){//follow
 			boolean enable = !this.villager.isFollowing();
 			ModNetwork.getInstance().sendToServer(new MessageGuiSetFollowing(this.villager.getEntityId(), this.villager.dimension, enable));
-			this.villager.setFollowing(this.villager.isFollowing()?null:this.player);
 			this.refreshFollowButton();
 		}
 		
