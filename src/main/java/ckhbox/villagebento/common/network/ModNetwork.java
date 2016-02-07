@@ -3,6 +3,7 @@ package ckhbox.villagebento.common.network;
 import ckhbox.villagebento.common.network.message.common.MessageGuiSelectTradeRecipeIndex;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSelectUpgradeOptionIndex;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowing;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerUpgrade;
@@ -31,5 +32,6 @@ public class ModNetwork {
 		instance.registerMessage(MessageGuiVillagerUpgrade.Handler.class, MessageGuiVillagerUpgrade.class, id++, Side.SERVER);
 		instance.registerMessage(MessageGuiSetInteracting.Handler.class, MessageGuiSetInteracting.class, id++, Side.SERVER);
 		instance.registerMessage(MessageGuiSetFollowing.Handler.class, MessageGuiSetFollowing.class, id++, Side.SERVER);
+		instance.registerMessage(MessageGuiSetHome.Handler.class, MessageGuiSetHome.class, id++, Side.SERVER);
 	}
 }

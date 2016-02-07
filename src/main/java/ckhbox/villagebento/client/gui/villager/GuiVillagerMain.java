@@ -8,6 +8,7 @@ import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.gui.GuiIDs;
 import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowing;
+import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.util.helper.PathHelper;
@@ -114,6 +115,9 @@ public class GuiVillagerMain extends GuiScreen{
 			ModNetwork.getInstance().sendToServer(new MessageGuiSetFollowing(this.villager.getEntityId(), this.villager.dimension, enable));
 			this.refreshFollowButton();
 		}
+		else if(button.id == 3){//set home
+			ModNetwork.getInstance().sendToServer(new MessageGuiSetHome(this.villager.getEntityId(), this.villager.dimension));
+		}
 		
 		super.actionPerformed(button);
 	}
@@ -126,6 +130,15 @@ public class GuiVillagerMain extends GuiScreen{
 			ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
 		}
 	}
+
+	@Override
+	public void updateScreen() {
+		super.updateScreen();
+		
+		this.refreshFollowButton(); 
+	}
+	
+	
 	
 	
 	

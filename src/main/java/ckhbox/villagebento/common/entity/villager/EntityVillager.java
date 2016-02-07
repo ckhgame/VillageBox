@@ -2,12 +2,17 @@ package ckhbox.villagebento.common.entity.villager;
 
 import ckhbox.villagebento.VillageBentoMod;
 import ckhbox.villagebento.common.entity.ai.VillagerAIFollowing;
+import ckhbox.villagebento.common.entity.ai.VillagerAIWander;
 import ckhbox.villagebento.common.gui.GuiIDs;
 import ckhbox.villagebento.common.util.helper.BitHelper;
 import ckhbox.villagebento.common.util.helper.PathHelper;
+import ckhbox.villagebento.common.util.math.IntBoundary;
+import ckhbox.villagebento.common.util.math.IntVec3;
+import ckhbox.villagebento.common.util.tool.HouseDetector;
 import ckhbox.villagebento.common.util.tool.NameGenerator;
 import ckhbox.villagebento.common.village.attribute.AttributeList;
 import ckhbox.villagebento.common.village.attribute.VillagerAttribute;
+import ckhbox.villagebento.common.village.home.DataHomeList;
 import ckhbox.villagebento.common.village.profession.Profession;
 import ckhbox.villagebento.common.village.trading.ITrading;
 import ckhbox.villagebento.common.village.trading.TradingRecipeList;
@@ -18,7 +23,6 @@ import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.ai.EntityJumpHelper;
@@ -38,6 +42,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	//the player this villager is currently interacting with
 	private EntityPlayer interacting;
 	private EntityPlayer following;
+	
+	private IntBoundary home;
 	
 	public EntityVillager(World worldIn) {
 		super(worldIn);		
@@ -99,7 +105,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.3D));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
         //this.tasks.addTask(9, new EntityAIVillagerInteract(this));
-        this.tasks.addTask(9, new EntityAIWander(this, 0.4D));
+        this.tasks.addTask(9, new VillagerAIWander(this, 0.4D));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 	}
 
@@ -189,6 +195,38 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		return this.following;
 	}
 	
+	//set home
+	public void setCurrentPosAsHome(EntityPlayer player){
+		//server side only
+		if(this.worldObj.isRemote)
+			return;
+		
+		//scan home boundary
+		IntBoundary bound = HouseDetector.getClosedField(this.worldObj, new IntVec3(this.posX,this.posY,this.posZ));
+		if(bound == null){
+			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.openspace")));
+		}
+		else{
+			bound = bound.extend(-1);//remove outlines
+			//add home bounday
+			if(!DataHomeList.get(this.worldObj).add(bound)){
+				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.existed")));
+			}
+			else{
+				//remove old home
+				if(this.home != null){
+					DataHomeList.get(this.worldObj).remove(home);
+				}
+				this.home = bound;
+				//stop following
+				this.setFollowing(null);
+			}
+		}
+	}
+	
+	public IntBoundary getHome(){
+		return this.home;
+	}
 	
 	//profession
 	public Profession getProfession(){
@@ -221,6 +259,13 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.attributeList.get(2).setValue(0);
 	}
 	
+	@Override
+	protected boolean canDespawn() {
+		return false;
+	}
+
+
+
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
@@ -255,6 +300,17 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		tagCompound.setInteger("attr_eng", (Integer)this.attributeList.get(0).getValue());
 		tagCompound.setInteger("attr_hap", (Integer)this.attributeList.get(1).getValue());
 		tagCompound.setInteger("attr_pro", (Integer)this.attributeList.get(2).getValue());
+		//home
+		if(this.home != null){
+			tagCompound.setIntArray("homebd", new int[]{
+					this.home.minx,
+					this.home.miny,
+					this.home.minz,
+					this.home.maxx,
+					this.home.maxy,
+					this.home.maxz
+					});
+		}
 	}
 
 	@Override
@@ -265,6 +321,14 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.attributeList.get(0).setValue(tagCompund.getInteger("attr_eng"));
 		this.attributeList.get(1).setValue(tagCompund.getInteger("attr_hap"));
 		this.attributeList.get(2).setValue(tagCompund.getInteger("attr_pro"));
+		//home
+		int[] arr = tagCompund.getIntArray("homebd");
+		if(arr == null || arr.length == 0){
+			this.home = null;
+		}
+		else{
+			this.home = new IntBoundary(arr[0],arr[1],arr[2],arr[3],arr[4],arr[5]);
+		}
 	}
 	
 	
