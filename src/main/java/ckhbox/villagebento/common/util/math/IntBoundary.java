@@ -37,6 +37,18 @@ public class IntBoundary {
 		return true;
 	}
 	
+	public boolean contact(IntVec3 vec){
+		if(this.maxx < vec.x ||
+		   this.minx > vec.x ||
+		   this.maxy < vec.y ||
+		   this.miny > vec.y ||
+		   this.maxz < vec.z ||
+		   this.minz > vec.z ){
+			return false;
+		}
+		return true;
+	}
+	
 	public IntBoundary extend(int ds){
 		return this.extend(ds,ds,ds);
 	}

@@ -219,7 +219,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.openspace")));
 		}
 		else{
-			bound = bound.extend(-1);//remove outlines
+			bound = bound.extend(-1,0,-1);//remove outlines
 			//add home bounday
 			if(!DataHomeList.get(this.worldObj).add(bound)){
 				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.existed")));
@@ -241,10 +241,16 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	public void moveOutHome(EntityPlayer player){
 		if(this.home != null){
-			DataHomeList.get(this.worldObj).remove(home);
-			this.home = null;
-			this.setDataFlag(2, false);
-			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.moveout"),this.getName()));
+			//must be inside home when moving out
+			if(this.home.contact(new IntVec3(this.posX,this.posY,this.posZ))){
+				DataHomeList.get(this.worldObj).remove(home);
+				this.home = null;
+				this.setDataFlag(2, false);
+				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.moveout"),this.getName()));
+			}
+			else{
+				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.moveoutfailed"),this.getName()));
+			}
 		}
 	}
 	
