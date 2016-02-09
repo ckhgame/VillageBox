@@ -15,6 +15,10 @@ public abstract class Attribute<T> {
 		return StatCollector.translateToLocal(unlocalizedName);
 	}
 	
+	public String getDescription(){
+		return StatCollector.translateToLocal(unlocalizedName + ".desc");
+	}
+	
 	public abstract T getValue();
 	
 	public abstract void setValue(T value);

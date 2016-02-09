@@ -12,8 +12,11 @@ villagebento:profession.miner.desc=Mining basic ores
 
 # Villager Attributes
 villagebento:villager.attribute.energy=Energy
+villagebento:villager.attribute.energy.desc=Trading will cost enegy
 villagebento:villager.attribute.happiness=Happiness
+villagebento:villager.attribute.happiness.desc=The villager can't provide##anything when is sad
 villagebento:villager.attribute.proficiency=Proficiency
+villagebento:villager.attribute.proficiency.desc=Max proficiency to upgrade##to advanced professions
 
 # Gui
 

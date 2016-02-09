@@ -117,7 +117,11 @@ public class GuiVillagerStatus extends GuiContainer{
 	private void drawAttributeHoverText(int x, int y, int mouseX, int mouseY, VillagerAttribute attribute){	
 		if(GuiHelper.isPointInRegion(x, y, 16, 16, mouseX, mouseY)){
 			ArrayList<String> list = new ArrayList<String>();
-			list.add("§f" + attribute.getDisplayName());
+			list.add("§e" + attribute.getDisplayName());
+			String[] descs = attribute.getDescription().split("##");
+			for(String desc : descs){
+				list.add("§f" + desc);
+			}
 			this.drawHoveringText(list, mouseX, mouseY, this.fontRendererObj);
 		}
 	}
