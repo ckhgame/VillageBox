@@ -37,3 +37,10 @@ villagebento:gui.villagerupgrade.buttonupgrade.desc.disable1=Need more Proficien
 # Message
 
 villagebento:message.villager.isbusy=This villager is busy now...
+
+
+# Items
+item.villagebento:villageBook.name=Village Book
+item.villagebento:blueGem.name=Blue Gem
+item.villagebento:violetGem.name=Violet Gem
+item.villagebento:orangeGem.name=Orange Gem

@@ -4,7 +4,9 @@ import ckhbox.villagebento.VillageBentoMod;
 import ckhbox.villagebento.common.block.ModBlocks;
 import ckhbox.villagebento.common.entity.ModEntities;
 import ckhbox.villagebento.common.gui.GuiHandler;
+import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.network.ModNetwork;
+import ckhbox.villagebento.common.recipe.ModRecipes;
 import ckhbox.villagebento.common.village.profession.Profession;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -15,7 +17,9 @@ public class CommonProxy {
 	
 	public void preInit(FMLPreInitializationEvent e) {
 		ModBlocks.init();
+		ModItems.init();
 		ModEntities.init();
+		ModRecipes.init();
 		
 		//gui
 		NetworkRegistry.INSTANCE.registerGuiHandler(VillageBentoMod.instance, new GuiHandler());
