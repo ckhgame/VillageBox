@@ -3,11 +3,13 @@ package ckhbox.villagebento.common;
 import ckhbox.villagebento.VillageBentoMod;
 import ckhbox.villagebento.common.block.ModBlocks;
 import ckhbox.villagebento.common.entity.ModEntities;
+import ckhbox.villagebento.common.event.EventEntity;
 import ckhbox.villagebento.common.gui.GuiHandler;
 import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.recipe.ModRecipes;
 import ckhbox.villagebento.common.village.profession.Profession;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -29,6 +31,9 @@ public class CommonProxy {
 		
 		//profession
 		Profession.init();
+		
+		//events
+		MinecraftForge.EVENT_BUS.register(new EventEntity());
     }
 
     public void init(FMLInitializationEvent e) {

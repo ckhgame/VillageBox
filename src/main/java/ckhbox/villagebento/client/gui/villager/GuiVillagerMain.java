@@ -6,6 +6,7 @@ import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.client.gui.GuiTextButton;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.gui.GuiIDs;
+import ckhbox.villagebento.common.gui.villager.ContainerVillagerMain;
 import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowing;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
@@ -13,17 +14,16 @@ import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteract
 import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiVillagerMain extends GuiScreen{
+public class GuiVillagerMain extends GuiContainer{
 	
 	private static final ResourceLocation VillagerMainGuiTexture = new ResourceLocation(PathHelper.full("textures/gui/villager/main.png"));
     protected int xSize = 176;
@@ -44,7 +44,7 @@ public class GuiVillagerMain extends GuiScreen{
     
 	public GuiVillagerMain(EntityPlayer player, EntityVillager villager)
     {
-        super();
+        super(new ContainerVillagerMain());
         this.player = player;
         this.villager = villager;
         
@@ -83,9 +83,7 @@ public class GuiVillagerMain extends GuiScreen{
     }
     
 	@Override
-	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-		this.drawDefaultBackground();
-		
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(VillagerMainGuiTexture);
         int x = (this.width - this.xSize) / 2;
@@ -93,12 +91,20 @@ public class GuiVillagerMain extends GuiScreen{
         this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
 		
         GuiHelper.drawNameAndProfession(this.mc.fontRendererObj, villager, this.width / 2, y + villagerNameOffsetY);
+	}
+    
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		
+		int x = (this.width - this.xSize) / 2;
+        int y = (this.height - this.ySize) / 2;
         
         String text = "Hello! welcome to villageb bento, I'm a villager in your village!";
         //this.drawWrappedString(this.mc.fontRendererObj, "test text....",x + offsetX, y + villagerTextOffsetY, 16777120, this.xSize - offsetX * 2);
         this.fontRendererObj.drawSplitString(text,x + offsetX, y + villagerTextOffsetY, this.xSize - offsetX * 2, 16777120);
-        
-		super.drawScreen(mouseX, mouseY, partialTicks);
+
 	}
 
 	@Override
@@ -136,10 +142,6 @@ public class GuiVillagerMain extends GuiScreen{
 		super.updateScreen();
 		
 		this.refreshFollowButton(); 
-	}
-	
-	
-	
-	
+	}	
 	
 }

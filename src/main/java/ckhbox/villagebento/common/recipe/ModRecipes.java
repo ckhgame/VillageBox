@@ -9,5 +9,8 @@ public class ModRecipes {
 	
 	
 	public static void init(){
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.villageBook),new ItemStack(Items.book), new ItemStack(Items.emerald));
+		
 	}
 }
