@@ -1,6 +1,7 @@
 package ckhbox.villagebento.common.entity.ai;
 
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
+import ckhbox.villagebento.common.util.math.Rand;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
@@ -18,7 +19,7 @@ public class VillagerAIWander extends EntityAIBase
 
     public VillagerAIWander(EntityVillager villagerIn, double speedIn)
     {
-        this(villagerIn, speedIn, 120);
+        this(villagerIn, speedIn, 50);
     }
 
     public VillagerAIWander(EntityVillager villagerIn, double speedIn, int chance)
@@ -42,10 +43,6 @@ public class VillagerAIWander extends EntityAIBase
                 return false;
             }
         }
-
-        if(this.villager.getHome() == null){
-        	return false;
-        }
         
         if(this.villager.isFollowing()){
         	return false;
@@ -57,13 +54,22 @@ public class VillagerAIWander extends EntityAIBase
         
         Vec3 vec3 = null;
         
-        if(this.villager.worldObj.isDaytime() && !this.villager.worldObj.isRaining()){
-        	//if now is day time and not raining, the villager will randomly walking near home
-        	vec3 = this.villager.getHome().extend(8).getRandomPosInsideBoundary();
+        if(this.villager.getHome() == null){
+        	vec3 = new Vec3(
+        			this.villager.getWanderCenter().xCoord + Rand.get().nextDouble() * 6.0D - 3.0D,
+        			this.villager.getWanderCenter().yCoord,
+        			this.villager.getWanderCenter().zCoord + Rand.get().nextDouble() * 6.0D - 3.0D
+        			);
         }
         else{
-        	//if is raining or at night, the villager will stay at home
-        	vec3 = this.villager.getHome().getRandomPosInsideBoundary();
+            if(this.villager.worldObj.isDaytime() && !this.villager.worldObj.isRaining()){
+            	//if now is day time and not raining, the villager will randomly walking near home
+            	vec3 = this.villager.getHome().extend(8).getRandomPosInsideBoundary();
+            }
+            else{
+            	//if is raining or at night, the villager will stay at home
+            	vec3 = this.villager.getHome().getRandomPosInsideBoundary();
+            }
         }
         
         

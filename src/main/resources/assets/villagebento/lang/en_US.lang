@@ -37,8 +37,9 @@ villagebento:gui.villagerupgrade.buttonupgrade.desc.disable1=Need more Proficien
 # Message
 
 villagebento:message.villager.isbusy=This villager is busy now...
+villagebento:message.villager.newjoined=%s has arrived!
 
-villagebento:message.player.someonewantsjoin=Someone wants to join your village!
+villagebento:message.player.someonewantsjoin=Someone wants to join the village!
 
 # Items
 item.villagebento:villageBook.name=Village Book

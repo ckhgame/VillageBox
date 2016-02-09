@@ -12,6 +12,7 @@ import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowin
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
+import ckhbox.villagebento.common.network.message.villager.MessageSpawnNewVillager;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.client.gui.GuiButton;
@@ -33,6 +34,8 @@ public class GuiVillageBook extends GuiContainer{
 	private EntityPlayer player;
 	private ExtendedPlayerProperties properties;
 	
+	private GuiTextButton buttonInvite;
+	
 	public GuiVillageBook(EntityPlayer player) {
 		super(new ContainerVillageBook(player));
 		this.player = player;
@@ -42,6 +45,12 @@ public class GuiVillageBook extends GuiContainer{
     public void initGui()
     {
         super.initGui();
+        
+        int x = (this.width - this.xSize) / 2;
+        int y = (this.height - this.ySize) / 2;
+        
+        this.buttonList.add(this.buttonInvite = new GuiTextButton(this.mc, 0, x,y, "Invite"));
+       // this.buttonInvite.xPosition = this.height / 2 - this.buttonInvite.width / 2;
     }
     
     public boolean doesGuiPauseGame()
@@ -62,13 +71,26 @@ public class GuiVillageBook extends GuiContainer{
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		
-        String text = "New Villager:" + this.properties.hasNewVillager;
-        this.drawCenteredString(this.fontRendererObj, text, this.width/2, this.height / 2, 0xFFFF0000);
+		GlStateManager.disableLighting();
+		
+        String text = "New Villager:" + this.properties.newVillagerTimer;
+        this.drawCenteredString(this.fontRendererObj, text, this.width/2, this.height / 2, 0xFFFFFF00);
 	}
 
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
-		
 		super.actionPerformed(button);
+		
+		if(button == buttonInvite){
+			ModNetwork.getInstance().sendToServer(new MessageSpawnNewVillager());
+		}
 	}
+
+	@Override
+	public void updateScreen() {
+		super.updateScreen();
+		this.buttonInvite.enabled = (properties.newVillagerTimer <= 0);
+	}
+	
+	
 }

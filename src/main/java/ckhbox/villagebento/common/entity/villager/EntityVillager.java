@@ -31,6 +31,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -44,6 +45,9 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	private EntityPlayer following;
 	
 	private IntBoundary home;
+	
+	//the canter of wandering when no home has been set to this villager
+	private Vec3 wanderCenter;
 	
 	public EntityVillager(World worldIn) {
 		super(worldIn);		
@@ -88,8 +92,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		// TODO Auto-generated method stub
 		return super.getJumpUpwardsMotion();
 	}
-
-
 
 	protected void initAI(){
 		((PathNavigateGround)this.getNavigator()).setBreakDoors(true);
@@ -149,6 +151,13 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		return this.profession.getTradingRecipeList();
 	}
 	
+	public Vec3 getWanderCenter(){
+		if(this.wanderCenter == null){
+			this.wanderCenter = new Vec3(this.posX, this.posY, this.posZ);
+		}
+		return this.wanderCenter;
+	}
+	
 	//data flags
 	
 	/**
@@ -184,6 +193,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		if(!this.worldObj.isRemote){
 			this.following = player;
 			this.setDataFlag(1, (this.following != null));
+			this.wanderCenter = null;
 		}
 	}
 	
@@ -275,10 +285,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		}
 		//update attributes
 		this.attributeList.update();
-		
-		if(!this.worldObj.isRemote){
-			this.setCustomNameTag("info:"+ this.isInteracting() + "," + this.isFollowing());
-		}
 	}
 
 	public void refreshProfession(){

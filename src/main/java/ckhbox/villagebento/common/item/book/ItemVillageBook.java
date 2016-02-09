@@ -19,7 +19,6 @@ public class ItemVillageBook extends Item{
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
 		
 		if(!worldIn.isRemote){
-			System.out.println("YES!");
 			playerIn.openGui(VillageBentoMod.instance, GuiIDs.VillageBook, worldIn, 0, 0, 0);
 		}
 		

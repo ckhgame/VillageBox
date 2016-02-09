@@ -12,23 +12,23 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageSyncExtendedPlayerProperties implements IMessage {
 	
-	public boolean hasNewVillager;
+	public int newVillagerTimer;
 	
 	public MessageSyncExtendedPlayerProperties(){
 	}
 	
 	public MessageSyncExtendedPlayerProperties(ExtendedPlayerProperties properties){
-		this.hasNewVillager = properties.hasNewVillager;
+		this.newVillagerTimer = properties.newVillagerTimer;
 	}
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		this.hasNewVillager = buf.readBoolean();
+		this.newVillagerTimer = buf.readInt();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-		buf.writeBoolean(hasNewVillager);
+		buf.writeInt(this.newVillagerTimer);
 	}
 
 	public static class Handler implements IMessageHandler<MessageSyncExtendedPlayerProperties, IMessage> {
@@ -38,8 +38,8 @@ public class MessageSyncExtendedPlayerProperties implements IMessage {
         @Override
         public IMessage onMessage(MessageSyncExtendedPlayerProperties message, MessageContext ctx) {
         	ExtendedPlayerProperties properties = ExtendedPlayerProperties.get(Minecraft.getMinecraft().thePlayer);
-        	properties.hasNewVillager = message.hasNewVillager;
-
+        	properties.newVillagerTimer = message.newVillagerTimer;
+        	System.out.println("Sync:" + message.newVillagerTimer);
             return null;
         }
     }

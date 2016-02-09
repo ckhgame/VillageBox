@@ -97,6 +97,8 @@ public class GuiVillagerMain extends GuiContainer{
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 
 		super.drawScreen(mouseX, mouseY, partialTicks);
+
+		GlStateManager.disableLighting();
 		
 		int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;

@@ -20,21 +20,26 @@ public class EventEntity {
 		}
 	}
 	
+	public ExtendedPlayerProperties playerProperties;
+	
 	@SubscribeEvent
 	public void onLivingUpdating(LivingUpdateEvent event)
 	{
-		//register extended player properties
-		if(event.entity instanceof EntityPlayer){
-			System.out.println("Player Updating!");
-			
-			//someone wants to join your village.....
-			if(Rand.get().nextInt(1000) == 0){
-				ExtendedPlayerProperties properties = ExtendedPlayerProperties.get((EntityPlayer)event.entity);
-				if(!properties.hasNewVillager){
-					properties.hasNewVillager = true;
-					((EntityPlayer)event.entity).addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.someonewantsjoin")));
-				}				
+		if(!event.entity.worldObj.isRemote){
+			//register extended player properties
+			if(event.entity instanceof EntityPlayer){
+
+				//someone wants to join your village.....
+				if(playerProperties == null){
+					playerProperties = ExtendedPlayerProperties.get((EntityPlayer)event.entity);
+				}
+				if(playerProperties.newVillagerTimer > 0){
+					if(--playerProperties.newVillagerTimer == 0){
+						((EntityPlayer)event.entity).addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.someonewantsjoin")));
+					}
+				}
 			}
 		}
+
 	}
 }

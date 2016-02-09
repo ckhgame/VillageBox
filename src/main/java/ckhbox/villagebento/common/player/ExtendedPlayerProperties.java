@@ -3,6 +3,7 @@ package ckhbox.villagebento.common.player;
 import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.network.message.player.MessageSyncExtendedPlayerProperties;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
+import ckhbox.villagebento.common.util.math.Rand;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -13,6 +14,8 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	private static final String identifier = "villagebento.playerex";
+	
+	public static final int NewVillagerTimerTotal = 1000;
 	
 	public static void register(EntityPlayer player){
 		if(get(player) == null){
@@ -29,7 +32,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	public EntityPlayer player;
 	
-	public boolean hasNewVillager;
+	public int newVillagerTimer;
 	
 	private ExtendedPlayerProperties(EntityPlayer player){
 		this.player = player;
@@ -43,17 +46,17 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	@Override
 	public void saveNBTData(NBTTagCompound compound) {
-		compound.setBoolean("newvlg", hasNewVillager);
+		compound.setInteger("nvtimer", newVillagerTimer);
 	}
 
 	@Override
 	public void loadNBTData(NBTTagCompound compound) {
-		hasNewVillager = compound.getBoolean("newvlg");
+		newVillagerTimer = compound.getInteger("nvtimer");
 	}
 
 	@Override
 	public void init(Entity entity, World world) {
-
+		newVillagerTimer = (int)(ExtendedPlayerProperties.NewVillagerTimerTotal * (Rand.get().nextFloat() * 0.3F + 0.7F));
 	}
 	
 }
