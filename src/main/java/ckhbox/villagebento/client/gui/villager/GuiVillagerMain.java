@@ -1,6 +1,7 @@
 package ckhbox.villagebento.client.gui.villager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.client.gui.GuiTextButton;
@@ -37,7 +38,7 @@ public class GuiVillagerMain extends GuiContainer{
     GuiTextButton buttonViewStatus;
     GuiTextButton buttonTrade;
     GuiTextButton buttonFollow;
-    GuiTextButton buttonSetHome;
+    GuiTextButton buttonHome;
     
     private EntityPlayer player;
     private EntityVillager villager;
@@ -67,9 +68,9 @@ public class GuiVillagerMain extends GuiContainer{
         this.buttonList.add(buttonViewStatus = new GuiTextButton(this.mc, 0, x + offsetX, y + playerChatOptionsOffsetY + 0 * playerChatOptionHeight, strOptions[0]));
         this.buttonList.add(buttonTrade = new GuiTextButton(this.mc, 1, x + offsetX, y + playerChatOptionsOffsetY + 1 * playerChatOptionHeight, strOptions[1]));
         this.buttonList.add(buttonFollow = new GuiTextButton(this.mc, 2, x + offsetX, y + playerChatOptionsOffsetY + 2 * playerChatOptionHeight, ""));
-        this.buttonList.add(buttonSetHome = new GuiTextButton(this.mc, 3, x + offsetX, y + playerChatOptionsOffsetY + 3 * playerChatOptionHeight, strOptions[2]));
+        this.buttonList.add(buttonHome = new GuiTextButton(this.mc, 3, x + offsetX, y + playerChatOptionsOffsetY + 3 * playerChatOptionHeight, strOptions[2]));
         
-        this.refreshFollowButton(); 		
+        this.refreshButtons(); 		
     }
     
     public boolean doesGuiPauseGame()
@@ -77,9 +78,15 @@ public class GuiVillagerMain extends GuiContainer{
         return false;
     }
 
-    private void refreshFollowButton(){
+    private void refreshButtons(){
     	String f = this.villager.isFollowing()?"stop":"start";
     	buttonFollow.setText(StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.follow." + f)));
+    	
+    	f = this.villager.hasHome()?"moveout":"movein";
+    	buttonHome.setText(StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.home." + f)));
+    	
+    	buttonViewStatus.enabled = this.villager.hasHome();
+    	buttonTrade.enabled = this.villager.hasHome();
     }
     
 	@Override
@@ -106,9 +113,30 @@ public class GuiVillagerMain extends GuiContainer{
         String text = "Hello! welcome to villageb bento, I'm a villager in your village!";
         //this.drawWrappedString(this.mc.fontRendererObj, "test text....",x + offsetX, y + villagerTextOffsetY, 16777120, this.xSize - offsetX * 2);
         this.fontRendererObj.drawSplitString(text,x + offsetX, y + villagerTextOffsetY, this.xSize - offsetX * 2, 16777120);
+        
+        if(!this.buttonTrade.enabled){
+        	this.drawButtonHoverText(this.buttonTrade, mouseX, mouseY, 
+        			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.title")), 
+        			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
+        }
+        
+        if(!this.buttonViewStatus.enabled){
+        	this.drawButtonHoverText(this.buttonViewStatus, mouseX, mouseY, 
+        			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.title")), 
+        			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
+        }
 
 	}
 
+	private void drawButtonHoverText(GuiButton button, int mouseX, int mouseY, String title, String desc){	
+		if(GuiHelper.isPointInRegion(button.xPosition, button.yPosition, button.width, button.height, mouseX, mouseY)){
+			ArrayList<String> list = new ArrayList<String>();
+			list.add("§c" + title);
+			list.add("§7" + desc);
+			this.drawHoveringText(list, mouseX, mouseY, this.fontRendererObj);
+		}
+	}
+	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 
@@ -121,10 +149,9 @@ public class GuiVillagerMain extends GuiContainer{
 		else if(button.id == 2){//follow
 			boolean enable = !this.villager.isFollowing();
 			ModNetwork.getInstance().sendToServer(new MessageGuiSetFollowing(this.villager.getEntityId(), this.villager.dimension, enable));
-			this.refreshFollowButton();
 		}
 		else if(button.id == 3){//set home
-			ModNetwork.getInstance().sendToServer(new MessageGuiSetHome(this.villager.getEntityId(), this.villager.dimension));
+			ModNetwork.getInstance().sendToServer(new MessageGuiSetHome(this.villager.getEntityId(), this.villager.dimension,!this.villager.hasHome()));
 		}
 		
 		super.actionPerformed(button);
@@ -143,7 +170,7 @@ public class GuiVillagerMain extends GuiContainer{
 	public void updateScreen() {
 		super.updateScreen();
 		
-		this.refreshFollowButton(); 
+		this.refreshButtons(); 
 	}	
 	
 }

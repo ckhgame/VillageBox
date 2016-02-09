@@ -2,6 +2,7 @@ package ckhbox.villagebento.common.entity.villager;
 
 import ckhbox.villagebento.VillageBentoMod;
 import ckhbox.villagebento.common.entity.ai.VillagerAIFollowing;
+import ckhbox.villagebento.common.entity.ai.VillagerAILookAtInteractPlayer;
 import ckhbox.villagebento.common.entity.ai.VillagerAIWander;
 import ckhbox.villagebento.common.gui.GuiIDs;
 import ckhbox.villagebento.common.util.helper.BitHelper;
@@ -30,6 +31,7 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -98,15 +100,11 @@ public class EntityVillager extends EntityCreature implements ITrading{
         ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
-        //this.tasks.addTask(1, new EntityAITradePlayer(this));
-        //this.tasks.addTask(1, new EntityAILookAtTradePlayer(this));
-        //this.tasks.addTask(2, new EntityAIMoveIndoors(this));
-        //this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
+        this.tasks.addTask(1, new VillagerAILookAtInteractPlayer(this));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new VillagerAIFollowing(this,0.6F));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.3D));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-        //this.tasks.addTask(9, new EntityAIVillagerInteract(this));
         this.tasks.addTask(9, new VillagerAIWander(this, 0.4D));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 	}
@@ -161,7 +159,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	//data flags
 	
 	/**
-	 * POS: 0=Interacting, 1=Following
+	 * POS: 0=Interacting, 1=Following, 2=Has Home
 	 */
 	protected void setDataFlag(int pos, boolean flag){
 		int data = this.getDataWatcher().getWatchableObjectInt(20);
@@ -170,7 +168,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	}
 	
 	/**
-	 * POS: 0=Interacting, 1=Following
+	 * POS: 0=Interacting, 1=Following, 2=Has Home
 	 */
 	protected boolean getDataFlag(int pos){
 		int data = this.getDataWatcher().getWatchableObjectInt(20);
@@ -187,6 +185,10 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	public boolean isInteracting(){
 		return this.getDataFlag(0);
+	}
+
+	public EntityPlayer getInteracting(){
+		return this.interacting;
 	}
 	
 	public void setFollowing(EntityPlayer player){
@@ -230,12 +232,28 @@ public class EntityVillager extends EntityCreature implements ITrading{
 				this.home = bound;
 				//stop following
 				this.setFollowing(null);
+				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.movein"),this.getName()));
+				//update data flag
+				this.setDataFlag(2, true);
 			}
+		}
+	}
+	
+	public void moveOutHome(EntityPlayer player){
+		if(this.home != null){
+			DataHomeList.get(this.worldObj).remove(home);
+			this.home = null;
+			this.setDataFlag(2, false);
+			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.moveout"),this.getName()));
 		}
 	}
 	
 	public IntBoundary getHome(){
 		return this.home;
+	}
+	
+	public boolean hasHome(){
+		return this.getDataFlag(2);
 	}
 	
 	//profession
@@ -268,13 +286,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	public void clearProficiency(){
 		this.attributeList.get(2).setValue(0);
 	}
-	
-	@Override
-	protected boolean canDespawn() {
-		return false;
-	}
-
-
 
 	@Override
 	public void onUpdate() {
@@ -296,6 +307,17 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	@Override
 	public boolean allowLeashing() {
+		return false;
+	}
+	
+    @SideOnly(Side.CLIENT)
+    public boolean getAlwaysRenderNameTagForRender()
+    {
+        return true;
+    }
+    
+	@Override
+	protected boolean canDespawn() {
 		return false;
 	}
 	
@@ -331,13 +353,13 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		int[] arr = tagCompund.getIntArray("homebd");
 		if(arr == null || arr.length == 0){
 			this.home = null;
+			this.setDataFlag(2,false);
 		}
 		else{
 			this.home = new IntBoundary(arr[0],arr[1],arr[2],arr[3],arr[4],arr[5]);
+			this.setDataFlag(2,true);
 		}
 	}
-	
-	
 
 	
 	//----------------------------------

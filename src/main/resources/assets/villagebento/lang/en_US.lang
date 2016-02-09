@@ -17,11 +17,14 @@ villagebento:villager.attribute.proficiency=Proficiency
 
 # Gui
 
-villagebento:gui.villagermain.menu.viewstatus=View Status
-villagebento:gui.villagermain.menu.trade=Trade
-villagebento:gui.villagermain.menu.follow.start=Follow me
-villagebento:gui.villagermain.menu.follow.stop=Stop following me
-villagebento:gui.villagermain.menu.sethome=Set home here
+villagebento:gui.villagermain.menu.viewstatus=> View Status
+villagebento:gui.villagermain.menu.trade=> Trade
+villagebento:gui.villagermain.menu.follow.start=> Follow me
+villagebento:gui.villagermain.menu.follow.stop=> Stop following me
+villagebento:gui.villagermain.menu.home.movein=> Set home here
+villagebento:gui.villagermain.menu.home.moveout=> Move out from home
+villagebento:gui.villagermain.button.lock.title=Locked
+villagebento:gui.villagermain.button.lock.desc=Set home for the villager to unlock
 
 villagebento:gui.villagerstatus.buttongift.title=Gift
 villagebento:gui.villagerstatus.buttongift.desc=Send a gift to this villager
@@ -38,6 +41,10 @@ villagebento:gui.villagerupgrade.buttonupgrade.desc.disable1=Need more Proficien
 
 villagebento:message.villager.isbusy=This villager is busy now...
 villagebento:message.villager.newjoined=%s has arrived!
+villagebento:message.villager.home.openspace=It's not a closed space!
+villagebento:message.villager.home.existed=Someone has already moved in!
+villagebento:message.villager.home.movein=%s has moved in a new home :D
+villagebento:message.villager.home.moveout=%s has moved out from home
 
 villagebento:message.player.someonewantsjoin=Someone wants to join the village!
 

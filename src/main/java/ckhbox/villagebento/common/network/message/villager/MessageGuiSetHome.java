@@ -12,26 +12,30 @@ public class MessageGuiSetHome implements IMessage {
 
 	private int dimension;
 	private int entityVillagerID;
+	private boolean isMoveIn;
 	
 	
 	public MessageGuiSetHome(){
 	}
 
-	public MessageGuiSetHome(int entityVillagerID, int dimension){
+	public MessageGuiSetHome(int entityVillagerID, int dimension, boolean isMoveIn){
 		this.entityVillagerID = entityVillagerID;
 		this.dimension = dimension;
+		this.isMoveIn = isMoveIn;
 	}
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		this.entityVillagerID = buf.readInt();
 		this.dimension = buf.readInt();
+		this.isMoveIn = buf.readBoolean();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(this.entityVillagerID);
 		buf.writeInt(this.dimension);
+		buf.writeBoolean(this.isMoveIn);
 	}
 
 	public static class Handler implements IMessageHandler<MessageGuiSetHome, IMessage> {
@@ -46,7 +50,12 @@ public class MessageGuiSetHome implements IMessage {
         		Entity entity = ctx.getServerHandler().playerEntity.worldObj.getEntityByID(message.entityVillagerID);
         		if(entity != null && entity instanceof EntityVillager){
         			EntityVillager villager = (EntityVillager)entity;
-        			villager.setCurrentPosAsHome(ctx.getServerHandler().playerEntity);
+        			if(message.isMoveIn){
+        				villager.setCurrentPosAsHome(ctx.getServerHandler().playerEntity);
+        			}
+        			else{
+        				villager.moveOutHome(ctx.getServerHandler().playerEntity);
+        			}
         		}
         	}
 
