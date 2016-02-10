@@ -4,6 +4,7 @@ import ckhbox.villagebento.VillageBentoMod;
 import ckhbox.villagebento.common.block.ModBlocks;
 import ckhbox.villagebento.common.entity.ModEntities;
 import ckhbox.villagebento.common.event.EventEntity;
+import ckhbox.villagebento.common.event.EventGemFound;
 import ckhbox.villagebento.common.gui.GuiHandler;
 import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.network.ModNetwork;
@@ -34,6 +35,7 @@ public class CommonProxy {
 		
 		//events
 		MinecraftForge.EVENT_BUS.register(new EventEntity());
+		MinecraftForge.EVENT_BUS.register(new EventGemFound());
     }
 
     public void init(FMLInitializationEvent e) {
