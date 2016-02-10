@@ -12,6 +12,10 @@ public class GuiTextButton extends GuiButton{
 	
 	private Minecraft mc;
 	
+	private int colorNormal = 14737632;
+	private int colorHover = 16777120;
+	private boolean shadow;
+	
 	public GuiTextButton(Minecraft mc,int id, int x, int y, String text) {
 		super(id, x, y,mc.fontRendererObj.getStringWidth(text),mc.fontRendererObj.FONT_HEIGHT,text);
 		this.mc = mc;
@@ -20,6 +24,15 @@ public class GuiTextButton extends GuiButton{
 	public void setText(String text){
 		this.displayString = text;
 		this.width = this.mc.fontRendererObj.getStringWidth(text);
+	}
+	
+	public void setShadow(boolean shadow){
+		this.shadow = shadow;
+	}
+	
+	public void setColors(int normal, int hover){
+		this.colorHover = hover;
+		this.colorNormal = normal;
 	}
 	
 	public boolean isMouseOn(){
@@ -34,7 +47,7 @@ public class GuiTextButton extends GuiButton{
             this.hovered = p_146112_2_ >= this.xPosition && p_146112_3_ >= this.yPosition && p_146112_2_ < this.xPosition + this.width && p_146112_3_ < this.yPosition + this.height;
             int k = this.getHoverState(this.hovered);
             this.mouseDragged(mc, p_146112_2_, p_146112_3_);
-            int l = 14737632;
+            int l = this.colorNormal;
 
             if (packedFGColour != 0)
             {
@@ -46,10 +59,10 @@ public class GuiTextButton extends GuiButton{
             }
             else if (this.hovered)
             {
-                l = 16777120;
+                l = this.colorHover;
             }
 
-            this.drawString(fontrenderer, this.displayString, this.xPosition,  this.yPosition, l);
+            fontrenderer.drawString(this.displayString, this.xPosition, this.yPosition, l, this.shadow);
         }
 	}
 	
