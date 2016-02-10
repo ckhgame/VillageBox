@@ -1,8 +1,8 @@
 package ckhbox.villagebento.common.item;
 
-import ckhbox.villagebento.common.block.building.BlockFoundation;
 import ckhbox.villagebento.common.item.book.ItemVillageBook;
 import ckhbox.villagebento.common.item.gem.ItemGem;
+import ckhbox.villagebento.common.item.mail.ItemMail;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -11,6 +11,7 @@ public class ModItems {
 	public static ItemGem blueGem;
 	public static ItemGem violetGem;
 	public static ItemGem orangeGem;
+	public static ItemMail mail;
 	
 	
 	public static void init(){
@@ -21,5 +22,10 @@ public class ModItems {
 		GameRegistry.registerItem(blueGem=new ItemGem("blue"),"blue_gem");
 		GameRegistry.registerItem(violetGem=new ItemGem("violet"),"violet_gem");
 		GameRegistry.registerItem(orangeGem=new ItemGem("orange"),"orange_gem");
+		
+		//mail
+		GameRegistry.registerItem(mail=new ItemMail(),"mail");
 	}
+	
+	
 }

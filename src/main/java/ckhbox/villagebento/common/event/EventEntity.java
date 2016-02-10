@@ -33,9 +33,12 @@ public class EventEntity {
 				if(playerProperties == null){
 					playerProperties = ExtendedPlayerProperties.get((EntityPlayer)event.entity);
 				}
-				if(playerProperties.newVillagerTimer > 0){
-					if(--playerProperties.newVillagerTimer == 0){
-						((EntityPlayer)event.entity).addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.someonewantsjoin")));
+				System.out.println(playerProperties.newMailTimer);
+				if(playerProperties.newMailTimer > 0){
+					if(--playerProperties.newMailTimer == 0){
+						playerProperties.mailCount++;
+						((EntityPlayer)event.entity).addChatMessage(new ChatComponentTranslation(PathHelper.full("message.mail.newmail")));
+						playerProperties.resetMailTimer();
 					}
 				}
 			}

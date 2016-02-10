@@ -51,7 +51,11 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	//the canter of wandering when no home has been set to this villager
 	private Vec3 wanderCenter;
 	
-	public EntityVillager(World worldIn) {
+	public EntityVillager(World worldIn){
+		this(worldIn,NameGenerator.getRandomMaleName());
+	}
+	
+	public EntityVillager(World worldIn, String name) {
 		super(worldIn);		
 		
 		this.setSize(0.6F, 1.8F);
@@ -73,7 +77,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		
 		//temp
 		if(!this.hasCustomName()){
-			this.setCustomNameTag(NameGenerator.getRandomMaleName());
+			this.setCustomNameTag(name);
 		}
 		
 		this.initAI();

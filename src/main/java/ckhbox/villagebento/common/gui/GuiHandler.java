@@ -1,13 +1,11 @@
 package ckhbox.villagebento.common.gui;
 
-import ckhbox.villagebento.client.gui.player.GuiVillageBook;
 import ckhbox.villagebento.client.gui.villager.GuiVillagerMain;
 import ckhbox.villagebento.client.gui.villager.GuiVillagerStatus;
 import ckhbox.villagebento.client.gui.villager.GuiVillagerTrading;
 import ckhbox.villagebento.client.gui.villager.GuiVillagerUpgrading;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.gui.common.ContainerTrading;
-import ckhbox.villagebento.common.gui.player.ContainerVillageBook;
 import ckhbox.villagebento.common.gui.villager.ContainerVillagerMain;
 import ckhbox.villagebento.common.gui.villager.ContainerVillagerStatus;
 import ckhbox.villagebento.common.gui.villager.ContainerVillagerUpgrading;
@@ -37,12 +35,6 @@ public class GuiHandler implements IGuiHandler{
 				}
 			}				
 		}
-		else{
-			switch(ID){
-			case GuiIDs.VillageBook: return new ContainerVillageBook(player);
-			default:break;
-			}
-		}
 		
 		return null;
 	}
@@ -66,12 +58,6 @@ public class GuiHandler implements IGuiHandler{
 					}
 				}
 			}		
-		}
-		else{
-			switch(ID){
-			case GuiIDs.VillageBook: return new GuiVillageBook(player);
-			default:break;
-			}
 		}
 		
 		return null;

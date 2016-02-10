@@ -2,7 +2,6 @@ package ckhbox.villagebento.common.player;
 
 import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.network.message.player.MessageSyncExtendedPlayerProperties;
-import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
 import ckhbox.villagebento.common.util.math.Rand;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +14,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	private static final String identifier = "villagebento.playerex";
 	
-	public static final int NewVillagerTimerTotal = 1000;
+	public static final int NewMailTimerTotal = 100;
 	
 	public static void register(EntityPlayer player){
 		if(get(player) == null){
@@ -32,7 +31,12 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	public EntityPlayer player;
 	
-	public int newVillagerTimer;
+	public int newMailTimer;//how much time left to receive a new mail
+	public int mailCount;//how many mails the player has
+	
+	public void resetMailTimer(){
+		this.newMailTimer = (int)(ExtendedPlayerProperties.NewMailTimerTotal * (Rand.get().nextFloat() * 0.3F + 0.7F));
+	}
 	
 	private ExtendedPlayerProperties(EntityPlayer player){
 		this.player = player;
@@ -46,17 +50,20 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	@Override
 	public void saveNBTData(NBTTagCompound compound) {
-		compound.setInteger("nvtimer", newVillagerTimer);
+		compound.setInteger("nmtimer", this.newMailTimer);
+		compound.setInteger("mailcount", this.mailCount);
 	}
 
 	@Override
 	public void loadNBTData(NBTTagCompound compound) {
-		newVillagerTimer = compound.getInteger("nvtimer");
+		this.newMailTimer = compound.getInteger("nmtimer");
+		this.mailCount = compound.getInteger("mailcount");
 	}
 
 	@Override
 	public void init(Entity entity, World world) {
-		newVillagerTimer = (int)(ExtendedPlayerProperties.NewVillagerTimerTotal * (Rand.get().nextFloat() * 0.3F + 0.7F));
+		this.resetMailTimer();
+		this.mailCount = 0;
 	}
 	
 }

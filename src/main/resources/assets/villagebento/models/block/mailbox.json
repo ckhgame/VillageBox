@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+		"particle": "villagebento:blocks/mailbox_front",
+		"north": "villagebento:blocks/mailbox_front",
+		"south": "villagebento:blocks/mailbox_back",
+        "east": "villagebento:blocks/mailbox_side",
+        "west": "villagebento:blocks/mailbox_side",
+		"up": "villagebento:blocks/mailbox_top",
+		"down": "villagebento:blocks/mailbox_bot"
+    }
+}

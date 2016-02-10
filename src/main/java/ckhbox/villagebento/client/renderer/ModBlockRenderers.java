@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModBlockRenderers {
 	public static void init(){
-		registerModel(ModBlocks.foundation, 0, "foundation");
+		registerModel(ModBlocks.mailbox, 0, "mailbox");
 	}
 	
 	private static void registerModel(Block block, int meta, String resource){

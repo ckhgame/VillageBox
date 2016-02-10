@@ -1,34 +1,35 @@
 package ckhbox.villagebento.common.network.message.player;
 
-import ckhbox.villagebento.common.gui.common.ContainerTrading;
-import ckhbox.villagebento.common.network.message.common.MessageGuiSelectTradeRecipeIndex;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.inventory.Container;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageSyncExtendedPlayerProperties implements IMessage {
 	
-	public int newVillagerTimer;
+	public int mailCount;
+	public int newMailTimer;
 	
 	public MessageSyncExtendedPlayerProperties(){
 	}
 	
 	public MessageSyncExtendedPlayerProperties(ExtendedPlayerProperties properties){
-		this.newVillagerTimer = properties.newVillagerTimer;
+		this.newMailTimer = properties.newMailTimer;
+		this.mailCount = properties.mailCount;
 	}
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		this.newVillagerTimer = buf.readInt();
+		this.newMailTimer = buf.readInt();
+		this.mailCount = buf.readInt();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-		buf.writeInt(this.newVillagerTimer);
+		buf.writeInt(this.newMailTimer);
+		buf.writeInt(this.mailCount);
 	}
 
 	public static class Handler implements IMessageHandler<MessageSyncExtendedPlayerProperties, IMessage> {
@@ -38,8 +39,8 @@ public class MessageSyncExtendedPlayerProperties implements IMessage {
         @Override
         public IMessage onMessage(MessageSyncExtendedPlayerProperties message, MessageContext ctx) {
         	ExtendedPlayerProperties properties = ExtendedPlayerProperties.get(Minecraft.getMinecraft().thePlayer);
-        	properties.newVillagerTimer = message.newVillagerTimer;
-        	System.out.println("Sync:" + message.newVillagerTimer);
+        	properties.newMailTimer = message.newMailTimer;
+        	properties.mailCount = message.mailCount;
             return null;
         }
     }

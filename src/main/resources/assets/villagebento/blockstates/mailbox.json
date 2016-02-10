@@ -1,0 +1,8 @@
+{
+	"variants": {
+        "facing=north": { "model": "villagebento:mailbox" },
+        "facing=south": { "model": "villagebento:mailbox", "y": 180 },
+        "facing=west":  { "model": "villagebento:mailbox", "y": 270 },
+        "facing=east":  { "model": "villagebento:mailbox", "y": 90 }
+    }
+}

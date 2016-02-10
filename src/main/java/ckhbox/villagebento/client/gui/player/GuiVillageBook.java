@@ -2,25 +2,17 @@ package ckhbox.villagebento.client.gui.player;
 
 import java.io.IOException;
 
-import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.client.gui.GuiTextButton;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
-import ckhbox.villagebento.common.gui.GuiIDs;
 import ckhbox.villagebento.common.gui.player.ContainerVillageBook;
 import ckhbox.villagebento.common.network.ModNetwork;
-import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowing;
-import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
-import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
-import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
-import ckhbox.villagebento.common.network.message.villager.MessageSpawnNewVillager;
+import ckhbox.villagebento.common.network.message.villager.MessageSpawnNewVillagerThroughMail;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
-import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 
 public class GuiVillageBook extends GuiContainer{
 
@@ -73,8 +65,8 @@ public class GuiVillageBook extends GuiContainer{
 		
 		GlStateManager.disableLighting();
 		
-        String text = "New Villager:" + this.properties.newVillagerTimer;
-        this.drawCenteredString(this.fontRendererObj, text, this.width/2, this.height / 2, 0xFFFFFF00);
+        //String text = "New Villager:" + this.properties.newVillagerTimer;
+       // this.drawCenteredString(this.fontRendererObj, text, this.width/2, this.height / 2, 0xFFFFFF00);
 	}
 
 	@Override
@@ -82,14 +74,14 @@ public class GuiVillageBook extends GuiContainer{
 		super.actionPerformed(button);
 		
 		if(button == buttonInvite){
-			ModNetwork.getInstance().sendToServer(new MessageSpawnNewVillager());
+			ModNetwork.getInstance().sendToServer(new MessageSpawnNewVillagerThroughMail());
 		}
 	}
 
 	@Override
 	public void updateScreen() {
 		super.updateScreen();
-		this.buttonInvite.enabled = (properties.newVillagerTimer <= 0);
+		//this.buttonInvite.enabled = (properties.newVillagerTimer <= 0);
 	}
 	
 	

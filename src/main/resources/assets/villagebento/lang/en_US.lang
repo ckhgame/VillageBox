@@ -40,6 +40,9 @@ villagebento:gui.villagerupgrade.buttonupgrade.desc=Upgrade to the advanced prof
 villagebento:gui.villagerupgrade.buttonupgrade.desc.disable0=Unmatched items
 villagebento:gui.villagerupgrade.buttonupgrade.desc.disable1=Need more Proficiency
 
+villagebento:gui.mail.button.approve=Approve
+villagebento:gui.mail.hi=Hi,§o%s
+
 # Message
 
 villagebento:message.villager.isbusy=This villager is busy now...
@@ -50,10 +53,20 @@ villagebento:message.villager.home.movein=%s has moved in a new home :D
 villagebento:message.villager.home.moveout=%s has moved out from home
 villagebento:message.villager.home.moveoutfailed=Can't move out here, the villager need to pack up at home first.
 
-villagebento:message.player.someonewantsjoin=Someone wants to join the village!
+villagebento:message.mail.newmail=You have received a new mail
+villagebento:message.mail.nomail=You have nothing in the mailbox
 
 # Items
 item.villagebento:villageBook.name=Village Book
 item.villagebento:blueGem.name=Blue Gem
 item.villagebento:violetGem.name=Violet Gem
 item.villagebento:orangeGem.name=Orange Gem
+
+# Mail
+villagebento:mail.item.info=§7From §a%s
+villagebento:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?
+villagebento:mail.newvillager1.content=Are you looking for villagers? Please consider me!
+villagebento:mail.newvillager2.content=I'm so tired about current life and looking for a place to live. Could I be a villager in your village?
+villagebento:mail.tip0.content=A sad villager can provide nothing but sadness.
+villagebento:mail.tip1.content=Cool items could be found by upgrading your villagers!
+villagebento:mail.tip2.content=Banker is useful to exchange low and high level gems.

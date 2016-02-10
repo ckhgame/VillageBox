@@ -1,11 +1,14 @@
 package ckhbox.villagebento.common.network.message.villager;
 
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
+import ckhbox.villagebento.common.item.ModItems;
+import ckhbox.villagebento.common.item.mail.ItemMail;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.util.math.Rand;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.ChatComponentTranslationFormatException;
 import net.minecraft.util.MathHelper;
@@ -13,9 +16,9 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageSpawnNewVillager implements IMessage {
+public class MessageSpawnNewVillagerThroughMail implements IMessage {
 	
-	public MessageSpawnNewVillager(){
+	public MessageSpawnNewVillagerThroughMail(){
 	}
 
 	
@@ -29,18 +32,22 @@ public class MessageSpawnNewVillager implements IMessage {
 
 	}
 
-	public static class Handler implements IMessageHandler<MessageSpawnNewVillager, IMessage> {
+	public static class Handler implements IMessageHandler<MessageSpawnNewVillagerThroughMail, IMessage> {
         /**
          * This gets called when the packet is read and received.
          */
         @Override
-        public IMessage onMessage(MessageSpawnNewVillager message, MessageContext ctx) {
+        public IMessage onMessage(MessageSpawnNewVillagerThroughMail message, MessageContext ctx) {
         	
-        	ExtendedPlayerProperties properties = ExtendedPlayerProperties.get(ctx.getServerHandler().playerEntity);
-        	if(properties.newVillagerTimer <= 0){
-        		//spawn villager
-        		EntityPlayer player = ctx.getServerHandler().playerEntity;
-        		EntityVillager villager = new EntityVillager(player.worldObj);
+    		//spawn villager
+    		EntityPlayer player = ctx.getServerHandler().playerEntity;
+    		
+        	ItemStack hold = player.getHeldItem();
+            if(hold.getItem() == ModItems.mail && ItemMail.isNewVillager(hold)){
+            	
+            	String name = ItemMail.getMailSender(hold);
+            	
+            	EntityVillager villager = new EntityVillager(player.worldObj, name);
         		
         		double d = 2.0F;
         		double x = player.posX - Math.sin(player.rotationYaw / 180.0F * (float)Math.PI) * d;
@@ -50,15 +57,14 @@ public class MessageSpawnNewVillager implements IMessage {
         		villager.setLocationAndAngles(x, y, z, player.rotationYaw + 180, 0);
         		ctx.getServerHandler().playerEntity.worldObj.spawnEntityInWorld(villager);
         		
-        		//refresh timer
-        		properties.newVillagerTimer = (int)(ExtendedPlayerProperties.NewVillagerTimerTotal * (Rand.get().nextFloat() * 0.3F + 0.7F));
-        		
-        		ExtendedPlayerProperties.get(player).SyncToClient();
-        		
         		player.addChatMessage(
         			new ChatComponentTranslation(PathHelper.full("message.villager.newjoined"),villager.getName())
         		);
-        	}
+        		
+        		//remove hold
+        		player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
+        		
+            }
 
             return null;
         }

@@ -13,13 +13,14 @@ public class ItemVillageBook extends Item{
 	public ItemVillageBook(){
 		this.setUnlocalizedName(PathHelper.full("villageBook"));
 		this.setCreativeTab(CreativeTabs.tabMisc);
+		this.setMaxStackSize(1);
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
 		
 		if(!worldIn.isRemote){
-			playerIn.openGui(VillageBentoMod.instance, GuiIDs.VillageBook, worldIn, 0, 0, 0);
+			
 		}
 		
 		return super.onItemRightClick(itemStackIn, worldIn, playerIn);
