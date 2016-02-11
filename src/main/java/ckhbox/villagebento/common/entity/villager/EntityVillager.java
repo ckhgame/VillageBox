@@ -53,7 +53,11 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	private Vec3 wanderCenter;
 	
 	public EntityVillager(World worldIn){
-		this(worldIn,NameGenerator.getRandomMaleName(),Rand.get().nextBoolean());
+		this(worldIn, Rand.get().nextBoolean());
+	}
+	
+	public EntityVillager(World worldIn, boolean male){
+		this(worldIn, male?NameGenerator.getRandomMaleName():NameGenerator.getRandomFemaleName(), male);
 	}
 	
 	public EntityVillager(World worldIn, String name, boolean male) {

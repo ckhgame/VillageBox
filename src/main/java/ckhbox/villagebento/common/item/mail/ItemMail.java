@@ -18,6 +18,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class ItemMail extends Item{
+	
+	public static final int MailType_Common = 0;
+	public static final int MailType_NewVillagerMale = 1;
+	public static final int MailType_NewVillagerFemale = 2;
+	
 	public ItemMail(){
 		this.setUnlocalizedName(PathHelper.full("mail"));
 		this.setCreativeTab(CreativeTabs.tabMisc);
@@ -41,11 +46,11 @@ public class ItemMail extends Item{
 		tooltip.add(info);
 	}
 	
-	public static ItemStack generateMail(String sender, String content, boolean newVillager){
+	public static ItemStack generateMail(String sender, String content, int mailtype){
 		ItemStack mail = new ItemStack(ModItems.mail);
 		setMailSender(mail, sender);
 		setMailContent(mail, content);
-		setIsNewVillager(mail, newVillager);
+		setMailType(mail, mailtype);
 		return mail;
 	}
 	
@@ -72,9 +77,9 @@ public class ItemMail extends Item{
 		}
 	}
 	
-	public static void setIsNewVillager(ItemStack stack, boolean isNewVillager){
+	public static void setMailType(ItemStack stack, int mailType){
 		if(checkStack(stack)){
-			stack.getTagCompound().setBoolean("newvlg", isNewVillager);
+			stack.getTagCompound().setInteger("mailtype", mailType);
 		}
 	}
 	
@@ -96,11 +101,11 @@ public class ItemMail extends Item{
 		return "unknown";
 	}
 	
-	public static boolean isNewVillager(ItemStack stack){
+	public static int getMailType(ItemStack stack){
 		if(checkStack(stack)){
-			return stack.getTagCompound().getBoolean("newvlg");
+			return stack.getTagCompound().getInteger("mailtype");
 		}
-		return false;
+		return MailType_Common;
 	}
 	
 	

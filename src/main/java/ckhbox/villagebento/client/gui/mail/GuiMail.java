@@ -45,7 +45,8 @@ public class GuiMail extends GuiScreen{
         
         ItemStack hold = this.player.getHeldItem();
         if(hold.getItem() == ModItems.mail){
-        	this.buttonApprove.visible = ItemMail.isNewVillager(hold);
+        	int mailType = ItemMail.getMailType(hold);
+        	this.buttonApprove.visible = (mailType == ItemMail.MailType_NewVillagerFemale || mailType == ItemMail.MailType_NewVillagerMale);
         }
     }
     
