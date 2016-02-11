@@ -7,8 +7,7 @@ public class ContainerEmpty extends Container{
 	
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
