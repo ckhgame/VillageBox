@@ -15,7 +15,6 @@ public class VillagerAIWander extends EntityAIBase
     private double yPosition;
     private double zPosition;
     private int executionChance;
-    private boolean mustUpdate;
 
     public VillagerAIWander(EntityVillager villagerIn, double speedIn)
     {
@@ -35,13 +34,10 @@ public class VillagerAIWander extends EntityAIBase
      */
     public boolean shouldExecute()
     {
-        if (!this.mustUpdate)
-        {
 
-            if (this.villager.getRNG().nextInt(this.executionChance) != 0)
-            {
-                return false;
-            }
+        if (this.villager.getRNG().nextInt(this.executionChance) != 0)
+        {
+            return false;
         }
         
         if(this.villager.isFollowing()){
@@ -49,6 +45,7 @@ public class VillagerAIWander extends EntityAIBase
         }
         
         if(this.villager.isInteracting()){
+        	System.out.println("is interacting so cancel");
         	return false;
         }
         
@@ -82,7 +79,6 @@ public class VillagerAIWander extends EntityAIBase
             this.xPosition = vec3.xCoord;
             this.yPosition = vec3.yCoord;
             this.zPosition = vec3.zCoord;
-            this.mustUpdate = false;
             return true;
         }
     }
@@ -102,28 +98,19 @@ public class VillagerAIWander extends EntityAIBase
     	
         return !this.villager.getNavigator().noPath();
     }
+    
+    
 
-    /**
+    @Override
+	public void resetTask() {
+		this.villager.getNavigator().clearPathEntity();
+	}
+
+	/**
      * Execute a one shot task or start executing a continuous task
      */
     public void startExecuting()
     {
         this.villager.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
-    }
-
-    /**
-     * Makes task to bypass chance
-     */
-    public void makeUpdate()
-    {
-        this.mustUpdate = true;
-    }
-
-    /**
-     * Changes task random possibility for execution
-     */
-    public void setExecutionChance(int newchance)
-    {
-        this.executionChance = newchance;
     }
 }
