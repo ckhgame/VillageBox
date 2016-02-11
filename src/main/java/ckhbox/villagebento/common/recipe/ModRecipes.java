@@ -11,8 +11,6 @@ public class ModRecipes {
 	
 	
 	public static void init(){
-		
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.villageBook),new ItemStack(Items.book), new ItemStack(Items.emerald));
 		for(int i =0;i<6;i++){
 			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.mailbox),new ItemStack(Items.paper), new ItemStack(Blocks.planks,1,i));
 		}

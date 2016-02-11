@@ -18,7 +18,9 @@ public class ModItemRenderers {
 	
 	public static void init(){
 		
-		registerModel(ModItems.villageBook, 0, "village_book");
+		registerModel(ModItems.treasureHuntBookI, 0, "treasure_hunt_book_0");
+		registerModel(ModItems.treasureHuntBookII, 0, "treasure_hunt_book_1");
+		registerModel(ModItems.treasureHuntBookIII, 0, "treasure_hunt_book_2");
 		registerModel(ModItems.blueGem, 0, "blue_gem");
 		registerModel(ModItems.violetGem, 0, "violet_gem");
 		registerModel(ModItems.orangeGem, 0, "orange_gem");

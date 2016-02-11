@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "villagebento:items/village_book"
+        "layer0": "villagebento:items/treasure_hunt_book_0"
     },
     "display": {
         "thirdperson": {

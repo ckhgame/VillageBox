@@ -82,11 +82,19 @@ villagebento:message.villager.home.moveoutfailed=Can't move out here, the villag
 villagebento:message.mail.newmail=You have received a new mail
 villagebento:message.mail.nomail=You have nothing in the mailbox
 
+villagebento:message.player.treasurelvlupgrade.success=Your §6treasure hunt level §fhas been upgraded to §a%d
+villagebento:message.player.treasurelvlupgrade.failed=You can't learn anything more from this book
+
 # Items
-item.villagebento:villageBook.name=Village Book
+item.villagebento:treasurebook1.name=Treasure Hunt Book I
+item.villagebento:treasurebook2.name=Treasure Hunt Book II
+item.villagebento:treasurebook3.name=Treasure Hunt Book III
 item.villagebento:blueGem.name=Blue Gem
 item.villagebento:violetGem.name=Violet Gem
 item.villagebento:orangeGem.name=Orange Gem
+
+#Book
+villagebento:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
 
 # Mail
 villagebento:mail.item.info=§7From §a%s
