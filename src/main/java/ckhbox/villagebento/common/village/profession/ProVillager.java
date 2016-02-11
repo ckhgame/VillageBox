@@ -23,7 +23,7 @@ public abstract class ProVillager extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = null;
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProFarmer.class,
+				ProPeasant.class,
 				ProGatherer.class,
 				ProScholar.class
 				};
