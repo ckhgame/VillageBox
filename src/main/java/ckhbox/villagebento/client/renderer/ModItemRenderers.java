@@ -25,6 +25,7 @@ public class ModItemRenderers {
 		registerModel(ModItems.violetGem, 0, "violet_gem");
 		registerModel(ModItems.orangeGem, 0, "orange_gem");
 		registerModel(ModItems.mail, 0, "mail");
+		registerModel(ModItems.flameStaff, 0, "flame_staff");
 		
 	}
 

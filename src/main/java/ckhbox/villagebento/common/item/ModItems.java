@@ -3,6 +3,7 @@ package ckhbox.villagebento.common.item;
 import ckhbox.villagebento.common.item.book.ItemTreasureBook;
 import ckhbox.villagebento.common.item.gem.ItemGem;
 import ckhbox.villagebento.common.item.mail.ItemMail;
+import ckhbox.villagebento.common.item.weapon.ItemFlameStaff;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -14,6 +15,7 @@ public class ModItems {
 	public static ItemGem violetGem;
 	public static ItemGem orangeGem;
 	public static ItemMail mail;
+	public static ItemFlameStaff flameStaff;
 	
 	
 	public static void init(){
@@ -29,6 +31,9 @@ public class ModItems {
 		
 		//mail
 		GameRegistry.registerItem(mail=new ItemMail(),"mail");
+		
+		//weapon
+		GameRegistry.registerItem(flameStaff=new ItemFlameStaff(),"flame_staff");
 	}
 	
 	
