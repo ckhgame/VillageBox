@@ -30,7 +30,7 @@ public class ProFarmer extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/farmer.png"));
+		this.createTextures("farmer");
 	}
 
 	@Override
@@ -45,6 +45,7 @@ public class ProFarmer extends Profession{
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
+				ProFlorist.class,
 				ProOrchardist.class,
 				ProRancher.class,
 				ProFisherman.class,

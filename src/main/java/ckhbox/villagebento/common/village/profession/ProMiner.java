@@ -1,5 +1,6 @@
 package ckhbox.villagebento.common.village.profession;
 
+import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
@@ -18,11 +19,14 @@ public class ProMiner extends Profession{
 				new ItemStack[]{new ItemStack(Items.emerald,8)},
 				new ItemStack(Blocks.iron_ore,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.emerald,24)},
+				new ItemStack[]{new ItemStack(Items.emerald,32)},
 				new ItemStack(Blocks.gold_block,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(Items.emerald,10)},
-				new ItemStack(Items.redstone,1,8)));
+				new ItemStack(Items.redstone,8)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.blueGem,2)},
+				new ItemStack(Items.diamond,1)));
 	}
 
 	@Override
@@ -33,7 +37,7 @@ public class ProMiner extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/miner.png"));
+		this.createTextures("miner");
 	}
 
 	@Override
@@ -49,8 +53,8 @@ public class ProMiner extends Profession{
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProSeniorMiner.class,
-				ProBlacksmith.class
+				ProAdventurer.class,
+				ProBombmaker.class
 				};
 	}
 	

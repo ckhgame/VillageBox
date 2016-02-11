@@ -7,10 +7,16 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProWoodcutter extends Profession{
+public class ProGatherer extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.emerald,2)},
+				new ItemStack(Items.egg,1,1)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.emerald,1)},
+				new ItemStack(Items.wheat_seeds,3,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(Items.emerald,2)},
 				new ItemStack(Blocks.log,1,0)));
@@ -39,12 +45,12 @@ public class ProWoodcutter extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/woodcutter.png"));
+		this.createTextures("gatherer");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.woodcutter");
+		return PathHelper.full("profession.gatherer");
 	}
 	
 	@Override
@@ -55,8 +61,10 @@ public class ProWoodcutter extends Profession{
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
+				ProJeweler.class,
 				ProCarpenter.class,
-				ProFlorist.class
+				ProBlacksmith.class,
+				ProMiner.class
 				};
 	}
 	

@@ -30,7 +30,7 @@ public class ProOrchardist extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/orchardist.png"));
+		this.createTextures("orchardist");
 	}
 
 	@Override

@@ -110,7 +110,7 @@ public class GuiVillagerStatus extends GuiContainer{
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(VillagerAttributeIconsTexture);
 		this.drawTexturedModalRect(x, y, attribute.getIconIdx() * 16, 0, 16, 16);
-		String text = String.format("§e%d §f(§a%d§f) / §e%d", attribute.getValue(), attribute.getValueGrowing(), attribute.getMaxValue()); 
+		String text = String.format("§e%d §f/ %d", attribute.getValue(), attribute.getMaxValue()); 
 		this.drawString(this.fontRendererObj, text, x + 20, y + 4, 0);
 	}
 	

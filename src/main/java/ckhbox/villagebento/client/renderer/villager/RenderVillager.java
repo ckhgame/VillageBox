@@ -25,9 +25,9 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 	@Override
 	protected ResourceLocation getEntityTexture(EntityVillager entity) {
 		if(entity.previewProfession != null)
-			return entity.previewProfession.getTexture();
+			return entity.previewProfession.getTexture(entity.isMale());
 		else
-			return entity.getProfession().getTexture();
+			return entity.getProfession().getTexture(entity.isMale());
 	}
 	
 	

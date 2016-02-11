@@ -66,7 +66,9 @@ public class SlotTradingOutput extends Slot
     {
         this.onCrafting(stack);
         
-        this.tradingInventory.tradeCurrentRecipe();
+        if(this.tradingInventory.tradeCurrentRecipe()){
+        	this.trader.onTrade();
+        }
         this.tradingInventory.resetRecipeAndSlots();
     }
 }

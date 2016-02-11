@@ -30,12 +30,12 @@ public class ProFlorist extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/arrowmaker.png"));
+		this.createTextures("florist");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.arrowmaker");
+		return PathHelper.full("profession.florist");
 	}
 
 	@Override
@@ -44,7 +44,9 @@ public class ProFlorist extends Profession{
 				new ItemStack(Items.emerald,20)
 		};
 		
-		this.upgradeToNextOptions = null;
+		this.upgradeToNextOptionClasses = new Class[]{
+				ProGardener.class
+				};
 	}
 
 }

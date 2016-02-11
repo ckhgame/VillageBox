@@ -104,31 +104,22 @@ public class ContainerVillagerUpgrading extends Container
         {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
-
-            if (index == 4)
+            
+            if (index >= 3)
             {
-                if (!this.mergeItemStack(itemstack1, 5, 41, true))
+                if (index >= 3 && index < 30)
                 {
-                    return null;
-                }
-
-                slot.onSlotChange(itemstack1, itemstack);
-            }
-            else if (index >= 4)
-            {
-                if (index >= 5 && index < 32)
-                {
-                    if (!this.mergeItemStack(itemstack1, 32, 41, false))
+                    if (!this.mergeItemStack(itemstack1, 30, 39, false))
                     {
                         return null;
                     }
                 }
-                else if (index >= 32 && index < 41 && !this.mergeItemStack(itemstack1, 5, 32, false))
+                else if (index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
                 {
                     return null;
                 }
             }
-            else if (!this.mergeItemStack(itemstack1, 5, 41, false))
+            else if (!this.mergeItemStack(itemstack1, 3, 39, false))
             {
                 return null;
             }

@@ -30,7 +30,7 @@ public class ProAlchemist extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/alchemist.png"));
+		this.createTextures("alchemist");
 	}
 
 	@Override
@@ -45,10 +45,7 @@ public class ProAlchemist extends Profession{
 				new ItemStack(Items.iron_ingot,8)
 		};
 		
-		this.upgradeToNextOptionClasses = new Class[]{
-				ProBombmaker.class,
-				ProMasterofalchemy.class
-				};
+		this.upgradeToNextOptionClasses = null;
 	}
 	
 }

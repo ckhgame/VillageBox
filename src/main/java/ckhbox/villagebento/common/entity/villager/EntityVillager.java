@@ -53,10 +53,10 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	private Vec3 wanderCenter;
 	
 	public EntityVillager(World worldIn){
-		this(worldIn,NameGenerator.getRandomMaleName());
+		this(worldIn,NameGenerator.getRandomMaleName(),Rand.get().nextBoolean());
 	}
 	
-	public EntityVillager(World worldIn, String name) {
+	public EntityVillager(World worldIn, String name, boolean male) {
 		super(worldIn);		
 		
 		this.setSize(0.6F, 1.8F);
@@ -78,7 +78,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			this.setProfession(Rand.get().nextInt(3));
 		}
 		
-		//temp
+		this.setGender(male);
+		
 		if(!this.hasCustomName()){
 			this.setCustomNameTag(name);
 		}
@@ -156,6 +157,12 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		return this.profession.getTradingRecipeList();
 	}
 	
+	@Override
+	public void onTrade() {
+		VillagerAttribute proficiency = ((VillagerAttribute)this.attributeList.get(2));
+		proficiency.setValue(proficiency.getValue() + Rand.get().nextInt(10) + 10);
+	}
+	
 	public Vec3 getWanderCenter(){
 		if(this.wanderCenter == null){
 			this.wanderCenter = new Vec3(this.posX, this.posY, this.posZ);
@@ -175,11 +182,20 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	}
 	
 	/**
-	 * POS: 0=Interacting, 1=Following, 2=Has Home
+	 * POS: 0=Interacting, 1=Following, 2=Has Home, 3 gender
 	 */
 	protected boolean getDataFlag(int pos){
 		int data = this.getDataWatcher().getWatchableObjectInt(20);
 		return BitHelper.readBit(data, pos);
+	}
+	
+	//gender
+	public void setGender(boolean male){
+		this.setDataFlag(3, male);
+	}
+	
+	public boolean isMale(){
+		return this.getDataFlag(3);
 	}
 	
 	//interacting and following	
@@ -341,6 +357,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		tagCompound.setInteger("attr_eng", (Integer)this.attributeList.get(0).getValue());
 		tagCompound.setInteger("attr_hap", (Integer)this.attributeList.get(1).getValue());
 		tagCompound.setInteger("attr_pro", (Integer)this.attributeList.get(2).getValue());
+		tagCompound.setBoolean("gender", this.isMale());
 		//home
 		if(this.home != null){
 			tagCompound.setIntArray("homebd", new int[]{
@@ -362,6 +379,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.attributeList.get(0).setValue(tagCompund.getInteger("attr_eng"));
 		this.attributeList.get(1).setValue(tagCompund.getInteger("attr_hap"));
 		this.attributeList.get(2).setValue(tagCompund.getInteger("attr_pro"));
+		this.setGender(tagCompund.getBoolean("gender"));
 		//home
 		int[] arr = tagCompund.getIntArray("homebd");
 		if(arr == null || arr.length == 0){

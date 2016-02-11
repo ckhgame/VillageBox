@@ -31,7 +31,7 @@ public class ProScholar extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/scholar.png"));
+		this.createTextures("scholar");
 	}
 
 	@Override
@@ -48,7 +48,6 @@ public class ProScholar extends Profession{
 		this.upgradeToNextOptionClasses = new Class[]{
 				ProWizard.class,
 				ProPainter.class,
-				ProAlchemist.class
 				};
 	}
 

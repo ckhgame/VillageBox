@@ -1,6 +1,7 @@
 package ckhbox.villagebento.common.item.weapon;
 
 import ckhbox.villagebento.common.entity.throwable.EntityFlameBall;
+import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -12,6 +13,7 @@ public class ItemFlameStaff extends Item
 {
 	public ItemFlameStaff()
     {
+		this.setUnlocalizedName(PathHelper.full("flameStaff"));
         this.maxStackSize = 1;
         this.setMaxDamage(3);
         this.setCreativeTab(CreativeTabs.tabCombat);

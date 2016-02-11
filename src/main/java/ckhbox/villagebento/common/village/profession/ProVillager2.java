@@ -18,7 +18,7 @@ public class ProVillager2 extends ProVillager{
 	
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/villager2.png"));
+		this.createTextures("villager2");
 	}
 
 

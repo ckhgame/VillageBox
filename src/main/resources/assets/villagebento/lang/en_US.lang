@@ -42,7 +42,7 @@ villagebento:villager.attribute.energy.desc=Trading will cost enegy
 villagebento:villager.attribute.happiness=Happiness
 villagebento:villager.attribute.happiness.desc=The villager can't provide##anything when is sad
 villagebento:villager.attribute.proficiency=Proficiency
-villagebento:villager.attribute.proficiency.desc=Max proficiency to upgrade##to advanced professions
+villagebento:villager.attribute.proficiency.desc=Max proficiency to upgrade##to advanced professions##* §bslightly increasing over time##* §bgreatly increased by trading
 
 # Gui
 
@@ -92,6 +92,13 @@ item.villagebento:treasurebook3.name=Treasure Hunt Book III
 item.villagebento:blueGem.name=Blue Gem
 item.villagebento:violetGem.name=Violet Gem
 item.villagebento:orangeGem.name=Orange Gem
+item.villagebento:mail.name=Mail
+item.villagebento:flameStaff.name=Flame Staff
+item.villagebento:processedWoodPlank.name=Processed Wood Plank
+item.villagebento:reinforcedIronIngot.name=Reinforced Iron Ingot
+
+# Blocks
+tile.villagebento:mailbox.name=Mail Box
 
 #Book
 villagebento:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d

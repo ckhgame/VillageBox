@@ -30,7 +30,7 @@ public class ProRancher extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/rancher.png"));
+		this.createTextures("rancher");
 	}
 
 	@Override

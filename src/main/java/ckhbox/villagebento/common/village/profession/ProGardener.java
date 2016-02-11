@@ -7,7 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProSeniorwizard extends Profession{
+public class ProGardener extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
@@ -30,12 +30,12 @@ public class ProSeniorwizard extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/seniorwizard.png"));
+		this.createTextures("gardener");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.seniorwizard");
+		return PathHelper.full("profession.gardener");
 	}
 
 	@Override

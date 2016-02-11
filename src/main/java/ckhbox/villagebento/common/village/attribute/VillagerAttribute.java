@@ -26,7 +26,7 @@ public class VillagerAttribute extends Attribute<Integer>{
 	
 	@Override
 	public void update() {
-		if(!villager.worldObj.isRemote && Rand.get().nextInt(100) == 0){
+		if(!villager.worldObj.isRemote && Rand.get().nextInt(1000) == 0){
 			this.setValue(this.getValue() + this.getValueGrowing());
 		}
 	}

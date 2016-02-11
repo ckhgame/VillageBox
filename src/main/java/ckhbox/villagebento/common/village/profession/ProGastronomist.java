@@ -30,12 +30,12 @@ public class ProGastronomist extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/gastronomist.png"));
+		this.createTextures("gastronomist");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("gastronomist.fisherman");
+		return PathHelper.full("gastronomist.gastronomist");
 	}
 	
 	@Override

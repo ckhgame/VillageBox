@@ -1,5 +1,6 @@
 package ckhbox.villagebento.common.village.profession;
 
+import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.util.registry.IRegistrable;
 import ckhbox.villagebento.common.util.registry.Registry;
 import ckhbox.villagebento.common.village.trading.TradingRecipeList;
@@ -13,7 +14,8 @@ public abstract class Profession implements IRegistrable{
 	//trading recipe list
 	protected TradingRecipeList tradingRecipeList = new TradingRecipeList();
 	//texture
-	protected ResourceLocation texture;
+	protected ResourceLocation texturem;
+	protected ResourceLocation texturef;
 	
 	//what professions can upgrade from this profession
 	protected Class<? extends Profession>[] upgradeToNextOptionClasses;
@@ -65,8 +67,8 @@ public abstract class Profession implements IRegistrable{
 		return this.maxProficiency;
 	}
 	
-	public ResourceLocation getTexture(){
-		return this.texture;
+	public ResourceLocation getTexture(boolean male){
+		return male?this.texturem:this.texturef;
 	}
 	
 	public TradingRecipeList getTradingRecipeList(){
@@ -81,6 +83,10 @@ public abstract class Profession implements IRegistrable{
 		return StatCollector.translateToLocal(this.getUnlocalized() + ".desc");
 	}
 	
+	protected void createTextures(String name){
+		this.texturem = new ResourceLocation(PathHelper.full("textures/entity/villager/" + name + "_m.png"));
+		this.texturef = new ResourceLocation(PathHelper.full("textures/entity/villager/" + name + "_f.png"));
+	}
 	
 	//abstract functions
 	protected abstract void initTradingRecipeList();
@@ -104,7 +110,7 @@ public abstract class Profession implements IRegistrable{
 		registry.register(id++, new ProAdventurer());
 		registry.register(id++, new ProAlchemist());
 		registry.register(id++, new ProArmorsmith());
-		registry.register(id++, new ProArrowmaker());
+		registry.register(id++, new ProGardener());
 		registry.register(id++, new ProBlacksmith());
 		registry.register(id++, new ProBombmaker());
 		registry.register(id++, new ProBowmaker());
@@ -121,13 +127,13 @@ public abstract class Profession implements IRegistrable{
 		registry.register(id++, new ProPainter());
 		registry.register(id++, new ProRancher());
 		registry.register(id++, new ProScholar());
-		registry.register(id++, new ProSeniorMiner());
-		registry.register(id++, new ProSeniorwizard());
+		registry.register(id++, new ProCollector());
 		registry.register(id++, new ProVintner());
 		registry.register(id++, new ProWeaponsmith());
 		registry.register(id++, new ProWizard());
-		registry.register(id++, new ProWoodcutter());
+		registry.register(id++, new ProGatherer());
 		registry.register(id++, new ProWarlock());
+		registry.register(id++, new ProChef());
 	}
 
 }

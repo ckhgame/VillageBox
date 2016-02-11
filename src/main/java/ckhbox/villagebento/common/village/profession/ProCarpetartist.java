@@ -30,7 +30,7 @@ public class ProCarpetartist extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/carpetartist.png"));
+		this.createTextures("carpetartist");
 	}
 
 	@Override

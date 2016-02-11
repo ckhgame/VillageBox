@@ -30,7 +30,7 @@ public class ProVintner extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/vintner.png"));
+		this.createTextures("vintner");
 	}
 
 	@Override

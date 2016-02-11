@@ -30,7 +30,7 @@ public class ProJeweler extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/jeweler.png"));
+		this.createTextures("jeweler");
 	}
 
 	@Override

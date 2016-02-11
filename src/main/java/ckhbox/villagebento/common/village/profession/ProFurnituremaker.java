@@ -30,7 +30,7 @@ public class ProFurnituremaker extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/furnituremaker.png"));
+		this.createTextures("furnituremaker");
 	}
 
 	@Override

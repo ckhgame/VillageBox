@@ -30,7 +30,7 @@ public class ProWarlock extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/warlock.png"));
+		this.createTextures("warlock");
 	}
 
 	@Override

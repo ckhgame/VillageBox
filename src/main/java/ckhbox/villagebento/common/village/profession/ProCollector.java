@@ -7,7 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProSeniorMiner extends Profession{
+public class ProCollector extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
@@ -24,31 +24,27 @@ public class ProSeniorMiner extends Profession{
 
 	@Override
 	protected void initAttributes() {
-		this.maxEnegy = 100;
-		this.maxProficiency = 200;
+		this.maxEnegy = 120;
+		this.maxProficiency = 240;
 	}
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/seniorminer.png"));
+		this.createTextures("collector");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.seniorminer");
+		return PathHelper.full("profession.collector");
 	}
-	
+
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,10),
-				new ItemStack(Items.iron_ingot,8)
+				new ItemStack(Items.emerald,20)
 		};
 		
-		this.upgradeToNextOptionClasses = new Class[]{
-				ProAdventurer.class,
-				ProJeweler.class
-				};
+		this.upgradeToNextOptions = null;
 	}
-	
+
 }

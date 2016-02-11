@@ -26,6 +26,8 @@ public class ModItemRenderers {
 		registerModel(ModItems.orangeGem, 0, "orange_gem");
 		registerModel(ModItems.mail, 0, "mail");
 		registerModel(ModItems.flameStaff, 0, "flame_staff");
+		registerModel(ModItems.processedWoodPlank, 0, "processed_wood_plank");
+		registerModel(ModItems.reinforcedIronIngot, 0, "reinforced_iron_ingot");
 		
 	}
 

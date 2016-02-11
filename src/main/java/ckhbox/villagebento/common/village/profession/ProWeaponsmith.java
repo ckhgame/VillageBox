@@ -30,7 +30,7 @@ public class ProWeaponsmith extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/weaponsmith.png"));
+		this.createTextures("weaponsmith");
 	}
 
 	@Override

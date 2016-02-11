@@ -24,7 +24,7 @@ public class ProPainter extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/painter.png"));
+		this.createTextures("painter");
 	}
 
 	@Override
@@ -39,7 +39,9 @@ public class ProPainter extends Profession{
 				new ItemStack(Items.iron_ingot,8)
 		};
 		
-		this.upgradeToNextOptions = null;
+		this.upgradeToNextOptionClasses = new Class[]{
+				ProCollector.class
+				};
 	}
 	
 }

@@ -3,6 +3,8 @@ package ckhbox.villagebento.common.item;
 import ckhbox.villagebento.common.item.book.ItemTreasureBook;
 import ckhbox.villagebento.common.item.gem.ItemGem;
 import ckhbox.villagebento.common.item.mail.ItemMail;
+import ckhbox.villagebento.common.item.material.ItemProcessedWoodPlank;
+import ckhbox.villagebento.common.item.material.ItemReinforcedIronIngot;
 import ckhbox.villagebento.common.item.weapon.ItemFlameStaff;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -16,6 +18,8 @@ public class ModItems {
 	public static ItemGem orangeGem;
 	public static ItemMail mail;
 	public static ItemFlameStaff flameStaff;
+	public static ItemProcessedWoodPlank processedWoodPlank;
+	public static ItemReinforcedIronIngot reinforcedIronIngot;
 	
 	
 	public static void init(){
@@ -34,6 +38,10 @@ public class ModItems {
 		
 		//weapon
 		GameRegistry.registerItem(flameStaff=new ItemFlameStaff(),"flame_staff");
+		
+		//materials
+		GameRegistry.registerItem(processedWoodPlank=new ItemProcessedWoodPlank(),"processed_wood_plank");
+		GameRegistry.registerItem(reinforcedIronIngot=new ItemReinforcedIronIngot(),"reinforced_iron_ingot");
 	}
 	
 	
