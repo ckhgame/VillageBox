@@ -75,7 +75,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.attributeList.get(2).setValueGrowing(1);
 		
 		if(!this.worldObj.isRemote){
-			this.setProfession(Rand.get().nextInt(5));
+			this.setProfession(Rand.get().nextInt(3));
 		}
 		
 		//temp

@@ -12,14 +12,23 @@ public class ProWoodcutter extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.wheat_seeds,10),new ItemStack(Items.apple,5)},
-				new ItemStack(Items.bread)));
+				new ItemStack[]{new ItemStack(Items.emerald,2)},
+				new ItemStack(Blocks.log,1,0)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.iron_axe,1),new ItemStack(Items.beef,3)},
-				new ItemStack(Items.bed)));
+				new ItemStack[]{new ItemStack(Items.emerald,2)},
+				new ItemStack(Blocks.log,1,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.bone,6),new ItemStack(Blocks.torch,20)},
-				new ItemStack(Items.boat)));
+				new ItemStack[]{new ItemStack(Items.emerald,2)},
+				new ItemStack(Blocks.log,1,2)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.emerald,2)},
+				new ItemStack(Blocks.log,1,3)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.emerald,2)},
+				new ItemStack(Blocks.log2,1,0)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.emerald,2)},
+				new ItemStack(Blocks.log2,1,1)));
 	}
 
 	@Override

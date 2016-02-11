@@ -20,8 +20,6 @@ public class EventEntity {
 		}
 	}
 	
-	public ExtendedPlayerProperties playerProperties;
-	
 	@SubscribeEvent
 	public void onLivingUpdating(LivingUpdateEvent event)
 	{
@@ -29,10 +27,7 @@ public class EventEntity {
 			//register extended player properties
 			if(event.entity instanceof EntityPlayer){
 
-				//someone wants to join your village.....
-				if(playerProperties == null){
-					playerProperties = ExtendedPlayerProperties.get((EntityPlayer)event.entity);
-				}
+				ExtendedPlayerProperties playerProperties = ExtendedPlayerProperties.get((EntityPlayer)event.entity);
 
 				if(playerProperties.newMailTimer > 0){
 					if(--playerProperties.newMailTimer == 0){

@@ -10,6 +10,13 @@ import net.minecraft.util.ResourceLocation;
 public class ProVillager0 extends ProVillager{
 
 	@Override
+	protected void initTradingRecipeList() {
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.emerald,3)},
+				new ItemStack(Items.apple)));
+	}
+	
+	@Override
 	protected void initTexture() {
 		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/villager0.png"));
 	}
