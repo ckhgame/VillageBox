@@ -5,10 +5,9 @@ import ckhbox.villagebento.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
-public class ProVillager extends Profession{
-
+public abstract class ProVillager extends Profession{
+	
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
@@ -29,11 +28,6 @@ public class ProVillager extends Profession{
 	}
 
 	@Override
-	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/villager.png"));
-	}
-
-	@Override
 	protected String getUnlocalized() {
 		return PathHelper.full("profession.villager");
 	}
@@ -43,7 +37,9 @@ public class ProVillager extends Profession{
 		this.upgradeToCurentNeeds = null;
 		this.upgradeToNextOptionClasses = new Class[]{
 				ProFarmer.class,
-				ProMiner.class
+				ProMiner.class,
+				ProWoodcutter.class,
+				ProScholar.class
 				};
 	}
 

@@ -7,7 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProFarmer extends Profession{
+public class ProAdventurer extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
@@ -24,32 +24,28 @@ public class ProFarmer extends Profession{
 
 	@Override
 	protected void initAttributes() {
-		this.maxEnegy = 120;
-		this.maxProficiency = 240;
+		this.maxEnegy = 100;
+		this.maxProficiency = 200;
 	}
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/farmer.png"));
+		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/adventurer.png"));
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.farmer");
+		return PathHelper.full("profession.adventurer");
 	}
-
+	
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,20)
+				new ItemStack(Items.emerald,10),
+				new ItemStack(Items.iron_ingot,8)
 		};
 		
-		this.upgradeToNextOptionClasses = new Class[]{
-				ProOrchardist.class,
-				ProRancher.class,
-				ProFisherman.class,
-				ProChef.class
-				};
+		this.upgradeToNextOptions = null;
 	}
-
+	
 }

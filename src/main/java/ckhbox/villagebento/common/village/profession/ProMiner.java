@@ -45,7 +45,10 @@ public class ProMiner extends Profession{
 				new ItemStack(Items.iron_ingot,8)
 		};
 		
-		this.upgradeToNextOptions = null;
+		this.upgradeToNextOptionClasses = new Class[]{
+				ProSeniorMiner.class,
+				ProBlacksmith.class
+				};
 	}
 	
 }

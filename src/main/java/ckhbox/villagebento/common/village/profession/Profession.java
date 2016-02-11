@@ -96,9 +96,40 @@ public abstract class Profession implements IRegistrable{
 	
 	public static void init(){
 		int id = 0;
-		registry.register(id++, new ProVillager());
+		registry.register(id++, new ProVillager0());
+		registry.register(id++, new ProVillager1());
+		registry.register(id++, new ProVillager2());
+		registry.register(id++, new ProVillager3());
+		registry.register(id++, new ProVillager4());
 		registry.register(id++, new ProFarmer());
 		registry.register(id++, new ProMiner());
+		registry.register(id++, new ProAdventurer());
+		registry.register(id++, new ProAlchemist());
+		registry.register(id++, new ProArmorsmith());
+		registry.register(id++, new ProArrowmaker());
+		registry.register(id++, new ProBlacksmith());
+		registry.register(id++, new ProBombmaker());
+		registry.register(id++, new ProBowmaker());
+		registry.register(id++, new ProCarpenter());
+		registry.register(id++, new ProCarpetartist());
+		registry.register(id++, new ProCarpetmaker());
+		registry.register(id++, new ProFisherman());
+		registry.register(id++, new ProFlorist());
+		registry.register(id++, new ProFurnituremaker());
+		registry.register(id++, new ProGastronomist());
+		registry.register(id++, new ProJeweler());
+		registry.register(id++, new ProMasterofalchemy());
+		registry.register(id++, new ProOrchardist());
+		registry.register(id++, new ProPainter());
+		registry.register(id++, new ProRancher());
+		registry.register(id++, new ProScholar());
+		registry.register(id++, new ProSeniorMiner());
+		registry.register(id++, new ProSeniorwizard());
+		registry.register(id++, new ProVintner());
+		registry.register(id++, new ProWeaponsmith());
+		registry.register(id++, new ProWizard());
+		registry.register(id++, new ProWoodcutter());
+		registry.register(id++, new ProWarlock());
 	}
 
 }

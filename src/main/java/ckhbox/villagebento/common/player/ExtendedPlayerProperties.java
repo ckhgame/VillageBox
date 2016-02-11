@@ -14,7 +14,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	private static final String identifier = "villagebento.playerex";
 	
-	public static final int NewMailTimerTotal = 100;
+	public static final int NewMailTimerTotal = 3000;
 	
 	public static void register(EntityPlayer player){
 		if(get(player) == null){

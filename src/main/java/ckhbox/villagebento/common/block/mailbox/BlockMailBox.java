@@ -76,12 +76,12 @@ public class BlockMailBox extends Block{
                 double d3 = playerIn.posY - y;
                 double d5 = playerIn.posZ - z;
                 double d7 = (double)MathHelper.sqrt_double(d1 * d1 + d3 * d3 + d5 * d5);
-                double d9 = 0.1D;
+                double d9 = 0.08D;
                 entityitem.motionX = d1 * d9;
-                entityitem.motionY = d3 * d9 + (double)MathHelper.sqrt_double(d7) * 0.08D;
+                entityitem.motionY = d3 * d9 + (double)MathHelper.sqrt_double(d7) * 0.05D;
                 entityitem.motionZ = d5 * d9;
                 
-	            //entityitem.setDefaultPickupDelay();
+	            entityitem.setDefaultPickupDelay();
 	            worldIn.spawnEntityInWorld(entityitem);
 			}
 			else{

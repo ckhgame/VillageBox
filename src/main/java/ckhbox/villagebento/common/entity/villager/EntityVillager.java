@@ -9,6 +9,7 @@ import ckhbox.villagebento.common.util.helper.BitHelper;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.util.math.IntBoundary;
 import ckhbox.villagebento.common.util.math.IntVec3;
+import ckhbox.villagebento.common.util.math.Rand;
 import ckhbox.villagebento.common.util.tool.HouseDetector;
 import ckhbox.villagebento.common.util.tool.NameGenerator;
 import ckhbox.villagebento.common.village.attribute.AttributeList;
@@ -73,7 +74,9 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.attributeList.get(1).setValueGrowing(3);
 		this.attributeList.get(2).setValueGrowing(1);
 		
-		this.refreshProfession();
+		if(!this.worldObj.isRemote){
+			this.setProfession(Rand.get().nextInt(5));
+		}
 		
 		//temp
 		if(!this.hasCustomName()){

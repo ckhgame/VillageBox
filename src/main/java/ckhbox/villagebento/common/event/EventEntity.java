@@ -33,7 +33,7 @@ public class EventEntity {
 				if(playerProperties == null){
 					playerProperties = ExtendedPlayerProperties.get((EntityPlayer)event.entity);
 				}
-				System.out.println(playerProperties.newMailTimer);
+
 				if(playerProperties.newMailTimer > 0){
 					if(--playerProperties.newMailTimer == 0){
 						playerProperties.mailCount++;

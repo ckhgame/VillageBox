@@ -7,7 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProFarmer extends Profession{
+public class ProWizard extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
@@ -30,12 +30,12 @@ public class ProFarmer extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/farmer.png"));
+		this.texture = new ResourceLocation(PathHelper.full("textures/entity/villager/wizard.png"));
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.farmer");
+		return PathHelper.full("profession.wizard");
 	}
 
 	@Override
@@ -45,10 +45,8 @@ public class ProFarmer extends Profession{
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProOrchardist.class,
-				ProRancher.class,
-				ProFisherman.class,
-				ProChef.class
+				ProSeniorwizard.class,
+				ProWarlock.class
 				};
 	}
 
