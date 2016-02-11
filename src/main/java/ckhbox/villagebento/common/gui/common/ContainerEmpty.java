@@ -1,0 +1,14 @@
+package ckhbox.villagebento.common.gui.common;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+
+public class ContainerEmpty extends Container{
+	
+	@Override
+	public boolean canInteractWith(EntityPlayer playerIn) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

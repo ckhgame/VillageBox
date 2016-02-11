@@ -16,6 +16,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMail extends Item{
 	
@@ -32,8 +34,8 @@ public class ItemMail extends Item{
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
 		
-		if(worldIn.isRemote){
-			Minecraft.getMinecraft().displayGuiScreen(new GuiMail(playerIn));
+		if(!worldIn.isRemote){
+			playerIn.openGui(VillageBentoMod.instance, GuiIDs.Mail, worldIn, 0, 0, 0);
 		}
 		
 		return super.onItemRightClick(itemStackIn, worldIn, playerIn);

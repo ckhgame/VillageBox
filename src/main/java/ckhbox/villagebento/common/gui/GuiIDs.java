@@ -7,4 +7,7 @@ public class GuiIDs {
 	public static final int VillagerStatus = 101;
 	public static final int VillagerTrading = 102;
 	public static final int VillagerUpgrading = 103;
+	
+	
+	public static final int Mail = 200;
 }

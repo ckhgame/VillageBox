@@ -3,6 +3,7 @@ package ckhbox.villagebento.client.gui.mail;
 import java.io.IOException;
 
 import ckhbox.villagebento.client.gui.GuiTextButton;
+import ckhbox.villagebento.common.gui.common.ContainerEmpty;
 import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.item.mail.ItemMail;
 import ckhbox.villagebento.common.network.ModNetwork;
@@ -11,13 +12,14 @@ import ckhbox.villagebento.common.network.message.villager.MessageSpawnNewVillag
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-public class GuiMail extends GuiScreen{
+public class GuiMail extends GuiContainer{
 
 	private static final ResourceLocation mailGuiTextures = new ResourceLocation(PathHelper.full("textures/gui/mail/mail.png"));
 	
@@ -29,6 +31,7 @@ public class GuiMail extends GuiScreen{
 	private GuiTextButton buttonApprove;
 	
 	public GuiMail(EntityPlayer player) {
+		super(new ContainerEmpty());
 		this.player = player;
 	}
 
@@ -56,14 +59,25 @@ public class GuiMail extends GuiScreen{
     }
     
 	@Override
-	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-	
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(mailGuiTextures);
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
-			
+	}
+	
+    
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+	
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		
+		int x = (this.width - this.xSize) / 2;
+        int y = (this.height - this.ySize) / 2;
+		
+		GlStateManager.disableLighting();
+		
         ItemStack hold = this.player.getHeldItem();
         if(hold.getItem() == ModItems.mail){
         	String content = StatCollector.translateToLocal(ItemMail.getMailContent(hold));
@@ -77,7 +91,7 @@ public class GuiMail extends GuiScreen{
         
 		
 		
-		super.drawScreen(mouseX, mouseY, partialTicks);
+		
 	}
 
 	@Override
@@ -89,5 +103,6 @@ public class GuiMail extends GuiScreen{
 			this.mc.thePlayer.closeScreen();
 		}
 	}
-	
+
+
 }
