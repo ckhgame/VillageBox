@@ -90,6 +90,11 @@ item.villagebento:mail.name=Mail
 item.villagebento:flameStaff.name=Flame Staff
 item.villagebento:processedWoodPlank.name=Processed Wood Plank
 item.villagebento:reinforcedIronIngot.name=Reinforced Iron Ingot
+item.villagebento:cabbage.name=Cabbage
+item.villagebento:corn.name=Corn
+item.villagebento:chili.name=Chili Pepper
+item.villagebento:riceplant.name=Rice Plant
+item.villagebento:soybean.name=Soybean
 
 # Blocks
 tile.villagebento:mailbox.name=Mail Box

@@ -28,7 +28,11 @@ public class ModItemRenderers {
 		registerModel(ModItems.flameStaff, 0, "flame_staff");
 		registerModel(ModItems.processedWoodPlank, 0, "processed_wood_plank");
 		registerModel(ModItems.reinforcedIronIngot, 0, "reinforced_iron_ingot");
-		
+		registerModel(ModItems.cabbage, 0, "cabbage");
+		registerModel(ModItems.riceplant, 0, "riceplant");
+		registerModel(ModItems.chili, 0, "chili");
+		registerModel(ModItems.corn, 0, "corn");
+		registerModel(ModItems.soybean, 0, "soybean");
 	}
 
 	private static void registerModel(Item item, int meta, String resource){

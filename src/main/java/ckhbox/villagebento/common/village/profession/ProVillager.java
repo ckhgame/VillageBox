@@ -1,5 +1,6 @@
 package ckhbox.villagebento.common.village.profession;
 
+import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
@@ -8,6 +9,15 @@ import net.minecraft.item.ItemStack;
 
 public abstract class ProVillager extends Profession{
 
+	@Override
+	protected void initTradingRecipeList() {
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)},
+				new ItemStack(Items.apple)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)},
+				new ItemStack(Items.egg)));
+	}
 
 	@Override
 	protected String getUnlocalized() {
@@ -22,6 +32,6 @@ public abstract class ProVillager extends Profession{
 				ProGatherer.class,
 				ProScholar.class
 				};
-	}
+	} 
 
 }

@@ -8,50 +8,48 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProPeasant extends Profession{
+public class ProFarmer extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Items.wheat,10)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.cabbage)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Items.carrot,3)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.chili)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Items.potato,3)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.corn)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Blocks.pumpkin,1)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.soybean)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.riceplant)));
 	}
 
 
 	@Override
 	protected void initTexture() {
-		this.createTextures("peasant");
+		this.createTextures("farmer");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.peasant");
+		return PathHelper.full("profession.farmer");
 	}
-
+	
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.bronzeCoin,20),
-				new ItemStack(Items.iron_hoe,1)
+				new ItemStack(ModItems.silverCoin,1),
+				new ItemStack(Items.golden_hoe,1)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProFlorist.class,
-				ProOrchardist.class,
-				ProRancher.class,
-				ProFisherman.class,
-				ProFarmer.class,
-				ProChef.class
+				ProCarpetmaker.class
 				};
 	}
-
+	
 }

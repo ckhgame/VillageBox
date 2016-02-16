@@ -121,6 +121,7 @@ public abstract class Profession implements IRegistrable{
 		registry.register(id++, new ProGatherer());
 		registry.register(id++, new ProWarlock());
 		registry.register(id++, new ProChef());
+		registry.register(id++, new ProFarmer());
 	}
 
 }

@@ -6,6 +6,9 @@ import ckhbox.villagebento.common.item.mail.ItemMail;
 import ckhbox.villagebento.common.item.material.ItemProcessedWoodPlank;
 import ckhbox.villagebento.common.item.material.ItemReinforcedIronIngot;
 import ckhbox.villagebento.common.item.weapon.ItemFlameStaff;
+import ckhbox.villagebento.common.util.helper.PathHelper;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -21,6 +24,12 @@ public class ModItems {
 	public static ItemProcessedWoodPlank processedWoodPlank;
 	public static ItemReinforcedIronIngot reinforcedIronIngot;
 	
+	//food materials
+	public static Item cabbage;
+	public static Item chili;
+	public static Item corn;
+	public static Item soybean;
+	public static Item riceplant;
 	
 	public static void init(){
 		//books
@@ -42,6 +51,13 @@ public class ModItems {
 		//materials
 		GameRegistry.registerItem(processedWoodPlank=new ItemProcessedWoodPlank(),"processed_wood_plank");
 		GameRegistry.registerItem(reinforcedIronIngot=new ItemReinforcedIronIngot(),"reinforced_iron_ingot");
+		
+		//food materials
+		GameRegistry.registerItem(cabbage=(new Item()).setUnlocalizedName(PathHelper.full("cabbage")).setCreativeTab(CreativeTabs.tabMaterials),"cabbage");
+		GameRegistry.registerItem(chili=(new Item()).setUnlocalizedName(PathHelper.full("chili")).setCreativeTab(CreativeTabs.tabMaterials),"chili");
+		GameRegistry.registerItem(corn=(new Item()).setUnlocalizedName(PathHelper.full("corn")).setCreativeTab(CreativeTabs.tabMaterials),"corn");
+		GameRegistry.registerItem(soybean=(new Item()).setUnlocalizedName(PathHelper.full("soybean")).setCreativeTab(CreativeTabs.tabMaterials),"soybean");
+		GameRegistry.registerItem(riceplant=(new Item()).setUnlocalizedName(PathHelper.full("riceplant")).setCreativeTab(CreativeTabs.tabMaterials),"riceplant");
 	}
 	
 	
