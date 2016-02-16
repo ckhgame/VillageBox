@@ -48,7 +48,6 @@ public class GuiVillagerUpgrading extends GuiContainer{
     private boolean noUpgradeOption;
     
     private boolean meetItemsNeed;
-    private boolean hasFullProficiency;
     
     protected int villagerNameOffsetY = 6;
     
@@ -157,19 +156,14 @@ public class GuiVillagerUpgrading extends GuiContainer{
             
             //upgrade button hover text
             ArrayList<String> list = new ArrayList<String>();
-            if(this.hasFullProficiency && this.meetItemsNeed){
+            if(this.meetItemsNeed){
             	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, 
             			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")),
             			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc"))); 
             }
             else{
             	list.add("§c" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")));
-            	if(!this.hasFullProficiency){        		
-            		list.add("§7" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable1")));
-            	}
-            	if(!this.meetItemsNeed){
-            		list.add("§7" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable0")));
-            	}
+            	list.add("§7" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable0")));
             	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, list);
             }
                        
@@ -253,8 +247,7 @@ public class GuiVillagerUpgrading extends GuiContainer{
 	        
 	        //upgrade button
 	        this.meetItemsNeed = ((ContainerVillagerUpgrading)this.inventorySlots).getUpgradingInventory().canUpgrade();
-	        this.hasFullProficiency = this.villager.isProficiencyFull();
-	        this.upgradeButton.enabled = (this.meetItemsNeed && this.hasFullProficiency);
+	        this.upgradeButton.enabled = (this.meetItemsNeed);
         }
     }
 

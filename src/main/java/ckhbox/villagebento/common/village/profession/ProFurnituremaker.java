@@ -22,11 +22,6 @@ public class ProFurnituremaker extends Profession{
 				new ItemStack(Items.boat)));
 	}
 
-	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 120;
-		this.maxProficiency = 240;
-	}
 
 	@Override
 	protected void initTexture() {

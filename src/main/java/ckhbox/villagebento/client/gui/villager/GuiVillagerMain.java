@@ -35,7 +35,7 @@ public class GuiVillagerMain extends GuiContainer{
     protected int playerChatOptionHeight = 18;
     protected int offsetX = 12;
     
-    GuiTextButton buttonViewStatus;
+    GuiTextButton buttonUpgrade;
     GuiTextButton buttonTrade;
     GuiTextButton buttonFollow;
     GuiTextButton buttonHome;
@@ -59,16 +59,13 @@ public class GuiVillagerMain extends GuiContainer{
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;  
         
-        String[] strOptions = new String[]{
-        		StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.viewstatus")),
-        		StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.trade")),
-        		StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.sethome"))
-        		};
+        String strUpgrade = StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.upgrade"));
+        String strTrade = StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.trade"));
         
-        this.buttonList.add(buttonViewStatus = new GuiTextButton(this.mc, 0, x + offsetX, y + playerChatOptionsOffsetY + 0 * playerChatOptionHeight, strOptions[0]));
-        this.buttonList.add(buttonTrade = new GuiTextButton(this.mc, 1, x + offsetX, y + playerChatOptionsOffsetY + 1 * playerChatOptionHeight, strOptions[1]));
+        this.buttonList.add(buttonTrade = new GuiTextButton(this.mc, 0, x + offsetX, y + playerChatOptionsOffsetY + 0 * playerChatOptionHeight, strTrade));
+        this.buttonList.add(buttonUpgrade = new GuiTextButton(this.mc, 1, x + offsetX, y + playerChatOptionsOffsetY + 1 * playerChatOptionHeight, strUpgrade));
         this.buttonList.add(buttonFollow = new GuiTextButton(this.mc, 2, x + offsetX, y + playerChatOptionsOffsetY + 2 * playerChatOptionHeight, ""));
-        this.buttonList.add(buttonHome = new GuiTextButton(this.mc, 3, x + offsetX, y + playerChatOptionsOffsetY + 3 * playerChatOptionHeight, strOptions[2]));
+        this.buttonList.add(buttonHome = new GuiTextButton(this.mc, 3, x + offsetX, y + playerChatOptionsOffsetY + 3 * playerChatOptionHeight, ""));
         
         this.refreshButtons(); 		
     }
@@ -85,7 +82,7 @@ public class GuiVillagerMain extends GuiContainer{
     	f = this.villager.hasHome()?"moveout":"movein";
     	buttonHome.setText(StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.home." + f)));
     	
-    	buttonViewStatus.enabled = this.villager.hasHome();
+    	buttonUpgrade.enabled = this.villager.hasHome();
     	buttonTrade.enabled = this.villager.hasHome();
     }
     
@@ -120,8 +117,8 @@ public class GuiVillagerMain extends GuiContainer{
         			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
         }
         
-        if(!this.buttonViewStatus.enabled){
-        	this.drawButtonHoverText(this.buttonViewStatus, mouseX, mouseY, 
+        if(!this.buttonUpgrade.enabled){
+        	this.drawButtonHoverText(this.buttonUpgrade, mouseX, mouseY, 
         			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.title")), 
         			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
         }
@@ -140,17 +137,17 @@ public class GuiVillagerMain extends GuiContainer{
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 
-		if(button.id == 0){//view status
-			ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerStatus,villager.dimension,villager.getEntityId()));
+		if(button == buttonUpgrade){
+			ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerUpgrading,villager.dimension,villager.getEntityId()));
 		}
-		else if(button.id == 1){//trade
+		else if(button == buttonTrade){
 			ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerTrading,villager.dimension,villager.getEntityId()));
 		}
-		else if(button.id == 2){//follow
+		else if(button == buttonFollow){
 			boolean enable = !this.villager.isFollowing();
 			ModNetwork.getInstance().sendToServer(new MessageGuiSetFollowing(this.villager.getEntityId(), this.villager.dimension, enable));
 		}
-		else if(button.id == 3){//set home
+		else if(button == buttonHome){
 			ModNetwork.getInstance().sendToServer(new MessageGuiSetHome(this.villager.getEntityId(), this.villager.dimension,!this.villager.hasHome()));
 		}
 		

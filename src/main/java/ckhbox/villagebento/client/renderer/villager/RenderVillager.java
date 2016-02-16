@@ -18,6 +18,14 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 	}
 
 	@Override
+	protected boolean canRenderName(EntityVillager entity) {
+		if(entity.previewProfession != null)
+			return false;
+		else
+			return super.canRenderName(entity);
+	}
+
+	@Override
 	public void doRender(EntityVillager entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 	}

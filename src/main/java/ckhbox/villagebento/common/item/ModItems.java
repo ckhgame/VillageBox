@@ -1,7 +1,7 @@
 package ckhbox.villagebento.common.item;
 
 import ckhbox.villagebento.common.item.book.ItemTreasureBook;
-import ckhbox.villagebento.common.item.gem.ItemGem;
+import ckhbox.villagebento.common.item.coin.ItemCoin;
 import ckhbox.villagebento.common.item.mail.ItemMail;
 import ckhbox.villagebento.common.item.material.ItemProcessedWoodPlank;
 import ckhbox.villagebento.common.item.material.ItemReinforcedIronIngot;
@@ -13,9 +13,9 @@ public class ModItems {
 	public static ItemTreasureBook treasureHuntBookI;
 	public static ItemTreasureBook treasureHuntBookII;
 	public static ItemTreasureBook treasureHuntBookIII;
-	public static ItemGem blueGem;
-	public static ItemGem violetGem;
-	public static ItemGem orangeGem;
+	public static ItemCoin bronzeCoin;
+	public static ItemCoin silverCoin;
+	public static ItemCoin goldCoin;
 	public static ItemMail mail;
 	public static ItemFlameStaff flameStaff;
 	public static ItemProcessedWoodPlank processedWoodPlank;
@@ -29,9 +29,9 @@ public class ModItems {
 		GameRegistry.registerItem(treasureHuntBookIII=new ItemTreasureBook(3),"treasure_hunt_book_2");
 		
 		//gems
-		GameRegistry.registerItem(blueGem=new ItemGem("blue"),"blue_gem");
-		GameRegistry.registerItem(violetGem=new ItemGem("violet"),"violet_gem");
-		GameRegistry.registerItem(orangeGem=new ItemGem("orange"),"orange_gem");
+		GameRegistry.registerItem(bronzeCoin=new ItemCoin("bronze"),"bronze_coin");
+		GameRegistry.registerItem(silverCoin=new ItemCoin("silver"),"silver_coin");
+		GameRegistry.registerItem(goldCoin=new ItemCoin("gold"),"gold_coin");
 		
 		//mail
 		GameRegistry.registerItem(mail=new ItemMail(),"mail");

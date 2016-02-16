@@ -23,12 +23,6 @@ public class ProAlchemist extends Profession{
 	}
 
 	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 100;
-		this.maxProficiency = 200;
-	}
-
-	@Override
 	protected void initTexture() {
 		this.createTextures("alchemist");
 	}

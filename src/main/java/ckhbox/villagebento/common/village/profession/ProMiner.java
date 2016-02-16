@@ -13,27 +13,22 @@ public class ProMiner extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.emerald,5)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
 				new ItemStack(Items.coal,8)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.emerald,8)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)},
 				new ItemStack(Blocks.iron_ore,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.emerald,32)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,32)},
 				new ItemStack(Blocks.gold_block,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.emerald,10)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
 				new ItemStack(Items.redstone,8)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.blueGem,2)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,2)},
 				new ItemStack(Items.diamond,1)));
 	}
 
-	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 100;
-		this.maxProficiency = 200;
-	}
 
 	@Override
 	protected void initTexture() {

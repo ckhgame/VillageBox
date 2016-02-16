@@ -37,11 +37,6 @@ public class ProGatherer extends Profession{
 				new ItemStack(Blocks.log2,1,1)));
 	}
 
-	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 100;
-		this.maxProficiency = 200;
-	}
 
 	@Override
 	protected void initTexture() {

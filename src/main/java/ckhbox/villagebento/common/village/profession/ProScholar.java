@@ -13,21 +13,16 @@ public class ProScholar extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.blueGem,5)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
 				new ItemStack(ModItems.treasureHuntBookI)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.violetGem,5)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,5)},
 				new ItemStack(ModItems.treasureHuntBookII)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.orangeGem,1)},
+				new ItemStack[]{new ItemStack(ModItems.goldCoin,1)},
 				new ItemStack(ModItems.treasureHuntBookIII)));
 	}
 
-	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 120;
-		this.maxProficiency = 240;
-	}
 
 	@Override
 	protected void initTexture() {

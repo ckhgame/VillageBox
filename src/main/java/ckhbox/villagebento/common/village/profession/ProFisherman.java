@@ -22,11 +22,6 @@ public class ProFisherman extends Profession{
 				new ItemStack(Items.boat)));
 	}
 
-	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 100;
-		this.maxProficiency = 200;
-	}
 
 	@Override
 	protected void initTexture() {

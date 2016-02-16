@@ -18,12 +18,6 @@ public class ProCarpenter extends Profession{
 	}
 
 	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 120;
-		this.maxProficiency = 240;
-	}
-
-	@Override
 	protected void initTexture() {
 		this.createTextures("carpenter");
 	}

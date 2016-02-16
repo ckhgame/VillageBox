@@ -46,7 +46,7 @@ villagebento:villager.attribute.proficiency.desc=Max proficiency to upgrade##to 
 
 # Gui
 
-villagebento:gui.villagermain.menu.viewstatus=> View Status
+villagebento:gui.villagermain.menu.upgrade=> Upgrade
 villagebento:gui.villagermain.menu.trade=> Trade
 villagebento:gui.villagermain.menu.follow.start=> Follow me
 villagebento:gui.villagermain.menu.follow.stop=> Stop following me
@@ -54,12 +54,6 @@ villagebento:gui.villagermain.menu.home.movein=> Set home here
 villagebento:gui.villagermain.menu.home.moveout=> Move out from home
 villagebento:gui.villagermain.button.lock.title=Locked
 villagebento:gui.villagermain.button.lock.desc=Set home for the villager to unlock
-
-villagebento:gui.villagerstatus.buttongift.title=Gift
-villagebento:gui.villagerstatus.buttongift.desc=Send a gift to this villager
-villagebento:gui.villagerstatus.buttonupgrade.title=Upgrade
-villagebento:gui.villagerstatus.buttonupgrade.desc=Upgrade this villager
-villagebento:gui.villagerstatus.buttonupgrade.desc.disable=No more upgrades
 
 villagebento:gui.villagerupgrade.buttonupgrade.title=Upgrade
 villagebento:gui.villagerupgrade.buttonupgrade.desc=Upgrade to the advanced profession
@@ -89,9 +83,9 @@ villagebento:message.player.treasurelvlupgrade.failed=You can't learn anything m
 item.villagebento:treasurebook1.name=Treasure Hunt Book I
 item.villagebento:treasurebook2.name=Treasure Hunt Book II
 item.villagebento:treasurebook3.name=Treasure Hunt Book III
-item.villagebento:blueGem.name=Blue Gem
-item.villagebento:violetGem.name=Violet Gem
-item.villagebento:orangeGem.name=Orange Gem
+item.villagebento:bronzeCoin.name=Bronze Coin
+item.villagebento:silverCoin.name=Silver Coin
+item.villagebento:goldCoin.name=Gold Coin
 item.villagebento:mail.name=Mail
 item.villagebento:flameStaff.name=Flame Staff
 item.villagebento:processedWoodPlank.name=Processed Wood Plank
@@ -100,7 +94,7 @@ item.villagebento:reinforcedIronIngot.name=Reinforced Iron Ingot
 # Blocks
 tile.villagebento:mailbox.name=Mail Box
 
-#Book
+# Book
 villagebento:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
 
 # Mail

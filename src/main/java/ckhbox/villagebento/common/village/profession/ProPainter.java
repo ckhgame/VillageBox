@@ -16,11 +16,6 @@ public class ProPainter extends Profession{
 				new ItemStack(Items.painting)));
 	}
 
-	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 100;
-		this.maxProficiency = 200;
-	}
 
 	@Override
 	protected void initTexture() {

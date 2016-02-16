@@ -12,8 +12,6 @@ import ckhbox.villagebento.common.util.math.IntVec3;
 import ckhbox.villagebento.common.util.math.Rand;
 import ckhbox.villagebento.common.util.tool.HouseDetector;
 import ckhbox.villagebento.common.util.tool.NameGenerator;
-import ckhbox.villagebento.common.village.attribute.AttributeList;
-import ckhbox.villagebento.common.village.attribute.VillagerAttribute;
 import ckhbox.villagebento.common.village.home.DataHomeList;
 import ckhbox.villagebento.common.village.profession.Profession;
 import ckhbox.villagebento.common.village.trading.ITrading;
@@ -32,7 +30,6 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
@@ -42,7 +39,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class EntityVillager extends EntityCreature implements ITrading{
 
 	private Profession profession;
-	private AttributeList attributeList;
 	//the player this villager is currently interacting with
 	private EntityPlayer interacting;
 	private EntityPlayer following;
@@ -64,19 +60,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		super(worldIn);		
 		
 		this.setSize(0.6F, 1.8F);
-		
-		this.attributeList = new AttributeList();
-		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.energy"),0,this,17,0));
-		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.happiness"),1,this,18,1));
-		this.attributeList.add(new VillagerAttribute(PathHelper.full("villager.attribute.proficiency"),2,this,19,2));
-		
-		//set max happiness to 100 
-		this.attributeList.get(1).setMaxValue(100);
-		
-		//set attribute growing
-		this.attributeList.get(0).setValueGrowing(10);
-		this.attributeList.get(1).setValueGrowing(3);
-		this.attributeList.get(2).setValueGrowing(1);
 		
 		if(!this.worldObj.isRemote){
 			this.setProfession(Rand.get().nextInt(3));
@@ -132,12 +115,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		super.entityInit();
 		//profession id
 		this.getDataWatcher().addObject(16, 0);
-		//attributes
-		this.getDataWatcher().addObject(17, 0);
-		this.getDataWatcher().addObject(18, 0);
-		this.getDataWatcher().addObject(19, 0);
 		//data flags(interacting.following,etc.)
-		this.getDataWatcher().addObject(20, 0);
+		this.getDataWatcher().addObject(17, 0);
 	}
 
 	@Override
@@ -163,8 +142,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	@Override
 	public void onTrade() {
-		VillagerAttribute proficiency = ((VillagerAttribute)this.attributeList.get(2));
-		proficiency.setValue(proficiency.getValue() + Rand.get().nextInt(10) + 10);
 	}
 	
 	public Vec3 getWanderCenter(){
@@ -180,16 +157,16 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	 * POS: 0=Interacting, 1=Following, 2=Has Home
 	 */
 	protected void setDataFlag(int pos, boolean flag){
-		int data = this.getDataWatcher().getWatchableObjectInt(20);
+		int data = this.getDataWatcher().getWatchableObjectInt(17);
 		data = BitHelper.writeBit(data, pos, flag);
-		this.getDataWatcher().updateObject(20, data);
+		this.getDataWatcher().updateObject(17, data);
 	}
 	
 	/**
 	 * POS: 0=Interacting, 1=Following, 2=Has Home, 3 gender
 	 */
 	protected boolean getDataFlag(int pos){
-		int data = this.getDataWatcher().getWatchableObjectInt(20);
+		int data = this.getDataWatcher().getWatchableObjectInt(17);
 		return BitHelper.readBit(data, pos);
 	}
 	
@@ -303,21 +280,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.refreshProfession();
 	}
 	
-	public AttributeList getAttributes(){
-		return this.attributeList;
-	}
-	
 	public String getName(){
 		return this.getCustomNameTag();
-	}
-	
-	public boolean isProficiencyFull(){
-		VillagerAttribute attribute = (VillagerAttribute)this.attributeList.get(2);
-		return (attribute.getValue() >= attribute.getMaxValue());
-	}
-	
-	public void clearProficiency(){
-		this.attributeList.get(2).setValue(0);
 	}
 
 	@Override
@@ -327,15 +291,11 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
 			this.setProfession(this.getDataWatcher().getWatchableObjectInt(16));
 		}
-		//update attributes
-		this.attributeList.update();
 	}
 
 	public void refreshProfession(){
 		int proid = this.getDataWatcher().getWatchableObjectInt(16);
 		this.profession = Profession.registry.get(proid);
-		this.attributeList.get(0).setMaxValue(this.profession.getMaxEnegy());
-		this.attributeList.get(2).setMaxValue(this.profession.getMaxProficiency());
 	}
 	
 	@Override
@@ -358,9 +318,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	public void writeEntityToNBT(NBTTagCompound tagCompound) {
 		super.writeEntityToNBT(tagCompound);
 		tagCompound.setInteger("proid", this.getDataWatcher().getWatchableObjectInt(16));
-		tagCompound.setInteger("attr_eng", (Integer)this.attributeList.get(0).getValue());
-		tagCompound.setInteger("attr_hap", (Integer)this.attributeList.get(1).getValue());
-		tagCompound.setInteger("attr_pro", (Integer)this.attributeList.get(2).getValue());
 		tagCompound.setBoolean("gender", this.isMale());
 		//home
 		if(this.home != null){
@@ -380,9 +337,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		super.readEntityFromNBT(tagCompund);
 		int proid = tagCompund.getInteger("proid");
 		this.setProfession(proid);
-		this.attributeList.get(0).setValue(tagCompund.getInteger("attr_eng"));
-		this.attributeList.get(1).setValue(tagCompund.getInteger("attr_hap"));
-		this.attributeList.get(2).setValue(tagCompund.getInteger("attr_pro"));
 		this.setGender(tagCompund.getBoolean("gender"));
 		//home
 		int[] arr = tagCompund.getIntArray("homebd");

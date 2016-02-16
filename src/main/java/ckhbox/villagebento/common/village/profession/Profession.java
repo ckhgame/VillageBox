@@ -23,9 +23,6 @@ public abstract class Profession implements IRegistrable{
 	//what items are needed to upgrade to this profession(usually only gems, maximum: 3 stacks)
 	protected ItemStack[] upgradeToCurentNeeds;
 	
-	protected int maxEnegy;
-	protected int maxProficiency;
-	
 	@Override
 	public int getRegID() {
 		return regID;
@@ -38,7 +35,6 @@ public abstract class Profession implements IRegistrable{
 	
 	public Profession(){
 		this.initTradingRecipeList();
-		this.initAttributes();
 		this.initTexture();
 		this.initUpgradeOptions();
 	}
@@ -57,14 +53,6 @@ public abstract class Profession implements IRegistrable{
 	
 	public ItemStack[] getUpgradeToCurentNeeds(){
 		return this.upgradeToCurentNeeds;
-	}
-	
-	public int getMaxEnegy(){
-		return this.maxEnegy;
-	}
-	
-	public int getMaxProficiency(){
-		return this.maxProficiency;
 	}
 	
 	public ResourceLocation getTexture(boolean male){
@@ -90,7 +78,6 @@ public abstract class Profession implements IRegistrable{
 	
 	//abstract functions
 	protected abstract void initTradingRecipeList();
-	protected abstract void initAttributes();
 	protected abstract void initTexture();
 	protected abstract void initUpgradeOptions();
 	protected abstract String getUnlocalized();

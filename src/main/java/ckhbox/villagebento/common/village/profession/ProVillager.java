@@ -7,12 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public abstract class ProVillager extends Profession{
-	
-	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 45;
-		this.maxProficiency = 30;
-	}
+
 
 	@Override
 	protected String getUnlocalized() {

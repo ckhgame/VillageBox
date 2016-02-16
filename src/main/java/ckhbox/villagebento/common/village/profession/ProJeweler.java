@@ -21,13 +21,6 @@ public class ProJeweler extends Profession{
 				new ItemStack[]{new ItemStack(Items.bone,6),new ItemStack(Blocks.torch,20)},
 				new ItemStack(Items.boat)));
 	}
-
-	@Override
-	protected void initAttributes() {
-		this.maxEnegy = 100;
-		this.maxProficiency = 200;
-	}
-
 	@Override
 	protected void initTexture() {
 		this.createTextures("jeweler");
