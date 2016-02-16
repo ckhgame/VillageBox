@@ -114,15 +114,20 @@ public class GuiVillagerMain extends GuiContainer{
         this.fontRendererObj.drawSplitString(text,x + offsetX, y + villagerTextOffsetY, this.xSize - offsetX * 2, 16777120);
         
         if(!this.buttonTrade.enabled){
-        	this.drawButtonHoverText(this.buttonTrade, mouseX, mouseY, 
-        			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.title")), 
-        			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
+    		this.drawButtonHoverText(this.buttonTrade, mouseX, mouseY, 
+    			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.title")), 
+    			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
         }
         
         if(!this.buttonUpgrade.enabled){
-        	this.drawButtonHoverText(this.buttonUpgrade, mouseX, mouseY, 
+        	if(!this.villager.hasHome())
+        		this.drawButtonHoverText(this.buttonUpgrade, mouseX, mouseY, 
         			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.title")), 
         			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
+        	else
+        		this.drawButtonHoverText(this.buttonUpgrade, mouseX, mouseY, 
+            			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.maxupgrade.title")), 
+            			StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.maxupgrade.desc")));
         }
 
 	}

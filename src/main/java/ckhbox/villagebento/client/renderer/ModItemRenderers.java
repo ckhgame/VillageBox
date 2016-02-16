@@ -28,11 +28,22 @@ public class ModItemRenderers {
 		registerModel(ModItems.flameStaff, 0, "flame_staff");
 		registerModel(ModItems.processedWoodPlank, 0, "processed_wood_plank");
 		registerModel(ModItems.reinforcedIronIngot, 0, "reinforced_iron_ingot");
+		
 		registerModel(ModItems.cabbage, 0, "cabbage");
 		registerModel(ModItems.riceplant, 0, "riceplant");
 		registerModel(ModItems.chili, 0, "chili");
 		registerModel(ModItems.corn, 0, "corn");
 		registerModel(ModItems.soybean, 0, "soybean");
+		
+		registerModel(ModItems.cheese, 0, "cheese");
+		registerModel(ModItems.mayonnaise, 0, "mayonnaise");
+		registerModel(ModItems.ballOfWool, 0, "ball_of_wool");
+		
+		registerModel(ModItems.rice, 0, "rice");
+		registerModel(ModItems.riceFlour, 0, "rice_flour");
+		registerModel(ModItems.cookingOil, 0, "cooking_oil");
+		registerModel(ModItems.soySauce, 0, "soy_sauce");
+		
 		registerModel(ModItems.banana, 0, "banana");
 		registerModel(ModItems.orange, 0, "orange");
 		registerModel(ModItems.melon, 0, "melon");

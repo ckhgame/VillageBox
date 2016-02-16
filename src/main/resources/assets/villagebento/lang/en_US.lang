@@ -31,8 +31,8 @@ villagebento:profession.rancher.name=Rancher
 villagebento:profession.rancher.desc=Taking care of animals
 villagebento:profession.orchardist.name=Orchardist
 villagebento:profession.orchardist.desc=Producing fruits
-villagebento:profession.cook.name=Cook
-villagebento:profession.cook.desc=Cooking food
+villagebento:profession.cookassistant.name=Cook Assistant
+villagebento:profession.cookassistant.desc=Processing food materials
 villagebento:profession.fisherman.name=Fisherman
 villagebento:profession.fisherman.desc=Fishing near water
 
@@ -54,6 +54,8 @@ villagebento:gui.villagermain.menu.home.movein=> Set home here
 villagebento:gui.villagermain.menu.home.moveout=> Move out from home
 villagebento:gui.villagermain.button.lock.title=Locked
 villagebento:gui.villagermain.button.lock.desc=Set home for the villager to unlock
+villagebento:gui.villagermain.button.maxupgrade.title=Maximal upgrades
+villagebento:gui.villagermain.button.maxupgrade.desc=No advanced upgrade
 
 villagebento:gui.villagerupgrade.buttonupgrade.title=Upgrade
 villagebento:gui.villagerupgrade.buttonupgrade.desc=Upgrade to the advanced profession
@@ -102,6 +104,9 @@ item.villagebento:pineapple.name=Pineapple
 item.villagebento:strawberry.name=Strawberry
 item.villagebento:melon.name=Melon
 item.villagebento:banana.name=Banana
+item.villagebento:cheese.name=Cheese
+item.villagebento:mayonnaise.name=Mayonnaise
+item.villagebento:ballOfWool.name=Ball Of Wool
 
 
 # Blocks
