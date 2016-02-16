@@ -14,6 +14,7 @@ import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.util.helper.PathHelper;
+import ckhbox.villagebento.common.village.profession.Profession;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -66,7 +67,7 @@ public class GuiVillagerMain extends GuiContainer{
         this.buttonList.add(buttonUpgrade = new GuiTextButton(this.mc, 1, x + offsetX, y + playerChatOptionsOffsetY + 1 * playerChatOptionHeight, strUpgrade));
         this.buttonList.add(buttonFollow = new GuiTextButton(this.mc, 2, x + offsetX, y + playerChatOptionsOffsetY + 2 * playerChatOptionHeight, ""));
         this.buttonList.add(buttonHome = new GuiTextButton(this.mc, 3, x + offsetX, y + playerChatOptionsOffsetY + 3 * playerChatOptionHeight, ""));
-        
+
         this.refreshButtons(); 		
     }
     
@@ -82,7 +83,8 @@ public class GuiVillagerMain extends GuiContainer{
     	f = this.villager.hasHome()?"moveout":"movein";
     	buttonHome.setText(StatCollector.translateToLocal(PathHelper.full("gui.villagermain.menu.home." + f)));
     	
-    	buttonUpgrade.enabled = this.villager.hasHome();
+    	Profession[] upgradeOptions = this.villager.getProfession().getUpgradeToNextOptions();
+    	buttonUpgrade.enabled = this.villager.hasHome() && (upgradeOptions != null && upgradeOptions.length > 0);
     	buttonTrade.enabled = this.villager.hasHome();
     }
     

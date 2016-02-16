@@ -7,7 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProChef extends Profession{
+public class ProCook extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
@@ -25,12 +25,12 @@ public class ProChef extends Profession{
 
 	@Override
 	protected void initTexture() {
-		this.createTextures("chef");
+		this.createTextures("cook");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.chef");
+		return PathHelper.full("profession.cook");
 	}
 	
 	@Override

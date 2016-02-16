@@ -1,5 +1,6 @@
 package ckhbox.villagebento.common.village.profession;
 
+import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
@@ -12,14 +13,26 @@ public class ProOrchardist extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.wheat_seeds,10),new ItemStack(Items.apple,5)},
-				new ItemStack(Items.bread)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.lemon)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.iron_axe,1),new ItemStack(Items.beef,3)},
-				new ItemStack(Items.bed)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.orange)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.bone,6),new ItemStack(Blocks.torch,20)},
-				new ItemStack(Items.boat)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.banana)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.strawberry)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.melon)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.grape)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.pineapple)));
 	}
 
 
@@ -36,8 +49,8 @@ public class ProOrchardist extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,10),
-				new ItemStack(Items.iron_ingot,8)
+				new ItemStack(ModItems.silverCoin,1),
+				new ItemStack(Items.golden_shovel,1)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{

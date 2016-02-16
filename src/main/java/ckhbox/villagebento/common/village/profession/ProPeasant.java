@@ -50,7 +50,7 @@ public class ProPeasant extends Profession{
 				ProRancher.class,
 				ProFisherman.class,
 				ProFarmer.class,
-				ProChef.class
+				ProCook.class
 				};
 	}
 

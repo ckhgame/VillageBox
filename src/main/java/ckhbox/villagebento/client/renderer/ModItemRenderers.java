@@ -33,6 +33,13 @@ public class ModItemRenderers {
 		registerModel(ModItems.chili, 0, "chili");
 		registerModel(ModItems.corn, 0, "corn");
 		registerModel(ModItems.soybean, 0, "soybean");
+		registerModel(ModItems.banana, 0, "banana");
+		registerModel(ModItems.orange, 0, "orange");
+		registerModel(ModItems.melon, 0, "melon");
+		registerModel(ModItems.lemon, 0, "lemon");
+		registerModel(ModItems.strawberry, 0, "strawberry");
+		registerModel(ModItems.pineapple, 0, "pineapple");
+		registerModel(ModItems.grape, 0, "grape");
 	}
 
 	private static void registerModel(Item item, int meta, String resource){

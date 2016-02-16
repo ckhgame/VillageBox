@@ -9,6 +9,7 @@ import ckhbox.villagebento.common.item.weapon.ItemFlameStaff;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -30,6 +31,15 @@ public class ModItems {
 	public static Item corn;
 	public static Item soybean;
 	public static Item riceplant;
+	
+	//fruits
+	public static Item grape;
+	public static Item lemon;
+	public static Item orange;
+	public static Item pineapple;
+	public static Item strawberry;
+	public static Item melon;
+	public static Item banana;
 	
 	public static void init(){
 		//books
@@ -58,6 +68,15 @@ public class ModItems {
 		GameRegistry.registerItem(corn=(new Item()).setUnlocalizedName(PathHelper.full("corn")).setCreativeTab(CreativeTabs.tabMaterials),"corn");
 		GameRegistry.registerItem(soybean=(new Item()).setUnlocalizedName(PathHelper.full("soybean")).setCreativeTab(CreativeTabs.tabMaterials),"soybean");
 		GameRegistry.registerItem(riceplant=(new Item()).setUnlocalizedName(PathHelper.full("riceplant")).setCreativeTab(CreativeTabs.tabMaterials),"riceplant");
+		
+		//fruits
+		GameRegistry.registerItem(grape=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("grape")),"grape");
+		GameRegistry.registerItem(lemon=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("lemon")),"lemon");
+		GameRegistry.registerItem(orange=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("orange")),"orange");		
+		GameRegistry.registerItem(pineapple=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("pineapple")),"pineapple");
+		GameRegistry.registerItem(strawberry=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("strawberry")),"strawberry");
+		GameRegistry.registerItem(melon=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("melon")),"melon");
+		GameRegistry.registerItem(banana=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("banana")),"banana");
 	}
 	
 	

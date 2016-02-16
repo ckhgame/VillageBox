@@ -31,8 +31,8 @@ villagebento:profession.rancher.name=Rancher
 villagebento:profession.rancher.desc=Taking care of animals
 villagebento:profession.orchardist.name=Orchardist
 villagebento:profession.orchardist.desc=Producing fruits
-villagebento:profession.chef.name=Chef
-villagebento:profession.chef.desc=Cooking food
+villagebento:profession.cook.name=Cook
+villagebento:profession.cook.desc=Cooking food
 villagebento:profession.fisherman.name=Fisherman
 villagebento:profession.fisherman.desc=Fishing near water
 
@@ -95,6 +95,14 @@ item.villagebento:corn.name=Corn
 item.villagebento:chili.name=Chili Pepper
 item.villagebento:riceplant.name=Rice Plant
 item.villagebento:soybean.name=Soybean
+item.villagebento:grape.name=Grape
+item.villagebento:lemon.name=Lemon
+item.villagebento:orange.name=Orange
+item.villagebento:pineapple.name=Pineapple
+item.villagebento:strawberry.name=Strawberry
+item.villagebento:melon.name=Melon
+item.villagebento:banana.name=Banana
+
 
 # Blocks
 tile.villagebento:mailbox.name=Mail Box
