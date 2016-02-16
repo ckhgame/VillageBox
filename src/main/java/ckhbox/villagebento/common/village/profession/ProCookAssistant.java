@@ -24,6 +24,12 @@ public class ProCookAssistant extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10),new ItemStack(ModItems.soybean,3)},
 				new ItemStack(ModItems.soySauce)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5),new ItemStack(Items.egg,1)},
+				new ItemStack(ModItems.boiledEgg)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10),new ItemStack(ModItems.soybean,3)},
+				new ItemStack(ModItems.tofu)));
 	}
 
 

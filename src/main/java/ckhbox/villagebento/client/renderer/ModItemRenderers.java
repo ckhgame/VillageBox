@@ -41,8 +41,11 @@ public class ModItemRenderers {
 		
 		registerModel(ModItems.rice, 0, "rice");
 		registerModel(ModItems.riceFlour, 0, "rice_flour");
+		registerModel(ModItems.wheatFlour, 0, "wheat_flour");
 		registerModel(ModItems.cookingOil, 0, "cooking_oil");
 		registerModel(ModItems.soySauce, 0, "soy_sauce");
+		registerModel(ModItems.tofu, 0, "tofu");
+		registerModel(ModItems.boiledEgg, 0, "boiled_egg");
 		
 		registerModel(ModItems.grapeWine, 0, "grape_wine");
 		registerModel(ModItems.cookingWine, 0, "cooking_wine");
@@ -63,6 +66,30 @@ public class ModItemRenderers {
 		registerModel(ModItems.seaweed, 0, "seaweed");
 		registerModel(ModItems.crab, 0, "crab");
 		registerModel(ModItems.shrimp, 0, "shrimp");
+		
+		registerModel(ModItems.porkRamen, 0, "pork_ramen");
+		registerModel(ModItems.beefNoodleSoup, 0, "beef_noodle_soup");
+		registerModel(ModItems.noodleSoup, 0, "noodle_soup");
+		registerModel(ModItems.carrotCake, 0, "carrot_cake");
+		registerModel(ModItems.hambuger, 0, "hambuger");
+		registerModel(ModItems.congee, 0, "congee");
+		registerModel(ModItems.boiledFish, 0, "boiled_fish");
+		registerModel(ModItems.appleCandy, 0, "apple_candy");
+		registerModel(ModItems.creamyCorn, 0, "creamy_corn");
+		registerModel(ModItems.chocolateBanana, 0, "chocolate_banana");
+		registerModel(ModItems.fries, 0, "fries");
+		registerModel(ModItems.mapoTofu, 0, "mapo_tofu");
+		registerModel(ModItems.cannedOranges, 0, "canned_oranges");
+		registerModel(ModItems.strawberryIcecream, 0, "strawberry_icecream");
+		registerModel(ModItems.honeyTea, 0, "honey_tea");
+		registerModel(ModItems.pineappleCanday, 0, "pineapple_canday");
+		registerModel(ModItems.cornChips, 0, "corn_chips");
+		registerModel(ModItems.melonIcecream, 0, "melon_icecream");
+		registerModel(ModItems.melonIcebar, 0, "melon_icebar");
+		registerModel(ModItems.roastedLamb, 0, "roasted_lamb");
+		registerModel(ModItems.nigiri, 0, "nigiri");
+		registerModel(ModItems.udon, 0, "udon");
+
 	}
 
 	private static void registerModel(Item item, int meta, String resource){

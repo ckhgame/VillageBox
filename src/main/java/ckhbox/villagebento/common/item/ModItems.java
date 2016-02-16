@@ -39,8 +39,11 @@ public class ModItems {
 	
 	public static Item rice;
 	public static Item riceFlour;
+	public static Item wheatFlour;
 	public static Item soySauce;
 	public static Item cookingOil;
+	public static Item boiledEgg;
+	public static Item tofu;
 	
 	public static Item shrimp;
 	public static Item crab;
@@ -63,6 +66,30 @@ public class ModItems {
 	public static Item whisky;
 	public static Item vodka;
 	
+	//food
+	public static Item porkRamen;
+	public static Item beefNoodleSoup;
+	public static Item noodleSoup;
+	public static Item carrotCake;
+	public static Item hambuger;
+	public static Item congee;
+	public static Item boiledFish;
+	public static Item appleCandy;
+	public static Item creamyCorn;
+	public static Item chocolateBanana;
+	public static Item fries;
+	public static Item mapoTofu;
+	public static Item cannedOranges;
+	public static Item strawberryIcecream;
+	public static Item honeyTea;
+	public static Item pineappleCanday;
+	public static Item cornChips;
+	public static Item melonIcecream;
+	public static Item melonIcebar;
+	public static Item roastedLamb;
+	public static Item nigiri;
+	public static Item udon;
+
 	public static void init(){
 		//books
 		GameRegistry.registerItem(treasureHuntBookI=new ItemTreasureBook(1),"treasure_hunt_book_0");
@@ -97,6 +124,7 @@ public class ModItems {
 		
 		GameRegistry.registerItem(rice=(new Item()).setUnlocalizedName(PathHelper.full("rice")).setCreativeTab(CreativeTabs.tabMaterials),"rice");
 		GameRegistry.registerItem(riceFlour=(new Item()).setUnlocalizedName(PathHelper.full("riceFlour")).setCreativeTab(CreativeTabs.tabMaterials),"rice_flour");
+		GameRegistry.registerItem(wheatFlour=(new Item()).setUnlocalizedName(PathHelper.full("wheatFlour")).setCreativeTab(CreativeTabs.tabMaterials),"wheat_flour");
 		GameRegistry.registerItem(soySauce=(new Item()).setUnlocalizedName(PathHelper.full("soySauce")).setCreativeTab(CreativeTabs.tabMaterials),"soy_sauce");
 		GameRegistry.registerItem(cookingOil=(new Item()).setUnlocalizedName(PathHelper.full("cookingOil")).setCreativeTab(CreativeTabs.tabMaterials),"cooking_oil");
 		
@@ -111,7 +139,7 @@ public class ModItems {
 		GameRegistry.registerItem(whisky=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("whisky")),"whisky");
 		GameRegistry.registerItem(vodka=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("vodka")),"vodka");
 		
-		//fruits
+		//food
 		GameRegistry.registerItem(grape=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("grape")),"grape");
 		GameRegistry.registerItem(lemon=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("lemon")),"lemon");
 		GameRegistry.registerItem(orange=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("orange")),"orange");		
@@ -120,8 +148,34 @@ public class ModItems {
 		GameRegistry.registerItem(melon=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("melon")),"melon");
 		GameRegistry.registerItem(banana=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("banana")),"banana");
 		
+		GameRegistry.registerItem(tofu=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("tofu")),"tofu");
+		GameRegistry.registerItem(boiledEgg=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("boiledEgg")),"boiled_egg");
+		
 		GameRegistry.registerItem(shrimp=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("shrimp")),"shrimp");
 		GameRegistry.registerItem(crab=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("crab")),"crab");
+		
+		GameRegistry.registerItem(porkRamen=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("porkRamen")),"pork_ramen");
+		GameRegistry.registerItem(beefNoodleSoup=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("beefNoodleSoup")),"beef_noodle_soup");
+		GameRegistry.registerItem(noodleSoup=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("noodleSoup")),"noodle_soup");
+		GameRegistry.registerItem(carrotCake=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("carrotCake")),"carrot_cake");
+		GameRegistry.registerItem(hambuger=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("hambuger")),"hambuger");
+		GameRegistry.registerItem(congee=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("congee")),"congee");
+		GameRegistry.registerItem(boiledFish=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("boiledFish")),"boiled_fish");
+		GameRegistry.registerItem(appleCandy=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("appleCandy")),"apple_candy");
+		GameRegistry.registerItem(creamyCorn=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("creamyCorn")),"creamy_corn");
+		GameRegistry.registerItem(chocolateBanana=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("chocolateBanana")),"chocolate_banana");
+		GameRegistry.registerItem(fries=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("fries")),"fries");
+		GameRegistry.registerItem(mapoTofu=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("mapoTofu")),"mapo_tofu");
+		GameRegistry.registerItem(cannedOranges=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("cannedOranges")),"canned_oranges");
+		GameRegistry.registerItem(strawberryIcecream=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("strawberryIcecream")),"strawberry_icecream");
+		GameRegistry.registerItem(honeyTea=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("honeyTea")),"honey_tea");
+		GameRegistry.registerItem(pineappleCanday=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("pineappleCanday")),"pineapple_canday");
+		GameRegistry.registerItem(cornChips=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("cornChips")),"corn_chips");
+		GameRegistry.registerItem(melonIcecream=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("melonIcecream")),"melon_icecream");
+		GameRegistry.registerItem(melonIcebar=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("melonIcebar")),"melon_icebar");
+		GameRegistry.registerItem(roastedLamb=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("roastedLamb")),"roasted_lamb");
+		GameRegistry.registerItem(nigiri=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("nigiri")),"nigiri");
+		GameRegistry.registerItem(udon=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("udon")),"udon");
 	}
 	
 	

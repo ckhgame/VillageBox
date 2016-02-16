@@ -121,6 +121,36 @@ item.villagebento:cocktail.name=Cocktail
 item.villagebento:beer.name=Beer
 item.villagebento:whisky.name=Whisky
 item.villagebento:vodka.name=Vodka
+item.villagebento:porkRamen.name=Pork Ramen
+item.villagebento:beefNoodleSoup.name=Beef Noodle Soup
+item.villagebento:noodleSoup.name=Noodle Soup
+item.villagebento:carrotCake.name=Carrot Cake
+item.villagebento:hambuger.name=Hambuger
+item.villagebento:congee.name=Congee
+item.villagebento:boiledFish.name=Boiled Fish
+item.villagebento:appleCandy.name=Apple Candy
+item.villagebento:creamyCorn.name=Creamy Corn
+item.villagebento:chocolateBanana.name=Chocolate Banana
+item.villagebento:fries.name=Fries
+item.villagebento:mapoTofu.name=Mapo Tofu
+item.villagebento:cannedOranges.name=Canned Oranges
+item.villagebento:strawberryIcecream.name=Strawberry Icecream
+item.villagebento:honeyTea.name=Honey Tea
+item.villagebento:pineappleCanday.name=Pineapple Canday
+item.villagebento:cornChips.name=Corn Chips
+item.villagebento:melonIcecream.name=Melon Icecream
+item.villagebento:melonIcebar.name=Melon Icebar
+item.villagebento:roastedLamb.name=Roasted Lamb
+item.villagebento:nigiri.name=Nigiri
+item.villagebento:udon.name=Udon
+item.villagebento:tofu.name=Tofu
+item.villagebento:boiledEgg.name=Boiled Egg
+item.villagebento:seaweed.name=Seaweed
+item.villagebento:crab.name=Crab
+item.villagebento:shrimp.name=Shrimp
+item.villagebento:wheatFlour.name=Wheat Flour
+item.villagebento:salt.name=Slat
+
 
 
 # Blocks
