@@ -1,6 +1,6 @@
 package ckhbox.villagebento.common.block.mailbox;
 
-import ckhbox.villagebento.common.item.mail.ItemMail;
+import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.util.tool.MailGenerator;

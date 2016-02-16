@@ -5,8 +5,8 @@ language.code=en_US
 # Professions
 villagebento:profession.villager.name=Villager
 villagebento:profession.villager.desc=A common villager
-villagebento:profession.farmer.name=Farmer
-villagebento:profession.farmer.desc=Having basic farming skills
+villagebento:profession.peasant.name=Peasant
+villagebento:profession.peasant.desc=Having basic farming skills
 villagebento:profession.miner.name=Miner
 villagebento:profession.miner.desc=Mining basic ores 
 villagebento:profession.woodcutter.name=Wood Cutter
@@ -35,6 +35,10 @@ villagebento:profession.cookassistant.name=Cook Assistant
 villagebento:profession.cookassistant.desc=Processing food materials
 villagebento:profession.fisherman.name=Fisherman
 villagebento:profession.fisherman.desc=Fishing near water
+villagebento:profession.farmer.name=Farmer
+villagebento:profession.farmer.desc=Having good farming skills
+villagebento:profession.vintner.name=Vintner
+villagebento:profession.vintner.desc=Making and selling wine
 
 # Villager Attributes
 villagebento:villager.attribute.energy=Energy
@@ -107,6 +111,16 @@ item.villagebento:banana.name=Banana
 item.villagebento:cheese.name=Cheese
 item.villagebento:mayonnaise.name=Mayonnaise
 item.villagebento:ballOfWool.name=Ball Of Wool
+item.villagebento:cookingOil.name=Cooking Oil
+item.villagebento:soySauce.name=Soy Sauce
+item.villagebento:rice.name=Rice
+item.villagebento:riceFlour.name=Rice Flour
+item.villagebento:grapeWine.name=Grape Wine
+item.villagebento:cookingWine.name=Cooking Wine
+item.villagebento:cocktail.name=Cocktail
+item.villagebento:beer.name=Beer
+item.villagebento:whisky.name=Whisky
+item.villagebento:vodka.name=Vodka
 
 
 # Blocks

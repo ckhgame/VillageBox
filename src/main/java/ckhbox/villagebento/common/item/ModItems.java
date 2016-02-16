@@ -1,8 +1,9 @@
 package ckhbox.villagebento.common.item;
 
 import ckhbox.villagebento.common.item.book.ItemTreasureBook;
-import ckhbox.villagebento.common.item.coin.ItemCoin;
-import ckhbox.villagebento.common.item.mail.ItemMail;
+import ckhbox.villagebento.common.item.common.ItemCoin;
+import ckhbox.villagebento.common.item.common.ItemDrink;
+import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.item.material.ItemProcessedWoodPlank;
 import ckhbox.villagebento.common.item.material.ItemReinforcedIronIngot;
 import ckhbox.villagebento.common.item.weapon.ItemFlameStaff;
@@ -50,6 +51,13 @@ public class ModItems {
 	public static Item melon;
 	public static Item banana;
 	
+	public static Item grapeWine;
+	public static Item cookingWine;
+	public static Item cocktail;
+	public static Item beer;
+	public static Item whisky;
+	public static Item vodka;
+	
 	public static void init(){
 		//books
 		GameRegistry.registerItem(treasureHuntBookI=new ItemTreasureBook(1),"treasure_hunt_book_0");
@@ -86,6 +94,14 @@ public class ModItems {
 		GameRegistry.registerItem(riceFlour=(new Item()).setUnlocalizedName(PathHelper.full("riceFlour")).setCreativeTab(CreativeTabs.tabMaterials),"rice_flour");
 		GameRegistry.registerItem(soySauce=(new Item()).setUnlocalizedName(PathHelper.full("soySauce")).setCreativeTab(CreativeTabs.tabMaterials),"soy_sauce");
 		GameRegistry.registerItem(cookingOil=(new Item()).setUnlocalizedName(PathHelper.full("cookingOil")).setCreativeTab(CreativeTabs.tabMaterials),"cooking_oil");
+		
+		//wines
+		GameRegistry.registerItem(grapeWine=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("grapeWine")),"grape_wine");
+		GameRegistry.registerItem(cookingWine=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("cookingWine")),"cooking_wine");
+		GameRegistry.registerItem(cocktail=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("cocktail")),"cocktail");		
+		GameRegistry.registerItem(beer=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("beer")),"beer");
+		GameRegistry.registerItem(whisky=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("whisky")),"whisky");
+		GameRegistry.registerItem(vodka=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("vodka")),"vodka");
 		
 		//fruits
 		GameRegistry.registerItem(grape=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("grape")),"grape");

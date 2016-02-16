@@ -1,4 +1,4 @@
-package ckhbox.villagebento.common.item.mail;
+package ckhbox.villagebento.common.item.common;
 
 import java.util.List;
 

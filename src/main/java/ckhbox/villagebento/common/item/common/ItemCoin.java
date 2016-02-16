@@ -1,4 +1,4 @@
-package ckhbox.villagebento.common.item.coin;
+package ckhbox.villagebento.common.item.common;
 
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;

@@ -2,7 +2,7 @@ package ckhbox.villagebento.common.network.message.villager;
 
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.item.ModItems;
-import ckhbox.villagebento.common.item.mail.ItemMail;
+import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.util.math.Rand;

@@ -44,6 +44,13 @@ public class ModItemRenderers {
 		registerModel(ModItems.cookingOil, 0, "cooking_oil");
 		registerModel(ModItems.soySauce, 0, "soy_sauce");
 		
+		registerModel(ModItems.grapeWine, 0, "grape_wine");
+		registerModel(ModItems.cookingWine, 0, "cooking_wine");
+		registerModel(ModItems.cocktail, 0, "cocktail");
+		registerModel(ModItems.beer, 0, "beer");
+		registerModel(ModItems.whisky, 0, "whisky");
+		registerModel(ModItems.vodka, 0, "vodka");
+		
 		registerModel(ModItems.banana, 0, "banana");
 		registerModel(ModItems.orange, 0, "orange");
 		registerModel(ModItems.melon, 0, "melon");

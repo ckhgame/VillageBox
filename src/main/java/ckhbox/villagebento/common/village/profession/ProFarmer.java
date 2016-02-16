@@ -48,7 +48,7 @@ public class ProFarmer extends Profession{
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProCarpetmaker.class
+				ProVintner.class
 				};
 	}
 	

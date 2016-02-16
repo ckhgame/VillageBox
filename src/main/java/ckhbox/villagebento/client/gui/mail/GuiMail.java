@@ -5,7 +5,7 @@ import java.io.IOException;
 import ckhbox.villagebento.client.gui.GuiTextButton;
 import ckhbox.villagebento.common.gui.common.ContainerEmpty;
 import ckhbox.villagebento.common.item.ModItems;
-import ckhbox.villagebento.common.item.mail.ItemMail;
+import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.network.ModNetwork;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetFollowing;
 import ckhbox.villagebento.common.network.message.villager.MessageSpawnNewVillagerThroughMail;
