@@ -58,6 +58,11 @@ public class ModItemRenderers {
 		registerModel(ModItems.strawberry, 0, "strawberry");
 		registerModel(ModItems.pineapple, 0, "pineapple");
 		registerModel(ModItems.grape, 0, "grape");
+		
+		registerModel(ModItems.salt, 0, "salt");
+		registerModel(ModItems.seaweed, 0, "seaweed");
+		registerModel(ModItems.crab, 0, "crab");
+		registerModel(ModItems.shrimp, 0, "shrimp");
 	}
 
 	private static void registerModel(Item item, int meta, String resource){

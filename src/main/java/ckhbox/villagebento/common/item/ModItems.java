@@ -42,6 +42,11 @@ public class ModItems {
 	public static Item soySauce;
 	public static Item cookingOil;
 	
+	public static Item shrimp;
+	public static Item crab;
+	public static Item seaweed;
+	public static Item salt;
+	
 	//fruits
 	public static Item grape;
 	public static Item lemon;
@@ -95,6 +100,9 @@ public class ModItems {
 		GameRegistry.registerItem(soySauce=(new Item()).setUnlocalizedName(PathHelper.full("soySauce")).setCreativeTab(CreativeTabs.tabMaterials),"soy_sauce");
 		GameRegistry.registerItem(cookingOil=(new Item()).setUnlocalizedName(PathHelper.full("cookingOil")).setCreativeTab(CreativeTabs.tabMaterials),"cooking_oil");
 		
+		GameRegistry.registerItem(seaweed=(new Item()).setUnlocalizedName(PathHelper.full("seaweed")).setCreativeTab(CreativeTabs.tabMaterials),"seaweed");
+		GameRegistry.registerItem(salt=(new Item()).setUnlocalizedName(PathHelper.full("salt")).setCreativeTab(CreativeTabs.tabMaterials),"salt");
+		
 		//wines
 		GameRegistry.registerItem(grapeWine=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("grapeWine")),"grape_wine");
 		GameRegistry.registerItem(cookingWine=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("cookingWine")),"cooking_wine");
@@ -111,6 +119,9 @@ public class ModItems {
 		GameRegistry.registerItem(strawberry=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("strawberry")),"strawberry");
 		GameRegistry.registerItem(melon=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("melon")),"melon");
 		GameRegistry.registerItem(banana=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("banana")),"banana");
+		
+		GameRegistry.registerItem(shrimp=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("shrimp")),"shrimp");
+		GameRegistry.registerItem(crab=(new ItemFood(4, 0.3F, false)).setUnlocalizedName(PathHelper.full("crab")),"crab");
 	}
 	
 	
