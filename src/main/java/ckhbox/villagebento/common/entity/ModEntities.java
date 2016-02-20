@@ -1,6 +1,7 @@
 package ckhbox.villagebento.common.entity;
 
 import ckhbox.villagebento.VillageBentoMod;
+import ckhbox.villagebento.common.entity.painting.EntityPainting;
 import ckhbox.villagebento.common.entity.throwable.EntityFlameBall;
 import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -15,6 +16,9 @@ public class ModEntities {
 		
 		//flameball
 		EntityRegistry.registerModEntity(EntityFlameBall.class, "flameball", id++, VillageBentoMod.instance, 64, 10, true);
+		
+		//painting
+		EntityRegistry.registerModEntity(EntityPainting.class, "painting", id++, VillageBentoMod.instance, 160, Integer.MAX_VALUE, false);
 		
 		//eggs
 		EntityRegistry.registerEgg(EntityVillager.class, 0xFFFFFFFF, 0xFFFF6666);

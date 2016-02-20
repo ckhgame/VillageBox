@@ -1,17 +1,20 @@
 package ckhbox.villagebento.common.item;
 
+import ckhbox.villagebento.common.entity.painting.EntityPainting;
 import ckhbox.villagebento.common.item.book.ItemTreasureBook;
 import ckhbox.villagebento.common.item.common.ItemCoin;
 import ckhbox.villagebento.common.item.common.ItemDrink;
 import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.item.material.ItemProcessedWoodPlank;
 import ckhbox.villagebento.common.item.material.ItemReinforcedIronIngot;
+import ckhbox.villagebento.common.item.painting.ItemPainting;
 import ckhbox.villagebento.common.item.tool.ItemWeatherStone;
 import ckhbox.villagebento.common.item.weapon.ItemFlameStaff;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemHangingEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -29,6 +32,8 @@ public class ModItems {
 	
 	public static ItemWeatherStone sunStone;
 	public static ItemWeatherStone rainStone;
+	
+	public static Item painting; 
 	
 	//materials
 	public static Item cabbage;
@@ -107,6 +112,9 @@ public class ModItems {
 		
 		//mail
 		GameRegistry.registerItem(mail=new ItemMail(),"mail");
+		
+		//painting
+		GameRegistry.registerItem(painting=new ItemPainting(),"painting");
 		
 		//weapon
 		GameRegistry.registerItem(flameStaff=new ItemFlameStaff(),"flame_staff");
