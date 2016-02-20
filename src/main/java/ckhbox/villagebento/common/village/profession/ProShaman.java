@@ -8,42 +8,35 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProScholar extends Profession{
+public class ProShaman extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(ModItems.treasureHuntBookI)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModItems.sunStone)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,5)},
-				new ItemStack(ModItems.treasureHuntBookII)));
-		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.goldCoin,1)},
-				new ItemStack(ModItems.treasureHuntBookIII)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModItems.rainStone)));
 	}
-
 
 	@Override
 	protected void initTexture() {
-		this.createTextures("scholar");
+		this.createTextures("shaman");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.scholar");
+		return PathHelper.full("profession.shaman");
 	}
 
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,20)
+				new ItemStack(ModItems.goldCoin,1)
 		};
 		
-		this.upgradeToNextOptionClasses = new Class[]{
-				ProMage.class,
-				ProPainter.class,
-				};
+		this.upgradeToNextOptionClasses = null;
 	}
 
 }

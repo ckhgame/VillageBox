@@ -15,7 +15,7 @@ public class ItemFlameStaff extends Item
     {
 		this.setUnlocalizedName(PathHelper.full("flameStaff"));
         this.maxStackSize = 1;
-        this.setMaxDamage(3);
+        this.setMaxDamage(8);
         this.setCreativeTab(CreativeTabs.tabCombat);
     }
 
@@ -26,7 +26,7 @@ public class ItemFlameStaff extends Item
     {
         if (!playerIn.capabilities.isCreativeMode)
         {
-        	itemStackIn.damageItem(1, playerIn);
+        	itemStackIn.damageItem(3, playerIn);
         }
 
         playerIn.swingItem();

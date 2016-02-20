@@ -8,42 +8,43 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProScholar extends Profession{
+public class ProChefUS extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(ModItems.treasureHuntBookI)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.cheese)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,5)},
-				new ItemStack(ModItems.treasureHuntBookII)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.mayonnaise)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.goldCoin,1)},
-				new ItemStack(ModItems.treasureHuntBookIII)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack(ModItems.ballOfWool)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5),new ItemStack(Blocks.wool,1)},
+				new ItemStack(ModItems.ballOfWool)));
 	}
-
 
 	@Override
 	protected void initTexture() {
-		this.createTextures("scholar");
+		this.createTextures("chefus");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.scholar");
+		return PathHelper.full("profession.chefus");
 	}
-
+	
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,20)
+				new ItemStack(ModItems.silverCoin,1),
+				new ItemStack(Items.bucket,1),
+				new ItemStack(Items.shears,1)
 		};
 		
-		this.upgradeToNextOptionClasses = new Class[]{
-				ProMage.class,
-				ProPainter.class,
-				};
+		this.upgradeToNextOptionClasses = null;
 	}
-
+	
 }

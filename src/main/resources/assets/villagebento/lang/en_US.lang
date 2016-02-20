@@ -85,6 +85,10 @@ villagebento:message.mail.nomail=You have nothing in the mailbox
 villagebento:message.player.treasurelvlupgrade.success=Your §6treasure hunt level §fhas been upgraded to §a%d
 villagebento:message.player.treasurelvlupgrade.failed=You can't learn anything more from this book
 
+villagebento:message.player.weatherstone.alreadysunny=Can't use it when it's sunny
+villagebento:message.player.weatherstone.alreadyraining=Can't use it when it's raining
+villagebento:message.player.weatherstone.changed=Weather Changed...
+
 # Items
 item.villagebento:treasurebook1.name=Treasure Hunt Book I
 item.villagebento:treasurebook2.name=Treasure Hunt Book II
@@ -93,6 +97,8 @@ item.villagebento:bronzeCoin.name=Bronze Coin
 item.villagebento:silverCoin.name=Silver Coin
 item.villagebento:goldCoin.name=Gold Coin
 item.villagebento:mail.name=Mail
+item.villagebento:sunStone.name=Sun Stone
+item.villagebento:rainStone.name=Rain Stone
 item.villagebento:flameStaff.name=Flame Staff
 item.villagebento:processedWoodPlank.name=Processed Wood Plank
 item.villagebento:reinforcedIronIngot.name=Reinforced Iron Ingot

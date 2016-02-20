@@ -6,6 +6,7 @@ import ckhbox.villagebento.common.item.common.ItemDrink;
 import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.item.material.ItemProcessedWoodPlank;
 import ckhbox.villagebento.common.item.material.ItemReinforcedIronIngot;
+import ckhbox.villagebento.common.item.tool.ItemWeatherStone;
 import ckhbox.villagebento.common.item.weapon.ItemFlameStaff;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,6 +26,9 @@ public class ModItems {
 	public static ItemFlameStaff flameStaff;
 	public static ItemProcessedWoodPlank processedWoodPlank;
 	public static ItemReinforcedIronIngot reinforcedIronIngot;
+	
+	public static ItemWeatherStone sunStone;
+	public static ItemWeatherStone rainStone;
 	
 	//materials
 	public static Item cabbage;
@@ -106,6 +110,10 @@ public class ModItems {
 		
 		//weapon
 		GameRegistry.registerItem(flameStaff=new ItemFlameStaff(),"flame_staff");
+		
+		//tools
+		GameRegistry.registerItem(sunStone=(new ItemWeatherStone(true)),"sun_stone");
+		GameRegistry.registerItem(rainStone=(new ItemWeatherStone(false)),"rain_stone");
 		
 		//materials
 		GameRegistry.registerItem(processedWoodPlank=new ItemProcessedWoodPlank(),"processed_wood_plank");

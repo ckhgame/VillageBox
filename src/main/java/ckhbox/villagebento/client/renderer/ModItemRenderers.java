@@ -29,6 +29,9 @@ public class ModItemRenderers {
 		registerModel(ModItems.processedWoodPlank, 0, "processed_wood_plank");
 		registerModel(ModItems.reinforcedIronIngot, 0, "reinforced_iron_ingot");
 		
+		registerModel(ModItems.sunStone, 0, "sun_stone");
+		registerModel(ModItems.rainStone, 0, "rain_stone");
+		
 		registerModel(ModItems.cabbage, 0, "cabbage");
 		registerModel(ModItems.riceplant, 0, "riceplant");
 		registerModel(ModItems.chili, 0, "chili");
