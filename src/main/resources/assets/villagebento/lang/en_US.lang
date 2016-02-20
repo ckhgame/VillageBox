@@ -161,6 +161,7 @@ item.villagebento:salt.name=Slat
 
 # Blocks
 tile.villagebento:mailbox.name=Mail Box
+tile.villagebento:alchemypot.name=Alchemy Pot
 
 # Book
 villagebento:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
