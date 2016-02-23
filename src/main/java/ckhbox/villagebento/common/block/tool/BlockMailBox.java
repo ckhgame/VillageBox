@@ -1,4 +1,4 @@
-package ckhbox.villagebento.common.block.mailbox;
+package ckhbox.villagebento.common.block.tool;
 
 import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;

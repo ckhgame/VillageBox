@@ -1,4 +1,4 @@
-package ckhbox.villagebento.common.block.buildbox;
+package ckhbox.villagebento.common.block.tool;
 
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
