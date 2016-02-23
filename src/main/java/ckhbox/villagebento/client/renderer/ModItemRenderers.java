@@ -29,6 +29,8 @@ public class ModItemRenderers {
 		registerModel(ModItems.processedWoodPlank, 0, "processed_wood_plank");
 		registerModel(ModItems.reinforcedIronIngot, 0, "reinforced_iron_ingot");
 		
+		registerModel(ModItems.efficientBow, 0, "bow");
+		
 		registerModel(ModItems.painting, 0, "painting");
 		
 		registerModel(ModItems.sunStone, 0, "sun_stone");
