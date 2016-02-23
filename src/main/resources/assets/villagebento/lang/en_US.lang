@@ -162,6 +162,10 @@ item.villagebento:salt.name=Slat
 # Blocks
 tile.villagebento:mailbox.name=Mail Box
 tile.villagebento:alchemypot.name=Alchemy Pot
+tile.villagebento:buildboxSmall.name=Build Box (§aSmall§f)
+tile.villagebento:buildboxMedium.name=Build Box (§bMedium§f)
+tile.villagebento:buildboxLarge.name=Build Box (§cLarge§f)
+tile.villagebento:buildboxExLarge.name=Build Box (§dExtra Large§f)
 
 # Book
 villagebento:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d

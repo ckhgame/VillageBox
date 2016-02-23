@@ -17,6 +17,10 @@ public class ModBlockRenderers {
 	public static void init(){
 		registerModel(ModBlocks.mailbox, 0, "mailbox");
 		registerModel(ModBlocks.alchemyPot, 0, "alchemypot");
+		registerModel(ModBlocks.buildboxSmall, 0, "buildbox_small");
+		registerModel(ModBlocks.buildboxMedium, 0, "buildbox_medium");
+		registerModel(ModBlocks.buildboxLarge, 0, "buildbox_large");
+		registerModel(ModBlocks.buildboxExLarge, 0, "buildbox_exlarge");
 	}
 	
 	private static void registerModel(Block block, int meta, String resource){
