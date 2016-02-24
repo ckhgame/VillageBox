@@ -58,7 +58,6 @@ public class RenderPainting extends Render<EntityPainting>
 
     private void renderPainting(EntityPainting painting, int width, int height, int textureU, int textureV)
     {
-    	System.out.println("renderfing!!!");
         float f = (float)(-width) / 2.0F;
         float f1 = (float)(-height) / 2.0F;
         float f2 = 0.5F;

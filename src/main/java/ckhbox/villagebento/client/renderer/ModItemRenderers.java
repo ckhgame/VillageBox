@@ -33,6 +33,11 @@ public class ModItemRenderers {
 		registerModel(ModItems.steelShovel, 0, "steel_shovel");
 		registerModel(ModItems.steelSword, 0, "steel_sword");
 		
+		registerModel(ModItems.steelHelmet, 0, "steel_helmet");
+		registerModel(ModItems.steelChestplate, 0, "steel_chestplate");
+		registerModel(ModItems.steelLeggings, 0, "steel_leggings");
+		registerModel(ModItems.steelBoots, 0, "steel_boots");
+		
 		registerModel(ModItems.steelIngot, 0, "steel_ingot");
 		
 		registerModel(ModItems.efficientBow, 0, "bow");

@@ -14,6 +14,7 @@ public class BlockChair extends BlockFacing{
         super(Material.wood);
         this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 0.875F, 0.75F);
     }
 
 	@Override
