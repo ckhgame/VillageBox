@@ -26,8 +26,14 @@ public class ModItemRenderers {
 		registerModel(ModItems.goldCoin, 0, "gold_coin");
 		registerModel(ModItems.mail, 0, "mail");
 		registerModel(ModItems.flameStaff, 0, "flame_staff");
-		registerModel(ModItems.processedWoodPlank, 0, "processed_wood_plank");
-		registerModel(ModItems.reinforcedIronIngot, 0, "reinforced_iron_ingot");
+		
+		registerModel(ModItems.steelHoe, 0, "steel_hoe");
+		registerModel(ModItems.steelAxe, 0, "steel_axe");
+		registerModel(ModItems.steelPickaxe, 0, "steel_pickaxe");
+		registerModel(ModItems.steelShovel, 0, "steel_shovel");
+		registerModel(ModItems.steelSword, 0, "steel_sword");
+		
+		registerModel(ModItems.steelIngot, 0, "steel_ingot");
 		
 		registerModel(ModItems.efficientBow, 0, "bow");
 		

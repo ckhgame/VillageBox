@@ -1,5 +1,6 @@
 package ckhbox.villagebento.common.village.profession;
 
+import ckhbox.villagebento.common.block.ModBlocks;
 import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.trading.TradingRecipe;
@@ -13,8 +14,8 @@ public class ProCarpenter extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.emerald,20)},
-				new ItemStack(ModItems.processedWoodPlank)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,30)},
+				new ItemStack(ModBlocks.solidWood)));
 	}
 
 	@Override

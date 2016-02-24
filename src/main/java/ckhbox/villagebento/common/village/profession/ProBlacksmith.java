@@ -14,7 +14,7 @@ public class ProBlacksmith extends Profession{
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(Items.emerald,20)},
-				new ItemStack(ModItems.reinforcedIronIngot)));
+				new ItemStack(ModItems.steelIngot)));
 	}
 
 	@Override

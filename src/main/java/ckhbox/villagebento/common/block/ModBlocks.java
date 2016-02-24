@@ -2,6 +2,7 @@ package ckhbox.villagebento.common.block;
 
 import ckhbox.villagebento.common.block.decoration.BlockCarpet;
 import ckhbox.villagebento.common.block.decoration.BlockChair;
+import ckhbox.villagebento.common.block.decoration.BlockSolidWood;
 import ckhbox.villagebento.common.block.decoration.BlockTable;
 import ckhbox.villagebento.common.block.tool.BlockAlchemyPot;
 import ckhbox.villagebento.common.block.tool.BlockBuildBox;
@@ -17,6 +18,8 @@ public class ModBlocks {
 	public static BlockBuildBox buildboxMedium;
 	public static BlockBuildBox buildboxLarge;
 	public static BlockBuildBox buildboxExLarge;
+	
+	public static BlockSolidWood solidWood;
 	
 	public static BlockTable tableOak;
 	public static BlockTable tableJungle;
@@ -89,6 +92,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(buildboxMedium=new BlockBuildBox(BlockBuildBox.BuildSize.Medium),"buildbox_medium");
 		GameRegistry.registerBlock(buildboxLarge=new BlockBuildBox(BlockBuildBox.BuildSize.Large),"buildbox_large");
 		GameRegistry.registerBlock(buildboxExLarge=new BlockBuildBox(BlockBuildBox.BuildSize.ExLarge),"buildbox_exlarge");
+		
+		GameRegistry.registerBlock(solidWood=new BlockSolidWood(),"solid_wood");
 		
 		//tables
 		GameRegistry.registerBlock(tableOak=new BlockTable("tableOak"),"table_oak");

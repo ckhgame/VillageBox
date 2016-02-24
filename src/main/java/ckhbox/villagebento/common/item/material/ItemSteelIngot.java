@@ -4,10 +4,10 @@ import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class ItemReinforcedIronIngot extends Item{
+public class ItemSteelIngot extends Item{
 	
-	public ItemReinforcedIronIngot(){
-		this.setUnlocalizedName(PathHelper.full("reinforcedIronIngot"));
+	public ItemSteelIngot(){
+		this.setUnlocalizedName(PathHelper.full("steelIngot"));
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 		this.setMaxStackSize(16);
 	}

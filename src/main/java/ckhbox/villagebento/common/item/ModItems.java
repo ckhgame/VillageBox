@@ -4,19 +4,30 @@ import ckhbox.villagebento.common.item.book.ItemTreasureBook;
 import ckhbox.villagebento.common.item.common.ItemCoin;
 import ckhbox.villagebento.common.item.common.ItemDrink;
 import ckhbox.villagebento.common.item.common.ItemMail;
-import ckhbox.villagebento.common.item.material.ItemProcessedWoodPlank;
-import ckhbox.villagebento.common.item.material.ItemReinforcedIronIngot;
+import ckhbox.villagebento.common.item.material.ItemSteelIngot;
 import ckhbox.villagebento.common.item.painting.ItemPainting;
+import ckhbox.villagebento.common.item.tool.ItemAxe;
+import ckhbox.villagebento.common.item.tool.ItemPickaxe;
+import ckhbox.villagebento.common.item.tool.ItemShovel;
 import ckhbox.villagebento.common.item.tool.ItemWeatherStone;
 import ckhbox.villagebento.common.item.weapon.ItemEfficientBow;
 import ckhbox.villagebento.common.item.weapon.ItemFlameStaff;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemSword;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
+	
+	public static class ToolMaterials{
+		public static ToolMaterial STEEL = EnumHelper.addToolMaterial("STEEL", 2, 500, 7.0F, 3.0F, 15);
+		public static ToolMaterial RUNESTEEL = EnumHelper.addToolMaterial("RUNESTEEL", 3, 1000, 8.0F, 3.0F, 18);
+	}
 	
 	public static ItemTreasureBook treasureHuntBookI;
 	public static ItemTreasureBook treasureHuntBookII;
@@ -26,8 +37,14 @@ public class ModItems {
 	public static ItemCoin goldCoin;
 	public static ItemMail mail;
 	public static ItemFlameStaff flameStaff;
-	public static ItemProcessedWoodPlank processedWoodPlank;
-	public static ItemReinforcedIronIngot reinforcedIronIngot;
+
+	public static ItemSteelIngot steelIngot;
+	
+	public static Item steelHoe;
+	public static Item steelAxe;
+	public static Item steelPickaxe;
+	public static Item steelShovel;
+	public static Item steelSword;
 	
 	public static ItemWeatherStone sunStone;
 	public static ItemWeatherStone rainStone;
@@ -120,14 +137,19 @@ public class ModItems {
 		//weapon
 		GameRegistry.registerItem(flameStaff=new ItemFlameStaff(),"flame_staff");
 		GameRegistry.registerItem(efficientBow=new ItemEfficientBow(),"bow");
+		GameRegistry.registerItem(steelSword=(new ItemSword(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelSword"))),"steel_sword");
 		
 		//tools
 		GameRegistry.registerItem(sunStone=(new ItemWeatherStone(true)),"sun_stone");
 		GameRegistry.registerItem(rainStone=(new ItemWeatherStone(false)),"rain_stone");
 		
-		//materials
-		GameRegistry.registerItem(processedWoodPlank=new ItemProcessedWoodPlank(),"processed_wood_plank");
-		GameRegistry.registerItem(reinforcedIronIngot=new ItemReinforcedIronIngot(),"reinforced_iron_ingot");
+		GameRegistry.registerItem(steelHoe=(new ItemHoe(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelHoe"))),"steel_hoe");
+		GameRegistry.registerItem(steelAxe=(new ItemAxe(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelAxe"))),"steel_axe");
+		GameRegistry.registerItem(steelPickaxe=(new ItemPickaxe(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelPickaxe"))),"steel_pickaxe");
+		GameRegistry.registerItem(steelShovel=(new ItemShovel(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelShovel"))),"steel_shovel");	
+		
+		
+		GameRegistry.registerItem(steelIngot=new ItemSteelIngot(),"steel_ingot");
 		
 		//materials
 		GameRegistry.registerItem(cabbage=(new Item()).setUnlocalizedName(PathHelper.full("cabbage")).setCreativeTab(CreativeTabs.tabMaterials),"cabbage");
