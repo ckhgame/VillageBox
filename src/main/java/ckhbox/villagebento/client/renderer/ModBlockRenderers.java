@@ -29,6 +29,13 @@ public class ModBlockRenderers {
 		registerModel(ModBlocks.tableAcacia, 0, "table_acacia");
 		registerModel(ModBlocks.tableDarkOak, 0, "table_big_oak");
 		
+		registerModel(ModBlocks.chairOak, 0, "chair_oak");
+		registerModel(ModBlocks.chairJungle, 0, "chair_jungle");
+		registerModel(ModBlocks.chairBirch, 0, "chair_birch");
+		registerModel(ModBlocks.chairSpruce, 0, "chair_spruce");
+		registerModel(ModBlocks.chairAcacia, 0, "chair_acacia");
+		registerModel(ModBlocks.chairDarkOak, 0, "chair_big_oak");
+		
 		registerModel(ModBlocks.carpet0, 0, "carpet_0");
 		registerModel(ModBlocks.carpet1, 0, "carpet_1");
 		registerModel(ModBlocks.carpet2, 0, "carpet_2");

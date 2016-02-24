@@ -1,6 +1,7 @@
 package ckhbox.villagebento.common.block;
 
 import ckhbox.villagebento.common.block.decoration.BlockCarpet;
+import ckhbox.villagebento.common.block.decoration.BlockChair;
 import ckhbox.villagebento.common.block.decoration.BlockTable;
 import ckhbox.villagebento.common.block.tool.BlockAlchemyPot;
 import ckhbox.villagebento.common.block.tool.BlockBuildBox;
@@ -24,6 +25,12 @@ public class ModBlocks {
 	public static BlockTable tableAcacia;
 	public static BlockTable tableDarkOak;
 
+	public static BlockChair chairOak;
+	public static BlockChair chairJungle;
+	public static BlockChair chairBirch;
+	public static BlockChair chairSpruce;
+	public static BlockChair chairAcacia;
+	public static BlockChair chairDarkOak;
 	
 	public static BlockCarpet carpet0;
 	public static BlockCarpet carpet1;
@@ -90,6 +97,14 @@ public class ModBlocks {
 		GameRegistry.registerBlock(tableSpruce=new BlockTable("tableSpruce"),"table_spruce");
 		GameRegistry.registerBlock(tableAcacia=new BlockTable("tableAcacia"),"table_acacia");
 		GameRegistry.registerBlock(tableDarkOak=new BlockTable("tableBigOak"),"table_big_oak");
+		
+		//chairs
+		GameRegistry.registerBlock(chairOak=new BlockChair("chairOak"),"chair_oak");
+		GameRegistry.registerBlock(chairJungle=new BlockChair("chairJungle"),"chair_jungle");
+		GameRegistry.registerBlock(chairBirch=new BlockChair("chairBirch"),"chair_birch");
+		GameRegistry.registerBlock(chairSpruce=new BlockChair("chairSpruce"),"chair_spruce");
+		GameRegistry.registerBlock(chairAcacia=new BlockChair("chairAcacia"),"chair_acacia");
+		GameRegistry.registerBlock(chairDarkOak=new BlockChair("chairBigOak"),"chair_big_oak");
 		
 		//carpets
 		GameRegistry.registerBlock(carpet0=new BlockCarpet("carpet0"),"carpet_0");

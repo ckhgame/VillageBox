@@ -1,5 +1,6 @@
 package ckhbox.villagebento.common.block.tool;
 
+import ckhbox.villagebento.common.block.common.BlockFacing;
 import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebento.common.util.helper.PathHelper;
@@ -23,37 +24,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class BlockMailBox extends Block{
-
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+public class BlockMailBox extends BlockFacing{
 	
 	public BlockMailBox() {
 		super(Material.wood);
 		this.setUnlocalizedName(PathHelper.full("mailbox"));
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		this.setHardness(1.0F);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
-	}
-
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
-	}
-
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
-	}
-
-	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
-		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
-	}
-
-	@Override
-	protected BlockState createBlockState() {
-		return new BlockState(this, new IProperty[] {FACING});
 	}
 
 	@Override
