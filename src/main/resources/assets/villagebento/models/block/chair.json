@@ -1,5 +1,4 @@
 {
-    "ambientocclusion": false,
     "elements": [
         {   "from": [ 4, 6, 4 ],
             "to": [ 12, 8, 12 ],

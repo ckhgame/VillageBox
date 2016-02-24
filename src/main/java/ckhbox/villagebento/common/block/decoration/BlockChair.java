@@ -15,12 +15,6 @@ public class BlockChair extends BlockFacing{
         this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(CreativeTabs.tabDecorations);
     }
-	
-	@Override
-	public void setBlockBoundsForItemRender()
-    {
-        this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 0.875F, 0.75F);
-    }
 
 	@Override
     public boolean isOpaqueCube()

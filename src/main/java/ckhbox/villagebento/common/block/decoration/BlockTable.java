@@ -14,12 +14,6 @@ public class BlockTable extends Block{
         this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(CreativeTabs.tabDecorations);
     }
-	
-	@Override
-	public void setBlockBoundsForItemRender()
-    {
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-    }
 
 	@Override
     public boolean isOpaqueCube()
