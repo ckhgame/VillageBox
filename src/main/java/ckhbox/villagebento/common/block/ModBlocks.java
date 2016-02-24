@@ -1,6 +1,7 @@
 package ckhbox.villagebento.common.block;
 
-import ckhbox.villagebento.common.block.carpet.BlockCarpet;
+import ckhbox.villagebento.common.block.decoration.BlockCarpet;
+import ckhbox.villagebento.common.block.decoration.BlockTable;
 import ckhbox.villagebento.common.block.tool.BlockAlchemyPot;
 import ckhbox.villagebento.common.block.tool.BlockBuildBox;
 import ckhbox.villagebento.common.block.tool.BlockMailBox;
@@ -15,6 +16,14 @@ public class ModBlocks {
 	public static BlockBuildBox buildboxMedium;
 	public static BlockBuildBox buildboxLarge;
 	public static BlockBuildBox buildboxExLarge;
+	
+	public static BlockTable tableOak;
+	public static BlockTable tableJungle;
+	public static BlockTable tableBirch;
+	public static BlockTable tableSpruce;
+	public static BlockTable tableAcacia;
+	public static BlockTable tableDarkOak;
+
 	
 	public static BlockCarpet carpet0;
 	public static BlockCarpet carpet1;
@@ -74,7 +83,13 @@ public class ModBlocks {
 		GameRegistry.registerBlock(buildboxLarge=new BlockBuildBox(BlockBuildBox.BuildSize.Large),"buildbox_large");
 		GameRegistry.registerBlock(buildboxExLarge=new BlockBuildBox(BlockBuildBox.BuildSize.ExLarge),"buildbox_exlarge");
 		
-		
+		//tables
+		GameRegistry.registerBlock(tableOak=new BlockTable("tableOak"),"table_oak");
+		GameRegistry.registerBlock(tableJungle=new BlockTable("tableJungle"),"table_jungle");
+		GameRegistry.registerBlock(tableBirch=new BlockTable("tableBirch"),"table_birch");
+		GameRegistry.registerBlock(tableSpruce=new BlockTable("tableSpruce"),"table_spruce");
+		GameRegistry.registerBlock(tableAcacia=new BlockTable("tableAcacia"),"table_acacia");
+		GameRegistry.registerBlock(tableDarkOak=new BlockTable("tableBigOak"),"table_big_oak");
 		
 		//carpets
 		GameRegistry.registerBlock(carpet0=new BlockCarpet("carpet0"),"carpet_0");

@@ -1,4 +1,4 @@
-package ckhbox.villagebento.common.block.carpet;
+package ckhbox.villagebento.common.block.decoration;
 
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
@@ -6,24 +6,23 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumDyeColor;
 
-public class BlockCarpet extends Block{
+public class BlockTable extends Block{
 	
-	public BlockCarpet(String name)
+	public BlockTable(String name)
 	{
-        super(Material.carpet);
+        super(Material.wood);
         this.setUnlocalizedName(PathHelper.full(name));
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
         this.setCreativeTab(CreativeTabs.tabDecorations);
     }
 	
 	@Override
-	public boolean isOpaqueCube()
+	public void setBlockBoundsForItemRender()
     {
-        return false;
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
     }
 
 	@Override
-    public boolean isFullCube()
+    public boolean isOpaqueCube()
     {
         return false;
     }
