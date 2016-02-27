@@ -12,9 +12,9 @@ public class GuiTextButton extends GuiButton{
 	
 	private Minecraft mc;
 	
-	private int colorNormal = 14737632;
-	private int colorHover = 16777120;
-	private boolean shadow;
+	private int colorNormal = 0xFFFFFF;
+	private int colorHover = 0xFFFF55;
+	private boolean shadow = true;
 	
 	public GuiTextButton(Minecraft mc,int id, int x, int y, String text) {
 		super(id, x, y,mc.fontRendererObj.getStringWidth(text),mc.fontRendererObj.FONT_HEIGHT,text);
@@ -55,7 +55,7 @@ public class GuiTextButton extends GuiButton{
             }
             else if (!this.enabled)
             {
-                l = 10526880;
+                l = 0xAAAAAA;
             }
             else if (this.hovered)
             {

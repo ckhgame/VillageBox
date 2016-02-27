@@ -40,14 +40,6 @@ villagebento:profession.farmer.desc=Having good farming skills
 villagebento:profession.vintner.name=Vintner
 villagebento:profession.vintner.desc=Making and selling wine
 
-# Villager Attributes
-villagebento:villager.attribute.energy=Energy
-villagebento:villager.attribute.energy.desc=Trading will cost enegy
-villagebento:villager.attribute.happiness=Happiness
-villagebento:villager.attribute.happiness.desc=The villager can't provide##anything when is sad
-villagebento:villager.attribute.proficiency=Proficiency
-villagebento:villager.attribute.proficiency.desc=Max proficiency to upgrade##to advanced professions##* §bslightly increasing over time##* §bgreatly increased by trading
-
 # Gui
 
 villagebento:gui.villagermain.menu.upgrade=> Upgrade
@@ -56,6 +48,20 @@ villagebento:gui.villagermain.menu.follow.start=> Follow me
 villagebento:gui.villagermain.menu.follow.stop=> Stop following me
 villagebento:gui.villagermain.menu.home.movein=> Set home here
 villagebento:gui.villagermain.menu.home.moveout=> Move out from home
+
+villagebento:gui.villagermain.menu.chat.common0=Hey, %s.
+villagebento:gui.villagermain.menu.chat.common1=How is going? %s.
+villagebento:gui.villagermain.menu.chat.common2=Nice to meet you, %s.
+villagebento:gui.villagermain.menu.chat.hashome0=I love living here!
+villagebento:gui.villagermain.menu.chat.hashome1=Do you want to trade with me?
+villagebento:gui.villagermain.menu.chat.nohome0=I want a place to live.
+villagebento:gui.villagermain.menu.chat.nohome1=Could you build a home for me?
+
+villagebento:gui.villagermain.menu.chat.movein=I love my new home!
+villagebento:gui.villagermain.menu.chat.moveout=I'm homeless again T_T
+villagebento:gui.villagermain.menu.chat.followstart=I'm following you!
+villagebento:gui.villagermain.menu.chat.followstop=OK, see you later!
+
 villagebento:gui.villagermain.button.lock.title=Locked
 villagebento:gui.villagermain.button.lock.desc=Set home for the villager to unlock
 villagebento:gui.villagermain.button.maxupgrade.title=Maximal upgrades

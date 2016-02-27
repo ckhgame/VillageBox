@@ -2,6 +2,7 @@ package ckhbox.villagebento.client.gui.villager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import ckhbox.villagebento.client.gui.GuiHelper;
 import ckhbox.villagebento.client.gui.GuiTextButton;
@@ -14,6 +15,7 @@ import ckhbox.villagebento.common.network.message.villager.MessageGuiSetHome;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiSetInteracting;
 import ckhbox.villagebento.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebento.common.util.helper.PathHelper;
+import ckhbox.villagebento.common.util.math.Rand;
 import ckhbox.villagebento.common.village.profession.Profession;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -41,14 +43,32 @@ public class GuiVillagerMain extends GuiContainer{
     GuiTextButton buttonFollow;
     GuiTextButton buttonHome;
     
+    private String chatContent;
+    private String chatContentDisplay;
+    private int chatDisplayInterval; // ms
+    private int chatDisplayDurationTotal = 1000; // ms
+    
+    private boolean isFollowingLast;
+    private boolean hasHomeLast;
+    
     private EntityPlayer player;
     private EntityVillager villager;
+    
+    private long lastNanotime;
+    private long chatTimer;
     
 	public GuiVillagerMain(EntityPlayer player, EntityVillager villager)
     {
         super(new ContainerVillagerMain());
         this.player = player;
         this.villager = villager;
+        
+        this.isFollowingLast = this.villager.isFollowing();
+        this.hasHomeLast = this.villager.hasHome();
+        
+        this.lastNanotime = System.nanoTime();
+        
+        refreshChatContent();
         
         ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, true));
     }
@@ -88,6 +108,45 @@ public class GuiVillagerMain extends GuiContainer{
     	buttonTrade.enabled = this.villager.hasHome();
     }
     
+    private void calculateChatSpeed(){
+    	int l = this.chatContent.length();
+    	this.chatDisplayInterval = this.chatDisplayDurationTotal / l;
+    }
+    
+    private void refreshChatContent(){
+    	ArrayList<String> list = new ArrayList<String>();
+    	//common
+    	for(int i =0;i<3;i++){
+    		list.add(StatCollector.translateToLocalFormatted(PathHelper.full("gui.villagermain.menu.chat.common" + i), player.getName()));
+    	}
+    	String home = villager.hasHome()?"hashome":"nohome";
+    	for(int i =0;i<2;i++){
+    		list.add(StatCollector.translateToLocalFormatted(PathHelper.full("gui.villagermain.menu.chat."+ home + i)));
+    	}
+    	
+    	this.chatContent = list.get(Rand.get().nextInt(list.size()));
+    	this.chatContentDisplay = "";
+    	
+    	this.calculateChatSpeed();
+    }
+    
+    private void setChatContent(String type){
+    	this.chatContent = StatCollector.translateToLocalFormatted(PathHelper.full("gui.villagermain.menu.chat." + type));
+    	this.chatContentDisplay = "";
+    	
+    	this.calculateChatSpeed();
+    }
+    
+    private void updateChatContent(){
+    	boolean isFollowing = this.villager.isFollowing();
+    	boolean hasHome = this.villager.hasHome();
+    	if(!this.isFollowingLast && isFollowing) setChatContent("followstart");
+    	else if(this.isFollowingLast && !isFollowing) setChatContent("followstop");
+    	
+    	if(!this.hasHomeLast && hasHome) setChatContent("movein");
+    	else if(this.hasHomeLast && !hasHome) setChatContent("moveout");
+    }
+    
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -101,7 +160,7 @@ public class GuiVillagerMain extends GuiContainer{
     
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-
+		
 		super.drawScreen(mouseX, mouseY, partialTicks);
 
 		GlStateManager.disableLighting();
@@ -109,9 +168,21 @@ public class GuiVillagerMain extends GuiContainer{
 		int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
         
-        String text = "Hello! welcome to villageb bento, I'm a villager in your village!";
-        //this.drawWrappedString(this.mc.fontRendererObj, "test text....",x + offsetX, y + villagerTextOffsetY, 16777120, this.xSize - offsetX * 2);
-        this.fontRendererObj.drawSplitString(text,x + offsetX, y + villagerTextOffsetY, this.xSize - offsetX * 2, 16777120);
+        long currentNanotime = System.nanoTime();
+        
+        
+        //chat text animation
+        if(this.chatContent.length() > this.chatContentDisplay.length()){
+        	chatTimer += (currentNanotime - this.lastNanotime) / 1000000;
+        	if(chatTimer >= this.chatDisplayInterval){
+        		chatTimer -= this.chatDisplayInterval;
+        		this.chatContentDisplay = this.chatContent.substring(0, this.chatContentDisplay.length() + 1);
+        	}
+        }
+        
+        this.lastNanotime = currentNanotime;
+        
+        this.fontRendererObj.drawSplitString(this.chatContentDisplay,x + offsetX, y + villagerTextOffsetY, this.xSize - offsetX * 2, 0xFFFF55);
         
         if(!this.buttonTrade.enabled){
     		this.drawButtonHoverText(this.buttonTrade, mouseX, mouseY, 
@@ -174,7 +245,11 @@ public class GuiVillagerMain extends GuiContainer{
 	public void updateScreen() {
 		super.updateScreen();
 		
+		this.updateChatContent();
 		this.refreshButtons(); 
+		
+		this.isFollowingLast = this.villager.isFollowing();
+        this.hasHomeLast = this.villager.hasHome();
 	}	
 	
 }
