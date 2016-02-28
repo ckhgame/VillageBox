@@ -156,7 +156,8 @@ public class ContainerVillagerUpgrading extends Container
         	for(int i =0;i<4;i++){
         		if (this.upgradingInventory.getStackInSlot(i) != null)
                 {
-                    playerIn.dropPlayerItemWithRandomChoice(this.upgradingInventory.getStackInSlot(i), false);
+        			if(!playerIn.inventory.addItemStackToInventory(this.upgradingInventory.getStackInSlot(i)))
+        				playerIn.dropPlayerItemWithRandomChoice(this.upgradingInventory.getStackInSlot(i), false);
                 }
         	}
         }
