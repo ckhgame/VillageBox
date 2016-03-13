@@ -30,6 +30,7 @@ public abstract class ProVillager extends Profession{
 		this.upgradeToNextOptionClasses = new Class[]{
 				ProPeasant.class,
 				ProWorker.class,
+				ProBanker.class,
 				ProScholar.class
 				};
 	} 

@@ -8,36 +8,41 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProScholar extends Profession{
+public class ProBookseller extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)},
-				new ItemStack(Items.book)));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
+				new ItemStack(ModItems.treasureHuntBookI)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,5)},
+				new ItemStack(ModItems.treasureHuntBookII)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.goldCoin,1)},
+				new ItemStack(ModItems.treasureHuntBookIII)));
 	}
 
 
 	@Override
 	protected void initTexture() {
-		this.createTextures("scholar");
+		this.createTextures("bookseller");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.scholar");
+		return PathHelper.full("profession.bookseller");
 	}
 
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,1)
+				new ItemStack(Items.emerald,20)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProBookseller.class,
 				ProMage.class,
-				ProPainter.class
+				ProPainter.class,
 				};
 	}
 
