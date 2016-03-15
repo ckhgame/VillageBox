@@ -48,13 +48,13 @@ public class BlockBuildBox extends Block{
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		
 		if(!worldIn.isRemote){
-			build(worldIn, pos);
+			build(worldIn, pos, false);
 		}
 		
 		return true;
 	}
 	
-	private void build(World world, BlockPos pos){
+	private void build(World world, BlockPos pos, boolean removeOld){
 		
 		int xmin = pos.getX() - size.radius - 1;
 		int xmax = pos.getX() + size.radius + 1;
@@ -76,24 +76,24 @@ public class BlockBuildBox extends Block{
 			for(int z = zmin; z <= zmax; z++){
 				for(int y = ymin; y <= ymax; y++){
 					if(y == ymin){//floor
-						world.setBlockState(new BlockPos(x,y,z), bsp);
+						if(world.isAirBlock(new BlockPos(x,y,z)) || removeOld) world.setBlockState(new BlockPos(x,y,z), bsp);
 					}
 					else if(y == ymax)//roof
 					{
-						world.setBlockState(new BlockPos(x,y,z), bsp);
+						if(world.isAirBlock(new BlockPos(x,y,z)) || removeOld) world.setBlockState(new BlockPos(x,y,z), bsp);
 					}
 					else if(x != xmin && z != zmin && x != xmax && z != zmax){//empty space
-						world.setBlockToAir(new BlockPos(x,y,z));
+						if(world.isAirBlock(new BlockPos(x,y,z)) || removeOld) world.setBlockToAir(new BlockPos(x,y,z));
 					}
 					else{//wall
 						if((y == ymin + 2 || y == ymin + 3) && (x == pos.getX() || z == pos.getZ())){//window
-							world.setBlockState(new BlockPos(x,y,z),bsw);
+							if(world.isAirBlock(new BlockPos(x,y,z)) || removeOld) world.setBlockState(new BlockPos(x,y,z),bsw);
 						}
 						else if( y == ymin + 1){//walls (first layer)
-							world.setBlockState(new BlockPos(x,y,z),bss);
+							if(world.isAirBlock(new BlockPos(x,y,z)) || removeOld) world.setBlockState(new BlockPos(x,y,z),bss);
 						}
 						else{//walls (the rest)
-							world.setBlockState(new BlockPos(x,y,z),bsp);
+							if(world.isAirBlock(new BlockPos(x,y,z)) || removeOld) world.setBlockState(new BlockPos(x,y,z),bsp);
 						}
 					}
 					
