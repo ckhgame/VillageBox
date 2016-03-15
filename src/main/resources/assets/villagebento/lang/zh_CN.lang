@@ -1,0 +1,254 @@
+language.name=Chinese
+language.region=CN
+language.code=zh_CN
+
+# Professions
+villagebento:profession.villager.name=村民
+villagebento:profession.villager.desc=一个普通村民
+villagebento:profession.peasant.name=农民
+villagebento:profession.peasant.desc=拥有基本农业技能
+villagebento:profession.worker.name=工人
+villagebento:profession.worker.desc=制作工具和武器
+villagebento:profession.scholar.name=学者
+villagebento:profession.scholar.desc=专注于研究
+villagebento:profession.banker.name=银行家
+villagebento:profession.banker.desc=提供货币转换
+villagebento:profession.bookseller.name=书商
+villagebento:profession.bookseller.desc=出售书籍
+villagebento:profession.painter.name=画家
+villagebento:profession.painter.desc=创作新的绘画
+villagebento:profession.mage.name=法师
+villagebento:profession.mage.desc=出售魔法物品
+villagebento:profession.alchemist.name=炼金术师
+villagebento:profession.alchemist.desc=转换自然元素
+villagebento:profession.shaman.name=萨满
+villagebento:profession.shaman.desc=改变天气
+villagebento:profession.carpenter.name=木匠
+villagebento:profession.carpenter.desc=制作木制物品
+villagebento:profession.carpetmaker.name=地毯制作师
+villagebento:profession.carpetmaker.desc=制作低碳
+villagebento:profession.builder.name=建筑师
+villagebento:profession.builder.desc=帮助快速建房
+villagebento:profession.blacksmith.name=铁匠
+villagebento:profession.blacksmith.desc=制作钢锭
+villagebento:profession.miner.name=矿工
+villagebento:profession.miner.desc=挖掘基础矿物 
+villagebento:profession.bowmaker.name=制弓师
+villagebento:profession.bowmaker.desc=制作高级弓
+villagebento:profession.furnituremaker.name=家具制作师
+villagebento:profession.furnituremaker.desc=制作家具
+villagebento:profession.carpetmakeradv.name=高级地毯制作师
+villagebento:profession.carpetmakeradv.desc=制作更好的地毯
+villagebento:profession.carpetmakercartoony.name=卡通地毯制作师
+villagebento:profession.carpetmakercartoony.desc=制作卡通风格地毯
+villagebento:profession.weaponsmith.name=武器铸造师
+villagebento:profession.weaponsmith.desc=制造钢制武器
+villagebento:profession.armorsmith.name=护甲锻造师
+villagebento:profession.armorsmith.desc=制造钢制护甲
+villagebento:profession.toolsmith.name=工具铸造师
+villagebento:profession.toolsmith.desc=制造钢制工具
+villagebento:profession.orchardist.name=果园主
+villagebento:profession.orchardist.desc=生产水果
+villagebento:profession.rancher.name=牧场主
+villagebento:profession.rancher.desc=照看动物
+villagebento:profession.florist.name=花匠
+villagebento:profession.florist.desc=采集花朵
+villagebento:profession.fisherman.name=渔夫
+villagebento:profession.fisherman.desc=提供海鲜产品
+villagebento:profession.vintner.name=酒商
+villagebento:profession.vintner.desc=酿造出售美酒
+villagebento:profession.farmer.name=农场主
+villagebento:profession.farmer.desc=拥有高级农业技能
+villagebento:profession.cookassistant.name=厨师助手
+villagebento:profession.cookassistant.desc=处理食材
+villagebento:profession.chef.name=主厨
+villagebento:profession.chef.desc=烹饪美味佳肴
+villagebento:profession.chefdessert.name=甜点师
+villagebento:profession.chefdessert.desc=精心准备可口的甜品
+
+# Gui
+villagebento:gui.villagermain.menu.upgrade=> 升级
+villagebento:gui.villagermain.menu.trade=> 交易
+villagebento:gui.villagermain.menu.follow.start=> 跟随
+villagebento:gui.villagermain.menu.follow.stop=> 停止跟随
+villagebento:gui.villagermain.menu.home.movein=> 设置此处为家
+villagebento:gui.villagermain.menu.home.moveout=> 从家里搬出
+
+villagebento:gui.villagermain.menu.chat.common0=你好啊, %s.
+villagebento:gui.villagermain.menu.chat.common1=最近如何? %s.
+villagebento:gui.villagermain.menu.chat.common2=很高兴见到你, %s.
+villagebento:gui.villagermain.menu.chat.hashome0=能住在这里我非常高兴!
+villagebento:gui.villagermain.menu.chat.hashome1=想和我交易吗?
+villagebento:gui.villagermain.menu.chat.nohome0=我想找个住的地方.
+villagebento:gui.villagermain.menu.chat.nohome1=你能为我建个房子吗?
+
+villagebento:gui.villagermain.menu.chat.movein=我喜欢我的新家!
+villagebento:gui.villagermain.menu.chat.moveout=我又无家可归了  T_T
+villagebento:gui.villagermain.menu.chat.followstart=我跟着你呢!
+villagebento:gui.villagermain.menu.chat.followstop=好吧，等下见!
+
+villagebento:gui.villagermain.button.lock.title=未解锁
+villagebento:gui.villagermain.button.lock.desc=为村民提供住处后解锁
+villagebento:gui.villagermain.button.maxupgrade.title=最顶级
+villagebento:gui.villagermain.button.maxupgrade.desc=没有更高级的升级了
+
+villagebento:gui.villagerupgrade.buttonupgrade.title=升级
+villagebento:gui.villagerupgrade.buttonupgrade.desc=升级到更高级的专业
+villagebento:gui.villagerupgrade.buttonupgrade.desc.disable0=物品不匹配
+
+villagebento:gui.mail.button.approve=许可
+villagebento:gui.mail.hi=你好,§o%s
+
+# Message
+
+villagebento:message.villager.isbusy=这个村民正忙...
+villagebento:message.villager.newjoined=%s 到达了!
+villagebento:message.villager.home.openspace=这不是一个封闭的空间!
+villagebento:message.villager.home.existed=这里已经有人住了!
+villagebento:message.villager.home.movein=%s 搬进了新家 :D
+villagebento:message.villager.home.moveout=%s 搬出了原来的家
+
+villagebento:message.mail.newmail=你收到一封新邮件
+villagebento:message.mail.nomail=邮箱里什么都没有
+villagebento:message.mail.invitesuccess=你送出了邀请函，很快你就会得到回复
+villagebento:message.mail.invitefailed=你已经送过邀请函了
+
+villagebento:message.player.treasurelvlupgrade.success=你的 §6寻宝等级 §f提升到了 §a%d
+villagebento:message.player.treasurelvlupgrade.failed=你已经看过这本书了
+
+villagebento:message.player.weatherstone.alreadysunny=你不能在晴天使用此物
+villagebento:message.player.weatherstone.alreadyraining=你不能再雨天使用此物
+villagebento:message.player.weatherstone.changed=天气改变了……
+
+# Items
+item.villagebento:treasurebook1.name=寻宝宝典 I
+item.villagebento:treasurebook2.name=寻宝宝典 II
+item.villagebento:treasurebook3.name=寻宝宝典 III
+item.villagebento:bronzeCoin.name=铜币
+item.villagebento:silverCoin.name=银币
+item.villagebento:goldCoin.name=金币
+item.villagebento:mail.name=邮件
+item.villagebento:invitation.name=邀请函
+item.villagebento:sunStone.name=晴之石
+item.villagebento:rainStone.name=雨之石
+item.villagebento:flameStaff.name=火焰法杖
+item.villagebento:steelIngot.name=钢锭
+item.villagebento:cabbage.name=卷心菜
+item.villagebento:corn.name=玉米
+item.villagebento:chili.name=辣椒
+item.villagebento:riceplant.name=稻谷
+item.villagebento:soybean.name=大豆
+item.villagebento:grape.name=葡萄
+item.villagebento:lemon.name=柠檬
+item.villagebento:orange.name=橘子
+item.villagebento:pineapple.name=菠萝
+item.villagebento:strawberry.name=草莓
+item.villagebento:melon.name=蜜瓜
+item.villagebento:banana.name=香蕉
+item.villagebento:cheese.name=奶酪
+item.villagebento:mayonnaise.name=美乃滋
+item.villagebento:ballOfWool.name=羊毛球
+item.villagebento:cookingOil.name=食用油
+item.villagebento:soySauce.name=酱油
+item.villagebento:rice.name=米饭
+item.villagebento:riceFlour.name=米粉
+item.villagebento:grapeWine.name=葡萄酒
+item.villagebento:cookingWine.name=料酒
+item.villagebento:cocktail.name=鸡尾酒
+item.villagebento:beer.name=啤酒
+item.villagebento:whisky.name=威士忌
+item.villagebento:vodka.name=伏特加
+item.villagebento:porkRamen.name=猪肉拉面
+item.villagebento:beefNoodleSoup.name=牛肉面
+item.villagebento:noodleSoup.name=面
+item.villagebento:carrotCake.name=胡萝卜蛋糕
+item.villagebento:hambuger.name=汉堡
+item.villagebento:congee.name=粥
+item.villagebento:boiledFish.name=水煮鱼
+item.villagebento:appleCandy.name=苹果糖
+item.villagebento:creamyCorn.name=奶油玉米
+item.villagebento:chocolateBanana.name=巧克力香蕉
+item.villagebento:fries.name=薯条
+item.villagebento:mapoTofu.name=麻婆豆腐
+item.villagebento:cannedOranges.name=桔子罐头
+item.villagebento:strawberryIcecream.name=草莓冰淇淋
+item.villagebento:honeyTea.name=蜂蜜茶
+item.villagebento:pineappleCanday.name=菠萝糖
+item.villagebento:cornChips.name=薯片
+item.villagebento:melonIcecream.name=蜜瓜冰淇淋
+item.villagebento:melonIcebar.name=蜜瓜冰棍
+item.villagebento:roastedLamb.name=烤羊排
+item.villagebento:nigiri.name=一指寿司
+item.villagebento:udon.name=乌冬面
+item.villagebento:tofu.name=豆腐
+item.villagebento:boiledEgg.name=水煮蛋
+item.villagebento:seaweed.name=海带
+item.villagebento:crab.name=螃蟹
+item.villagebento:shrimp.name=虾
+item.villagebento:wheatFlour.name=面粉
+item.villagebento:salt.name=盐
+
+
+
+# Blocks
+tile.villagebento:mailbox.name=信箱
+tile.villagebento:alchemypot.name=炼金锅
+tile.villagebento:buildboxSmall.name=建筑盒子 (§a小型§f)
+tile.villagebento:buildboxMedium.name=建筑盒子 (§b中型§f)
+tile.villagebento:buildboxLarge.name=建筑盒子 (§c大型§f)
+tile.villagebento:buildboxExLarge.name=建筑盒子 (§d超大型§f)
+tile.villagebento:carpet0.name=carpet0
+tile.villagebento:carpet1.name=carpet1
+tile.villagebento:carpet2.name=carpet2
+tile.villagebento:carpet3.name=carpet3
+tile.villagebento:carpet4.name=carpet4
+tile.villagebento:carpet5.name=carpet5
+tile.villagebento:carpet6.name=carpet6
+tile.villagebento:carpet7.name=carpet7
+tile.villagebento:carpet8.name=carpet8
+tile.villagebento:carpet9.name=carpet9
+tile.villagebento:carpet10.name=carpet10
+tile.villagebento:carpet11.name=carpet11
+tile.villagebento:carpet12.name=carpet12
+tile.villagebento:carpet13.name=carpet13
+tile.villagebento:carpet14.name=carpet14
+tile.villagebento:carpet15.name=carpet15
+tile.villagebento:carpet16.name=carpet16
+tile.villagebento:carpet17.name=carpet17
+tile.villagebento:carpet18.name=carpet18
+tile.villagebento:carpet19.name=carpet19
+tile.villagebento:carpet20.name=carpet20
+tile.villagebento:carpet21.name=carpet21
+tile.villagebento:carpet22.name=carpet22
+tile.villagebento:carpet23.name=carpet23
+tile.villagebento:carpet24.name=carpet24
+tile.villagebento:carpet25.name=carpet25
+tile.villagebento:carpet26.name=carpet26
+tile.villagebento:carpet27.name=carpet27
+tile.villagebento:carpet28.name=carpet28
+tile.villagebento:carpet29.name=carpet29
+tile.villagebento:carpet30.name=carpet30
+tile.villagebento:carpet31.name=carpet31
+tile.villagebento:carpetWool0.name=carpetWool0
+tile.villagebento:carpetWool1.name=carpetWool1
+tile.villagebento:carpetWool2.name=carpetWool2
+tile.villagebento:carpetWool3.name=carpetWool3
+tile.villagebento:carpetWool4.name=carpetWool4
+tile.villagebento:carpetWool5.name=carpetWool5
+tile.villagebento:carpetWool6.name=carpetWool6
+tile.villagebento:carpetWool7.name=carpetWool7
+tile.villagebento:carpetWool8.name=carpetWool8
+tile.villagebento:carpetWool9.name=carpetWool9
+
+#Block & Item info
+villagebento:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d
+villagebento:mail.item.info=§7来自 §a%s
+villagebento:invitation.item.info=§7"欢迎来到我的村庄..."
+
+# Mail
+villagebento:mail.newvillager0.content=我听说你正在建造一个村庄, 我想知道我是否有机会加入?
+villagebento:mail.newvillager1.content=你是否在寻找村民? 请考虑我!
+villagebento:mail.newvillager2.content=我已经厌倦了现在的生活. 我能成为你村庄的村民吗?
+villagebento:mail.tip0.content=A sad villager can provide nothing but sadness.
+villagebento:mail.tip1.content=Cool items could be found by upgrading your villagers!
+villagebento:mail.tip2.content=Banker is useful to exchange low and high level gems.
