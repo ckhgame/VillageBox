@@ -110,7 +110,6 @@ villagebento:message.villager.home.openspace=It's not a closed space!
 villagebento:message.villager.home.existed=Someone has already moved in!
 villagebento:message.villager.home.movein=%s has moved in a new home :D
 villagebento:message.villager.home.moveout=%s has moved out from home
-villagebento:message.villager.home.moveoutfailed=Can't move out here, the villager needs to pack up at home first.
 
 villagebento:message.mail.newmail=You have received a new mail
 villagebento:message.mail.nomail=You have nothing in the mailbox

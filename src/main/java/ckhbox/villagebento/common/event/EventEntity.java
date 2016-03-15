@@ -1,13 +1,17 @@
 package ckhbox.villagebento.common.event;
 
+import ckhbox.villagebento.common.entity.villager.EntityVillager;
 import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebento.common.util.helper.PathHelper;
-import ckhbox.villagebento.common.util.math.Rand;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventEntity {
 	
@@ -19,6 +23,19 @@ public class EventEntity {
 			ExtendedPlayerProperties.register((EntityPlayer)event.entity);
 		}
 	}
+	
+	@SubscribeEvent
+    public void livingSpawnEvent(LivingSpawnEvent event) {
+		
+		Class ec = event.entityLiving.getClass();
+		
+		if(ec == EntityZombie.class){
+			EntityZombie entity = (EntityZombie)event.entityLiving;
+			entity.tasks.addTask(4, new EntityAIAttackOnCollide(entity, EntityVillager.class, 1.0D, true));
+			entity.targetTasks.addTask(2, new EntityAINearestAttackableTarget(entity, EntityVillager.class, false));
+		}
+		
+    }
 	
 	@SubscribeEvent
 	public void onLivingUpdating(LivingUpdateEvent event)
