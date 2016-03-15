@@ -25,6 +25,7 @@ public class ModItemRenderers {
 		registerModel(ModItems.silverCoin, 0, "silver_coin");
 		registerModel(ModItems.goldCoin, 0, "gold_coin");
 		registerModel(ModItems.mail, 0, "mail");
+		registerModel(ModItems.invitation, 0, "invitation");
 		registerModel(ModItems.flameStaff, 0, "flame_staff");
 		
 		registerModel(ModItems.steelHoe, 0, "steel_hoe");

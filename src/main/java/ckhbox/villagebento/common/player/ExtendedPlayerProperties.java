@@ -16,7 +16,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	private static final String identifier = "villagebento.playerex";
 	
-	public static final int NewMailTimerTotal = 16000;
+	public static final int NewMailTimerTotal = 2000;
 	
 	public static void register(EntityPlayer player){
 		if(get(player) == null){
@@ -33,12 +33,28 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 	
 	public EntityPlayer player;
 	
+	public boolean hasSentInvitation;//if the player has sent the invivation
 	public int newMailTimer;//how much time left to receive a new mail
-	public int mailCount;//how many mails the player has
+
 	public int treasureHuntLevel;//high level will bring more gems
 	
+	public void sendNewVillagerInvitation(){
+		if(!this.hasSentInvitation){
+			this.hasSentInvitation = true;
+			this.resetMailTimer();
+		}
+	}
+	
+	public boolean hasNewVillagerMail(){
+		return this.hasSentInvitation && this.newMailTimer <= 0;
+	}
+	
+	public void receiveNewVillagerMail(){
+		this.hasSentInvitation = false;
+	}
+	
 	public void resetMailTimer(){
-		this.newMailTimer = (int)(ExtendedPlayerProperties.NewMailTimerTotal * (Rand.get().nextFloat() * 0.3F + 0.7F));
+		this.newMailTimer = (int)(ExtendedPlayerProperties.NewMailTimerTotal * (Rand.get().nextFloat() * 0.5F + 0.5F));
 	}
 	
 	public boolean upgradeTreasureHuntLevelTo(int level){
@@ -55,30 +71,24 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 		this.player = player;
 	}
 	
-	public void SyncToClient(){
-		if(player instanceof EntityPlayerMP){
-			ModNetwork.getInstance().sendTo(new MessageSyncExtendedPlayerProperties(this), (EntityPlayerMP)player);
-		}
-	}
-	
 	@Override
 	public void saveNBTData(NBTTagCompound compound) {
+		compound.setBoolean("invited", this.hasSentInvitation);
 		compound.setInteger("nmtimer", this.newMailTimer);
-		compound.setInteger("mailcount", this.mailCount);
 		compound.setInteger("treasurelvl", this.treasureHuntLevel);
 	}
 
 	@Override
 	public void loadNBTData(NBTTagCompound compound) {
+		this.hasSentInvitation = compound.getBoolean("invited");
 		this.newMailTimer = compound.getInteger("nmtimer");
-		this.mailCount = compound.getInteger("mailcount");
 		this.treasureHuntLevel = compound.getInteger("treasurelvl");
 	}
 
 	@Override
 	public void init(Entity entity, World world) {
 		this.resetMailTimer();
-		this.mailCount = 0;
+		this.hasSentInvitation = false;
 		this.treasureHuntLevel = 0;
 	}
 	

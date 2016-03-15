@@ -45,6 +45,7 @@ public class GuiMail extends GuiContainer{
         this.buttonList.add(this.buttonApprove = new GuiTextButton(this.mc, 0, 0,y + 130, StatCollector.translateToLocal(PathHelper.full("gui.mail.button.approve"))));
         this.buttonApprove.xPosition = this.width / 2 - this.buttonApprove.width / 2;
         this.buttonApprove.setColors(0xFF006400, 0xFF32CD32);
+        this.buttonApprove.setShadow(false);
         
         ItemStack hold = this.player.getHeldItem();
         if(hold.getItem() == ModItems.mail){

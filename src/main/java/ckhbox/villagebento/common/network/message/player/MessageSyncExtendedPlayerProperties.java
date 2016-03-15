@@ -17,7 +17,6 @@ public class MessageSyncExtendedPlayerProperties implements IMessage {
 	
 	public MessageSyncExtendedPlayerProperties(ExtendedPlayerProperties properties){
 		this.newMailTimer = properties.newMailTimer;
-		this.mailCount = properties.mailCount;
 	}
 	
 	@Override
@@ -40,7 +39,6 @@ public class MessageSyncExtendedPlayerProperties implements IMessage {
         public IMessage onMessage(MessageSyncExtendedPlayerProperties message, MessageContext ctx) {
         	ExtendedPlayerProperties properties = ExtendedPlayerProperties.get(Minecraft.getMinecraft().thePlayer);
         	properties.newMailTimer = message.newMailTimer;
-        	properties.mailCount = message.mailCount;
             return null;
         }
     }

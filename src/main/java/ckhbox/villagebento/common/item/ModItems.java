@@ -4,6 +4,7 @@ import ckhbox.villagebento.common.item.armor.ItemArmor;
 import ckhbox.villagebento.common.item.book.ItemTreasureBook;
 import ckhbox.villagebento.common.item.common.ItemCoin;
 import ckhbox.villagebento.common.item.common.ItemDrink;
+import ckhbox.villagebento.common.item.common.ItemInvitation;
 import ckhbox.villagebento.common.item.common.ItemMail;
 import ckhbox.villagebento.common.item.material.ItemSteelIngot;
 import ckhbox.villagebento.common.item.painting.ItemPainting;
@@ -44,6 +45,7 @@ public class ModItems {
 	public static ItemCoin silverCoin;
 	public static ItemCoin goldCoin;
 	public static ItemMail mail;
+	public static Item invitation;
 	public static ItemFlameStaff flameStaff;
 
 	public static ItemSteelIngot steelIngot;
@@ -148,6 +150,7 @@ public class ModItems {
 		
 		//mail
 		GameRegistry.registerItem(mail=new ItemMail(),"mail");
+		GameRegistry.registerItem(invitation=new ItemInvitation(),"invitation");
 		
 		//painting
 		GameRegistry.registerItem(painting=new ItemPainting(),"painting");

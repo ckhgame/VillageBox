@@ -29,11 +29,9 @@ public class EventEntity {
 
 				ExtendedPlayerProperties playerProperties = ExtendedPlayerProperties.get((EntityPlayer)event.entity);
 
-				if(playerProperties.newMailTimer > 0){
+				if(playerProperties.hasSentInvitation && playerProperties.newMailTimer > 0){
 					if(--playerProperties.newMailTimer == 0){
-						playerProperties.mailCount++;
 						((EntityPlayer)event.entity).addChatMessage(new ChatComponentTranslation(PathHelper.full("message.mail.newmail")));
-						playerProperties.resetMailTimer();
 					}
 				}
 			}

@@ -114,6 +114,8 @@ villagebento:message.villager.home.moveoutfailed=Can't move out here, the villag
 
 villagebento:message.mail.newmail=You have received a new mail
 villagebento:message.mail.nomail=You have nothing in the mailbox
+villagebento:message.mail.invitesuccess=You have sent a invitation, someone will reply to you soon
+villagebento:message.mail.invitefailed=You have already sent a invitation
 
 villagebento:message.player.treasurelvlupgrade.success=Your §6treasure hunt level §fhas been upgraded to §a%d
 villagebento:message.player.treasurelvlupgrade.failed=You can't learn anything more from this book
@@ -130,6 +132,7 @@ item.villagebento:bronzeCoin.name=Bronze Coin
 item.villagebento:silverCoin.name=Silver Coin
 item.villagebento:goldCoin.name=Gold Coin
 item.villagebento:mail.name=Mail
+item.villagebento:invitation.name=Invitaition
 item.villagebento:sunStone.name=Sun Stone
 item.villagebento:rainStone.name=Rain Stone
 item.villagebento:flameStaff.name=Flame Staff
@@ -242,11 +245,12 @@ tile.villagebento:carpetWool7.name=carpetWool7
 tile.villagebento:carpetWool8.name=carpetWool8
 tile.villagebento:carpetWool9.name=carpetWool9
 
-# Book
+#Block & Item info
 villagebento:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
+villagebento:mail.item.info=§7From §a%s
+villagebento:invitation.item.info=§7"Welcome to my village..."
 
 # Mail
-villagebento:mail.item.info=§7From §a%s
 villagebento:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?
 villagebento:mail.newvillager1.content=Are you looking for villagers? Please consider me!
 villagebento:mail.newvillager2.content=I'm so tired about current life and looking for a place to live. Could I be a villager in your village?
