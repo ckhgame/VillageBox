@@ -1,10 +1,16 @@
 package ckhbox.villagebento.common.event;
 
 import ckhbox.villagebento.common.item.ModItems;
+import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebento.common.util.math.Rand;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockGrass;
+import net.minecraft.block.BlockLog;
+import net.minecraft.block.BlockOre;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -27,10 +33,15 @@ public class EventCoinsFound {
 	@SubscribeEvent
 	public void onLivingDeath(LivingDeathEvent event)
 	{
-		if(!event.entityLiving.worldObj.isRemote){
-			if(Rand.get().nextInt(3) == 0 && event.source.getSourceOfDamage() instanceof EntityPlayer){
-				dropCoins(Rand.get().nextInt(5),event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ);
-			}
+		if(!event.entityLiving.worldObj.isRemote && 
+			event.entityLiving instanceof EntityMob && 
+			event.source.getSourceOfDamage() instanceof EntityPlayer){
+			
+			int l =  ExtendedPlayerProperties.get((EntityPlayer)event.source.getSourceOfDamage()).treasureHuntLevel;
+			int base = l * 2 + 1;
+			int add = l + 3;
+			dropCoins(Rand.get().nextInt(add) + base,event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ);
+		
 		}
 	}
 	
@@ -38,8 +49,36 @@ public class EventCoinsFound {
 	public void onBlockBreak(BlockEvent.BreakEvent event)
 	{
 		if(!event.world.isRemote){
-			if(Rand.get().nextInt(10) == 0){
-				dropCoins(Rand.get().nextInt(3),event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
+			Block block = event.state.getBlock();
+			if(block instanceof BlockOre){
+				int l =  ExtendedPlayerProperties.get(event.getPlayer()).treasureHuntLevel;
+				int base = l * 2 + 1;
+				int add = l + 3;
+				dropCoins(Rand.get().nextInt(add) + base,event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
+			}
+			else if(block instanceof BlockCrops){
+				if(Rand.get().nextInt(3) == 0){
+					int l =  ExtendedPlayerProperties.get(event.getPlayer()).treasureHuntLevel;
+					int base = l + 1;
+					int add = l + 3;
+					dropCoins(Rand.get().nextInt(add) + base,event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
+				}
+			}
+			else if(block instanceof BlockGrass){
+				if(Rand.get().nextInt(5) == 0){
+					int l =  ExtendedPlayerProperties.get(event.getPlayer()).treasureHuntLevel;
+					int base = l + 1;
+					int add = l + 1;
+					dropCoins(Rand.get().nextInt(add) + base,event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
+				}
+			}
+			else if(block instanceof BlockLog){
+				if(Rand.get().nextInt(3) == 0){
+					int l =  ExtendedPlayerProperties.get(event.getPlayer()).treasureHuntLevel;
+					int base = l + 1;
+					int add = l + 3;
+					dropCoins(Rand.get().nextInt(add) + base,event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
+				}
 			}
 		}
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import ckhbox.villagebento.common.item.ModItems;
+import ckhbox.villagebento.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.util.math.Rand;
 import net.minecraft.block.Block;
@@ -110,7 +111,7 @@ public class BlockAlchemyPot extends Block {
             		this.setWaterLevel(worldIn, pos, state, i - 1);
             	}
             	
-            	if(entityItem.getEntityItem().stackSize == 1 && Rand.get().nextInt(5) == 0){
+            	if(entityItem.getEntityItem().stackSize == 1 && Rand.get().nextInt(3) == 0){
             		entityIn.playSound("random.orb", 0.6F, Rand.get().nextFloat() * 0.4F + 0.8F);
                 	this.dropCoin(worldIn,pos.getX(),pos.getY(),pos.getZ());
             	}
@@ -124,7 +125,7 @@ public class BlockAlchemyPot extends Block {
     }
     
     private void dropCoin(World world, int x, int y, int z){
-    	int count = Rand.get().nextInt(2) + 1;
+    	int count = Rand.get().nextInt(1) + 1;
         EntityItem entityitem = new EntityItem(world, x + 0.5F, y + 1.0F, z + 0.5F, new ItemStack(ModItems.bronzeCoin,count));
 		entityitem.setDefaultPickupDelay();
 		world.spawnEntityInWorld(entityitem);
