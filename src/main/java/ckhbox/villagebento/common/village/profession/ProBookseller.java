@@ -13,7 +13,7 @@ public class ProBookseller extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,50)},
 				new ItemStack(ModItems.treasureHuntBookI)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,5)},
@@ -37,13 +37,11 @@ public class ProBookseller extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,20)
+				new ItemStack(ModItems.silverCoin,1),
+				new ItemStack(Items.book,10)
 		};
 		
-		this.upgradeToNextOptionClasses = new Class[]{
-				ProMage.class,
-				ProPainter.class,
-				};
+		this.upgradeToNextOptionClasses = null;
 	}
 
 }

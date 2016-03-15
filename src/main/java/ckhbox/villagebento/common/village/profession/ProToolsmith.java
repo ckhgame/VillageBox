@@ -8,43 +8,41 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ProChefUS extends Profession{
+public class ProToolsmith extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
-				new ItemStack(ModItems.cheese)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,5),new ItemStack(ModItems.steelIngot,3)},
+				new ItemStack(ModItems.steelAxe)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
-				new ItemStack(ModItems.mayonnaise)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,5),new ItemStack(ModItems.steelIngot,3)},
+				new ItemStack(ModItems.steelPickaxe)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
-				new ItemStack(ModItems.ballOfWool)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,5),new ItemStack(ModItems.steelIngot,3)},
+				new ItemStack(ModItems.steelHoe)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5),new ItemStack(Blocks.wool,1)},
-				new ItemStack(ModItems.ballOfWool)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,5),new ItemStack(ModItems.steelIngot,3)},
+				new ItemStack(ModItems.steelShovel)));
 	}
 
 	@Override
 	protected void initTexture() {
-		this.createTextures("chefus");
+		this.createTextures("toolsmith");
 	}
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("profession.chefus");
+		return PathHelper.full("profession.toolsmith");
 	}
-	
+
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,1),
-				new ItemStack(Items.bucket,1),
-				new ItemStack(Items.shears,1)
+				new ItemStack(ModItems.silverCoin,15)
 		};
 		
-		this.upgradeToNextOptionClasses = null;
+		this.upgradeToNextOptions = null;
 	}
-	
+
 }

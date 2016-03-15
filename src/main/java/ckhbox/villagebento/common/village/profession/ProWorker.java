@@ -13,19 +13,19 @@ public class ProWorker extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)},
 				new ItemStack(Items.iron_sword,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,25)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
 				new ItemStack(Items.iron_pickaxe,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,25)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
 				new ItemStack(Items.iron_axe,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
 				new ItemStack(Items.iron_hoe,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
 				new ItemStack(Items.iron_shovel,1)));
 	}
 

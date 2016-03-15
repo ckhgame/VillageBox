@@ -1,5 +1,7 @@
 package ckhbox.villagebento.common.village.profession;
 
+import ckhbox.villagebento.common.block.ModBlocks;
+import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
@@ -11,15 +13,22 @@ public class ProCarpetmaker extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
-		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.wheat_seeds,10),new ItemStack(Items.apple,5)},
-				new ItemStack(Items.bread)));
-		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.iron_axe,1),new ItemStack(Items.beef,3)},
-				new ItemStack(Items.bed)));
-		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.bone,6),new ItemStack(Blocks.torch,20)},
-				new ItemStack(Items.boat)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool0)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool1)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool2)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool3)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool4)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool5)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool6)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool7)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool8)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool9)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool10)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool11)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool12)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool13)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool14)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20),new ItemStack(Blocks.wool,1)},new ItemStack(ModBlocks.carpetWool15)));
 	}
 
 
@@ -36,12 +45,13 @@ public class ProCarpetmaker extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,10),
-				new ItemStack(Items.iron_ingot,8)
+				new ItemStack(ModItems.silverCoin,2),
+				new ItemStack(Blocks.wool,16)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProCarpetartist.class
+				ProCarpetMakerAdevanced.class,
+				ProCarpetMakerCartoony.class
 				};
 	}
 	

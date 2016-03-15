@@ -13,7 +13,7 @@ public class ProMage extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,10)},
 				new ItemStack(ModItems.flameStaff)));
 	}
 
@@ -30,12 +30,11 @@ public class ProMage extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,2)
+				new ItemStack(ModItems.silverCoin,3)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
 				ProAlchemist.class,
-				ProWarlock.class,
 				ProShaman.class
 				};
 	}

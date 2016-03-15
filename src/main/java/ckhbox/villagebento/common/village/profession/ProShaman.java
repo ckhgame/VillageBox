@@ -33,7 +33,7 @@ public class ProShaman extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.goldCoin,1)
+				new ItemStack(ModItems.silverCoin,25)
 		};
 		
 		this.upgradeToNextOptionClasses = null;

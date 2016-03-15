@@ -14,7 +14,7 @@ public class ProAlchemist extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,10), new ItemStack(ModItems.steelIngot,10)},
 				new ItemStack(ModBlocks.alchemyPot)));
 	}
 
@@ -31,7 +31,7 @@ public class ProAlchemist extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.goldCoin,2)
+				new ItemStack(ModItems.silverCoin,30)
 		};
 		
 		this.upgradeToNextOptionClasses = null;

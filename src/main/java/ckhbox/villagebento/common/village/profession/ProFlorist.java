@@ -1,5 +1,6 @@
 package ckhbox.villagebento.common.village.profession;
 
+import ckhbox.villagebento.common.item.ModItems;
 import ckhbox.villagebento.common.util.helper.PathHelper;
 import ckhbox.villagebento.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
@@ -36,12 +37,10 @@ public class ProFlorist extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,20)
+				new ItemStack(ModItems.silverCoin,2)
 		};
 		
-		this.upgradeToNextOptionClasses = new Class[]{
-				ProGardener.class
-				};
+		this.upgradeToNextOptionClasses = null;
 	}
 
 }

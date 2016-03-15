@@ -14,8 +14,17 @@ public class ProCarpenter extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)},
+				new ItemStack(ModItems.woodenHelmet)));
+		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,30)},
-				new ItemStack(ModBlocks.solidWood)));
+				new ItemStack(ModItems.woodenChestplate)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,25)},
+				new ItemStack(ModItems.woodenLeggings)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)},
+				new ItemStack(ModItems.woodenBoots)));
 	}
 
 	@Override
@@ -31,7 +40,7 @@ public class ProCarpenter extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,20)
+				new ItemStack(ModItems.silverCoin,2)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{

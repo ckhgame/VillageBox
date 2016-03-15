@@ -15,6 +15,9 @@ public class ProScholar extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)},
 				new ItemStack(Items.book)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)},
+				new ItemStack(Items.paper)));
 	}
 
 

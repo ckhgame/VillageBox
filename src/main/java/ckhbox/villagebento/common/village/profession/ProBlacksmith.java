@@ -13,7 +13,7 @@ public class ProBlacksmith extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.emerald,20)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1),new ItemStack(Items.iron_ingot,3)},
 				new ItemStack(ModItems.steelIngot)));
 	}
 
@@ -30,12 +30,13 @@ public class ProBlacksmith extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,20)
+				new ItemStack(ModItems.silverCoin, 2)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
 				ProArmorsmith.class,
-				ProWeaponsmith.class
+				ProWeaponsmith.class,
+				ProToolsmith.class
 				};
 	}
 

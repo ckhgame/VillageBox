@@ -13,7 +13,7 @@ public class ProBowmaker extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.goldCoin, 2)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin, 25)},
 				new ItemStack(ModItems.efficientBow,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
@@ -33,7 +33,7 @@ public class ProBowmaker extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,2)
+				new ItemStack(ModItems.silverCoin,10)
 		};
 		
 		this.upgradeToNextOptions = null;

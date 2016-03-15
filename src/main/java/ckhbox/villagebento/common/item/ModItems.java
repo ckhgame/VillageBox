@@ -32,7 +32,7 @@ public class ModItems {
 	}
 	
 	public static class ArmorMaterials{
-		
+		public static ArmorMaterial WOOD = EnumHelper.addArmorMaterial("VB:WOOD", PathHelper.full("wood"), 7, new int[]{2, 4, 3, 2}, 10);
 		public static ArmorMaterial STEEL = EnumHelper.addArmorMaterial("VB:STEEL", PathHelper.full("steel"), 15, new int[]{3, 7, 6, 3}, 12);
 		public static ArmorMaterial RUNESTEEL = EnumHelper.addArmorMaterial("VB:RUNESTEEL", PathHelper.full("steel"), 30, new int[]{3, 8, 7, 3}, 15);
 	}
@@ -58,6 +58,11 @@ public class ModItems {
 	public static Item steelChestplate;
 	public static Item steelLeggings;
 	public static Item steelBoots;
+	
+	public static Item woodenHelmet;
+	public static Item woodenChestplate;
+	public static Item woodenLeggings;
+	public static Item woodenBoots;
 	
 	public static ItemWeatherStone sunStone;
 	public static ItemWeatherStone rainStone;
@@ -157,6 +162,11 @@ public class ModItems {
 		GameRegistry.registerItem(steelChestplate=new ItemArmor("steelChestplate", ModItems.ArmorMaterials.STEEL, 1, 1),"steel_chestplate");
 		GameRegistry.registerItem(steelLeggings=new ItemArmor("steelLeggings", ModItems.ArmorMaterials.STEEL, 2, 2),"steel_leggings");
 		GameRegistry.registerItem(steelBoots=new ItemArmor("steelBoots", ModItems.ArmorMaterials.STEEL, 1, 3),"steel_boots");
+		
+		GameRegistry.registerItem(woodenHelmet=new ItemArmor("woodenHelmet", ModItems.ArmorMaterials.WOOD, 1, 0),"wooden_helmet");
+		GameRegistry.registerItem(woodenChestplate=new ItemArmor("woodenChestplate", ModItems.ArmorMaterials.WOOD, 1, 1),"wooden_chestplate");
+		GameRegistry.registerItem(woodenLeggings=new ItemArmor("woodenLeggings", ModItems.ArmorMaterials.WOOD, 2, 2),"wooden_leggings");
+		GameRegistry.registerItem(woodenBoots=new ItemArmor("woodenBoots", ModItems.ArmorMaterials.WOOD, 1, 3),"wooden_boots");
 		
 		//tools
 		GameRegistry.registerItem(sunStone=(new ItemWeatherStone(true)),"sun_stone");

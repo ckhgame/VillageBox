@@ -46,11 +46,12 @@ public class ProCookAssistant extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,1),
+				new ItemStack(ModItems.silverCoin,2),
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProGastronomist.class
+				ProChef.class,
+				ProChefDessert.class
 				};
 	}
 	

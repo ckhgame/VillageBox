@@ -94,36 +94,34 @@ public abstract class Profession implements IRegistrable{
 		registry.register(id++, new ProVillager2());
 		registry.register(id++, new ProPeasant());
 		registry.register(id++, new ProMiner());
-		registry.register(id++, new ProAdventurer());
 		registry.register(id++, new ProAlchemist());
+		registry.register(id++, new ProShaman());
 		registry.register(id++, new ProArmorsmith());
-		registry.register(id++, new ProGardener());
 		registry.register(id++, new ProBlacksmith());
-		registry.register(id++, new ProBombmaker());
+		registry.register(id++, new ProToolsmith());
 		registry.register(id++, new ProBowmaker());
 		registry.register(id++, new ProCarpenter());
-		registry.register(id++, new ProCarpetartist());
+		registry.register(id++, new ProCarpetMakerAdevanced());
+		registry.register(id++, new ProCarpetMakerCartoony());
 		registry.register(id++, new ProCarpetmaker());
 		registry.register(id++, new ProFisherman());
 		registry.register(id++, new ProFlorist());
 		registry.register(id++, new ProFurnituremaker());
-		registry.register(id++, new ProGastronomist());
-		registry.register(id++, new ProJeweler());
-		registry.register(id++, new ProMasterofalchemy());
 		registry.register(id++, new ProOrchardist());
 		registry.register(id++, new ProPainter());
 		registry.register(id++, new ProRancher());
 		registry.register(id++, new ProScholar());
-		registry.register(id++, new ProCollector());
 		registry.register(id++, new ProVintner());
 		registry.register(id++, new ProWeaponsmith());
 		registry.register(id++, new ProMage());
 		registry.register(id++, new ProWorker());
-		registry.register(id++, new ProWarlock());
 		registry.register(id++, new ProCookAssistant());
 		registry.register(id++, new ProFarmer());
 		registry.register(id++, new ProBookseller());
 		registry.register(id++, new ProBanker());
+		registry.register(id++, new ProChef());
+		registry.register(id++, new ProChefDessert());
+		registry.register(id++, new ProBuilder());
 	}
 
 }
