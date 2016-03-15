@@ -22,8 +22,6 @@ public class ModBlockRenderers {
 		registerModel(ModBlocks.buildboxLarge, 0, "buildbox_large");
 		registerModel(ModBlocks.buildboxExLarge, 0, "buildbox_exlarge");
 		
-		registerModel(ModBlocks.solidWood, 0, "solid_wood");
-		
 		registerModel(ModBlocks.tableOak, 0, "table_oak");
 		registerModel(ModBlocks.tableJungle, 0, "table_jungle");
 		registerModel(ModBlocks.tableBirch, 0, "table_birch");
