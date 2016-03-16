@@ -49,36 +49,11 @@ public class EventCoinsFound {
 	public void onBlockBreak(BlockEvent.BreakEvent event)
 	{
 		if(!event.world.isRemote){
-			Block block = event.state.getBlock();
-			if(block instanceof BlockOre){
+			if(Rand.get().nextInt(5) == 0){
 				int l =  ExtendedPlayerProperties.get(event.getPlayer()).treasureHuntLevel;
-				int base = l * 2 + 1;
-				int add = l + 3;
+				int base = l + 1;
+				int add = l * 2;
 				dropCoins(Rand.get().nextInt(add) + base,event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
-			}
-			else if(block instanceof BlockCrops){
-				if(Rand.get().nextInt(3) == 0){
-					int l =  ExtendedPlayerProperties.get(event.getPlayer()).treasureHuntLevel;
-					int base = l + 1;
-					int add = l + 3;
-					dropCoins(Rand.get().nextInt(add) + base,event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
-				}
-			}
-			else if(block instanceof BlockGrass){
-				if(Rand.get().nextInt(5) == 0){
-					int l =  ExtendedPlayerProperties.get(event.getPlayer()).treasureHuntLevel;
-					int base = l + 1;
-					int add = l + 1;
-					dropCoins(Rand.get().nextInt(add) + base,event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
-				}
-			}
-			else if(block instanceof BlockLog){
-				if(Rand.get().nextInt(3) == 0){
-					int l =  ExtendedPlayerProperties.get(event.getPlayer()).treasureHuntLevel;
-					int base = l + 1;
-					int add = l + 3;
-					dropCoins(Rand.get().nextInt(add) + base,event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
-				}
 			}
 		}
 	}
