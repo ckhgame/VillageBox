@@ -39,7 +39,7 @@ public class ProCarpetmaker extends Profession{
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("gastronomist.carpetmaker");
+		return PathHelper.full("profession.carpetmaker");
 	}
 	
 	@Override
