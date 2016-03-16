@@ -48,7 +48,7 @@ public class EventCoinsFound {
 	@SubscribeEvent
 	public void onBlockHarvest(BlockEvent.HarvestDropsEvent event)
 	{
-		if(!event.world.isRemote){
+		if(!event.world.isRemote && event.harvester != null){
 			if(Rand.get().nextInt(5) == 0){
 				int l =  ExtendedPlayerProperties.get(event.harvester).treasureHuntLevel;
 				int base = l + 1;
