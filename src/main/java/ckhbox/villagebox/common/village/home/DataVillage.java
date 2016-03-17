@@ -43,7 +43,7 @@ public class DataVillage extends WorldSavedData{
 	private ArrayList<HomeBoundary> homeList = new ArrayList<HomeBoundary>();
 	private ArrayList<DeadVillager> deadVillagers = new ArrayList<DeadVillager>();
 	
-	private DataVillage(String name) {
+	public DataVillage(String name) {
 		super(name);
 	}
 
