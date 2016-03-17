@@ -12,7 +12,7 @@ import ckhbox.villagebento.common.util.math.IntVec3;
 import ckhbox.villagebento.common.util.math.Rand;
 import ckhbox.villagebento.common.util.tool.HouseDetector;
 import ckhbox.villagebento.common.util.tool.NameGenerator;
-import ckhbox.villagebento.common.village.home.DataHomeList;
+import ckhbox.villagebento.common.village.home.DataVillage;
 import ckhbox.villagebento.common.village.profession.Profession;
 import ckhbox.villagebento.common.village.trading.ITrading;
 import ckhbox.villagebento.common.village.trading.TradingRecipeList;
@@ -30,7 +30,9 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -224,14 +226,16 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		}
 		else{
 			bound = bound.extend(-1,0,-1);//remove outlines
+			System.out.println(bound.toString());
 			//add home bounday
-			if(!DataHomeList.get(this.worldObj).add(bound)){
-				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.existed")));
+			String oldOwner = DataVillage.get(this.worldObj).addHome(this.getName(),bound);
+			if(oldOwner != null){
+				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.existed"),oldOwner));
 			}
 			else{
 				//remove old home
 				if(this.home != null){
-					DataHomeList.get(this.worldObj).remove(home);
+					DataVillage.get(this.worldObj).removeHome(home);
 				}
 				this.home = bound;
 				//stop following
@@ -243,9 +247,14 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		}
 	}
 	
+	public void setHome(IntBoundary home){
+		this.home = home;
+		this.setDataFlag(2, true);
+	}
+	
 	public void moveOutHome(EntityPlayer player){
 		if(this.home != null){
-			DataHomeList.get(this.worldObj).remove(home);
+			DataVillage.get(this.worldObj).removeHome(home);
 			this.home = null;
 			this.setDataFlag(2, false);
 			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.moveout"),this.getName()));
@@ -284,6 +293,16 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		//update profession
 		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
 			this.setProfession(this.getDataWatcher().getWatchableObjectInt(16));
+		}
+	}
+	
+	@Override
+	public void onDeath(DamageSource cause) {
+		super.onDeath(cause);
+		if(!this.worldObj.isRemote){
+			System.out.println("dead....");
+			DataVillage.get(this.worldObj).addDeadVillager(this);
+			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.died"),this.getName()));
 		}
 	}
 
@@ -349,6 +368,4 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	//upgrading preview
 	@SideOnly(Side.CLIENT)
 	public Profession previewProfession;
-
-	
 }

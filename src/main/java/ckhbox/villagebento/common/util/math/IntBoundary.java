@@ -12,6 +12,15 @@ public class IntBoundary {
 		this.maxy = maxy;
 		this.maxz = maxz;
 	}
+	
+	public IntBoundary(int[] array){
+		this.minx = array[0];
+		this.miny = array[1];
+		this.minz = array[2];
+		this.maxx = array[3];
+		this.maxy = array[4];
+		this.maxz = array[5];
+	}
 
 	public boolean equalTo(IntBoundary other){
 		if(this.maxx != other.maxx ||
@@ -72,6 +81,10 @@ public class IntBoundary {
 		double y = Rand.get().nextInt(this.maxy + 1 - this.miny) + this.miny;
 		double z = Rand.get().nextInt(this.maxz + 1 - this.minz) + this.minz;
 		return new Vec3(x,y,z);
+	}
+	
+	public int[] toArray(){
+		return new int[]{minx,miny,minz,maxx,maxy,maxz};
 	}
 	
 	@Override

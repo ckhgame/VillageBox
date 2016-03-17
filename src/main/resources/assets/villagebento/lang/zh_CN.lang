@@ -103,8 +103,10 @@ villagebento:gui.mail.hi=你好,§o%s
 
 villagebento:message.villager.isbusy=这个村民正忙...
 villagebento:message.villager.newjoined=%s 到达了!
+villagebento:message.villager.revived=%s 复活了
+villagebento:message.villager.died=%s 被杀死了!
 villagebento:message.villager.home.openspace=这不是一个封闭的空间!
-villagebento:message.villager.home.existed=这里已经有人住了!
+villagebento:message.villager.home.existed=这里已经住了%s!
 villagebento:message.villager.home.movein=%s 搬进了新家 :D
 villagebento:message.villager.home.moveout=%s 搬出了原来的家
 

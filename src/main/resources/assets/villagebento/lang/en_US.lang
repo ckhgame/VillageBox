@@ -103,8 +103,10 @@ villagebento:gui.mail.hi=Hi,§o%s
 
 villagebento:message.villager.isbusy=This villager is busy now...
 villagebento:message.villager.newjoined=%s has arrived!
+villagebento:message.villager.revived=%s has revived!
+villagebento:message.villager.died=%s has been killed!
 villagebento:message.villager.home.openspace=It's not a closed space!
-villagebento:message.villager.home.existed=Someone has already moved in!
+villagebento:message.villager.home.existed=%s has already moved in this place!
 villagebento:message.villager.home.movein=%s has moved in a new home :D
 villagebento:message.villager.home.moveout=%s has moved out from home
 
