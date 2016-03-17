@@ -189,7 +189,7 @@ public class DataVillage extends WorldSavedData{
 			this.gender = villager.isMale();
 			this.home = villager.getHome();
 			this.pos = this.home == null?new IntVec3(villager.getWanderCenter()):null;
-			this.ticksLeft = 1000;
+			this.ticksLeft = 24000;
 		}
 		
 		public DeadVillager(NBTTagCompound nbt){
