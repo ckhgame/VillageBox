@@ -40,8 +40,8 @@ public class ProFisherman extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.emerald,10),
-				new ItemStack(Items.iron_ingot,8)
+				new ItemStack(ModItems.silverCoin,2),
+				new ItemStack(Items.fishing_rod,1)
 		};
 		
 		this.upgradeToNextOptions = null;
