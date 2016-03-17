@@ -225,7 +225,9 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.openspace")));
 		}
 		else{
-			bound = bound.extend(-1,0,-1);//remove outlines
+			//remove outlines
+			bound = bound.extend(-1,0,-1);
+			bound.maxy -= 1;
 			System.out.println(bound.toString());
 			//add home bounday
 			String oldOwner = DataVillage.get(this.worldObj).addHome(this.getName(),bound);

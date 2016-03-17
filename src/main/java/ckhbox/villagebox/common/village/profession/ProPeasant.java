@@ -45,7 +45,7 @@ public class ProPeasant extends Profession{
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
-				ProFlorist.class,
+				//ProFlorist.class,
 				ProOrchardist.class,
 				ProRancher.class,
 				ProFisherman.class,

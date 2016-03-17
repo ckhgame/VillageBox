@@ -61,7 +61,7 @@ public class VillagerAIWander extends EntityAIBase
         else{
             if(this.villager.worldObj.isDaytime() && !this.villager.worldObj.isRaining()){
             	//if now is day time and not raining, the villager will randomly walking near home
-            	vec3 = this.villager.getHome().extend(8).getRandomPosInsideBoundary();
+            	vec3 = this.villager.getHome().extend(5,2,5).getRandomPosInsideBoundary();
             }
             else{
             	//if is raining or at night, the villager will stay at home
