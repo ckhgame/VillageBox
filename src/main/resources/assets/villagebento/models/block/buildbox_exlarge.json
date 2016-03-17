@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "villagebento:blocks/buildbox_end_exlarge",
-        "side": "villagebento:blocks/buildbox_side"
-    }
-}

@@ -1,0 +1,10 @@
+{
+	"parent": "villagebox:block/chair",
+    "textures": {
+		"particle": "blocks/log_acacia_top",
+        "surface_top": "blocks/log_acacia_top",
+		"surface_side": "blocks/log_acacia",
+        "leg": "blocks/log_acacia",
+		"back": "blocks/log_acacia"
+    }
+}

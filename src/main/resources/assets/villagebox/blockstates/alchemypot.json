@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "level=0": { "model": "villagebox:alchemypot_empty" },
+        "level=1": { "model": "villagebox:alchemypot_level1" },
+        "level=2": { "model": "villagebox:alchemypot_level2" },
+        "level=3": { "model": "villagebox:alchemypot_level3" }
+    }
+}

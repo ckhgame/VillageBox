@@ -1,7 +1,0 @@
-{
-    "parent": "block/carpet",
-    "textures": {
-        "particle": "villagebento:blocks/carpet_2",
-        "wool": "villagebento:blocks/carpet_2"
-    }
-}

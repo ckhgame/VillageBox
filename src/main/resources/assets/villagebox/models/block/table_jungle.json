@@ -1,0 +1,9 @@
+{
+	"parent": "villagebox:block/table",
+    "textures": {
+		"particle": "blocks/log_jungle_top",
+        "surface_top": "blocks/log_jungle_top",
+		"surface_side": "blocks/log_jungle",
+        "leg": "blocks/log_jungle"
+    }
+}

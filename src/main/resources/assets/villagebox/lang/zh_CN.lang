@@ -1,0 +1,256 @@
+language.name=Chinese
+language.region=CN
+language.code=zh_CN
+
+# Professions
+villagebox:profession.villager.name=村民
+villagebox:profession.villager.desc=一个普通村民
+villagebox:profession.peasant.name=农民
+villagebox:profession.peasant.desc=拥有基本农业技能
+villagebox:profession.worker.name=工人
+villagebox:profession.worker.desc=制作工具和武器
+villagebox:profession.scholar.name=学者
+villagebox:profession.scholar.desc=专注于研究
+villagebox:profession.banker.name=银行家
+villagebox:profession.banker.desc=提供货币转换
+villagebox:profession.bookseller.name=书商
+villagebox:profession.bookseller.desc=出售书籍
+villagebox:profession.painter.name=画家
+villagebox:profession.painter.desc=创作新的绘画
+villagebox:profession.mage.name=法师
+villagebox:profession.mage.desc=出售魔法物品
+villagebox:profession.alchemist.name=炼金术师
+villagebox:profession.alchemist.desc=转换自然元素
+villagebox:profession.shaman.name=萨满
+villagebox:profession.shaman.desc=改变天气
+villagebox:profession.carpenter.name=木匠
+villagebox:profession.carpenter.desc=制作木制物品
+villagebox:profession.carpetmaker.name=地毯制作师
+villagebox:profession.carpetmaker.desc=制作地毯
+villagebox:profession.builder.name=建筑师
+villagebox:profession.builder.desc=帮助快速建房
+villagebox:profession.blacksmith.name=铁匠
+villagebox:profession.blacksmith.desc=制作钢锭
+villagebox:profession.miner.name=矿工
+villagebox:profession.miner.desc=挖掘基础矿物 
+villagebox:profession.bowmaker.name=制弓师
+villagebox:profession.bowmaker.desc=制作高级弓
+villagebox:profession.furnituremaker.name=家具制作师
+villagebox:profession.furnituremaker.desc=制作家具
+villagebox:profession.carpetmakeradv.name=高级地毯制作师
+villagebox:profession.carpetmakeradv.desc=制作更好的地毯
+villagebox:profession.carpetmakercartoony.name=卡通地毯制作师
+villagebox:profession.carpetmakercartoony.desc=制作卡通风格地毯
+villagebox:profession.weaponsmith.name=武器铸造师
+villagebox:profession.weaponsmith.desc=制造钢制武器
+villagebox:profession.armorsmith.name=护甲锻造师
+villagebox:profession.armorsmith.desc=制造钢制护甲
+villagebox:profession.toolsmith.name=工具铸造师
+villagebox:profession.toolsmith.desc=制造钢制工具
+villagebox:profession.orchardist.name=果园主
+villagebox:profession.orchardist.desc=生产水果
+villagebox:profession.rancher.name=牧场主
+villagebox:profession.rancher.desc=照看动物
+villagebox:profession.florist.name=花匠
+villagebox:profession.florist.desc=采集花朵
+villagebox:profession.fisherman.name=渔夫
+villagebox:profession.fisherman.desc=提供海鲜产品
+villagebox:profession.vintner.name=酒商
+villagebox:profession.vintner.desc=酿造出售美酒
+villagebox:profession.farmer.name=农场主
+villagebox:profession.farmer.desc=拥有高级农业技能
+villagebox:profession.cookassistant.name=厨师助手
+villagebox:profession.cookassistant.desc=处理食材
+villagebox:profession.chef.name=主厨
+villagebox:profession.chef.desc=烹饪美味佳肴
+villagebox:profession.chefdessert.name=甜点师
+villagebox:profession.chefdessert.desc=精心准备可口的甜品
+
+# Gui
+villagebox:gui.villagermain.menu.upgrade=> 升级
+villagebox:gui.villagermain.menu.trade=> 交易
+villagebox:gui.villagermain.menu.follow.start=> 跟随
+villagebox:gui.villagermain.menu.follow.stop=> 停止跟随
+villagebox:gui.villagermain.menu.home.movein=> 设置此处为家
+villagebox:gui.villagermain.menu.home.moveout=> 从家里搬出
+
+villagebox:gui.villagermain.menu.chat.common0=你好啊, %s.
+villagebox:gui.villagermain.menu.chat.common1=最近如何? %s.
+villagebox:gui.villagermain.menu.chat.common2=很高兴见到你, %s.
+villagebox:gui.villagermain.menu.chat.hashome0=能住在这里我非常高兴!
+villagebox:gui.villagermain.menu.chat.hashome1=想和我交易吗?
+villagebox:gui.villagermain.menu.chat.nohome0=我想找个住的地方.
+villagebox:gui.villagermain.menu.chat.nohome1=你能为我建个房子吗?
+
+villagebox:gui.villagermain.menu.chat.movein=我喜欢我的新家!
+villagebox:gui.villagermain.menu.chat.moveout=我又无家可归了  T_T
+villagebox:gui.villagermain.menu.chat.followstart=我跟着你呢!
+villagebox:gui.villagermain.menu.chat.followstop=好吧，等下见!
+
+villagebox:gui.villagermain.button.lock.title=未解锁
+villagebox:gui.villagermain.button.lock.desc=为村民提供住处后解锁
+villagebox:gui.villagermain.button.maxupgrade.title=最顶级
+villagebox:gui.villagermain.button.maxupgrade.desc=没有更高级的升级了
+
+villagebox:gui.villagerupgrade.buttonupgrade.title=升级
+villagebox:gui.villagerupgrade.buttonupgrade.desc=升级到更高级的专业
+villagebox:gui.villagerupgrade.buttonupgrade.desc.disable0=物品不匹配
+
+villagebox:gui.mail.button.approve=许可
+villagebox:gui.mail.hi=你好,§o%s
+
+# Message
+
+villagebox:message.villager.isbusy=这个村民正忙...
+villagebox:message.villager.newjoined=%s 到达了!
+villagebox:message.villager.revived=%s 复活了
+villagebox:message.villager.died=%s 被杀死了!
+villagebox:message.villager.home.openspace=这不是一个封闭的空间!
+villagebox:message.villager.home.existed=这里已经住了%s!
+villagebox:message.villager.home.movein=%s 搬进了新家 :D
+villagebox:message.villager.home.moveout=%s 搬出了原来的家
+
+villagebox:message.mail.newmail=你收到一封新邮件
+villagebox:message.mail.nomail=邮箱里什么都没有
+villagebox:message.mail.invitesuccess=你送出了邀请函，很快你就会得到回复
+villagebox:message.mail.invitefailed=你已经送过邀请函了
+
+villagebox:message.player.treasurelvlupgrade.success=你的 §6寻宝等级 §f提升到了 §a%d
+villagebox:message.player.treasurelvlupgrade.failed=你已经看过这本书了
+
+villagebox:message.player.weatherstone.alreadysunny=你不能在晴天使用此物
+villagebox:message.player.weatherstone.alreadyraining=你不能再雨天使用此物
+villagebox:message.player.weatherstone.changed=天气改变了……
+
+# Items
+item.villagebox:treasurebook1.name=寻宝宝典 I
+item.villagebox:treasurebook2.name=寻宝宝典 II
+item.villagebox:treasurebook3.name=寻宝宝典 III
+item.villagebox:bronzeCoin.name=铜币
+item.villagebox:silverCoin.name=银币
+item.villagebox:goldCoin.name=金币
+item.villagebox:mail.name=邮件
+item.villagebox:invitation.name=邀请函
+item.villagebox:sunStone.name=晴之石
+item.villagebox:rainStone.name=雨之石
+item.villagebox:flameStaff.name=火焰法杖
+item.villagebox:steelIngot.name=钢锭
+item.villagebox:cabbage.name=卷心菜
+item.villagebox:corn.name=玉米
+item.villagebox:chili.name=辣椒
+item.villagebox:riceplant.name=稻谷
+item.villagebox:soybean.name=大豆
+item.villagebox:grape.name=葡萄
+item.villagebox:lemon.name=柠檬
+item.villagebox:orange.name=橘子
+item.villagebox:pineapple.name=菠萝
+item.villagebox:strawberry.name=草莓
+item.villagebox:melon.name=蜜瓜
+item.villagebox:banana.name=香蕉
+item.villagebox:cheese.name=奶酪
+item.villagebox:mayonnaise.name=美乃滋
+item.villagebox:ballOfWool.name=羊毛球
+item.villagebox:cookingOil.name=食用油
+item.villagebox:soySauce.name=酱油
+item.villagebox:rice.name=米饭
+item.villagebox:riceFlour.name=米粉
+item.villagebox:grapeWine.name=葡萄酒
+item.villagebox:cookingWine.name=料酒
+item.villagebox:cocktail.name=鸡尾酒
+item.villagebox:beer.name=啤酒
+item.villagebox:whisky.name=威士忌
+item.villagebox:vodka.name=伏特加
+item.villagebox:porkRamen.name=猪肉拉面
+item.villagebox:beefNoodleSoup.name=牛肉面
+item.villagebox:noodleSoup.name=面
+item.villagebox:carrotCake.name=胡萝卜蛋糕
+item.villagebox:hambuger.name=汉堡
+item.villagebox:congee.name=粥
+item.villagebox:boiledFish.name=水煮鱼
+item.villagebox:appleCandy.name=苹果糖
+item.villagebox:creamyCorn.name=奶油玉米
+item.villagebox:chocolateBanana.name=巧克力香蕉
+item.villagebox:fries.name=薯条
+item.villagebox:mapoTofu.name=麻婆豆腐
+item.villagebox:cannedOranges.name=桔子罐头
+item.villagebox:strawberryIcecream.name=草莓冰淇淋
+item.villagebox:honeyTea.name=蜂蜜茶
+item.villagebox:pineappleCanday.name=菠萝糖
+item.villagebox:cornChips.name=薯片
+item.villagebox:melonIcecream.name=蜜瓜冰淇淋
+item.villagebox:melonIcebar.name=蜜瓜冰棍
+item.villagebox:roastedLamb.name=烤羊排
+item.villagebox:nigiri.name=一指寿司
+item.villagebox:udon.name=乌冬面
+item.villagebox:tofu.name=豆腐
+item.villagebox:boiledEgg.name=水煮蛋
+item.villagebox:seaweed.name=海带
+item.villagebox:crab.name=螃蟹
+item.villagebox:shrimp.name=虾
+item.villagebox:wheatFlour.name=面粉
+item.villagebox:salt.name=盐
+
+
+
+# Blocks
+tile.villagebox:mailbox.name=信箱
+tile.villagebox:alchemypot.name=炼金锅
+tile.villagebox:buildboxSmall.name=建筑盒子 (§a小型§f)
+tile.villagebox:buildboxMedium.name=建筑盒子 (§b中型§f)
+tile.villagebox:buildboxLarge.name=建筑盒子 (§c大型§f)
+tile.villagebox:buildboxExLarge.name=建筑盒子 (§d超大型§f)
+tile.villagebox:carpet0.name=carpet0
+tile.villagebox:carpet1.name=carpet1
+tile.villagebox:carpet2.name=carpet2
+tile.villagebox:carpet3.name=carpet3
+tile.villagebox:carpet4.name=carpet4
+tile.villagebox:carpet5.name=carpet5
+tile.villagebox:carpet6.name=carpet6
+tile.villagebox:carpet7.name=carpet7
+tile.villagebox:carpet8.name=carpet8
+tile.villagebox:carpet9.name=carpet9
+tile.villagebox:carpet10.name=carpet10
+tile.villagebox:carpet11.name=carpet11
+tile.villagebox:carpet12.name=carpet12
+tile.villagebox:carpet13.name=carpet13
+tile.villagebox:carpet14.name=carpet14
+tile.villagebox:carpet15.name=carpet15
+tile.villagebox:carpet16.name=carpet16
+tile.villagebox:carpet17.name=carpet17
+tile.villagebox:carpet18.name=carpet18
+tile.villagebox:carpet19.name=carpet19
+tile.villagebox:carpet20.name=carpet20
+tile.villagebox:carpet21.name=carpet21
+tile.villagebox:carpet22.name=carpet22
+tile.villagebox:carpet23.name=carpet23
+tile.villagebox:carpet24.name=carpet24
+tile.villagebox:carpet25.name=carpet25
+tile.villagebox:carpet26.name=carpet26
+tile.villagebox:carpet27.name=carpet27
+tile.villagebox:carpet28.name=carpet28
+tile.villagebox:carpet29.name=carpet29
+tile.villagebox:carpet30.name=carpet30
+tile.villagebox:carpet31.name=carpet31
+tile.villagebox:carpetWool0.name=carpetWool0
+tile.villagebox:carpetWool1.name=carpetWool1
+tile.villagebox:carpetWool2.name=carpetWool2
+tile.villagebox:carpetWool3.name=carpetWool3
+tile.villagebox:carpetWool4.name=carpetWool4
+tile.villagebox:carpetWool5.name=carpetWool5
+tile.villagebox:carpetWool6.name=carpetWool6
+tile.villagebox:carpetWool7.name=carpetWool7
+tile.villagebox:carpetWool8.name=carpetWool8
+tile.villagebox:carpetWool9.name=carpetWool9
+
+#Block & Item info
+villagebox:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d
+villagebox:mail.item.info=§7来自 §a%s
+villagebox:invitation.item.info=§7"欢迎来到我的村庄..."
+
+# Mail
+villagebox:mail.newvillager0.content=我听说你正在建造一个村庄, 我想知道我是否有机会加入?
+villagebox:mail.newvillager1.content=你是否在寻找村民? 请考虑我!
+villagebox:mail.newvillager2.content=我已经厌倦了现在的生活. 我能成为你村庄的村民吗?
+villagebox:mail.tip0.content=A sad villager can provide nothing but sadness.
+villagebox:mail.tip1.content=Cool items could be found by upgrading your villagers!
+villagebox:mail.tip2.content=Banker is useful to exchange low and high level gems.

@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+		"particle": "villagebox:blocks/mailbox_front",
+		"north": "villagebox:blocks/mailbox_front",
+		"south": "villagebox:blocks/mailbox_back",
+        "east": "villagebox:blocks/mailbox_side",
+        "west": "villagebox:blocks/mailbox_side",
+		"up": "villagebox:blocks/mailbox_top",
+		"down": "villagebox:blocks/mailbox_bot"
+    }
+}

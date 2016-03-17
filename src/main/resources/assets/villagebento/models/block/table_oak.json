@@ -1,9 +1,0 @@
-{
-	"parent": "villagebento:block/table",
-    "textures": {
-		"particle": "blocks/log_oak_top",
-        "surface_top": "blocks/log_oak_top",
-		"surface_side": "blocks/log_oak",
-        "leg": "blocks/log_oak"
-    }
-}

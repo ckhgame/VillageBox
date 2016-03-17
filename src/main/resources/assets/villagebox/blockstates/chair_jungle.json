@@ -1,0 +1,8 @@
+{
+    "variants": {
+		"facing=north": { "model": "villagebox:chair_jungle" },
+        "facing=south": { "model": "villagebox:chair_jungle", "y": 180 },
+        "facing=west":  { "model": "villagebox:chair_jungle", "y": 270 },
+        "facing=east":  { "model": "villagebox:chair_jungle", "y": 90 }
+    }
+}

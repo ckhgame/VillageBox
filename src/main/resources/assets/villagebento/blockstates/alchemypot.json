@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "level=0": { "model": "villagebento:alchemypot_empty" },
-        "level=1": { "model": "villagebento:alchemypot_level1" },
-        "level=2": { "model": "villagebento:alchemypot_level2" },
-        "level=3": { "model": "villagebento:alchemypot_level3" }
-    }
-}

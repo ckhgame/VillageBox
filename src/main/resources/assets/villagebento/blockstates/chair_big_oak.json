@@ -1,8 +1,0 @@
-{
-    "variants": {
-		"facing=north": { "model": "villagebento:chair_big_oak" },
-        "facing=south": { "model": "villagebento:chair_big_oak", "y": 180 },
-        "facing=west":  { "model": "villagebento:chair_big_oak", "y": 270 },
-        "facing=east":  { "model": "villagebento:chair_big_oak", "y": 90 }
-    }
-}

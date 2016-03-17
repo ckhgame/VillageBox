@@ -1,0 +1,8 @@
+{
+	"variants": {
+        "facing=north": { "model": "villagebox:mailbox" },
+        "facing=south": { "model": "villagebox:mailbox", "y": 180 },
+        "facing=west":  { "model": "villagebox:mailbox", "y": 270 },
+        "facing=east":  { "model": "villagebox:mailbox", "y": 90 }
+    }
+}

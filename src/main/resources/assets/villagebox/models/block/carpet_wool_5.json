@@ -1,0 +1,7 @@
+{
+    "parent": "block/carpet",
+    "textures": {
+        "particle": "villagebox:blocks/wool_5",
+        "wool": "villagebox:blocks/wool_5"
+    }
+}
