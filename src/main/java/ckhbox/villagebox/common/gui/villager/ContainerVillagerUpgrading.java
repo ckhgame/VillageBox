@@ -153,13 +153,14 @@ public class ContainerVillagerUpgrading extends Container
     
         if (!this.world.isRemote)
         {
-        	for(int i =0;i<4;i++){
+        	for(int i =0;i<3;i++){
         		if (this.upgradingInventory.getStackInSlot(i) != null)
                 {
         			if(!playerIn.inventory.addItemStackToInventory(this.upgradingInventory.getStackInSlot(i)))
         				playerIn.dropPlayerItemWithRandomChoice(this.upgradingInventory.getStackInSlot(i), false);
                 }
         	}
+        	playerIn.inventoryContainer.detectAndSendChanges();
         }
     }
 }
