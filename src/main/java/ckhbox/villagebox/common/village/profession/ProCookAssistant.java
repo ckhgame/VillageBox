@@ -13,22 +13,45 @@ public class ProCookAssistant extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10),new ItemStack(ModItems.soybean,3)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,10),
+						new ItemStack(ModItems.corn,1),
+						},
 				new ItemStack(ModItems.cookingOil)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10),new ItemStack(ModItems.riceplant,2)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,10),
+						new ItemStack(ModItems.riceplant,2)
+						},
 				new ItemStack(ModItems.rice)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10),new ItemStack(ModItems.riceplant,3)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,10),
+						new ItemStack(ModItems.riceplant,3)
+						},
 				new ItemStack(ModItems.riceFlour)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10),new ItemStack(ModItems.soybean,3)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,10),
+						new ItemStack(Items.wheat,5)
+						},
+				new ItemStack(ModItems.wheatFlour)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,10),
+						new ItemStack(ModItems.soybean,3)
+						},
 				new ItemStack(ModItems.soySauce)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5),new ItemStack(Items.egg,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,5),
+						new ItemStack(Items.egg,1)
+						},
 				new ItemStack(ModItems.boiledEgg)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10),new ItemStack(ModItems.soybean,3)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,10),
+						new ItemStack(ModItems.soybean,5)},
 				new ItemStack(ModItems.tofu)));
 	}
 

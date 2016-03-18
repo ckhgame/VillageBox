@@ -16,13 +16,17 @@ public class ProVintner extends Profession{
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
 				new ItemStack(ModItems.cookingWine)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,10),
+						new ItemStack(ModItems.grape,1)},
 				new ItemStack(ModItems.grapeWine)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
 				new ItemStack(ModItems.cocktail)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,5),
+						new ItemStack(ModItems.riceplant,1)},
 				new ItemStack(ModItems.beer)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
@@ -40,7 +44,7 @@ public class ProVintner extends Profession{
 
 	@Override
 	protected String getUnlocalized() {
-		return PathHelper.full("gastronomist.vintner");
+		return PathHelper.full("profession.vintner");
 	}
 	
 	@Override

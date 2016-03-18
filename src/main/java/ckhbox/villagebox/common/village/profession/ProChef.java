@@ -13,40 +13,91 @@ public class ProChef extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.silverCoin,1),
+						new ItemStack(Items.porkchop,1),
+						new ItemStack(ModItems.wheatFlour,1),
+						new ItemStack(ModItems.soySauce,1)
+						},
 				new ItemStack(ModItems.porkRamen)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.silverCoin,1),
+						new ItemStack(Items.beef,1),
+						new ItemStack(ModItems.wheatFlour,1)
+						},
 				new ItemStack(ModItems.beefNoodleSoup)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.silverCoin,1),
+						new ItemStack(ModItems.wheatFlour,1),
+						new ItemStack(ModItems.salt,1)
+						},
 				new ItemStack(ModItems.noodleSoup)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,50),
+						new ItemStack(Items.beef,1),
+						new ItemStack(ModItems.cheese,1),
+						new ItemStack(ModItems.cabbage,1)
+						},
 				new ItemStack(ModItems.hambuger)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,40),
+						new ItemStack(ModItems.rice,1),
+						new ItemStack(ModItems.salt,1)},
 				new ItemStack(ModItems.congee)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.silverCoin,1),
+						new ItemStack(ModItems.chili,1),
+						new ItemStack(Items.fish,1),
+						new ItemStack(ModItems.cookingOil,1)
+						},
 				new ItemStack(ModItems.boiledFish)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,30),
+						new ItemStack(Items.potato,1),
+						new ItemStack(ModItems.cookingOil,1)
+						},
 				new ItemStack(ModItems.fries)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.silverCoin,1),
+						new ItemStack(ModItems.tofu,1),
+						new ItemStack(ModItems.chili,1),
+						new ItemStack(ModItems.soySauce,1)},
 				new ItemStack(ModItems.mapoTofu)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,30),
+						new ItemStack(ModItems.corn,1),
+						new ItemStack(ModItems.salt,1),
+						new ItemStack(ModItems.cookingOil,1)
+						},
 				new ItemStack(ModItems.cornChips)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.silverCoin,1),
+						new ItemStack(Items.mutton,1),
+						new ItemStack(ModItems.cookingWine,1),
+						new ItemStack(ModItems.cookingOil,1)
+						},
 				new ItemStack(ModItems.roastedLamb)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,50),
+						new ItemStack(ModItems.rice,1),
+						new ItemStack(ModItems.soySauce,1),
+						new ItemStack(Items.fish,1)},
 				new ItemStack(ModItems.nigiri)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{
+						new ItemStack(ModItems.bronzeCoin,80),
+						new ItemStack(ModItems.riceFlour,1),
+						new ItemStack(ModItems.salt,1)},
 				new ItemStack(ModItems.udon)));
 	}
 
