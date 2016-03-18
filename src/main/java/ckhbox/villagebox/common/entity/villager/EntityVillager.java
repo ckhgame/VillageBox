@@ -190,7 +190,14 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	}
 	
 	public boolean isInteracting(){
-		return this.getDataFlag(0);
+		
+		if(this.getDataFlag(0) && this.interacting.isEntityAlive()){
+			return true;
+		}
+		else{
+			this.setInteracting(null);
+			return false;
+		}
 	}
 
 	public EntityPlayer getInteracting(){
@@ -206,7 +213,14 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	}
 	
 	public boolean isFollowing(){
-		return this.getDataFlag(1);
+		
+		if(this.getDataFlag(1) && this.following.isEntityAlive()){
+			return true;
+		}
+		else{
+			this.setFollowing(null);
+			return false;
+		}
 	}	
 	
 	public EntityPlayer getFollowing(){
