@@ -1,4 +1,4 @@
-language.name=Chinese
+language.name=Chinese (Simplified)
 language.region=CN
 language.code=zh_CN
 
@@ -189,8 +189,22 @@ item.villagebox:crab.name=螃蟹
 item.villagebox:shrimp.name=虾
 item.villagebox:wheatFlour.name=面粉
 item.villagebox:salt.name=盐
+item.villagebox:steelHelmet.name=钢制头盔
+item.villagebox:steelChestplate.name=钢制胸甲
+item.villagebox:steelLeggings.name=钢制护腿
+item.villagebox:steelBoots.name=钢制靴子
+item.villagebox:woodenHelmet.name=木制头盔
+item.villagebox:woodenChestplate.name=木制胸甲
+item.villagebox:woodenLeggings.name=木制护腿
+item.villagebox:woodenBoots.name=木制靴子
+item.villagebox:steelHoe.name=钢锄
+item.villagebox:steelAxe.name=钢斧
+item.villagebox:steelPickaxe.name=钢镐
+item.villagebox:steelShovel.name=钢铲
+item.villagebox:steelSword.name=钢剑
 
-
+# villager egg
+entity.villagebox.villager.name=村民
 
 # Blocks
 tile.villagebox:mailbox.name=信箱
@@ -257,6 +271,3 @@ villagebox:invitation.item.info=§7"欢迎来到我的村庄..."
 villagebox:mail.newvillager0.content=我听说你正在建造一个村庄, 我想知道我是否有机会加入?
 villagebox:mail.newvillager1.content=你是否在寻找村民? 请考虑我!
 villagebox:mail.newvillager2.content=我已经厌倦了现在的生活. 我能成为你村庄的村民吗?
-villagebox:mail.tip0.content=A sad villager can provide nothing but sadness.
-villagebox:mail.tip1.content=Cool items could be found by upgrading your villagers!
-villagebox:mail.tip2.content=Banker is useful to exchange low and high level gems.

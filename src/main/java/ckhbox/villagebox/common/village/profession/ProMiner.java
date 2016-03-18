@@ -20,7 +20,7 @@ public class ProMiner extends Profession{
 				new ItemStack(Blocks.iron_ore,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,32)},
-				new ItemStack(Blocks.gold_block,1)));
+				new ItemStack(Blocks.gold_ore,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
 				new ItemStack(Items.redstone,8)));

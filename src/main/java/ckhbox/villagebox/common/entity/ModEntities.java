@@ -12,7 +12,7 @@ public class ModEntities {
 	
 	public static void init(){
 		int id = 0;
-		EntityRegistry.registerModEntity(EntityVillager.class, "Villager", id++, VillageBoxMod.instance, 80, 3, true);
+		EntityRegistry.registerModEntity(EntityVillager.class, "villager", id++, VillageBoxMod.instance, 80, 3, true);
 		
 		//flameball
 		EntityRegistry.registerModEntity(EntityFlameBall.class, "flameball", id++, VillageBoxMod.instance, 64, 10, true);

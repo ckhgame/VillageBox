@@ -97,7 +97,7 @@ villagebox:gui.villagerupgrade.buttonupgrade.desc=Upgrade to the advanced profes
 villagebox:gui.villagerupgrade.buttonupgrade.desc.disable0=Unmatched items
 
 villagebox:gui.mail.button.approve=Approve
-villagebox:gui.mail.hi=Hi,Â§o%s
+villagebox:gui.mail.hi=Hi,§o%s
 
 # Message
 
@@ -115,7 +115,7 @@ villagebox:message.mail.nomail=You have nothing in the mailbox
 villagebox:message.mail.invitesuccess=You have sent a invitation, someone will reply to you soon
 villagebox:message.mail.invitefailed=You have already sent a invitation
 
-villagebox:message.player.treasurelvlupgrade.success=Your Â§6treasure hunt level Â§fhas been upgraded to Â§a%d
+villagebox:message.player.treasurelvlupgrade.success=Your §6treasure hunt level §fhas been upgraded to §a%d
 villagebox:message.player.treasurelvlupgrade.failed=You can't learn anything more from this book
 
 villagebox:message.player.weatherstone.alreadysunny=Can't use it when it's sunny
@@ -189,16 +189,30 @@ item.villagebox:crab.name=Crab
 item.villagebox:shrimp.name=Shrimp
 item.villagebox:wheatFlour.name=Wheat Flour
 item.villagebox:salt.name=Salt
+item.villagebox:steelHelmet.name=Steel Helmet
+item.villagebox:steelChestplate.name=Steel Chestplate
+item.villagebox:steelLeggings.name=Steel Leggings
+item.villagebox:steelBoots.name=Steel Boots
+item.villagebox:woodenHelmet.name=Wooden Helmet
+item.villagebox:woodenChestplate.name=Wooden Chestplate
+item.villagebox:woodenLeggings.name=Wooden Leggings
+item.villagebox:woodenBoots.name=Wooden Boots
+item.villagebox:steelHoe.name=Steel Hoe
+item.villagebox:steelAxe.name=Steel Axe
+item.villagebox:steelPickaxe.name=Steel Pickaxe
+item.villagebox:steelShovel.name=Steel Shovel
+item.villagebox:steelSword.name=Steel Sword
 
-
+# villager egg
+entity.villagebox.villager.name=Villager
 
 # Blocks
 tile.villagebox:mailbox.name=Mail Box
 tile.villagebox:alchemypot.name=Alchemy Pot
-tile.villagebox:buildboxSmall.name=Build Box (Â§aSmallÂ§f)
-tile.villagebox:buildboxMedium.name=Build Box (Â§bMediumÂ§f)
-tile.villagebox:buildboxLarge.name=Build Box (Â§cLargeÂ§f)
-tile.villagebox:buildboxExLarge.name=Build Box (Â§dExtra LargeÂ§f)
+tile.villagebox:buildboxSmall.name=Build Box (§aSmall§f)
+tile.villagebox:buildboxMedium.name=Build Box (§bMedium§f)
+tile.villagebox:buildboxLarge.name=Build Box (§cLarge§f)
+tile.villagebox:buildboxExLarge.name=Build Box (§dExtra Large§f)
 tile.villagebox:carpet0.name=School of fish carpet
 tile.villagebox:carpet1.name=Banana fantasy carpet
 tile.villagebox:carpet2.name=Big Bear carpet
@@ -249,14 +263,11 @@ tile.villagebox:carpetWool14.name=Crimson wool carpet
 tile.villagebox:carpetWool15.name=Pure black wool carpet
 
 #Block & Item info
-villagebox:book.treasure.item.info=Â§7Upgrade your Â§6treasure hunt level Â§7to Â§a%d
-villagebox:mail.item.info=Â§7From Â§a%s
-villagebox:invitation.item.info=Â§7"Welcome to my village..."
+villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
+villagebox:mail.item.info=§7From §a%s
+villagebox:invitation.item.info=§7"Welcome to my village..."
 
 # Mail
 villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?
 villagebox:mail.newvillager1.content=Are you looking for villagers? Please consider me!
 villagebox:mail.newvillager2.content=I'm so tired about current life and looking for a place to live. Could I be a villager in your village?
-villagebox:mail.tip0.content=A sad villager can provide nothing but sadness.
-villagebox:mail.tip1.content=Cool items could be found by upgrading your villagers!
-villagebox:mail.tip2.content=Banker is useful to exchange low and high level gems.

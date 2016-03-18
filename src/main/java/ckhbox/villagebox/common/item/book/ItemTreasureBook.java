@@ -33,7 +33,8 @@ public class ItemTreasureBook extends Item{
 			if(ExtendedPlayerProperties.get(playerIn).upgradeTreasureHuntLevelTo(this.level)){
 				playerIn.playSound("random.levelup", 1.0F, 1.0F);
 				playerIn.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.treasurelvlupgrade.success"),this.level));
-				return null;
+				itemStackIn.stackSize -= 1;
+				return itemStackIn;
 			}
 			else{
 				playerIn.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.treasurelvlupgrade.failed")));
