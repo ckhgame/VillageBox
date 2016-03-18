@@ -14,7 +14,7 @@ public class VillagerAIFollowing extends EntityAIBase
     private float moveSpeed;
     private int delayCounter;
     
-    private static final double maxDisSq = 256.0F;
+    private static final double maxDisSq = 144.0F;
     private static final double minDisSq = 9.0F;
 
     public VillagerAIFollowing(EntityVillager villager,float speed)
@@ -32,7 +32,20 @@ public class VillagerAIFollowing extends EntityAIBase
     		return false;
     	}
     	
-    	return this.inFollowingDistance();
+    	if(!this.villager.getFollowing().isEntityAlive()){
+    		this.villager.setFollowing(null);
+    		return false;
+    	}
+    	
+    	if(!this.inFollowingDistance()){
+    		double d = this.villager.getDistanceSqToEntity(this.villager.getFollowing());
+    		if(d >= maxDisSq){
+    			this.villager.setFollowing(null);
+    		}
+    		return false;
+    	}
+    	
+    	return true;
     }
 
     private boolean inFollowingDistance(){
@@ -51,7 +64,7 @@ public class VillagerAIFollowing extends EntityAIBase
         }
         else
         {
-        	return this.villager.getFollowing().isEntityAlive() && this.inFollowingDistance();
+        	return this.inFollowingDistance();
         }
     }
 
@@ -68,7 +81,6 @@ public class VillagerAIFollowing extends EntityAIBase
      */
     public void resetTask()
     {
-    	this.villager.setFollowing(null);
     }
 
     /**
