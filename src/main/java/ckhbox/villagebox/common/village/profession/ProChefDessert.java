@@ -5,6 +5,7 @@ import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -36,7 +37,7 @@ public class ProChefDessert extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,15),
-						new ItemStack(Blocks.cocoa,1),
+						new ItemStack(Items.dye, 1, EnumDyeColor.BROWN.getDyeDamage()),
 						new ItemStack(ModItems.banana,1)},
 				new ItemStack(ModItems.chocolateBanana)));
 		this.tradingRecipeList.add(new TradingRecipe(
