@@ -51,7 +51,7 @@ public class VillagerAIFollowing extends EntityAIBase
         }
         else
         {
-        	return this.inFollowingDistance();
+        	return this.villager.getFollowing().isEntityAlive() && this.inFollowingDistance();
         }
     }
 
@@ -68,7 +68,7 @@ public class VillagerAIFollowing extends EntityAIBase
      */
     public void resetTask()
     {
-
+    	this.villager.setFollowing(null);
     }
 
     /**
