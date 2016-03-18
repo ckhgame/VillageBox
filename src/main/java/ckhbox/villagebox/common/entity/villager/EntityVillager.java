@@ -125,8 +125,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	protected boolean interact(EntityPlayer player) {
 		
 		if(!player.worldObj.isRemote){
-			if(	(this.isInteracting() && this.interacting != player) ||
-				(this.isFollowing() && this.following != player)){
+			if(	(this.isInteracting() && this.interacting.isEntityAlive() && this.interacting != player) ||
+				(this.isFollowing() && this.following.isEntityAlive() && this.following != player)){
 				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.isbusy")));
 			}
 			else{
@@ -190,14 +190,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	}
 	
 	public boolean isInteracting(){
-		
-		if(this.getDataFlag(0) && this.interacting.isEntityAlive()){
-			return true;
-		}
-		else{
-			this.setInteracting(null);
-			return false;
-		}
+		return this.getDataFlag(0);
 	}
 
 	public EntityPlayer getInteracting(){
@@ -213,14 +206,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	}
 	
 	public boolean isFollowing(){
-		
-		if(this.getDataFlag(1) && this.following.isEntityAlive()){
-			return true;
-		}
-		else{
-			this.setFollowing(null);
-			return false;
-		}
+		return this.getDataFlag(1);
 	}	
 	
 	public EntityPlayer getFollowing(){
