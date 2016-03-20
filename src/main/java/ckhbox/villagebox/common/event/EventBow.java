@@ -81,16 +81,23 @@ public class EventBow {
 
             event.entityPlayer.worldObj.playSoundAtEntity(event.entityPlayer, "random.bow", 1.0F, 1.0F / (Rand.get().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
             
-            event.entityPlayer.inventory.consumeInventoryItem(Items.arrow);
-            
-            for(EntityArrow entityarrow : entityarrows){   
-            	if(event.entityPlayer.inventory.consumeInventoryItem(Items.arrow)){
-            		event.entityPlayer.worldObj.spawnEntityInWorld(entityarrow);
-            	}
-                
+            if(event.entityPlayer.capabilities.isCreativeMode){
+            	for(EntityArrow entityarrow : entityarrows){   
+                		event.entityPlayer.worldObj.spawnEntityInWorld(entityarrow);
+                	}
             }
-            
-            event.entityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.arrow));
+            else{
+                event.entityPlayer.inventory.consumeInventoryItem(Items.arrow);
+                
+                for(EntityArrow entityarrow : entityarrows){   
+                	if(event.entityPlayer.inventory.consumeInventoryItem(Items.arrow)){
+                		event.entityPlayer.worldObj.spawnEntityInWorld(entityarrow);
+                	}
+                    
+                }
+                
+                event.entityPlayer.inventory.addItemStackToInventory(new ItemStack(Items.arrow));
+            }
 		}
 	}
 }
