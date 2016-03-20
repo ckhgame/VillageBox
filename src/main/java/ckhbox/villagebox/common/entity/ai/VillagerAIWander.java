@@ -45,7 +45,6 @@ public class VillagerAIWander extends EntityAIBase
         }
         
         if(this.villager.isInteracting()){
-        	System.out.println("is interacting so cancel");
         	return false;
         }
         

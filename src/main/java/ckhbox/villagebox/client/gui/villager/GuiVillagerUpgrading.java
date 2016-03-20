@@ -108,7 +108,7 @@ public class GuiVillagerUpgrading extends GuiContainer{
     {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if(this.noUpgradeOption){
-        	this.drawCenteredString(this.fontRendererObj, "§eNo upgrading for next...", this.width / 2, this.height / 2, 0);
+        	this.drawCenteredString(this.fontRendererObj, "No upgrading for next...", this.width / 2, this.height / 2, 0);
         }
         else{
         	Profession[] nextUpgradeOptions = this.villager.getProfession().getUpgradeToNextOptions();
@@ -152,7 +152,8 @@ public class GuiVillagerUpgrading extends GuiContainer{
             RenderHelper.enableStandardItemLighting();
             
             //profession hover text
-            this.drawFieldHoverText(i + 122, j + 27, 35, 49, mouseX, mouseY, currentOption.getDisplayName(), currentOption.getDescription());
+            String proname = StatCollector.translateToLocalFormatted(PathHelper.full("gui.villagerupgrade.proname"),currentOption.getDisplayName());
+            this.drawFieldHoverText(i + 122, j + 27, 35, 49, mouseX, mouseY, proname, currentOption.getDescription());
             
             //upgrade button hover text
             ArrayList<String> list = new ArrayList<String>();
@@ -162,8 +163,8 @@ public class GuiVillagerUpgrading extends GuiContainer{
             			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc"))); 
             }
             else{
-            	list.add("§c" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")));
-            	list.add("§7" + StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable0")));
+            	list.add(StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title.disable")));
+            	list.add(StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable")));
             	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, list);
             }
                        
@@ -178,8 +179,8 @@ public class GuiVillagerUpgrading extends GuiContainer{
 	
 	private void drawFieldHoverText(int x, int y, int w, int h, int mouseX, int mouseY, String title, String desc){	
 		ArrayList<String> list = new ArrayList<String>();
-		list.add("§e" + title);
-		list.add("§f" + desc);		
+		list.add(title);
+		list.add(desc);		
 		drawFieldHoverText(x,y,w,h,mouseX,mouseY,list);
 	}
 	

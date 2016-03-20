@@ -82,7 +82,7 @@ public class GuiMail extends GuiContainer{
         ItemStack hold = this.player.getHeldItem();
         if(hold.getItem() == ModItems.mail){
         	String content = StatCollector.translateToLocal(ItemMail.getMailContent(hold));
-        	String sender = "§o" + ItemMail.getMailSender(hold);
+        	String sender = StatCollector.translateToLocalFormatted(PathHelper.full("gui.mail.from"), ItemMail.getMailSender(hold));
         	String hi = StatCollector.translateToLocalFormatted(PathHelper.full("gui.mail.hi"), this.player.getName(),false);
     		this.fontRendererObj.drawString(hi, x + 20, y + 12, 0);
     		this.fontRendererObj.drawSplitString(content, x + 20, y + 28, this.xSize - 40, 0);

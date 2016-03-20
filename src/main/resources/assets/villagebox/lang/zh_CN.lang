@@ -87,17 +87,20 @@ villagebox:gui.villagermain.menu.chat.moveout=我又无家可归了  T_T
 villagebox:gui.villagermain.menu.chat.followstart=我跟着你呢!
 villagebox:gui.villagermain.menu.chat.followstop=好吧，等下见!
 
-villagebox:gui.villagermain.button.lock.title=未解锁
-villagebox:gui.villagermain.button.lock.desc=为村民提供住处后解锁
-villagebox:gui.villagermain.button.maxupgrade.title=最顶级
-villagebox:gui.villagermain.button.maxupgrade.desc=没有更高级的升级了
+villagebox:gui.villagermain.button.lock.title=§c未解锁
+villagebox:gui.villagermain.button.lock.desc=§7为村民提供住处后解锁
+villagebox:gui.villagermain.button.maxupgrade.title=§c最顶级
+villagebox:gui.villagermain.button.maxupgrade.desc=§7没有更高级的升级了
 
-villagebox:gui.villagerupgrade.buttonupgrade.title=升级
-villagebox:gui.villagerupgrade.buttonupgrade.desc=升级到更高级的专业
-villagebox:gui.villagerupgrade.buttonupgrade.desc.disable0=物品不匹配
+villagebox:gui.villagerupgrade.proname=§e%s
+villagebox:gui.villagerupgrade.buttonupgrade.title=§e升级
+villagebox:gui.villagerupgrade.buttonupgrade.desc=§f升级到更高级的专业
+villagebox:gui.villagerupgrade.buttonupgrade.title.disable=§c升级
+villagebox:gui.villagerupgrade.buttonupgrade.desc.disable=§7物品不匹配
 
 villagebox:gui.mail.button.approve=许可
 villagebox:gui.mail.hi=你好,§o%s
+villagebox:gui.mail.from=§o%s
 
 # Message
 
@@ -203,6 +206,7 @@ item.villagebox:steelPickaxe.name=钢镐
 item.villagebox:steelShovel.name=钢铲
 item.villagebox:steelSword.name=钢剑
 item.villagebox:efficientBow.name=分裂弓
+item.villagebox:painting.name=画（特制）
 
 # villager egg
 entity.villagebox.villager.name=村民
@@ -262,6 +266,18 @@ tile.villagebox:carpetWool12.name=深棕色羊毛地毯
 tile.villagebox:carpetWool13.name=青绿色羊毛地毯
 tile.villagebox:carpetWool14.name=大红色羊毛地毯
 tile.villagebox:carpetWool15.name=纯黑色羊毛地毯
+tile.villagebox:tableOak.name=橡木桌
+tile.villagebox:tableJungle.name=从林木桌
+tile.villagebox:tableBirch.name=白桦木桌
+tile.villagebox:tableSpruce.name=云杉木桌
+tile.villagebox:tableAcacia.name=金合欢木桌
+tile.villagebox:tableBigOak.name=深色橡木桌
+tile.villagebox:chairOak.name=橡木椅
+tile.villagebox:chairJungle.name=从林木椅
+tile.villagebox:chairBirch.name=白桦木椅
+tile.villagebox:chairSpruce.name=云杉木椅
+tile.villagebox:chairAcacia.name=金合欢木椅
+tile.villagebox:chairBigOak.name=深色橡木椅
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d

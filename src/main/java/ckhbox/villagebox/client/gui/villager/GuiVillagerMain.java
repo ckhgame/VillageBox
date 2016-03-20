@@ -206,8 +206,8 @@ public class GuiVillagerMain extends GuiContainer{
 	private void drawButtonHoverText(GuiButton button, int mouseX, int mouseY, String title, String desc){	
 		if(GuiHelper.isPointInRegion(button.xPosition, button.yPosition, button.width, button.height, mouseX, mouseY)){
 			ArrayList<String> list = new ArrayList<String>();
-			list.add("§c" + title);
-			list.add("§7" + desc);
+			list.add(title);
+			list.add(desc);
 			this.drawHoveringText(list, mouseX, mouseY, this.fontRendererObj);
 		}
 	}

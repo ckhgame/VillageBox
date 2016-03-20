@@ -87,17 +87,20 @@ villagebox:gui.villagermain.menu.chat.moveout=I'm homeless again T_T
 villagebox:gui.villagermain.menu.chat.followstart=I'm following you!
 villagebox:gui.villagermain.menu.chat.followstop=OK, see you later!
 
-villagebox:gui.villagermain.button.lock.title=Locked
-villagebox:gui.villagermain.button.lock.desc=Set home for the villager to unlock
-villagebox:gui.villagermain.button.maxupgrade.title=Maximal upgrades
-villagebox:gui.villagermain.button.maxupgrade.desc=No advanced upgrade
+villagebox:gui.villagermain.button.lock.title=§cLocked
+villagebox:gui.villagermain.button.lock.desc=§7Set home for the villager to unlock
+villagebox:gui.villagermain.button.maxupgrade.title=§cMaximal upgrades
+villagebox:gui.villagermain.button.maxupgrade.desc=§7No advanced upgrade
 
-villagebox:gui.villagerupgrade.buttonupgrade.title=Upgrade
-villagebox:gui.villagerupgrade.buttonupgrade.desc=Upgrade to the advanced profession
-villagebox:gui.villagerupgrade.buttonupgrade.desc.disable0=Unmatched items
+villagebox:gui.villagerupgrade.proname=§e%s
+villagebox:gui.villagerupgrade.buttonupgrade.title=§eUpgrade
+villagebox:gui.villagerupgrade.buttonupgrade.desc=§fUpgrade to the advanced profession
+villagebox:gui.villagerupgrade.buttonupgrade.title.disable=§cUpgrade
+villagebox:gui.villagerupgrade.buttonupgrade.desc.disable=§7Unmatched items
 
 villagebox:gui.mail.button.approve=Approve
 villagebox:gui.mail.hi=Hi,§o%s
+villagebox:gui.mail.from=§o%s
 
 # Message
 
@@ -203,6 +206,7 @@ item.villagebox:steelPickaxe.name=Steel Pickaxe
 item.villagebox:steelShovel.name=Steel Shovel
 item.villagebox:steelSword.name=Steel Sword
 item.villagebox:efficientBow.name=Efficient Bow
+item.villagebox:painting.name=Unique Painting
 
 # villager egg
 entity.villagebox.villager.name=Villager
@@ -262,6 +266,18 @@ tile.villagebox:carpetWool12.name=Dark brown wool carpet
 tile.villagebox:carpetWool13.name=Dark green wool carpet
 tile.villagebox:carpetWool14.name=Crimson wool carpet
 tile.villagebox:carpetWool15.name=Pure black wool carpet
+tile.villagebox:tableOak.name=Oak Table
+tile.villagebox:tableJungle.name=Jungle Table
+tile.villagebox:tableBirch.name=Birch Table
+tile.villagebox:tableSpruce.name=Spruce Table
+tile.villagebox:tableAcacia.name=Acacia Table
+tile.villagebox:tableBigOak.name=Dark Oak Table
+tile.villagebox:chairOak.name=Oak Chair
+tile.villagebox:chairJungle.name=Jungle Chair
+tile.villagebox:chairBirch.name=Birch Chair
+tile.villagebox:chairSpruce.name=Spruce Chair
+tile.villagebox:chairAcacia.name=Acacia Chair
+tile.villagebox:chairBigOak.name=Dark Oak Chair
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
