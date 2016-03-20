@@ -202,6 +202,7 @@ item.villagebox:steelAxe.name=钢斧
 item.villagebox:steelPickaxe.name=钢镐
 item.villagebox:steelShovel.name=钢铲
 item.villagebox:steelSword.name=钢剑
+item.villagebox:efficientBow.name=分裂弓
 
 # villager egg
 entity.villagebox.villager.name=村民

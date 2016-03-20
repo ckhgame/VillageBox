@@ -97,7 +97,7 @@ villagebox:gui.villagerupgrade.buttonupgrade.desc=Upgrade to the advanced profes
 villagebox:gui.villagerupgrade.buttonupgrade.desc.disable0=Unmatched items
 
 villagebox:gui.mail.button.approve=Approve
-villagebox:gui.mail.hi=Hi,Â§o%s
+villagebox:gui.mail.hi=Hi,§o%s
 
 # Message
 
@@ -115,7 +115,7 @@ villagebox:message.mail.nomail=You have nothing in the mailbox
 villagebox:message.mail.invitesuccess=You have sent a invitation, someone will reply to you soon
 villagebox:message.mail.invitefailed=You have already sent a invitation
 
-villagebox:message.player.treasurelvlupgrade.success=Your Â§6treasure hunt level Â§fhas been upgraded to Â§a%d
+villagebox:message.player.treasurelvlupgrade.success=Your §6treasure hunt level §fhas been upgraded to §a%d
 villagebox:message.player.treasurelvlupgrade.failed=You can't learn anything more from this book
 
 villagebox:message.player.weatherstone.alreadysunny=Can't use it when it's sunny
@@ -202,6 +202,7 @@ item.villagebox:steelAxe.name=Steel Axe
 item.villagebox:steelPickaxe.name=Steel Pickaxe
 item.villagebox:steelShovel.name=Steel Shovel
 item.villagebox:steelSword.name=Steel Sword
+item.villagebox:efficientBow.name=Efficient Bow
 
 # villager egg
 entity.villagebox.villager.name=Villager
@@ -209,10 +210,10 @@ entity.villagebox.villager.name=Villager
 # Blocks
 tile.villagebox:mailbox.name=Mail Box
 tile.villagebox:alchemypot.name=Alchemy Pot
-tile.villagebox:buildboxSmall.name=Build Box (Â§aSmallÂ§f)
-tile.villagebox:buildboxMedium.name=Build Box (Â§bMediumÂ§f)
-tile.villagebox:buildboxLarge.name=Build Box (Â§cLargeÂ§f)
-tile.villagebox:buildboxExLarge.name=Build Box (Â§dExtra LargeÂ§f)
+tile.villagebox:buildboxSmall.name=Build Box (§aSmall§f)
+tile.villagebox:buildboxMedium.name=Build Box (§bMedium§f)
+tile.villagebox:buildboxLarge.name=Build Box (§cLarge§f)
+tile.villagebox:buildboxExLarge.name=Build Box (§dExtra Large§f)
 tile.villagebox:carpet0.name=School of fish carpet
 tile.villagebox:carpet1.name=Banana fantasy carpet
 tile.villagebox:carpet2.name=Big Bear carpet
@@ -263,9 +264,9 @@ tile.villagebox:carpetWool14.name=Crimson wool carpet
 tile.villagebox:carpetWool15.name=Pure black wool carpet
 
 #Block & Item info
-villagebox:book.treasure.item.info=Â§7Upgrade your Â§6treasure hunt level Â§7to Â§a%d
-villagebox:mail.item.info=Â§7From Â§a%s
-villagebox:invitation.item.info=Â§7"Welcome to my village..."
+villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
+villagebox:mail.item.info=§7From §a%s
+villagebox:invitation.item.info=§7"Welcome to my village..."
 
 # Mail
 villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?

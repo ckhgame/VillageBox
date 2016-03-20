@@ -48,6 +48,9 @@ public class BlockBuildBox extends Block{
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		
 		if(!worldIn.isRemote){
+			//remove buildbox
+			worldIn.setBlockToAir(pos);
+			
 			build(worldIn, pos, false);
 		}
 		

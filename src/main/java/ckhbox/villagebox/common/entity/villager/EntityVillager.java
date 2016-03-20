@@ -134,7 +134,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			}
 		}
 		
-		return super.interact(player);
+		return true;
 	}
 
 	@Override
