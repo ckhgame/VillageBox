@@ -96,6 +96,8 @@ public class ProChefDessert extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.sugar,20),
+				new ItemStack(ModItems.wheatFlour,5),
 				new ItemStack(ModItems.silverCoin,10),
 		};
 		

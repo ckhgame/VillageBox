@@ -43,6 +43,8 @@ public class ProMiner extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.iron_pickaxe),
+				new ItemStack(Blocks.torch,12),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		

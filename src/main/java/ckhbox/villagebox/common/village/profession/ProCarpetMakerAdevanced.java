@@ -13,18 +13,18 @@ public class ProCarpetMakerAdevanced extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet20)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet21)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet22)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet23)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet24)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet25)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet26)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet27)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet28)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet29)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet30)));
-		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(Blocks.wool,2)},new ItemStack(ModBlocks.carpet31)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet20)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet21)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet22)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet23)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet24)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet25)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet26)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet27)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet28)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet29)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet30)));
+		this.tradingRecipeList.add(new TradingRecipe(new ItemStack[]{new ItemStack(ModItems.bronzeCoin,40),new ItemStack(ModItems.ballOfWool,2)},new ItemStack(ModBlocks.carpet31)));
 	}
 
 
@@ -41,6 +41,7 @@ public class ProCarpetMakerAdevanced extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(ModItems.ballOfWool,10),
 				new ItemStack(ModItems.silverCoin,10)
 		};
 		

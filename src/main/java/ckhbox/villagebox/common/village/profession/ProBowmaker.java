@@ -33,7 +33,8 @@ public class ProBowmaker extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,10)
+				new ItemStack(Items.string,10),
+				new ItemStack(ModItems.silverCoin,12)
 		};
 		
 		this.upgradeToNextOptions = null;

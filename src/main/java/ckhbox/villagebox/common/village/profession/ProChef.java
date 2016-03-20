@@ -114,7 +114,9 @@ public class ProChef extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,10)
+				new ItemStack(ModItems.cookingOil,5),
+				new ItemStack(ModItems.cookingWine,5),
+				new ItemStack(ModItems.silverCoin,12)
 		};
 		
 		this.upgradeToNextOptionClasses = null;

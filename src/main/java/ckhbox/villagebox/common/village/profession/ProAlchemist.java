@@ -31,7 +31,8 @@ public class ProAlchemist extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,30)
+				new ItemStack(Items.cauldron,1),
+				new ItemStack(ModItems.silverCoin,15)
 		};
 		
 		this.upgradeToNextOptionClasses = null;

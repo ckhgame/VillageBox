@@ -33,7 +33,9 @@ public class ProShaman extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,25)
+				new ItemStack(Items.lava_bucket),
+				new ItemStack(Items.water_bucket),
+				new ItemStack(ModItems.silverCoin,12)
 		};
 		
 		this.upgradeToNextOptionClasses = null;

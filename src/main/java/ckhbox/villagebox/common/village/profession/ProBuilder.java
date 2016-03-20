@@ -40,6 +40,8 @@ public class ProBuilder extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Blocks.stonebrick,32),
+				new ItemStack(Blocks.planks,32),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		

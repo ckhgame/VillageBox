@@ -69,6 +69,8 @@ public class ProCookAssistant extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.wheat,10),
+				new ItemStack(Items.chicken,3),
 				new ItemStack(ModItems.silverCoin,2),
 		};
 		

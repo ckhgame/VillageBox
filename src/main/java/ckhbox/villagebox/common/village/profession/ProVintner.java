@@ -50,6 +50,8 @@ public class ProVintner extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(ModItems.grape,5),
+				new ItemStack(ModItems.riceplant,5),
 				new ItemStack(ModItems.silverCoin,1)
 		};
 		

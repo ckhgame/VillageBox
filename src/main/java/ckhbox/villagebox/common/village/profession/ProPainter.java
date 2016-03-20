@@ -30,7 +30,7 @@ public class ProPainter extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.silverCoin, 2),
-				new ItemStack(Items.paper,64)
+				new ItemStack(Items.paper,64),
 		};
 		
 		this.upgradeToNextOptionClasses = null;

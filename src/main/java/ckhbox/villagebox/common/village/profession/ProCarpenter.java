@@ -40,6 +40,7 @@ public class ProCarpenter extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.iron_axe),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		

@@ -65,6 +65,7 @@ public class ProFurnituremaker extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Blocks.planks,64),
 				new ItemStack(ModItems.silverCoin,10)
 		};
 		

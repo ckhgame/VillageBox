@@ -34,6 +34,7 @@ public class ProScholar extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.book,1),
 				new ItemStack(ModItems.silverCoin,1)
 		};
 		

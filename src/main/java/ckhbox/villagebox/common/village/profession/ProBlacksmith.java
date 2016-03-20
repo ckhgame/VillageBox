@@ -30,6 +30,8 @@ public class ProBlacksmith extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.coal,10),
+				new ItemStack(Items.iron_ingot,2),
 				new ItemStack(ModItems.silverCoin, 2)
 		};
 		

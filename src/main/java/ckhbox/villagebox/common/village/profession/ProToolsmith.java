@@ -39,7 +39,8 @@ public class ProToolsmith extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(ModItems.silverCoin,15)
+				new ItemStack(ModItems.steelIngot,1),
+				new ItemStack(ModItems.silverCoin,12)
 		};
 		
 		this.upgradeToNextOptions = null;

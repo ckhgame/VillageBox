@@ -30,6 +30,7 @@ public class ProWeaponsmith extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(ModItems.steelIngot,1),
 				new ItemStack(ModItems.silverCoin,15)
 		};
 		

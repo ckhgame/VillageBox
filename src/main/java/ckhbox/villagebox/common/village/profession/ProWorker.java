@@ -44,8 +44,7 @@ public class ProWorker extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.bronzeCoin,25),
-				new ItemStack(Blocks.crafting_table),
-				new ItemStack(Blocks.furnace)
+				new ItemStack(Blocks.crafting_table)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
