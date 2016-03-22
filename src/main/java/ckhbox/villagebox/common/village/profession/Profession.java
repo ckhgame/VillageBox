@@ -1,5 +1,8 @@
 package ckhbox.villagebox.common.village.profession;
 
+import java.util.ArrayList;
+
+import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.registry.IRegistrable;
 import ckhbox.villagebox.common.util.registry.Registry;
@@ -42,13 +45,32 @@ public abstract class Profession implements IRegistrable{
 	public Profession[] getUpgradeToNextOptions(){
 		if(this.upgradeToNextOptions == null){
 			if(this.upgradeToNextOptionClasses != null && this.upgradeToNextOptionClasses.length > 0){
-				this.upgradeToNextOptions = new Profession[this.upgradeToNextOptionClasses.length];
+				ArrayList<Profession> list = new ArrayList<Profession>();
 				for(int i = 0;i<this.upgradeToNextOptionClasses.length;i++){
-					this.upgradeToNextOptions[i] = Profession.registry.get(this.upgradeToNextOptionClasses[i]);
+					Profession p = Profession.registry.get(this.upgradeToNextOptionClasses[i]);		
+					if(!isProIDBanned(p.getRegID())){
+						list.add(p);
+					}
+
+				}
+				if(list.size() > 0){
+					this.upgradeToNextOptions = list.toArray(new Profession[list.size()]);
 				}
 			}
 		}
 		return this.upgradeToNextOptions;
+	}
+	
+	private boolean isProIDBanned(int proid){
+		if(VBConfig.proIDBanList == null)
+			return false;
+		else{
+			for(int i =0;i<VBConfig.proIDBanList.length;i++){
+				if(proid == VBConfig.proIDBanList[i])
+					return true;
+			}
+			return false;
+		}
 	}
 	
 	public ItemStack[] getUpgradeToCurentNeeds(){
@@ -64,7 +86,9 @@ public abstract class Profession implements IRegistrable{
 	}
 	
 	public String getDisplayName(){
-		return StatCollector.translateToLocal(this.getUnlocalized() + ".name");
+		String name = StatCollector.translateToLocal(this.getUnlocalized() + ".name");
+		if(VBConfig.displayExtraInfo) name += "(ID:" + this.getRegID() + ")";
+		return name;
 	}
 	
 	public String getDescription(){
@@ -88,40 +112,39 @@ public abstract class Profession implements IRegistrable{
 	public static Registry<Profession> registry = new Registry<Profession>();
 	
 	public static void init(){
-		int id = 0;
-		registry.register(id++, new ProVillager0());
-		registry.register(id++, new ProVillager1());
-		registry.register(id++, new ProVillager2());
-		registry.register(id++, new ProPeasant());
-		registry.register(id++, new ProMiner());
-		registry.register(id++, new ProAlchemist());
-		registry.register(id++, new ProShaman());
-		registry.register(id++, new ProArmorsmith());
-		registry.register(id++, new ProBlacksmith());
-		registry.register(id++, new ProToolsmith());
-		registry.register(id++, new ProBowmaker());
-		registry.register(id++, new ProCarpenter());
-		registry.register(id++, new ProCarpetMakerAdevanced());
-		registry.register(id++, new ProCarpetMakerCartoony());
-		registry.register(id++, new ProCarpetmaker());
-		registry.register(id++, new ProFisherman());
-		registry.register(id++, new ProFlorist());
-		registry.register(id++, new ProFurnituremaker());
-		registry.register(id++, new ProOrchardist());
-		registry.register(id++, new ProPainter());
-		registry.register(id++, new ProRancher());
-		registry.register(id++, new ProScholar());
-		registry.register(id++, new ProVintner());
-		registry.register(id++, new ProWeaponsmith());
-		registry.register(id++, new ProMage());
-		registry.register(id++, new ProWorker());
-		registry.register(id++, new ProCookAssistant());
-		registry.register(id++, new ProFarmer());
-		registry.register(id++, new ProBookseller());
-		registry.register(id++, new ProBanker());
-		registry.register(id++, new ProChef());
-		registry.register(id++, new ProChefDessert());
-		registry.register(id++, new ProBuilder());
+		registry.register(0, new ProVillager0());
+		registry.register(1, new ProVillager1());
+		registry.register(2, new ProVillager2());
+		registry.register(3, new ProPeasant());
+		registry.register(4, new ProMiner());
+		registry.register(5, new ProAlchemist());
+		registry.register(6, new ProShaman());
+		registry.register(7, new ProArmorsmith());
+		registry.register(8, new ProBlacksmith());
+		registry.register(9, new ProToolsmith());
+		registry.register(10, new ProBowmaker());
+		registry.register(11, new ProCarpenter());
+		registry.register(12, new ProCarpetMakerAdevanced());
+		registry.register(13, new ProCarpetMakerCartoony());
+		registry.register(14, new ProCarpetmaker());
+		registry.register(15, new ProFisherman());
+		registry.register(16, new ProFlorist());
+		registry.register(17, new ProFurnituremaker());
+		registry.register(18, new ProOrchardist());
+		registry.register(19, new ProPainter());
+		registry.register(20, new ProRancher());
+		registry.register(21, new ProScholar());
+		registry.register(22, new ProVintner());
+		registry.register(23, new ProWeaponsmith());
+		registry.register(24, new ProMage());
+		registry.register(25, new ProWorker());
+		registry.register(26, new ProCookAssistant());
+		registry.register(27, new ProFarmer());
+		registry.register(28, new ProBookseller());
+		registry.register(29, new ProBanker());
+		registry.register(30, new ProChef());
+		registry.register(31, new ProChefDessert());
+		registry.register(32, new ProBuilder());
 	}
 
 }

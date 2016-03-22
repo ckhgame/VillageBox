@@ -2,6 +2,7 @@ package ckhbox.villagebox.common;
 
 import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.block.ModBlocks;
+import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.entity.ModEntities;
 import ckhbox.villagebox.common.event.EventBow;
 import ckhbox.villagebox.common.event.EventCoinsFound;
@@ -40,6 +41,9 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new EventCoinsFound());
 		MinecraftForge.EVENT_BUS.register(new EventBow());
 		MinecraftForge.EVENT_BUS.register(new EventWorld());
+		
+		//configuration
+		VBConfig.load(e.getSuggestedConfigurationFile());
     }
 
     public void init(FMLInitializationEvent e) {

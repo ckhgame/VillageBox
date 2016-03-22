@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.event;
 
+import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebox.common.util.math.Rand;
@@ -36,12 +37,12 @@ public class EventCoinsFound {
 		if(!event.entityLiving.worldObj.isRemote && 
 			event.entityLiving instanceof EntityMob && 
 			event.source.getSourceOfDamage() instanceof EntityPlayer){
-			
-			int l =  ExtendedPlayerProperties.get((EntityPlayer)event.source.getSourceOfDamage()).treasureHuntLevel;
-			int base = l * 2 + 1;
-			int add = l + 3;
-			dropCoins(Rand.get().nextInt(add) + base,event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ);
-		
+			if(VBConfig.killMobsDropCoins){
+				int l =  ExtendedPlayerProperties.get((EntityPlayer)event.source.getSourceOfDamage()).treasureHuntLevel;
+				int base = l * 2 + 1;
+				int add = l + 3;
+				dropCoins(Rand.get().nextInt(add) + base,event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ);
+			}
 		}
 	}
 	
@@ -49,7 +50,7 @@ public class EventCoinsFound {
 	public void onBlockHarvest(BlockEvent.HarvestDropsEvent event)
 	{
 		if(!event.world.isRemote && event.harvester != null){
-			if(Rand.get().nextInt(5) == 0){
+			if(Rand.get().nextInt(5) == 0 && VBConfig.destroyBlocksDropCoins){
 				int l =  ExtendedPlayerProperties.get(event.harvester).treasureHuntLevel;
 				int base = l + 1;
 				int add = l * 2;
