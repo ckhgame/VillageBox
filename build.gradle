@@ -13,7 +13,7 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "beta 0.0.1"
+version = "0.2"
 group= "ckhbox.villagebox"
 archivesBaseName = "villagebox"
 
