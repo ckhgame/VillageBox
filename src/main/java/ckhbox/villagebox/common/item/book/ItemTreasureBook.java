@@ -2,16 +2,14 @@ package ckhbox.villagebox.common.item.book;
 
 import java.util.List;
 
-import ckhbox.villagebox.VillageBoxMod;
-import ckhbox.villagebox.common.gui.GuiIDs;
 import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebox.common.util.helper.PathHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemTreasureBook extends Item{
@@ -48,7 +46,7 @@ public class ItemTreasureBook extends Item{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = StatCollector.translateToLocalFormatted(PathHelper.full("book.treasure.item.info"), this.level);
+		String info = I18n.format(PathHelper.full("book.treasure.item.info"), this.level);
 		tooltip.add(info);
 	}
 	

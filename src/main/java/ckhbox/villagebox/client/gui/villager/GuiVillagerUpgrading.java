@@ -1,21 +1,15 @@
 package ckhbox.villagebox.client.gui.villager;
 
 import java.io.IOException;
-import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
 import ckhbox.villagebox.client.gui.GuiHelper;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
-import ckhbox.villagebox.common.gui.GuiIDs;
 import ckhbox.villagebox.common.gui.villager.ContainerVillagerUpgrading;
 import ckhbox.villagebox.common.network.ModNetwork;
-import ckhbox.villagebox.common.network.message.common.MessageGuiSelectTradeRecipeIndex;
 import ckhbox.villagebox.common.network.message.villager.MessageGuiSelectUpgradeOptionIndex;
 import ckhbox.villagebox.common.network.message.villager.MessageGuiSetInteracting;
-import ckhbox.villagebox.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebox.common.network.message.villager.MessageGuiVillagerUpgrade;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.profession.Profession;
@@ -26,11 +20,11 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -152,19 +146,19 @@ public class GuiVillagerUpgrading extends GuiContainer{
             RenderHelper.enableStandardItemLighting();
             
             //profession hover text
-            String proname = StatCollector.translateToLocalFormatted(PathHelper.full("gui.villagerupgrade.proname"),currentOption.getDisplayName());
+            String proname = I18n.format(PathHelper.full("gui.villagerupgrade.proname"),currentOption.getDisplayName());
             this.drawFieldHoverText(i + 122, j + 27, 35, 49, mouseX, mouseY, proname, currentOption.getDescription());
             
             //upgrade button hover text
             ArrayList<String> list = new ArrayList<String>();
             if(this.meetItemsNeed){
             	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, 
-            			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")),
-            			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc"))); 
+            			I18n.format(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")),
+            			I18n.format(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc"))); 
             }
             else{
-            	list.add(StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title.disable")));
-            	list.add(StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable")));
+            	list.add(I18n.format(PathHelper.full("gui.villagerupgrade.buttonupgrade.title.disable")));
+            	list.add(I18n.format(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable")));
             	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, list);
             }
                        

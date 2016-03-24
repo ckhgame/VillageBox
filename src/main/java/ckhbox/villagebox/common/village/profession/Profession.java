@@ -7,9 +7,9 @@ import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.registry.IRegistrable;
 import ckhbox.villagebox.common.util.registry.Registry;
 import ckhbox.villagebox.common.village.trading.TradingRecipeList;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 
 public abstract class Profession implements IRegistrable{
 	
@@ -86,13 +86,13 @@ public abstract class Profession implements IRegistrable{
 	}
 	
 	public String getDisplayName(){
-		String name = StatCollector.translateToLocal(this.getUnlocalized() + ".name");
+		String name = I18n.format(this.getUnlocalized() + ".name");
 		if(VBConfig.displayExtraInfo) name += "(ID:" + this.getRegID() + ")";
 		return name;
 	}
 	
 	public String getDescription(){
-		return StatCollector.translateToLocal(this.getUnlocalized() + ".desc");
+		return I18n.format(this.getUnlocalized() + ".desc");
 	}
 	
 	protected void createTextures(String name){
