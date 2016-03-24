@@ -86,9 +86,14 @@ public class ModBlockRenderers {
 		registerModel(ModBlocks.carpetWool15, 0, "carpet_wool_15");
 		
 		//flowers
-		registerModel(ModBlocks.flowerRose, 0, "flower_rose");
+		registerModel(ModBlocks.flowerRedRose, 0, "flower_redrose");
 		registerModel(ModBlocks.flowerPlumBlossom, 0, "flower_plumblossom");
 		registerModel(ModBlocks.flowerHydrangeas, 0, "flower_hydrangeas");
+		registerModel(ModBlocks.flowerGardenia, 0, "flower_gardenia");
+		registerModel(ModBlocks.flowerHeartMushroom, 0, "flower_heartmushroom");
+		registerModel(ModBlocks.flowerRanunculus, 0, "flower_ranunculus");
+		registerModel(ModBlocks.flowerRosySpiraea, 0, "flower_rosyspiraea");
+		registerModel(ModBlocks.bonsai, 0, "bonsai");
 	}
 	
 	private static void registerModel(Block block, int meta, String resource){

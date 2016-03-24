@@ -1,0 +1,7 @@
+{
+    "parent": "villagebox:block/flower_in_pot",
+    "textures": {
+        "plant": "villagebox:blocks/flower_gardenia",
+		"flowerpot": "blocks/planks_birch"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "villagebox:block/flower_in_pot",
+    "textures": {
+        "plant": "villagebox:blocks/flower_redrose",
+		"flowerpot": "blocks/log_birch"
+    }
+}

@@ -282,6 +282,13 @@ tile.villagebox:chairAcacia.name=Acacia Chair
 tile.villagebox:chairBigOak.name=Dark Oak Chair
 tile.villagebox:flowerPlumBlossom.name=Plum Blossom
 tile.villagebox:flowerHydrangeas.name=Hydrangeas
+tile.villagebox:flowerRedRose.name=Red Rose
+tile.villagebox:flowerGardenia.name=Gardenia
+tile.villagebox:flowerHeartMushroom.name=Heart Mushroom
+tile.villagebox:flowerRanunculus.name=Ranunculus
+tile.villagebox:flowerRosySpiraea.name=Rosy Spiraea
+tile.villagebox:bonsai.name=Bonsai
+
 
 
 #Block & Item info

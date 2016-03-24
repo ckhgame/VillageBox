@@ -83,12 +83,14 @@ public class ModBlocks {
 	public static BlockCarpet carpetWool15;
 	
 	//flower
-	public static BlockFlowerInPot flowerRose;
+	public static BlockFlowerInPot flowerRedRose;
 	public static BlockFlowerInPot flowerHeartMushroom;
 	public static BlockFlowerInPot flowerHydrangeas;
 	public static BlockFlowerInPot flowerPlumBlossom;
 	public static BlockFlowerInPot flowerRanunculus;
-	public static BlockFlowerInPot flowerRosySpirea;
+	public static BlockFlowerInPot flowerRosySpiraea;
+	public static BlockFlowerInPot flowerGardenia;
+	public static BlockFlowerInPot bonsai;
 	
 	public static void init(){
 		GameRegistry.registerBlock(mailbox=new BlockMailBox(),"mailbox");
@@ -165,8 +167,13 @@ public class ModBlocks {
 		GameRegistry.registerBlock(carpetWool14=new BlockCarpet("carpetWool14"),"carpet_wool_14");
 		GameRegistry.registerBlock(carpetWool15=new BlockCarpet("carpetWool15"),"carpet_wool_15");
 		
-		GameRegistry.registerBlock(flowerRose=new BlockFlowerInPot("flowerRose"),"flower_rose");
+		GameRegistry.registerBlock(flowerGardenia=new BlockFlowerInPot("flowerGardenia"),"flower_gardenia");
+		GameRegistry.registerBlock(flowerHeartMushroom=new BlockFlowerInPot("flowerHeartMushroom"),"flower_heartmushroom");
+		GameRegistry.registerBlock(flowerRanunculus=new BlockFlowerInPot("flowerRanunculus"),"flower_ranunculus");
+		GameRegistry.registerBlock(flowerRedRose=new BlockFlowerInPot("flowerRedRose"),"flower_redrose");
+		GameRegistry.registerBlock(flowerRosySpiraea=new BlockFlowerInPot("flowerRosySpiraea"),"flower_rosyspiraea");
 		GameRegistry.registerBlock(flowerPlumBlossom=new BlockFlowerInPot("flowerPlumBlossom"),"flower_plumblossom");
 		GameRegistry.registerBlock(flowerHydrangeas=new BlockFlowerInPot("flowerHydrangeas"),"flower_hydrangeas");
+		GameRegistry.registerBlock(bonsai=new BlockFlowerInPot("bonsai"),"bonsai");
 	}
 }
