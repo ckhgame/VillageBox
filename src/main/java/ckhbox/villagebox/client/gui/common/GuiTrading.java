@@ -2,6 +2,7 @@ package ckhbox.villagebox.client.gui.common;
 
 import java.io.IOException;
 
+import ckhbox.villagebox.client.gui.GuiHelper;
 import ckhbox.villagebox.common.gui.common.ContainerTrading;
 import ckhbox.villagebox.common.network.ModNetwork;
 import ckhbox.villagebox.common.network.message.common.MessageGuiSelectTradeRecipeIndex;
@@ -33,11 +34,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiTrading extends GuiContainer{
 	
 	private static final ResourceLocation TradeGuiTexture = new ResourceLocation(PathHelper.full("textures/gui/villager/trade.png"));
-
+	private static final ResourceLocation TradeAllRecipesGuiTexture = new ResourceLocation(PathHelper.full("textures/gui/villager/trade_allrecipes.png"));
+	
 	private ITrading trader;
     private TradeButton nextButton;
     private TradeButton previousButton;
+    private AllRecipesButton allRecipesButton;
     private int selectedTradingRecipeIdx;
+    private int widthAllRecpiesPanel = 104;
+    private int heightAllRecpiesPanel = 166;
+    private int allRecipesColumns = 5;
     
 	public GuiTrading(InventoryPlayer playerInventory, ITrading trader, World worldIn)
     {
@@ -58,6 +64,7 @@ public class GuiTrading extends GuiContainer{
         this.nextButton.enabled = false;
         this.previousButton.enabled = false;
         
+        this.buttonList.add(this.allRecipesButton = new AllRecipesButton(3, x + 155, y + 3, false));
     }
 
 	@Override
@@ -66,7 +73,21 @@ public class GuiTrading extends GuiContainer{
         this.mc.getTextureManager().bindTexture(TradeGuiTexture);
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);		
+        this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);	
+        
+        //draw all recpie panel
+        if(this.allRecipesButton.isDisplayingAllRecipes){
+        	this.mc.getTextureManager().bindTexture(TradeAllRecipesGuiTexture);
+            x = (this.width + this.xSize) / 2;
+            y = (this.height - this.ySize) / 2;
+            this.drawTexturedModalRect(x, y, 0, 0, this.widthAllRecpiesPanel, this.heightAllRecpiesPanel);	
+            
+        	int rx,ry;
+        	//selected indicator
+        	rx = (this.width + this.xSize) / 2 + 7 + 1 + (this.selectedTradingRecipeIdx % allRecipesColumns) * 18;
+        	ry = (this.height - this.heightAllRecpiesPanel) / 2 + 15 + 1 + (this.selectedTradingRecipeIdx / allRecipesColumns) * 18;
+            this.drawTexturedModalRect(rx, ry, this.widthAllRecpiesPanel, 0, 16, 16);	
+        }
 	}
 	
 	@Override
@@ -119,7 +140,38 @@ public class GuiTrading extends GuiContainer{
             {
                 this.renderToolTip(itemstack, mouseX, mouseY);
             }
+            
+            //all recipes panel
+            if(this.allRecipesButton.isDisplayingAllRecipes){
+            	
+            	int px = (this.width + this.xSize) / 2;
+            	int py = (this.height - this.heightAllRecpiesPanel) / 2;  
+            	
+            	//title
+            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, I18n.format(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
 
+            	int rx,ry;
+            	//recipes
+            	for(int recipeIdx = 0;recipeIdx<tradingRecipeList.size();recipeIdx++){
+                	itemstack = tradingRecipeList.get(recipeIdx).getItemOutput();
+                	rx = px + 7 + (recipeIdx % allRecipesColumns) * 18;
+                	ry = py + 15 + (recipeIdx / allRecipesColumns) * 18;
+                	this.itemRender.renderItemAndEffectIntoGUI(itemstack, rx + 1, ry + 1);
+                    //this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, rx, ry);
+                }
+            	
+            	//tooltips
+            	for(int recipeIdx = 0;recipeIdx<tradingRecipeList.size();recipeIdx++){
+                	itemstack = tradingRecipeList.get(recipeIdx).getItemOutput();
+                	rx = this.xSize + 7 + (recipeIdx % allRecipesColumns) * 18;
+                	ry = 15 + (recipeIdx / allRecipesColumns) * 18;
+    		    	if (this.isPointInRegion(rx + 1, ry + 1, 16, 16, mouseX, mouseY) && itemstack != null)
+    		        {
+    		            this.renderToolTip(itemstack, mouseX, mouseY);
+    		        }
+                }
+            }
+            
             GlStateManager.popMatrix();
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
@@ -141,8 +193,31 @@ public class GuiTrading extends GuiContainer{
     }
 
 	@Override
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+		super.mouseClicked(mouseX, mouseY, mouseButton);
+			 
+		//all recipes panel
+		if(this.allRecipesButton.isDisplayingAllRecipes){
+			TradingRecipeList tradingRecipeList = this.trader.getTradingRecipeList();
+			int mx = mouseX - (this.width + this.xSize) / 2 - 7;
+	    	int my = mouseY - (this.height - this.heightAllRecpiesPanel) / 2 - 15; 
+			if(tradingRecipeList != null && mx >= 0 && mx < this.allRecipesColumns * 18 && my >= 0){
+				int idx = (mx / 18) + (my / 18) * this.allRecipesColumns;
+				if(idx >= 0 && idx < tradingRecipeList.size()){
+					this.selectedTradingRecipeIdx = idx;
+					((ContainerTrading)this.inventorySlots).setCurrentRecipeIndex(this.selectedTradingRecipeIdx);
+		            ModNetwork.getInstance().sendToServer(new MessageGuiSelectTradeRecipeIndex(this.selectedTradingRecipeIdx));
+				}
+			}
+		}
+		//if(mouseX > this.)
+	}
+
+	@Override
 	protected void actionPerformed(GuiButton button) throws IOException
     {
+		//prev and next button
+		
         boolean flag = false;
 
         if (button == this.nextButton)
@@ -173,6 +248,11 @@ public class GuiTrading extends GuiContainer{
         {
             ((ContainerTrading)this.inventorySlots).setCurrentRecipeIndex(this.selectedTradingRecipeIdx);
             ModNetwork.getInstance().sendToServer(new MessageGuiSelectTradeRecipeIndex(this.selectedTradingRecipeIdx));
+        }
+        
+        //all recipes button
+        if(button == this.allRecipesButton){
+        	this.allRecipesButton.isDisplayingAllRecipes = !this.allRecipesButton.isDisplayingAllRecipes;
         }
     }
 	
@@ -215,6 +295,41 @@ public class GuiTrading extends GuiContainer{
                 }
 
                 this.drawTexturedModalRect(this.xPosition, this.yPosition, j, i, this.width, this.height);
+            }
+        }
+    }
+	
+	@SideOnly(Side.CLIENT)
+    static class AllRecipesButton extends GuiButton
+    {
+
+		public boolean isDisplayingAllRecipes;
+		
+        public AllRecipesButton(int buttonID, int x, int y, boolean isDisplayingAllRecipes)
+        {
+            super(buttonID, x, y, 18, 18, "");
+            this.isDisplayingAllRecipes = isDisplayingAllRecipes;
+        }
+
+        /**
+         * Draws this button to the screen.
+         */
+        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        {
+            if (this.visible)
+            {
+                mc.getTextureManager().bindTexture(TradeGuiTexture);
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                boolean flag = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+                int x = 176;
+                int y = 38;
+
+                if (flag || this.isDisplayingAllRecipes)
+                {
+                    x += this.width;
+                }
+                
+                this.drawTexturedModalRect(this.xPosition, this.yPosition, x, y, this.width, this.height);
             }
         }
     }
