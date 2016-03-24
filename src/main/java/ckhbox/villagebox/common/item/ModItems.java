@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.item;
 
+import ckhbox.villagebox.common.block.decoration.BlockFlowerInPot;
 import ckhbox.villagebox.common.item.armor.ItemArmor;
 import ckhbox.villagebox.common.item.book.ItemTreasureBook;
 import ckhbox.villagebox.common.item.common.ItemCoin;

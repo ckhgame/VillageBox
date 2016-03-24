@@ -3,8 +3,15 @@ package ckhbox.villagebox.common.block.decoration;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumDyeColor;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCarpet extends Block{
 	
@@ -26,6 +33,12 @@ public class BlockCarpet extends Block{
     public boolean isFullCube()
     {
         return false;
+    }
+	
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess worldIn, BlockPos pos, EnumFacing side)
+    {
+        return side == EnumFacing.UP ? true : super.shouldSideBeRendered(worldIn, pos, side);
     }
 	
 }

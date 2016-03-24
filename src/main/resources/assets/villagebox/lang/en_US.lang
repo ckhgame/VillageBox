@@ -280,6 +280,9 @@ tile.villagebox:chairBirch.name=Birch Chair
 tile.villagebox:chairSpruce.name=Spruce Chair
 tile.villagebox:chairAcacia.name=Acacia Chair
 tile.villagebox:chairBigOak.name=Dark Oak Chair
+tile.villagebox:flowerPlumBlossom.name=Plum Blossom
+tile.villagebox:flowerHydrangeas.name=Hydrangeas
+
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d

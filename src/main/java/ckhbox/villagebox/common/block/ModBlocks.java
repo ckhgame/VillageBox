@@ -2,6 +2,7 @@ package ckhbox.villagebox.common.block;
 
 import ckhbox.villagebox.common.block.decoration.BlockCarpet;
 import ckhbox.villagebox.common.block.decoration.BlockChair;
+import ckhbox.villagebox.common.block.decoration.BlockFlowerInPot;
 import ckhbox.villagebox.common.block.decoration.BlockTable;
 import ckhbox.villagebox.common.block.tool.BlockAlchemyPot;
 import ckhbox.villagebox.common.block.tool.BlockBuildBox;
@@ -81,6 +82,14 @@ public class ModBlocks {
 	public static BlockCarpet carpetWool14;
 	public static BlockCarpet carpetWool15;
 	
+	//flower
+	public static BlockFlowerInPot flowerRose;
+	public static BlockFlowerInPot flowerHeartMushroom;
+	public static BlockFlowerInPot flowerHydrangeas;
+	public static BlockFlowerInPot flowerPlumBlossom;
+	public static BlockFlowerInPot flowerRanunculus;
+	public static BlockFlowerInPot flowerRosySpirea;
+	
 	public static void init(){
 		GameRegistry.registerBlock(mailbox=new BlockMailBox(),"mailbox");
 		GameRegistry.registerBlock(alchemyPot=new BlockAlchemyPot(),"alchemypot");
@@ -155,5 +164,9 @@ public class ModBlocks {
 		GameRegistry.registerBlock(carpetWool13=new BlockCarpet("carpetWool13"),"carpet_wool_13");
 		GameRegistry.registerBlock(carpetWool14=new BlockCarpet("carpetWool14"),"carpet_wool_14");
 		GameRegistry.registerBlock(carpetWool15=new BlockCarpet("carpetWool15"),"carpet_wool_15");
+		
+		GameRegistry.registerBlock(flowerRose=new BlockFlowerInPot("flowerRose"),"flower_rose");
+		GameRegistry.registerBlock(flowerPlumBlossom=new BlockFlowerInPot("flowerPlumBlossom"),"flower_plumblossom");
+		GameRegistry.registerBlock(flowerHydrangeas=new BlockFlowerInPot("flowerHydrangeas"),"flower_hydrangeas");
 	}
 }
