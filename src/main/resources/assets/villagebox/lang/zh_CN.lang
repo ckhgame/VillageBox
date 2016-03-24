@@ -280,6 +280,14 @@ tile.villagebox:chairBirch.name=白桦木椅
 tile.villagebox:chairSpruce.name=云杉木椅
 tile.villagebox:chairAcacia.name=金合欢木椅
 tile.villagebox:chairBigOak.name=深色橡木椅
+tile.villagebox:flowerPlumBlossom.name=梅花
+tile.villagebox:flowerHydrangeas.name=绣球花
+tile.villagebox:flowerRedRose.name=红玫瑰
+tile.villagebox:flowerGardenia.name=栀子花
+tile.villagebox:flowerHeartMushroom.name=爱心蘑菇
+tile.villagebox:flowerRanunculus.name=金凤花
+tile.villagebox:flowerRosySpiraea.name=绣线菊
+tile.villagebox:bonsai.name=盆栽
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d

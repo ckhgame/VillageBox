@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.village.profession;
 
+import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
@@ -13,14 +14,29 @@ public class ProFlorist extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.wheat_seeds,10),new ItemStack(Items.apple,5)},
-				new ItemStack(Items.bread)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.bonsai)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.iron_axe,1),new ItemStack(Items.beef,3)},
-				new ItemStack(Items.bed)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.flowerHeartMushroom)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.bone,6),new ItemStack(Blocks.torch,20)},
-				new ItemStack(Items.boat)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.flowerGardenia)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.flowerHydrangeas)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.flowerPlumBlossom)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.flowerRanunculus)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.flowerRedRose)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.flowerRosySpiraea)));
 	}
 
 
@@ -37,6 +53,7 @@ public class ProFlorist extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.flower_pot,3),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		
