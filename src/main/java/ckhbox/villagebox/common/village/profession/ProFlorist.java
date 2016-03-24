@@ -53,7 +53,8 @@ public class ProFlorist extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.flower_pot,3),
+				new ItemStack(Items.flower_pot,2),
+				new ItemStack(Blocks.dirt,16),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		

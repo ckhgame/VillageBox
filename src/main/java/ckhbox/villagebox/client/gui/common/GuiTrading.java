@@ -103,6 +103,57 @@ public class GuiTrading extends GuiContainer{
             int k = this.selectedTradingRecipeIdx;
             TradingRecipe tradingRecipe = tradingRecipeList.get(k);
             ItemStack itemstack = null;
+            
+            
+          //all recipes panel
+            if(this.allRecipesButton.isDisplayingAllRecipes){
+            	
+                GlStateManager.pushMatrix();
+                RenderHelper.enableGUIStandardItemLighting();
+                GlStateManager.disableLighting();
+                GlStateManager.enableRescaleNormal();
+                GlStateManager.enableColorMaterial();
+                GlStateManager.enableLighting();
+                this.itemRender.zLevel = 50.0F;
+            	
+            	int px = (this.width + this.xSize) / 2;
+            	int py = (this.height - this.heightAllRecpiesPanel) / 2;  
+            	
+            	//title
+            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, I18n.format(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
+
+            	int rx,ry;
+            	//recipes
+            	for(int recipeIdx = 0;recipeIdx<tradingRecipeList.size();recipeIdx++){
+                	itemstack = tradingRecipeList.get(recipeIdx).getItemOutput();
+                	rx = px + 7 + (recipeIdx % allRecipesColumns) * 18;
+                	ry = py + 15 + (recipeIdx / allRecipesColumns) * 18;
+                	this.itemRender.renderItemAndEffectIntoGUI(itemstack, rx + 1, ry + 1);
+                    //this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, rx, ry);
+                }
+            	
+                this.itemRender.zLevel = 0.0F;
+                GlStateManager.disableLighting();
+            	
+            	//tooltips
+            	for(int recipeIdx = 0;recipeIdx<tradingRecipeList.size();recipeIdx++){
+                	itemstack = tradingRecipeList.get(recipeIdx).getItemOutput();
+                	rx = this.xSize + 7 + (recipeIdx % allRecipesColumns) * 18;
+                	ry = 15 + (recipeIdx / allRecipesColumns) * 18;
+    		    	if (this.isPointInRegion(rx + 1, ry + 1, 16, 16, mouseX, mouseY) && itemstack != null)
+    		        {
+    		            this.renderToolTip(itemstack, mouseX, mouseY);
+    		        }
+                }
+            	
+                GlStateManager.popMatrix();
+                GlStateManager.enableLighting();
+                GlStateManager.enableDepth();
+                RenderHelper.enableStandardItemLighting();
+            }
+            
+            
+            
             GlStateManager.pushMatrix();
             RenderHelper.enableGUIStandardItemLighting();
             GlStateManager.disableLighting();
@@ -122,7 +173,7 @@ public class GuiTrading extends GuiContainer{
             itemstack = tradingRecipe.getItemOutput();
             this.itemRender.renderItemAndEffectIntoGUI(itemstack, i + 132, j + 24);
             this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, i + 132, j + 24);
-            this.itemRender.zLevel = 0.0F;
+            this.itemRender.zLevel = 51.0F;
             GlStateManager.disableLighting();
 
             //tooltips
@@ -141,41 +192,11 @@ public class GuiTrading extends GuiContainer{
                 this.renderToolTip(itemstack, mouseX, mouseY);
             }
             
-            //all recipes panel
-            if(this.allRecipesButton.isDisplayingAllRecipes){
-            	
-            	int px = (this.width + this.xSize) / 2;
-            	int py = (this.height - this.heightAllRecpiesPanel) / 2;  
-            	
-            	//title
-            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, I18n.format(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
-
-            	int rx,ry;
-            	//recipes
-            	for(int recipeIdx = 0;recipeIdx<tradingRecipeList.size();recipeIdx++){
-                	itemstack = tradingRecipeList.get(recipeIdx).getItemOutput();
-                	rx = px + 7 + (recipeIdx % allRecipesColumns) * 18;
-                	ry = py + 15 + (recipeIdx / allRecipesColumns) * 18;
-                	this.itemRender.renderItemAndEffectIntoGUI(itemstack, rx + 1, ry + 1);
-                    //this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, rx, ry);
-                }
-            	
-            	//tooltips
-            	for(int recipeIdx = 0;recipeIdx<tradingRecipeList.size();recipeIdx++){
-                	itemstack = tradingRecipeList.get(recipeIdx).getItemOutput();
-                	rx = this.xSize + 7 + (recipeIdx % allRecipesColumns) * 18;
-                	ry = 15 + (recipeIdx / allRecipesColumns) * 18;
-    		    	if (this.isPointInRegion(rx + 1, ry + 1, 16, 16, mouseX, mouseY) && itemstack != null)
-    		        {
-    		            this.renderToolTip(itemstack, mouseX, mouseY);
-    		        }
-                }
-            }
-            
             GlStateManager.popMatrix();
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
             RenderHelper.enableStandardItemLighting();
+            
         }
     }
 	
