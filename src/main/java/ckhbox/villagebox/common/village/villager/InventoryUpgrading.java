@@ -62,7 +62,7 @@ public class InventoryUpgrading implements IInventory{
 
                 this.resetUpgradeOptionAndSlots();
 
-    			System.out.println("decrStackSize(not empty)");
+    			//System.out.println("decrStackSize(not empty)");
                 return take;
             }
             else

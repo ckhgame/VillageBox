@@ -12,7 +12,6 @@ public class RenderFactoryVillager implements IRenderFactory<EntityVillager>{
 
 	@Override
 	public Render<? super EntityVillager> createRenderFor(RenderManager manager) {
-		System.out.println("get renderer");
 		return new RenderVillager(manager);
 	}
 

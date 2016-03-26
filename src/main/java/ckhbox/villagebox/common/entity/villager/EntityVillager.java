@@ -228,7 +228,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			//remove outlines
 			bound = bound.extend(-1,0,-1);
 			bound.maxy -= 1;
-			System.out.println(bound.toString());
+			//System.out.println(bound.toString());
 			//add home bounday
 			String oldOwner = DataVillage.get(this.worldObj).addHome(this.getName(),bound);
 			if(oldOwner != null){
@@ -302,7 +302,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	public void onDeath(DamageSource cause) {
 		super.onDeath(cause);
 		if(!this.worldObj.isRemote){
-			System.out.println("dead....");
 			DataVillage.get(this.worldObj).addDeadVillager(this);
 			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.died"),this.getName()));
 		}

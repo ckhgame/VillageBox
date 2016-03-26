@@ -52,7 +52,7 @@ public class InventoryTrading implements IInventory{
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
 		
-		System.out.println("decrStackSize:" + index + "," + count);
+		//System.out.println("decrStackSize:" + index + "," + count);
 		if (this.inventoryItems[index] != null)
         {
             if (index == 4)
@@ -70,7 +70,7 @@ public class InventoryTrading implements IInventory{
                 {
                     this.resetRecipeAndSlots();
                 }
-    			System.out.println("decrStackSize(not empty)");
+    			//System.out.println("decrStackSize(not empty)");
                 return take;
             }
             else
