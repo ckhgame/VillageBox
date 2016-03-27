@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.util.helper.PathHelper;
+import ckhbox.villagebox.common.util.math.Rand;
 import ckhbox.villagebox.common.util.registry.IRegistrable;
 import ckhbox.villagebox.common.util.registry.Registry;
 import ckhbox.villagebox.common.village.trading.TradingRecipeList;
@@ -25,6 +26,8 @@ public abstract class Profession implements IRegistrable{
 	protected Profession[] upgradeToNextOptions;//this will be automatically generated based on option classes
 	//what items are needed to upgrade to this profession(usually only gems, maximum: 3 stacks)
 	protected ItemStack[] upgradeToCurentNeeds;
+	//what items the villager will hold (will randomly select if there are more than 1 items in the list)
+	protected ItemStack[] holdItems;
 	
 	@Override
 	public int getRegID() {
@@ -40,6 +43,7 @@ public abstract class Profession implements IRegistrable{
 		this.initTradingRecipeList();
 		this.initTexture();
 		this.initUpgradeOptions();
+		this.initHoldItems();
 	}
 	
 	public Profession[] getUpgradeToNextOptions(){
@@ -85,6 +89,13 @@ public abstract class Profession implements IRegistrable{
 		return this.tradingRecipeList;
 	}
 	
+	public ItemStack getRandomHoldItem(){
+		if(Rand.get().nextFloat() < 0.6F || this.holdItems == null || this.holdItems.length < 1)
+			return null;
+		else
+			return this.holdItems[Rand.get().nextInt(this.holdItems.length)];
+	}
+	
 	public String getDisplayName(){
 		String name = I18n.format(this.getUnlocalized() + ".name");
 		if(VBConfig.displayExtraInfo) name += "(ID:" + this.getRegID() + ")";
@@ -104,6 +115,7 @@ public abstract class Profession implements IRegistrable{
 	protected abstract void initTradingRecipeList();
 	protected abstract void initTexture();
 	protected abstract void initUpgradeOptions();
+	protected abstract void initHoldItems();
 	protected abstract String getUnlocalized();
 	
 	

@@ -44,4 +44,10 @@ public class ProBookseller extends Profession{
 		this.upgradeToNextOptionClasses = null;
 	}
 
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.book)
+		};
+	}
 }

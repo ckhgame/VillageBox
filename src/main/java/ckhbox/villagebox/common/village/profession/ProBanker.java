@@ -46,4 +46,11 @@ public class ProBanker extends Profession{
 		this.upgradeToNextOptionClasses = null;
 	}
 
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(ModItems.silverCoin),
+				new ItemStack(ModItems.goldCoin)
+		};
+	}
 }

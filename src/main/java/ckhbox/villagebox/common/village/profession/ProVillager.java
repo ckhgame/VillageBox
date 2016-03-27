@@ -34,5 +34,13 @@ public abstract class ProVillager extends Profession{
 				ProScholar.class
 				};
 	} 
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.apple),
+				new ItemStack(Items.egg)
+		};
+	}
 
 }

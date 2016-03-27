@@ -58,4 +58,11 @@ public class ProOrchardist extends Profession{
 				};
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.golden_shovel)
+		};
+	}
+	
 }

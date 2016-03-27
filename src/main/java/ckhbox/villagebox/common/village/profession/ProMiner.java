@@ -51,4 +51,10 @@ public class ProMiner extends Profession{
 		this.upgradeToNextOptionClasses = null;
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.iron_pickaxe)
+		};
+	}
 }

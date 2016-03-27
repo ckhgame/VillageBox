@@ -60,5 +60,14 @@ public class ProFlorist extends Profession{
 		
 		this.upgradeToNextOptionClasses = null;
 	}
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.flower_pot),
+				new ItemStack(ModBlocks.bonsai),
+				new ItemStack(ModBlocks.flowerRedRose)
+		};
+	}
 
 }

@@ -52,4 +52,10 @@ public class ProFarmer extends Profession{
 				};
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.golden_hoe)
+		};
+	}
 }

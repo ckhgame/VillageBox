@@ -104,4 +104,12 @@ public class ProChefDessert extends Profession{
 		this.upgradeToNextOptionClasses = null;
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.sugar),
+				new ItemStack(ModItems.wheatFlour)
+		};
+	}
+	
 }

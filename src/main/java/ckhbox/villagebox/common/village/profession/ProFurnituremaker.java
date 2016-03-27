@@ -71,5 +71,12 @@ public class ProFurnituremaker extends Profession{
 		
 		this.upgradeToNextOptions = null;
 	}
-
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Blocks.planks),
+				new ItemStack(ModBlocks.chairOak)
+		};
+	}
 }

@@ -28,6 +28,8 @@ import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.ai.EntityJumpHelper;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.server.MinecraftServer;
@@ -306,10 +308,18 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.died"),this.getName()));
 		}
 	}
+	
+	@Override
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_){
+		//don't drop any equipment
+	}
 
 	public void refreshProfession(){
 		int proid = this.getDataWatcher().getWatchableObjectInt(16);
 		this.profession = Profession.registry.get(proid);
+		if(!this.worldObj.isRemote){
+			this.setCurrentItemOrArmor(0, this.profession.getRandomHoldItem());
+		}
 	}
 	
 	@Override

@@ -41,5 +41,13 @@ public class ProBlacksmith extends Profession{
 				ProToolsmith.class
 				};
 	}
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.coal),
+				new ItemStack(Items.lava_bucket)
+		};
+	}
 
 }

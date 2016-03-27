@@ -6,6 +6,7 @@ import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -15,6 +16,7 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 	
 	public RenderVillager(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelVillager(), 0.5F, 1.0F);
+		this.addLayer(new LayerHeldItem(this));
 	}
 
 	@Override

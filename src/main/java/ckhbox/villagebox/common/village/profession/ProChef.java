@@ -122,4 +122,11 @@ public class ProChef extends Profession{
 		this.upgradeToNextOptionClasses = null;
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(ModItems.cookingOil),
+				new ItemStack(ModItems.cookingWine)
+		};
+	}
 }

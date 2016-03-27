@@ -49,5 +49,12 @@ public class ProCarpenter extends Profession{
 				ProFurnituremaker.class
 				};
 	}
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Blocks.log)
+		};
+	}
 
 }

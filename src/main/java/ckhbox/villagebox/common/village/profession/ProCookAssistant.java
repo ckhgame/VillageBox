@@ -80,4 +80,12 @@ public class ProCookAssistant extends Profession{
 				};
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.chicken),
+				new ItemStack(Items.wheat)
+		};
+	}
+	
 }

@@ -41,4 +41,11 @@ public class ProShaman extends Profession{
 		this.upgradeToNextOptionClasses = null;
 	}
 
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(ModItems.sunStone),
+				new ItemStack(ModItems.rainStone)
+		};
+	}
 }

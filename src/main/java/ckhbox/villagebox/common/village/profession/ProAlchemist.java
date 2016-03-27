@@ -37,5 +37,15 @@ public class ProAlchemist extends Profession{
 		
 		this.upgradeToNextOptionClasses = null;
 	}
+
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.glass_bottle),
+				new ItemStack(Items.spider_eye)
+		};
+	}
+	
+	
 	
 }

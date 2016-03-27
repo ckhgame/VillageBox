@@ -53,5 +53,12 @@ public class ProPeasant extends Profession{
 				ProCookAssistant.class
 				};
 	}
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.iron_hoe)
+		};
+	}
 
 }

@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.village.profession;
 
+import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
@@ -39,6 +40,13 @@ public class ProMage extends Profession{
 				ProAlchemist.class,
 				ProShaman.class
 				};
+	}
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.stick)
+		};
 	}
 
 }

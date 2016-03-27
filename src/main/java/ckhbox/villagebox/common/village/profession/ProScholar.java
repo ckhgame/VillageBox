@@ -44,5 +44,12 @@ public class ProScholar extends Profession{
 				ProPainter.class
 				};
 	}
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.book)
+		};
+	}
 
 }

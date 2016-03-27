@@ -58,4 +58,12 @@ public class ProVintner extends Profession{
 		this.upgradeToNextOptions = null;
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(ModItems.grape),
+				new ItemStack(ModItems.grapeWine)
+		};
+	}
+	
 }

@@ -47,4 +47,11 @@ public class ProRancher extends Profession{
 		this.upgradeToNextOptionClasses = null;
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Items.bucket),
+				new ItemStack(Items.shears)
+		};
+	}
 }

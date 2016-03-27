@@ -47,5 +47,13 @@ public class ProBuilder extends Profession{
 		
 		this.upgradeToNextOptionClasses = null;
 	}
+	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(Blocks.planks),
+				new ItemStack(Blocks.stonebrick)
+		};
+	}
 
 }

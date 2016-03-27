@@ -48,4 +48,11 @@ public class ProCarpetMakerAdevanced extends Profession{
 		this.upgradeToNextOptions = null;
 	}
 	
+	@Override
+	protected void initHoldItems() {
+		this.holdItems = new ItemStack[]{
+				new ItemStack(ModItems.ballOfWool)
+		};
+	}
+	
 }
