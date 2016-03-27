@@ -16,7 +16,7 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 	
 	public RenderVillager(RenderManager renderManagerIn) {
 		super(renderManagerIn, new ModelVillager(), 0.5F, 1.0F);
-		this.addLayer(new LayerHeldItem(this));
+		this.addLayer(new LayerVillagerHeldItem(this));
 	}
 
 	@Override
