@@ -113,7 +113,7 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
 
         if (this.art == null)
         {
-            this.art = EntityPainting.EnumArt.KEBAB;
+            this.art = EntityPainting.EnumArt.TREE;
         }
 
         super.readEntityFromNBT(tagCompund);
@@ -168,32 +168,35 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
 
     public static enum EnumArt
     {
-        KEBAB("Kebab", 16, 16, 0, 0),
-        AZTEC("Aztec", 16, 16, 16, 0),
-        ALBAN("Alban", 16, 16, 32, 0),
-        AZTEC_2("Aztec2", 16, 16, 48, 0),
-        BOMB("Bomb", 16, 16, 64, 0),
-        PLANT("Plant", 16, 16, 80, 0),
-        WASTELAND("Wasteland", 16, 16, 96, 0),
-        POOL("Pool", 32, 16, 0, 32),
-        COURBET("Courbet", 32, 16, 32, 32),
-        SEA("Sea", 32, 16, 64, 32),
-        SUNSET("Sunset", 32, 16, 96, 32),
-        CREEBET("Creebet", 32, 16, 128, 32),
-        WANDERER("Wanderer", 16, 32, 0, 64),
-        GRAHAM("Graham", 16, 32, 16, 64),
-        MATCH("Match", 32, 32, 0, 128),
-        BUST("Bust", 32, 32, 32, 128),
-        STAGE("Stage", 32, 32, 64, 128),
-        VOID("Void", 32, 32, 96, 128),
-        SKULL_AND_ROSES("SkullAndRoses", 32, 32, 128, 128),
-        WITHER("Wither", 32, 32, 160, 128),
-        FIGHTERS("Fighters", 64, 32, 0, 96),
-        POINTER("Pointer", 64, 64, 0, 192),
-        PIGSCENE("Pigscene", 64, 64, 64, 192),
-        BURNING_SKULL("BurningSkull", 64, 64, 128, 192),
-        SKELETON("Skeleton", 64, 48, 192, 64),
-        DONKEY_KONG("DonkeyKong", 64, 48, 192, 112);
+        TREE("Tree", 16, 16, 0, 0),
+        TAVERN("Tavern", 16, 16, 16, 0),
+        CHURCH("Church", 16, 16, 32, 0),
+        MARKET("Matket", 16, 16, 48, 0),
+        FURNACE("Furnace", 16, 16, 64, 0),
+        HOUSE("House", 16, 16, 80, 0),
+        FLOWER("Flower", 16, 16, 96, 0),
+        SCENE("Scene", 32, 16, 0, 32),
+        TTP("ttp", 32, 16, 32, 32),
+        SUNSET("Sunset", 32, 16, 64, 32),
+        FLOWER2("Flower2", 32, 16, 96, 32),
+        SHElL("Shell", 32, 16, 128, 32),
+        DARKNESS("Darkness", 16, 32, 0, 64),
+        SUMMER("Summer", 16, 32, 16, 64),
+        GIRL("Girl", 64, 32, 0, 96),
+        MOUNTAIN("Mountain", 64, 32, 0, 96),
+        POISON("Poison", 32, 32, 0, 128),
+        BEAR("Bear", 32, 32, 32, 128),
+        SCENE2("Scene2", 32, 32, 64, 128),
+        MOONGATE("Moongate", 32, 32, 96, 128),
+        NIGHT("Night", 32, 32, 128, 128),
+        PARTY("Party", 32, 32, 160, 128),
+        ZEN("Zen", 64, 64, 0, 192),
+        CLONE("Clone", 64, 64, 64, 192),
+        CASTLE("Castle", 64, 64, 128, 192),
+        MARKET2("Market2", 64, 48, 192, 64),
+        CHURCH2("Church2", 64, 48, 192, 112),
+        HOUSE2("House2", 64, 48, 192, 160),
+        TREE2("Tree2", 64, 48, 192, 208);
 
         public static final int field_180001_A = "SkullAndRoses".length();
         /** Painting Title. */
