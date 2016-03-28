@@ -21,6 +21,8 @@ villagebox:profession.mage.name=法师
 villagebox:profession.mage.desc=出售魔法物品
 villagebox:profession.alchemist.name=炼金术师
 villagebox:profession.alchemist.desc=转换自然元素
+villagebox:profession.magiccrafter.name=魔法制作师
+villagebox:profession.magiccrafter.desc=制作魔法物品
 villagebox:profession.shaman.name=萨满
 villagebox:profession.shaman.desc=改变天气
 villagebox:profession.carpenter.name=木匠
@@ -216,6 +218,7 @@ entity.villagebox.villager.name=村民
 # Blocks
 tile.villagebox:mailbox.name=信箱
 tile.villagebox:alchemypot.name=炼金锅
+tile.villagebox:magicTrashCan.name=魔法垃圾桶
 tile.villagebox:buildboxSmall.name=建筑盒子 (§a小型§f)
 tile.villagebox:buildboxMedium.name=建筑盒子 (§b中型§f)
 tile.villagebox:buildboxLarge.name=建筑盒子 (§c大型§f)

@@ -20,7 +20,9 @@ villagebox:profession.painter.desc=Create new paintings
 villagebox:profession.mage.name=Mage
 villagebox:profession.mage.desc=Sells magic items
 villagebox:profession.alchemist.name=Alchemist
-villagebox:profession.alchemist.desc=Transform natural elements
+villagebox:profession.alchemist.desc=Brew potions
+villagebox:profession.magiccrafter.name=Magic Crafter
+villagebox:profession.magiccrafter.desc=Make magic items
 villagebox:profession.shaman.name=Shaman
 villagebox:profession.shaman.desc=Change weather
 villagebox:profession.carpenter.name=Carpenter
@@ -216,6 +218,7 @@ entity.villagebox.villager.name=Villager
 # Blocks
 tile.villagebox:mailbox.name=Mail Box
 tile.villagebox:alchemypot.name=Alchemy Pot
+tile.villagebox:magicTrashCan.name=Magic Trash Can
 tile.villagebox:buildboxSmall.name=Build Box (§aSmall§f)
 tile.villagebox:buildboxMedium.name=Build Box (§bMedium§f)
 tile.villagebox:buildboxLarge.name=Build Box (§cLarge§f)
@@ -288,8 +291,6 @@ tile.villagebox:flowerHeartMushroom.name=Heart Mushroom
 tile.villagebox:flowerRanunculus.name=Ranunculus
 tile.villagebox:flowerRosySpiraea.name=Rosy Spiraea
 tile.villagebox:bonsai.name=Bonsai
-
-
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d

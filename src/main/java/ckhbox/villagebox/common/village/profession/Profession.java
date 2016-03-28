@@ -157,6 +157,7 @@ public abstract class Profession implements IRegistrable{
 		registry.register(30, new ProChef());
 		registry.register(31, new ProChefDessert());
 		registry.register(32, new ProBuilder());
+		registry.register(33, new ProMagicCrafter());
 	}
 
 }

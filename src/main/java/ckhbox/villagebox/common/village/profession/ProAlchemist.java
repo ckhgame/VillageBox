@@ -13,9 +13,28 @@ public class ProAlchemist extends Profession{
 
 	@Override
 	protected void initTradingRecipeList() {
+//		this.tradingRecipeList.add(new TradingRecipe(
+//				new ItemStack[]{new ItemStack(ModItems.silverCoin,10), new ItemStack(ModItems.steelIngot,10)},
+//				new ItemStack(ModBlocks.alchemyPot)));
+		
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,10), new ItemStack(ModItems.steelIngot,10)},
-				new ItemStack(ModBlocks.alchemyPot)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(Items.potionitem,1,8193)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(Items.potionitem,1,8194)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(Items.potionitem,1,8197)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(Items.potionitem,1,8201)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(Items.potionitem,1,8203)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(Items.potionitem,1,8205)));
 	}
 
 	@Override
