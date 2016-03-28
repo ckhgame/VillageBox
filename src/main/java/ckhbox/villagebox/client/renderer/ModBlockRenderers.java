@@ -16,7 +16,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlockRenderers {
 	public static void init(){
 		registerModel(ModBlocks.mailbox, 0, "mailbox");
-		registerModel(ModBlocks.alchemyPot, 0, "alchemypot");
+		//registerModel(ModBlocks.alchemyPot, 0, "alchemypot");
+		registerModel(ModBlocks.magicTrashCan, 0, "magic_trash_can");
 		registerModel(ModBlocks.buildboxSmall, 0, "buildbox_small");
 		registerModel(ModBlocks.buildboxMedium, 0, "buildbox_medium");
 		registerModel(ModBlocks.buildboxLarge, 0, "buildbox_large");

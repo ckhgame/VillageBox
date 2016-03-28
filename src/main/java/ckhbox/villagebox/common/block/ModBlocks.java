@@ -6,13 +6,15 @@ import ckhbox.villagebox.common.block.decoration.BlockFlowerInPot;
 import ckhbox.villagebox.common.block.decoration.BlockTable;
 import ckhbox.villagebox.common.block.tool.BlockAlchemyPot;
 import ckhbox.villagebox.common.block.tool.BlockBuildBox;
+import ckhbox.villagebox.common.block.tool.BlockMagicTrashCan;
 import ckhbox.villagebox.common.block.tool.BlockMailBox;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 	
 	public static BlockMailBox mailbox;
-	public static BlockAlchemyPot alchemyPot;
+	//public static BlockAlchemyPot alchemyPot;
+	public static BlockMagicTrashCan magicTrashCan;
 	
 	public static BlockBuildBox buildboxSmall;
 	public static BlockBuildBox buildboxMedium;
@@ -94,7 +96,8 @@ public class ModBlocks {
 	
 	public static void init(){
 		GameRegistry.registerBlock(mailbox=new BlockMailBox(),"mailbox");
-		GameRegistry.registerBlock(alchemyPot=new BlockAlchemyPot(),"alchemypot");
+		//GameRegistry.registerBlock(alchemyPot=new BlockAlchemyPot(),"alchemypot");
+		GameRegistry.registerBlock(magicTrashCan=new BlockMagicTrashCan(),"magic_trash_can");
 		
 		GameRegistry.registerBlock(buildboxSmall=new BlockBuildBox(BlockBuildBox.BuildSize.Small),"buildbox_small");
 		GameRegistry.registerBlock(buildboxMedium=new BlockBuildBox(BlockBuildBox.BuildSize.Medium),"buildbox_medium");
