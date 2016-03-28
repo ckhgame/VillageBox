@@ -104,8 +104,27 @@ public class GuiTrading extends GuiContainer{
             TradingRecipe tradingRecipe = tradingRecipeList.get(k);
             ItemStack itemstack = null;
             
+            GlStateManager.pushMatrix();
+            RenderHelper.enableGUIStandardItemLighting();
+            GlStateManager.disableLighting();
+            GlStateManager.enableRescaleNormal();
+            GlStateManager.enableColorMaterial();
+            GlStateManager.enableLighting();
+            this.itemRender.zLevel = 100.0F;
             
-          //all recipes panel
+            int x;
+            for(int itemIdx = 0;itemIdx<tradingRecipe.getItemsInput().length;itemIdx++){
+            	itemstack = tradingRecipe.getItemsInput()[itemIdx];
+            	x = i + 23 + (4 - tradingRecipe.getItemsInput().length + itemIdx) * 18;
+            	this.itemRender.renderItemAndEffectIntoGUI(itemstack, x, j + 24);
+                this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, x, j + 24);
+            }
+
+            itemstack = tradingRecipe.getItemOutput();
+            this.itemRender.renderItemAndEffectIntoGUI(itemstack, i + 132, j + 24);
+            this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, i + 132, j + 24);
+            
+            //all recipes panel
             if(this.allRecipesButton.isDisplayingAllRecipes){
             	
                 GlStateManager.pushMatrix();
@@ -131,51 +150,11 @@ public class GuiTrading extends GuiContainer{
                 	this.itemRender.renderItemAndEffectIntoGUI(itemstack, rx + 1, ry + 1);
                     //this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, rx, ry);
                 }
-            	
-                this.itemRender.zLevel = 0.0F;
-                GlStateManager.disableLighting();
-            	
-            	//tooltips
-            	for(int recipeIdx = 0;recipeIdx<tradingRecipeList.size();recipeIdx++){
-                	itemstack = tradingRecipeList.get(recipeIdx).getItemOutput();
-                	rx = this.xSize + 7 + (recipeIdx % allRecipesColumns) * 18;
-                	ry = 15 + (recipeIdx / allRecipesColumns) * 18;
-    		    	if (this.isPointInRegion(rx + 1, ry + 1, 16, 16, mouseX, mouseY) && itemstack != null)
-    		        {
-    		            this.renderToolTip(itemstack, mouseX, mouseY);
-    		        }
-                }
-            	
-                GlStateManager.popMatrix();
-                GlStateManager.enableLighting();
-                GlStateManager.enableDepth();
-                RenderHelper.enableStandardItemLighting();
             }
             
-            
-            
-            GlStateManager.pushMatrix();
-            RenderHelper.enableGUIStandardItemLighting();
+            this.itemRender.zLevel = 0.0F;
             GlStateManager.disableLighting();
-            GlStateManager.enableRescaleNormal();
-            GlStateManager.enableColorMaterial();
-            GlStateManager.enableLighting();
-            this.itemRender.zLevel = 100.0F;
             
-            int x;
-            for(int itemIdx = 0;itemIdx<tradingRecipe.getItemsInput().length;itemIdx++){
-            	itemstack = tradingRecipe.getItemsInput()[itemIdx];
-            	x = i + 23 + (4 - tradingRecipe.getItemsInput().length + itemIdx) * 18;
-            	this.itemRender.renderItemAndEffectIntoGUI(itemstack, x, j + 24);
-                this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, x, j + 24);
-            }
-
-            itemstack = tradingRecipe.getItemOutput();
-            this.itemRender.renderItemAndEffectIntoGUI(itemstack, i + 132, j + 24);
-            this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, i + 132, j + 24);
-            this.itemRender.zLevel = 51.0F;
-            GlStateManager.disableLighting();
-
             //tooltips
             for(int itemIdx = 0;itemIdx<tradingRecipe.getItemsInput().length;itemIdx++){
             	itemstack = tradingRecipe.getItemsInput()[itemIdx];
@@ -191,12 +170,28 @@ public class GuiTrading extends GuiContainer{
             {
                 this.renderToolTip(itemstack, mouseX, mouseY);
             }
-            
+                       
+            //all recipes panel tooltips
+            if(this.allRecipesButton.isDisplayingAllRecipes){
+            	int px = (this.width + this.xSize) / 2;
+            	int py = (this.height - this.heightAllRecpiesPanel) / 2;             	
+            	int rx,ry;
+            	//tooltips
+            	for(int recipeIdx = 0;recipeIdx<tradingRecipeList.size();recipeIdx++){
+                	itemstack = tradingRecipeList.get(recipeIdx).getItemOutput();
+                	rx = this.xSize + 7 + (recipeIdx % allRecipesColumns) * 18;
+                	ry = 15 + (recipeIdx / allRecipesColumns) * 18;
+    		    	if (this.isPointInRegion(rx + 1, ry + 1, 16, 16, mouseX, mouseY) && itemstack != null)
+    		        {
+    		            this.renderToolTip(itemstack, mouseX, mouseY);
+    		        }
+                }          	
+            }
+           
             GlStateManager.popMatrix();
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
-            RenderHelper.enableStandardItemLighting();
-            
+            RenderHelper.enableStandardItemLighting();            
         }
     }
 	
