@@ -4,6 +4,7 @@ import ckhbox.villagebox.client.model.villager.ModelVillager;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
@@ -39,6 +40,13 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 		else
 			return entity.getProfession().getTexture(entity.isMale());
 	}
+
+	@Override
+	protected void preRenderCallback(EntityVillager entitylivingbaseIn, float partialTickTime) {
+		float f = 0.9375F;
+        GlStateManager.scale(f, f, f);	
+	}
+	
 	
 	
 
