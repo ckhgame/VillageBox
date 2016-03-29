@@ -14,15 +14,18 @@ public class ItemStackHelper {
 	}
 	
 	private static boolean match(ItemStack[] items,ItemStack[] inputs, int size, boolean consume){
+		
 		int[] tempStackSizes = null;
 		if(consume){
 			tempStackSizes = new int[items.length];
 		}
 		
 		ArrayList<ItemStack> waitForMatching = new ArrayList<ItemStack>();
-		for(int i = 0;i<inputs.length;i++){
-			if(inputs[i] != null){
-				waitForMatching.add(inputs[i]);
+		if(inputs != null){
+			for(int i = 0;i<inputs.length;i++){
+				if(inputs[i] != null){
+					waitForMatching.add(inputs[i]);
+				}
 			}
 		}
 		

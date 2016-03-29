@@ -211,6 +211,7 @@ item.villagebox:steelShovel.name=Steel Shovel
 item.villagebox:steelSword.name=Steel Sword
 item.villagebox:efficientBow.name=Efficient Bow
 item.villagebox:painting.name=Unique Painting
+item.villagebox:resetScroll.name=Reset Scroll
 
 # villager egg
 entity.villagebox.villager.name=Villager
@@ -296,6 +297,7 @@ tile.villagebox:bonsai.name=Bonsai
 villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
 villagebox:mail.item.info=§7From §a%s
 villagebox:invitation.item.info=§7"Welcome to my village..."
+villagebox:item.resetScroll.item.info=§7Right click to downgrade a villager
 
 # Mail
 villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?

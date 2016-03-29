@@ -1,10 +1,14 @@
 package ckhbox.villagebox.common.entity.villager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.entity.ai.VillagerAIFollowing;
 import ckhbox.villagebox.common.entity.ai.VillagerAILookAtInteractPlayer;
 import ckhbox.villagebox.common.entity.ai.VillagerAIWander;
 import ckhbox.villagebox.common.gui.GuiIDs;
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.BitHelper;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.math.IntBoundary;
@@ -39,6 +43,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.actors.threadpool.Arrays;
 
 public class EntityVillager extends EntityCreature implements ITrading{
 
@@ -51,6 +56,9 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	//the canter of wandering when no home has been set to this villager
 	private Vec3 wanderCenter;
+	
+	//the upgrading history
+	private List<Integer> upgradingHistory = new ArrayList<Integer>(Arrays.asList(new Integer[]{99999}));//99999:caveman
 	
 	public EntityVillager(World worldIn){
 		this(worldIn, Rand.get().nextBoolean());
@@ -132,12 +140,34 @@ public class EntityVillager extends EntityCreature implements ITrading{
 				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.isbusy")));
 			}
 			else{
-				player.openGui(VillageBoxMod.instance, GuiIDs.VillagerMain, player.worldObj, player.dimension, this.getEntityId(), 0);
+				ItemStack itemstack = player.inventory.getCurrentItem();
+				if(itemstack != null && itemstack.getItem() == ModItems.resetScroll && itemstack.stackSize > 0){
+					//if the player is using a reset scroll
+					if(this.downgrade()){
+						this.consumeItemFromStack(player,itemstack);
+					}
+				}
+				else{
+					player.openGui(VillageBoxMod.instance, GuiIDs.VillagerMain, player.worldObj, player.dimension, this.getEntityId(), 0);
+				}
 			}
 		}
 		
 		return true;
 	}
+	
+    protected void consumeItemFromStack(EntityPlayer player, ItemStack stack)
+    {
+        if (!player.capabilities.isCreativeMode)
+        {
+            --stack.stackSize;
+
+            if (stack.stackSize <= 0)
+            {
+                player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
+            }
+        }
+    }
 
 	@Override
 	public TradingRecipeList getTradingRecipeList() {
@@ -181,6 +211,25 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	public boolean isMale(){
 		return this.getDataFlag(3);
+	}
+	
+	public int[] getUpgradingHistory(){
+		if(this.upgradingHistory == null || this.upgradingHistory.size() < 1)
+			return null;
+		int[] upgrades = new int[this.upgradingHistory.size()];
+		for(int i =0;i<upgrades.length;i++){
+			upgrades[i] = this.upgradingHistory.get(i);
+		}
+		return upgrades;
+	}
+	
+	public void setUpgradingHistory(int[] arr){
+		this.upgradingHistory.clear();
+		if(arr != null && arr.length > 0){
+			for(int i =0;i<arr.length;i++){
+				this.upgradingHistory.add(arr[i]);
+			}
+		}
 	}
 	
 	//interacting and following	
@@ -287,6 +336,26 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.refreshProfession();
 	}
 	
+	public void upgrade(int pid){
+		if(!this.worldObj.isRemote){
+			this.upgradingHistory.add(this.getProfession().getRegID());
+			this.setProfession(pid);
+			//message
+		}
+	}
+	
+	public boolean downgrade(){
+		if(!this.worldObj.isRemote && this.upgradingHistory.size() > 0){
+			int last = this.upgradingHistory.remove(this.upgradingHistory.size() - 1);
+			this.setProfession(last);
+			//message
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public String getName(){
 		return this.getCustomNameTag();
 	}
@@ -354,6 +423,11 @@ public class EntityVillager extends EntityCreature implements ITrading{
 					this.home.maxz
 					});
 		}
+		//upgrading history
+		int[] upgrades = this.getUpgradingHistory();
+		if(upgrades != null){
+			tagCompound.setIntArray("upgrades", upgrades);
+		}
 	}
 
 	@Override
@@ -372,6 +446,9 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			this.home = new IntBoundary(arr[0],arr[1],arr[2],arr[3],arr[4],arr[5]);
 			this.setDataFlag(2,true);
 		}
+		//upgrading history
+		arr = tagCompund.getIntArray("upgrades");
+		this.setUpgradingHistory(arr);
 	}
 
 	

@@ -12,6 +12,8 @@ public class VBConfig {
 	public static boolean destroyBlocksDropCoins;		//ture: destroy blocks can drop coins
 	public static boolean killMobsDropCoins;			//true: kill mobs can drop coins
 	public static boolean displayExtraInfo;				//true: will display extra information in game like the profession id
+	public static boolean freeUpgrading;				//set to ture when you want nothing be cunsumed on upgrading villagers
+	public static int reviveTicks;						//how many ticks to revive a villager
 	
 	public static void load(File file){
 		Configuration conf = new Configuration(file, VillageBoxMod.VERSION);
@@ -37,6 +39,16 @@ public class VBConfig {
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "displayExtraInfo", false);
 		pt.comment = "Set to true when you want to view extra information such as the profession id of a villager";
 		displayExtraInfo = pt.getBoolean();
+		
+		//villager revive ticks
+		pt = conf.get(Configuration.CATEGORY_GENERAL, "ReviveTicks", 24000);
+		pt.comment = "How many ticks until a deadvillager revives again";
+		reviveTicks = pt.getInt();
+		
+		//free upgrading
+		pt = conf.get(Configuration.CATEGORY_GENERAL, "FreeUpgrading", false);
+		pt.comment = "set to ture when you want nothing be cunsumed on upgrading villagers";
+		freeUpgrading = pt.getBoolean();
 		
 		conf.save();
 	}

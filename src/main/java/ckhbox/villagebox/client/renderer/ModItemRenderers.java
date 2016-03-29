@@ -27,6 +27,7 @@ public class ModItemRenderers {
 		registerModel(ModItems.mail, 0, "mail");
 		registerModel(ModItems.invitation, 0, "invitation");
 		registerModel(ModItems.flameStaff, 0, "flame_staff");
+		registerModel(ModItems.resetScroll, 0, "reset_scroll");
 		
 		registerModel(ModItems.steelHoe, 0, "steel_hoe");
 		registerModel(ModItems.steelAxe, 0, "steel_axe");
@@ -43,6 +44,8 @@ public class ModItemRenderers {
 		registerModel(ModItems.woodenChestplate, 0, "wooden_chestplate");
 		registerModel(ModItems.woodenLeggings, 0, "wooden_leggings");
 		registerModel(ModItems.woodenBoots, 0, "wooden_boots");
+		
+		registerModel(ModItems.woodenClub, 0, "wooden_club");
 		
 		registerModel(ModItems.steelIngot, 0, "steel_ingot");
 		

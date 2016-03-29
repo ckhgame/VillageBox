@@ -78,7 +78,7 @@ public abstract class Profession implements IRegistrable{
 	}
 	
 	public ItemStack[] getUpgradeToCurentNeeds(){
-		return this.upgradeToCurentNeeds;
+		return VBConfig.freeUpgrading?null:this.upgradeToCurentNeeds;
 	}
 	
 	public ResourceLocation getTexture(boolean male){
@@ -158,6 +158,10 @@ public abstract class Profession implements IRegistrable{
 		registry.register(31, new ProChefDessert());
 		registry.register(32, new ProBuilder());
 		registry.register(33, new ProMagicCrafter());
+		
+				
+		//caveman
+		registry.register(99999, new ProCaveman());
 	}
 
 }

@@ -24,6 +24,7 @@ public class InventoryUpgrading implements IInventory{
 	public InventoryUpgrading(EntityPlayer player, EntityVillager villager){
 		this.villager = villager;
 		this.player = player;
+		this.resetUpgradeOptionAndSlots();
 	}
 	
 	@Override
@@ -170,7 +171,7 @@ public class InventoryUpgrading implements IInventory{
 	public void upgrade(){
     	if(this.canUpgrade()){
     		if(ItemStackHelper.consume(this.inventoryItems, this.currentUpgradeOption.getUpgradeToCurentNeeds(), 3)){
-    			this.villager.setProfession(this.currentUpgradeOption.getRegID());
+    			this.villager.upgrade(this.currentUpgradeOption.getRegID());
     			this.player.closeScreen();
     		}
     	}

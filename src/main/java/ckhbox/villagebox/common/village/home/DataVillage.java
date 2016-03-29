@@ -2,6 +2,7 @@ package ckhbox.villagebox.common.village.home;
 
 import java.util.ArrayList;
 
+import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.math.IntBoundary;
@@ -18,21 +19,19 @@ import net.minecraftforge.common.util.Constants.NBT;
 public class DataVillage extends WorldSavedData{
 
 	private static final String key = "villagebox.datavillage";
-	private static DataVillage data = null;
+	
 	public static DataVillage get(World world){
 		//only for server
 		if(world.isRemote)
 			return null;
 		
+		DataVillage data = (DataVillage)world.getPerWorldStorage().loadData(DataVillage.class, key);
 		if(data == null){
-			data = (DataVillage)world.getPerWorldStorage().loadData(DataVillage.class, key);
-			if(data == null){
-				//first time creating...
-				data = new DataVillage(key);
-				world.getPerWorldStorage().setData(key, data);
-			}
-			data.world = world;
+			//first time creating...
+			data = new DataVillage(key);
+			world.getPerWorldStorage().setData(key, data);
 		}
+		data.world = world;
 		
 		return data;
 	}
@@ -105,6 +104,7 @@ public class DataVillage extends WorldSavedData{
 			villager.setPosition(c.x + 0.5D, deadVillager.home.miny, c.z + 0.5D);
 			villager.setHome(deadVillager.home);
 		}
+		villager.setUpgradingHistory(deadVillager.upgradingHistory);
 		this.world.spawnEntityInWorld(villager);
 		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.revived"),deadVillager.name));
 	}
@@ -183,13 +183,15 @@ public class DataVillage extends WorldSavedData{
 		public boolean gender;
 		public IntBoundary home;
 		public IntVec3 pos;
+		public int[] upgradingHistory;
 		public DeadVillager(EntityVillager villager){
 			this.name = villager.getName();
 			this.proid = villager.getProfession().getRegID();
 			this.gender = villager.isMale();
 			this.home = villager.getHome();
 			this.pos = this.home == null?new IntVec3(villager.getWanderCenter()):null;
-			this.ticksLeft = 24000;
+			this.upgradingHistory = villager.getUpgradingHistory();
+			this.ticksLeft = VBConfig.reviveTicks;
 		}
 		
 		public DeadVillager(NBTTagCompound nbt){
@@ -208,6 +210,9 @@ public class DataVillage extends WorldSavedData{
 			else{
 				nbt.setIntArray("pos", this.pos.toArray());
 			}
+			if(this.upgradingHistory != null && this.upgradingHistory.length > 0){
+				nbt.setIntArray("upgrades", this.upgradingHistory);
+			}
 		}
 		
 		public void readFromNBT(NBTTagCompound nbt){
@@ -224,6 +229,7 @@ public class DataVillage extends WorldSavedData{
 				this.pos = new IntVec3(nbt.getIntArray("pos"));
 				this.home = null;
 			}
+			this.upgradingHistory = nbt.hasKey("upgrades")?nbt.getIntArray("upgrades"):null;
 		}
 	}
 }

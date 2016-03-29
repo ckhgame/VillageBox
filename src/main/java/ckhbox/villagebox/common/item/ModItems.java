@@ -2,6 +2,7 @@ package ckhbox.villagebox.common.item;
 
 import ckhbox.villagebox.common.block.decoration.BlockFlowerInPot;
 import ckhbox.villagebox.common.item.armor.ItemArmor;
+import ckhbox.villagebox.common.item.book.ItemResetScroll;
 import ckhbox.villagebox.common.item.book.ItemTreasureBook;
 import ckhbox.villagebox.common.item.common.ItemCoin;
 import ckhbox.villagebox.common.item.common.ItemDrink;
@@ -46,6 +47,7 @@ public class ModItems {
 	public static ItemCoin silverCoin;
 	public static ItemCoin goldCoin;
 	public static ItemMail mail;
+	public static ItemResetScroll resetScroll;
 	public static Item invitation;
 	public static ItemFlameStaff flameStaff;
 
@@ -66,6 +68,8 @@ public class ModItems {
 	public static Item woodenChestplate;
 	public static Item woodenLeggings;
 	public static Item woodenBoots;
+	
+	public static Item woodenClub;
 	
 	public static ItemWeatherStone sunStone;
 	public static ItemWeatherStone rainStone;
@@ -144,6 +148,8 @@ public class ModItems {
 		GameRegistry.registerItem(treasureHuntBookII=new ItemTreasureBook(2),"treasure_hunt_book_1");
 		GameRegistry.registerItem(treasureHuntBookIII=new ItemTreasureBook(3),"treasure_hunt_book_2");
 		
+		GameRegistry.registerItem(resetScroll=new ItemResetScroll(),"reset_scroll");
+		
 		//gems
 		GameRegistry.registerItem(bronzeCoin=new ItemCoin("bronze"),"bronze_coin");
 		GameRegistry.registerItem(silverCoin=new ItemCoin("silver"),"silver_coin");
@@ -160,6 +166,7 @@ public class ModItems {
 		GameRegistry.registerItem(flameStaff=new ItemFlameStaff(),"flame_staff");
 		GameRegistry.registerItem(efficientBow=new ItemEfficientBow(),"bow");
 		GameRegistry.registerItem(steelSword=(new ItemSword(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelSword"))),"steel_sword");
+		GameRegistry.registerItem(woodenClub=(new ItemSword(ToolMaterial.WOOD).setUnlocalizedName(PathHelper.full("woodenClub"))),"wooden_club");
 		
 		//armor
 		GameRegistry.registerItem(steelHelmet=new ItemArmor("steelHelmet", ModItems.ArmorMaterials.STEEL, 1, 0),"steel_helmet");

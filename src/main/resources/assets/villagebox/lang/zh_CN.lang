@@ -211,6 +211,7 @@ item.villagebox:steelShovel.name=钢铲
 item.villagebox:steelSword.name=钢剑
 item.villagebox:efficientBow.name=分裂弓
 item.villagebox:painting.name=画（特制）
+item.villagebox:resetScroll.name=重置卷轴
 
 # villager egg
 entity.villagebox.villager.name=村民
@@ -296,6 +297,7 @@ tile.villagebox:bonsai.name=盆栽
 villagebox:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d
 villagebox:mail.item.info=§7来自 §a%s
 villagebox:invitation.item.info=§7"欢迎来到我的村庄..."
+villagebox:item.resetScroll.item.info=§7点击右键降级一个村民
 
 # Mail
 villagebox:mail.newvillager0.content=我听说你正在建造一个村庄, 我想知道我是否有机会加入?
