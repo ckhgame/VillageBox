@@ -67,6 +67,8 @@ villagebox:profession.chef.name=主厨
 villagebox:profession.chef.desc=烹饪美味佳肴
 villagebox:profession.chefdessert.name=甜点师
 villagebox:profession.chefdessert.desc=精心准备可口的甜品
+villagebox:profession.caveman.name=穴居人
+villagebox:profession.caveman.desc=住在洞穴里
 
 # Gui
 villagebox:gui.villagermain.menu.upgrade=> 升级

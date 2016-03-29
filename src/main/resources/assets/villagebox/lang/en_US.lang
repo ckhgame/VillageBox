@@ -67,6 +67,8 @@ villagebox:profession.chef.name=Chef
 villagebox:profession.chef.desc=Cook nice food
 villagebox:profession.chefdessert.name=Dessert Chef
 villagebox:profession.chefdessert.desc=Prepare tasty desserts
+villagebox:profession.caveman.name=Caveman
+villagebox:profession.caveman.desc=Live in caves
 
 # Gui
 villagebox:gui.villagermain.menu.upgrade=> Upgrade
