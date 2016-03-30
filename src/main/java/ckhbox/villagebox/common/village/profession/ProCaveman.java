@@ -13,10 +13,10 @@ public class ProCaveman extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.stone,15)},
+				new ItemStack[]{new ItemStack(Blocks.cobblestone,10)},
 				new ItemStack(Items.bone)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.stone,64)},
+				new ItemStack[]{new ItemStack(Blocks.cobblestone,64)},
 				new ItemStack(ModItems.woodenClub)));
 	}
 
