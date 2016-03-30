@@ -6,6 +6,7 @@ import ckhbox.villagebox.common.item.book.ItemResetScroll;
 import ckhbox.villagebox.common.item.book.ItemTreasureBook;
 import ckhbox.villagebox.common.item.common.ItemCoin;
 import ckhbox.villagebox.common.item.common.ItemDrink;
+import ckhbox.villagebox.common.item.common.ItemElementShard;
 import ckhbox.villagebox.common.item.common.ItemInvitation;
 import ckhbox.villagebox.common.item.common.ItemMail;
 import ckhbox.villagebox.common.item.material.ItemSteelIngot;
@@ -141,6 +142,13 @@ public class ModItems {
 	public static Item roastedLamb;
 	public static Item nigiri;
 	public static Item udon;
+	
+	//element gems
+	public static ItemElementShard fireShard;
+	public static ItemElementShard waterShard;
+	public static ItemElementShard natureShard;
+	public static ItemElementShard darkShard;
+	public static ItemElementShard lightShard;
 
 	public static void init(){
 		//books
@@ -150,7 +158,14 @@ public class ModItems {
 		
 		GameRegistry.registerItem(resetScroll=new ItemResetScroll(),"reset_scroll");
 		
-		//gems
+		//shards
+		GameRegistry.registerItem(fireShard=new ItemElementShard("fire"),"fire_shard");
+		GameRegistry.registerItem(waterShard=new ItemElementShard("water"),"water_shard");
+		GameRegistry.registerItem(natureShard=new ItemElementShard("nature"),"nature_shard");
+		GameRegistry.registerItem(darkShard=new ItemElementShard("dark"),"dark_shard");
+		GameRegistry.registerItem(lightShard=new ItemElementShard("light"),"light_shard");
+		
+		//coins
 		GameRegistry.registerItem(bronzeCoin=new ItemCoin("bronze"),"bronze_coin");
 		GameRegistry.registerItem(silverCoin=new ItemCoin("silver"),"silver_coin");
 		GameRegistry.registerItem(goldCoin=new ItemCoin("gold"),"gold_coin");

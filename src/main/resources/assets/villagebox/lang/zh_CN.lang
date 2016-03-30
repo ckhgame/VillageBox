@@ -215,6 +215,11 @@ item.villagebox:steelSword.name=钢剑
 item.villagebox:efficientBow.name=分裂弓
 item.villagebox:painting.name=画（特制）
 item.villagebox:resetScroll.name=重置卷轴
+item.villagebox:fireShard.name=§6火属性碎片
+item.villagebox:waterShard.name=§9水属性碎片
+item.villagebox:natureShard.name=§a自然属性碎片
+item.villagebox:lightShard.name=§e光属性碎片
+item.villagebox:darkShard.name=§5暗属性碎片
 
 # villager egg
 entity.villagebox.villager.name=村民

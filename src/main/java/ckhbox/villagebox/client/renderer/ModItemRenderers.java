@@ -29,6 +29,12 @@ public class ModItemRenderers {
 		registerModel(ModItems.flameStaff, 0, "flame_staff");
 		registerModel(ModItems.resetScroll, 0, "reset_scroll");
 		
+		registerModel(ModItems.fireShard, 0, "fire_shard");
+		registerModel(ModItems.waterShard, 0, "water_shard");
+		registerModel(ModItems.natureShard, 0, "nature_shard");
+		registerModel(ModItems.lightShard, 0, "light_shard");
+		registerModel(ModItems.darkShard, 0, "dark_shard");
+		
 		registerModel(ModItems.steelHoe, 0, "steel_hoe");
 		registerModel(ModItems.steelAxe, 0, "steel_axe");
 		registerModel(ModItems.steelPickaxe, 0, "steel_pickaxe");

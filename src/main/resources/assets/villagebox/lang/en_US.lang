@@ -215,6 +215,11 @@ item.villagebox:steelSword.name=Steel Sword
 item.villagebox:efficientBow.name=Efficient Bow
 item.villagebox:painting.name=Unique Painting
 item.villagebox:resetScroll.name=Reset Scroll
+item.villagebox:fireShard.name=§6Fire Shard
+item.villagebox:waterShard.name=§9Water Shard
+item.villagebox:natureShard.name=§aNature Shard
+item.villagebox:lightShard.name=§eLight Shard
+item.villagebox:darkShard.name=§5Dark Shard
 
 # villager egg
 entity.villagebox.villager.name=Villager
