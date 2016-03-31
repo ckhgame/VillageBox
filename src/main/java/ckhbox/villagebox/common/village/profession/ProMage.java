@@ -15,7 +15,7 @@ public class ProMage extends Profession{
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,10)},
-				new ItemStack(ModItems.flameStaff)));
+				new ItemStack(ModItems.fireStaff)));
 	}
 
 	@Override

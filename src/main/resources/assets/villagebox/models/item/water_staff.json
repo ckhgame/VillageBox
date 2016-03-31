@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "villagebox:items/flame_staff"
+        "layer0": "villagebox:items/water_staff"
     },
     "display": {
         "thirdperson": {

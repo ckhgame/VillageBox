@@ -142,7 +142,12 @@ item.villagebox:mail.name=邮件
 item.villagebox:invitation.name=邀请函
 item.villagebox:sunStone.name=晴之石
 item.villagebox:rainStone.name=雨之石
-item.villagebox:flameStaff.name=火焰法杖
+item.villagebox:staff.name=法杖
+item.villagebox:fireStaff.name=§6火焰法杖
+item.villagebox:waterStaff.name=§9水之法杖
+item.villagebox:natureStaff.name=§a自然法杖
+item.villagebox:lightStaff.name=§e光明法杖
+item.villagebox:darkStaff.name=§5黑暗法杖
 item.villagebox:steelIngot.name=钢锭
 item.villagebox:cabbage.name=卷心菜
 item.villagebox:corn.name=玉米
@@ -306,6 +311,13 @@ villagebox:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d
 villagebox:mail.item.info=§7来自 §a%s
 villagebox:invitation.item.info=§7"欢迎来到我的村庄..."
 villagebox:item.resetScroll.item.info=§7点击右键降级一个村民
+villagebox:info.item.staff=§7在缺少元素碎片的情况下没有任何作用
+villagebox:info.item.fireStaff=§7点击右键发射火球
+villagebox:info.item.waterStaff=§7点击右键放置一块水
+villagebox:info.item.natureStaff=§7点击右键滋养作物
+villagebox:info.item.lightStaff=§7点击右键放置火炬
+villagebox:info.item.darkStaff=§7点击右键强化怪物
+villagebox:info.item.darkStaff_1=§7仅限僵尸，骷髅或蜘蛛
 
 # Mail
 villagebox:mail.newvillager0.content=我听说你正在建造一个村庄, 我想知道我是否有机会加入?

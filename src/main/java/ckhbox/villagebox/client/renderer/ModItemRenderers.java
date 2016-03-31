@@ -26,7 +26,12 @@ public class ModItemRenderers {
 		registerModel(ModItems.goldCoin, 0, "gold_coin");
 		registerModel(ModItems.mail, 0, "mail");
 		registerModel(ModItems.invitation, 0, "invitation");
-		registerModel(ModItems.flameStaff, 0, "flame_staff");
+		registerModel(ModItems.staff, 0, "staff");
+		registerModel(ModItems.fireStaff, 0, "fire_staff");
+		registerModel(ModItems.waterStaff, 0, "water_staff");
+		registerModel(ModItems.natureStaff, 0, "nature_staff");
+		registerModel(ModItems.lightStaff, 0, "light_staff");
+		registerModel(ModItems.darkStaff, 0, "dark_staff");
 		registerModel(ModItems.resetScroll, 0, "reset_scroll");
 		
 		registerModel(ModItems.fireShard, 0, "fire_shard");

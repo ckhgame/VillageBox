@@ -1,6 +1,5 @@
 package ckhbox.villagebox.common.item;
 
-import ckhbox.villagebox.common.block.decoration.BlockFlowerInPot;
 import ckhbox.villagebox.common.item.armor.ItemArmor;
 import ckhbox.villagebox.common.item.book.ItemResetScroll;
 import ckhbox.villagebox.common.item.book.ItemTreasureBook;
@@ -15,8 +14,13 @@ import ckhbox.villagebox.common.item.tool.ItemAxe;
 import ckhbox.villagebox.common.item.tool.ItemPickaxe;
 import ckhbox.villagebox.common.item.tool.ItemShovel;
 import ckhbox.villagebox.common.item.tool.ItemWeatherStone;
+import ckhbox.villagebox.common.item.weapon.ItemDarkStaff;
 import ckhbox.villagebox.common.item.weapon.ItemEfficientBow;
-import ckhbox.villagebox.common.item.weapon.ItemFlameStaff;
+import ckhbox.villagebox.common.item.weapon.ItemFireStaff;
+import ckhbox.villagebox.common.item.weapon.ItemLightStaff;
+import ckhbox.villagebox.common.item.weapon.ItemNatureStaff;
+import ckhbox.villagebox.common.item.weapon.ItemStaff;
+import ckhbox.villagebox.common.item.weapon.ItemWaterStaff;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -50,7 +54,14 @@ public class ModItems {
 	public static ItemMail mail;
 	public static ItemResetScroll resetScroll;
 	public static Item invitation;
-	public static ItemFlameStaff flameStaff;
+	
+	//staff
+	public static ItemStaff staff;
+	public static ItemFireStaff fireStaff;
+	public static ItemWaterStaff waterStaff;
+	public static ItemNatureStaff natureStaff;
+	public static ItemLightStaff lightStaff;
+	public static ItemDarkStaff darkStaff;
 
 	public static ItemSteelIngot steelIngot;
 	
@@ -178,7 +189,13 @@ public class ModItems {
 		GameRegistry.registerItem(painting=new ItemPainting(),"painting");
 		
 		//weapon
-		GameRegistry.registerItem(flameStaff=new ItemFlameStaff(),"flame_staff");
+		GameRegistry.registerItem(staff=new ItemStaff(),"staff");
+		GameRegistry.registerItem(fireStaff=new ItemFireStaff(),"fire_staff");
+		GameRegistry.registerItem(waterStaff=new ItemWaterStaff(),"water_staff");
+		GameRegistry.registerItem(natureStaff=new ItemNatureStaff(),"nature_staff");
+		GameRegistry.registerItem(lightStaff=new ItemLightStaff(),"light_staff");
+		GameRegistry.registerItem(darkStaff=new ItemDarkStaff(),"dark_staff");
+		
 		GameRegistry.registerItem(efficientBow=new ItemEfficientBow(),"bow");
 		GameRegistry.registerItem(steelSword=(new ItemSword(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelSword"))),"steel_sword");
 		GameRegistry.registerItem(woodenClub=(new ItemSword(ToolMaterial.WOOD).setUnlocalizedName(PathHelper.full("woodenClub"))),"wooden_club");
