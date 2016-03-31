@@ -12,6 +12,7 @@ import ckhbox.villagebox.common.gui.GuiHandler;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.network.ModNetwork;
 import ckhbox.villagebox.common.recipe.ModRecipes;
+import ckhbox.villagebox.common.tileentity.ModTileEntities;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -25,6 +26,7 @@ public class CommonProxy {
 		ModBlocks.init();
 		ModItems.init();
 		ModEntities.init();
+		ModTileEntities.init();
 		ModRecipes.init();
 		
 		//gui

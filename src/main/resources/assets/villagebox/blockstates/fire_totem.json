@@ -1,0 +1,8 @@
+{
+	"variants": {
+        "facing=north": { "model": "villagebox:fire_totem" },
+        "facing=south": { "model": "villagebox:fire_totem", "y": 180 },
+        "facing=west":  { "model": "villagebox:fire_totem", "y": 270 },
+        "facing=east":  { "model": "villagebox:fire_totem", "y": 90 }
+    }
+}

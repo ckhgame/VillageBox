@@ -1,0 +1,8 @@
+{
+	"variants": {
+        "facing=north": { "model": "villagebox:totempole_2" },
+        "facing=south": { "model": "villagebox:totempole_2", "y": 180 },
+        "facing=west":  { "model": "villagebox:totempole_2", "y": 270 },
+        "facing=east":  { "model": "villagebox:totempole_2", "y": 90 }
+    }
+}

@@ -4,10 +4,14 @@ import ckhbox.villagebox.common.block.decoration.BlockCarpet;
 import ckhbox.villagebox.common.block.decoration.BlockChair;
 import ckhbox.villagebox.common.block.decoration.BlockFlowerInPot;
 import ckhbox.villagebox.common.block.decoration.BlockTable;
-import ckhbox.villagebox.common.block.tool.BlockAlchemyPot;
 import ckhbox.villagebox.common.block.tool.BlockBuildBox;
 import ckhbox.villagebox.common.block.tool.BlockMagicTrashCan;
 import ckhbox.villagebox.common.block.tool.BlockMailBox;
+import ckhbox.villagebox.common.block.totem.BlockTotem;
+import ckhbox.villagebox.common.block.totem.BlockTotemPole;
+import ckhbox.villagebox.common.tileentity.totem.TileEntityFireTotem;
+import ckhbox.villagebox.common.tileentity.totem.TileEntityNatureTotem;
+import ckhbox.villagebox.common.tileentity.totem.TileEntityWaterTotem;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
@@ -94,6 +98,14 @@ public class ModBlocks {
 	public static BlockFlowerInPot flowerGardenia;
 	public static BlockFlowerInPot bonsai;
 	
+	//totems
+	public static BlockTotem fireTotem;
+	public static BlockTotem waterTotem;
+	public static BlockTotem natureTotem;
+	public static BlockTotemPole totempole1;
+	public static BlockTotemPole totempole2;
+	public static BlockTotemPole totempole3;
+	
 	public static void init(){
 		GameRegistry.registerBlock(mailbox=new BlockMailBox(),"mailbox");
 		//GameRegistry.registerBlock(alchemyPot=new BlockAlchemyPot(),"alchemypot");
@@ -178,5 +190,12 @@ public class ModBlocks {
 		GameRegistry.registerBlock(flowerPlumBlossom=new BlockFlowerInPot("flowerPlumBlossom"),"flower_plumblossom");
 		GameRegistry.registerBlock(flowerHydrangeas=new BlockFlowerInPot("flowerHydrangeas"),"flower_hydrangeas");
 		GameRegistry.registerBlock(bonsai=new BlockFlowerInPot("bonsai"),"bonsai");
+		
+		GameRegistry.registerBlock(fireTotem=new BlockTotem("fireTotem",TileEntityFireTotem.class),"fire_totem");
+		GameRegistry.registerBlock(waterTotem=new BlockTotem("waterTotem",TileEntityWaterTotem.class),"water_totem");
+		GameRegistry.registerBlock(natureTotem=new BlockTotem("natureTotem",TileEntityNatureTotem.class),"nature_totem");
+		GameRegistry.registerBlock(totempole1=new BlockTotemPole("totempole1"),"totempole_1");
+		GameRegistry.registerBlock(totempole2=new BlockTotemPole("totempole2"),"totempole_2");
+		GameRegistry.registerBlock(totempole3=new BlockTotemPole("totempole3"),"totempole_3");
 	}
 }
