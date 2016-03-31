@@ -225,6 +225,11 @@ item.villagebox:waterShard.name=§9Water Shard
 item.villagebox:natureShard.name=§aNature Shard
 item.villagebox:lightShard.name=§eLight Shard
 item.villagebox:darkShard.name=§5Dark Shard
+item.villagebox:fireSword.name=§6Fire Sword
+item.villagebox:waterSword.name=§9Water Sword
+item.villagebox:natureSword.name=§aNature Sword
+item.villagebox:darkSword.name=§5Dark Sword
+item.villagebox:lightSword.name=§eLight Sword
 
 # villager egg
 entity.villagebox.villager.name=Villager
@@ -318,6 +323,11 @@ villagebox:info.item.natureStaff=§7Right click to fertilize plants
 villagebox:info.item.lightStaff=§7Right click to place a torch
 villagebox:info.item.darkStaff=§7Right click to make a mob stronger
 villagebox:info.item.darkStaff_1=§7only zombies, skeletons or spiders
+villagebox:info.item.fireSword=§7Ignite the target
+villagebox:info.item.waterSword=§7Slow down the target
+villagebox:info.item.natureSword=§7Poison the target
+villagebox:info.item.lightSword=§7One hit kill zombies and skeletons.
+villagebox:info.item.darkSword=§7Steal life on hit
 
 # Mail
 villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?

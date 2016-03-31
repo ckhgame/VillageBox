@@ -225,6 +225,11 @@ item.villagebox:waterShard.name=§9水属性碎片
 item.villagebox:natureShard.name=§a自然属性碎片
 item.villagebox:lightShard.name=§e光属性碎片
 item.villagebox:darkShard.name=§5暗属性碎片
+item.villagebox:fireSword.name=§6火之剑
+item.villagebox:waterSword.name=§9水之剑
+item.villagebox:natureSword.name=§a自然之剑
+item.villagebox:darkSword.name=§5黑暗之剑
+item.villagebox:lightSword.name=§e光明之剑
 
 # villager egg
 entity.villagebox.villager.name=村民
@@ -318,6 +323,11 @@ villagebox:info.item.natureStaff=§7点击右键滋养作物
 villagebox:info.item.lightStaff=§7点击右键放置火炬
 villagebox:info.item.darkStaff=§7点击右键强化怪物
 villagebox:info.item.darkStaff_1=§7仅限僵尸，骷髅或蜘蛛
+villagebox:info.item.fireSword=§7点燃目标
+villagebox:info.item.waterSword=§7减速目标
+villagebox:info.item.natureSword=§7给目标下毒
+villagebox:info.item.lightSword=§7对僵尸和骷髅一击必杀
+villagebox:info.item.darkSword=§7击中时偷取生命
 
 # Mail
 villagebox:mail.newvillager0.content=我听说你正在建造一个村庄, 我想知道我是否有机会加入?

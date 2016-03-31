@@ -15,12 +15,17 @@ import ckhbox.villagebox.common.item.tool.ItemPickaxe;
 import ckhbox.villagebox.common.item.tool.ItemShovel;
 import ckhbox.villagebox.common.item.tool.ItemWeatherStone;
 import ckhbox.villagebox.common.item.weapon.ItemDarkStaff;
+import ckhbox.villagebox.common.item.weapon.ItemDarkSword;
 import ckhbox.villagebox.common.item.weapon.ItemEfficientBow;
 import ckhbox.villagebox.common.item.weapon.ItemFireStaff;
+import ckhbox.villagebox.common.item.weapon.ItemFireSword;
 import ckhbox.villagebox.common.item.weapon.ItemLightStaff;
+import ckhbox.villagebox.common.item.weapon.ItemLightSword;
 import ckhbox.villagebox.common.item.weapon.ItemNatureStaff;
+import ckhbox.villagebox.common.item.weapon.ItemNatureSword;
 import ckhbox.villagebox.common.item.weapon.ItemStaff;
 import ckhbox.villagebox.common.item.weapon.ItemWaterStaff;
+import ckhbox.villagebox.common.item.weapon.ItemWaterSword;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -70,6 +75,12 @@ public class ModItems {
 	public static Item steelPickaxe;
 	public static Item steelShovel;
 	public static Item steelSword;
+	
+	public static ItemFireSword fireSword;
+	public static ItemWaterSword waterSword;
+	public static ItemNatureSword natureSword;
+	public static ItemDarkSword darkSword;
+	public static ItemLightSword lightSword;
 	
 	public static Item steelHelmet;
 	public static Item steelChestplate;
@@ -154,7 +165,7 @@ public class ModItems {
 	public static Item nigiri;
 	public static Item udon;
 	
-	//element gems
+	//element shards
 	public static ItemElementShard fireShard;
 	public static ItemElementShard waterShard;
 	public static ItemElementShard natureShard;
@@ -197,7 +208,14 @@ public class ModItems {
 		GameRegistry.registerItem(darkStaff=new ItemDarkStaff(),"dark_staff");
 		
 		GameRegistry.registerItem(efficientBow=new ItemEfficientBow(),"bow");
+		
 		GameRegistry.registerItem(steelSword=(new ItemSword(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelSword"))),"steel_sword");
+		GameRegistry.registerItem(fireSword=new ItemFireSword(),"fire_sword");
+		GameRegistry.registerItem(waterSword=new ItemWaterSword(),"water_sword");
+		GameRegistry.registerItem(natureSword=new ItemNatureSword(),"nature_sword");
+		GameRegistry.registerItem(darkSword=new ItemDarkSword(),"dark_sword");
+		GameRegistry.registerItem(lightSword=new ItemLightSword(),"light_sword");	
+		
 		GameRegistry.registerItem(woodenClub=(new ItemSword(ToolMaterial.WOOD).setUnlocalizedName(PathHelper.full("woodenClub"))),"wooden_club");
 		
 		//armor

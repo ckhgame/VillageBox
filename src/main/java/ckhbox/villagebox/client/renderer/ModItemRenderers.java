@@ -44,7 +44,13 @@ public class ModItemRenderers {
 		registerModel(ModItems.steelAxe, 0, "steel_axe");
 		registerModel(ModItems.steelPickaxe, 0, "steel_pickaxe");
 		registerModel(ModItems.steelShovel, 0, "steel_shovel");
-		registerModel(ModItems.steelSword, 0, "steel_sword");
+		
+		registerModel(ModItems.steelSword, 0, "steel_sword");	
+		registerModel(ModItems.fireSword, 0, "fire_sword");
+		registerModel(ModItems.waterSword, 0, "water_sword");
+		registerModel(ModItems.natureSword, 0, "nature_sword");
+		registerModel(ModItems.darkSword, 0, "dark_sword");
+		registerModel(ModItems.lightSword, 0, "light_sword");
 		
 		registerModel(ModItems.steelHelmet, 0, "steel_helmet");
 		registerModel(ModItems.steelChestplate, 0, "steel_chestplate");
