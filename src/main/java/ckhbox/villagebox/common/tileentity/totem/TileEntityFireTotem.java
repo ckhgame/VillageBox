@@ -13,7 +13,7 @@ public class TileEntityFireTotem extends TileEntityTotem{
 		List<EntityMob> list = this.worldObj.getEntitiesWithinAABB(EntityMob.class, this.getEffectField(16, 10));
 		if(list != null){
 			for(EntityMob mob : list){
-				mob.setFire(3);
+				mob.setFire(4);
 			}
 		}
 	}

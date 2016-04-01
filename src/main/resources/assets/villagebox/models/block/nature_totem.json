@@ -1,7 +1,7 @@
 {
     "parent": "villagebox:block/totem",
     "textures": {
-        "face": "villagebox:blocks/nature_totem_face",
-		"side": "blocks/log_big_oak"
+        "totema": "villagebox:blocks/nature_totem_a",
+		"totemb": "villagebox:blocks/nature_totem_b"
     }
 }

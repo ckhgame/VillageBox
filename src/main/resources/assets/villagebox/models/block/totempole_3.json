@@ -1,7 +1,0 @@
-{
-    "parent": "villagebox:block/totempole",
-    "textures": {
-        "face": "villagebox:blocks/totempole_3",
-		"side": "blocks/log_big_oak"
-    }
-}

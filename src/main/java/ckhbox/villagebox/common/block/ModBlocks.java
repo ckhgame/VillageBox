@@ -102,9 +102,9 @@ public class ModBlocks {
 	public static BlockTotem fireTotem;
 	public static BlockTotem waterTotem;
 	public static BlockTotem natureTotem;
+	public static BlockTotemPole totempole0;
 	public static BlockTotemPole totempole1;
 	public static BlockTotemPole totempole2;
-	public static BlockTotemPole totempole3;
 	
 	public static void init(){
 		GameRegistry.registerBlock(mailbox=new BlockMailBox(),"mailbox");
@@ -194,8 +194,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(fireTotem=new BlockTotem("fireTotem",TileEntityFireTotem.class),"fire_totem");
 		GameRegistry.registerBlock(waterTotem=new BlockTotem("waterTotem",TileEntityWaterTotem.class),"water_totem");
 		GameRegistry.registerBlock(natureTotem=new BlockTotem("natureTotem",TileEntityNatureTotem.class),"nature_totem");
+		GameRegistry.registerBlock(totempole0=new BlockTotemPole("totempole0"),"totempole_0");
 		GameRegistry.registerBlock(totempole1=new BlockTotemPole("totempole1"),"totempole_1");
 		GameRegistry.registerBlock(totempole2=new BlockTotemPole("totempole2"),"totempole_2");
-		GameRegistry.registerBlock(totempole3=new BlockTotemPole("totempole3"),"totempole_3");
 	}
 }

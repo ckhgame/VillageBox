@@ -1,21 +1,23 @@
 {
-    "textures": {
-        "particle": "#face",
-        "face": "#face",
-        "side": "#side"
+	"textures": {
+        "particle": "#totempolea",
+        "totempolea": "#totempolea",
+        "totempoleb": "#totempoleb"
     },
     "elements": [
         {
             "from": [ 4.0, 0.0, 4.0 ], 
             "to": [ 12.0, 16.0, 12.0 ], 
             "faces": {
-                "south": { "texture": "#side", "uv": [ 0.0, 0.0, 8.0, 16.0 ] },
-                "east": { "texture": "#side", "uv": [ 0.0, 0.0, 8.0, 16.0 ] },
-                "north": { "texture": "#face", "uv": [ 0.0, 0.0, 8.0, 16.0 ] },
-                "west": { "texture": "#side", "uv": [ 0.0, 0.0, 8.0, 16.0 ] },
-                "up": { "texture": "#side", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
-                "down": { "texture": "#side", "uv": [ 0.0, 0.0, 8.0, 8.0 ] }
+                "north": { "texture": "#totempolea", "uv": [ 0.0, 0.0, 8.0, 16.0 ] },
+                "east": { "texture": "#totempolea", "uv": [ 8.0, 0.0, 16.0, 16.0 ] },
+                "south": { "texture": "#totempolea", "uv": [ 8.0, 0.0, 16.0, 16.0 ] },
+                "west": { "texture": "#totempolea", "uv": [ 8.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "#totempoleb", "uv": [ 0.0, 0.0, 8.0, 8.0 ] },
+                "down": { "texture": "#totempoleb", "uv": [ 0.0, 8.0, 8.0, 16.0 ] }
             }
         }
-    ]
+	]
 }
+		
+		

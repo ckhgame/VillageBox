@@ -1,0 +1,7 @@
+{
+    "parent": "villagebox:block/totempole",
+    "textures": {
+        "totempolea": "villagebox:blocks/totempole_0_a",
+		"totempoleb": "villagebox:blocks/totempole_0_b"
+    }
+}

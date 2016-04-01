@@ -1,5 +1,5 @@
 {
-    "parent": "villagebox:block/totempole_3",
+    "parent": "villagebox:block/totempole_0",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

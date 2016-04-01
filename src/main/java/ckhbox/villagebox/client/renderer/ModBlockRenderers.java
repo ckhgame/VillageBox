@@ -26,9 +26,9 @@ public class ModBlockRenderers {
 		registerModel(ModBlocks.fireTotem, 0, "fire_totem");
 		registerModel(ModBlocks.waterTotem, 0, "water_totem");
 		registerModel(ModBlocks.natureTotem, 0, "nature_totem");
+		registerModel(ModBlocks.totempole0, 0, "totempole_0");
 		registerModel(ModBlocks.totempole1, 0, "totempole_1");
 		registerModel(ModBlocks.totempole2, 0, "totempole_2");
-		registerModel(ModBlocks.totempole3, 0, "totempole_3");
 
 		
 		registerModel(ModBlocks.tableOak, 0, "table_oak");
