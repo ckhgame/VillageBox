@@ -32,6 +32,7 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemDarkStaff extends Item
@@ -97,8 +98,8 @@ public class ItemDarkStaff extends Item
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.format(PathHelper.full("info.item.darkStaff"));
-		String info1 = I18n.format(PathHelper.full("info.item.darkStaff_1"));
+		String info = StatCollector.translateToLocal(PathHelper.full("info.item.darkStaff"));
+		String info1 = StatCollector.translateToLocal(PathHelper.full("info.item.darkStaff_1"));
 		tooltip.add(info);
 		tooltip.add(info1);
 	}

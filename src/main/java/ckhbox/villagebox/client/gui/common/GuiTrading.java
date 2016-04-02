@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.World;
@@ -131,7 +132,7 @@ public class GuiTrading extends GuiContainer{
             	int py = (this.height - this.heightAllRecpiesPanel) / 2;  
             	
             	//title
-            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, I18n.format(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
+            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, StatCollector.translateToLocal(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
 
             	int rx,ry;
             	//recipes

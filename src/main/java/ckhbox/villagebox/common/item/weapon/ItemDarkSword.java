@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.StatCollector;
 
 public class ItemDarkSword extends ItemSword{
 
@@ -29,7 +30,7 @@ public class ItemDarkSword extends ItemSword{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.format(PathHelper.full("info.item.darkSword"));
+		String info = StatCollector.translateToLocal(PathHelper.full("info.item.darkSword"));
 		tooltip.add(info);
 	}
 }

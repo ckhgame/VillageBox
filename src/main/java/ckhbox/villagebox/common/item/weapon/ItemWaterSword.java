@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemWaterSword extends ItemSword{
@@ -43,7 +44,7 @@ public class ItemWaterSword extends ItemSword{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.format(PathHelper.full("info.item.waterSword"));
+		String info = StatCollector.translateToLocal(PathHelper.full("info.item.waterSword"));
 		tooltip.add(info);
 	}
 }

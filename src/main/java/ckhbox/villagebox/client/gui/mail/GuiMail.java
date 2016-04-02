@@ -16,6 +16,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 
 public class GuiMail extends GuiContainer{
 
@@ -40,7 +41,7 @@ public class GuiMail extends GuiContainer{
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;
         
-        this.buttonList.add(this.buttonApprove = new GuiTextButton(this.mc, 0, 0,y + 130, I18n.format(PathHelper.full("gui.mail.button.approve"))));
+        this.buttonList.add(this.buttonApprove = new GuiTextButton(this.mc, 0, 0,y + 130, StatCollector.translateToLocal(PathHelper.full("gui.mail.button.approve"))));
         this.buttonApprove.xPosition = this.width / 2 - this.buttonApprove.width / 2;
         this.buttonApprove.setColors(0xFF006400, 0xFF32CD32);
         this.buttonApprove.setShadow(false);
@@ -79,9 +80,9 @@ public class GuiMail extends GuiContainer{
 		
         ItemStack hold = this.player.getHeldItem();
         if(hold.getItem() == ModItems.mail){
-        	String content = I18n.format(ItemMail.getMailContent(hold));
-        	String sender = I18n.format(PathHelper.full("gui.mail.from"), ItemMail.getMailSender(hold));
-        	String hi = I18n.format(PathHelper.full("gui.mail.hi"), this.player.getName(),false);
+        	String content = StatCollector.translateToLocal(ItemMail.getMailContent(hold));
+        	String sender = StatCollector.translateToLocalFormatted(PathHelper.full("gui.mail.from"), ItemMail.getMailSender(hold));
+        	String hi = StatCollector.translateToLocalFormatted(PathHelper.full("gui.mail.hi"), this.player.getName(),false);
     		this.fontRendererObj.drawString(hi, x + 20, y + 12, 0);
     		this.fontRendererObj.drawSplitString(content, x + 20, y + 28, this.xSize - 40, 0);
     		int h = this.fontRendererObj.splitStringWidth(content, this.xSize - 40);

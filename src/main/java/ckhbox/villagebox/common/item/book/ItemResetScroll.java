@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemResetScroll extends Item{
@@ -24,7 +25,7 @@ public class ItemResetScroll extends Item{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.format(PathHelper.full("item.resetScroll.item.info"));
+		String info = StatCollector.translateToLocal(PathHelper.full("item.resetScroll.item.info"));
 		tooltip.add(info);
 	}
 	

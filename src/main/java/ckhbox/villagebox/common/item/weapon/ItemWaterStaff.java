@@ -19,6 +19,7 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemWaterStaff extends Item
@@ -122,7 +123,7 @@ public class ItemWaterStaff extends Item
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.format(PathHelper.full("info.item.waterStaff"));
+		String info = StatCollector.translateToLocal(PathHelper.full("info.item.waterStaff"));
 		tooltip.add(info);
 	}
     

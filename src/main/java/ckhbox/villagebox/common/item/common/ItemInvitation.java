@@ -9,6 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class ItemInvitation extends Item{
 	
@@ -21,7 +22,7 @@ public class ItemInvitation extends Item{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.format(PathHelper.full("invitation.item.info"));
+		String info = StatCollector.translateToLocal(PathHelper.full("invitation.item.info"));
 		tooltip.add(info);
 	}
 }
