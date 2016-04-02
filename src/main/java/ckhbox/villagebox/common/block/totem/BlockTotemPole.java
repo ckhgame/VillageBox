@@ -17,18 +17,17 @@ public class BlockTotemPole extends BlockFacing{
 		super(Material.wood);
 		this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(CreativeTabs.tabDecorations);
-        this.setBlockBoundsForItemRender();
-	}
-	
-    public void setBlockBoundsForItemRender()
-    {
-        float f = 0.375F;
-        float f1 = f / 2.0F;
         this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 1.0F, 0.75F);
-    }
+	}
     
 	@Override
     public boolean isOpaqueCube()
+    {
+        return false;
+    }
+	
+	@Override
+    public boolean isFullCube()
     {
         return false;
     }
