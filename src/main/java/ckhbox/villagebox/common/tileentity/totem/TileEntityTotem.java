@@ -6,11 +6,12 @@ import net.minecraft.util.ITickable;
 
 public abstract class TileEntityTotem extends TileEntity implements ITickable{
 	
-	private int timer;
+	private int timer = 60;
 	private int interval = 60; //ticks,  1 sec = 20 ticks
 	
 	private void setUpdateEffectInterval(int interval){
 		this.interval = interval;
+		this.timer = this.interval;
 	}
 	
 	@Override

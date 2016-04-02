@@ -29,6 +29,7 @@ public class BlockFlowerInPot extends Block{
 		this.setUnlocalizedName(PathHelper.full(name));
 		this.setCreativeTab(ModItems.tabVB);
 		this.setBlockBoundsForItemRender();
+		this.setStepSound(soundTypeStone);
 	}
 	
     public void setBlockBoundsForItemRender()

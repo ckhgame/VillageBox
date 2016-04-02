@@ -14,6 +14,8 @@ public class BlockTable extends Block{
         super(Material.wood);
         this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(ModItems.tabVB);
+        this.setHardness(2.5F);
+        this.setStepSound(soundTypeWood);
     }
 
 	@Override

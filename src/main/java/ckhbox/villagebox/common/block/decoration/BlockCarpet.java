@@ -22,6 +22,9 @@ public class BlockCarpet extends Block{
         this.setUnlocalizedName(PathHelper.full(name));
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
         this.setCreativeTab(ModItems.tabVB);
+        this.setHardness(0.1F);
+        this.setStepSound(soundTypeCloth);
+        this.setLightOpacity(0);
     }
 	
 	@Override

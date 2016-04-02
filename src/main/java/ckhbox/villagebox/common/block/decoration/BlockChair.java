@@ -16,6 +16,8 @@ public class BlockChair extends BlockFacing{
         this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(ModItems.tabVB);
         this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 0.875F, 0.75F);
+        this.setHardness(2.5F);
+        this.setStepSound(soundTypeWood);
     }
 
 	@Override

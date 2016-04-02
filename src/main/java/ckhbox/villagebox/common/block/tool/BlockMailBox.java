@@ -30,7 +30,8 @@ public class BlockMailBox extends BlockFacing{
 	public BlockMailBox() {
 		super(Material.wood);
 		this.setUnlocalizedName(PathHelper.full("mailbox"));
-		this.setHardness(1.0F);
+		this.setHardness(2.5F);
+		this.setStepSound(soundTypeWood);
 		this.setCreativeTab(ModItems.tabVB);
 	}
 

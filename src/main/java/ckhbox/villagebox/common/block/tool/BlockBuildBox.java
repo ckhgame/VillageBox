@@ -42,6 +42,7 @@ public class BlockBuildBox extends Block{
 		this.setUnlocalizedName(PathHelper.full(size.name));
 		this.setHardness(1.0F);
 		this.setCreativeTab(ModItems.tabVB);
+        this.setStepSound(soundTypeWood);
 	}
 	
 	@Override
