@@ -31,7 +31,7 @@ public class BlockMailBox extends BlockFacing{
 		super(Material.wood);
 		this.setUnlocalizedName(PathHelper.full("mailbox"));
 		this.setHardness(1.0F);
-		this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(ModItems.tabVB);
 	}
 
 	@Override

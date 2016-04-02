@@ -2,6 +2,7 @@ package ckhbox.villagebox.common.item.common;
 
 import java.util.List;
 
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,7 +14,7 @@ public class ItemInvitation extends Item{
 	
 	public ItemInvitation(){
 		this.setUnlocalizedName(PathHelper.full("invitation"));
-		this.setCreativeTab(CreativeTabs.tabMisc);
+		this.setCreativeTab(ModItems.tabVB);
 		this.setMaxStackSize(1);
 	}
 

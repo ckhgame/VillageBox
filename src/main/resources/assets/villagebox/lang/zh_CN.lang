@@ -346,3 +346,5 @@ villagebox:info.tile.totempole2=§7仅作装饰用
 villagebox:mail.newvillager0.content=我听说你正在建造一个村庄, 我想知道我是否有机会加入?
 villagebox:mail.newvillager1.content=你是否在寻找村民? 请考虑我!
 villagebox:mail.newvillager2.content=我已经厌倦了现在的生活. 我能成为你村庄的村民吗?
+
+itemGroup.tabVillageBox=村庄盒子

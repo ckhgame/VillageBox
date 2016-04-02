@@ -17,6 +17,7 @@ public class ItemLightSword extends ItemSword{
 	public ItemLightSword() {
 		super(ModItems.ToolMaterials.STEEL);
 		this.setUnlocalizedName(PathHelper.full("lightSword"));
+		this.setCreativeTab(ModItems.tabVB);
 	}
 
 	@Override

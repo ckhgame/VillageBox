@@ -2,6 +2,7 @@ package ckhbox.villagebox.common.item.book;
 
 import java.util.List;
 
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.client.resources.I18n;
@@ -18,7 +19,7 @@ public class ItemTreasureBook extends Item{
 	
 	public ItemTreasureBook(int lvl){
 		this.setUnlocalizedName(PathHelper.full("treasurebook" + lvl));
-		this.setCreativeTab(CreativeTabs.tabMisc);
+		this.setCreativeTab(ModItems.tabVB);
 		this.setMaxStackSize(1);
 		this.level = lvl;
 	}

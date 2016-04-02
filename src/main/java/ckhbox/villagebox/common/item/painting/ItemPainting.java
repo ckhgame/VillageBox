@@ -1,6 +1,7 @@
 package ckhbox.villagebox.common.item.painting;
 
 import ckhbox.villagebox.common.entity.painting.EntityPainting;
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +16,7 @@ public class ItemPainting extends Item{
     public ItemPainting()
     {
     	this.setUnlocalizedName(PathHelper.full("painting"));
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+    	this.setCreativeTab(ModItems.tabVB);
     }
 
     /**

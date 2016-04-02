@@ -31,7 +31,7 @@ public class ItemNatureStaff extends Item
 		this.setUnlocalizedName(PathHelper.full("natureStaff"));
         this.maxStackSize = 1;
         this.setMaxDamage(40);
-        this.setCreativeTab(CreativeTabs.tabCombat);
+        this.setCreativeTab(ModItems.tabVB);
     }
     
 	@Override

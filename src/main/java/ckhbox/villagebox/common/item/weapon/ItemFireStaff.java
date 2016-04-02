@@ -20,7 +20,7 @@ public class ItemFireStaff extends Item
 		this.setUnlocalizedName(PathHelper.full("fireStaff"));
         this.maxStackSize = 1;
         this.setMaxDamage(20);
-        this.setCreativeTab(CreativeTabs.tabCombat);
+        this.setCreativeTab(ModItems.tabVB);
     }
     
 	 /**

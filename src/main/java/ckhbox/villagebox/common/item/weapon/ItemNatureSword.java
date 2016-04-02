@@ -17,6 +17,7 @@ public class ItemNatureSword extends ItemSword{
 	public ItemNatureSword() {
 		super(ModItems.ToolMaterials.STEEL);
 		this.setUnlocalizedName(PathHelper.full("natureSword"));
+		this.setCreativeTab(ModItems.tabVB);
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class ItemDarkStaff extends Item
 		this.setUnlocalizedName(PathHelper.full("darkStaff"));
         this.maxStackSize = 1;
         this.setMaxDamage(10);
-        this.setCreativeTab(CreativeTabs.tabCombat);
+        this.setCreativeTab(ModItems.tabVB);
     }
     
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target)

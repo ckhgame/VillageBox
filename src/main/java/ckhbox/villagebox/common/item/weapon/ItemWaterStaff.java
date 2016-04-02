@@ -28,7 +28,7 @@ public class ItemWaterStaff extends Item
 		this.setUnlocalizedName(PathHelper.full("waterStaff"));
         this.maxStackSize = 1;
         this.setMaxDamage(20);
-        this.setCreativeTab(CreativeTabs.tabCombat);
+        this.setCreativeTab(ModItems.tabVB);
     }
 
     /**

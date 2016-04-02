@@ -3,6 +3,7 @@ package ckhbox.villagebox.common.item.weapon;
 import java.util.List;
 
 import ckhbox.villagebox.common.entity.throwable.EntityFlameBall;
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +19,7 @@ public class ItemStaff extends Item
     {
 		this.setUnlocalizedName(PathHelper.full("staff"));
         this.maxStackSize = 1;
-        this.setCreativeTab(CreativeTabs.tabCombat);
+        this.setCreativeTab(ModItems.tabVB);
     }
 
 	@Override

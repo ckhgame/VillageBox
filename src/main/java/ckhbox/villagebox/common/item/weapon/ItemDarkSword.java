@@ -15,6 +15,7 @@ public class ItemDarkSword extends ItemSword{
 	public ItemDarkSword() {
 		super(ModItems.ToolMaterials.STEEL);
 		this.setUnlocalizedName(PathHelper.full("darkSword"));
+		this.setCreativeTab(ModItems.tabVB);
 	}
 
 	@Override

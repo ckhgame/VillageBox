@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.block.decoration;
 
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -20,7 +21,7 @@ public class BlockCarpet extends Block{
         super(Material.carpet);
         this.setUnlocalizedName(PathHelper.full(name));
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(ModItems.tabVB);
     }
 	
 	@Override

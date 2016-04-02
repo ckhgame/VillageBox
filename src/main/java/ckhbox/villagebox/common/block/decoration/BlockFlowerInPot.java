@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.common.base.Predicate;
 
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -26,7 +27,7 @@ public class BlockFlowerInPot extends Block{
 	public BlockFlowerInPot(String name){
 		super(Material.circuits);
 		this.setUnlocalizedName(PathHelper.full(name));
-		this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(ModItems.tabVB);
 		this.setBlockBoundsForItemRender();
 	}
 	

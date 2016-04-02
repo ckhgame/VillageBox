@@ -17,6 +17,7 @@ public class ItemWaterSword extends ItemSword{
 	public ItemWaterSword() {
 		super(ModItems.ToolMaterials.STEEL);
 		this.setUnlocalizedName(PathHelper.full("waterSword"));
+		this.setCreativeTab(ModItems.tabVB);
 	}
 
 	@Override

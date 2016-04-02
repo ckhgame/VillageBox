@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.block.tool;
 
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoublePlant;
@@ -40,7 +41,7 @@ public class BlockBuildBox extends Block{
 		this.size = size;
 		this.setUnlocalizedName(PathHelper.full(size.name));
 		this.setHardness(1.0F);
-		this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(ModItems.tabVB);
 	}
 	
 	@Override

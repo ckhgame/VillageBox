@@ -2,6 +2,7 @@ package ckhbox.villagebox.common.item.book;
 
 import java.util.List;
 
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.client.resources.I18n;
@@ -16,7 +17,7 @@ public class ItemResetScroll extends Item{
 	
 	public ItemResetScroll(){
 		this.setUnlocalizedName(PathHelper.full("resetScroll"));
-		this.setCreativeTab(CreativeTabs.tabMisc);
+		this.setCreativeTab(ModItems.tabVB);
 		this.setMaxStackSize(16);
 	}
 

@@ -44,7 +44,7 @@ public class BlockAlchemyPot extends Block {
         this.setDefaultState(this.blockState.getBaseState().withProperty(LEVEL, Integer.valueOf(0)));
         this.setUnlocalizedName(PathHelper.full("alchemypot"));
 		this.setHardness(1.0F);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(ModItems.tabVB);
     }
 
     /**

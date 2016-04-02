@@ -42,7 +42,7 @@ public class BlockMagicTrashCan extends Block {
         super(Material.iron);
         this.setUnlocalizedName(PathHelper.full("magicTrashCan"));
 		this.setHardness(1.0F);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(ModItems.tabVB);
     }
 
     /**

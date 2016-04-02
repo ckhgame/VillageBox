@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.block.decoration;
 
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -12,7 +13,7 @@ public class BlockTable extends Block{
 	{
         super(Material.wood);
         this.setUnlocalizedName(PathHelper.full(name));
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(ModItems.tabVB);
     }
 
 	@Override

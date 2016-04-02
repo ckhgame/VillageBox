@@ -3,6 +3,7 @@ package ckhbox.villagebox.common.item.tool;
 import java.util.Random;
 
 import ckhbox.villagebox.common.entity.throwable.EntityFlameBall;
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +23,7 @@ public class ItemWeatherStone extends Item{
 		this.sunny = sunny;
 			
 		this.setUnlocalizedName(PathHelper.full(sunny?"sunStone":"rainStone"));
-		this.setCreativeTab(CreativeTabs.tabTools);
+		this.setCreativeTab(ModItems.tabVB);
 		this.maxStackSize = 1;
         this.setMaxDamage(1);
 	}

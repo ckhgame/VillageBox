@@ -346,3 +346,6 @@ villagebox:info.tile.totempole2=§7Just for decoration
 villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?
 villagebox:mail.newvillager1.content=Are you looking for villagers? Please consider me!
 villagebox:mail.newvillager2.content=I'm so tired about current life and looking for a place to live. Could I be a villager in your village?
+
+# CreativeTab
+itemGroup.tabVillageBox=Village Box

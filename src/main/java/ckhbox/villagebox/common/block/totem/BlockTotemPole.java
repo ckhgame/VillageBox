@@ -1,6 +1,7 @@
 package ckhbox.villagebox.common.block.totem;
 
 import ckhbox.villagebox.common.block.common.BlockFacing;
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityTotem;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.ITileEntityProvider;
@@ -16,7 +17,7 @@ public class BlockTotemPole extends BlockFacing{
 	public BlockTotemPole(String name) {
 		super(Material.wood);
 		this.setUnlocalizedName(PathHelper.full(name));
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(ModItems.tabVB);
         this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 1.0F, 0.75F);
 	}
     

@@ -1,6 +1,7 @@
 package ckhbox.villagebox.common.block.decoration;
 
 import ckhbox.villagebox.common.block.common.BlockFacing;
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -13,7 +14,7 @@ public class BlockChair extends BlockFacing{
 	{
         super(Material.wood);
         this.setUnlocalizedName(PathHelper.full(name));
-        this.setCreativeTab(CreativeTabs.tabDecorations);
+        this.setCreativeTab(ModItems.tabVB);
         this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 0.875F, 0.75F);
     }
 

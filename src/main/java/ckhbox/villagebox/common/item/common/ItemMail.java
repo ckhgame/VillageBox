@@ -22,7 +22,7 @@ public class ItemMail extends Item{
 	
 	public ItemMail(){
 		this.setUnlocalizedName(PathHelper.full("mail"));
-		this.setCreativeTab(CreativeTabs.tabMisc);
+		this.setCreativeTab(ModItems.tabVB);
 		this.setMaxStackSize(1);
 	}
 

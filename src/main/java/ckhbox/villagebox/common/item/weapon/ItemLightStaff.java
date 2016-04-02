@@ -31,7 +31,7 @@ public class ItemLightStaff extends Item
 		this.setUnlocalizedName(PathHelper.full("lightStaff"));
         this.maxStackSize = 1;
         this.setMaxDamage(256);
-        this.setCreativeTab(CreativeTabs.tabCombat);
+        this.setCreativeTab(ModItems.tabVB);
     }
     
 	@Override
