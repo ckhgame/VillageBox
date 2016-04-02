@@ -145,7 +145,7 @@ item.villagebox:invitation.name=Invitation
 item.villagebox:sunStone.name=Sun Stone
 item.villagebox:rainStone.name=Rain Stone
 item.villagebox:staff.name=Staff
-item.villagebox:fireStaff.name=§6Fire Staff
+item.villagebox:fireStaff.name=§6Flame Staff
 item.villagebox:waterStaff.name=§9Water Staff
 item.villagebox:natureStaff.name=§aNature Staff
 item.villagebox:lightStaff.name=§eLight Staff
@@ -227,11 +227,11 @@ item.villagebox:waterShard.name=§9Water Shard
 item.villagebox:natureShard.name=§aNature Shard
 item.villagebox:lightShard.name=§eLight Shard
 item.villagebox:darkShard.name=§5Dark Shard
-item.villagebox:fireSword.name=§6Fire Sword
+item.villagebox:fireSword.name=§6Flame Sword
 item.villagebox:waterSword.name=§9Water Sword
-item.villagebox:natureSword.name=§aNature Sword
+item.villagebox:natureSword.name=§aForest Sword
 item.villagebox:darkSword.name=§5Dark Sword
-item.villagebox:lightSword.name=§eLight Sword
+item.villagebox:lightSword.name=§eSacred Sword
 
 # villager egg
 entity.villagebox.villager.name=Villager
