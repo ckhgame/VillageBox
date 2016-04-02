@@ -338,17 +338,21 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	public void upgrade(int pid){
 		if(!this.worldObj.isRemote){
+			String oldProName = this.getProfession().getDisplayName();
 			this.upgradingHistory.add(this.getProfession().getRegID());
 			this.setProfession(pid);
-			//message
+			String newProName = this.getProfession().getDisplayName();		
+			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.upgrade"),this.getName(),oldProName,newProName));
 		}
 	}
 	
 	public boolean downgrade(){
 		if(!this.worldObj.isRemote && this.upgradingHistory.size() > 0){
+			String oldProName = this.getProfession().getDisplayName();
 			int last = this.upgradingHistory.remove(this.upgradingHistory.size() - 1);
 			this.setProfession(last);
-			//message
+			String newProName = this.getProfession().getDisplayName();
+			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.downgrade"),this.getName(),oldProName,newProName));
 			return true;
 		}
 		else{
