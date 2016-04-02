@@ -310,6 +310,12 @@ tile.villagebox:flowerHeartMushroom.name=Heart Mushroom
 tile.villagebox:flowerRanunculus.name=Ranunculus
 tile.villagebox:flowerRosySpiraea.name=Rosy Spiraea
 tile.villagebox:bonsai.name=Bonsai
+tile.villagebox:fireTotem.name=§6Fire Totem
+tile.villagebox:waterTotem.name=§9Water Totem
+tile.villagebox:natureTotem.name=§aNature Totem
+tile.villagebox:totempole0.name=Totem Pole
+tile.villagebox:totempole1.name=Totem Pole
+tile.villagebox:totempole2.name=Totem Pole
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
@@ -328,6 +334,13 @@ villagebox:info.item.waterSword=§7Slow down the target
 villagebox:info.item.natureSword=§7Poison the target
 villagebox:info.item.lightSword=§7One hit kill zombies and skeletons.
 villagebox:info.item.darkSword=§7Steal life on hit
+
+villagebox:info.tile.fireTotem=§7Burn nearby mobs
+villagebox:info.tile.waterTotem=§7Increase nearby players' speed.
+villagebox:info.tile.natureTotem=§7Heal nearby players and villagers
+villagebox:info.tile.totempole0=§7Just for decoration
+villagebox:info.tile.totempole1=§7Just for decoration
+villagebox:info.tile.totempole2=§7Just for decoration
 
 # Mail
 villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?

@@ -218,7 +218,7 @@ item.villagebox:steelPickaxe.name=钢镐
 item.villagebox:steelShovel.name=钢铲
 item.villagebox:steelSword.name=钢剑
 item.villagebox:efficientBow.name=分裂弓
-item.villagebox:painting.name=画（特制）
+item.villagebox:painting.name=特制画
 item.villagebox:resetScroll.name=重置卷轴
 item.villagebox:fireShard.name=§6火属性碎片
 item.villagebox:waterShard.name=§9水属性碎片
@@ -310,6 +310,12 @@ tile.villagebox:flowerHeartMushroom.name=爱心蘑菇
 tile.villagebox:flowerRanunculus.name=金凤花
 tile.villagebox:flowerRosySpiraea.name=绣线菊
 tile.villagebox:bonsai.name=盆栽
+tile.villagebox:fireTotem.name=§6火焰图腾
+tile.villagebox:waterTotem.name=§9水之图腾
+tile.villagebox:natureTotem.name=§a自然图腾
+tile.villagebox:totempole0.name=图腾柱
+tile.villagebox:totempole1.name=图腾柱
+tile.villagebox:totempole2.name=图腾柱
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d
@@ -328,6 +334,13 @@ villagebox:info.item.waterSword=§7减速目标
 villagebox:info.item.natureSword=§7给目标下毒
 villagebox:info.item.lightSword=§7对僵尸和骷髅一击必杀
 villagebox:info.item.darkSword=§7击中时偷取生命
+
+villagebox:info.tile.fireTotem=§7使附近怪物燃烧
+villagebox:info.tile.waterTotem=§7提高附近玩家速度
+villagebox:info.tile.natureTotem=§7治疗附近玩家和村民
+villagebox:info.tile.totempole0=§7仅作装饰用
+villagebox:info.tile.totempole1=§7仅作装饰用
+villagebox:info.tile.totempole2=§7仅作装饰用
 
 # Mail
 villagebox:mail.newvillager0.content=我听说你正在建造一个村庄, 我想知道我是否有机会加入?

@@ -9,6 +9,7 @@ import ckhbox.villagebox.common.block.tool.BlockMagicTrashCan;
 import ckhbox.villagebox.common.block.tool.BlockMailBox;
 import ckhbox.villagebox.common.block.totem.BlockTotem;
 import ckhbox.villagebox.common.block.totem.BlockTotemPole;
+import ckhbox.villagebox.common.item.totem.ItemBlockWithInfo;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityFireTotem;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityNatureTotem;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityWaterTotem;
@@ -191,11 +192,11 @@ public class ModBlocks {
 		GameRegistry.registerBlock(flowerHydrangeas=new BlockFlowerInPot("flowerHydrangeas"),"flower_hydrangeas");
 		GameRegistry.registerBlock(bonsai=new BlockFlowerInPot("bonsai"),"bonsai");
 		
-		GameRegistry.registerBlock(fireTotem=new BlockTotem("fireTotem",TileEntityFireTotem.class),"fire_totem");
-		GameRegistry.registerBlock(waterTotem=new BlockTotem("waterTotem",TileEntityWaterTotem.class),"water_totem");
-		GameRegistry.registerBlock(natureTotem=new BlockTotem("natureTotem",TileEntityNatureTotem.class),"nature_totem");
-		GameRegistry.registerBlock(totempole0=new BlockTotemPole("totempole0"),"totempole_0");
-		GameRegistry.registerBlock(totempole1=new BlockTotemPole("totempole1"),"totempole_1");
-		GameRegistry.registerBlock(totempole2=new BlockTotemPole("totempole2"),"totempole_2");
+		GameRegistry.registerBlock(fireTotem=new BlockTotem("fireTotem", TileEntityFireTotem.class), ItemBlockWithInfo.class, "fire_totem");
+		GameRegistry.registerBlock(waterTotem=new BlockTotem("waterTotem",TileEntityWaterTotem.class), ItemBlockWithInfo.class, "water_totem");
+		GameRegistry.registerBlock(natureTotem=new BlockTotem("natureTotem",TileEntityNatureTotem.class), ItemBlockWithInfo.class, "nature_totem");
+		GameRegistry.registerBlock(totempole0=new BlockTotemPole("totempole0"), ItemBlockWithInfo.class, "totempole_0");
+		GameRegistry.registerBlock(totempole1=new BlockTotemPole("totempole1"), ItemBlockWithInfo.class, "totempole_1");
+		GameRegistry.registerBlock(totempole2=new BlockTotemPole("totempole2"), ItemBlockWithInfo.class, "totempole_2");
 	}
 }
