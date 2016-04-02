@@ -279,12 +279,12 @@ public class ModItems {
 		GameRegistry.registerItem(salt=(new Item()).setUnlocalizedName(PathHelper.full("salt")).setCreativeTab(ModItems.tabVB),"salt");
 		
 		//wines
-		GameRegistry.registerItem(grapeWine=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("grapeWine")),"grape_wine");
-		GameRegistry.registerItem(cookingWine=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("cookingWine")),"cooking_wine");
-		GameRegistry.registerItem(cocktail=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("cocktail")),"cocktail");		
-		GameRegistry.registerItem(beer=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("beer")),"beer");
-		GameRegistry.registerItem(whisky=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("whisky")),"whisky");
-		GameRegistry.registerItem(vodka=(new ItemDrink(0, 0.0F, false)).setUnlocalizedName(PathHelper.full("vodka")),"vodka");
+		GameRegistry.registerItem(grapeWine=(new ItemDrink(1, 0.0F, 15)).setUnlocalizedName(PathHelper.full("grapeWine")),"grape_wine");
+		GameRegistry.registerItem(cookingWine=(new ItemDrink(1, 0.0F, 10)).setUnlocalizedName(PathHelper.full("cookingWine")),"cooking_wine");
+		GameRegistry.registerItem(cocktail=(new ItemDrink(1, 0.0F, 20)).setUnlocalizedName(PathHelper.full("cocktail")),"cocktail");		
+		GameRegistry.registerItem(beer=(new ItemDrink(2, 0.0F, 10)).setUnlocalizedName(PathHelper.full("beer")),"beer");
+		GameRegistry.registerItem(whisky=(new ItemDrink(1, 0.0F, 25)).setUnlocalizedName(PathHelper.full("whisky")),"whisky");
+		GameRegistry.registerItem(vodka=(new ItemDrink(1, 0.0F, 25)).setUnlocalizedName(PathHelper.full("vodka")),"vodka");
 		
 		//food
 		GameRegistry.registerItem(grape=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("grape")),"grape");

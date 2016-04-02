@@ -1,15 +1,23 @@
 package ckhbox.villagebox.common.item.common;
 
 import ckhbox.villagebox.common.item.ModItems;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 
 public class ItemDrink extends ItemFood{
 
-	public ItemDrink(int amount, float saturation, boolean isWolfFood) {
-		super(amount, saturation, isWolfFood);
+	private int drunkticks;
+	
+	public ItemDrink(int amount, float saturation, int drunktime) {
+		super(amount, saturation, false);
 		this.setCreativeTab(ModItems.tabVB);
+		this.drunkticks = drunktime * 20;
+		this.setAlwaysEdible();
 	}
 	
 	@Override
@@ -17,5 +25,13 @@ public class ItemDrink extends ItemFood{
     {
         return EnumAction.DRINK;
     }
+
+	@Override
+	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+		super.onFoodEaten(stack, worldIn, player);
+		player.addPotionEffect(new PotionEffect(Potion.confusion.id,this.drunkticks));
+	}
+	
+	
 
 }
