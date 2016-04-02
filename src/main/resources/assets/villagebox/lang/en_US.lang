@@ -21,10 +21,10 @@ villagebox:profession.mage.name=Mage
 villagebox:profession.mage.desc=Sells magic items
 villagebox:profession.alchemist.name=Alchemist
 villagebox:profession.alchemist.desc=Brew potions
-villagebox:profession.magiccrafter.name=Magic Crafter
-villagebox:profession.magiccrafter.desc=Make magic items
+villagebox:profession.staffcrafter.name=Staff Crafter
+villagebox:profession.staffcrafter.desc=Make magic staffs
 villagebox:profession.shaman.name=Shaman
-villagebox:profession.shaman.desc=Change weather
+villagebox:profession.shaman.desc=Control the elements
 villagebox:profession.carpenter.name=Carpenter
 villagebox:profession.carpenter.desc=Create wooden items
 villagebox:profession.carpetmaker.name=Carpet Maker
@@ -121,7 +121,7 @@ villagebox:message.villager.home.moveout=%s has moved out from home
 
 villagebox:message.mail.newmail=You have received a new mail
 villagebox:message.mail.nomail=You have nothing in the mailbox
-villagebox:message.mail.invitesuccess=You have sent a invitation, someone will reply to you soon
+villagebox:message.mail.invitesuccess=You have sent an invitation, someone will reply to you soon
 villagebox:message.mail.invitefailed=You have already sent a invitation
 
 villagebox:message.player.treasurelvlupgrade.success=Your §6treasure hunt level §fhas been upgraded to §a%d
@@ -343,9 +343,9 @@ villagebox:info.tile.totempole1=§7Just for decoration
 villagebox:info.tile.totempole2=§7Just for decoration
 
 # Mail
-villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to join your village?
+villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to be a villager?
 villagebox:mail.newvillager1.content=Are you looking for villagers? Please consider me!
-villagebox:mail.newvillager2.content=I'm so tired about current life and looking for a place to live. Could I be a villager in your village?
+villagebox:mail.newvillager2.content=I'm so tired about the current life and looking for a new place to live. Could I become a villager in your village?
 
 # CreativeTab
 itemGroup.tabVillageBox=Village Box

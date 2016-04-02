@@ -15,6 +15,21 @@ public class ProWeaponsmith extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,5),new ItemStack(ModItems.steelIngot,4)},
 				new ItemStack(ModItems.steelSword)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,10),new ItemStack(ModItems.fireShard,2),new ItemStack(ModItems.steelSword)},
+				new ItemStack(ModItems.fireSword)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,10),new ItemStack(ModItems.waterShard,2),new ItemStack(ModItems.steelSword)},
+				new ItemStack(ModItems.waterSword)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,10),new ItemStack(ModItems.natureShard,2),new ItemStack(ModItems.steelSword)},
+				new ItemStack(ModItems.natureSword)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,10),new ItemStack(ModItems.lightShard,2),new ItemStack(ModItems.steelSword)},
+				new ItemStack(ModItems.lightSword)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,10),new ItemStack(ModItems.darkShard,2),new ItemStack(ModItems.steelSword)},
+				new ItemStack(ModItems.darkSword)));
 	}
 
 	@Override

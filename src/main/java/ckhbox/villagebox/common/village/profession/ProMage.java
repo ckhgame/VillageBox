@@ -14,8 +14,20 @@ public class ProMage extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,10)},
-				new ItemStack(ModItems.fireStaff)));
+				new ItemStack[]{new ItemStack(Items.blaze_rod,3),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModItems.fireShard)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.snowball,16),new ItemStack(Items.snowball,16),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModItems.waterShard)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.wheat_seeds,32),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModItems.natureShard)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Items.glowstone_dust,32),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModItems.lightShard)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Blocks.obsidian,5),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModItems.darkShard)));
 	}
 
 	@Override
@@ -39,7 +51,7 @@ public class ProMage extends Profession{
 		this.upgradeToNextOptionClasses = new Class[]{
 				ProAlchemist.class,
 				ProShaman.class,
-				ProMagicCrafter.class
+				ProStaffCrafter.class
 				};
 	}
 	

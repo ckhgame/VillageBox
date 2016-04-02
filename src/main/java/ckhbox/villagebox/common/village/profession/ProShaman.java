@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.village.profession;
 
+import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
@@ -13,11 +14,29 @@ public class ProShaman extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
-				new ItemStack(ModItems.sunStone)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.fireShard,5),new ItemStack(Blocks.log,1)},
+				new ItemStack(ModBlocks.fireTotem)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
-				new ItemStack(ModItems.rainStone)));
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.waterShard,5),new ItemStack(Blocks.log,1)},
+				new ItemStack(ModBlocks.waterTotem)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.natureShard,5),new ItemStack(Blocks.log,1)},
+				new ItemStack(ModBlocks.natureTotem)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.log,1)},
+				new ItemStack(ModBlocks.totempole0)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.log,1)},
+				new ItemStack(ModBlocks.totempole1)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.log,1)},
+				new ItemStack(ModBlocks.totempole2)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(ModItems.fireShard)},
+				new ItemStack(ModItems.sunStone,3)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(ModItems.waterShard)},
+				new ItemStack(ModItems.rainStone,3)));
 	}
 
 	@Override
