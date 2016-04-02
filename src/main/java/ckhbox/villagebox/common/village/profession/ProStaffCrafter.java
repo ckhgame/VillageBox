@@ -46,6 +46,7 @@ public class ProStaffCrafter extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
+				new ItemStack(Items.stick,1),
 				new ItemStack(ModItems.silverCoin,15)
 		};
 		
