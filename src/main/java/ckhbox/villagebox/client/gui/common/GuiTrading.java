@@ -127,14 +127,6 @@ public class GuiTrading extends GuiContainer{
             //all recipes panel
             if(this.allRecipesButton.isDisplayingAllRecipes){
             	
-                GlStateManager.pushMatrix();
-                RenderHelper.enableGUIStandardItemLighting();
-                GlStateManager.disableLighting();
-                GlStateManager.enableRescaleNormal();
-                GlStateManager.enableColorMaterial();
-                GlStateManager.enableLighting();
-                this.itemRender.zLevel = 50.0F;
-            	
             	int px = (this.width + this.xSize) / 2;
             	int py = (this.height - this.heightAllRecpiesPanel) / 2;  
             	

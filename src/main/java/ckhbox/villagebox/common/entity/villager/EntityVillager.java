@@ -1,6 +1,7 @@
 package ckhbox.villagebox.common.entity.villager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ckhbox.villagebox.VillageBoxMod;
@@ -43,7 +44,6 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.actors.threadpool.Arrays;
 
 public class EntityVillager extends EntityCreature implements ITrading{
 
