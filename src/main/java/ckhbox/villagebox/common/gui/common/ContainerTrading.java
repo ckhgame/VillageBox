@@ -156,12 +156,15 @@ public class ContainerTrading extends Container
     
         if (!this.world.isRemote)
         {
+        	playerIn.inventoryContainer.detectAndSendChanges();
         	for(int i =0;i<4;i++){
         		if (this.tradingInventory.getStackInSlot(i) != null)
                 {
-                    playerIn.dropPlayerItemWithRandomChoice(this.tradingInventory.getStackInSlot(i), false);
+        			if(!playerIn.inventory.addItemStackToInventory(this.tradingInventory.getStackInSlot(i)))
+        				playerIn.dropPlayerItemWithRandomChoice(this.tradingInventory.getStackInSlot(i), false);
                 }
         	}
+        	playerIn.inventoryContainer.detectAndSendChanges();
         }
     }
 }

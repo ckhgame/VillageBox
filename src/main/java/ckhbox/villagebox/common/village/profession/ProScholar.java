@@ -18,6 +18,9 @@ public class ProScholar extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)},
 				new ItemStack(Items.paper)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1),new ItemStack(Items.paper)},
+				new ItemStack(ModItems.resetScroll)));
 	}
 
 
@@ -48,7 +51,8 @@ public class ProScholar extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.book)
+				new ItemStack(Items.book),
+				new ItemStack(ModItems.resetScroll)
 		};
 	}
 
