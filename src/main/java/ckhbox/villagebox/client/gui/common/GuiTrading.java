@@ -107,7 +107,6 @@ public class GuiTrading extends GuiContainer{
             
             GlStateManager.pushMatrix();
             RenderHelper.enableGUIStandardItemLighting();
-            GlStateManager.disableLighting();
             GlStateManager.enableRescaleNormal();
             GlStateManager.enableColorMaterial();
             GlStateManager.enableLighting();

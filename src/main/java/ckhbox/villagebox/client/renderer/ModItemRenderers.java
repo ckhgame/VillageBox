@@ -21,6 +21,7 @@ public class ModItemRenderers {
 		registerModel(ModItems.treasureHuntBookI, 0, "treasure_hunt_book_0");
 		registerModel(ModItems.treasureHuntBookII, 0, "treasure_hunt_book_1");
 		registerModel(ModItems.treasureHuntBookIII, 0, "treasure_hunt_book_2");
+		registerModel(ModItems.guideBook, 0, "guide_book");
 		registerModel(ModItems.bronzeCoin, 0, "bronze_coin");
 		registerModel(ModItems.silverCoin, 0, "silver_coin");
 		registerModel(ModItems.goldCoin, 0, "gold_coin");

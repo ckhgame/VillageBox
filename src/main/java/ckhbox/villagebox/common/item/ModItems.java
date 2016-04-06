@@ -2,6 +2,7 @@ package ckhbox.villagebox.common.item;
 
 import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.item.armor.ItemArmor;
+import ckhbox.villagebox.common.item.book.ItemGuideBook;
 import ckhbox.villagebox.common.item.book.ItemResetScroll;
 import ckhbox.villagebox.common.item.book.ItemTreasureBook;
 import ckhbox.villagebox.common.item.common.ItemCoin;
@@ -28,9 +29,7 @@ import ckhbox.villagebox.common.item.weapon.ItemStaff;
 import ckhbox.villagebox.common.item.weapon.ItemWaterStaff;
 import ckhbox.villagebox.common.item.weapon.ItemWaterSword;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.block.BlockDoublePlant;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -77,6 +76,7 @@ public class ModItems {
 	public static ItemMail mail;
 	public static ItemResetScroll resetScroll;
 	public static Item invitation;
+	public static ItemGuideBook guideBook;
 	
 	//staff
 	public static ItemStaff staff;
@@ -195,6 +195,7 @@ public class ModItems {
 		GameRegistry.registerItem(treasureHuntBookI=new ItemTreasureBook(1),"treasure_hunt_book_0");
 		GameRegistry.registerItem(treasureHuntBookII=new ItemTreasureBook(2),"treasure_hunt_book_1");
 		GameRegistry.registerItem(treasureHuntBookIII=new ItemTreasureBook(3),"treasure_hunt_book_2");
+		GameRegistry.registerItem(guideBook=new ItemGuideBook(),"guide_book");
 		
 		GameRegistry.registerItem(resetScroll=new ItemResetScroll(),"reset_scroll");
 		
