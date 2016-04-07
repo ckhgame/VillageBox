@@ -14,7 +14,7 @@ public class LinkText extends Link{
 		super(page,link,tooltips);
 		this.text = text;
 		this.width = this.mc.fontRendererObj.getStringWidth(text);
-		this.height = this.mc.fontRendererObj.FONT_HEIGHT;
+		this.height = this.mc.fontRendererObj.FONT_HEIGHT + 2;
 	}
 	
 	public void onDraw(int mouseX, int mouseY){

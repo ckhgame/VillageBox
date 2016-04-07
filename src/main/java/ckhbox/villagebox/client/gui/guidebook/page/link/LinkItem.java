@@ -10,17 +10,17 @@ import net.minecraft.item.ItemStack;
 
 public class LinkItem extends Link{
 
-	public ItemStack item;
+	public ItemStack itemstack;
 	
-	public LinkItem(Page page, Item item, String link, List<String> tooltips){
+	public LinkItem(Page page, ItemStack itemstack, String link, List<String> tooltips){
 		super(page,link,tooltips);
-		this.item = new ItemStack(item);
+		this.itemstack = itemstack;
 		this.width = 20;
 		this.height = 20;
 	}
 	
 	public void onDraw(int mouseX, int mouseY){
-		this.page.guiGuideBook.drawItem(this.item, this.left, this.top);
+		this.page.guiGuideBook.drawItem(this.itemstack, this.left, this.top);
 	}
 	
 	public void onDrawHover(int mouseX, int mouseY){
@@ -28,8 +28,8 @@ public class LinkItem extends Link{
 	}
 	
 	public void onDrawToolTip(int mouseX, int mouseY){
-		if(this.item != null){
-			this.page.guiGuideBook.renderToolTip(this.item, mouseX, mouseY);
+		if(this.itemstack != null){
+			this.page.guiGuideBook.renderToolTip(this.itemstack, mouseX, mouseY);
 		}
 	}
 }

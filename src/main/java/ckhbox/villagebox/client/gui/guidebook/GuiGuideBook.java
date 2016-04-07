@@ -1,21 +1,17 @@
 package ckhbox.villagebox.client.gui.guidebook;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 import ckhbox.villagebox.client.gui.guidebook.page.Page;
 import ckhbox.villagebox.client.gui.guidebook.page.PageHome;
+import ckhbox.villagebox.client.gui.guidebook.page.data.GuideBookData;
 import ckhbox.villagebox.common.gui.common.ContainerEmpty;
-import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -123,31 +119,6 @@ public class GuiGuideBook extends GuiContainer{
 		this.itemRender.renderItemAndEffectIntoGUI(itemstack, x, y);
         this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, x, y);
         GlStateManager.popMatrix();
-	}
-
-	public static class GuideBookData{
-		public HashMap<String,Item> mapItems = new HashMap<String,Item>();
-		public HashMap<String,Profession> mapPros = new HashMap<String,Profession>();
-		
-		public GuideBookData(){
-			this.generate();
-		}
-		
-		public void generate(){
-			//items
-			this.mapItems.clear();
-			for (Item item : Item.itemRegistry){
-	            if (item == null){
-	                continue;
-	            }
-	            for (CreativeTabs tab : item.getCreativeTabs()){
-	                if (tab == ModItems.tabVB){
-	                    this.mapItems.put(item.getUnlocalizedName(), item);
-	                }
-	            }
-	        }
-			//professions
-		}
 	}
 	
 }

@@ -8,6 +8,7 @@ import ckhbox.villagebox.client.gui.guidebook.page.link.Link;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public abstract class Page {
@@ -70,6 +71,10 @@ public abstract class Page {
 	}
 	
 	private void gotoLink(String link){
+		
+		if(link == null)
+			return;
+		
 		//reslove links
 		//format: PAGETYPE=PARAMS, examples: 1. item=staff   2.  pro=cook   3. home=
 		String[] arr = link.split("=");
@@ -80,6 +85,14 @@ public abstract class Page {
 		else if(arr[0].equals("itemlist")){
 			int pageIdx = Integer.valueOf(arr[1]);
 			newPage = new PageItemList(this.guiGuideBook,pageIdx);
+		}
+		else if(arr[0].equals("prolist")){
+			int pageIdx = Integer.valueOf(arr[1]);
+			newPage = new PageProList(this.guiGuideBook,pageIdx);
+		}
+		else if(arr[0].equals("item")){
+			ItemStack itemstack = this.guiGuideBook.guidebookData.mapNamesToItemStacks.get(arr[1]);
+			newPage = new PageItem(this.guiGuideBook,itemstack);
 		}
 		
 		if(newPage!=null){

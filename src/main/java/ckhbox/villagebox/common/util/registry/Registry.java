@@ -1,10 +1,20 @@
 package ckhbox.villagebox.common.util.registry;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Registry <T extends IRegistrable> {
 	private HashMap<Integer,T> mapIntData = new HashMap<Integer,T>();
 	private HashMap<Class<? extends T>,T> mapClassData = new HashMap<Class<? extends T>,T>();
+	
+	public List<T> getAll(){
+		List<T> list = new ArrayList<T>();
+		for(T t : mapClassData.values()){
+			list.add(t);
+		}
+		return list;
+	}
 	
 	public void register(int regID, T data ){
 		if(mapIntData.containsKey(regID) || mapClassData.containsKey(data.getClass())){
