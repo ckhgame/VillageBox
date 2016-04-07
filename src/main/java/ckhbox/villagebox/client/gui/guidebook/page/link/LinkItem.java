@@ -24,7 +24,7 @@ public class LinkItem extends Link{
 	}
 	
 	public void onDrawHover(int mouseX, int mouseY){
-		this.onDraw(mouseX, mouseY);
+		this.page.guiGuideBook.drawItem(this.itemstack, this.left, this.top - 2);
 	}
 	
 	public void onDrawToolTip(int mouseX, int mouseY){

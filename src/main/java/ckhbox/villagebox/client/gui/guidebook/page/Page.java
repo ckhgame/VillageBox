@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ckhbox.villagebox.client.gui.GuiTextButton;
 import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
 import ckhbox.villagebox.client.gui.guidebook.page.link.Link;
+import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -93,6 +94,11 @@ public abstract class Page {
 		else if(arr[0].equals("item")){
 			ItemStack itemstack = this.guiGuideBook.guidebookData.mapNamesToItemStacks.get(arr[1]);
 			newPage = new PageItem(this.guiGuideBook,itemstack);
+		}
+		else if(arr[0].equals("pro")){
+			int proid = Integer.valueOf(arr[1]);
+			Profession pro = Profession.registry.get(proid);
+			newPage = new PagePro(this.guiGuideBook,pro);
 		}
 		
 		if(newPage!=null){

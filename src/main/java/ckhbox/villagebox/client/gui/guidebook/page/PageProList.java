@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
+import ckhbox.villagebox.client.gui.guidebook.page.link.LinkPro;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkText;
 import ckhbox.villagebox.common.village.profession.Profession;
 
 public class PageProList extends Page{
 	
 	private int pageIdx;
-	private static int prosPerPage = 10;
+	private static int prosPerPage = 7;
 	
 	public PageProList(GuiGuideBook guiGuideBook, int pageIdx) {
 		super(guiGuideBook, "Professions");
@@ -25,7 +26,7 @@ public class PageProList extends Page{
 		for(int i =from;i<to;i++){
 			List<String> hovertext = new ArrayList<String>();
 			hovertext.add(pros.get(i).getDescription());
-			this.addLink(new LinkText(this,"" + (i+1)  + ". " + pros.get(i).getDisplayName(),"pro=" + pros.get(i).getRegID(),hovertext), true);
+			this.addLink(new LinkPro(this,pros.get(i),"pro=" + pros.get(i).getRegID(),hovertext), true);
 		}
 		
 		int top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 10;

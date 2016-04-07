@@ -26,10 +26,10 @@ public abstract class Link {
 	}
 	
 	public boolean isMouseHover(int mouseX, int mouseY){
-		if(mouseX < this.left ||
-			mouseX > this.left + this.width ||
-			mouseY < this.top ||
-			mouseY > this.top + this.height)
+		if(mouseX <= this.left ||
+			mouseX >= this.left + this.width ||
+			mouseY <= this.top ||
+			mouseY >= this.top + this.height)
 			return false;
 		return true;
 	}

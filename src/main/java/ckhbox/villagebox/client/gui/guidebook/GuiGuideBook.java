@@ -8,6 +8,7 @@ import ckhbox.villagebox.client.gui.guidebook.page.PageHome;
 import ckhbox.villagebox.client.gui.guidebook.page.data.GuideBookData;
 import ckhbox.villagebox.common.gui.common.ContainerEmpty;
 import ckhbox.villagebox.common.util.helper.PathHelper;
+import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -91,6 +92,18 @@ public class GuiGuideBook extends GuiContainer{
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(guiBookGuiTextures);
         this.drawTexturedModalRect(x, y, coordx, coordy, width, height);
+	}
+	
+	public void drawProHead(int x, int y, Profession pro, boolean isMale){
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        this.mc.getTextureManager().bindTexture(pro.getTexture(isMale));
+        this.drawModalRectWithCustomSizedTexture(x, y, 8, 8, 8, 8, 64, 32);
+	}
+	
+	public void drawProEntity(int x, int y, Profession pro, boolean isMale){
+//		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+//        this.mc.getTextureManager().bindTexture(guiBookGuiTextures);
+//        this.drawTexturedModalRect(x, y, coordx, coordy, width, height);
 	}
 	
 	public void openPage(Page page){
