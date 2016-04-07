@@ -23,13 +23,13 @@ public class GuiGuideBook extends GuiContainer{
 
 	protected static final ResourceLocation guiBookGuiTextures = new ResourceLocation(PathHelper.full("textures/gui/guidebook/page.png"));
 	
-	protected GuideBookData guidebookData = null;
+	public GuideBookData guidebookData = null;
 	protected Page currentPage;
 	
 	protected int xSize = 176;
     protected int ySize = 180; 
-    protected int offsetx = 10;
-    protected int offsety = 10;
+    protected int offsetx = 18;
+    protected int offsety = 18;
 	
 	public GuiGuideBook() {
 		super(new ContainerEmpty());
@@ -122,6 +122,7 @@ public class GuiGuideBook extends GuiContainer{
         this.itemRender.zLevel = 100.0F;		
 		this.itemRender.renderItemAndEffectIntoGUI(itemstack, x, y);
         this.itemRender.renderItemOverlays(this.fontRendererObj, itemstack, x, y);
+        GlStateManager.popMatrix();
 	}
 
 	public static class GuideBookData{
@@ -141,8 +142,7 @@ public class GuiGuideBook extends GuiContainer{
 	            }
 	            for (CreativeTabs tab : item.getCreativeTabs()){
 	                if (tab == ModItems.tabVB){
-	                	String k = item.getUnlocalizedName();
-	                    this.mapItems.put(k.substring(16, k.length()), item);
+	                    this.mapItems.put(item.getUnlocalizedName(), item);
 	                }
 	            }
 	        }
