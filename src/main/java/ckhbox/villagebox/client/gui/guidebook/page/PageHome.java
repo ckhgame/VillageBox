@@ -17,10 +17,10 @@ public class PageHome extends Page{
 	@Override
 	public void onInit() {
 		int top = this.guiGuideBook.getContentTop();
-		this.addLink(new LinkText(this,"> Items","itemlist=0",null),top + 80,1);
-		this.addLink(new LinkText(this,"> Professions","prolist=0",null),top + 94,1);
-		this.addLink(new LinkText(this,"> Beginner","beginner=",null),top + 108,1);
-		this.addLink(new LinkText(this,"> Feedback","feedback=",null),top + 122,1);
+		this.addLink(new LinkText(this,"> Items",">itemlist=0",null),top + 80,1);
+		this.addLink(new LinkText(this,"> Professions",">prolist=0",null),top + 94,1);
+		this.addLink(new LinkText(this,"> Beginner",">beginner=",null),top + 108,1);
+		this.addLink(new LinkText(this,"> Feedback",">feedback=",null),top + 122,1);
 	}
 
 	@Override

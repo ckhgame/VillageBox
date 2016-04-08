@@ -22,21 +22,26 @@ public class PagePro extends Page{
 	public void onInit() {
 		
 		//this.addLink(new LinkItem(this,this.itemstack.getItem(),null,null),top,1);
-		int top = this.guiGuideBook.getContentTop() + 32;
-		
-		this.setFlowTop(this.guiGuideBook.getContentTop() + 64);
-		String upgrade = "Upgrades";
-		String trading = "Trading List";
-		this.addLink(new LinkText(this,upgrade,"prou=" + this.pro.getRegID(),null),false);
-		this.addLink(new LinkText(this,trading,"prot=" + this.pro.getRegID(),null),false);
+		int top = this.guiGuideBook.getContentTop() + 90;
+		String trading = "> Trading List";
+		this.addLink(new LinkText(this,trading,">trading=" + this.pro.getRegID() + ",0",null),top,1);
 		
 		top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 10;
-		this.addLink(new LinkText(this,"Back","prolist=0",null),top,1);
+		this.addLink(new LinkText(this,"Back","back=",null),top,1);
 	}
 
 	@Override
 	public void onDrawScreen(int mouseX, int mouseY) {
 		super.onDrawScreen(mouseX, mouseY);
+		
+		int top = this.guiGuideBook.getContentTop() + 50;
+		this.guiGuideBook.drawProEntity(this.guiGuideBook.getContentLeft() + 50, top, pro, true);
+		this.guiGuideBook.drawProEntity(this.guiGuideBook.getContentLeft() + 90, top, pro, false);
+		
+		top+=10;
+		String des = this.pro.getDescription();
+		int left = this.guiGuideBook.getContentLeft() + (this.guiGuideBook.getContentWidth() - this.guiGuideBook.mc.fontRendererObj.getStringWidth(des)) / 2;
+		this.guiGuideBook.mc.fontRendererObj.drawString(des, left, top, 0xFF888888, false);
 	}
 	
 }

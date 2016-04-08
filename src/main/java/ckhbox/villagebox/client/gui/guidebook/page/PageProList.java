@@ -26,7 +26,7 @@ public class PageProList extends Page{
 		for(int i =from;i<to;i++){
 			List<String> hovertext = new ArrayList<String>();
 			hovertext.add(pros.get(i).getDescription());
-			this.addLink(new LinkPro(this,pros.get(i),"pro=" + pros.get(i).getRegID(),hovertext), true);
+			this.addLink(new LinkPro(this,pros.get(i),">pro=" + pros.get(i).getRegID(),hovertext), true);
 		}
 		
 		int top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 10;
@@ -38,7 +38,7 @@ public class PageProList extends Page{
 			this.addLink(new LinkText(this,"-->","prolist=" + (this.pageIdx + 1),null),top,2);
 		}
 		
-		this.addLink(new LinkText(this,"Back","home",null),top,1);
+		this.addLink(new LinkText(this,"Back","back=",null),top,1);
 	}
 
 	@Override

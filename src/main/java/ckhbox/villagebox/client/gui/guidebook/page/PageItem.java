@@ -29,11 +29,11 @@ public class PageItem extends Page{
 		//related professions
 		List<Profession> relatedPros = this.guiGuideBook.guidebookData.findRelatedProByItem(this.itemstack);		
 		for(Profession pro : relatedPros){
-			this.addLink(new LinkText(this,pro.getDisplayName(),"pro=" + pro.getRegID(),null),false);
+			this.addLink(new LinkText(this,pro.getDisplayName(),">pro=" + pro.getRegID(),null),false);
 		}
 		
 		top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 10;
-		this.addLink(new LinkText(this,"Back","itemlist=0",null),top,1);
+		this.addLink(new LinkText(this,"Back","back=",null),top,1);
 	}
 
 	@Override
