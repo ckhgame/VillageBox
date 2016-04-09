@@ -166,7 +166,6 @@ public class GuiGuideBook extends GuiContainer{
 	public void gotoLink(String link){
 		if(link == null)
 			return;
-		System.out.println(link);
 		boolean pushPrevLink = false;
 		if(link.startsWith(">")){ // start with > means pushing old link
 			link = link.substring(1,link.length());
@@ -219,7 +218,6 @@ public class GuiGuideBook extends GuiContainer{
 	public void openPage(Page page, boolean pushPrevLink){
 		if(pushPrevLink && this.currentPage != null){
 			this.linkStack.push(this.currentPage.currentLink);
-			System.out.println("size:" + this.linkStack.size());
 		}
 		this.currentPage = page;
 		if(this.currentPage != null){

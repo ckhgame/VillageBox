@@ -125,39 +125,46 @@ public abstract class Profession implements IRegistrable{
 	public static Registry<Profession> registry = new Registry<Profession>();
 	
 	public static void init(){
+		//rank 0
 		registry.register(0, new ProVillager0());
 		registry.register(1, new ProVillager1());
 		registry.register(2, new ProVillager2());
+		
+		//rank 1
 		registry.register(3, new ProPeasant());
+		registry.register(25, new ProWorker());
+		registry.register(29, new ProBanker());
+		registry.register(21, new ProScholar());
+		
+		//rank 2
+		registry.register(11, new ProCarpenter());
+		registry.register(14, new ProCarpetmaker());
+		registry.register(32, new ProBuilder());
+		registry.register(8, new ProBlacksmith());
 		registry.register(4, new ProMiner());
+		registry.register(15, new ProFisherman());
+		registry.register(16, new ProFlorist());		
+		registry.register(27, new ProFarmer());
+		registry.register(18, new ProOrchardist());	
+		registry.register(20, new ProRancher());
+		registry.register(26, new ProCookAssistant());
+		registry.register(28, new ProBookseller());
+		registry.register(24, new ProMage());
+		registry.register(19, new ProPainter());
+		
+		//rank 3
 		registry.register(5, new ProAlchemist());
 		registry.register(6, new ProShaman());
 		registry.register(7, new ProArmorsmith());
-		registry.register(8, new ProBlacksmith());
 		registry.register(9, new ProToolsmith());
 		registry.register(10, new ProBowmaker());
-		registry.register(11, new ProCarpenter());
 		registry.register(12, new ProCarpetMakerAdevanced());
 		registry.register(13, new ProCarpetMakerCartoony());
-		registry.register(14, new ProCarpetmaker());
-		registry.register(15, new ProFisherman());
-		registry.register(16, new ProFlorist());
 		registry.register(17, new ProFurnituremaker());
-		registry.register(18, new ProOrchardist());
-		registry.register(19, new ProPainter());
-		registry.register(20, new ProRancher());
-		registry.register(21, new ProScholar());
 		registry.register(22, new ProVintner());
 		registry.register(23, new ProWeaponsmith());
-		registry.register(24, new ProMage());
-		registry.register(25, new ProWorker());
-		registry.register(26, new ProCookAssistant());
-		registry.register(27, new ProFarmer());
-		registry.register(28, new ProBookseller());
-		registry.register(29, new ProBanker());
 		registry.register(30, new ProChef());
 		registry.register(31, new ProChefDessert());
-		registry.register(32, new ProBuilder());
 		registry.register(33, new ProStaffCrafter());
 		
 				

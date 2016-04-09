@@ -4,6 +4,7 @@ import java.util.List;
 
 import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkItem;
+import ckhbox.villagebox.client.gui.guidebook.page.link.LinkPro;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkText;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.item.ItemStack;
@@ -25,11 +26,12 @@ public class PageItem extends Page{
 		int top = this.guiGuideBook.getContentTop() + 32;
 		this.addLink(new LinkItem(this,this.itemstack,null,null),top,1);
 		
-		this.setFlowTop(this.guiGuideBook.getContentTop() + 64);
 		//related professions
+		top += 32;
 		List<Profession> relatedPros = this.guiGuideBook.guidebookData.findRelatedProByItem(this.itemstack);		
-		for(Profession pro : relatedPros){
-			this.addLink(new LinkText(this,pro.getDisplayName(),">pro=" + pro.getRegID(),null),false);
+		for(int i =0;i<relatedPros.size();i++){
+			Profession pro = relatedPros.get(i);
+			this.addLink(new LinkPro(this,pro,">pro=" + pro.getRegID(),null),top + 12*i,1);
 		}
 		
 		top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 10;

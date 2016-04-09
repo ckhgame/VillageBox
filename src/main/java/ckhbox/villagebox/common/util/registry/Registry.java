@@ -7,13 +7,10 @@ import java.util.List;
 public class Registry <T extends IRegistrable> {
 	private HashMap<Integer,T> mapIntData = new HashMap<Integer,T>();
 	private HashMap<Class<? extends T>,T> mapClassData = new HashMap<Class<? extends T>,T>();
+	private List<T> dataList = new ArrayList<T>();
 	
 	public List<T> getAll(){
-		List<T> list = new ArrayList<T>();
-		for(T t : mapClassData.values()){
-			list.add(t);
-		}
-		return list;
+		return dataList;
 	}
 	
 	public void register(int regID, T data ){
@@ -23,6 +20,7 @@ public class Registry <T extends IRegistrable> {
 		else{
 			mapIntData.put(regID, data);
 			mapClassData.put((Class<? extends T>) data.getClass(), data);
+			dataList.add(data);
 			data.setRegID(regID);
 		}
 	}
