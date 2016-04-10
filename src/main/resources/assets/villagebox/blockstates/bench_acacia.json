@@ -1,0 +1,8 @@
+{
+    "variants": {
+		"facing=north": { "model": "villagebox:bench_acacia" },
+        "facing=south": { "model": "villagebox:bench_acacia", "y": 180 },
+        "facing=west":  { "model": "villagebox:bench_acacia", "y": 270 },
+        "facing=east":  { "model": "villagebox:bench_acacia", "y": 90 }
+    }
+}

@@ -1,0 +1,6 @@
+{
+	"parent": "villagebox:block/bench",
+    "textures": {
+		"material": "blocks/planks_big_oak"
+    }
+}

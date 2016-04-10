@@ -1,0 +1,8 @@
+{
+    "variants": {
+		"facing=north": { "model": "villagebox:bench_big_oak" },
+        "facing=south": { "model": "villagebox:bench_big_oak", "y": 180 },
+        "facing=west":  { "model": "villagebox:bench_big_oak", "y": 270 },
+        "facing=east":  { "model": "villagebox:bench_big_oak", "y": 90 }
+    }
+}
