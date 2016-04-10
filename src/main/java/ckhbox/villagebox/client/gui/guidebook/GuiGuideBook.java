@@ -11,6 +11,7 @@ import ckhbox.villagebox.client.gui.guidebook.page.PageItemList;
 import ckhbox.villagebox.client.gui.guidebook.page.PagePro;
 import ckhbox.villagebox.client.gui.guidebook.page.PageProList;
 import ckhbox.villagebox.client.gui.guidebook.page.PageTrading;
+import ckhbox.villagebox.client.gui.guidebook.page.PageTutorial;
 import ckhbox.villagebox.client.gui.guidebook.page.data.GuideBookData;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.gui.common.ContainerEmpty;
@@ -29,7 +30,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiGuideBook extends GuiContainer{
 
-	protected static final ResourceLocation guiBookGuiTextures = new ResourceLocation(PathHelper.full("textures/gui/guidebook/page.png"));
+	public static final ResourceLocation guiBookGuiTextures = new ResourceLocation(PathHelper.full("textures/gui/guidebook/page.png"));
 	
 	public GuideBookData guidebookData = null;
 	protected Page currentPage;
@@ -202,6 +203,9 @@ public class GuiGuideBook extends GuiContainer{
 			int pageIdx = Integer.valueOf(ps[1]);
 			Profession pro = Profession.registry.get(proid);
 			newPage = new PageTrading(this,pro,pageIdx);
+		}
+		else if(arr[0].equals("tutorial")){
+			newPage = new PageTutorial(this);
 		}
 		else if(arr[0].equals("back")){
 			this.gotoLink(this.getLastLink());

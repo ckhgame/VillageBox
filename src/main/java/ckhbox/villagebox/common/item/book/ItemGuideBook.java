@@ -23,13 +23,6 @@ public class ItemGuideBook extends Item{
 		this.setCreativeTab(ModItems.tabVB);
 		this.setMaxStackSize(1);
 	}
-
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = StatCollector.translateToLocal(PathHelper.full("item.guideBook.item.info"));
-		tooltip.add(info);
-	}
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {

@@ -3,10 +3,13 @@ package ckhbox.villagebox.client.gui.guidebook.page;
 import java.util.List;
 
 import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
+import ckhbox.villagebox.client.gui.guidebook.page.link.LinkImg;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkItem;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkText;
+import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class PagePro extends Page{
 	
@@ -23,11 +26,11 @@ public class PagePro extends Page{
 		
 		//this.addLink(new LinkItem(this,this.itemstack.getItem(),null,null),top,1);
 		int top = this.guiGuideBook.getContentTop() + 90;
-		String trading = "> Trading List";
+		String trading = "> " + StatCollector.translateToLocal(PathHelper.full("guideBook.tradingList"));
 		this.addLink(new LinkText(this,trading,">trading=" + this.pro.getRegID() + ",0",null),top,1);
 		
-		top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 10;
-		this.addLink(new LinkText(this,"Back","back=",null),top,1);
+		top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 16;
+		this.addLink(new LinkImg(this,this.guiGuideBook.guiBookGuiTextures,240,0,0,16,16,16,"back=",null),top,1);
 	}
 
 	@Override

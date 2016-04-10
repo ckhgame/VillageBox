@@ -71,6 +71,13 @@ public abstract class Page {
 		this.links.add(link);
 	}
 	
+	public void addLinkAt(Link link, int top, int left){	
+		link.left = left;
+		link.top = top;
+		
+		this.links.add(link);
+	}
+	
 	public abstract void onInit();
 	
 	public void setFlowTop(int top){
@@ -108,9 +115,11 @@ public abstract class Page {
 	public void onMouseClick(int mouseX, int mouseY){
 		for(Link link : this.links){
 			if(link.isMouseHover(mouseX, mouseY)){
-				this.guiGuideBook.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-				this.guiGuideBook.gotoLink(link.link);
-				break;
+				if(link.link != null){
+					this.guiGuideBook.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+					this.guiGuideBook.gotoLink(link.link);
+					break;
+				}
 			}
 		}
 	}

@@ -87,7 +87,7 @@ public class ItemMail extends Item{
 			if(content != null && content != "") 
 				return content;
 		}
-		return "unknown";
+		return "???";
 	}
 	
 	public static String getMailSender(ItemStack stack){
@@ -96,7 +96,7 @@ public class ItemMail extends Item{
 			if(sender != null && sender != "") 
 				return sender;
 		}
-		return "unknown";
+		return "???";
 	}
 	
 	public static int getMailType(ItemStack stack){

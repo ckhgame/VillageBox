@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
+import ckhbox.villagebox.client.gui.guidebook.page.link.LinkImg;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkItem;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkText;
 import ckhbox.villagebox.common.village.profession.Profession;
@@ -37,7 +38,7 @@ public class PageTrading extends Page{
 			this.addLink(new LinkItem(this,itemstacks.get(i),null,null), false);
 		}
 		
-		int top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 10;
+		int top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 16;
 		if(this.pageIdx > 0){
 			this.addLink(new LinkText(this,"<--","trading=" + this.pro.getRegID() + "," + (this.pageIdx - 1),null),top,0);
 		}
@@ -46,7 +47,7 @@ public class PageTrading extends Page{
 			this.addLink(new LinkText(this,"-->","trading="  + this.pro.getRegID() + "," + (this.pageIdx + 1),null),top,2);
 		}
 		
-		this.addLink(new LinkText(this,"Back","back=",null),top,1);
+		this.addLink(new LinkImg(this,this.guiGuideBook.guiBookGuiTextures,240,0,0,16,16,16,"back=",null),top,1);
 	}
 
 	@Override

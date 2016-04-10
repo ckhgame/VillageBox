@@ -232,6 +232,7 @@ item.villagebox:waterSword.name=§9Water Sword
 item.villagebox:natureSword.name=§aForest Sword
 item.villagebox:darkSword.name=§5Dark Sword
 item.villagebox:lightSword.name=§eSacred Sword
+item.villagebox:guideBook.name=Village Box Guidebook
 
 # villager egg
 entity.villagebox.villager.name=Villager
@@ -348,6 +349,13 @@ villagebox:info.tile.totempole2=§7Just for decoration
 villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to be a villager?
 villagebox:mail.newvillager1.content=Are you looking for villagers? Please consider me!
 villagebox:mail.newvillager2.content=I'm so tired about the current life and looking for a new place to live. Could I become a villager in your village?
+
+# GuideBook
+villagebox:guideBook.title=Guidebook
+villagebox:guideBook.professions=Professions
+villagebox:guideBook.itemList=Item List
+villagebox:guideBook.tutorial=Tutorial
+villagebox:guideBook.tradingList=Trading List
 
 # CreativeTab
 itemGroup.tabVillageBox=Village Box

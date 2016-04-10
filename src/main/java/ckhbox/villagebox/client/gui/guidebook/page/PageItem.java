@@ -3,6 +3,7 @@ package ckhbox.villagebox.client.gui.guidebook.page;
 import java.util.List;
 
 import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
+import ckhbox.villagebox.client.gui.guidebook.page.link.LinkImg;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkItem;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkPro;
 import ckhbox.villagebox.client.gui.guidebook.page.link.LinkText;
@@ -34,8 +35,8 @@ public class PageItem extends Page{
 			this.addLink(new LinkPro(this,pro,">pro=" + pro.getRegID(),null),top + 12*i,1);
 		}
 		
-		top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 10;
-		this.addLink(new LinkText(this,"Back","back=",null),top,1);
+		top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 16;
+		this.addLink(new LinkImg(this,this.guiGuideBook.guiBookGuiTextures,240,0,0,16,16,16,"back=",null),top,1);
 	}
 
 	@Override

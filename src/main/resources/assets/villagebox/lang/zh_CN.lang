@@ -232,6 +232,7 @@ item.villagebox:waterSword.name=§9水之剑
 item.villagebox:natureSword.name=§a自然之剑
 item.villagebox:darkSword.name=§5黑暗之剑
 item.villagebox:lightSword.name=§e光明之剑
+item.villagebox:guideBook.name=Village Box 指导书
 
 # villager egg
 entity.villagebox.villager.name=村民
@@ -318,6 +319,13 @@ tile.villagebox:natureTotem.name=§a自然图腾
 tile.villagebox:totempole0.name=图腾柱
 tile.villagebox:totempole1.name=图腾柱
 tile.villagebox:totempole2.name=图腾柱
+
+# GuideBook
+villagebox:guideBook.title=指导书
+villagebox:guideBook.professions=职业
+villagebox:guideBook.itemList=物品列表
+villagebox:guideBook.tutorial=教程
+villagebox:guideBook.tradingList=交易列表
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d
