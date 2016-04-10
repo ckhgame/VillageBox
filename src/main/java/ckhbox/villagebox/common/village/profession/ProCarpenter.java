@@ -25,6 +25,25 @@ public class ProCarpenter extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)},
 				new ItemStack(ModItems.woodenBoots)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Blocks.log,5,0),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.planks,30,0)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Blocks.log,5,1),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.planks,30,1)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Blocks.log,5,2),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.planks,30,2)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Blocks.log,5,3),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.planks,30,3)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Blocks.log2,5,0),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.planks,30,4)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(Blocks.log2,5,1),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.planks,30,5)));
+		
 	}
 
 	@Override
