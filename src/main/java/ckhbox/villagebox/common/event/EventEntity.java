@@ -9,11 +9,13 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventEntity {
@@ -63,7 +65,7 @@ public class EventEntity {
 	public void onEntityJoinWorld(EntityJoinWorldEvent event) {
 		if (!event.world.isRemote && event.entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)event.entity;
-			
+
 			ExtendedPlayerProperties p = ExtendedPlayerProperties.get(player);
 			
 			if(!p.receivedGuidebook){
@@ -74,5 +76,14 @@ public class EventEntity {
 				p.receivedGuidebook = true;
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	void onClone(PlayerEvent.Clone event) {
+	    NBTTagCompound temp = new NBTTagCompound();
+	    ExtendedPlayerProperties old = ExtendedPlayerProperties.get(event.original);
+	    ExtendedPlayerProperties current = ExtendedPlayerProperties.get(event.entityPlayer);
+	    old.saveNBTData(temp);
+	    current.loadNBTData(temp);
 	}
 }
