@@ -17,7 +17,7 @@ import ckhbox.villagebox.common.util.math.IntVec3;
 import ckhbox.villagebox.common.util.math.Rand;
 import ckhbox.villagebox.common.util.tool.HouseDetector;
 import ckhbox.villagebox.common.util.tool.NameGenerator;
-import ckhbox.villagebox.common.village.home.DataVillage;
+import ckhbox.villagebox.common.village.data.DataVillage;
 import ckhbox.villagebox.common.village.profession.Profession;
 import ckhbox.villagebox.common.village.trading.ITrading;
 import ckhbox.villagebox.common.village.trading.TradingRecipeList;

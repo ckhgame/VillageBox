@@ -1,4 +1,4 @@
-package ckhbox.villagebox.common.village.home;
+package ckhbox.villagebox.common.village.data;
 
 import java.util.ArrayList;
 

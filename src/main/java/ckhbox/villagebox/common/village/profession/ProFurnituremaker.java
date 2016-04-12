@@ -49,6 +49,24 @@ public class ProFurnituremaker extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
 				new ItemStack(ModBlocks.chairSpruce)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.benchAcacia)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.benchBirch)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.benchDarkOak)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.benchJungle)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.benchOak)));
+		this.tradingRecipeList.add(new TradingRecipe(
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack(ModBlocks.benchSpruce)));
 	}
 
 

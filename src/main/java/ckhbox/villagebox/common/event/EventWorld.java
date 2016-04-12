@@ -1,7 +1,7 @@
 package ckhbox.villagebox.common.event;
 
 import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
-import ckhbox.villagebox.common.village.home.DataVillage;
+import ckhbox.villagebox.common.village.data.DataVillage;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
