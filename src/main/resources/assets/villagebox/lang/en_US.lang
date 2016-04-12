@@ -13,7 +13,7 @@ villagebox:profession.scholar.name=Scholar
 villagebox:profession.scholar.desc=Engage in studies
 villagebox:profession.banker.name=Banker
 villagebox:profession.banker.desc=Exchange currency
-villagebox:profession.bookseller.name=Bookseller
+villagebox:profession.bookseller.name=Librarian
 villagebox:profession.bookseller.desc=Sell books
 villagebox:profession.painter.name=Painter
 villagebox:profession.painter.desc=Create new paintings
@@ -319,6 +319,12 @@ tile.villagebox:natureTotem.name=§aNature Totem
 tile.villagebox:totempole0.name=Totem Pole
 tile.villagebox:totempole1.name=Totem Pole
 tile.villagebox:totempole2.name=Totem Pole
+tile.villagebox:benchOak.name=Oak Bench
+tile.villagebox:benchJungle.name=Jungle Bench
+tile.villagebox:benchBirch.name=Birch Bench
+tile.villagebox:benchSpruce.name=Spruce Bench
+tile.villagebox:benchAcacia.name=Acacia Bench
+tile.villagebox:benchBigOak.name=Dark Oak Bench
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
