@@ -14,6 +14,7 @@ public class VBConfig {
 	public static boolean displayExtraInfo;				//true: will display extra information in game like the profession id
 	public static boolean freeUpgrading;				//set to ture when you want nothing be cunsumed on upgrading villagers
 	public static int reviveTicks;						//how many ticks to revive a villager
+	public static boolean oneVillagerPerRoom;			//don't allow more than one villagers live in the same room
 	
 	public static void load(File file){
 		Configuration conf = new Configuration(file, VillageBoxMod.VERSION);
@@ -49,6 +50,11 @@ public class VBConfig {
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "FreeUpgrading", false);
 		pt.comment = "set to ture when you want nothing be cunsumed on upgrading villagers";
 		freeUpgrading = pt.getBoolean();
+		
+		//one villager one room
+		pt = conf.get(Configuration.CATEGORY_GENERAL, "OneVillagerPerRoom", false);
+		pt.comment = "set to true to disallow more than one villagers live in the same room";
+		oneVillagerPerRoom = pt.getBoolean();
 		
 		conf.save();
 	}

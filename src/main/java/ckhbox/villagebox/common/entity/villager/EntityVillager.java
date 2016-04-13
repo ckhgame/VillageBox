@@ -288,7 +288,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			else{
 				//remove old home
 				if(this.home != null){
-					DataVillage.get(this.worldObj).removeHome(home);
+					DataVillage.get(this.worldObj).removeHome(this.getName(),home);
 				}
 				this.home = bound;
 				//stop following
@@ -307,7 +307,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	public void moveOutHome(EntityPlayer player){
 		if(this.home != null){
-			DataVillage.get(this.worldObj).removeHome(home);
+			DataVillage.get(this.worldObj).removeHome(this.getName(),home);
 			this.home = null;
 			this.setDataFlag(2, false);
 			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.moveout"),this.getName()));

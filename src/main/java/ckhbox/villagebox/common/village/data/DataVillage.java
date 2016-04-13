@@ -46,24 +46,29 @@ public class DataVillage extends WorldSavedData{
 		super(name);
 	}
 
-	public boolean removeHome(IntBoundary bound){
+	public boolean removeHome(String owner,IntBoundary bound){
 		if(bound == null)
 			return false;
 		
 		for(int i =0;i<homeList.size();i++){
-			if(homeList.get(i).boundary.equalTo(bound)){
+			HomeBoundary hb = homeList.get(i);
+			if(hb.boundary.equalTo(bound) && hb.owner.equals(owner)){
 				homeList.remove(i);
 				this.markDirty();
 				return true;
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	/**
 	 * return != null means the new boundary has contacted with a old boundary
 	 */
-	public String addHome(String owner, IntBoundary bound){		
+	public String addHome(String owner, IntBoundary bound){	
+				
+		if(!VBConfig.oneVillagerPerRoom)
+			return null;
+		
 		for(int i =0;i<homeList.size();i++){
 			if(homeList.get(i).boundary.contact(bound)){
 				return homeList.get(i).owner;
