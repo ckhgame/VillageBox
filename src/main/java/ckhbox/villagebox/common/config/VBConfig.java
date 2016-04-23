@@ -24,7 +24,7 @@ public class VBConfig {
 		
 		//profession ban list
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "BannedProIDList", new int[0]);
-		pt.comment = "Banned profession IDs. one id per line, empty means no banned profession";
+		pt.comment = "Banned profession IDs. One id per line, empty means no banned professions";
 		proIDBanList = pt.getIntList();
 		
 		//coin earning options
@@ -43,17 +43,17 @@ public class VBConfig {
 		
 		//villager revive ticks
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "ReviveTicks", 24000);
-		pt.comment = "How many ticks until a deadvillager revives again";
+		pt.comment = "How many ticks until a dead villager revives again";
 		reviveTicks = pt.getInt();
 		
 		//free upgrading
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "FreeUpgrading", false);
-		pt.comment = "set to ture when you want nothing be cunsumed on upgrading villagers";
+		pt.comment = "Set to true when you want nothing be consumed on upgrading villagers";
 		freeUpgrading = pt.getBoolean();
 		
 		//one villager one room
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "OneVillagerPerRoom", false);
-		pt.comment = "set to true to disallow more than one villagers live in the same room";
+		pt.comment = "Set to true to disallow more than one villagers live in the same room";
 		oneVillagerPerRoom = pt.getBoolean();
 		
 		conf.save();
