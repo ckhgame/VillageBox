@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-public class GuiQuest extends GuiContainer{
+public abstract class GuiQuest extends GuiContainer{
 	
 	private static final ResourceLocation questGuiTextures = new ResourceLocation(PathHelper.full("textures/gui/quest/quest.png"));
     
@@ -123,8 +123,10 @@ public class GuiQuest extends GuiContainer{
 		super.actionPerformed(button);
 		
 		if(button == this.btnComplate){
-			//ModNetwork.getInstance().sendToServer(new MessageSpawnNewVillagerThroughMail());
+			this.onButtonCompleteClicked();
 			this.mc.thePlayer.closeScreen();
 		}
 	}
+	
+	protected abstract void onButtonCompleteClicked();
 }

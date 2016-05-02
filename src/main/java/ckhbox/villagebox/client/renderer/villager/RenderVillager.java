@@ -38,7 +38,10 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 	@Override
 	public void doRender(EntityVillager entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
-		this.renderQuestMark(x,y,z,-entityYaw);
+		
+		if(entity.getCurrentQuest() != null){
+			this.renderQuestMark(x,y,z,-entityYaw);
+		}
 	}
 	
 	private void renderQuestMark(double x, double y, double z, float rotY){

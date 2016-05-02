@@ -454,7 +454,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	
 	private void updateQuest(){
 		if(this.getCurrentQuest() == null){
-			if(this.rand.nextInt(1) == 0){
+			if(this.rand.nextInt(100) == 0){
 				this.createNewQuest();
 			}
 		}
@@ -523,7 +523,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		arr = tagCompund.getIntArray("upgrades");
 		this.setUpgradingHistory(arr);
 		//quest
-		if(tagCompund.hasKey("questidx",NBT.TAG_COMPOUND)){
+		if(tagCompund.hasKey("questidx")){
 			this.setCurrentQuestIdx(tagCompund.getInteger("questidx"));
 		}
 	}

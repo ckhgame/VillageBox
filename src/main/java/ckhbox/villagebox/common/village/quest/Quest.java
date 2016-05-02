@@ -2,6 +2,7 @@ package ckhbox.villagebox.common.village.quest;
 
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.math.Rand;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -48,11 +49,23 @@ public class Quest {
 		
 		if(rewards != null){
 			for(int i =0;i<rewards.length;i++){
-				if(!player.inventory.addItemStackToInventory(rewards[i])){
-					player.dropPlayerItemWithRandomChoice(rewards[i], false);
+				ItemStack reward = rewards[i].copy();
+				if(!player.inventory.addItemStackToInventory(reward)){
+					player.dropPlayerItemWithRandomChoice(reward, false);
 				}
 			}	
 		}
+		
+		//exp
+		int exp = 15;
+		
+		while (exp > 0)
+        {
+            int i = EntityXPOrb.getXPSplit(exp);
+            exp -= i;
+            player.worldObj.spawnEntityInWorld(new EntityXPOrb(player.worldObj, player.posX, player.posY + 0.5D, player.posZ, i));
+        }
+
 		
 		return true;
 	}

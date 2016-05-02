@@ -7,6 +7,7 @@ import ckhbox.villagebox.client.gui.common.GuiTrading;
 import ckhbox.villagebox.client.gui.quest.GuiQuest;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.network.ModNetwork;
+import ckhbox.villagebox.common.network.message.villager.MessageGuiCompleteQuest;
 import ckhbox.villagebox.common.network.message.villager.MessageGuiSetInteracting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -39,6 +40,7 @@ public class GuiVillagerQuest extends GuiQuest{
 		
 		ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
 	}
+	
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
@@ -46,6 +48,11 @@ public class GuiVillagerQuest extends GuiQuest{
 		if (keyCode == 1 || keyCode == this.mc.gameSettings.keyBindInventory.getKeyCode()){
 			ModNetwork.getInstance().sendToServer(new MessageGuiSetInteracting(this.villager.getEntityId(), this.villager.dimension, false));
 		}
+	}
+
+	@Override
+	protected void onButtonCompleteClicked() {
+		ModNetwork.getInstance().sendToServer(new MessageGuiCompleteQuest(this.villager.getEntityId(), this.villager.dimension));
 	}
 
 }
