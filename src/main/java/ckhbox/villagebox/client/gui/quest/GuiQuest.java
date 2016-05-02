@@ -1,6 +1,8 @@
 package ckhbox.villagebox.client.gui.quest;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import ckhbox.villagebox.client.gui.GuiTextButton;
 import ckhbox.villagebox.common.gui.common.ContainerEmpty;
@@ -32,6 +34,9 @@ public abstract class GuiQuest extends GuiContainer{
 	private ItemStack[] required;
 	private ItemStack[] rewards;
 	
+	private ItemStack cacheProgressItem;
+	private List<String> cacheProgressString = new ArrayList<String>();
+	
 	public GuiQuest(EntityPlayer player, Quest quest) {
 		super(new ContainerEmpty());
 		this.player = player;
@@ -52,6 +57,8 @@ public abstract class GuiQuest extends GuiContainer{
             text = this.quest.getText(player);
             required = this.quest.getRequirements();
             rewards = this.quest.getRewards();
+            
+            this.btnComplate.enabled = this.quest.canComplete(this.player);
         }
     }
     
@@ -77,13 +84,13 @@ public abstract class GuiQuest extends GuiContainer{
 		
         if(this.quest == null) return;
 		
-		int x = (this.width - this.xSize) / 2 + 8;
+		int x = (this.width - this.xSize) / 2 + 10;
         int y = (this.height - this.ySize) / 2 + 30;
         
 		GlStateManager.disableLighting();
 		
 		//quest text
-		int wrapWidth = 160;
+		int wrapWidth = 156;
 		this.fontRendererObj.drawSplitString(text, x, y, wrapWidth, 0xFFFFFFFF);
 		y += this.fontRendererObj.splitStringWidth(text, wrapWidth) + 8;
 		
@@ -94,9 +101,10 @@ public abstract class GuiQuest extends GuiContainer{
 		
 		//quest requirements
         GlStateManager.disableLighting();
-		this.fontRendererObj.drawString("Requirements", x, y, 0xFFFFFFFF);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal(PathHelper.full("gui.quest.requirements")), x, y, 0xFFFFFFFF);
         GlStateManager.enableLighting();
 		y+= 12;
+		int y1 = y - this.guiTop;
 		for(int i =0;i<this.required.length;i++){
 			this.itemRender.renderItemAndEffectIntoGUI(this.required[i], x + i * 20, y);
 			this.itemRender.renderItemOverlays(this.fontRendererObj, this.required[i], x + i * 20, y);
@@ -105,9 +113,10 @@ public abstract class GuiQuest extends GuiContainer{
 		
 		//quest rewards
 		GlStateManager.disableLighting();
-		this.fontRendererObj.drawString("Rewards", x, y, 0xFFFFFFFF);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal(PathHelper.full("gui.quest.rewards")), x, y, 0xFFFFFFFF);
 		GlStateManager.enableLighting();
 		y+= 12;
+		int y2 = y - this.guiTop;
 		for(int i =0;i<this.rewards.length;i++){
 			this.itemRender.renderItemAndEffectIntoGUI(this.rewards[i], x + i * 20, y);
 			this.itemRender.renderItemOverlays(this.fontRendererObj, this.rewards[i], x + i * 20, y);
@@ -116,6 +125,34 @@ public abstract class GuiQuest extends GuiContainer{
 		GlStateManager.disableLighting();
 		
         GlStateManager.popMatrix();
+		
+		//hover texts
+        
+        x -= this.guiLeft;
+		for(int i =0;i<this.required.length;i++){
+			if (this.isPointInRegion(x + i * 20, y1, 16, 16, mouseX, mouseY) && required[i] != null){
+				this.renderToolTip(this.required[i], mouseX, mouseY);
+				this.renderProgress(this.required[i], mouseX, mouseY - 16);
+	        }
+		}
+		
+		for(int i =0;i<this.rewards.length;i++){
+			if (this.isPointInRegion(x + i * 20, y2, 16, 16, mouseX, mouseY) && rewards[i] != null){
+				this.renderToolTip(this.rewards[i], mouseX, mouseY);
+	        }
+		}
+	}
+	
+	private void renderProgress(ItemStack itemstack, int mouseX, int mouseY){
+		if(itemstack == null) return;
+		if(this.cacheProgressItem != itemstack){
+			this.cacheProgressItem = itemstack;
+			int num = this.quest.getItemNum(this.cacheProgressItem, this.player);
+			String state = num >= itemstack.stackSize?"meet":"unmeet";
+			this.cacheProgressString.clear();
+			this.cacheProgressString.add(StatCollector.translateToLocalFormatted(PathHelper.full("gui.quest.progress." + state),num,itemstack.stackSize));
+		}
+		this.drawHoveringText(this.cacheProgressString, mouseX, mouseY);
 	}
 
 	@Override

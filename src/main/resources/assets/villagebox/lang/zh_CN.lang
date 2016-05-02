@@ -105,6 +105,11 @@ villagebox:gui.villagerupgrade.buttonupgrade.desc=§f升级到更高级的专业
 villagebox:gui.villagerupgrade.buttonupgrade.title.disable=§c升级
 villagebox:gui.villagerupgrade.buttonupgrade.desc.disable=§7物品不匹配
 
+villagebox:gui.quest.requirements=需求物品
+villagebox:gui.quest.rewards=奖励
+villagebox:gui.quest.progress.unmeet=§c%d §f/ %d
+villagebox:gui.quest.progress.meet=§a%d §f/ %d
+
 villagebox:gui.trading.allrecipes=交易列表
 
 villagebox:gui.mail.button.approve=许可

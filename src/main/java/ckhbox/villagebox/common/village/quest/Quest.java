@@ -70,7 +70,7 @@ public class Quest {
 		return true;
 	}
 	
-	private int getItemNum(ItemStack itemstack, EntityPlayer player){
+	public int getItemNum(ItemStack itemstack, EntityPlayer player){
 		ItemStack[] stacks = player.inventory.mainInventory;
 		int count = 0;
 		for (int i = 0; i < stacks.length; ++i)

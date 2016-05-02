@@ -56,6 +56,9 @@ public abstract class ProVillager extends Profession{
 		this.quests.add(new Quest(
 				new ItemStack[]{new ItemStack(Items.cooked_chicken,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(ModItems.treasureHuntBookII,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 	}
 
 }

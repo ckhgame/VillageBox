@@ -105,6 +105,11 @@ villagebox:gui.villagerupgrade.buttonupgrade.desc=§fUpgrade to the advanced pro
 villagebox:gui.villagerupgrade.buttonupgrade.title.disable=§cUpgrade
 villagebox:gui.villagerupgrade.buttonupgrade.desc.disable=§7Unmatched items
 
+villagebox:gui.quest.requirements=Requirements
+villagebox:gui.quest.rewards=Rewards
+villagebox:gui.quest.progress.unmeet=§c%d §f/ %d
+villagebox:gui.quest.progress.meet=§a%d §f/ %d
+
 villagebox:gui.trading.allrecipes=Trading List
 
 villagebox:gui.mail.button.approve=Approve
