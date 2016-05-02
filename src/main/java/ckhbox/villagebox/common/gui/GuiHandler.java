@@ -3,6 +3,7 @@ package ckhbox.villagebox.common.gui;
 import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
 import ckhbox.villagebox.client.gui.mail.GuiMail;
 import ckhbox.villagebox.client.gui.villager.GuiVillagerMain;
+import ckhbox.villagebox.client.gui.villager.GuiVillagerQuest;
 import ckhbox.villagebox.client.gui.villager.GuiVillagerTrading;
 import ckhbox.villagebox.client.gui.villager.GuiVillagerUpgrading;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
@@ -30,6 +31,7 @@ public class GuiHandler implements IGuiHandler{
 					case GuiIDs.VillagerMain: return new ContainerVillagerMain();
 					case GuiIDs.VillagerTrading: return new ContainerTrading(player.inventory, villager ,world);
 					case GuiIDs.VillagerUpgrading: return new ContainerVillagerUpgrading(player.inventory, villager ,world);
+					case GuiIDs.VillagerQuest: return new ContainerEmpty();
 					default:break;
 					}
 				}
@@ -60,6 +62,7 @@ public class GuiHandler implements IGuiHandler{
 					case GuiIDs.VillagerMain: return new GuiVillagerMain(player, villager);
 					case GuiIDs.VillagerTrading: return new GuiVillagerTrading(player.inventory, villager ,world);
 					case GuiIDs.VillagerUpgrading: return new GuiVillagerUpgrading(player.inventory, villager ,world);
+					case GuiIDs.VillagerQuest: return new GuiVillagerQuest(player,villager);
 					default:break;
 					}
 				}

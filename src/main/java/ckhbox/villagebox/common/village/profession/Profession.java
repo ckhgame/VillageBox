@@ -1,14 +1,15 @@
 package ckhbox.villagebox.common.village.profession;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.math.Rand;
 import ckhbox.villagebox.common.util.registry.IRegistrable;
 import ckhbox.villagebox.common.util.registry.Registry;
+import ckhbox.villagebox.common.village.quest.Quest;
 import ckhbox.villagebox.common.village.trading.TradingRecipeList;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -29,6 +30,8 @@ public abstract class Profession implements IRegistrable{
 	protected ItemStack[] upgradeToCurentNeeds;
 	//what items the villager will hold (will randomly select if there are more than 1 items in the list)
 	protected ItemStack[] holdItems;
+	//quests
+	protected List<Quest> quests;
 	
 	@Override
 	public int getRegID() {
@@ -45,6 +48,7 @@ public abstract class Profession implements IRegistrable{
 		this.initTexture();
 		this.initUpgradeOptions();
 		this.initHoldItems();
+		this.initQuests();
 	}
 	
 	public Profession[] getUpgradeToNextOptions(){
@@ -112,11 +116,16 @@ public abstract class Profession implements IRegistrable{
 		this.texturef = new ResourceLocation(PathHelper.full("textures/entity/villager/" + name + "_f.png"));
 	}
 	
+	public List<Quest> getQuests(){
+		return this.quests;
+	}
+	
 	//abstract functions
 	protected abstract void initTradingRecipeList();
 	protected abstract void initTexture();
 	protected abstract void initUpgradeOptions();
 	protected abstract void initHoldItems();
+	protected abstract void initQuests();
 	protected abstract String getUnlocalized();
 	
 	

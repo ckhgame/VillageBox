@@ -96,6 +96,9 @@ villagebox:gui.villagermain.button.lock.desc=§7Set home for the villager to unl
 villagebox:gui.villagermain.button.maxupgrade.title=§cMaximal upgrades
 villagebox:gui.villagermain.button.maxupgrade.desc=§7No advanced upgrade
 
+villagebox:gui.villagermain.button.newquest.title=§eNew Quest
+villagebox:gui.villagermain.button.newquest.desc=§7The villager needs your help
+
 villagebox:gui.villagerupgrade.proname=§e%s
 villagebox:gui.villagerupgrade.buttonupgrade.title=§eUpgrade
 villagebox:gui.villagerupgrade.buttonupgrade.desc=§fUpgrade to the advanced profession
@@ -355,6 +358,13 @@ villagebox:info.tile.totempole2=§7Just for decoration
 villagebox:mail.newvillager0.content=I heard you are building a village, I want to know if I could have a chance to be a villager?
 villagebox:mail.newvillager1.content=Are you looking for villagers? Please consider me!
 villagebox:mail.newvillager2.content=I'm so tired about the current life and looking for a new place to live. Could I become a villager in your village?
+
+# Quest
+villagebox:quest.text0=Hi %s, could you bring me some times that I need? 
+villagebox:quest.text1=Hey %s, I need some help from you! I want some items..
+villagebox:quest.text2=Hi %s, I'm looking for some items, do you have them?
+villagebox:quest.text3=Hello %s, could you help me to find some items?
+villagebox:quest.text4=Hi %s, I need you help to bring me some items...
 
 # GuideBook
 villagebox:guideBook.title=Guidebook

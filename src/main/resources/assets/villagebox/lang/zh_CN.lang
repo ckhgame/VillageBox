@@ -96,6 +96,9 @@ villagebox:gui.villagermain.button.lock.desc=§7为村民提供住处后解锁
 villagebox:gui.villagermain.button.maxupgrade.title=§c最顶级
 villagebox:gui.villagermain.button.maxupgrade.desc=§7没有更高级的升级了
 
+villagebox:gui.villagermain.button.newquest.title=§e新任务
+villagebox:gui.villagermain.button.newquest.desc=§7这个村民需要你的帮助
+
 villagebox:gui.villagerupgrade.proname=§e%s
 villagebox:gui.villagerupgrade.buttonupgrade.title=§e升级
 villagebox:gui.villagerupgrade.buttonupgrade.desc=§f升级到更高级的专业

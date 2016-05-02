@@ -19,7 +19,8 @@ import ckhbox.villagebox.common.util.tool.HouseDetector;
 import ckhbox.villagebox.common.util.tool.NameGenerator;
 import ckhbox.villagebox.common.village.data.DataVillage;
 import ckhbox.villagebox.common.village.profession.Profession;
-import ckhbox.villagebox.common.village.quest.QuestProvider;
+import ckhbox.villagebox.common.village.quest.IQuestProvider;
+import ckhbox.villagebox.common.village.quest.Quest;
 import ckhbox.villagebox.common.village.trading.ITrading;
 import ckhbox.villagebox.common.village.trading.TradingRecipeList;
 import net.minecraft.entity.EntityCreature;
@@ -34,7 +35,6 @@ import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.ai.EntityJumpHelper;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
@@ -47,7 +47,7 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityVillager extends EntityCreature implements ITrading{
+public class EntityVillager extends EntityCreature implements ITrading, IQuestProvider{
 
 	private Profession profession;
 	//the player this villager is currently interacting with
@@ -61,9 +61,6 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	//the upgrading history
 	private List<Integer> upgradingHistory = new ArrayList<Integer>(Arrays.asList(new Integer[]{99999}));//99999:caveman
-	
-	//quest
-	private QuestProvider questProvider = new QuestProvider();
 	
 	public EntityVillager(World worldIn){
 		this(worldIn, Rand.get().nextBoolean());
@@ -134,6 +131,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		this.getDataWatcher().addObject(16, 0);
 		//data flags(interacting.following,etc.)
 		this.getDataWatcher().addObject(17, 0);
+		//quest idx
+		this.getDataWatcher().addObject(18, -1);
 	}
 
 	@Override
@@ -348,6 +347,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			this.setProfession(pid);
 			String newProName = this.getProfession().getDisplayName();		
 			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.upgrade"),this.getName(),oldProName,newProName));
+			//quest
+			this.removeCurrentQuest();
 		}
 	}
 	
@@ -358,6 +359,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			this.setProfession(last);
 			String newProName = this.getProfession().getDisplayName();
 			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.downgrade"),this.getName(),oldProName,newProName));
+			//quest
+			this.removeCurrentQuest();
 			return true;
 		}
 		else{
@@ -375,6 +378,10 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		//update profession
 		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
 			this.setProfession(this.getDataWatcher().getWatchableObjectInt(16));
+		}
+		//update quest
+		if(!this.worldObj.isRemote){
+			this.updateQuest();
 		}
 	}
 	
@@ -399,6 +406,61 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			this.setCurrentItemOrArmor(0, this.profession.getRandomHoldItem());
 		}
 	}
+	
+	//quests
+	public void setCurrentQuestIdx(int idx){
+		this.dataWatcher.updateObject(18, idx);
+	}
+	
+	public int getCurrentQuestIdx(){
+		return this.dataWatcher.getWatchableObjectInt(18);
+	}
+	
+	@Override
+	public void removeCurrentQuest(){
+		this.setCurrentQuestIdx(-1);
+	}
+	
+	@Override
+	public void createNewQuest(){
+		if(this.getProfession() == null) 
+			return;
+		List<Quest> quests= this.getProfession().getQuests();
+		//generate a random quest idx
+		int idx = (quests != null && quests.size() > 0)?Rand.get().nextInt(quests.size()):-1;
+		this.setCurrentQuestIdx(idx);
+	}
+	
+	@Override
+	public Quest getCurrentQuest(){
+		int idx = this.getCurrentQuestIdx();
+		if(idx < 0) 
+			return null;
+		if(this.getProfession() == null) 
+			return null;
+		List<Quest> quests = this.getProfession().getQuests();
+		if(quests == null || idx >= quests.size()) 
+			return null;
+		return quests.get(idx);
+	}
+	
+	@Override
+	public void completeCurrentQuest(EntityPlayer player){
+		Quest q = this.getCurrentQuest();
+		if(q != null && q.complete(player)){
+			this.removeCurrentQuest();
+		}
+	}
+	
+	private void updateQuest(){
+		if(this.getCurrentQuest() == null){
+			if(this.rand.nextInt(1) == 0){
+				this.createNewQuest();
+			}
+		}
+	}
+	
+	//-----
 	
 	@Override
 	public boolean allowLeashing() {
@@ -438,9 +500,7 @@ public class EntityVillager extends EntityCreature implements ITrading{
 			tagCompound.setIntArray("upgrades", upgrades);
 		}
 		//quest
-		NBTTagCompound quest = new NBTTagCompound();		
-		this.questProvider.wirteToNBT(quest);
-		tagCompound.setTag("quest", quest);
+		tagCompound.setInteger("questidx", this.getCurrentQuestIdx());
 	}
 
 	@Override
@@ -463,9 +523,8 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		arr = tagCompund.getIntArray("upgrades");
 		this.setUpgradingHistory(arr);
 		//quest
-		if(tagCompund.hasKey("quest",NBT.TAG_COMPOUND)){
-			NBTTagCompound quest = tagCompund.getCompoundTag("quest");
-			this.questProvider.readFromNBT(quest);
+		if(tagCompund.hasKey("questidx",NBT.TAG_COMPOUND)){
+			this.setCurrentQuestIdx(tagCompund.getInteger("questidx"));
 		}
 	}
 

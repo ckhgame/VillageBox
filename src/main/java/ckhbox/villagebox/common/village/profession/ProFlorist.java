@@ -1,13 +1,15 @@
 package ckhbox.villagebox.common.village.profession;
 
+import java.util.ArrayList;
+
 import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
+import ckhbox.villagebox.common.village.quest.Quest;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 public class ProFlorist extends Profession{
 
@@ -68,6 +70,11 @@ public class ProFlorist extends Profession{
 				new ItemStack(ModBlocks.bonsai),
 				new ItemStack(ModBlocks.flowerRedRose)
 		};
+	}
+	
+	@Override
+	protected void initQuests() {
+		this.quests = new ArrayList<Quest>();		
 	}
 
 }

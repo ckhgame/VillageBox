@@ -16,6 +16,7 @@ import ckhbox.villagebox.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.math.Rand;
 import ckhbox.villagebox.common.village.profession.Profession;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -42,6 +43,8 @@ public class GuiVillagerMain extends GuiContainer{
     GuiTextButton buttonTrade;
     GuiTextButton buttonFollow;
     GuiTextButton buttonHome;
+    
+    QuestButton buttonQuest;
     
     private String chatContent;
     private String chatContentDisplay;
@@ -88,6 +91,8 @@ public class GuiVillagerMain extends GuiContainer{
         this.buttonList.add(buttonFollow = new GuiTextButton(this.mc, 2, x + offsetX, y + playerChatOptionsOffsetY + 2 * playerChatOptionHeight, ""));
         this.buttonList.add(buttonHome = new GuiTextButton(this.mc, 3, x + offsetX, y + playerChatOptionsOffsetY + 3 * playerChatOptionHeight, ""));
 
+        this.buttonList.add(buttonQuest = new QuestButton(100,x + 153,y + 4));
+        
         this.refreshButtons(); 		
     }
     
@@ -106,6 +111,7 @@ public class GuiVillagerMain extends GuiContainer{
     	Profession[] upgradeOptions = this.villager.getProfession().getUpgradeToNextOptions();
     	buttonUpgrade.enabled = this.villager.hasHome() && (upgradeOptions != null && upgradeOptions.length > 0);
     	buttonTrade.enabled = this.villager.hasHome();
+    	buttonQuest.enabled = (this.villager.getCurrentQuest() != null);
     }
     
     private void calculateChatSpeed(){
@@ -200,6 +206,12 @@ public class GuiVillagerMain extends GuiContainer{
         				StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.maxupgrade.title")), 
         				StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.maxupgrade.desc")));
         }
+        
+        if(this.buttonQuest.enabled){
+    		this.drawButtonHoverText(this.buttonQuest, mouseX, mouseY, 
+    				StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.newquest.title")), 
+    				StatCollector.translateToLocal(PathHelper.full("gui.villagermain.button.newquest.desc")));
+        }
 
 	}
 
@@ -228,6 +240,9 @@ public class GuiVillagerMain extends GuiContainer{
 		else if(button == buttonHome){
 			ModNetwork.getInstance().sendToServer(new MessageGuiSetHome(this.villager.getEntityId(), this.villager.dimension,!this.villager.hasHome()));
 		}
+		else if(button == buttonQuest){
+			ModNetwork.getInstance().sendToServer(new MessageGuiVillagerOpen(GuiIDs.VillagerQuest,villager.dimension,villager.getEntityId()));
+		}
 		
 		super.actionPerformed(button);
 	}
@@ -251,5 +266,37 @@ public class GuiVillagerMain extends GuiContainer{
 		this.isFollowingLast = this.villager.isFollowing();
         this.hasHomeLast = this.villager.hasHome();
 	}	
+	
+	@SideOnly(Side.CLIENT)
+    static class QuestButton extends GuiButton
+    {
+		
+        public QuestButton(int buttonID, int x, int y)
+        {
+            super(buttonID, x, y, 16, 16, "");
+        }
+
+        /**
+         * Draws this button to the screen.
+         */
+        public void drawButton(Minecraft mc, int mouseX, int mouseY)
+        {
+            if (this.visible && this.enabled)
+            {
+                mc.getTextureManager().bindTexture(VillagerMainGuiTexture);
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                boolean flag = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+                int x = 176;
+                int y = 0;
+
+                if (flag)
+                {
+                    x += this.width;
+                }
+                
+                this.drawTexturedModalRect(this.xPosition, this.yPosition, x, y, this.width, this.height);
+            }
+        }
+    }
 	
 }

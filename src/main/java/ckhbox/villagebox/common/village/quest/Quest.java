@@ -1,12 +1,32 @@
 package ckhbox.villagebox.common.village.quest;
 
+import ckhbox.villagebox.common.util.helper.PathHelper;
+import ckhbox.villagebox.common.util.math.Rand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 public class Quest {
-	public ItemStack[] required;
-	public ItemStack[] rewards;
+	private ItemStack[] required;
+	private ItemStack[] rewards;
+	
+	public Quest(ItemStack[] required, ItemStack[] rewards){
+		this.required = required;
+		this.rewards = rewards;
+	}
+	
+	public ItemStack[] getRequirements(){
+		return this.required;
+	}
+	
+	public ItemStack[] getRewards(){
+		return this.rewards;
+	}
+	
+	public String getText(EntityPlayer player){
+		return StatCollector.translateToLocalFormatted(PathHelper.full("quest.text" + Rand.get().nextInt(5)),player.getName());
+	}
 	
 	public boolean canComplete(EntityPlayer player){
 		if(required == null) return true;
