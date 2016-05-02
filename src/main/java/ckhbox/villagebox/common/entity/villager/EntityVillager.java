@@ -19,6 +19,7 @@ import ckhbox.villagebox.common.util.tool.HouseDetector;
 import ckhbox.villagebox.common.util.tool.NameGenerator;
 import ckhbox.villagebox.common.village.data.DataVillage;
 import ckhbox.villagebox.common.village.profession.Profession;
+import ckhbox.villagebox.common.village.quest.QuestProvider;
 import ckhbox.villagebox.common.village.trading.ITrading;
 import ckhbox.villagebox.common.village.trading.TradingRecipeList;
 import net.minecraft.entity.EntityCreature;
@@ -42,6 +43,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -59,6 +61,9 @@ public class EntityVillager extends EntityCreature implements ITrading{
 	
 	//the upgrading history
 	private List<Integer> upgradingHistory = new ArrayList<Integer>(Arrays.asList(new Integer[]{99999}));//99999:caveman
+	
+	//quest
+	private QuestProvider questProvider = new QuestProvider();
 	
 	public EntityVillager(World worldIn){
 		this(worldIn, Rand.get().nextBoolean());
@@ -432,6 +437,10 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		if(upgrades != null){
 			tagCompound.setIntArray("upgrades", upgrades);
 		}
+		//quest
+		NBTTagCompound quest = new NBTTagCompound();		
+		this.questProvider.wirteToNBT(quest);
+		tagCompound.setTag("quest", quest);
 	}
 
 	@Override
@@ -453,6 +462,11 @@ public class EntityVillager extends EntityCreature implements ITrading{
 		//upgrading history
 		arr = tagCompund.getIntArray("upgrades");
 		this.setUpgradingHistory(arr);
+		//quest
+		if(tagCompund.hasKey("quest",NBT.TAG_COMPOUND)){
+			NBTTagCompound quest = tagCompund.getCompoundTag("quest");
+			this.questProvider.readFromNBT(quest);
+		}
 	}
 
 	
