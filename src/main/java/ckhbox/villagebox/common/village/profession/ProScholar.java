@@ -59,6 +59,12 @@ public class ProScholar extends Profession{
 
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();		
+		this.quests = new ArrayList<Quest>();	
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.book,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.book,5)},
+				new ItemStack[]{new ItemStack(ModItems.resetScroll,1)}));
 	}
 }

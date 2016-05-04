@@ -51,14 +51,20 @@ public abstract class ProVillager extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.bread,3)},
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
+				new ItemStack[]{new ItemStack(Items.bread,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)}));
 		this.quests.add(new Quest(
 				new ItemStack[]{new ItemStack(Items.cooked_chicken,1)},
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,4)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(ModItems.treasureHuntBookII,1)},
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
+				new ItemStack[]{new ItemStack(Items.cooked_fish,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.cooked_fish,1)},
+				new ItemStack[]{new ItemStack(Items.apple,2)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.cooked_chicken,1)},
+				new ItemStack[]{new ItemStack(Items.apple,2)}));
 	}
 
 }

@@ -79,7 +79,13 @@ public class ProCarpenter extends Profession{
 	
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();	
+		this.quests = new ArrayList<Quest>();
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.iron_axe,1)},
+				new ItemStack[]{new ItemStack(ModItems.woodenChestplate,1)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.iron_axe,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)}));
 	}
 
 }

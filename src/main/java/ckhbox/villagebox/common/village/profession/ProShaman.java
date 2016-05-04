@@ -72,6 +72,9 @@ public class ProShaman extends Profession{
 	
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();		
+		this.quests = new ArrayList<Quest>();	
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.log,8)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 	}
 }

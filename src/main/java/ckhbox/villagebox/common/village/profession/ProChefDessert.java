@@ -116,5 +116,14 @@ public class ProChefDessert extends Profession{
 	@Override
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.sugar,3)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(ModItems.wheatFlour,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.sugar,3)},
+				new ItemStack[]{new ItemStack(ModItems.strawberryIcecream,1)}));
 	}
 }

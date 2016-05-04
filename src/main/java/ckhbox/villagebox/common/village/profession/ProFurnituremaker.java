@@ -8,6 +8,7 @@ import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.quest.Quest;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class ProFurnituremaker extends Profession{
@@ -101,6 +102,27 @@ public class ProFurnituremaker extends Profession{
 	
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();		
+		this.quests = new ArrayList<Quest>();	
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.planks,32,0)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.planks,32,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.planks,32,2)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.planks,32,3)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.planks,32,4)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.planks,32,5)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.planks,32,0)},
+				new ItemStack[]{new ItemStack(ModBlocks.chairOak,1)}));
 	}
 }

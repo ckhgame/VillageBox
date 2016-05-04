@@ -111,7 +111,7 @@ public class GuiVillagerMain extends GuiContainer{
     	Profession[] upgradeOptions = this.villager.getProfession().getUpgradeToNextOptions();
     	buttonUpgrade.enabled = this.villager.hasHome() && (upgradeOptions != null && upgradeOptions.length > 0);
     	buttonTrade.enabled = this.villager.hasHome();
-    	buttonQuest.enabled = (this.villager.getCurrentQuest() != null);
+    	buttonQuest.enabled = this.villager.hasHome() & (this.villager.getCurrentQuest() != null);
     }
     
     private void calculateChatSpeed(){

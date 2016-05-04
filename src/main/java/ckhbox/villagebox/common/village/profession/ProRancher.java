@@ -59,6 +59,24 @@ public class ProRancher extends Profession{
 	
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();		
+		this.quests = new ArrayList<Quest>();	
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.bucket,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,12)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.shears,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,12)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.wheat_seeds,10)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,6)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.wheat,10)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.bucket,1)},
+				new ItemStack[]{new ItemStack(ModItems.mayonnaise,2)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.shears,1)},
+				new ItemStack[]{new ItemStack(ModItems.ballOfWool,3)}));
 	}
 }

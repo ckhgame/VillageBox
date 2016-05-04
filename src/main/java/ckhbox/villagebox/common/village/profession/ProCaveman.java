@@ -53,6 +53,21 @@ public class ProCaveman extends Profession{
 	
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();		
+		this.quests = new ArrayList<Quest>();
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.cooked_chicken,1)},
+				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.cooked_fish,1)},
+				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.cooked_porkchop,1)},
+				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.cooked_rabbit,1)},
+				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.beef,1)},
+				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
 	}
 }

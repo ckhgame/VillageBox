@@ -68,6 +68,15 @@ public class ProOrchardist extends Profession{
 	
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();		
+		this.quests = new ArrayList<Quest>();
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.golden_shovel,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,24)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.golden_shovel,1)},
+				new ItemStack[]{new ItemStack(ModItems.orange,3)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.golden_shovel,1)},
+				new ItemStack[]{new ItemStack(ModItems.strawberry,3)}));
 	}
 }

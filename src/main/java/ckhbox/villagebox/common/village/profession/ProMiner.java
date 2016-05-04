@@ -62,6 +62,15 @@ public class ProMiner extends Profession{
 	
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();		
+		this.quests = new ArrayList<Quest>();
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.iron_pickaxe,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Blocks.torch,16)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.minecart,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)}));
 	}
 }

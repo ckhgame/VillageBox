@@ -65,6 +65,12 @@ public class ProPeasant extends Profession{
 
 	@Override
 	protected void initQuests() {
-		this.quests = new ArrayList<Quest>();		
+		this.quests = new ArrayList<Quest>();
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.iron_hoe,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
+		this.quests.add(new Quest(
+				new ItemStack[]{new ItemStack(Items.wheat_seeds,16)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 	}
 }

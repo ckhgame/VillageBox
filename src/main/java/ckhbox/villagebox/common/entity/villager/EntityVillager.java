@@ -453,7 +453,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	}
 	
 	private void updateQuest(){
-		if(this.getCurrentQuest() == null){
+		if(this.getCurrentQuest() == null && this.hasHome()){
 			if(this.rand.nextInt(100) == 0){
 				this.createNewQuest();
 			}
