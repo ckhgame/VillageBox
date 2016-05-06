@@ -19,9 +19,9 @@ public class PageHome extends Page{
 	@Override
 	public void onInit() {
 		int top = this.guiVillageBook.getContentTop();
-		this.addLink(new LinkText(this,"> " + StatCollector.translateToLocal(PathHelper.full("villageBook.itemList")),">itemlist=0",null),top + 80,1);
-		this.addLink(new LinkText(this,"> " + StatCollector.translateToLocal(PathHelper.full("villageBook.professions")),">prolist=0",null),top + 100,1);
-		this.addLink(new LinkText(this,"> " + StatCollector.translateToLocal(PathHelper.full("villageBook.tutorial")),">tutorial=",null),top + 120,1);
+		//this.addLink(new LinkText(this,"> " + StatCollector.translateToLocal(PathHelper.full("villageBook.itemList")),">itemlist=0",null),top + 80,1);
+		this.addLink(new LinkText(this,"> " + StatCollector.translateToLocal(PathHelper.full("villageBook.professions")),">prolist=0",null),top + 90,1);
+		this.addLink(new LinkText(this,"> " + StatCollector.translateToLocal(PathHelper.full("villageBook.tutorial")),">tutorial=",null),top + 110,1);
 	}
 
 	@Override

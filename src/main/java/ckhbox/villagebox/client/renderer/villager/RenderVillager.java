@@ -41,7 +41,7 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 	public void doRender(EntityVillager entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		super.doRender(entity, x, y, z, entityYaw, partialTicks);
 		
-		if(entity.getCurrentQuest() != null && entity.hasHome()){
+		if(entity.previewProfession == null && entity.getCurrentQuest() != null && entity.hasHome()){
 			this.renderQuestMark(x,y,z,-entityYaw);
 		}
 	}
