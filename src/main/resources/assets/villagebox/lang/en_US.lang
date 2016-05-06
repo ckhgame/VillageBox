@@ -141,6 +141,8 @@ villagebox:message.player.weatherstone.alreadysunny=Can't use it when it's sunny
 villagebox:message.player.weatherstone.alreadyraining=Can't use it when it's raining
 villagebox:message.player.weatherstone.changed=Weather Changed...
 
+villagebox:message.player.collections.addproid=[%s] has been added to your %s!
+
 # Items
 item.villagebox:treasurebook1.name=Treasure Hunt Book I
 item.villagebox:treasurebook2.name=Treasure Hunt Book II
@@ -240,7 +242,7 @@ item.villagebox:waterSword.name=§9Water Sword
 item.villagebox:natureSword.name=§aForest Sword
 item.villagebox:darkSword.name=§5Dark Sword
 item.villagebox:lightSword.name=§eSacred Sword
-item.villagebox:villageBook.name=The Book of Village Box
+item.villagebox:villageBook.name=§9The Book of Village Box
 
 # villager egg
 entity.villagebox.villager.name=Villager
@@ -377,6 +379,7 @@ villagebox:villageBook.professions=Professions
 villagebox:villageBook.itemList=Item List
 villagebox:villageBook.tutorial=Tutorial
 villagebox:villageBook.tradingList=Trading List
+villagebox:villageBook.unknownpro=§8Unknown Profession
 
 # CreativeTab
 itemGroup.tabVillageBox=Village Box

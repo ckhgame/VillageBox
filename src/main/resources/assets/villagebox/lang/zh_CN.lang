@@ -141,6 +141,8 @@ villagebox:message.player.weatherstone.alreadysunny=你不能在晴天使用此�
 villagebox:message.player.weatherstone.alreadyraining=你不能再雨天使用此物
 villagebox:message.player.weatherstone.changed=天气改变了……
 
+villagebox:message.player.collections.addproid=[%s]已被添加到 %s!
+
 # Items
 item.villagebox:treasurebook1.name=寻宝宝典 I
 item.villagebox:treasurebook2.name=寻宝宝典 II
@@ -240,7 +242,7 @@ item.villagebox:waterSword.name=§9水之剑
 item.villagebox:natureSword.name=§a自然之剑
 item.villagebox:darkSword.name=§5黑暗之剑
 item.villagebox:lightSword.name=§e光明之剑
-item.villagebox:villageBook.name=村庄盒子之书
+item.villagebox:villageBook.name=§9村庄盒子之书
 
 # villager egg
 entity.villagebox.villager.name=村民
@@ -340,6 +342,7 @@ villagebox:villageBook.professions=职业
 villagebox:villageBook.itemList=物品列表
 villagebox:villageBook.tutorial=教程
 villagebox:villageBook.tradingList=交易列表
+villagebox:villageBook.unknownpro=§8未知职业
 
 #Block & Item info
 villagebox:book.treasure.item.info=§7将 §6寻宝等级 §7升级到 §a%d

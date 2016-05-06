@@ -1,6 +1,7 @@
 package ckhbox.villagebox.common.network;
 
 import ckhbox.villagebox.common.network.message.common.MessageGuiSelectTradeRecipeIndex;
+import ckhbox.villagebox.common.network.message.player.MessageSyncCollections;
 import ckhbox.villagebox.common.network.message.player.MessageSyncExtendedPlayerProperties;
 import ckhbox.villagebox.common.network.message.villager.MessageGuiCompleteQuest;
 import ckhbox.villagebox.common.network.message.villager.MessageGuiSelectUpgradeOptionIndex;
@@ -39,6 +40,8 @@ public class ModNetwork {
 		instance.registerMessage(MessageSpawnNewVillagerThroughMail.Handler.class, MessageSpawnNewVillagerThroughMail.class, id++, Side.SERVER);
 		instance.registerMessage(MessageGuiCompleteQuest.Handler.class, MessageGuiCompleteQuest.class, id++, Side.SERVER);
 		
+		id = 100;
+		instance.registerMessage(MessageSyncCollections.Handler.class, MessageSyncCollections.class, id++, Side.CLIENT);
 		//instance.registerMessage(MessageSyncExtendedPlayerProperties.Handler.class, MessageSyncExtendedPlayerProperties.class, id++, Side.CLIENT);
 	}
 }

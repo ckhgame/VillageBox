@@ -10,6 +10,7 @@ import ckhbox.villagebox.common.entity.ai.VillagerAILookAtInteractPlayer;
 import ckhbox.villagebox.common.entity.ai.VillagerAIWander;
 import ckhbox.villagebox.common.gui.GuiIDs;
 import ckhbox.villagebox.common.item.ModItems;
+import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebox.common.util.helper.BitHelper;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.math.IntBoundary;
@@ -43,7 +44,6 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -153,6 +153,8 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 				}
 				else{
 					player.openGui(VillageBoxMod.instance, GuiIDs.VillagerMain, player.worldObj, player.dimension, this.getEntityId(), 0);
+					//collections
+					this.addProIDToCollections(player);
 				}
 			}
 		}
@@ -458,6 +460,11 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 				this.createNewQuest();
 			}
 		}
+	}
+	
+	//collections
+	private void addProIDToCollections(EntityPlayer player){
+		ExtendedPlayerProperties.get(player).collections.addProfession(this.getProfession());
 	}
 	
 	//-----

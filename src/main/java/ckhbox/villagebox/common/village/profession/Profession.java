@@ -103,7 +103,7 @@ public abstract class Profession implements IRegistrable{
 	
 	public String getDisplayName(){
 		String name = StatCollector.translateToLocal(this.getUnlocalized() + ".name");
-		if(VBConfig.displayExtraInfo) name += "(ID:" + this.getRegID() + ")";
+		if(VBConfig.displayExtraInfo) name = "(" + this.getRegID() + ")" + name;
 		return name;
 	}
 	

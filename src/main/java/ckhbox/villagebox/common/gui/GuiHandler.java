@@ -9,6 +9,7 @@ import ckhbox.villagebox.client.gui.villager.GuiVillagerUpgrading;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.gui.common.ContainerEmpty;
 import ckhbox.villagebox.common.gui.common.ContainerTrading;
+import ckhbox.villagebox.common.gui.common.ContainerVillageBook;
 import ckhbox.villagebox.common.gui.villager.ContainerVillagerMain;
 import ckhbox.villagebox.common.gui.villager.ContainerVillagerUpgrading;
 import net.minecraft.entity.player.EntityPlayer;
@@ -40,7 +41,7 @@ public class GuiHandler implements IGuiHandler{
 		else{
 			switch(ID){
 			case GuiIDs.Mail: return new ContainerEmpty();
-			case GuiIDs.VillageBook: return new ContainerEmpty();
+			case GuiIDs.VillageBook: return new ContainerVillageBook(player);
 			default:break;
 			}
 		}
