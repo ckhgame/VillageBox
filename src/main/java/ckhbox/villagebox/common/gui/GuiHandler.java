@@ -1,7 +1,7 @@
 package ckhbox.villagebox.common.gui;
 
-import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
 import ckhbox.villagebox.client.gui.mail.GuiMail;
+import ckhbox.villagebox.client.gui.villagebook.GuiVillageBook;
 import ckhbox.villagebox.client.gui.villager.GuiVillagerMain;
 import ckhbox.villagebox.client.gui.villager.GuiVillagerQuest;
 import ckhbox.villagebox.client.gui.villager.GuiVillagerTrading;
@@ -40,7 +40,7 @@ public class GuiHandler implements IGuiHandler{
 		else{
 			switch(ID){
 			case GuiIDs.Mail: return new ContainerEmpty();
-			case GuiIDs.GuideBook: return new ContainerEmpty();
+			case GuiIDs.VillageBook: return new ContainerEmpty();
 			default:break;
 			}
 		}
@@ -71,7 +71,7 @@ public class GuiHandler implements IGuiHandler{
 		else{
 			switch(ID){
 			case GuiIDs.Mail: return new GuiMail(player);
-			case GuiIDs.GuideBook: return new GuiGuideBook();
+			case GuiIDs.VillageBook: return new GuiVillageBook();
 			default:break;
 			}
 		}

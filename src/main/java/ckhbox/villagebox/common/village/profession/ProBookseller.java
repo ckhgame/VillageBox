@@ -28,7 +28,7 @@ public class ProBookseller extends Profession{
 				new ItemStack(ModItems.resetScroll)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
-				new ItemStack(ModItems.guideBook)));
+				new ItemStack(ModItems.villageBook)));
 	}
 
 

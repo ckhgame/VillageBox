@@ -1,8 +1,8 @@
-package ckhbox.villagebox.client.gui.guidebook.page.link;
+package ckhbox.villagebox.client.gui.villagebook.page.link;
 
 import java.util.List;
 
-import ckhbox.villagebox.client.gui.guidebook.page.Page;
+import ckhbox.villagebox.client.gui.villagebook.page.Page;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
@@ -30,7 +30,7 @@ public class LinkImg extends Link{
 		GlStateManager.disableLighting();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(this.resource);
-		this.page.guiGuideBook.drawTexturedModalRect(this.left, this.top, this.coordX, this.coordY, this.width, this.height);
+		this.page.guiVillageBook.drawTexturedModalRect(this.left, this.top, this.coordX, this.coordY, this.width, this.height);
 		GlStateManager.enableLighting();
 	}
 	
@@ -38,7 +38,7 @@ public class LinkImg extends Link{
 		GlStateManager.disableLighting();
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(this.resource);
-		this.page.guiGuideBook.drawTexturedModalRect(this.left, this.top, 
+		this.page.guiVillageBook.drawTexturedModalRect(this.left, this.top, 
 													this.coordX + this.hoverOffsetX, this.coordY + this.hoverOffsetY,
 													this.width, this.height);
 		GlStateManager.enableLighting();

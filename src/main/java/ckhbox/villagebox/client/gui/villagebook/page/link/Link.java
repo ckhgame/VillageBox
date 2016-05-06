@@ -1,8 +1,8 @@
-package ckhbox.villagebox.client.gui.guidebook.page.link;
+package ckhbox.villagebox.client.gui.villagebook.page.link;
 
 import java.util.List;
 
-import ckhbox.villagebox.client.gui.guidebook.page.Page;
+import ckhbox.villagebox.client.gui.villagebook.page.Page;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
@@ -22,7 +22,7 @@ public abstract class Link {
 		this.link = link;
 		this.page = page;
 		this.tooltips = tooltips;
-		this.mc = this.page.guiGuideBook.mc;
+		this.mc = this.page.guiVillageBook.mc;
 	}
 	
 	public boolean isMouseHover(int mouseX, int mouseY){
@@ -44,7 +44,7 @@ public abstract class Link {
 	
 	public void onDrawToolTip(int mouseX, int mouseY){
 		if(this.tooltips != null){
-			this.page.guiGuideBook.drawHoveringText(this.tooltips, mouseX, mouseY);
+			this.page.guiVillageBook.drawHoveringText(this.tooltips, mouseX, mouseY);
 		}
 	}
 }

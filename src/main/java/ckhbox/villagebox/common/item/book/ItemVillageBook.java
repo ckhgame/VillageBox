@@ -16,10 +16,10 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-public class ItemGuideBook extends Item{
+public class ItemVillageBook extends Item{
 	
-	public ItemGuideBook(){
-		this.setUnlocalizedName(PathHelper.full("guideBook"));
+	public ItemVillageBook(){
+		this.setUnlocalizedName(PathHelper.full("villageBook"));
 		this.setCreativeTab(ModItems.tabVB);
 		this.setMaxStackSize(1);
 	}
@@ -28,7 +28,7 @@ public class ItemGuideBook extends Item{
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
 		
 		if(!worldIn.isRemote){
-			playerIn.openGui(VillageBoxMod.instance, GuiIDs.GuideBook, worldIn, 0, 0, 0);
+			playerIn.openGui(VillageBoxMod.instance, GuiIDs.VillageBook, worldIn, 0, 0, 0);
 		}
 		
 		return super.onItemRightClick(itemStackIn, worldIn, playerIn);

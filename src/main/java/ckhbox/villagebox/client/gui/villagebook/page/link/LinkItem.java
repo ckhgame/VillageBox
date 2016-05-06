@@ -1,8 +1,8 @@
-package ckhbox.villagebox.client.gui.guidebook.page.link;
+package ckhbox.villagebox.client.gui.villagebook.page.link;
 
 import java.util.List;
 
-import ckhbox.villagebox.client.gui.guidebook.page.Page;
+import ckhbox.villagebox.client.gui.villagebook.page.Page;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.Item;
@@ -20,16 +20,16 @@ public class LinkItem extends Link{
 	}
 	
 	public void onDraw(int mouseX, int mouseY){
-		this.page.guiGuideBook.drawItem(this.itemstack, this.left, this.top);
+		this.page.guiVillageBook.drawItem(this.itemstack, this.left, this.top);
 	}
 	
 	public void onDrawHover(int mouseX, int mouseY){
-		this.page.guiGuideBook.drawItem(this.itemstack, this.left, this.top - 2);
+		this.page.guiVillageBook.drawItem(this.itemstack, this.left, this.top - 2);
 	}
 	
 	public void onDrawToolTip(int mouseX, int mouseY){
 		if(this.itemstack != null){
-			this.page.guiGuideBook.renderToolTip(this.itemstack, mouseX, mouseY);
+			this.page.guiVillageBook.renderToolTip(this.itemstack, mouseX, mouseY);
 		}
 	}
 }

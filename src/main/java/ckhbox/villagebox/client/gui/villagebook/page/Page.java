@@ -1,10 +1,10 @@
-package ckhbox.villagebox.client.gui.guidebook.page;
+package ckhbox.villagebox.client.gui.villagebook.page;
 
 import java.util.ArrayList;
 import java.util.Stack;
 
-import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
-import ckhbox.villagebox.client.gui.guidebook.page.link.Link;
+import ckhbox.villagebox.client.gui.villagebook.GuiVillageBook;
+import ckhbox.villagebox.client.gui.villagebook.page.link.Link;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.renderer.GlStateManager;
@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 
 public abstract class Page {
 	
-	public GuiGuideBook guiGuideBook;
+	public GuiVillageBook guiVillageBook;
 	private ArrayList<Link> links = new ArrayList<Link>();
 	public String currentLink;
 	
@@ -23,21 +23,21 @@ public abstract class Page {
 	private int flowBot;
 	private String title;
 	
-	public Page(GuiGuideBook guiGuideBook,String title){
-		this.guiGuideBook = guiGuideBook;
-		this.flowLeft = this.guiGuideBook.getContentLeft();
-		this.flowTop = this.guiGuideBook.getContentTop();
+	public Page(GuiVillageBook guiVillageBook,String title){
+		this.guiVillageBook = guiVillageBook;
+		this.flowLeft = this.guiVillageBook.getContentLeft();
+		this.flowTop = this.guiVillageBook.getContentTop();
 		this.flowBot = this.flowTop;
 		if(title != null){
 			this.title = title;
-			this.setFlowTop(this.guiGuideBook.getContentTop() + 16);
+			this.setFlowTop(this.guiVillageBook.getContentTop() + 16);
 		}
 	}
 	
 	public void addLink(Link link, boolean newLine){
 		
-		if(this.flowLeft > 0 && (newLine || this.flowLeft + link.width > this.guiGuideBook.getContentRight())){
-			this.flowLeft = this.guiGuideBook.getContentLeft();;
+		if(this.flowLeft > 0 && (newLine || this.flowLeft + link.width > this.guiVillageBook.getContentRight())){
+			this.flowLeft = this.guiVillageBook.getContentLeft();;
 			this.flowTop = this.flowBot;
 			this.flowBot = this.flowTop + link.height;
 		}
@@ -57,13 +57,13 @@ public abstract class Page {
 	public void addLink(Link link, int top, int align){
 		
 		if(align == 2){
-			link.left = this.guiGuideBook.getContentRight() - link.width;
+			link.left = this.guiVillageBook.getContentRight() - link.width;
 		}
 		else if(align == 1){
-			link.left = this.guiGuideBook.getContentLeft() + (this.guiGuideBook.getContentWidth() - link.width)/2;
+			link.left = this.guiVillageBook.getContentLeft() + (this.guiVillageBook.getContentWidth() - link.width)/2;
 		}
 		else{
-			link.left = this.guiGuideBook.getContentLeft();
+			link.left = this.guiVillageBook.getContentLeft();
 		}
 	
 		link.top = top;
@@ -83,16 +83,16 @@ public abstract class Page {
 	public void setFlowTop(int top){
 		this.flowTop = top;
 		this.flowBot = this.flowTop;
-		this.flowLeft = this.guiGuideBook.getContentLeft();
+		this.flowLeft = this.guiVillageBook.getContentLeft();
 	}
 	
 	public void onDrawScreen(int mouseX, int mouseY){		
 		//title
 		if(this.title != null){
 			GlStateManager.disableLighting();
-			int top = this.guiGuideBook.getContentTop();
-			int left = this.guiGuideBook.getContentLeft() + (this.guiGuideBook.getContentWidth() - this.guiGuideBook.mc.fontRendererObj.getStringWidth(this.title))/2;
-			this.guiGuideBook.mc.fontRendererObj.drawString(this.title, left, top, 0xFF555500, false);
+			int top = this.guiVillageBook.getContentTop();
+			int left = this.guiVillageBook.getContentLeft() + (this.guiVillageBook.getContentWidth() - this.guiVillageBook.mc.fontRendererObj.getStringWidth(this.title))/2;
+			this.guiVillageBook.mc.fontRendererObj.drawString(this.title, left, top, 0xFF555500, false);
 			GlStateManager.enableLighting();
 		}
 		//links
@@ -116,8 +116,8 @@ public abstract class Page {
 		for(Link link : this.links){
 			if(link.isMouseHover(mouseX, mouseY)){
 				if(link.link != null){
-					this.guiGuideBook.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
-					this.guiGuideBook.gotoLink(link.link);
+					this.guiVillageBook.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+					this.guiVillageBook.gotoLink(link.link);
 					break;
 				}
 			}

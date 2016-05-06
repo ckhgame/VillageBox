@@ -1,18 +1,18 @@
-package ckhbox.villagebox.client.gui.guidebook;
+package ckhbox.villagebox.client.gui.villagebook;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Stack;
 
-import ckhbox.villagebox.client.gui.guidebook.page.Page;
-import ckhbox.villagebox.client.gui.guidebook.page.PageHome;
-import ckhbox.villagebox.client.gui.guidebook.page.PageItem;
-import ckhbox.villagebox.client.gui.guidebook.page.PageItemList;
-import ckhbox.villagebox.client.gui.guidebook.page.PagePro;
-import ckhbox.villagebox.client.gui.guidebook.page.PageProList;
-import ckhbox.villagebox.client.gui.guidebook.page.PageTrading;
-import ckhbox.villagebox.client.gui.guidebook.page.PageTutorial;
-import ckhbox.villagebox.client.gui.guidebook.page.data.GuideBookData;
+import ckhbox.villagebox.client.gui.villagebook.page.Page;
+import ckhbox.villagebox.client.gui.villagebook.page.PageHome;
+import ckhbox.villagebox.client.gui.villagebook.page.PageItem;
+import ckhbox.villagebox.client.gui.villagebook.page.PageItemList;
+import ckhbox.villagebox.client.gui.villagebook.page.PagePro;
+import ckhbox.villagebox.client.gui.villagebook.page.PageProList;
+import ckhbox.villagebox.client.gui.villagebook.page.PageTrading;
+import ckhbox.villagebox.client.gui.villagebook.page.PageTutorial;
+import ckhbox.villagebox.client.gui.villagebook.page.data.VillageBookData;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.gui.common.ContainerEmpty;
 import ckhbox.villagebox.common.util.helper.PathHelper;
@@ -28,11 +28,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiGuideBook extends GuiContainer{
+public class GuiVillageBook extends GuiContainer{
 
-	public static final ResourceLocation guiBookGuiTextures = new ResourceLocation(PathHelper.full("textures/gui/guidebook/page.png"));
+	public static final ResourceLocation guiBookGuiTextures = new ResourceLocation(PathHelper.full("textures/gui/villagebook/page.png"));
 	
-	public GuideBookData guidebookData = null;
+	public VillageBookData villagebookData = null;
 	protected Page currentPage;
 	private EntityVillager tempVillager = new EntityVillager(Minecraft.getMinecraft().thePlayer.getEntityWorld());
 	
@@ -43,10 +43,10 @@ public class GuiGuideBook extends GuiContainer{
     protected int offsetx = 18;
     protected int offsety = 18;
 	
-	public GuiGuideBook() {
+	public GuiVillageBook() {
 		super(new ContainerEmpty());
-		if(guidebookData == null){
-			guidebookData = new GuideBookData();
+		if(villagebookData == null){
+			villagebookData = new VillageBookData();
 		}
 	}
 
@@ -189,7 +189,7 @@ public class GuiGuideBook extends GuiContainer{
 			newPage = new PageProList(this,pageIdx);
 		}
 		else if(arr[0].equals("item")){
-			ItemStack itemstack = this.guidebookData.mapNamesToItemStacks.get(arr[1]);
+			ItemStack itemstack = this.villagebookData.mapNamesToItemStacks.get(arr[1]);
 			newPage = new PageItem(this,itemstack);
 		}
 		else if(arr[0].equals("pro")){

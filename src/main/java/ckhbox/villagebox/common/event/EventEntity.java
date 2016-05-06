@@ -68,12 +68,12 @@ public class EventEntity {
 
 			ExtendedPlayerProperties p = ExtendedPlayerProperties.get(player);
 			
-			if(!p.receivedGuidebook){
-				ItemStack guideBook = new ItemStack(ModItems.guideBook);
-				if (!player.inventory.addItemStackToInventory(guideBook)) {
-					player.dropPlayerItemWithRandomChoice(guideBook, false);
+			if(!p.receivedVillagebook){
+				ItemStack villageBook = new ItemStack(ModItems.villageBook);
+				if (!player.inventory.addItemStackToInventory(villageBook)) {
+					player.dropPlayerItemWithRandomChoice(villageBook, false);
 				}
-				p.receivedGuidebook = true;
+				p.receivedVillagebook = true;
 			}
 		}
 	}

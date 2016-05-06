@@ -1,8 +1,8 @@
-package ckhbox.villagebox.client.gui.guidebook.page.link;
+package ckhbox.villagebox.client.gui.villagebook.page.link;
 
 import java.util.List;
 
-import ckhbox.villagebox.client.gui.guidebook.page.Page;
+import ckhbox.villagebox.client.gui.villagebook.page.Page;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 

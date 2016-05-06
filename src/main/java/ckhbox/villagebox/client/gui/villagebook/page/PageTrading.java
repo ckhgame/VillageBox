@@ -1,12 +1,12 @@
-package ckhbox.villagebox.client.gui.guidebook.page;
+package ckhbox.villagebox.client.gui.villagebook.page;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ckhbox.villagebox.client.gui.guidebook.GuiGuideBook;
-import ckhbox.villagebox.client.gui.guidebook.page.link.LinkImg;
-import ckhbox.villagebox.client.gui.guidebook.page.link.LinkItem;
-import ckhbox.villagebox.client.gui.guidebook.page.link.LinkText;
+import ckhbox.villagebox.client.gui.villagebook.GuiVillageBook;
+import ckhbox.villagebox.client.gui.villagebook.page.link.LinkImg;
+import ckhbox.villagebox.client.gui.villagebook.page.link.LinkItem;
+import ckhbox.villagebox.client.gui.villagebook.page.link.LinkText;
 import ckhbox.villagebox.common.village.profession.Profession;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
 import net.minecraft.item.ItemStack;
@@ -17,8 +17,8 @@ public class PageTrading extends Page{
 	private int pageIdx;
 	private static int itemsPerPage = 30;
 	
-	public PageTrading(GuiGuideBook guiGuideBook, Profession pro, int pageIdx) {
-		super(guiGuideBook, pro.getDisplayName());
+	public PageTrading(GuiVillageBook guiVillageBook, Profession pro, int pageIdx) {
+		super(guiVillageBook, pro.getDisplayName());
 		this.pageIdx = pageIdx;
 		this.pro = pro;
 	}
@@ -38,7 +38,7 @@ public class PageTrading extends Page{
 			this.addLink(new LinkItem(this,itemstacks.get(i),null,null), false);
 		}
 		
-		int top = this.guiGuideBook.getContentTop() + this.guiGuideBook.getContentHeight() - 16;
+		int top = this.guiVillageBook.getContentTop() + this.guiVillageBook.getContentHeight() - 16;
 		if(this.pageIdx > 0){
 			this.addLink(new LinkText(this,"<--","trading=" + this.pro.getRegID() + "," + (this.pageIdx - 1),null),top,0);
 		}
@@ -47,7 +47,7 @@ public class PageTrading extends Page{
 			this.addLink(new LinkText(this,"-->","trading="  + this.pro.getRegID() + "," + (this.pageIdx + 1),null),top,2);
 		}
 		
-		this.addLink(new LinkImg(this,this.guiGuideBook.guiBookGuiTextures,240,0,0,16,16,16,"back=",null),top,1);
+		this.addLink(new LinkImg(this,this.guiVillageBook.guiBookGuiTextures,240,0,0,16,16,16,"back=",null),top,1);
 	}
 
 	@Override

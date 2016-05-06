@@ -1,4 +1,4 @@
-package ckhbox.villagebox.client.gui.guidebook.page.data;
+package ckhbox.villagebox.client.gui.villagebook.page.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,12 +11,12 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class GuideBookData{
+public class VillageBookData{
 	public List<ItemStack> itemstacks = new ArrayList<ItemStack>();
 	public List<Profession> pros = new ArrayList<Profession>();
 	public HashMap<String,ItemStack> mapNamesToItemStacks = new HashMap<String,ItemStack>();
 	
-	public GuideBookData(){
+	public VillageBookData(){
 		this.generate();
 	}
 	

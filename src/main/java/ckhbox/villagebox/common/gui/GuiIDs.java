@@ -10,5 +10,5 @@ public class GuiIDs {
 	
 	
 	public static final int Mail = 200;
-	public static final int GuideBook = 201;
+	public static final int VillageBook = 201;
 }

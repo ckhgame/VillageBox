@@ -240,7 +240,7 @@ item.villagebox:waterSword.name=§9Water Sword
 item.villagebox:natureSword.name=§aForest Sword
 item.villagebox:darkSword.name=§5Dark Sword
 item.villagebox:lightSword.name=§eSacred Sword
-item.villagebox:guideBook.name=Village Box Guidebook
+item.villagebox:villageBook.name=The Book of Village Box
 
 # villager egg
 entity.villagebox.villager.name=Villager
@@ -371,12 +371,12 @@ villagebox:quest.text2=Hi %s, I'm looking for some items, do you have them?
 villagebox:quest.text3=Hello %s, could you help me to find some items?
 villagebox:quest.text4=Hi %s, I need you help to bring me some items...
 
-# GuideBook
-villagebox:guideBook.title=Guidebook
-villagebox:guideBook.professions=Professions
-villagebox:guideBook.itemList=Item List
-villagebox:guideBook.tutorial=Tutorial
-villagebox:guideBook.tradingList=Trading List
+# VillageBook
+villagebox:villageBook.title=The Book of Village Box
+villagebox:villageBook.professions=Professions
+villagebox:villageBook.itemList=Item List
+villagebox:villageBook.tutorial=Tutorial
+villagebox:villageBook.tradingList=Trading List
 
 # CreativeTab
 itemGroup.tabVillageBox=Village Box

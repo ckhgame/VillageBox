@@ -38,7 +38,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 
 	public int treasureHuntLevel;//high level will bring more gems
 	
-	public boolean receivedGuidebook = false; // if the player has recived the guidebook
+	public boolean receivedVillagebook = false; // if the player has recived the village book
 	
 	public void sendNewVillagerInvitation(){
 		if(!this.hasSentInvitation){
@@ -78,7 +78,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 		compound.setBoolean("invited", this.hasSentInvitation);
 		compound.setInteger("nmtimer", this.newMailTimer);
 		compound.setInteger("treasurelvl", this.treasureHuntLevel);
-		compound.setBoolean("receiveddgb", this.receivedGuidebook);
+		compound.setBoolean("receiveddvb", this.receivedVillagebook);
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 		this.hasSentInvitation = compound.getBoolean("invited");
 		this.newMailTimer = compound.getInteger("nmtimer");
 		this.treasureHuntLevel = compound.getInteger("treasurelvl");
-		this.receivedGuidebook = compound.getBoolean("receiveddgb");
+		this.receivedVillagebook = compound.getBoolean("receiveddvb");
 	}
 
 	@Override
