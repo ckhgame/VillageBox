@@ -336,6 +336,14 @@ tile.villagebox:benchSpruce.name=Spruce Bench
 tile.villagebox:benchAcacia.name=Acacia Bench
 tile.villagebox:benchBigOak.name=Dark Oak Bench
 
+# VillageBook
+villagebox:villageBook.title=The Book of Village Box
+villagebox:villageBook.professions=Professions
+villagebox:villageBook.itemList=Item List
+villagebox:villageBook.tutorial=Tutorial
+villagebox:villageBook.tradingList=Trading List
+villagebox:villageBook.unknownpro=§8Unknown Profession
+
 #Block & Item info
 villagebox:book.treasure.item.info=§7Upgrade your §6treasure hunt level §7to §a%d
 villagebox:mail.item.info=§7From §a%s
@@ -367,19 +375,9 @@ villagebox:mail.newvillager1.content=Are you looking for villagers? Please consi
 villagebox:mail.newvillager2.content=I'm so tired about the current life and looking for a new place to live. Could I become a villager in your village?
 
 # Quest
-villagebox:quest.text0=Hi %s, could you bring me some times that I need? 
-villagebox:quest.text1=Hey %s, I need some help from you! I want some items..
-villagebox:quest.text2=Hi %s, I'm looking for some items, do you have them?
-villagebox:quest.text3=Hello %s, could you help me to find some items?
-villagebox:quest.text4=Hi %s, I need you help to bring me some items...
-
-# VillageBook
-villagebox:villageBook.title=The Book of Village Box
-villagebox:villageBook.professions=Professions
-villagebox:villageBook.itemList=Item List
-villagebox:villageBook.tutorial=Tutorial
-villagebox:villageBook.tradingList=Trading List
-villagebox:villageBook.unknownpro=§8Unknown Profession
+villagebox:quest.text0=Hi %s, could you help me?
+villagebox:quest.text1=Hey %s, I need some help from you...
+villagebox:quest.text2=Hi %s, Could you do me a favor?
 
 # CreativeTab
 itemGroup.tabVillageBox=Village Box

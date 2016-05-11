@@ -336,7 +336,7 @@ tile.villagebox:benchSpruce.name=云杉木长椅
 tile.villagebox:benchAcacia.name=金合欢木长椅
 tile.villagebox:benchBigOak.name=深色橡木长椅
 
-# GuideBook
+# VillageBook
 villagebox:villageBook.title=村庄盒子之书
 villagebox:villageBook.professions=职业
 villagebox:villageBook.itemList=物品列表
@@ -374,4 +374,10 @@ villagebox:mail.newvillager0.content=我听说你正在建造一个村庄, 我�
 villagebox:mail.newvillager1.content=你是否在寻找村民? 请考虑我!
 villagebox:mail.newvillager2.content=我已经厌倦了现在的生活. 我能成为你村庄的村民吗?
 
+# Quest
+villagebox:quest.text0=你好 %s, 你能帮我一个忙吗?
+villagebox:quest.text1=你好 %s, 我需要一些帮助...
+villagebox:quest.text2=你好 %s, 请帮我一个忙好吗?
+
+# CreativeTab
 itemGroup.tabVillageBox=村庄盒子

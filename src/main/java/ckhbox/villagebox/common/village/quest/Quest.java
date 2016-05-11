@@ -26,7 +26,7 @@ public class Quest {
 	}
 	
 	public String getText(EntityPlayer player){
-		return StatCollector.translateToLocalFormatted(PathHelper.full("quest.text" + Rand.get().nextInt(5)),player.getName());
+		return StatCollector.translateToLocalFormatted(PathHelper.full("quest.text" + Rand.get().nextInt(3)),player.getName());
 	}
 	
 	public boolean canComplete(EntityPlayer player){
