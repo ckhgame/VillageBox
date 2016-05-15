@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import ckhbox.villagebox.VillageBoxMod;
+import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.entity.ai.VillagerAIFollowing;
 import ckhbox.villagebox.common.entity.ai.VillagerAILookAtInteractPlayer;
 import ckhbox.villagebox.common.entity.ai.VillagerAIWander;
@@ -455,8 +456,8 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	}
 	
 	private void updateQuest(){
-		if(this.getCurrentQuest() == null && this.hasHome()){
-			if(this.rand.nextInt(100) == 0){
+		if(VBConfig.questFrequency > 0 && this.getCurrentQuest() == null && this.hasHome()){
+			if(this.rand.nextInt(VBConfig.questFrequency) == 0){
 				this.createNewQuest();
 			}
 		}

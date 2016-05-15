@@ -242,7 +242,7 @@ item.villagebox:waterSword.name=§9水之剑
 item.villagebox:natureSword.name=§a自然之剑
 item.villagebox:darkSword.name=§5黑暗之剑
 item.villagebox:lightSword.name=§e光明之剑
-item.villagebox:villageBook.name=§9村庄盒子之书
+item.villagebox:villageBook.name=§a村庄盒子之书
 
 # villager egg
 entity.villagebox.villager.name=村民

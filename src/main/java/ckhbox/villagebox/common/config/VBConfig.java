@@ -15,6 +15,10 @@ public class VBConfig {
 	public static boolean freeUpgrading;				//set to ture when you want nothing be cunsumed on upgrading villagers
 	public static int reviveTicks;						//how many ticks to revive a villager
 	public static boolean oneVillagerPerRoom;			//don't allow more than one villagers live in the same room
+	public static int questFrequency;					//how fast the new quest appears.
+														//e.g. 0 or a number less than 0 means no new quest,
+														//24000 means one new quest per day in average, 
+														//72000 means one new quest every three days in average
 	
 	public static void load(File file){
 		Configuration conf = new Configuration(file, VillageBoxMod.VERSION);
@@ -55,6 +59,11 @@ public class VBConfig {
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "OneVillagerPerRoom", false);
 		pt.comment = "Set to true to disallow more than one villagers live in the same room";
 		oneVillagerPerRoom = pt.getBoolean();
+		
+		//one villager one room
+		pt = conf.get(Configuration.CATEGORY_GENERAL, "QuestFrequency", 24000);
+		pt.comment = "How fast the new quest appears. e.g. 0 or a number less than 0 means no new quest, 24000 means one new quest per day in average, 72000 means one new quest every three days in average";
+		questFrequency = pt.getInt();
 		
 		conf.save();
 	}
