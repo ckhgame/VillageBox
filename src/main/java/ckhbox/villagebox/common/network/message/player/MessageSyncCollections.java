@@ -9,6 +9,8 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MessageSyncCollections implements IMessage {
 	
@@ -33,11 +35,20 @@ public class MessageSyncCollections implements IMessage {
 		ByteBufUtils.writeTag(buf, this.tagcollections);
 	}
 
-	public static class Handler implements IMessageHandler<MessageSyncCollections, IMessage> {
+	private static class HandlerCommon implements IMessageHandler<MessageSyncCollections, IMessage> {
         /**
          * This gets called when the packet is read and received.
          */
         @Override
+        public IMessage onMessage(MessageSyncCollections message, MessageContext ctx) {
+            return null;
+        }
+    }
+	
+	public static class Handler extends HandlerCommon {
+
+        @Override
+		@SideOnly(Side.CLIENT)
         public IMessage onMessage(MessageSyncCollections message, MessageContext ctx) {
         	ExtendedPlayerProperties properties = ExtendedPlayerProperties.get(Minecraft.getMinecraft().thePlayer);
         	properties.collections.loadNBTData(message.tagcollections);
