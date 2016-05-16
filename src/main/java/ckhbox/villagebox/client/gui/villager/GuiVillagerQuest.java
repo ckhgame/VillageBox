@@ -19,7 +19,7 @@ public class GuiVillagerQuest extends GuiQuest{
 	private EntityVillager villager;
     
 	public GuiVillagerQuest(EntityPlayer entityplayer, EntityVillager villager) {
-		super(entityplayer, villager.getCurrentQuest());
+		super(entityplayer, villager);
 		this.villager = villager;
 	}
 	

@@ -411,17 +411,50 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	}
 	
 	//quests
+	
+	//the quest idx and the left ticks are stored in the same integer
+	//the last one byte are used to store the index
+	//the rest bytes are used to store the time left
+	//e.g.
+	//the integer = 0xFE02
+	//ticks left = 0xFE = 254;
+	//quest index = 0x02 - 1 = 1
+	//* quest index is start from -1, end with 254, -1 means no quest 
+	
 	public void setCurrentQuestIdx(int idx){
-		this.dataWatcher.updateObject(18, idx);
+		int data = this.dataWatcher.getWatchableObjectInt(18);
+		data &= 0xFFFFFF00;
+		data |= Math.max(0, idx + 1);
+		this.dataWatcher.updateObject(18, data);
 	}
 	
 	public int getCurrentQuestIdx(){
-		return this.dataWatcher.getWatchableObjectInt(18);
+		int data = this.dataWatcher.getWatchableObjectInt(18);
+		int idx = (data & 0x000000FF) - 1;
+		return idx;
+	}
+	
+	public int getCurrentQuestTicks(){
+		int data = this.dataWatcher.getWatchableObjectInt(18);
+		data >>= 8;
+		return data;
+	}
+	
+	public void setCurrentQuestTicks(int ticks){
+		int data = this.dataWatcher.getWatchableObjectInt(18);
+		data &= 0x000000FF;
+		data |= (ticks << 8);
+		this.dataWatcher.updateObject(18, data);
+	}
+	
+	public int getCurrentQuestTicksLeft(){
+		return VBConfig.questLifetime - this.getCurrentQuestTicks();
 	}
 	
 	@Override
 	public void removeCurrentQuest(){
 		this.setCurrentQuestIdx(-1);
+		this.setCurrentQuestTicks(0);
 	}
 	
 	@Override
@@ -432,6 +465,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		//generate a random quest idx
 		int idx = (quests != null && quests.size() > 0)?Rand.get().nextInt(quests.size()):-1;
 		this.setCurrentQuestIdx(idx);
+		this.setCurrentQuestTicks(0);
 	}
 	
 	@Override
@@ -456,9 +490,18 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	}
 	
 	private void updateQuest(){
-		if(VBConfig.questFrequency > 0 && this.getCurrentQuest() == null && this.hasHome()){
-			if(this.rand.nextInt(VBConfig.questFrequency) == 0){
+		if(VBConfig.questFrequency <= 0) return;
+		if(this.getCurrentQuest() == null){
+			if(this.hasHome() && this.rand.nextInt(VBConfig.questFrequency) == 0){
 				this.createNewQuest();
+			}
+		}
+		else{
+			int left = this.getCurrentQuestTicks() + 1;
+			if(left > VBConfig.questLifetime) left = VBConfig.questLifetime;
+			this.setCurrentQuestTicks(left);
+			if(!this.isInteracting() && left == VBConfig.questLifetime){
+				this.removeCurrentQuest();
 			}
 		}
 	}
@@ -508,7 +551,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			tagCompound.setIntArray("upgrades", upgrades);
 		}
 		//quest
-		tagCompound.setInteger("questidx", this.getCurrentQuestIdx());
+		tagCompound.setInteger("questinfo", this.dataWatcher.getWatchableObjectInt(18));
 	}
 
 	@Override
@@ -531,8 +574,8 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		arr = tagCompund.getIntArray("upgrades");
 		this.setUpgradingHistory(arr);
 		//quest
-		if(tagCompund.hasKey("questidx")){
-			this.setCurrentQuestIdx(tagCompund.getInteger("questidx"));
+		if(tagCompund.hasKey("questinfo")){
+			this.dataWatcher.updateObject(18, tagCompund.getInteger("questinfo"));
 		}
 	}
 

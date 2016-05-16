@@ -19,6 +19,7 @@ public class VBConfig {
 														//e.g. 0 or a number less than 0 means no new quest,
 														//24000 means one new quest per day in average, 
 														//72000 means one new quest every three days in average
+	public static int questLifetime;					//the life time of a quest. e.g. 48000 means the quest will exist 2 minecraft days
 	
 	public static void load(File file){
 		Configuration conf = new Configuration(file, VillageBoxMod.VERSION);
@@ -60,10 +61,15 @@ public class VBConfig {
 		pt.comment = "Set to true to disallow more than one villagers live in the same room";
 		oneVillagerPerRoom = pt.getBoolean();
 		
-		//one villager one room
+		//quest frequency
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "QuestFrequency", 24000);
 		pt.comment = "How fast the new quest appears. e.g. 0 or a number less than 0 means no new quest, 24000 means one new quest per day in average, 72000 means one new quest every three days in average";
 		questFrequency = pt.getInt();
+		
+		//quest lifetime
+		pt = conf.get(Configuration.CATEGORY_GENERAL, "QuestLifetime", 48000);
+		pt.comment = "The life time of a quest. e.g. 48000 means the quest will exist 2 minecraft days";
+		questLifetime = pt.getInt();
 		
 		conf.save();
 	}

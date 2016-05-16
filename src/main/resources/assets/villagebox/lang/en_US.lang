@@ -109,6 +109,9 @@ villagebox:gui.quest.requirements=Requirements
 villagebox:gui.quest.rewards=Rewards
 villagebox:gui.quest.progress.unmeet=§c%d §f/ %d
 villagebox:gui.quest.progress.meet=§a%d §f/ %d
+villagebox:gui.quest.timeleft.verylong=Time left:§aVery Long
+villagebox:gui.quest.timeleft.long=Time left:§aLong
+villagebox:gui.quest.timeleft.short=Time left:§cShort
 
 villagebox:gui.trading.allrecipes=Trading List
 

@@ -12,4 +12,6 @@ public interface IQuestProvider {
 	void removeCurrentQuest();
 	
 	void completeCurrentQuest(EntityPlayer player);
+	
+	int getCurrentQuestTicksLeft();
 }

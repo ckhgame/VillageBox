@@ -109,6 +109,9 @@ villagebox:gui.quest.requirements=需求物品
 villagebox:gui.quest.rewards=奖励
 villagebox:gui.quest.progress.unmeet=§c%d §f/ %d
 villagebox:gui.quest.progress.meet=§a%d §f/ %d
+villagebox:gui.quest.timeleft.verylong=剩余时间:§a很长
+villagebox:gui.quest.timeleft.long=剩余时间:§a长
+villagebox:gui.quest.timeleft.short=剩余时间:§c短
 
 villagebox:gui.trading.allrecipes=交易列表
 

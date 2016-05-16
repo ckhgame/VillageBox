@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ckhbox.villagebox.client.gui.GuiTextButton;
+import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.gui.common.ContainerEmpty;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.item.common.ItemMail;
 import ckhbox.villagebox.common.network.ModNetwork;
 import ckhbox.villagebox.common.network.message.villager.MessageSpawnNewVillagerThroughMail;
 import ckhbox.villagebox.common.util.helper.PathHelper;
+import ckhbox.villagebox.common.village.quest.IQuestProvider;
 import ckhbox.villagebox.common.village.quest.Quest;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -27,6 +29,7 @@ public abstract class GuiQuest extends GuiContainer{
 	private static final ResourceLocation questGuiTextures = new ResourceLocation(PathHelper.full("textures/gui/quest/quest.png"));
     
 	private EntityPlayer player;
+	private IQuestProvider provider;
 	private Quest quest;
 	private GuiButton btnComplate;
 	
@@ -37,10 +40,11 @@ public abstract class GuiQuest extends GuiContainer{
 	private ItemStack cacheProgressItem;
 	private List<String> cacheProgressString = new ArrayList<String>();
 	
-	public GuiQuest(EntityPlayer player, Quest quest) {
+	public GuiQuest(EntityPlayer player, IQuestProvider provider) {
 		super(new ContainerEmpty());
 		this.player = player;
-		this.quest = quest;
+		this.provider = provider;
+		this.quest = this.provider.getCurrentQuest();
 	}
 
     public void initGui()
@@ -94,6 +98,17 @@ public abstract class GuiQuest extends GuiContainer{
 		this.fontRendererObj.drawSplitString(text, x, y, wrapWidth, 0xFFFFFFFF);
 		y += this.fontRendererObj.splitStringWidth(text, wrapWidth) + 8;
 		
+		//ticks left
+		String tt;
+		int left = this.provider.getCurrentQuestTicksLeft();
+		if(left > 24000) tt = "verylong";
+		else if(left > 6000) tt = "long";
+		else tt = "short";
+		String tickstext = StatCollector.translateToLocal(PathHelper.full("gui.quest.timeleft." + tt));
+		if(VBConfig.displayExtraInfo) tickstext += "(" + left + ")";
+		this.fontRendererObj.drawString(tickstext, x, y, 0xFFFFFFFF,false);
+		y += 16;
+		
 		GlStateManager.pushMatrix();
         RenderHelper.enableGUIStandardItemLighting();
         GlStateManager.enableRescaleNormal();
@@ -126,8 +141,7 @@ public abstract class GuiQuest extends GuiContainer{
 		
         GlStateManager.popMatrix();
 		
-		//hover texts
-        
+		//hover texts     
         x -= this.guiLeft;
 		for(int i =0;i<this.required.length;i++){
 			if (this.isPointInRegion(x + i * 20, y1, 16, 16, mouseX, mouseY) && required[i] != null){
