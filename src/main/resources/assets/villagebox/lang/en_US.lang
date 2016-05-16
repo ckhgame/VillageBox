@@ -105,13 +105,13 @@ villagebox:gui.villagerupgrade.buttonupgrade.desc=§fUpgrade to the advanced pro
 villagebox:gui.villagerupgrade.buttonupgrade.title.disable=§cUpgrade
 villagebox:gui.villagerupgrade.buttonupgrade.desc.disable=§7Unmatched items
 
-villagebox:gui.quest.requirements=Requirements
-villagebox:gui.quest.rewards=Rewards
+villagebox:gui.quest.requirements=§eRequirements
+villagebox:gui.quest.rewards=§eRewards
 villagebox:gui.quest.progress.unmeet=§c%d §f/ %d
 villagebox:gui.quest.progress.meet=§a%d §f/ %d
-villagebox:gui.quest.timeleft.verylong=Time left:§aVery Long
-villagebox:gui.quest.timeleft.long=Time left:§aLong
-villagebox:gui.quest.timeleft.short=Time left:§cShort
+villagebox:gui.quest.timeleft.long=§eTime left: §a%d hours
+villagebox:gui.quest.timeleft.short=§eTime left: §c%d hours
+villagebox:gui.quest.complete=Complete
 
 villagebox:gui.trading.allrecipes=Trading List
 
@@ -378,9 +378,7 @@ villagebox:mail.newvillager1.content=Are you looking for villagers? Please consi
 villagebox:mail.newvillager2.content=I'm so tired about the current life and looking for a new place to live. Could I become a villager in your village?
 
 # Quest
-villagebox:quest.text0=Hi %s, could you help me?
-villagebox:quest.text1=Hey %s, I need some help from you...
-villagebox:quest.text2=Hi %s, could you do me a favor?
+villagebox:quest.text=Hi %s, could you help me?
 
 # CreativeTab
 itemGroup.tabVillageBox=Village Box

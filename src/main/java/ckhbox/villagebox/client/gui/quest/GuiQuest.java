@@ -55,7 +55,7 @@ public abstract class GuiQuest extends GuiContainer{
         int y = (this.height - this.ySize) / 2;
         
         if(this.quest != null){
-            this.btnComplate = new GuiButton(100,x + this.xSize/2 - 50, y + 136, 100,20,"Complete");
+            this.btnComplate = new GuiButton(100,x + this.xSize/2 - 50, y + 136, 100,20,StatCollector.translateToLocalFormatted(PathHelper.full("gui.quest.complete")));
             this.buttonList.add(this.btnComplate);
             
             text = this.quest.getText(player);
@@ -101,10 +101,9 @@ public abstract class GuiQuest extends GuiContainer{
 		//ticks left
 		String tt;
 		int left = this.provider.getCurrentQuestTicksLeft();
-		if(left > 24000) tt = "verylong";
-		else if(left > 6000) tt = "long";
+		if(left > 6000) tt = "long";
 		else tt = "short";
-		String tickstext = StatCollector.translateToLocal(PathHelper.full("gui.quest.timeleft." + tt));
+		String tickstext = StatCollector.translateToLocalFormatted(PathHelper.full("gui.quest.timeleft." + tt), left / 1000 + 1);
 		if(VBConfig.displayExtraInfo) tickstext += "(" + left + ")";
 		this.fontRendererObj.drawString(tickstext, x, y, 0xFFFFFFFF,false);
 		y += 16;

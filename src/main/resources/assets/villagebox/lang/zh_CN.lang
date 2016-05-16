@@ -105,13 +105,13 @@ villagebox:gui.villagerupgrade.buttonupgrade.desc=§f升级到更高级的专业
 villagebox:gui.villagerupgrade.buttonupgrade.title.disable=§c升级
 villagebox:gui.villagerupgrade.buttonupgrade.desc.disable=§7物品不匹配
 
-villagebox:gui.quest.requirements=需求物品
-villagebox:gui.quest.rewards=奖励
+villagebox:gui.quest.requirements=§e需求物品
+villagebox:gui.quest.rewards=§e奖励
 villagebox:gui.quest.progress.unmeet=§c%d §f/ %d
 villagebox:gui.quest.progress.meet=§a%d §f/ %d
-villagebox:gui.quest.timeleft.verylong=剩余时间:§a很长
-villagebox:gui.quest.timeleft.long=剩余时间:§a长
-villagebox:gui.quest.timeleft.short=剩余时间:§c短
+villagebox:gui.quest.timeleft.long=§e剩余时间: §a%d 小时
+villagebox:gui.quest.timeleft.short=§e剩余时间: §c%d 小时
+villagebox:gui.quest.complete=完成
 
 villagebox:gui.trading.allrecipes=交易列表
 
@@ -378,9 +378,7 @@ villagebox:mail.newvillager1.content=你是否在寻找村民? 请考虑我!
 villagebox:mail.newvillager2.content=我已经厌倦了现在的生活. 我能成为你村庄的村民吗?
 
 # Quest
-villagebox:quest.text0=你好 %s, 你能帮我一个忙吗?
-villagebox:quest.text1=你好 %s, 我需要一些帮助...
-villagebox:quest.text2=你好 %s, 请帮我一个忙好吗?
+villagebox:quest.text=你好 %s, 你能帮我一个忙吗?
 
 # CreativeTab
 itemGroup.tabVillageBox=村庄盒子
