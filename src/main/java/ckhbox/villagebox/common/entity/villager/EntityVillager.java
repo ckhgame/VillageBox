@@ -146,9 +146,10 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			}
 			else{
 				ItemStack itemstack = player.inventory.getCurrentItem();
-				if(itemstack != null && itemstack.getItem() == ModItems.resetScroll && itemstack.stackSize > 0){
-					//if the player is using a reset scroll
-					if(this.downgrade()){
+				if(itemstack != null && (itemstack.getItem() == ModItems.resetScroll || itemstack.getItem() == ModItems.dismissalScroll) && itemstack.stackSize > 0){
+					//if the player is using a reset or a dismissal scroll
+					if((itemstack.getItem() == ModItems.resetScroll && this.downgrade()) || 
+						(itemstack.getItem() == ModItems.dismissalScroll && this.dismiss(player))){
 						this.consumeItemFromStack(player,itemstack);
 					}
 				}
@@ -364,6 +365,18 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.downgrade"),this.getName(),oldProName,newProName));
 			//quest
 			this.removeCurrentQuest();
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean dismiss(EntityPlayer player){
+		if(!this.worldObj.isRemote){
+			this.moveOutHome(player);
+			this.worldObj.removeEntity(this);
+			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.dismiss"), player.getName(),this.getName(),this.getProfession().getDisplayName()));
 			return true;
 		}
 		else{

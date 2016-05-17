@@ -34,6 +34,7 @@ public class ModItemRenderers {
 		registerModel(ModItems.lightStaff, 0, "light_staff");
 		registerModel(ModItems.darkStaff, 0, "dark_staff");
 		registerModel(ModItems.resetScroll, 0, "reset_scroll");
+		registerModel(ModItems.dismissalScroll, 0, "dismissal_scroll");
 		
 		registerModel(ModItems.fireShard, 0, "fire_shard");
 		registerModel(ModItems.waterShard, 0, "water_shard");

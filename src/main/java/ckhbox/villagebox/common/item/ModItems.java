@@ -3,6 +3,7 @@ package ckhbox.villagebox.common.item;
 import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.item.armor.ItemArmor;
 import ckhbox.villagebox.common.item.book.ItemVillageBook;
+import ckhbox.villagebox.common.item.book.ItemDismissalScroll;
 import ckhbox.villagebox.common.item.book.ItemResetScroll;
 import ckhbox.villagebox.common.item.book.ItemTreasureBook;
 import ckhbox.villagebox.common.item.common.ItemCoin;
@@ -75,6 +76,7 @@ public class ModItems {
 	public static ItemCoin goldCoin;
 	public static ItemMail mail;
 	public static ItemResetScroll resetScroll;
+	public static ItemDismissalScroll dismissalScroll;
 	public static Item invitation;
 	public static ItemVillageBook villageBook;
 	
@@ -198,6 +200,7 @@ public class ModItems {
 		GameRegistry.registerItem(villageBook=new ItemVillageBook(),"village_book");
 		
 		GameRegistry.registerItem(resetScroll=new ItemResetScroll(),"reset_scroll");
+		GameRegistry.registerItem(dismissalScroll=new ItemDismissalScroll(),"dismissal_scroll");
 		
 		//shards
 		GameRegistry.registerItem(fireShard=new ItemElementShard("fire"),"fire_shard");

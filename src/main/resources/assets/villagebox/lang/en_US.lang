@@ -131,6 +131,7 @@ villagebox:message.villager.home.openspace=It's not a closed space!
 villagebox:message.villager.home.existed=%s has already moved in this place!
 villagebox:message.villager.home.movein=%s has moved in a new home :D
 villagebox:message.villager.home.moveout=%s has moved out from home
+villagebox:message.villager.dismiss=%s has permanently removed %s[%s]
 
 villagebox:message.mail.newmail=You have received a new mail
 villagebox:message.mail.nomail=You have nothing in the mailbox
@@ -246,6 +247,7 @@ item.villagebox:natureSword.name=§aForest Sword
 item.villagebox:darkSword.name=§5Dark Sword
 item.villagebox:lightSword.name=§eSacred Sword
 item.villagebox:villageBook.name=§aThe Book of Village Box
+item.villagebox:dismissalScroll.name=Dismissal Scroll
 
 # villager egg
 entity.villagebox.villager.name=Villager
@@ -364,6 +366,8 @@ villagebox:info.item.waterSword=§7Move faster and can breathe underwater
 villagebox:info.item.natureSword=§7Slow down and poison the target
 villagebox:info.item.lightSword=§7One hit kill zombies and skeletons.
 villagebox:info.item.darkSword=§7Steal life on hit
+villagebox:info.item.dismissalScroll.line0=§7Right click to dismiss a villager
+villagebox:info.item.dismissalScroll.line1=§7It will §cpermanently remove §7the villager
 
 villagebox:info.tile.fireTotem=§7Burn nearby mobs
 villagebox:info.tile.waterTotem=§7Increase nearby players' speed.

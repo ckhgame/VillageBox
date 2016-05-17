@@ -131,6 +131,7 @@ villagebox:message.villager.home.openspace=这不是一个封闭的空间!
 villagebox:message.villager.home.existed=这里已经住了%s!
 villagebox:message.villager.home.movein=%s 搬进了新家 :D
 villagebox:message.villager.home.moveout=%s 搬出了原来的家
+villagebox:message.villager.dismiss=%s 永久移除了 %s[%s]
 
 villagebox:message.mail.newmail=你收到一封新邮件
 villagebox:message.mail.nomail=邮箱里什么都没有
@@ -246,6 +247,7 @@ item.villagebox:natureSword.name=§a自然之剑
 item.villagebox:darkSword.name=§5黑暗之剑
 item.villagebox:lightSword.name=§e光明之剑
 item.villagebox:villageBook.name=§a村庄盒子之书
+item.villagebox:dismissalScroll.name=消除卷轴
 
 # villager egg
 entity.villagebox.villager.name=村民
@@ -364,6 +366,8 @@ villagebox:info.item.waterSword=§7加速移动且可以水下呼吸
 villagebox:info.item.natureSword=§7减速目标并使其中毒
 villagebox:info.item.lightSword=§7对僵尸和骷髅一击必杀
 villagebox:info.item.darkSword=§7击中时偷取生命
+villagebox:info.item.dismissalScroll.line0=§7点击右键消除一个村民
+villagebox:info.item.dismissalScroll.line1=§7这将会 §c永久移除 §7这个村民
 
 villagebox:info.tile.fireTotem=§7使附近怪物燃烧
 villagebox:info.tile.waterTotem=§7提高附近玩家速度
