@@ -1,13 +1,12 @@
 package ckhbox.villagebox.common.item;
 
+import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.block.ModBlocks;
-import ckhbox.villagebox.common.block.totem.BlockTotem;
-import ckhbox.villagebox.common.block.totem.BlockTotemPole;
 import ckhbox.villagebox.common.item.armor.ItemArmor;
-import ckhbox.villagebox.common.item.book.ItemVillageBook;
 import ckhbox.villagebox.common.item.book.ItemDismissalScroll;
 import ckhbox.villagebox.common.item.book.ItemResetScroll;
 import ckhbox.villagebox.common.item.book.ItemTreasureBook;
+import ckhbox.villagebox.common.item.book.ItemVillageBook;
 import ckhbox.villagebox.common.item.common.ItemCoin;
 import ckhbox.villagebox.common.item.common.ItemDrink;
 import ckhbox.villagebox.common.item.common.ItemElementShard;
@@ -32,9 +31,6 @@ import ckhbox.villagebox.common.item.weapon.ItemNatureSword;
 import ckhbox.villagebox.common.item.weapon.ItemStaff;
 import ckhbox.villagebox.common.item.weapon.ItemWaterStaff;
 import ckhbox.villagebox.common.item.weapon.ItemWaterSword;
-import ckhbox.villagebox.common.tileentity.totem.TileEntityFireTotem;
-import ckhbox.villagebox.common.tileentity.totem.TileEntityNatureTotem;
-import ckhbox.villagebox.common.tileentity.totem.TileEntityWaterTotem;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.SoundEvents;
@@ -203,7 +199,7 @@ public class ModItems {
 
 	public static void init(){
 		//books
-		GameRegistry.register(treasureHuntBookI=new ItemTreasureBook(1),new ResourceLocation("treasure_hunt_book_0"));
+		register(treasureHuntBookI=new ItemTreasureBook(1),"treasure_hunt_book_0");
 		register(treasureHuntBookII=new ItemTreasureBook(2),"treasure_hunt_book_1");
 		register(treasureHuntBookIII=new ItemTreasureBook(3),"treasure_hunt_book_2");
 		register(villageBook=new ItemVillageBook(),"village_book");
@@ -336,18 +332,10 @@ public class ModItems {
 		register(roastedLamb=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("roastedLamb")),"roasted_lamb");
 		register(nigiri=(new ItemFood(4, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("nigiri")),"nigiri");
 		register(udon=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("udon")),"udon");
-		
-		//itemblock		
-		register(new ItemBlockWithInfo(ModBlocks.fireTotem),"fire_totem");
-		register(new ItemBlockWithInfo(ModBlocks.waterTotem),"water_totem");
-		register(new ItemBlockWithInfo(ModBlocks.natureTotem),"nature_totem");
-		register(new ItemBlockWithInfo(ModBlocks.totempole0),"totempole_0");
-		register(new ItemBlockWithInfo(ModBlocks.totempole1),"totempole_1");
-		register(new ItemBlockWithInfo(ModBlocks.totempole2),"totempole_2");
 	}
 	
 	public static void register(Item item, String name){
-		GameRegistry.register(item,new ResourceLocation(name));
+		GameRegistry.register(item,new ResourceLocation(VillageBoxMod.MODID,name));
 	}
 	
 	

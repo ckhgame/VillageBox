@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.block;
 
+import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.block.decoration.BlockBench;
 import ckhbox.villagebox.common.block.decoration.BlockCarpet;
 import ckhbox.villagebox.common.block.decoration.BlockChair;
@@ -13,7 +14,9 @@ import ckhbox.villagebox.common.item.totem.ItemBlockWithInfo;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityFireTotem;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityNatureTotem;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityWaterTotem;
+import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -209,15 +212,20 @@ public class ModBlocks {
 		register(flowerHydrangeas=new BlockFlowerInPot("flowerHydrangeas"),"flower_hydrangeas");
 		register(bonsai=new BlockFlowerInPot("bonsai"),"bonsai");
 		
-		register(fireTotem=new BlockTotem("fireTotem", TileEntityFireTotem.class), "fire_totem");
-		register(waterTotem=new BlockTotem("waterTotem",TileEntityWaterTotem.class), "water_totem");
-		register(natureTotem=new BlockTotem("natureTotem",TileEntityNatureTotem.class), "nature_totem");
-		register(totempole0=new BlockTotemPole("totempole0"), "totempole_0");
-		register(totempole1=new BlockTotemPole("totempole1"), "totempole_1");
-		register(totempole2=new BlockTotemPole("totempole2"), "totempole_2");
+		register(fireTotem=new BlockTotem("fireTotem", TileEntityFireTotem.class), "fire_totem", new ItemBlockWithInfo(fireTotem));
+		register(waterTotem=new BlockTotem("waterTotem",TileEntityWaterTotem.class), "water_totem", new ItemBlockWithInfo(waterTotem));
+		register(natureTotem=new BlockTotem("natureTotem",TileEntityNatureTotem.class), "nature_totem", new ItemBlockWithInfo(natureTotem));
+		register(totempole0=new BlockTotemPole("totempole0"), "totempole_0", new ItemBlockWithInfo(totempole0));
+		register(totempole1=new BlockTotemPole("totempole1"), "totempole_1", new ItemBlockWithInfo(totempole1));
+		register(totempole2=new BlockTotemPole("totempole2"), "totempole_2", new ItemBlockWithInfo(totempole2));
 	}
 	
 	public static void register(Block block, String name){
-		GameRegistry.register(block,new ResourceLocation(name));
+		register(block, name, new ItemBlock(block));
+	}
+	
+	public static void register(Block block, String name, ItemBlock item){
+		GameRegistry.register(block,new ResourceLocation(VillageBoxMod.MODID,name));
+		GameRegistry.register(item, new ResourceLocation(VillageBoxMod.MODID,name));
 	}
 }
