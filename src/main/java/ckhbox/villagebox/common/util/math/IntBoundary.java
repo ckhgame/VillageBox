@@ -1,6 +1,6 @@
 package ckhbox.villagebox.common.util.math;
 
-import net.minecraft.util.Vec3;
+import net.minecraft.util.math.Vec3d;;
 
 public class IntBoundary {
 	public int minx,miny,minz,maxx,maxy,maxz;
@@ -76,11 +76,11 @@ public class IntBoundary {
 		return size;
 	}
 	
-	public Vec3 getRandomPosInsideBoundary(){
+	public Vec3d getRandomPosInsideBoundary(){
 		double x = Rand.get().nextInt(this.maxx + 1 - this.minx) + this.minx;
 		double y = Rand.get().nextInt(this.maxy + 1 - this.miny) + this.miny;
 		double z = Rand.get().nextInt(this.maxz + 1 - this.minz) + this.minz;
-		return new Vec3(x,y,z);
+		return new Vec3d(x,y,z);
 	}
 	
 	public int[] toArray(){

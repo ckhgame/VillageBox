@@ -45,7 +45,7 @@ public class MessageGuiSetFollowing implements IMessage {
         @Override
         public IMessage onMessage(MessageGuiSetFollowing message, MessageContext ctx) {
         	
-        	if(ctx.getServerHandler().playerEntity.worldObj.provider.getDimensionId() == message.dimension){
+        	if(ctx.getServerHandler().playerEntity.worldObj.provider.getDimension() == message.dimension){
         		//get villager
         		Entity entity = ctx.getServerHandler().playerEntity.worldObj.getEntityByID(message.entityVillagerID);
         		if(entity != null && entity instanceof EntityVillager){

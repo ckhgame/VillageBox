@@ -20,12 +20,12 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -147,19 +147,19 @@ public class GuiVillagerUpgrading extends GuiContainer{
             RenderHelper.enableStandardItemLighting();
             
             //profession hover text
-            String proname = StatCollector.translateToLocalFormatted(PathHelper.full("gui.villagerupgrade.proname"),currentOption.getDisplayName());
+            String proname = I18n.translateToLocalFormatted(PathHelper.full("gui.villagerupgrade.proname"),currentOption.getDisplayName());
             this.drawFieldHoverText(i + 122, j + 27, 35, 49, mouseX, mouseY, proname, currentOption.getDescription());
             
             //upgrade button hover text
             ArrayList<String> list = new ArrayList<String>();
             if(this.meetItemsNeed){
             	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, 
-            			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")),
-            			StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc"))); 
+            			I18n.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title")),
+            			I18n.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc"))); 
             }
             else{
-            	list.add(StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title.disable")));
-            	list.add(StatCollector.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable")));
+            	list.add(I18n.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.title.disable")));
+            	list.add(I18n.translateToLocal(PathHelper.full("gui.villagerupgrade.buttonupgrade.desc.disable")));
             	this.drawButtonHoverText(this.upgradeButton, mouseX, mouseY, list);
             }
                        
@@ -213,7 +213,7 @@ public class GuiVillagerUpgrading extends GuiContainer{
         RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
         rendermanager.setPlayerViewY(180.0F);
         rendermanager.setRenderShadow(false);
-        rendermanager.renderEntityWithPosYaw(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+        rendermanager.doRenderEntity(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
         rendermanager.setRenderShadow(true);
         ent.renderYawOffset = f;
         ent.rotationYaw = f1;

@@ -6,8 +6,8 @@ import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 
 public class InventoryUpgrading implements IInventory{
 
@@ -38,8 +38,8 @@ public class InventoryUpgrading implements IInventory{
 	}
 
 	@Override
-	public IChatComponent getDisplayName() {
-		return new ChatComponentText(this.getName());
+	public ITextComponent getDisplayName() {
+		return new TextComponentString(this.getName());
 	}
 
 	@Override

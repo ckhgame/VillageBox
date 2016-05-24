@@ -6,7 +6,6 @@ import ckhbox.villagebox.common.block.decoration.BlockChair;
 import ckhbox.villagebox.common.block.decoration.BlockFlowerInPot;
 import ckhbox.villagebox.common.block.decoration.BlockTable;
 import ckhbox.villagebox.common.block.tool.BlockBuildBox;
-import ckhbox.villagebox.common.block.tool.BlockMagicTrashCan;
 import ckhbox.villagebox.common.block.tool.BlockMailBox;
 import ckhbox.villagebox.common.block.totem.BlockTotem;
 import ckhbox.villagebox.common.block.totem.BlockTotemPole;
@@ -14,6 +13,8 @@ import ckhbox.villagebox.common.item.totem.ItemBlockWithInfo;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityFireTotem;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityNatureTotem;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityWaterTotem;
+import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
@@ -116,103 +117,107 @@ public class ModBlocks {
 	public static BlockTotemPole totempole2;
 	
 	public static void init(){
-		GameRegistry.registerBlock(mailbox=new BlockMailBox(),"mailbox");
-		//GameRegistry.registerBlock(alchemyPot=new BlockAlchemyPot(),"alchemypot");
-		//GameRegistry.registerBlock(magicTrashCan=new BlockMagicTrashCan(),"magic_trash_can");
+		register(mailbox=new BlockMailBox(),"mailbox");
+		//register(alchemyPot=new BlockAlchemyPot(),"alchemypot");
+		//register(magicTrashCan=new BlockMagicTrashCan(),"magic_trash_can");
 		
-		GameRegistry.registerBlock(buildboxSmall=new BlockBuildBox(BlockBuildBox.BuildSize.Small),"buildbox_small");
-		GameRegistry.registerBlock(buildboxMedium=new BlockBuildBox(BlockBuildBox.BuildSize.Medium),"buildbox_medium");
-		GameRegistry.registerBlock(buildboxLarge=new BlockBuildBox(BlockBuildBox.BuildSize.Large),"buildbox_large");
-		GameRegistry.registerBlock(buildboxExLarge=new BlockBuildBox(BlockBuildBox.BuildSize.ExLarge),"buildbox_exlarge");
+		register(buildboxSmall=new BlockBuildBox(BlockBuildBox.BuildSize.Small),"buildbox_small");
+		register(buildboxMedium=new BlockBuildBox(BlockBuildBox.BuildSize.Medium),"buildbox_medium");
+		register(buildboxLarge=new BlockBuildBox(BlockBuildBox.BuildSize.Large),"buildbox_large");
+		register(buildboxExLarge=new BlockBuildBox(BlockBuildBox.BuildSize.ExLarge),"buildbox_exlarge");
 		
 		//tables
-		GameRegistry.registerBlock(tableOak=new BlockTable("tableOak"),"table_oak");
-		GameRegistry.registerBlock(tableJungle=new BlockTable("tableJungle"),"table_jungle");
-		GameRegistry.registerBlock(tableBirch=new BlockTable("tableBirch"),"table_birch");
-		GameRegistry.registerBlock(tableSpruce=new BlockTable("tableSpruce"),"table_spruce");
-		GameRegistry.registerBlock(tableAcacia=new BlockTable("tableAcacia"),"table_acacia");
-		GameRegistry.registerBlock(tableDarkOak=new BlockTable("tableBigOak"),"table_big_oak");
+		register(tableOak=new BlockTable("tableOak"),"table_oak");
+		register(tableJungle=new BlockTable("tableJungle"),"table_jungle");
+		register(tableBirch=new BlockTable("tableBirch"),"table_birch");
+		register(tableSpruce=new BlockTable("tableSpruce"),"table_spruce");
+		register(tableAcacia=new BlockTable("tableAcacia"),"table_acacia");
+		register(tableDarkOak=new BlockTable("tableBigOak"),"table_big_oak");
 		
 		//chairs
-		GameRegistry.registerBlock(chairOak=new BlockChair("chairOak"),"chair_oak");
-		GameRegistry.registerBlock(chairJungle=new BlockChair("chairJungle"),"chair_jungle");
-		GameRegistry.registerBlock(chairBirch=new BlockChair("chairBirch"),"chair_birch");
-		GameRegistry.registerBlock(chairSpruce=new BlockChair("chairSpruce"),"chair_spruce");
-		GameRegistry.registerBlock(chairAcacia=new BlockChair("chairAcacia"),"chair_acacia");
-		GameRegistry.registerBlock(chairDarkOak=new BlockChair("chairBigOak"),"chair_big_oak");
+		register(chairOak=new BlockChair("chairOak"),"chair_oak");
+		register(chairJungle=new BlockChair("chairJungle"),"chair_jungle");
+		register(chairBirch=new BlockChair("chairBirch"),"chair_birch");
+		register(chairSpruce=new BlockChair("chairSpruce"),"chair_spruce");
+		register(chairAcacia=new BlockChair("chairAcacia"),"chair_acacia");
+		register(chairDarkOak=new BlockChair("chairBigOak"),"chair_big_oak");
 		
 		//benches
-		GameRegistry.registerBlock(benchOak=new BlockBench("benchOak"),"bench_oak");
-		GameRegistry.registerBlock(benchJungle=new BlockBench("benchJungle"),"bench_jungle");
-		GameRegistry.registerBlock(benchBirch=new BlockBench("benchBirch"),"bench_birch");
-		GameRegistry.registerBlock(benchSpruce=new BlockBench("benchSpruce"),"bench_spruce");
-		GameRegistry.registerBlock(benchAcacia=new BlockBench("benchAcacia"),"bench_acacia");
-		GameRegistry.registerBlock(benchDarkOak=new BlockBench("benchBigOak"),"bench_big_oak");
+		register(benchOak=new BlockBench("benchOak"),"bench_oak");
+		register(benchJungle=new BlockBench("benchJungle"),"bench_jungle");
+		register(benchBirch=new BlockBench("benchBirch"),"bench_birch");
+		register(benchSpruce=new BlockBench("benchSpruce"),"bench_spruce");
+		register(benchAcacia=new BlockBench("benchAcacia"),"bench_acacia");
+		register(benchDarkOak=new BlockBench("benchBigOak"),"bench_big_oak");
 		
 		//carpets
-		GameRegistry.registerBlock(carpet0=new BlockCarpet("carpet0"),"carpet_0");
-		GameRegistry.registerBlock(carpet1=new BlockCarpet("carpet1"),"carpet_1");
-		GameRegistry.registerBlock(carpet2=new BlockCarpet("carpet2"),"carpet_2");
-		GameRegistry.registerBlock(carpet3=new BlockCarpet("carpet3"),"carpet_3");
-		GameRegistry.registerBlock(carpet4=new BlockCarpet("carpet4"),"carpet_4");
-		GameRegistry.registerBlock(carpet5=new BlockCarpet("carpet5"),"carpet_5");
-		GameRegistry.registerBlock(carpet6=new BlockCarpet("carpet6"),"carpet_6");
-		GameRegistry.registerBlock(carpet7=new BlockCarpet("carpet7"),"carpet_7");
-		GameRegistry.registerBlock(carpet8=new BlockCarpet("carpet8"),"carpet_8");
-		GameRegistry.registerBlock(carpet9=new BlockCarpet("carpet9"),"carpet_9");
-		GameRegistry.registerBlock(carpet10=new BlockCarpet("carpet10"),"carpet_10");
-		GameRegistry.registerBlock(carpet11=new BlockCarpet("carpet11"),"carpet_11");
-		GameRegistry.registerBlock(carpet12=new BlockCarpet("carpet12"),"carpet_12");
-		GameRegistry.registerBlock(carpet13=new BlockCarpet("carpet13"),"carpet_13");
-		GameRegistry.registerBlock(carpet14=new BlockCarpet("carpet14"),"carpet_14");
-		GameRegistry.registerBlock(carpet15=new BlockCarpet("carpet15"),"carpet_15");
-		GameRegistry.registerBlock(carpet16=new BlockCarpet("carpet16"),"carpet_16");
-		GameRegistry.registerBlock(carpet17=new BlockCarpet("carpet17"),"carpet_17");
-		GameRegistry.registerBlock(carpet18=new BlockCarpet("carpet18"),"carpet_18");
-		GameRegistry.registerBlock(carpet19=new BlockCarpet("carpet19"),"carpet_19");
-		GameRegistry.registerBlock(carpet20=new BlockCarpet("carpet20"),"carpet_20");
-		GameRegistry.registerBlock(carpet21=new BlockCarpet("carpet21"),"carpet_21");
-		GameRegistry.registerBlock(carpet22=new BlockCarpet("carpet22"),"carpet_22");
-		GameRegistry.registerBlock(carpet23=new BlockCarpet("carpet23"),"carpet_23");
-		GameRegistry.registerBlock(carpet24=new BlockCarpet("carpet24"),"carpet_24");
-		GameRegistry.registerBlock(carpet25=new BlockCarpet("carpet25"),"carpet_25");
-		GameRegistry.registerBlock(carpet26=new BlockCarpet("carpet26"),"carpet_26");
-		GameRegistry.registerBlock(carpet27=new BlockCarpet("carpet27"),"carpet_27");
-		GameRegistry.registerBlock(carpet28=new BlockCarpet("carpet28"),"carpet_28");
-		GameRegistry.registerBlock(carpet29=new BlockCarpet("carpet29"),"carpet_29");
-		GameRegistry.registerBlock(carpet30=new BlockCarpet("carpet30"),"carpet_30");
-		GameRegistry.registerBlock(carpet31=new BlockCarpet("carpet31"),"carpet_31");
-		GameRegistry.registerBlock(carpetWool0=new BlockCarpet("carpetWool0"),"carpet_wool_0");
-		GameRegistry.registerBlock(carpetWool1=new BlockCarpet("carpetWool1"),"carpet_wool_1");
-		GameRegistry.registerBlock(carpetWool2=new BlockCarpet("carpetWool2"),"carpet_wool_2");
-		GameRegistry.registerBlock(carpetWool3=new BlockCarpet("carpetWool3"),"carpet_wool_3");
-		GameRegistry.registerBlock(carpetWool4=new BlockCarpet("carpetWool4"),"carpet_wool_4");
-		GameRegistry.registerBlock(carpetWool5=new BlockCarpet("carpetWool5"),"carpet_wool_5");
-		GameRegistry.registerBlock(carpetWool6=new BlockCarpet("carpetWool6"),"carpet_wool_6");
-		GameRegistry.registerBlock(carpetWool7=new BlockCarpet("carpetWool7"),"carpet_wool_7");
-		GameRegistry.registerBlock(carpetWool8=new BlockCarpet("carpetWool8"),"carpet_wool_8");
-		GameRegistry.registerBlock(carpetWool9=new BlockCarpet("carpetWool9"),"carpet_wool_9");
-		GameRegistry.registerBlock(carpetWool10=new BlockCarpet("carpetWool10"),"carpet_wool_10");
-		GameRegistry.registerBlock(carpetWool11=new BlockCarpet("carpetWool11"),"carpet_wool_11");
-		GameRegistry.registerBlock(carpetWool12=new BlockCarpet("carpetWool12"),"carpet_wool_12");
-		GameRegistry.registerBlock(carpetWool13=new BlockCarpet("carpetWool13"),"carpet_wool_13");
-		GameRegistry.registerBlock(carpetWool14=new BlockCarpet("carpetWool14"),"carpet_wool_14");
-		GameRegistry.registerBlock(carpetWool15=new BlockCarpet("carpetWool15"),"carpet_wool_15");
+		register(carpet0=new BlockCarpet("carpet0"),"carpet_0");
+		register(carpet1=new BlockCarpet("carpet1"),"carpet_1");
+		register(carpet2=new BlockCarpet("carpet2"),"carpet_2");
+		register(carpet3=new BlockCarpet("carpet3"),"carpet_3");
+		register(carpet4=new BlockCarpet("carpet4"),"carpet_4");
+		register(carpet5=new BlockCarpet("carpet5"),"carpet_5");
+		register(carpet6=new BlockCarpet("carpet6"),"carpet_6");
+		register(carpet7=new BlockCarpet("carpet7"),"carpet_7");
+		register(carpet8=new BlockCarpet("carpet8"),"carpet_8");
+		register(carpet9=new BlockCarpet("carpet9"),"carpet_9");
+		register(carpet10=new BlockCarpet("carpet10"),"carpet_10");
+		register(carpet11=new BlockCarpet("carpet11"),"carpet_11");
+		register(carpet12=new BlockCarpet("carpet12"),"carpet_12");
+		register(carpet13=new BlockCarpet("carpet13"),"carpet_13");
+		register(carpet14=new BlockCarpet("carpet14"),"carpet_14");
+		register(carpet15=new BlockCarpet("carpet15"),"carpet_15");
+		register(carpet16=new BlockCarpet("carpet16"),"carpet_16");
+		register(carpet17=new BlockCarpet("carpet17"),"carpet_17");
+		register(carpet18=new BlockCarpet("carpet18"),"carpet_18");
+		register(carpet19=new BlockCarpet("carpet19"),"carpet_19");
+		register(carpet20=new BlockCarpet("carpet20"),"carpet_20");
+		register(carpet21=new BlockCarpet("carpet21"),"carpet_21");
+		register(carpet22=new BlockCarpet("carpet22"),"carpet_22");
+		register(carpet23=new BlockCarpet("carpet23"),"carpet_23");
+		register(carpet24=new BlockCarpet("carpet24"),"carpet_24");
+		register(carpet25=new BlockCarpet("carpet25"),"carpet_25");
+		register(carpet26=new BlockCarpet("carpet26"),"carpet_26");
+		register(carpet27=new BlockCarpet("carpet27"),"carpet_27");
+		register(carpet28=new BlockCarpet("carpet28"),"carpet_28");
+		register(carpet29=new BlockCarpet("carpet29"),"carpet_29");
+		register(carpet30=new BlockCarpet("carpet30"),"carpet_30");
+		register(carpet31=new BlockCarpet("carpet31"),"carpet_31");
+		register(carpetWool0=new BlockCarpet("carpetWool0"),"carpet_wool_0");
+		register(carpetWool1=new BlockCarpet("carpetWool1"),"carpet_wool_1");
+		register(carpetWool2=new BlockCarpet("carpetWool2"),"carpet_wool_2");
+		register(carpetWool3=new BlockCarpet("carpetWool3"),"carpet_wool_3");
+		register(carpetWool4=new BlockCarpet("carpetWool4"),"carpet_wool_4");
+		register(carpetWool5=new BlockCarpet("carpetWool5"),"carpet_wool_5");
+		register(carpetWool6=new BlockCarpet("carpetWool6"),"carpet_wool_6");
+		register(carpetWool7=new BlockCarpet("carpetWool7"),"carpet_wool_7");
+		register(carpetWool8=new BlockCarpet("carpetWool8"),"carpet_wool_8");
+		register(carpetWool9=new BlockCarpet("carpetWool9"),"carpet_wool_9");
+		register(carpetWool10=new BlockCarpet("carpetWool10"),"carpet_wool_10");
+		register(carpetWool11=new BlockCarpet("carpetWool11"),"carpet_wool_11");
+		register(carpetWool12=new BlockCarpet("carpetWool12"),"carpet_wool_12");
+		register(carpetWool13=new BlockCarpet("carpetWool13"),"carpet_wool_13");
+		register(carpetWool14=new BlockCarpet("carpetWool14"),"carpet_wool_14");
+		register(carpetWool15=new BlockCarpet("carpetWool15"),"carpet_wool_15");
 		
-		GameRegistry.registerBlock(flowerGardenia=new BlockFlowerInPot("flowerGardenia"),"flower_gardenia");
-		GameRegistry.registerBlock(flowerHeartMushroom=new BlockFlowerInPot("flowerHeartMushroom"),"flower_heartmushroom");
-		GameRegistry.registerBlock(flowerRanunculus=new BlockFlowerInPot("flowerRanunculus"),"flower_ranunculus");
-		GameRegistry.registerBlock(flowerRedRose=new BlockFlowerInPot("flowerRedRose"),"flower_redrose");
-		GameRegistry.registerBlock(flowerRosySpiraea=new BlockFlowerInPot("flowerRosySpiraea"),"flower_rosyspiraea");
-		GameRegistry.registerBlock(flowerPlumBlossom=new BlockFlowerInPot("flowerPlumBlossom"),"flower_plumblossom");
-		GameRegistry.registerBlock(flowerHydrangeas=new BlockFlowerInPot("flowerHydrangeas"),"flower_hydrangeas");
-		GameRegistry.registerBlock(bonsai=new BlockFlowerInPot("bonsai"),"bonsai");
+		register(flowerGardenia=new BlockFlowerInPot("flowerGardenia"),"flower_gardenia");
+		register(flowerHeartMushroom=new BlockFlowerInPot("flowerHeartMushroom"),"flower_heartmushroom");
+		register(flowerRanunculus=new BlockFlowerInPot("flowerRanunculus"),"flower_ranunculus");
+		register(flowerRedRose=new BlockFlowerInPot("flowerRedRose"),"flower_redrose");
+		register(flowerRosySpiraea=new BlockFlowerInPot("flowerRosySpiraea"),"flower_rosyspiraea");
+		register(flowerPlumBlossom=new BlockFlowerInPot("flowerPlumBlossom"),"flower_plumblossom");
+		register(flowerHydrangeas=new BlockFlowerInPot("flowerHydrangeas"),"flower_hydrangeas");
+		register(bonsai=new BlockFlowerInPot("bonsai"),"bonsai");
 		
-		GameRegistry.registerBlock(fireTotem=new BlockTotem("fireTotem", TileEntityFireTotem.class), ItemBlockWithInfo.class, "fire_totem");
-		GameRegistry.registerBlock(waterTotem=new BlockTotem("waterTotem",TileEntityWaterTotem.class), ItemBlockWithInfo.class, "water_totem");
-		GameRegistry.registerBlock(natureTotem=new BlockTotem("natureTotem",TileEntityNatureTotem.class), ItemBlockWithInfo.class, "nature_totem");
-		GameRegistry.registerBlock(totempole0=new BlockTotemPole("totempole0"), ItemBlockWithInfo.class, "totempole_0");
-		GameRegistry.registerBlock(totempole1=new BlockTotemPole("totempole1"), ItemBlockWithInfo.class, "totempole_1");
-		GameRegistry.registerBlock(totempole2=new BlockTotemPole("totempole2"), ItemBlockWithInfo.class, "totempole_2");
+		register(fireTotem=new BlockTotem("fireTotem", TileEntityFireTotem.class), "fire_totem");
+		register(waterTotem=new BlockTotem("waterTotem",TileEntityWaterTotem.class), "water_totem");
+		register(natureTotem=new BlockTotem("natureTotem",TileEntityNatureTotem.class), "nature_totem");
+		register(totempole0=new BlockTotemPole("totempole0"), "totempole_0");
+		register(totempole1=new BlockTotemPole("totempole1"), "totempole_1");
+		register(totempole2=new BlockTotemPole("totempole2"), "totempole_2");
+	}
+	
+	public static void register(Block block, String name){
+		GameRegistry.register(block,new ResourceLocation(name));
 	}
 }

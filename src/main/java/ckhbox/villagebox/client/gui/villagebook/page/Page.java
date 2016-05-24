@@ -8,6 +8,7 @@ import ckhbox.villagebox.client.gui.villagebook.page.link.Link;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -116,7 +117,7 @@ public abstract class Page {
 		for(Link link : this.links){
 			if(link.isMouseHover(mouseX, mouseY)){
 				if(link.link != null){
-					this.guiVillageBook.mc.getSoundHandler().playSound(PositionedSoundRecord.create(new ResourceLocation("gui.button.press"), 1.0F));
+					this.guiVillageBook.mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.ui_button_click, 1.0F));
 					this.guiVillageBook.gotoLink(link.link);
 					break;
 				}

@@ -11,10 +11,12 @@ import ckhbox.villagebox.common.event.EventWorld;
 import ckhbox.villagebox.common.gui.GuiHandler;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.network.ModNetwork;
+import ckhbox.villagebox.common.player.CapExPlayerProperties;
 import ckhbox.villagebox.common.recipe.ModRecipes;
 import ckhbox.villagebox.common.tileentity.ModTileEntities;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.model.animation.CapabilityAnimation;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -28,6 +30,9 @@ public class CommonProxy {
 		ModEntities.init();
 		ModTileEntities.init();
 		ModRecipes.init();
+		
+		//capability
+		CapExPlayerProperties.register();
 		
 		//gui
 		NetworkRegistry.INSTANCE.registerGuiHandler(VillageBoxMod.instance, new GuiHandler());

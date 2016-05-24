@@ -1,63 +1,57 @@
 package ckhbox.villagebox.common.block.decoration;
 
-import java.util.List;
-
-import com.google.common.base.Predicate;
-
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumWorldBlockLayer;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockFlowerInPot extends Block{
 	
+	private static final AxisAlignedBB FLOWER_POT_AABB = new AxisAlignedBB(0.3125D, 0.0D, 0.3125D, 0.6875D, 0.375D, 0.6875D);
+	
 	public BlockFlowerInPot(String name){
 		super(Material.circuits);
 		this.setUnlocalizedName(PathHelper.full(name));
 		this.setCreativeTab(ModItems.tabVB);
-		this.setBlockBoundsForItemRender();
-		this.setStepSound(soundTypeStone);
+		this.setStepSound(SoundType.WOOD);
 	}
 	
-    public void setBlockBoundsForItemRender()
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return FLOWER_POT_AABB;
+	}
+    
+	@Override
+    public EnumBlockRenderType getRenderType(IBlockState state)
     {
-        float f = 0.375F;
-        float f1 = f / 2.0F;
-        this.setBlockBounds(0.5F - f1, 0.0F, 0.5F - f1, 0.5F + f1, f, 0.5F + f1);
+        return EnumBlockRenderType.MODEL;
     }
     
-    public int getRenderType()
-    {
-        return 3;
-    }
-    
-    public boolean isOpaqueCube()
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
 
-    public boolean isFullCube()
+    @Override
+    public boolean isFullCube(IBlockState state)
     {
         return false;
     }
     
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer()
+    public BlockRenderLayer getBlockLayer()
     {
-        return EnumWorldBlockLayer.CUTOUT;
+        return BlockRenderLayer.CUTOUT;
     }
 
 }

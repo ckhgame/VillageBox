@@ -6,7 +6,7 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 
 public class Quest {
 	private ItemStack[] required;
@@ -26,7 +26,7 @@ public class Quest {
 	}
 	
 	public String getText(EntityPlayer player){
-		return StatCollector.translateToLocalFormatted(PathHelper.full("quest.text"),player.getName());
+		return I18n.translateToLocalFormatted(PathHelper.full("quest.text"),player.getName());
 	}
 	
 	public boolean canComplete(EntityPlayer player){

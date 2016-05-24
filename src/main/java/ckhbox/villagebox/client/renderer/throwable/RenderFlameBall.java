@@ -1,16 +1,10 @@
 package ckhbox.villagebox.client.renderer.throwable;
 
-import ckhbox.villagebox.client.model.villager.ModelVillager;
 import ckhbox.villagebox.common.entity.throwable.EntityFlameBall;
-import ckhbox.villagebox.common.entity.villager.EntityVillager;
-import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.entity.RenderBiped;
-import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

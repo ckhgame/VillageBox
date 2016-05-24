@@ -1,15 +1,10 @@
 package ckhbox.villagebox.client.renderer;
 
-import ckhbox.villagebox.client.renderer.villager.RenderFactoryVillager;
-import ckhbox.villagebox.common.block.ModBlocks;
-import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

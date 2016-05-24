@@ -2,27 +2,20 @@ package ckhbox.villagebox.common.block.tool;
 
 import ckhbox.villagebox.common.block.common.BlockFacing;
 import ckhbox.villagebox.common.item.ModItems;
-import ckhbox.villagebox.common.item.common.ItemMail;
 import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.tool.MailGenerator;
-import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class BlockMailBox extends BlockFacing{
@@ -31,23 +24,23 @@ public class BlockMailBox extends BlockFacing{
 		super(Material.wood);
 		this.setUnlocalizedName(PathHelper.full("mailbox"));
 		this.setHardness(2.5F);
-		this.setStepSound(soundTypeWood);
+		this.setStepSound(SoundType.WOOD);
 		this.setCreativeTab(ModItems.tabVB);
 	}
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
+			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		
 		if(!worldIn.isRemote){		
-			if(playerIn.getHeldItem() != null && playerIn.getHeldItem().getItem() == ModItems.invitation){
+			if(playerIn.getHeldItem(hand) != null && playerIn.getHeldItem(hand).getItem() == ModItems.invitation){
 				if(ExtendedPlayerProperties.get(playerIn).hasSentInvitation){
-					playerIn.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.mail.invitefailed")));
+					playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.mail.invitefailed")));
 				}
 				else{
 					if (!playerIn.capabilities.isCreativeMode)
 					{
-						ItemStack stack= playerIn.getHeldItem();
+						ItemStack stack= playerIn.getHeldItem(hand);
 						--stack.stackSize;
 					
 					    if (stack.stackSize <= 0)
@@ -56,7 +49,7 @@ public class BlockMailBox extends BlockFacing{
 					    }
 					}
 					ExtendedPlayerProperties.get(playerIn).sendNewVillagerInvitation();
-					playerIn.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.mail.invitesuccess")));
+					playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.mail.invitesuccess")));
 				}
 			}
 			else{
@@ -83,7 +76,7 @@ public class BlockMailBox extends BlockFacing{
 		            worldIn.spawnEntityInWorld(entityitem);
 				}
 				else{
-					playerIn.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.mail.nomail")));
+					playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.mail.nomail")));
 				}
 			}
 			

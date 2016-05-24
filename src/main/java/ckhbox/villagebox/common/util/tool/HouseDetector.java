@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ckhbox.villagebox.common.util.math.IntBoundary;
 import ckhbox.villagebox.common.util.math.IntVec3;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class HouseDetector {
@@ -70,7 +70,7 @@ public class HouseDetector {
 	}
 	
 	private static boolean isEnd(World world, IntVec3 pos){
-		return world.getBlockState(new BlockPos(pos.x, pos.y, pos.z)).getBlock().getMaterial().blocksMovement();
+		return world.getBlockState(new BlockPos(pos.x, pos.y, pos.z)).getMaterial().blocksMovement();
 	}
 	
 	private static boolean hasChecked(ArrayList<IntVec3> closeList, IntVec3 pos){

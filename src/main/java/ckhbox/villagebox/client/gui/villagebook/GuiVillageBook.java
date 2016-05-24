@@ -149,7 +149,7 @@ public class GuiVillageBook extends GuiContainer{
 	    RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
 	    rendermanager.setPlayerViewY(180.0F);
 	    rendermanager.setRenderShadow(false);
-	    rendermanager.renderEntityWithPosYaw(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+	    rendermanager.doRenderEntity(ent, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
 	    rendermanager.setRenderShadow(true);
 	    ent.renderYawOffset = f;
 	    ent.rotationYaw = f1;

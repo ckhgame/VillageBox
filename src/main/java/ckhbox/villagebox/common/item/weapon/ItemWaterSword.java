@@ -4,15 +4,16 @@ import java.util.List;
 
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public class ItemWaterSword extends ItemSword{
@@ -29,11 +30,11 @@ public class ItemWaterSword extends ItemSword{
 		if(entityIn instanceof EntityPlayer){
 			EntityPlayer p = (EntityPlayer)entityIn;
 			if(p.inventory.currentItem == itemSlot){
-				if(!p.isPotionActive(Potion.waterBreathing.id)){
-					p.addPotionEffect(new PotionEffect(Potion.waterBreathing.id,40));
+				if(!p.isPotionActive(MobEffects.waterBreathing)){
+					p.addPotionEffect(new PotionEffect(MobEffects.waterBreathing,40));
 				}
-				if(!p.isPotionActive(Potion.moveSpeed.id)){
-					p.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,40,1));
+				if(!p.isPotionActive(MobEffects.moveSpeed)){
+					p.addPotionEffect(new PotionEffect(MobEffects.moveSpeed,40,1));
 				}
 			}
 		}
@@ -44,7 +45,7 @@ public class ItemWaterSword extends ItemSword{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = StatCollector.translateToLocal(PathHelper.full("info.item.waterSword"));
+		String info = I18n.translateToLocal(PathHelper.full("info.item.waterSword"));
 		tooltip.add(info);
 	}
 }

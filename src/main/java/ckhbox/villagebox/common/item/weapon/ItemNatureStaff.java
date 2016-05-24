@@ -2,27 +2,17 @@ package ckhbox.villagebox.common.item.weapon;
 
 import java.util.List;
 
-import ckhbox.villagebox.common.entity.throwable.EntityFlameBall;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.EnumDyeColor;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public class ItemNatureStaff extends Item
@@ -38,7 +28,7 @@ public class ItemNatureStaff extends Item
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = StatCollector.translateToLocal(PathHelper.full("info.item.natureStaff"));
+		String info = I18n.translateToLocal(PathHelper.full("info.item.natureStaff"));
 		tooltip.add(info);
 	}
     
@@ -63,14 +53,14 @@ public class ItemNatureStaff extends Item
         return false;
     }
 	 
-	 public void damageStaff(EntityPlayer player, ItemStack stack){
-         if (!player.capabilities.isCreativeMode)
-         {
-         	stack.damageItem(1, player);
-         	if(stack.getItemDamage() == 0){
-         		player.setCurrentItemOrArmor(0, new ItemStack(ModItems.staff));
-         	}
-         }
+	public void damageStaff(EntityPlayer player, ItemStack stack){
+        if (!player.capabilities.isCreativeMode)
+        {
+        	stack.damageItem(1, player);
+        	if(stack.getItemDamage() == 0){
+        		player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.staff));
+        	}
+        }
 	 }
 	 
 	 public boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target)

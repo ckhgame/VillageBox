@@ -10,8 +10,8 @@ import ckhbox.villagebox.common.util.math.IntVec3;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSavedData;
 import net.minecraftforge.common.util.Constants.NBT;
@@ -111,7 +111,7 @@ public class DataVillage extends WorldSavedData{
 		}
 		villager.setUpgradingHistory(deadVillager.upgradingHistory);
 		this.world.spawnEntityInWorld(villager);
-		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.revived"),deadVillager.name));
+		this.world.getMinecraftServer().addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.revived"),deadVillager.name));
 	}
 	
 	@Override

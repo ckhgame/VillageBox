@@ -6,27 +6,19 @@ import ckhbox.villagebox.client.gui.GuiHelper;
 import ckhbox.villagebox.common.gui.common.ContainerTrading;
 import ckhbox.villagebox.common.network.ModNetwork;
 import ckhbox.villagebox.common.network.message.common.MessageGuiSelectTradeRecipeIndex;
-import ckhbox.villagebox.common.network.message.villager.MessageGuiVillagerOpen;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.trading.ITrading;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
 import ckhbox.villagebox.common.village.trading.TradingRecipeList;
-import io.netty.buffer.Unpooled;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ContainerMerchant;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
-import net.minecraft.village.MerchantRecipe;
-import net.minecraft.village.MerchantRecipeList;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -131,7 +123,7 @@ public class GuiTrading extends GuiContainer{
             	int py = (this.height - this.heightAllRecpiesPanel) / 2;  
             	
             	//title
-            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, StatCollector.translateToLocal(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
+            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, I18n.translateToLocal(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
 
             	int rx,ry;
             	//recipes

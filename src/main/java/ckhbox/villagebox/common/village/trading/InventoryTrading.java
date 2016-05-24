@@ -1,13 +1,10 @@
 package ckhbox.villagebox.common.village.trading;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.village.MerchantRecipe;
-import net.minecraft.village.MerchantRecipeList;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 
 public class InventoryTrading implements IInventory{
 
@@ -35,8 +32,8 @@ public class InventoryTrading implements IInventory{
 	}
 
 	@Override
-	public IChatComponent getDisplayName() {
-		return new ChatComponentText(this.getName());
+	public ITextComponent getDisplayName() {
+		return new TextComponentString(this.getName());
 	}
 
 	@Override

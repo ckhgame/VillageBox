@@ -5,14 +5,14 @@ import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,10 +27,7 @@ public class RenderPainting extends Render<EntityPainting>
     }
 
     /**
-     * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
-     * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
-     * (Render<T extends Entity>) and this method has signature public void func_76986_a(T entity, double d, double d1,
-     * double d2, float f, float f1). But JAD is pre 1.5 so doe
+     * Renders the desired {@code T} type Entity.
      */
     public void doRender(EntityPainting entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
@@ -42,7 +39,21 @@ public class RenderPainting extends Render<EntityPainting>
         EntityPainting.EnumArt entitypainting$enumart = entity.art;
         float f = 0.0625F;
         GlStateManager.scale(f, f, f);
+
+        if (this.renderOutlines)
+        {
+            GlStateManager.enableColorMaterial();
+            GlStateManager.enableOutlineMode(this.getTeamColor(entity));
+        }
+
         this.renderPainting(entity, entitypainting$enumart.sizeX, entitypainting$enumart.sizeY, entitypainting$enumart.offsetX, entitypainting$enumart.offsetY);
+
+        if (this.renderOutlines)
+        {
+            GlStateManager.disableOutlineMode();
+            GlStateManager.disableColorMaterial();
+        }
+
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
@@ -88,32 +99,32 @@ public class RenderPainting extends Render<EntityPainting>
                 float f21 = (float)(textureV + height - j * 16) / 256.0F;
                 float f22 = (float)(textureV + height - (j + 1) * 16) / 256.0F;
                 Tessellator tessellator = Tessellator.getInstance();
-                WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-                worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX_NORMAL);
-                worldrenderer.pos((double)f15, (double)f18, (double)(-f2)).tex((double)f20, (double)f21).normal(0.0F, 0.0F, -1.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f18, (double)(-f2)).tex((double)f19, (double)f21).normal(0.0F, 0.0F, -1.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f17, (double)(-f2)).tex((double)f19, (double)f22).normal(0.0F, 0.0F, -1.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f17, (double)(-f2)).tex((double)f20, (double)f22).normal(0.0F, 0.0F, -1.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f17, (double)f2).tex((double)f3, (double)f5).normal(0.0F, 0.0F, 1.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f17, (double)f2).tex((double)f4, (double)f5).normal(0.0F, 0.0F, 1.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f18, (double)f2).tex((double)f4, (double)f6).normal(0.0F, 0.0F, 1.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f18, (double)f2).tex((double)f3, (double)f6).normal(0.0F, 0.0F, 1.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f17, (double)(-f2)).tex((double)f7, (double)f9).normal(0.0F, 1.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f17, (double)(-f2)).tex((double)f8, (double)f9).normal(0.0F, 1.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f17, (double)f2).tex((double)f8, (double)f10).normal(0.0F, 1.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f17, (double)f2).tex((double)f7, (double)f10).normal(0.0F, 1.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f18, (double)f2).tex((double)f7, (double)f9).normal(0.0F, -1.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f18, (double)f2).tex((double)f8, (double)f9).normal(0.0F, -1.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f18, (double)(-f2)).tex((double)f8, (double)f10).normal(0.0F, -1.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f18, (double)(-f2)).tex((double)f7, (double)f10).normal(0.0F, -1.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f17, (double)f2).tex((double)f12, (double)f13).normal(-1.0F, 0.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f18, (double)f2).tex((double)f12, (double)f14).normal(-1.0F, 0.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f18, (double)(-f2)).tex((double)f11, (double)f14).normal(-1.0F, 0.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f15, (double)f17, (double)(-f2)).tex((double)f11, (double)f13).normal(-1.0F, 0.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f17, (double)(-f2)).tex((double)f12, (double)f13).normal(1.0F, 0.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f18, (double)(-f2)).tex((double)f12, (double)f14).normal(1.0F, 0.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f18, (double)f2).tex((double)f11, (double)f14).normal(1.0F, 0.0F, 0.0F).endVertex();
-                worldrenderer.pos((double)f16, (double)f17, (double)f2).tex((double)f11, (double)f13).normal(1.0F, 0.0F, 0.0F).endVertex();
+                VertexBuffer vertexbuffer = tessellator.getBuffer();
+                vertexbuffer.begin(7, DefaultVertexFormats.POSITION_TEX_NORMAL);
+                vertexbuffer.pos((double)f15, (double)f18, (double)(-f2)).tex((double)f20, (double)f21).normal(0.0F, 0.0F, -1.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f18, (double)(-f2)).tex((double)f19, (double)f21).normal(0.0F, 0.0F, -1.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f17, (double)(-f2)).tex((double)f19, (double)f22).normal(0.0F, 0.0F, -1.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f17, (double)(-f2)).tex((double)f20, (double)f22).normal(0.0F, 0.0F, -1.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f17, (double)f2).tex((double)f3, (double)f5).normal(0.0F, 0.0F, 1.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f17, (double)f2).tex((double)f4, (double)f5).normal(0.0F, 0.0F, 1.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f18, (double)f2).tex((double)f4, (double)f6).normal(0.0F, 0.0F, 1.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f18, (double)f2).tex((double)f3, (double)f6).normal(0.0F, 0.0F, 1.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f17, (double)(-f2)).tex((double)f7, (double)f9).normal(0.0F, 1.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f17, (double)(-f2)).tex((double)f8, (double)f9).normal(0.0F, 1.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f17, (double)f2).tex((double)f8, (double)f10).normal(0.0F, 1.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f17, (double)f2).tex((double)f7, (double)f10).normal(0.0F, 1.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f18, (double)f2).tex((double)f7, (double)f9).normal(0.0F, -1.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f18, (double)f2).tex((double)f8, (double)f9).normal(0.0F, -1.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f18, (double)(-f2)).tex((double)f8, (double)f10).normal(0.0F, -1.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f18, (double)(-f2)).tex((double)f7, (double)f10).normal(0.0F, -1.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f17, (double)f2).tex((double)f12, (double)f13).normal(-1.0F, 0.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f18, (double)f2).tex((double)f12, (double)f14).normal(-1.0F, 0.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f18, (double)(-f2)).tex((double)f11, (double)f14).normal(-1.0F, 0.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f15, (double)f17, (double)(-f2)).tex((double)f11, (double)f13).normal(-1.0F, 0.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f17, (double)(-f2)).tex((double)f12, (double)f13).normal(1.0F, 0.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f18, (double)(-f2)).tex((double)f12, (double)f14).normal(1.0F, 0.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f18, (double)f2).tex((double)f11, (double)f14).normal(1.0F, 0.0F, 0.0F).endVertex();
+                vertexbuffer.pos((double)f16, (double)f17, (double)f2).tex((double)f11, (double)f13).normal(1.0F, 0.0F, 0.0F).endVertex();
                 tessellator.draw();
             }
         }

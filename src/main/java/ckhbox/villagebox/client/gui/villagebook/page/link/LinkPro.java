@@ -8,7 +8,7 @@ import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 
 public class LinkPro extends Link{
 
@@ -58,7 +58,7 @@ public class LinkPro extends Link{
 		if(this.unknownPro){
 			if(this.stringUnknownPro == null){
 				this.stringUnknownPro = new ArrayList<String>();
-				this.stringUnknownPro.add(StatCollector.translateToLocal(PathHelper.full("villageBook.unknownpro")));
+				this.stringUnknownPro.add(I18n.translateToLocal(PathHelper.full("villageBook.unknownpro")));
 			}
 			this.page.guiVillageBook.drawHoveringText(this.stringUnknownPro, mouseX, mouseY);
 		}

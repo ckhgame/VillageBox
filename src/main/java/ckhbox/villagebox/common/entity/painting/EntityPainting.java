@@ -14,9 +14,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -215,4 +216,9 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
             this.offsetY = textureV;
         }
     }
+
+	@Override
+	public void func_184523_o() {
+		this.playSound(SoundEvents.entity_painting_place, 1.0F, 1.0F);
+	}
 }

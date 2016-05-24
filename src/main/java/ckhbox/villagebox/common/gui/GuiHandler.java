@@ -25,7 +25,7 @@ public class GuiHandler implements IGuiHandler{
 		if(ID >= 100 && ID <200){
 			int dimension = x;
 			int entityID = y;
-			if(world.provider.getDimensionId() == dimension){
+			if(world.provider.getDimension() == dimension){
 				EntityVillager villager = (EntityVillager)world.getEntityByID(entityID);
 				if(villager != null){
 					switch(ID){
@@ -56,7 +56,7 @@ public class GuiHandler implements IGuiHandler{
 		if(ID >= 100 && ID <200){
 			int dimension = x;
 			int entityID = y;
-			if(world.provider.getDimensionId() == dimension){
+			if(world.provider.getDimension() == dimension){
 				EntityVillager villager = (EntityVillager)world.getEntityByID(entityID);
 				if(villager != null){
 					switch(ID){
