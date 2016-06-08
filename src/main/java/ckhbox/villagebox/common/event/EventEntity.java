@@ -34,8 +34,7 @@ public class EventEntity {
 		
 		if(ec == EntityZombie.class){
 			EntityZombie entity = (EntityZombie)event.getEntityLiving();
-			entity.tasks.addTask(4, new EntityAINearestAttackableTarget(entity, EntityVillager.class, true));
-			entity.targetTasks.addTask(2, new EntityAINearestAttackableTarget(entity, EntityVillager.class, false));
+			entity.targetTasks.addTask(3, new EntityAINearestAttackableTarget(entity, EntityVillager.class, true));
 		}
 		
     }
