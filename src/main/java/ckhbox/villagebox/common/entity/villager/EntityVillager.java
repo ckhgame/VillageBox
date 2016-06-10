@@ -359,7 +359,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			this.upgradingHistory.add(this.getProfession().getRegID());
 			this.setProfession(pid);
 			String newProName = this.getProfession().getDisplayName();		
-			this.worldObj.getMinecraftServer().addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.upgrade"),this.getName(),oldProName,newProName));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.upgrade"),this.getName(),oldProName,newProName));
 			//quest
 			this.removeCurrentQuest();
 		}
@@ -371,7 +371,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			int last = this.upgradingHistory.remove(this.upgradingHistory.size() - 1);
 			this.setProfession(last);
 			String newProName = this.getProfession().getDisplayName();
-			this.worldObj.getMinecraftServer().addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.downgrade"),this.getName(),oldProName,newProName));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.downgrade"),this.getName(),oldProName,newProName));
 			//quest
 			this.removeCurrentQuest();
 			return true;
@@ -385,7 +385,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		if(!this.worldObj.isRemote){
 			this.moveOutHome(player);
 			this.worldObj.removeEntity(this);
-			this.worldObj.getMinecraftServer().addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.dismiss"), player.getName(),this.getName(),this.getProfession().getDisplayName()));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.dismiss"), player.getName(),this.getName(),this.getProfession().getDisplayName()));
 			return true;
 		}
 		else{
@@ -415,7 +415,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		super.onDeath(cause);
 		if(!this.worldObj.isRemote){
 			DataVillage.get(this.worldObj).addDeadVillager(this);
-			this.worldObj.getMinecraftServer().addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.died"),this.getName()));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.died"),this.getName()));
 		}
 	}
 	
@@ -428,6 +428,10 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		int proid = ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue();
 		this.profession = Profession.registry.get(proid);
 		if(!this.worldObj.isRemote){
+			//clear both hands
+			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, null);
+			this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, null);
+			//get the item on either left hand or right hand
 			this.setItemStackToSlot(Rand.get().nextBoolean()?EntityEquipmentSlot.MAINHAND:EntityEquipmentSlot.OFFHAND, this.profession.getRandomHoldItem());
 		}
 	}

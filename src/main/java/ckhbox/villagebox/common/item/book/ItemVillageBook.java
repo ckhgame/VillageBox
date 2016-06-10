@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
@@ -26,7 +27,7 @@ public class ItemVillageBook extends Item{
 			playerIn.openGui(VillageBoxMod.instance, GuiIDs.VillageBook, worldIn, 0, 0, 0);
 		}
 		
-		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
+		return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
 	}
 	
 	

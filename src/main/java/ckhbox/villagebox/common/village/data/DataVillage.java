@@ -111,7 +111,7 @@ public class DataVillage extends WorldSavedData{
 		}
 		villager.setUpgradingHistory(deadVillager.upgradingHistory);
 		this.world.spawnEntityInWorld(villager);
-		this.world.getMinecraftServer().addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.revived"),deadVillager.name));
+		this.world.getMinecraftServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.revived"),deadVillager.name));
 	}
 	
 	@Override

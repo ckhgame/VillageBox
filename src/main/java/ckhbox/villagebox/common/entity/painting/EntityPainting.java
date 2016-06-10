@@ -25,9 +25,9 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityPainting extends EntityHanging implements IEntityAdditionalSpawnData
+public class EntityPainting extends EntityHanging
 {
-    public EntityPainting.EnumArt art;
+	public EntityPainting.EnumArt art;
 
     public EntityPainting(World worldIn)
     {
@@ -57,25 +57,12 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
 
         this.updateFacingWithBoundingBox(facing);
     }
-	
-	@Override
-	public void writeSpawnData(ByteBuf buffer) {
-		ByteBufUtils.writeUTF8String(buffer, this.art.title);
-        buffer.writeInt(this.hangingPosition.getX());
-        buffer.writeInt(this.hangingPosition.getY());
-        buffer.writeInt(this.hangingPosition.getZ());
-        buffer.writeByte(this.getHorizontalFacing().getIndex());
-	}
 
-	@Override
-	public void readSpawnData(ByteBuf buffer) {
-		//get title, pos and facing
-		String title = ByteBufUtils.readUTF8String(buffer);		   
-        BlockPos pos = new BlockPos(buffer.readInt(), buffer.readInt(), buffer.readInt());      
-        EnumFacing facing = EnumFacing.getFront((buffer.readByte()));
-        
-        this.hangingPosition = pos;
-        
+    @SideOnly(Side.CLIENT)
+    public EntityPainting(World worldIn, BlockPos pos, EnumFacing facing, String title)
+    {
+        this(worldIn, pos, facing);
+
         for (EntityPainting.EnumArt entitypainting$enumart : EntityPainting.EnumArt.values())
         {
             if (entitypainting$enumart.title.equals(title))
@@ -86,7 +73,7 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
         }
 
         this.updateFacingWithBoundingBox(facing);
-	}
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
@@ -137,6 +124,8 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
     {
         if (this.worldObj.getGameRules().getBoolean("doEntityDrops"))
         {
+            this.playSound(SoundEvents.entity_painting_break, 1.0F, 1.0F);
+
             if (brokenEntity instanceof EntityPlayer)
             {
                 EntityPlayer entityplayer = (EntityPlayer)brokenEntity;
@@ -151,13 +140,17 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
         }
     }
 
+    public void func_184523_o()
+    {
+        this.playSound(SoundEvents.entity_painting_place, 1.0F, 1.0F);
+    }
+
     /**
      * Sets the location and Yaw/Pitch of an entity in the world
      */
     public void setLocationAndAngles(double x, double y, double z, float yaw, float pitch)
     {
-        BlockPos blockpos = this.hangingPosition.add(x - this.posX, y - this.posY, z - this.posZ);
-        this.setPosition((double)blockpos.getX(), (double)blockpos.getY(), (double)blockpos.getZ());
+        this.setPosition(x, y, z);
     }
 
     @SideOnly(Side.CLIENT)
@@ -169,7 +162,7 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
 
     public static enum EnumArt
     {
-        TREE("Tree", 16, 16, 0, 0),
+    	TREE("Tree", 16, 16, 0, 0),
         TAVERN("Tavern", 16, 16, 16, 0),
         CHURCH("Church", 16, 16, 32, 0),
         MARKET("Matket", 16, 16, 48, 0),
@@ -199,7 +192,7 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
         HOUSE2("House2", 64, 48, 192, 160),
         TREE2("Tree2", 64, 48, 192, 208);
 
-        public static final int field_180001_A = "SkullAndRoses".length();
+        public static final int MAX_NAME_LENGTH = "SkullAndRoses".length();
         /** Painting Title. */
         public final String title;
         public final int sizeX;
@@ -216,9 +209,4 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
             this.offsetY = textureV;
         }
     }
-
-	@Override
-	public void func_184523_o() {
-		this.playSound(SoundEvents.entity_painting_place, 1.0F, 1.0F);
-	}
 }

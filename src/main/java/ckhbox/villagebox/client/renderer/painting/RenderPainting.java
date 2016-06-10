@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderPainting extends Render<EntityPainting>
 {
-    private static final ResourceLocation PAINTING_TEXTURE = new ResourceLocation(PathHelper.full("textures/painting/paintings.png"));
+    private static final ResourceLocation KRISTOFFER_PAINTING_TEXTURE = new ResourceLocation(PathHelper.full("textures/painting/paintings.png"));
 
     public RenderPainting(RenderManager renderManagerIn)
     {
@@ -64,7 +64,7 @@ public class RenderPainting extends Render<EntityPainting>
      */
     protected ResourceLocation getEntityTexture(EntityPainting entity)
     {
-        return PAINTING_TEXTURE;
+        return KRISTOFFER_PAINTING_TEXTURE;
     }
 
     private void renderPainting(EntityPainting painting, int width, int height, int textureU, int textureV)
