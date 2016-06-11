@@ -1,6 +1,7 @@
 package ckhbox.villagebox.common.entity.painting;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.lwjgl.BufferUtils;
 
@@ -8,6 +9,7 @@ import com.google.common.collect.Lists;
 import com.sun.prism.impl.BufferUtil;
 
 import ckhbox.villagebox.common.item.ModItems;
+import ckhbox.villagebox.common.util.helper.BufferHelper;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import net.minecraft.entity.Entity;
@@ -25,7 +27,7 @@ import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityPainting extends EntityHanging
+public class EntityPainting extends EntityHanging implements IEntityAdditionalSpawnData
 {
 	public EntityPainting.EnumArt art;
 
@@ -53,23 +55,6 @@ public class EntityPainting extends EntityHanging
         if (!list.isEmpty())
         {
             this.art = (EntityPainting.EnumArt)list.get(this.rand.nextInt(list.size()));
-        }
-
-        this.updateFacingWithBoundingBox(facing);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public EntityPainting(World worldIn, BlockPos pos, EnumFacing facing, String title)
-    {
-        this(worldIn, pos, facing);
-
-        for (EntityPainting.EnumArt entitypainting$enumart : EntityPainting.EnumArt.values())
-        {
-            if (entitypainting$enumart.title.equals(title))
-            {
-                this.art = entitypainting$enumart;
-                break;
-            }
         }
 
         this.updateFacingWithBoundingBox(facing);
@@ -116,6 +101,42 @@ public class EntityPainting extends EntityHanging
     {
         return this.art.sizeY;
     }
+    
+    
+    //readSpawnData & writeSpawnData basically are copies of the associated functions in SPacketSpawnPainting class
+    
+    @Override
+	public void writeSpawnData(ByteBuf buffer) {
+    	BufferHelper.writeUuid(buffer, this.getUniqueID());
+		ByteBufUtils.writeUTF8String(buffer, this.art.title);
+        buffer.writeInt(this.getHangingPosition().getX());
+        buffer.writeInt(this.getHangingPosition().getY());
+        buffer.writeInt(this.getHangingPosition().getZ());
+        buffer.writeByte(this.facingDirection.getHorizontalIndex());
+	}
+
+	@Override
+	public void readSpawnData(ByteBuf buffer) {
+		UUID uuid = BufferHelper.readUuid(buffer);
+		String title = ByteBufUtils.readUTF8String(buffer);		   
+        BlockPos pos = new BlockPos(buffer.readInt(), buffer.readInt(), buffer.readInt());      
+        EnumFacing facing = EnumFacing.getHorizontal((buffer.readUnsignedByte()));
+        
+        this.hangingPosition = pos;
+        
+        for (EntityPainting.EnumArt entitypainting$enumart : EntityPainting.EnumArt.values())		
+        {		
+        	if (entitypainting$enumart.title.equals(title))		
+        	{		
+        		this.art = entitypainting$enumart;
+        		break;		
+        	}		
+        }		
+
+        this.updateFacingWithBoundingBox(facing);
+        
+        this.setUniqueId(uuid);
+	}
 
     /**
      * Called when this entity is broken. Entity parameter may be null.
@@ -150,7 +171,8 @@ public class EntityPainting extends EntityHanging
      */
     public void setLocationAndAngles(double x, double y, double z, float yaw, float pitch)
     {
-        this.setPosition(x, y, z);
+    	BlockPos blockpos = this.hangingPosition.add(x - this.posX, y - this.posY, z - this.posZ);
+        this.setPosition((double)blockpos.getX(), (double)blockpos.getY(), (double)blockpos.getZ());
     }
 
     @SideOnly(Side.CLIENT)
