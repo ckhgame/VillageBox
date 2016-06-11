@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
@@ -28,26 +29,28 @@ public class ItemDarkStaff extends Item
         this.setMaxDamage(10);
         this.setCreativeTab(ModItems.tabVB);
     }
-    
-    public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target)
-    {
-    	if(strengthen(stack,playerIn, target, EntityZombie.class, EntityPigZombie.class,1)){
+
+    @Override
+	public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target,
+			EnumHand hand) {
+
+    	if(strengthen(stack,playerIn, target, EntityZombie.class, EntityPigZombie.class,1, hand)){
     		return true;
     	}
     	
-    	if(strengthen(stack,playerIn, target, EntitySkeleton.class, EntityBlaze.class,1)){
+    	if(strengthen(stack,playerIn, target, EntitySkeleton.class, EntityBlaze.class,1, hand)){
     		return true;
     	}
     	
-    	if(strengthen(stack,playerIn, target, EntitySpider.class, EntityCaveSpider.class,2)){
+    	if(strengthen(stack,playerIn, target, EntitySpider.class, EntityCaveSpider.class,2, hand)){
     		return true;
     	}
     	
     	return false;
-    	
-    }
+	}
+
     
-    private boolean strengthen(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, Class<? extends EntityMob> mobfind, Class<? extends EntityMob> mobto, int num){
+    private boolean strengthen(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, Class<? extends EntityMob> mobfind, Class<? extends EntityMob> mobto, int num, EnumHand hand){
     	if(mobfind.isInstance(target)){    		
     		if(!target.worldObj.isRemote){
     			for(int i =0;i<num;i++){
@@ -62,22 +65,22 @@ public class ItemDarkStaff extends Item
     				}
     			}
     			target.worldObj.removeEntity(target);
-    			this.damageStaff(playerIn, stack);
+    			this.damageStaff(playerIn, stack, hand);
     			return true;
     		}
     	}    	
     	return false;
     }
 	
-	 public void damageStaff(EntityPlayer player, ItemStack stack){
-         if (!player.capabilities.isCreativeMode)
-         {
-         	stack.damageItem(1, player);
-         	if(stack.getItemDamage() == 0){
-         		player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.staff));
-         	}
-         }
-	 }
+	public void damageStaff(EntityPlayer player, ItemStack stack, EnumHand hand){
+        if (!player.capabilities.isCreativeMode)
+        {
+        	stack.damageItem(1, player);
+        	if(stack.getItemDamage() == 0){
+        		player.setItemStackToSlot(hand == EnumHand.MAIN_HAND? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND, new ItemStack(ModItems.staff));
+        	}
+        }
+	 }   
     
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
