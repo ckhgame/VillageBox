@@ -29,7 +29,7 @@ public class ItemWaterSword extends ItemSword{
 		super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
 		if(entityIn instanceof EntityPlayer){
 			EntityPlayer p = (EntityPlayer)entityIn;
-			if(p.inventory.currentItem == itemSlot){
+			if(p.getHeldItemMainhand() == stack || p.getHeldItemOffhand() == stack){
 				if(!p.isPotionActive(MobEffects.waterBreathing)){
 					p.addPotionEffect(new PotionEffect(MobEffects.waterBreathing,40));
 				}
