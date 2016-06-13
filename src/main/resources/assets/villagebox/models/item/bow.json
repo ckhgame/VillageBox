@@ -22,6 +22,29 @@
             "scale": [ 0.68, 0.68, 0.68 ]
         }
     },
+	"overrides": [
+        {
+            "predicate": {
+                "pulling": 1,
+				"pull_ef": 0.5
+            },
+            "model": "villagebox:item/bow_pulling_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull_ef": 0.7
+            },
+            "model": "villagebox:item/bow_pulling_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull_ef": 0.95
+            },
+            "model": "villagebox:item/bow_pulling_2"
+        }
+    ],
     "textures": {
         "layer0": "villagebox:items/bow_standby"
     }

@@ -13,6 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -82,5 +83,12 @@ public class EventEntity {
 	    ExtendedPlayerProperties current = ExtendedPlayerProperties.get(event.getEntityPlayer());
 	    old.saveNBTData(temp);
 	    current.loadNBTData(temp);
+	}
+	
+	@SubscribeEvent
+	void onItemUseTick(LivingEntityUseItemEvent.Start event){
+		if(event.getItem().getItem() == ModItems.efficientBow){
+			event.setDuration(ModItems.efficientBow.getMaxItemUseDuration(event.getItem()) - 9);
+		}
 	}
 }

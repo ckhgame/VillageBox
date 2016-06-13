@@ -4,7 +4,6 @@ import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.entity.ModEntities;
-import ckhbox.villagebox.common.event.EventBow;
 import ckhbox.villagebox.common.event.EventCoinsFound;
 import ckhbox.villagebox.common.event.EventEntity;
 import ckhbox.villagebox.common.event.EventWorld;
@@ -16,7 +15,6 @@ import ckhbox.villagebox.common.recipe.ModRecipes;
 import ckhbox.villagebox.common.tileentity.ModTileEntities;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.model.animation.CapabilityAnimation;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -46,7 +44,6 @@ public class CommonProxy {
 		//events
 		MinecraftForge.EVENT_BUS.register(new EventEntity());
 		MinecraftForge.EVENT_BUS.register(new EventCoinsFound());
-		MinecraftForge.EVENT_BUS.register(new EventBow());
 		MinecraftForge.EVENT_BUS.register(new EventWorld());
 		
 		//configuration
