@@ -1,16 +1,15 @@
 package ckhbox.villagebox.common.entity.throwable;
 
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class EntityFlameBall extends EntityThrowable
@@ -30,30 +29,27 @@ public class EntityFlameBall extends EntityThrowable
         super(worldIn, x, y, z);
     }
 
-    /**
-     * Called when this EntityThrowable hits a block or entity.
-     */
-    protected void onImpact(MovingObjectPosition movingObject)
+    protected void onImpact(RayTraceResult result)
     {
     	if (!this.worldObj.isRemote)
         {
-            if (movingObject.entityHit != null)
+            if (result.entityHit != null)
             {
-                boolean flag = movingObject.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 5.0F);
+                boolean flag = result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 5.0F);
 
                 if (flag)
                 {
-                    this.applyEnchantments(this.getThrower(), movingObject.entityHit);
+                    this.applyEnchantments(this.getThrower(), result.entityHit);
 
-                    if (!movingObject.entityHit.isImmuneToFire())
+                    if (!result.entityHit.isImmuneToFire())
                     {
-                        movingObject.entityHit.setFire(5);
+                    	result.entityHit.setFire(5);
                     }
                 }
             }
             else
             {
-                BlockPos blockpos = movingObject.getBlockPos().offset(movingObject.sideHit);
+                BlockPos blockpos = result.getBlockPos().offset(result.sideHit);
 
                 if (this.worldObj.isAirBlock(blockpos))
                 {
@@ -61,7 +57,7 @@ public class EntityFlameBall extends EntityThrowable
                 }
             }
             
-            this.playSound("random.explode", 0.7F, 1.0F);
+            this.playSound(SoundEvents.entity_generic_explode, 0.7F, 1.0F);
 
             this.setDead();
         }

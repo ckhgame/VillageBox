@@ -1,11 +1,12 @@
 package ckhbox.villagebox.common.item;
 
+import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.item.armor.ItemArmor;
-import ckhbox.villagebox.common.item.book.ItemVillageBook;
 import ckhbox.villagebox.common.item.book.ItemDismissalScroll;
 import ckhbox.villagebox.common.item.book.ItemResetScroll;
 import ckhbox.villagebox.common.item.book.ItemTreasureBook;
+import ckhbox.villagebox.common.item.book.ItemVillageBook;
 import ckhbox.villagebox.common.item.common.ItemCoin;
 import ckhbox.villagebox.common.item.common.ItemDrink;
 import ckhbox.villagebox.common.item.common.ItemElementShard;
@@ -17,6 +18,7 @@ import ckhbox.villagebox.common.item.tool.ItemAxe;
 import ckhbox.villagebox.common.item.tool.ItemPickaxe;
 import ckhbox.villagebox.common.item.tool.ItemShovel;
 import ckhbox.villagebox.common.item.tool.ItemWeatherStone;
+import ckhbox.villagebox.common.item.totem.ItemBlockWithInfo;
 import ckhbox.villagebox.common.item.weapon.ItemDarkStaff;
 import ckhbox.villagebox.common.item.weapon.ItemDarkSword;
 import ckhbox.villagebox.common.item.weapon.ItemEfficientBow;
@@ -31,12 +33,15 @@ import ckhbox.villagebox.common.item.weapon.ItemWaterStaff;
 import ckhbox.villagebox.common.item.weapon.ItemWaterSword;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -63,9 +68,9 @@ public class ModItems {
 	}
 	
 	public static class ArmorMaterials{
-		public static ArmorMaterial WOOD = EnumHelper.addArmorMaterial("VB:WOOD", PathHelper.full("wooden"), 7, new int[]{2, 4, 3, 2}, 10);
-		public static ArmorMaterial STEEL = EnumHelper.addArmorMaterial("VB:STEEL", PathHelper.full("steel"), 15, new int[]{3, 7, 6, 3}, 12);
-		public static ArmorMaterial RUNESTEEL = EnumHelper.addArmorMaterial("VB:RUNESTEEL", PathHelper.full("steel"), 30, new int[]{3, 8, 7, 3}, 15);
+		public static ArmorMaterial WOOD = EnumHelper.addArmorMaterial("VB:WOOD", PathHelper.full("wooden"), 7, new int[]{2, 4, 3, 2}, 10, SoundEvents.item_armor_equip_leather);
+		public static ArmorMaterial STEEL = EnumHelper.addArmorMaterial("VB:STEEL", PathHelper.full("steel"), 15, new int[]{3, 7, 6, 3}, 12, SoundEvents.item_armor_equip_iron);
+		public static ArmorMaterial RUNESTEEL = EnumHelper.addArmorMaterial("VB:RUNESTEEL", PathHelper.full("steel"), 30, new int[]{3, 8, 7, 3}, 15, SoundEvents.item_armor_equip_diamond);
 	}
 	
 	public static ItemTreasureBook treasureHuntBookI;
@@ -194,139 +199,143 @@ public class ModItems {
 
 	public static void init(){
 		//books
-		GameRegistry.registerItem(treasureHuntBookI=new ItemTreasureBook(1),"treasure_hunt_book_0");
-		GameRegistry.registerItem(treasureHuntBookII=new ItemTreasureBook(2),"treasure_hunt_book_1");
-		GameRegistry.registerItem(treasureHuntBookIII=new ItemTreasureBook(3),"treasure_hunt_book_2");
-		GameRegistry.registerItem(villageBook=new ItemVillageBook(),"village_book");
+		register(treasureHuntBookI=new ItemTreasureBook(1),"treasure_hunt_book_0");
+		register(treasureHuntBookII=new ItemTreasureBook(2),"treasure_hunt_book_1");
+		register(treasureHuntBookIII=new ItemTreasureBook(3),"treasure_hunt_book_2");
+		register(villageBook=new ItemVillageBook(),"village_book");
 		
-		GameRegistry.registerItem(resetScroll=new ItemResetScroll(),"reset_scroll");
-		GameRegistry.registerItem(dismissalScroll=new ItemDismissalScroll(),"dismissal_scroll");
+		register(resetScroll=new ItemResetScroll(),"reset_scroll");
+		register(dismissalScroll=new ItemDismissalScroll(),"dismissal_scroll");
 		
 		//shards
-		GameRegistry.registerItem(fireShard=new ItemElementShard("fire"),"fire_shard");
-		GameRegistry.registerItem(waterShard=new ItemElementShard("water"),"water_shard");
-		GameRegistry.registerItem(natureShard=new ItemElementShard("nature"),"nature_shard");
-		GameRegistry.registerItem(darkShard=new ItemElementShard("dark"),"dark_shard");
-		GameRegistry.registerItem(lightShard=new ItemElementShard("light"),"light_shard");
+		register(fireShard=new ItemElementShard("fire"),"fire_shard");
+		register(waterShard=new ItemElementShard("water"),"water_shard");
+		register(natureShard=new ItemElementShard("nature"),"nature_shard");
+		register(darkShard=new ItemElementShard("dark"),"dark_shard");
+		register(lightShard=new ItemElementShard("light"),"light_shard");
 		
 		//coins
-		GameRegistry.registerItem(bronzeCoin=new ItemCoin("bronze"),"bronze_coin");
-		GameRegistry.registerItem(silverCoin=new ItemCoin("silver"),"silver_coin");
-		GameRegistry.registerItem(goldCoin=new ItemCoin("gold"),"gold_coin");
+		register(bronzeCoin=new ItemCoin("bronze"),"bronze_coin");
+		register(silverCoin=new ItemCoin("silver"),"silver_coin");
+		register(goldCoin=new ItemCoin("gold"),"gold_coin");
 		
 		//mail
-		GameRegistry.registerItem(mail=new ItemMail(),"mail");
-		GameRegistry.registerItem(invitation=new ItemInvitation(),"invitation");
+		register(mail=new ItemMail(),"mail");
+		register(invitation=new ItemInvitation(),"invitation");
 		
 		//painting
-		GameRegistry.registerItem(painting=new ItemPainting(),"painting");
+		register(painting=new ItemPainting(),"painting");
 		
 		//weapon
-		GameRegistry.registerItem(staff=new ItemStaff(),"staff");
-		GameRegistry.registerItem(fireStaff=new ItemFireStaff(),"fire_staff");
-		GameRegistry.registerItem(waterStaff=new ItemWaterStaff(),"water_staff");
-		GameRegistry.registerItem(natureStaff=new ItemNatureStaff(),"nature_staff");
-		GameRegistry.registerItem(lightStaff=new ItemLightStaff(),"light_staff");
-		GameRegistry.registerItem(darkStaff=new ItemDarkStaff(),"dark_staff");
+		register(staff=new ItemStaff(),"staff");
+		register(fireStaff=new ItemFireStaff(),"fire_staff");
+		register(waterStaff=new ItemWaterStaff(),"water_staff");
+		register(natureStaff=new ItemNatureStaff(),"nature_staff");
+		register(lightStaff=new ItemLightStaff(),"light_staff");
+		register(darkStaff=new ItemDarkStaff(),"dark_staff");
 		
-		GameRegistry.registerItem(efficientBow=new ItemEfficientBow(),"bow");
+		register(efficientBow=new ItemEfficientBow(),"bow");
 		
-		GameRegistry.registerItem(steelSword=(new ItemSword(ModItems.ToolMaterials.STEEL).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("steelSword"))),"steel_sword");
-		GameRegistry.registerItem(fireSword=new ItemFireSword(),"fire_sword");
-		GameRegistry.registerItem(waterSword=new ItemWaterSword(),"water_sword");
-		GameRegistry.registerItem(natureSword=new ItemNatureSword(),"nature_sword");
-		GameRegistry.registerItem(darkSword=new ItemDarkSword(),"dark_sword");
-		GameRegistry.registerItem(lightSword=new ItemLightSword(),"light_sword");	
+		register(steelSword=(new ItemSword(ModItems.ToolMaterials.STEEL).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("steelSword"))),"steel_sword");
+		register(fireSword=new ItemFireSword(),"fire_sword");
+		register(waterSword=new ItemWaterSword(),"water_sword");
+		register(natureSword=new ItemNatureSword(),"nature_sword");
+		register(darkSword=new ItemDarkSword(),"dark_sword");
+		register(lightSword=new ItemLightSword(),"light_sword");	
 		
-		GameRegistry.registerItem(woodenClub=(new ItemSword(ToolMaterial.WOOD).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("woodenClub"))),"wooden_club");
+		register(woodenClub=(new ItemSword(ToolMaterial.WOOD).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("woodenClub"))),"wooden_club");
 		
 		//armor
-		GameRegistry.registerItem(steelHelmet=new ItemArmor("steelHelmet", ModItems.ArmorMaterials.STEEL, 1, 0),"steel_helmet");
-		GameRegistry.registerItem(steelChestplate=new ItemArmor("steelChestplate", ModItems.ArmorMaterials.STEEL, 1, 1),"steel_chestplate");
-		GameRegistry.registerItem(steelLeggings=new ItemArmor("steelLeggings", ModItems.ArmorMaterials.STEEL, 2, 2),"steel_leggings");
-		GameRegistry.registerItem(steelBoots=new ItemArmor("steelBoots", ModItems.ArmorMaterials.STEEL, 1, 3),"steel_boots");
+		register(steelHelmet=new ItemArmor("steelHelmet", ModItems.ArmorMaterials.STEEL, 1, EntityEquipmentSlot.HEAD),"steel_helmet");
+		register(steelChestplate=new ItemArmor("steelChestplate", ModItems.ArmorMaterials.STEEL, 1, EntityEquipmentSlot.CHEST),"steel_chestplate");
+		register(steelLeggings=new ItemArmor("steelLeggings", ModItems.ArmorMaterials.STEEL, 2, EntityEquipmentSlot.LEGS),"steel_leggings");
+		register(steelBoots=new ItemArmor("steelBoots", ModItems.ArmorMaterials.STEEL, 1, EntityEquipmentSlot.FEET),"steel_boots");
 		
-		GameRegistry.registerItem(woodenHelmet=new ItemArmor("woodenHelmet", ModItems.ArmorMaterials.WOOD, 1, 0),"wooden_helmet");
-		GameRegistry.registerItem(woodenChestplate=new ItemArmor("woodenChestplate", ModItems.ArmorMaterials.WOOD, 1, 1),"wooden_chestplate");
-		GameRegistry.registerItem(woodenLeggings=new ItemArmor("woodenLeggings", ModItems.ArmorMaterials.WOOD, 2, 2),"wooden_leggings");
-		GameRegistry.registerItem(woodenBoots=new ItemArmor("woodenBoots", ModItems.ArmorMaterials.WOOD, 1, 3),"wooden_boots");
+		register(woodenHelmet=new ItemArmor("woodenHelmet", ModItems.ArmorMaterials.WOOD, 1, EntityEquipmentSlot.HEAD),"wooden_helmet");
+		register(woodenChestplate=new ItemArmor("woodenChestplate", ModItems.ArmorMaterials.WOOD, 1, EntityEquipmentSlot.CHEST),"wooden_chestplate");
+		register(woodenLeggings=new ItemArmor("woodenLeggings", ModItems.ArmorMaterials.WOOD, 2, EntityEquipmentSlot.LEGS),"wooden_leggings");
+		register(woodenBoots=new ItemArmor("woodenBoots", ModItems.ArmorMaterials.WOOD, 1, EntityEquipmentSlot.FEET),"wooden_boots");
 		
 		//tools
-		GameRegistry.registerItem(sunStone=(new ItemWeatherStone(true)),"sun_stone");
-		GameRegistry.registerItem(rainStone=(new ItemWeatherStone(false)),"rain_stone");
+		register(sunStone=(new ItemWeatherStone(true)),"sun_stone");
+		register(rainStone=(new ItemWeatherStone(false)),"rain_stone");
 		
-		GameRegistry.registerItem(steelHoe=(new ItemHoe(ModItems.ToolMaterials.STEEL).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("steelHoe"))),"steel_hoe");
-		GameRegistry.registerItem(steelAxe=(new ItemAxe(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelAxe"))),"steel_axe");
-		GameRegistry.registerItem(steelPickaxe=(new ItemPickaxe(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelPickaxe"))),"steel_pickaxe");
-		GameRegistry.registerItem(steelShovel=(new ItemShovel(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelShovel"))),"steel_shovel");	
+		register(steelHoe=(new ItemHoe(ModItems.ToolMaterials.STEEL).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("steelHoe"))),"steel_hoe");
+		register(steelAxe=(new ItemAxe(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelAxe"))),"steel_axe");
+		register(steelPickaxe=(new ItemPickaxe(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelPickaxe"))),"steel_pickaxe");
+		register(steelShovel=(new ItemShovel(ModItems.ToolMaterials.STEEL).setUnlocalizedName(PathHelper.full("steelShovel"))),"steel_shovel");	
 		
-		GameRegistry.registerItem(steelIngot=new ItemSteelIngot(),"steel_ingot");
+		register(steelIngot=new ItemSteelIngot(),"steel_ingot");
 		
 		//materials
-		GameRegistry.registerItem(cabbage=(new Item()).setUnlocalizedName(PathHelper.full("cabbage")).setCreativeTab(ModItems.tabVB),"cabbage");
-		GameRegistry.registerItem(chili=(new Item()).setUnlocalizedName(PathHelper.full("chili")).setCreativeTab(ModItems.tabVB),"chili");
-		GameRegistry.registerItem(corn=(new Item()).setUnlocalizedName(PathHelper.full("corn")).setCreativeTab(ModItems.tabVB),"corn");
-		GameRegistry.registerItem(soybean=(new Item()).setUnlocalizedName(PathHelper.full("soybean")).setCreativeTab(ModItems.tabVB),"soybean");
-		GameRegistry.registerItem(riceplant=(new Item()).setUnlocalizedName(PathHelper.full("riceplant")).setCreativeTab(ModItems.tabVB),"riceplant");
+		register(cabbage=(new Item()).setUnlocalizedName(PathHelper.full("cabbage")).setCreativeTab(ModItems.tabVB),"cabbage");
+		register(chili=(new Item()).setUnlocalizedName(PathHelper.full("chili")).setCreativeTab(ModItems.tabVB),"chili");
+		register(corn=(new Item()).setUnlocalizedName(PathHelper.full("corn")).setCreativeTab(ModItems.tabVB),"corn");
+		register(soybean=(new Item()).setUnlocalizedName(PathHelper.full("soybean")).setCreativeTab(ModItems.tabVB),"soybean");
+		register(riceplant=(new Item()).setUnlocalizedName(PathHelper.full("riceplant")).setCreativeTab(ModItems.tabVB),"riceplant");
 		
-		GameRegistry.registerItem(mayonnaise=(new Item()).setUnlocalizedName(PathHelper.full("mayonnaise")).setCreativeTab(ModItems.tabVB),"mayonnaise");
-		GameRegistry.registerItem(cheese=(new Item()).setUnlocalizedName(PathHelper.full("cheese")).setCreativeTab(ModItems.tabVB),"cheese");
-		GameRegistry.registerItem(ballOfWool=(new Item()).setUnlocalizedName(PathHelper.full("ballOfWool")).setCreativeTab(ModItems.tabVB),"ball_of_wool");
+		register(mayonnaise=(new Item()).setUnlocalizedName(PathHelper.full("mayonnaise")).setCreativeTab(ModItems.tabVB),"mayonnaise");
+		register(cheese=(new Item()).setUnlocalizedName(PathHelper.full("cheese")).setCreativeTab(ModItems.tabVB),"cheese");
+		register(ballOfWool=(new Item()).setUnlocalizedName(PathHelper.full("ballOfWool")).setCreativeTab(ModItems.tabVB),"ball_of_wool");
 		
-		GameRegistry.registerItem(rice=(new Item()).setUnlocalizedName(PathHelper.full("rice")).setCreativeTab(ModItems.tabVB),"rice");
-		GameRegistry.registerItem(riceFlour=(new Item()).setUnlocalizedName(PathHelper.full("riceFlour")).setCreativeTab(ModItems.tabVB),"rice_flour");
-		GameRegistry.registerItem(wheatFlour=(new Item()).setUnlocalizedName(PathHelper.full("wheatFlour")).setCreativeTab(ModItems.tabVB),"wheat_flour");
-		GameRegistry.registerItem(soySauce=(new Item()).setUnlocalizedName(PathHelper.full("soySauce")).setCreativeTab(ModItems.tabVB),"soy_sauce");
-		GameRegistry.registerItem(cookingOil=(new Item()).setUnlocalizedName(PathHelper.full("cookingOil")).setCreativeTab(ModItems.tabVB),"cooking_oil");
+		register(rice=(new Item()).setUnlocalizedName(PathHelper.full("rice")).setCreativeTab(ModItems.tabVB),"rice");
+		register(riceFlour=(new Item()).setUnlocalizedName(PathHelper.full("riceFlour")).setCreativeTab(ModItems.tabVB),"rice_flour");
+		register(wheatFlour=(new Item()).setUnlocalizedName(PathHelper.full("wheatFlour")).setCreativeTab(ModItems.tabVB),"wheat_flour");
+		register(soySauce=(new Item()).setUnlocalizedName(PathHelper.full("soySauce")).setCreativeTab(ModItems.tabVB),"soy_sauce");
+		register(cookingOil=(new Item()).setUnlocalizedName(PathHelper.full("cookingOil")).setCreativeTab(ModItems.tabVB),"cooking_oil");
 		
-		GameRegistry.registerItem(seaweed=(new Item()).setUnlocalizedName(PathHelper.full("seaweed")).setCreativeTab(ModItems.tabVB),"seaweed");
-		GameRegistry.registerItem(salt=(new Item()).setUnlocalizedName(PathHelper.full("salt")).setCreativeTab(ModItems.tabVB),"salt");
+		register(seaweed=(new Item()).setUnlocalizedName(PathHelper.full("seaweed")).setCreativeTab(ModItems.tabVB),"seaweed");
+		register(salt=(new Item()).setUnlocalizedName(PathHelper.full("salt")).setCreativeTab(ModItems.tabVB),"salt");
 		
 		//wines
-		GameRegistry.registerItem(grapeWine=(new ItemDrink(1, 0.0F, 15)).setUnlocalizedName(PathHelper.full("grapeWine")),"grape_wine");
-		GameRegistry.registerItem(cookingWine=(new ItemDrink(1, 0.0F, 10)).setUnlocalizedName(PathHelper.full("cookingWine")),"cooking_wine");
-		GameRegistry.registerItem(cocktail=(new ItemDrink(1, 0.0F, 20)).setUnlocalizedName(PathHelper.full("cocktail")),"cocktail");		
-		GameRegistry.registerItem(beer=(new ItemDrink(2, 0.0F, 10)).setUnlocalizedName(PathHelper.full("beer")),"beer");
-		GameRegistry.registerItem(whisky=(new ItemDrink(1, 0.0F, 25)).setUnlocalizedName(PathHelper.full("whisky")),"whisky");
-		GameRegistry.registerItem(vodka=(new ItemDrink(1, 0.0F, 25)).setUnlocalizedName(PathHelper.full("vodka")),"vodka");
+		register(grapeWine=(new ItemDrink(1, 0.0F, 15)).setUnlocalizedName(PathHelper.full("grapeWine")),"grape_wine");
+		register(cookingWine=(new ItemDrink(1, 0.0F, 10)).setUnlocalizedName(PathHelper.full("cookingWine")),"cooking_wine");
+		register(cocktail=(new ItemDrink(1, 0.0F, 20)).setUnlocalizedName(PathHelper.full("cocktail")),"cocktail");		
+		register(beer=(new ItemDrink(2, 0.0F, 10)).setUnlocalizedName(PathHelper.full("beer")),"beer");
+		register(whisky=(new ItemDrink(1, 0.0F, 25)).setUnlocalizedName(PathHelper.full("whisky")),"whisky");
+		register(vodka=(new ItemDrink(1, 0.0F, 25)).setUnlocalizedName(PathHelper.full("vodka")),"vodka");
 		
 		//food
-		GameRegistry.registerItem(grape=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("grape")),"grape");
-		GameRegistry.registerItem(lemon=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("lemon")),"lemon");
-		GameRegistry.registerItem(orange=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("orange")),"orange");		
-		GameRegistry.registerItem(pineapple=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("pineapple")),"pineapple");
-		GameRegistry.registerItem(strawberry=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("strawberry")),"strawberry");
-		GameRegistry.registerItem(melon=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("melon")),"melon");
-		GameRegistry.registerItem(banana=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("banana")),"banana");
+		register(grape=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("grape")),"grape");
+		register(lemon=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("lemon")),"lemon");
+		register(orange=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("orange")),"orange");		
+		register(pineapple=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("pineapple")),"pineapple");
+		register(strawberry=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("strawberry")),"strawberry");
+		register(melon=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("melon")),"melon");
+		register(banana=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("banana")),"banana");
 		
-		GameRegistry.registerItem(tofu=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("tofu")),"tofu");
-		GameRegistry.registerItem(boiledEgg=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("boiledEgg")),"boiled_egg");
+		register(tofu=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("tofu")),"tofu");
+		register(boiledEgg=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("boiledEgg")),"boiled_egg");
 		
-		GameRegistry.registerItem(shrimp=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("shrimp")),"shrimp");
-		GameRegistry.registerItem(crab=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("crab")),"crab");
+		register(shrimp=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("shrimp")),"shrimp");
+		register(crab=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("crab")),"crab");
 		
-		GameRegistry.registerItem(porkRamen=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("porkRamen")),"pork_ramen");
-		GameRegistry.registerItem(beefNoodleSoup=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("beefNoodleSoup")),"beef_noodle_soup");
-		GameRegistry.registerItem(noodleSoup=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("noodleSoup")),"noodle_soup");
-		GameRegistry.registerItem(carrotCake=(new ItemFood(6, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("carrotCake")),"carrot_cake");
-		GameRegistry.registerItem(hambuger=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("hambuger")),"hambuger");
-		GameRegistry.registerItem(congee=(new ItemFood(4, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("congee")),"congee");
-		GameRegistry.registerItem(boiledFish=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("boiledFish")),"boiled_fish");
-		GameRegistry.registerItem(appleCandy=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("appleCandy")),"apple_candy");
-		GameRegistry.registerItem(creamyCorn=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("creamyCorn")),"creamy_corn");
-		GameRegistry.registerItem(chocolateBanana=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("chocolateBanana")),"chocolate_banana");
-		GameRegistry.registerItem(fries=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("fries")),"fries");
-		GameRegistry.registerItem(mapoTofu=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("mapoTofu")),"mapo_tofu");
-		GameRegistry.registerItem(cannedOranges=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("cannedOranges")),"canned_oranges");
-		GameRegistry.registerItem(strawberryIcecream=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("strawberryIcecream")),"strawberry_icecream");
-		GameRegistry.registerItem(honeyTea=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("honeyTea")),"honey_tea");
-		GameRegistry.registerItem(pineappleCanday=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("pineappleCanday")),"pineapple_canday");
-		GameRegistry.registerItem(cornChips=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("cornChips")),"corn_chips");
-		GameRegistry.registerItem(melonIcecream=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("melonIcecream")),"melon_icecream");
-		GameRegistry.registerItem(melonIcebar=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("melonIcebar")),"melon_icebar");
-		GameRegistry.registerItem(roastedLamb=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("roastedLamb")),"roasted_lamb");
-		GameRegistry.registerItem(nigiri=(new ItemFood(4, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("nigiri")),"nigiri");
-		GameRegistry.registerItem(udon=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("udon")),"udon");
+		register(porkRamen=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("porkRamen")),"pork_ramen");
+		register(beefNoodleSoup=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("beefNoodleSoup")),"beef_noodle_soup");
+		register(noodleSoup=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("noodleSoup")),"noodle_soup");
+		register(carrotCake=(new ItemFood(6, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("carrotCake")),"carrot_cake");
+		register(hambuger=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("hambuger")),"hambuger");
+		register(congee=(new ItemFood(4, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("congee")),"congee");
+		register(boiledFish=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("boiledFish")),"boiled_fish");
+		register(appleCandy=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("appleCandy")),"apple_candy");
+		register(creamyCorn=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("creamyCorn")),"creamy_corn");
+		register(chocolateBanana=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("chocolateBanana")),"chocolate_banana");
+		register(fries=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("fries")),"fries");
+		register(mapoTofu=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("mapoTofu")),"mapo_tofu");
+		register(cannedOranges=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("cannedOranges")),"canned_oranges");
+		register(strawberryIcecream=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("strawberryIcecream")),"strawberry_icecream");
+		register(honeyTea=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("honeyTea")),"honey_tea");
+		register(pineappleCanday=(new ItemFood(2, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("pineappleCanday")),"pineapple_canday");
+		register(cornChips=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("cornChips")),"corn_chips");
+		register(melonIcecream=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("melonIcecream")),"melon_icecream");
+		register(melonIcebar=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("melonIcebar")),"melon_icebar");
+		register(roastedLamb=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("roastedLamb")),"roasted_lamb");
+		register(nigiri=(new ItemFood(4, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("nigiri")),"nigiri");
+		register(udon=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("udon")),"udon");
+	}
+	
+	public static void register(Item item, String name){
+		GameRegistry.register(item,new ResourceLocation(VillageBoxMod.MODID,name));
 	}
 	
 	

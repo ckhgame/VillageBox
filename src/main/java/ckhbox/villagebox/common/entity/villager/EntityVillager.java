@@ -37,19 +37,28 @@ import net.minecraft.entity.ai.EntityAIWatchClosest2;
 import net.minecraft.entity.ai.EntityJumpHelper;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityVillager extends EntityCreature implements ITrading, IQuestProvider{
 
+	private static final DataParameter<Integer> PROFESSIONID = EntityDataManager.<Integer>createKey(EntityVillager.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> FLAGS = EntityDataManager.<Integer>createKey(EntityVillager.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> QUEST = EntityDataManager.<Integer>createKey(EntityVillager.class, DataSerializers.VARINT);
+	
 	private Profession profession;
 	//the player this villager is currently interacting with
 	private EntityPlayer interacting;
@@ -58,7 +67,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	private IntBoundary home;
 	
 	//the canter of wandering when no home has been set to this villager
-	private Vec3 wanderCenter;
+	private Vec3d wanderCenter;
 	
 	//the upgrading history
 	private List<Integer> upgradingHistory = new ArrayList<Integer>(Arrays.asList(new Integer[]{99999}));//99999:caveman
@@ -107,7 +116,6 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 
 	protected void initAI(){
 		((PathNavigateGround)this.getNavigator()).setBreakDoors(true);
-        ((PathNavigateGround)this.getNavigator()).setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityZombie.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(1, new VillagerAILookAtInteractPlayer(this));
@@ -122,27 +130,28 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
     }
 	
 	@Override
 	protected void entityInit() {
 		super.entityInit();
 		//profession id
-		this.getDataWatcher().addObject(16, 0);
+		this.dataWatcher.register(PROFESSIONID, Integer.valueOf(0));
 		//data flags(interacting.following,etc.)
-		this.getDataWatcher().addObject(17, 0);
-		//quest idx
-		this.getDataWatcher().addObject(18, -1);
+		this.dataWatcher.register(FLAGS, Integer.valueOf(0));
+		//quest
+		this.dataWatcher.register(QUEST, Integer.valueOf(-1));
 	}
 
+	
 	@Override
-	protected boolean interact(EntityPlayer player) {
+	protected boolean processInteract(EntityPlayer player, EnumHand hand, ItemStack stack) {
 		
 		if(!player.worldObj.isRemote){
 			if(	(this.isInteracting() && this.interacting.isEntityAlive() && this.interacting != player) ||
 				(this.isFollowing() && this.following.isEntityAlive() && this.following != player)){
-				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.isbusy")));
+				player.addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.isbusy")));
 			}
 			else{
 				ItemStack itemstack = player.inventory.getCurrentItem();
@@ -186,9 +195,9 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	public void onTrade() {
 	}
 	
-	public Vec3 getWanderCenter(){
+	public Vec3d getWanderCenter(){
 		if(this.wanderCenter == null){
-			this.wanderCenter = new Vec3(this.posX, this.posY, this.posZ);
+			this.wanderCenter = new Vec3d(this.posX, this.posY, this.posZ);
 		}
 		return this.wanderCenter;
 	}
@@ -199,16 +208,16 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	 * POS: 0=Interacting, 1=Following, 2=Has Home
 	 */
 	protected void setDataFlag(int pos, boolean flag){
-		int data = this.getDataWatcher().getWatchableObjectInt(17);
+		int data = ((Integer)this.dataWatcher.get(FLAGS)).intValue();
 		data = BitHelper.writeBit(data, pos, flag);
-		this.getDataWatcher().updateObject(17, data);
+		this.dataWatcher.set(FLAGS, Integer.valueOf(data));
 	}
 	
 	/**
 	 * POS: 0=Interacting, 1=Following, 2=Has Home, 3 gender
 	 */
 	protected boolean getDataFlag(int pos){
-		int data = this.getDataWatcher().getWatchableObjectInt(17);
+		int data = ((Integer)this.dataWatcher.get(FLAGS)).intValue();
 		return BitHelper.readBit(data, pos);
 	}
 	
@@ -281,7 +290,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		//scan home boundary
 		IntBoundary bound = HouseDetector.getClosedField(this.worldObj, new IntVec3(this.posX,this.posY,this.posZ));
 		if(bound == null){
-			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.openspace")));
+			player.addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.home.openspace")));
 		}
 		else{
 			//remove outlines
@@ -291,7 +300,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			//add home bounday
 			String oldOwner = DataVillage.get(this.worldObj).addHome(this.getName(),bound);
 			if(oldOwner != null){
-				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.existed"),oldOwner));
+				player.addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.home.existed"),oldOwner));
 			}
 			else{
 				//remove old home
@@ -301,7 +310,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 				this.home = bound;
 				//stop following
 				this.setFollowing(null);
-				player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.movein"),this.getName()));
+				player.addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.home.movein"),this.getName()));
 				//update data flag
 				this.setDataFlag(2, true);
 			}
@@ -318,7 +327,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			DataVillage.get(this.worldObj).removeHome(this.getName(),home);
 			this.home = null;
 			this.setDataFlag(2, false);
-			player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.villager.home.moveout"),this.getName()));
+			player.addChatMessage(new TextComponentTranslation(PathHelper.full("message.villager.home.moveout"),this.getName()));
 		}
 	}
 	
@@ -332,15 +341,15 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	
 	//profession
 	public Profession getProfession(){
-		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
-			this.profession = Profession.registry.get(this.getDataWatcher().getWatchableObjectInt(16));
+		if(this.worldObj.isRemote && (this.profession == null || ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue() != this.profession.getRegID())){
+			this.profession = Profession.registry.get(((Integer)this.dataWatcher.get(PROFESSIONID)).intValue());
 			this.refreshProfession();
 		}
 		return this.profession;
 	}
 	
 	public void setProfession(int proid){
-		this.getDataWatcher().updateObject(16, proid);
+		this.dataWatcher.set(PROFESSIONID, Integer.valueOf(proid));
 		this.refreshProfession();
 	}
 	
@@ -350,7 +359,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			this.upgradingHistory.add(this.getProfession().getRegID());
 			this.setProfession(pid);
 			String newProName = this.getProfession().getDisplayName();		
-			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.upgrade"),this.getName(),oldProName,newProName));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.upgrade"),this.getName(),oldProName,newProName));
 			//quest
 			this.removeCurrentQuest();
 		}
@@ -362,7 +371,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			int last = this.upgradingHistory.remove(this.upgradingHistory.size() - 1);
 			this.setProfession(last);
 			String newProName = this.getProfession().getDisplayName();
-			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.downgrade"),this.getName(),oldProName,newProName));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.downgrade"),this.getName(),oldProName,newProName));
 			//quest
 			this.removeCurrentQuest();
 			return true;
@@ -376,7 +385,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		if(!this.worldObj.isRemote){
 			this.moveOutHome(player);
 			this.worldObj.removeEntity(this);
-			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.dismiss"), player.getName(),this.getName(),this.getProfession().getDisplayName()));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.dismiss"), player.getName(),this.getName(),this.getProfession().getDisplayName()));
 			return true;
 		}
 		else{
@@ -392,8 +401,8 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	public void onUpdate() {
 		super.onUpdate();
 		//update profession
-		if(this.worldObj.isRemote && (this.profession == null || this.getDataWatcher().getWatchableObjectInt(16) != this.profession.getRegID())){
-			this.setProfession(this.getDataWatcher().getWatchableObjectInt(16));
+		if(this.worldObj.isRemote && (this.profession == null || ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue() != this.profession.getRegID())){
+			this.setProfession(((Integer)this.dataWatcher.get(PROFESSIONID)).intValue());
 		}
 		//update quest
 		if(!this.worldObj.isRemote){
@@ -406,7 +415,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		super.onDeath(cause);
 		if(!this.worldObj.isRemote){
 			DataVillage.get(this.worldObj).addDeadVillager(this);
-			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(new ChatComponentTranslation(PathHelper.full("message.villager.died"),this.getName()));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.died"),this.getName()));
 		}
 	}
 	
@@ -416,10 +425,14 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	}
 
 	public void refreshProfession(){
-		int proid = this.getDataWatcher().getWatchableObjectInt(16);
+		int proid = ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue();
 		this.profession = Profession.registry.get(proid);
 		if(!this.worldObj.isRemote){
-			this.setCurrentItemOrArmor(0, this.profession.getRandomHoldItem());
+			//clear both hands
+			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, null);
+			this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, null);
+			//get the item on either left hand or right hand
+			this.setItemStackToSlot(Rand.get().nextBoolean()?EntityEquipmentSlot.MAINHAND:EntityEquipmentSlot.OFFHAND, this.profession.getRandomHoldItem());
 		}
 	}
 	
@@ -435,29 +448,29 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	//* quest index is start from -1, end with 254, -1 means no quest 
 	
 	public void setCurrentQuestIdx(int idx){
-		int data = this.dataWatcher.getWatchableObjectInt(18);
+		int data = ((Integer)this.dataWatcher.get(QUEST)).intValue();
 		data &= 0xFFFFFF00;
 		data |= Math.max(0, idx + 1);
-		this.dataWatcher.updateObject(18, data);
+		this.dataWatcher.set(QUEST, Integer.valueOf(data));
 	}
 	
 	public int getCurrentQuestIdx(){
-		int data = this.dataWatcher.getWatchableObjectInt(18);
+		int data = ((Integer)this.dataWatcher.get(QUEST)).intValue();
 		int idx = (data & 0x000000FF) - 1;
 		return idx;
 	}
 	
 	public int getCurrentQuestTicks(){
-		int data = this.dataWatcher.getWatchableObjectInt(18);
+		int data = ((Integer)this.dataWatcher.get(QUEST)).intValue();
 		data >>= 8;
 		return data;
 	}
 	
 	public void setCurrentQuestTicks(int ticks){
-		int data = this.dataWatcher.getWatchableObjectInt(18);
+		int data = ((Integer)this.dataWatcher.get(QUEST)).intValue();
 		data &= 0x000000FF;
 		data |= (ticks << 8);
-		this.dataWatcher.updateObject(18, data);
+		this.dataWatcher.set(QUEST, Integer.valueOf(data));
 	}
 	
 	public int getCurrentQuestTicksLeft(){
@@ -527,7 +540,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	//-----
 	
 	@Override
-	public boolean allowLeashing() {
+	public boolean canBeLeashedTo(EntityPlayer player) {
 		return false;
 	}
 	
@@ -545,7 +558,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tagCompound) {
 		super.writeEntityToNBT(tagCompound);
-		tagCompound.setInteger("proid", this.getDataWatcher().getWatchableObjectInt(16));
+		tagCompound.setInteger("proid", ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue());
 		tagCompound.setBoolean("gender", this.isMale());
 		//home
 		if(this.home != null){
@@ -564,7 +577,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			tagCompound.setIntArray("upgrades", upgrades);
 		}
 		//quest
-		tagCompound.setInteger("questinfo", this.dataWatcher.getWatchableObjectInt(18));
+		tagCompound.setInteger("questinfo", ((Integer)this.dataWatcher.get(QUEST)).intValue());
 	}
 
 	@Override
@@ -588,7 +601,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		this.setUpgradingHistory(arr);
 		//quest
 		if(tagCompund.hasKey("questinfo")){
-			this.dataWatcher.updateObject(18, tagCompund.getInteger("questinfo"));
+			this.dataWatcher.set(QUEST, Integer.valueOf(tagCompund.getInteger("questinfo")));
 		}
 	}
 

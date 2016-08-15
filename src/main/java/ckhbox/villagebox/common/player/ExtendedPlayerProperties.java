@@ -3,6 +3,7 @@ package ckhbox.villagebox.common.player;
 import java.util.ArrayList;
 import java.util.List;
 
+import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.math.Rand;
@@ -11,25 +12,21 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IExtendedEntityProperties;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.items.IItemHandler;
 
-public class ExtendedPlayerProperties implements IExtendedEntityProperties{
+public class ExtendedPlayerProperties{
 	
-	private static final String identifier = "villagebox.playerex";
+	public static final ResourceLocation key = new ResourceLocation(VillageBoxMod.MODID + ".expp");
 	
 	public static final int NewMailTimerTotal = 2000;
 	
-	public static void register(EntityPlayer player){
-		if(get(player) == null){
-			ExtendedPlayerProperties properties = new ExtendedPlayerProperties(player);
-			player.registerExtendedProperties(identifier, properties);
-		}
-	}
-	
 	public static ExtendedPlayerProperties get(EntityPlayer player){
-		return (ExtendedPlayerProperties)player.getExtendedProperties(identifier);
+		return player.getCapability(CapExPlayerProperties.EXTENDED_PLAYER_PROPERTIES_CAPABILITY, null);
 	}
 	
 	//-------------------------------------------------
@@ -74,12 +71,11 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 		}
 	}
 	
-	private ExtendedPlayerProperties(EntityPlayer player){
+	public ExtendedPlayerProperties(EntityPlayer player){
 		this.player = player;
 		this.collections = new Collections(player);
 	}
 	
-	@Override
 	public void saveNBTData(NBTTagCompound compound) {
 		compound.setBoolean("invited", this.hasSentInvitation);
 		compound.setInteger("nmtimer", this.newMailTimer);
@@ -90,8 +86,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 		this.collections.saveNBTData(collections);
 		compound.setTag("collections", collections);
 	}
-
-	@Override
+	
 	public void loadNBTData(NBTTagCompound compound) {
 		this.hasSentInvitation = compound.getBoolean("invited");
 		this.newMailTimer = compound.getInteger("nmtimer");
@@ -101,7 +96,6 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 		this.collections.loadNBTData(compound.getCompoundTag("collections"));
 	}
 
-	@Override
 	public void init(Entity entity, World world) {
 		this.resetMailTimer();
 		this.hasSentInvitation = false;
@@ -120,7 +114,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties{
 			if(profession != null && !this.proIDs.contains(profession.getRegID())){
 				this.proIDs.add(profession.getRegID());
 				ItemStack villageBook = new ItemStack(ModItems.villageBook);
-				this.player.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.collections.addproid"),profession.getDisplayName(),villageBook.getDisplayName()));
+				this.player.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.collections.addproid"),profession.getDisplayName(),villageBook.getDisplayName()));
 			}
 		}
 		

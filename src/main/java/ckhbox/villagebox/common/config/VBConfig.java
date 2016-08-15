@@ -29,46 +29,46 @@ public class VBConfig {
 		
 		//profession ban list
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "BannedProIDList", new int[0]);
-		pt.comment = "Banned profession IDs. One id per line, empty means no banned professions";
+		pt.setComment("Banned profession IDs. One id per line, empty means no banned professions");
 		proIDBanList = pt.getIntList();
 		
 		//coin earning options
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "DestroyBlocksDropCoins", true);
-		pt.comment = "Does destroying blocks drop coins?";
+		pt.setComment("Does destroying blocks drop coins?");
 		destroyBlocksDropCoins = pt.getBoolean();
 		
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "KillMobsDropCoins", true);
-		pt.comment = "Does killing mobs drop coins?";
+		pt.setComment("Does killing mobs drop coins?");
 		killMobsDropCoins = pt.getBoolean();
 		
 		//display extra information
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "displayExtraInfo", false);
-		pt.comment = "Set to true when you want to view extra information such as the profession id of a villager";
+		pt.setComment("Set to true when you want to view extra information such as the profession id of a villager");
 		displayExtraInfo = pt.getBoolean();
 		
 		//villager revive ticks
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "ReviveTicks", 24000);
-		pt.comment = "How many ticks until a dead villager revives again";
+		pt.setComment("How many ticks until a dead villager revives again");
 		reviveTicks = pt.getInt();
 		
 		//free upgrading
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "FreeUpgrading", false);
-		pt.comment = "Set to true when you want nothing be consumed on upgrading villagers";
+		pt.setComment("Set to true when you want nothing be consumed on upgrading villagers");
 		freeUpgrading = pt.getBoolean();
 		
 		//one villager one room
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "OneVillagerPerRoom", false);
-		pt.comment = "Set to true to disallow more than one villagers live in the same room";
+		pt.setComment("Set to true to disallow more than one villagers live in the same room");
 		oneVillagerPerRoom = pt.getBoolean();
 		
 		//quest frequency
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "QuestFrequency", 24000);
-		pt.comment = "How fast the new quest appears. e.g. 0 or a number less than 0 means no new quest, 24000 means one new quest per day in average, 72000 means one new quest every three days in average";
+		pt.setComment("How fast the new quest appears. e.g. 0 or a number less than 0 means no new quest, 24000 means one new quest per day in average, 72000 means one new quest every three days in average");
 		questFrequency = pt.getInt();
 		
 		//quest lifetime
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "QuestLifetime", 48000);
-		pt.comment = "The life time of a quest. e.g. 48000 means the quest will exist 2 minecraft days";
+		pt.setComment("The life time of a quest. e.g. 48000 means the quest will exist 2 minecraft days");
 		questLifetime = pt.getInt();
 		
 		conf.save();

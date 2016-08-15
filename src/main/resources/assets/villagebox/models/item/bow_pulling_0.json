@@ -1,0 +1,6 @@
+{
+    "parent": "villagebox:item/bow",
+    "textures": {
+        "layer0": "villagebox:items/bow_pulling_0"
+    }
+}

@@ -2,15 +2,16 @@ package ckhbox.villagebox.common.item.tool;
 
 import java.util.Random;
 
-import ckhbox.villagebox.common.entity.throwable.EntityFlameBall;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
-import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
 
@@ -28,7 +29,8 @@ public class ItemWeatherStone extends Item{
         this.setMaxDamage(1);
 	}
 	
-	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn)
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
         if (!playerIn.capabilities.isCreativeMode)
         {
@@ -36,18 +38,16 @@ public class ItemWeatherStone extends Item{
         		itemStackIn.damageItem(2, playerIn);
         	}
         }
-
-        playerIn.swingItem();
         
-        worldIn.playSoundAtEntity(playerIn, "random.levelup", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+        playerIn.playSound(SoundEvents.entity_player_levelup, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
         
       //changes weather
         if(!worldIn.isRemote){       	
             if(this.sunny && !worldIn.isRaining()){
-            	playerIn.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.weatherstone.alreadysunny")));
+            	playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.weatherstone.alreadysunny")));
             }
             else if(!this.sunny && worldIn.isRaining()){
-            	playerIn.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.weatherstone.alreadyraining")));
+            	playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.weatherstone.alreadyraining")));
             }
             else{
             	WorldInfo worldinfo = worldIn.getWorldInfo();
@@ -66,11 +66,11 @@ public class ItemWeatherStone extends Item{
                      worldinfo.setRaining(true);
                      worldinfo.setThundering(false);
             	 }
-            	 playerIn.addChatMessage(new ChatComponentTranslation(PathHelper.full("message.player.weatherstone.changed")));
+            	 playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.weatherstone.changed")));
             }
            
         }
 
-        return itemStackIn;
+        return new ActionResult(EnumActionResult.PASS, itemStackIn);
     }
 }

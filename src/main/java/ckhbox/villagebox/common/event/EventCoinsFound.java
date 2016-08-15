@@ -34,14 +34,14 @@ public class EventCoinsFound {
 	@SubscribeEvent
 	public void onLivingDeath(LivingDeathEvent event)
 	{
-		if(!event.entityLiving.worldObj.isRemote && 
-			event.entityLiving instanceof EntityMob && 
-			event.source.getSourceOfDamage() instanceof EntityPlayer){
+		if(!event.getEntityLiving().worldObj.isRemote && 
+			event.getEntityLiving() instanceof EntityMob && 
+			event.getSource().getSourceOfDamage() instanceof EntityPlayer){
 			if(VBConfig.killMobsDropCoins){
-				int l =  ExtendedPlayerProperties.get((EntityPlayer)event.source.getSourceOfDamage()).treasureHuntLevel;
+				int l =  ExtendedPlayerProperties.get((EntityPlayer)event.getSource().getSourceOfDamage()).treasureHuntLevel;
 				int base = l * 2 + 1;
 				int add = l + 3;
-				dropCoins(Rand.get().nextInt(add) + base,event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ);
+				dropCoins(Rand.get().nextInt(add) + base,event.getEntityLiving().worldObj, event.getEntityLiving().posX, event.getEntityLiving().posY, event.getEntityLiving().posZ);
 			}
 		}
 	}
@@ -49,12 +49,12 @@ public class EventCoinsFound {
 	@SubscribeEvent
 	public void onBlockHarvest(BlockEvent.HarvestDropsEvent event)
 	{
-		if(!event.world.isRemote && event.harvester != null){
+		if(!event.getWorld().isRemote && event.getHarvester() != null){
 			if(Rand.get().nextInt(5) == 0 && VBConfig.destroyBlocksDropCoins){
-				int l =  ExtendedPlayerProperties.get(event.harvester).treasureHuntLevel;
+				int l =  ExtendedPlayerProperties.get(event.getHarvester()).treasureHuntLevel;
 				int base = l + 1;
 				int add = l * 2;
-				dropCoins(Rand.get().nextInt(3),event.world, event.pos.getX() + 0.5D, event.pos.getY() + 0.5D, event.pos.getZ() + 0.5D);
+				dropCoins(Rand.get().nextInt(3),event.getWorld(), event.getPos().getX() + 0.5D, event.getPos().getY() + 0.5D, event.getPos().getZ() + 0.5D);
 			}
 		}
 	}

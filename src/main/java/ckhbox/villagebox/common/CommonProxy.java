@@ -4,13 +4,13 @@ import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.block.ModBlocks;
 import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.entity.ModEntities;
-import ckhbox.villagebox.common.event.EventBow;
 import ckhbox.villagebox.common.event.EventCoinsFound;
 import ckhbox.villagebox.common.event.EventEntity;
 import ckhbox.villagebox.common.event.EventWorld;
 import ckhbox.villagebox.common.gui.GuiHandler;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.network.ModNetwork;
+import ckhbox.villagebox.common.player.CapExPlayerProperties;
 import ckhbox.villagebox.common.recipe.ModRecipes;
 import ckhbox.villagebox.common.tileentity.ModTileEntities;
 import ckhbox.villagebox.common.village.profession.Profession;
@@ -29,6 +29,9 @@ public class CommonProxy {
 		ModTileEntities.init();
 		ModRecipes.init();
 		
+		//capability
+		CapExPlayerProperties.register();
+		
 		//gui
 		NetworkRegistry.INSTANCE.registerGuiHandler(VillageBoxMod.instance, new GuiHandler());
 		
@@ -41,7 +44,6 @@ public class CommonProxy {
 		//events
 		MinecraftForge.EVENT_BUS.register(new EventEntity());
 		MinecraftForge.EVENT_BUS.register(new EventCoinsFound());
-		MinecraftForge.EVENT_BUS.register(new EventBow());
 		MinecraftForge.EVENT_BUS.register(new EventWorld());
 		
 		//configuration

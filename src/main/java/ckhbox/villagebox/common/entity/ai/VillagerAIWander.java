@@ -2,10 +2,8 @@ package ckhbox.villagebox.common.entity.ai;
 
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.util.math.Rand;
-import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.RandomPositionGenerator;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.math.Vec3d;
 
 public class VillagerAIWander extends EntityAIBase
 {
@@ -48,10 +46,10 @@ public class VillagerAIWander extends EntityAIBase
         	return false;
         }
         
-        Vec3 vec3 = null;
+        Vec3d vec3 = null;
         
         if(this.villager.getHome() == null){
-        	vec3 = new Vec3(
+        	vec3 = new Vec3d(
         			this.villager.getWanderCenter().xCoord + Rand.get().nextDouble() * 6.0D - 3.0D,
         			this.villager.getWanderCenter().yCoord,
         			this.villager.getWanderCenter().zCoord + Rand.get().nextDouble() * 6.0D - 3.0D

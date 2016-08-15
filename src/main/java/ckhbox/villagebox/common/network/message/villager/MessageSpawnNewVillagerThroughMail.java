@@ -3,15 +3,11 @@ package ckhbox.villagebox.common.network.message.villager;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.item.common.ItemMail;
-import ckhbox.villagebox.common.player.ExtendedPlayerProperties;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import ckhbox.villagebox.common.util.math.Rand;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.ChatComponentTranslationFormatException;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -42,7 +38,7 @@ public class MessageSpawnNewVillagerThroughMail implements IMessage {
     		//spawn villager
     		EntityPlayer player = ctx.getServerHandler().playerEntity;
     		
-        	ItemStack hold = player.getHeldItem();
+        	ItemStack hold = player.getHeldItemMainhand();
             if(hold.getItem() == ModItems.mail){
             	int mailType = ItemMail.getMailType(hold);
             	if(mailType == ItemMail.MailType_NewVillagerMale || mailType == ItemMail.MailType_NewVillagerFemale){
@@ -60,7 +56,7 @@ public class MessageSpawnNewVillagerThroughMail implements IMessage {
             		ctx.getServerHandler().playerEntity.worldObj.spawnEntityInWorld(villager);
             		
             		player.addChatMessage(
-            			new ChatComponentTranslation(PathHelper.full("message.villager.newjoined"),villager.getName())
+            			new TextComponentTranslation(PathHelper.full("message.villager.newjoined"),villager.getName())
             		);
             		
             		//remove hold

@@ -2,27 +2,20 @@ package ckhbox.villagebox.common.item.weapon;
 
 import java.util.List;
 
-import ckhbox.villagebox.common.entity.throwable.EntityFlameBall;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.EnumDyeColor;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public class ItemNatureStaff extends Item
@@ -38,77 +31,42 @@ public class ItemNatureStaff extends Item
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = StatCollector.translateToLocal(PathHelper.full("info.item.natureStaff"));
+		String info = I18n.translateToLocal(PathHelper.full("info.item.natureStaff"));
 		tooltip.add(info);
 	}
     
-	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
+	@Override
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        if (!playerIn.canPlayerEdit(pos.offset(side), side, stack))
+        if (!playerIn.canPlayerEdit(pos.offset(facing), facing, stack))
         {
-            return false;
+            return EnumActionResult.FAIL;
         }
         else
         {
-            if (applyBonemeal(stack, worldIn, pos, playerIn))
+        	int stacksize = stack.stackSize;
+        	if (ItemDye.applyBonemeal(stack, worldIn, pos, playerIn))
             {
                 if (!worldIn.isRemote)
                 {
                     worldIn.playAuxSFX(2005, pos, 0);
+                    stack.stackSize = stacksize; // ItemDye.applyBonemeal consumes 1 item but we don't want it to happen.
+                    this.damageStaff(playerIn, stack, hand);
                 }
 
-                return true;
+                return EnumActionResult.SUCCESS;
             }
         }
-        return false;
+        return EnumActionResult.PASS;
     }
 	 
-	 public void damageStaff(EntityPlayer player, ItemStack stack){
-         if (!player.capabilities.isCreativeMode)
-         {
-         	stack.damageItem(1, player);
-         	if(stack.getItemDamage() == 0){
-         		player.setCurrentItemOrArmor(0, new ItemStack(ModItems.staff));
-         	}
-         }
-	 }
-	 
-	 public boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target)
-    {
-        if (worldIn instanceof net.minecraft.world.WorldServer)
-            return applyBonemeal(stack, worldIn, target, net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.world.WorldServer)worldIn));
-        return false;
-    }
-
-    public boolean applyBonemeal(ItemStack stack, World worldIn, BlockPos target, EntityPlayer player)
-    {
-        IBlockState iblockstate = worldIn.getBlockState(target);
-
-        int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, worldIn, target, iblockstate, stack);
-        if (hook != 0) return hook > 0;
-
-        if (iblockstate.getBlock() instanceof IGrowable)
+	public void damageStaff(EntityPlayer player, ItemStack stack, EnumHand hand){
+        if (!player.capabilities.isCreativeMode)
         {
-            IGrowable igrowable = (IGrowable)iblockstate.getBlock();
-
-            if (igrowable.canGrow(worldIn, target, iblockstate, worldIn.isRemote))
-            {
-                if (!worldIn.isRemote)
-                {
-                    if (igrowable.canUseBonemeal(worldIn, worldIn.rand, target, iblockstate))
-                    {
-                        igrowable.grow(worldIn, worldIn.rand, target, iblockstate);
-                    }
-
-                    this.damageStaff(player, stack);	                   
-                }
-
-                return true;
-            }
+        	stack.damageItem(1, player);
+        	if(stack.getItemDamage() == 0){
+        		player.setItemStackToSlot(hand == EnumHand.MAIN_HAND? EntityEquipmentSlot.MAINHAND : EntityEquipmentSlot.OFFHAND, new ItemStack(ModItems.staff));
+        	}
         }
-
-        return false;
-    }
-
-    
+	 }   
 }

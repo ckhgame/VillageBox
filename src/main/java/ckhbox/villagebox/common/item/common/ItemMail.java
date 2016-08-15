@@ -6,13 +6,13 @@ import ckhbox.villagebox.VillageBoxMod;
 import ckhbox.villagebox.common.gui.GuiIDs;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 public class ItemMail extends Item{
@@ -28,19 +28,19 @@ public class ItemMail extends Item{
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 		
 		if(!worldIn.isRemote){
 			playerIn.openGui(VillageBoxMod.instance, GuiIDs.Mail, worldIn, 0, 0, 0);
 		}
 		
-		return super.onItemRightClick(itemStackIn, worldIn, playerIn);
+		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = StatCollector.translateToLocalFormatted(PathHelper.full("mail.item.info"), getMailSender(stack));
+		String info = I18n.translateToLocalFormatted(PathHelper.full("mail.item.info"), getMailSender(stack));
 		tooltip.add(info);
 	}
 	

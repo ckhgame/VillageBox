@@ -9,7 +9,7 @@ import ckhbox.villagebox.client.gui.villagebook.page.link.LinkPro;
 import ckhbox.villagebox.client.gui.villagebook.page.link.LinkText;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.profession.Profession;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.translation.I18n;
 
 public class PageProList extends Page{
 	
@@ -17,7 +17,7 @@ public class PageProList extends Page{
 	private static int prosPerPage = 7;
 	
 	public PageProList(GuiVillageBook guiVillageBook, int pageIdx) {
-		super(guiVillageBook, StatCollector.translateToLocal(PathHelper.full("villageBook.professions")));
+		super(guiVillageBook, I18n.translateToLocal(PathHelper.full("villageBook.professions")));
 		this.pageIdx = pageIdx;
 	}
 

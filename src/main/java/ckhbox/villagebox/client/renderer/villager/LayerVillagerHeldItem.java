@@ -1,13 +1,14 @@
 package ckhbox.villagebox.client.renderer.villager;
 
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
-import net.minecraft.client.renderer.entity.RendererLivingEntity;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.entity.EntityLivingBase;
 
 public class LayerVillagerHeldItem extends LayerHeldItem{
 	
-	public LayerVillagerHeldItem(RendererLivingEntity<?> livingEntityRendererIn) {
+	public LayerVillagerHeldItem(RenderLiving<?> livingEntityRendererIn) {
 		super(livingEntityRendererIn);
 	}
 

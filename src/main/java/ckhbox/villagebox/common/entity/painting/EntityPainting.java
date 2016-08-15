@@ -1,6 +1,7 @@
 package ckhbox.villagebox.common.entity.painting;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.lwjgl.BufferUtils;
 
@@ -8,15 +9,17 @@ import com.google.common.collect.Lists;
 import com.sun.prism.impl.BufferUtil;
 
 import ckhbox.villagebox.common.item.ModItems;
+import ckhbox.villagebox.common.util.helper.BufferHelper;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -26,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityPainting extends EntityHanging implements IEntityAdditionalSpawnData
 {
-    public EntityPainting.EnumArt art;
+	public EntityPainting.EnumArt art;
 
     public EntityPainting(World worldIn)
     {
@@ -56,36 +59,6 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
 
         this.updateFacingWithBoundingBox(facing);
     }
-	
-	@Override
-	public void writeSpawnData(ByteBuf buffer) {
-		ByteBufUtils.writeUTF8String(buffer, this.art.title);
-        buffer.writeInt(this.hangingPosition.getX());
-        buffer.writeInt(this.hangingPosition.getY());
-        buffer.writeInt(this.hangingPosition.getZ());
-        buffer.writeByte(this.getHorizontalFacing().getIndex());
-	}
-
-	@Override
-	public void readSpawnData(ByteBuf buffer) {
-		//get title, pos and facing
-		String title = ByteBufUtils.readUTF8String(buffer);		   
-        BlockPos pos = new BlockPos(buffer.readInt(), buffer.readInt(), buffer.readInt());      
-        EnumFacing facing = EnumFacing.getFront((buffer.readByte()));
-        
-        this.hangingPosition = pos;
-        
-        for (EntityPainting.EnumArt entitypainting$enumart : EntityPainting.EnumArt.values())
-        {
-            if (entitypainting$enumart.title.equals(title))
-            {
-                this.art = entitypainting$enumart;
-                break;
-            }
-        }
-
-        this.updateFacingWithBoundingBox(facing);
-	}
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
@@ -128,6 +101,42 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
     {
         return this.art.sizeY;
     }
+    
+    
+    //readSpawnData & writeSpawnData basically are copies of the associated functions in SPacketSpawnPainting class
+    
+    @Override
+	public void writeSpawnData(ByteBuf buffer) {
+    	BufferHelper.writeUuid(buffer, this.getUniqueID());
+		ByteBufUtils.writeUTF8String(buffer, this.art.title);
+        buffer.writeInt(this.getHangingPosition().getX());
+        buffer.writeInt(this.getHangingPosition().getY());
+        buffer.writeInt(this.getHangingPosition().getZ());
+        buffer.writeByte(this.facingDirection.getHorizontalIndex());
+	}
+
+	@Override
+	public void readSpawnData(ByteBuf buffer) {
+		UUID uuid = BufferHelper.readUuid(buffer);
+		String title = ByteBufUtils.readUTF8String(buffer);		   
+        BlockPos pos = new BlockPos(buffer.readInt(), buffer.readInt(), buffer.readInt());      
+        EnumFacing facing = EnumFacing.getHorizontal((buffer.readUnsignedByte()));
+        
+        this.hangingPosition = pos;
+        
+        for (EntityPainting.EnumArt entitypainting$enumart : EntityPainting.EnumArt.values())		
+        {		
+        	if (entitypainting$enumart.title.equals(title))		
+        	{		
+        		this.art = entitypainting$enumart;
+        		break;		
+        	}		
+        }		
+
+        this.updateFacingWithBoundingBox(facing);
+        
+        this.setUniqueId(uuid);
+	}
 
     /**
      * Called when this entity is broken. Entity parameter may be null.
@@ -136,6 +145,8 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
     {
         if (this.worldObj.getGameRules().getBoolean("doEntityDrops"))
         {
+            this.playSound(SoundEvents.entity_painting_break, 1.0F, 1.0F);
+
             if (brokenEntity instanceof EntityPlayer)
             {
                 EntityPlayer entityplayer = (EntityPlayer)brokenEntity;
@@ -150,12 +161,17 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
         }
     }
 
+    public void func_184523_o()
+    {
+        this.playSound(SoundEvents.entity_painting_place, 1.0F, 1.0F);
+    }
+
     /**
      * Sets the location and Yaw/Pitch of an entity in the world
      */
     public void setLocationAndAngles(double x, double y, double z, float yaw, float pitch)
     {
-        BlockPos blockpos = this.hangingPosition.add(x - this.posX, y - this.posY, z - this.posZ);
+    	BlockPos blockpos = this.hangingPosition.add(x - this.posX, y - this.posY, z - this.posZ);
         this.setPosition((double)blockpos.getX(), (double)blockpos.getY(), (double)blockpos.getZ());
     }
 
@@ -168,7 +184,7 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
 
     public static enum EnumArt
     {
-        TREE("Tree", 16, 16, 0, 0),
+    	TREE("Tree", 16, 16, 0, 0),
         TAVERN("Tavern", 16, 16, 16, 0),
         CHURCH("Church", 16, 16, 32, 0),
         MARKET("Matket", 16, 16, 48, 0),
@@ -198,7 +214,7 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
         HOUSE2("House2", 64, 48, 192, 160),
         TREE2("Tree2", 64, 48, 192, 208);
 
-        public static final int field_180001_A = "SkullAndRoses".length();
+        public static final int MAX_NAME_LENGTH = "SkullAndRoses".length();
         /** Painting Title. */
         public final String title;
         public final int sizeX;

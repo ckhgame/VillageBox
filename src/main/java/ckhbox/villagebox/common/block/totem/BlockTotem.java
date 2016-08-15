@@ -5,18 +5,22 @@ import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.tileentity.totem.TileEntityTotem;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTotem extends BlockFacing implements ITileEntityProvider{
 
+	private static final AxisAlignedBB TOTEM_AABB = new AxisAlignedBB(0.25F, 0.0F, 0.25F, 0.75F, 1.0F, 0.75F);
+	
 	private Class<? extends TileEntityTotem> classTotem;
 	
 	public BlockTotem(String name, Class<? extends TileEntityTotem> classTotem) {
@@ -25,11 +29,15 @@ public class BlockTotem extends BlockFacing implements ITileEntityProvider{
         this.setCreativeTab(ModItems.tabVB);
         this.classTotem = classTotem;
         this.isBlockContainer = true;
-        this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 1.0F, 0.75F);
 		this.setHardness(2.5F);
-        this.setStepSound(soundTypeWood);
+        this.setStepSound(SoundType.WOOD);
 	}
-	
+		
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return TOTEM_AABB;
+	}
+
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		try {
@@ -52,20 +60,20 @@ public class BlockTotem extends BlockFacing implements ITileEntityProvider{
     }
     
 	@Override
-    public boolean isOpaqueCube()
+    public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
 
-    public boolean isFullCube()
+    public boolean isFullCube(IBlockState state)
     {
         return false;
     }
     
     @SideOnly(Side.CLIENT)
-    public EnumWorldBlockLayer getBlockLayer()
+    public BlockRenderLayer getBlockLayer()
     {
-        return EnumWorldBlockLayer.CUTOUT;
+        return BlockRenderLayer.CUTOUT;
     }
 
 }

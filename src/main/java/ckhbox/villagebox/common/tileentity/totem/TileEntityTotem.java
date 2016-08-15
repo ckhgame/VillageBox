@@ -1,7 +1,7 @@
 package ckhbox.villagebox.common.tileentity.totem;
 
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.ITickable;
 
 public abstract class TileEntityTotem extends TileEntity implements ITickable{
@@ -27,7 +27,7 @@ public abstract class TileEntityTotem extends TileEntity implements ITickable{
 	protected AxisAlignedBB getEffectField(int size, int height){
 		double hs = size / 2;
 		double hh = height / 2;
-		return AxisAlignedBB.fromBounds(this.pos.getX() - hs, this.pos.getY() - hh, this.pos.getZ() - hs, 
+		return new AxisAlignedBB(this.pos.getX() - hs, this.pos.getY() - hh, this.pos.getZ() - hs, 
 				this.pos.getX() + hs, this.pos.getY() + hh, this.pos.getZ() + hs);
 	}
 	

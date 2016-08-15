@@ -1,7 +1,7 @@
 package ckhbox.villagebox.common.util.math;
 
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 
 public class IntVec3 {
 	public int x,y,z;
@@ -10,7 +10,7 @@ public class IntVec3 {
 		set(MathHelper.floor_double(x),MathHelper.floor_double(y),MathHelper.floor_double(z));
 	}
 	
-	public IntVec3(Vec3 vec){
+	public IntVec3(Vec3d vec){
 		this(vec.xCoord,vec.yCoord,vec.zCoord);
 	}
 	
