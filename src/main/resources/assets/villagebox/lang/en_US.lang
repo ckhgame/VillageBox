@@ -136,7 +136,7 @@ villagebox:message.villager.dismiss=%s has permanently removed %s[%s]
 villagebox:message.mail.newmail=You have received a new mail
 villagebox:message.mail.nomail=You have nothing in the mailbox
 villagebox:message.mail.invitesuccess=You have sent an invitation, someone will reply to you soon
-villagebox:message.mail.invitefailed=You have already sent a invitation
+villagebox:message.mail.invitefailed=You have already sent an invitation
 
 villagebox:message.player.treasurelvlupgrade.success=Your §6treasure hunt level §fhas been upgraded to §a%d
 villagebox:message.player.treasurelvlupgrade.failed=You can't learn anything more from this book
