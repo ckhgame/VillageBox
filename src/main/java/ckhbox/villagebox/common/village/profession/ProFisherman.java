@@ -42,7 +42,7 @@ public class ProFisherman extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.silverCoin,2),
-				new ItemStack(Items.fishing_rod,1)
+				new ItemStack(Items.FISHING_ROD,1)
 		};
 		
 		this.upgradeToNextOptions = null;
@@ -51,8 +51,8 @@ public class ProFisherman extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.fishing_rod),
-				new ItemStack(Items.fish)
+				new ItemStack(Items.FISHING_ROD),
+				new ItemStack(Items.FISH)
 		};
 	}
 	
@@ -60,10 +60,10 @@ public class ProFisherman extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.fishing_rod,1)},
+				new ItemStack[]{new ItemStack(Items.FISHING_ROD,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,12)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.fishing_rod,1)},
+				new ItemStack[]{new ItemStack(Items.FISHING_ROD,1)},
 				new ItemStack[]{new ItemStack(ModItems.crab,1)}));
 	}
 }

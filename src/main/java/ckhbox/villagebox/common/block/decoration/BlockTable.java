@@ -13,11 +13,11 @@ public class BlockTable extends Block{
 	
 	public BlockTable(String name)
 	{
-        super(Material.wood);
+        super(Material.WOOD);
         this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(ModItems.tabVB);
         this.setHardness(2.5F);
-        this.setStepSound(SoundType.WOOD);
+        this.setSoundType(SoundType.WOOD);
     }
 
 	@Override

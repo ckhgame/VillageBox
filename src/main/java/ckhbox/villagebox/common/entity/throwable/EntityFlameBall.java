@@ -53,18 +53,18 @@ public class EntityFlameBall extends EntityThrowable
 
                 if (this.worldObj.isAirBlock(blockpos))
                 {
-                    this.worldObj.setBlockState(blockpos, Blocks.fire.getDefaultState());
+                    this.worldObj.setBlockState(blockpos, Blocks.FIRE.getDefaultState());
                 }
             }
             
-            this.playSound(SoundEvents.entity_generic_explode, 0.7F, 1.0F);
+            this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.7F, 1.0F);
 
             this.setDead();
         }
     	
         for (int k = 0; k < 3; ++k)
         {
-            this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, new int[] {Item.getIdFromItem(Items.egg)});
+            this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, new int[] {Item.getIdFromItem(Items.EGG)});
         }
     }
 

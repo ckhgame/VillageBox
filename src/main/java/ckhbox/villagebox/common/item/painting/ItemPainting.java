@@ -38,7 +38,7 @@ public class ItemPainting extends Item{
             {
                 if (!worldIn.isRemote)
                 {
-                    entityhanging.func_184523_o();
+                    entityhanging.playPlaceSound();
                     worldIn.spawnEntityInWorld(entityhanging);
                 }
 

@@ -59,13 +59,13 @@ public class ProBanker extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.diamond,1)},
+				new ItemStack[]{new ItemStack(Items.DIAMOND,1)},
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,2)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.emerald,1)},
+				new ItemStack[]{new ItemStack(Items.EMERALD,1)},
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,2)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.diamond,1)},
-				new ItemStack[]{new ItemStack(Items.ender_pearl,1)}));
+				new ItemStack[]{new ItemStack(Items.DIAMOND,1)},
+				new ItemStack[]{new ItemStack(Items.ENDER_PEARL,1)}));
 	}
 }

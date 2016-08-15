@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemAxe extends net.minecraft.item.ItemTool{
 
-	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(new Block[] {Blocks.planks, Blocks.bookshelf, Blocks.log, Blocks.log2, Blocks.chest, Blocks.pumpkin, Blocks.lit_pumpkin, Blocks.melon_block, Blocks.ladder, Blocks.wooden_button, Blocks.wooden_pressure_plate});
+	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(new Block[] {Blocks.PLANKS, Blocks.BOOKSHELF, Blocks.LOG, Blocks.LOG2, Blocks.CHEST, Blocks.PUMPKIN, Blocks.LIT_PUMPKIN, Blocks.MELON_BLOCK, Blocks.LADDER, Blocks.WOODEN_BUTTON, Blocks.WOODEN_PRESSURE_PLATE});
 	
 	public ItemAxe(ToolMaterial material) {
 		super(material, EFFECTIVE_ON);
@@ -25,7 +25,7 @@ public class ItemAxe extends net.minecraft.item.ItemTool{
     public float getStrVsBlock(ItemStack stack, IBlockState state)
     {
         Material material = state.getMaterial();
-        return material != Material.wood && material != Material.plants && material != Material.vine ? super.getStrVsBlock(stack, state) : this.efficiencyOnProperMaterial;
+        return material != Material.WOOD && material != Material.PLANTS && material != Material.VINE ? super.getStrVsBlock(stack, state) : this.efficiencyOnProperMaterial;
     }
 
 }

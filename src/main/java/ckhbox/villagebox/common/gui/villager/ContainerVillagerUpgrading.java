@@ -1,15 +1,10 @@
 package ckhbox.villagebox.common.gui.villager;
 
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
-import ckhbox.villagebox.common.util.helper.ItemStackHelper;
-import ckhbox.villagebox.common.village.trading.ITrading;
-import ckhbox.villagebox.common.village.trading.InventoryTrading;
-import ckhbox.villagebox.common.village.trading.SlotTradingOutput;
 import ckhbox.villagebox.common.village.villager.InventoryUpgrading;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -50,11 +45,6 @@ public class ContainerVillagerUpgrading extends Container
     public InventoryUpgrading getUpgradingInventory()
     {
         return this.upgradingInventory;
-    }
-
-    public void onCraftGuiOpened(ICrafting listener)
-    {
-        super.onCraftGuiOpened(listener);
     }
 
     /**
@@ -158,7 +148,7 @@ public class ContainerVillagerUpgrading extends Container
         		if (this.upgradingInventory.getStackInSlot(i) != null)
                 {
         			if(!playerIn.inventory.addItemStackToInventory(this.upgradingInventory.getStackInSlot(i)))
-        				playerIn.dropPlayerItemWithRandomChoice(this.upgradingInventory.getStackInSlot(i), false);
+        				playerIn.dropItem(this.upgradingInventory.getStackInSlot(i), false);
                 }
         	}
         	playerIn.inventoryContainer.detectAndSendChanges();

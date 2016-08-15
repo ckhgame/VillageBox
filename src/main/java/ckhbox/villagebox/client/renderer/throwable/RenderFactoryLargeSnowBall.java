@@ -14,7 +14,7 @@ public class RenderFactoryLargeSnowBall implements IRenderFactory<EntityLargeSno
 
 	@Override
 	public Render<? super EntityLargeSnowBall> createRenderFor(RenderManager manager) {
-		return new RenderLargeSnowBall(manager, Items.snowball, Minecraft.getMinecraft().getRenderItem());
+		return new RenderLargeSnowBall(manager, Items.SNOWBALL, Minecraft.getMinecraft().getRenderItem());
 	}
 
 }

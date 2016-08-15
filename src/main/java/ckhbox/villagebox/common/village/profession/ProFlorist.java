@@ -55,8 +55,8 @@ public class ProFlorist extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.flower_pot,2),
-				new ItemStack(Blocks.dirt,16),
+				new ItemStack(Items.FLOWER_POT,2),
+				new ItemStack(Blocks.DIRT,16),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		
@@ -66,7 +66,7 @@ public class ProFlorist extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.flower_pot),
+				new ItemStack(Items.FLOWER_POT),
 				new ItemStack(ModBlocks.bonsai),
 				new ItemStack(ModBlocks.flowerRedRose)
 		};
@@ -76,13 +76,13 @@ public class ProFlorist extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.flower_pot,1)},
+				new ItemStack[]{new ItemStack(Items.FLOWER_POT,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.dirt,3)},
+				new ItemStack[]{new ItemStack(Blocks.DIRT,3)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.flower_pot,1),new ItemStack(Blocks.dirt,3)},
+				new ItemStack[]{new ItemStack(Items.FLOWER_POT,1),new ItemStack(Blocks.DIRT,3)},
 				new ItemStack[]{new ItemStack(ModBlocks.bonsai,1)}));
 	}
 

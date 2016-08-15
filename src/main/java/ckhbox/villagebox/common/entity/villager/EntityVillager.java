@@ -137,11 +137,11 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	protected void entityInit() {
 		super.entityInit();
 		//profession id
-		this.dataWatcher.register(PROFESSIONID, Integer.valueOf(0));
+		this.getDataManager().register(PROFESSIONID, Integer.valueOf(0));
 		//data flags(interacting.following,etc.)
-		this.dataWatcher.register(FLAGS, Integer.valueOf(0));
+		this.getDataManager().register(FLAGS, Integer.valueOf(0));
 		//quest
-		this.dataWatcher.register(QUEST, Integer.valueOf(-1));
+		this.getDataManager().register(QUEST, Integer.valueOf(-1));
 	}
 
 	
@@ -208,16 +208,16 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	 * POS: 0=Interacting, 1=Following, 2=Has Home
 	 */
 	protected void setDataFlag(int pos, boolean flag){
-		int data = ((Integer)this.dataWatcher.get(FLAGS)).intValue();
+		int data = ((Integer)this.getDataManager().get(FLAGS)).intValue();
 		data = BitHelper.writeBit(data, pos, flag);
-		this.dataWatcher.set(FLAGS, Integer.valueOf(data));
+		this.getDataManager().set(FLAGS, Integer.valueOf(data));
 	}
 	
 	/**
 	 * POS: 0=Interacting, 1=Following, 2=Has Home, 3 gender
 	 */
 	protected boolean getDataFlag(int pos){
-		int data = ((Integer)this.dataWatcher.get(FLAGS)).intValue();
+		int data = ((Integer)this.getDataManager().get(FLAGS)).intValue();
 		return BitHelper.readBit(data, pos);
 	}
 	
@@ -341,15 +341,15 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	
 	//profession
 	public Profession getProfession(){
-		if(this.worldObj.isRemote && (this.profession == null || ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue() != this.profession.getRegID())){
-			this.profession = Profession.registry.get(((Integer)this.dataWatcher.get(PROFESSIONID)).intValue());
+		if(this.worldObj.isRemote && (this.profession == null || ((Integer)this.getDataManager().get(PROFESSIONID)).intValue() != this.profession.getRegID())){
+			this.profession = Profession.registry.get(((Integer)this.getDataManager().get(PROFESSIONID)).intValue());
 			this.refreshProfession();
 		}
 		return this.profession;
 	}
 	
 	public void setProfession(int proid){
-		this.dataWatcher.set(PROFESSIONID, Integer.valueOf(proid));
+		this.getDataManager().set(PROFESSIONID, Integer.valueOf(proid));
 		this.refreshProfession();
 	}
 	
@@ -401,8 +401,8 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	public void onUpdate() {
 		super.onUpdate();
 		//update profession
-		if(this.worldObj.isRemote && (this.profession == null || ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue() != this.profession.getRegID())){
-			this.setProfession(((Integer)this.dataWatcher.get(PROFESSIONID)).intValue());
+		if(this.worldObj.isRemote && (this.profession == null || ((Integer)this.getDataManager().get(PROFESSIONID)).intValue() != this.profession.getRegID())){
+			this.setProfession(((Integer)this.getDataManager().get(PROFESSIONID)).intValue());
 		}
 		//update quest
 		if(!this.worldObj.isRemote){
@@ -425,7 +425,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	}
 
 	public void refreshProfession(){
-		int proid = ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue();
+		int proid = ((Integer)this.getDataManager().get(PROFESSIONID)).intValue();
 		this.profession = Profession.registry.get(proid);
 		if(!this.worldObj.isRemote){
 			//clear both hands
@@ -448,29 +448,29 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	//* quest index is start from -1, end with 254, -1 means no quest 
 	
 	public void setCurrentQuestIdx(int idx){
-		int data = ((Integer)this.dataWatcher.get(QUEST)).intValue();
+		int data = ((Integer)this.getDataManager().get(QUEST)).intValue();
 		data &= 0xFFFFFF00;
 		data |= Math.max(0, idx + 1);
-		this.dataWatcher.set(QUEST, Integer.valueOf(data));
+		this.getDataManager().set(QUEST, Integer.valueOf(data));
 	}
 	
 	public int getCurrentQuestIdx(){
-		int data = ((Integer)this.dataWatcher.get(QUEST)).intValue();
+		int data = ((Integer)this.getDataManager().get(QUEST)).intValue();
 		int idx = (data & 0x000000FF) - 1;
 		return idx;
 	}
 	
 	public int getCurrentQuestTicks(){
-		int data = ((Integer)this.dataWatcher.get(QUEST)).intValue();
+		int data = ((Integer)this.getDataManager().get(QUEST)).intValue();
 		data >>= 8;
 		return data;
 	}
 	
 	public void setCurrentQuestTicks(int ticks){
-		int data = ((Integer)this.dataWatcher.get(QUEST)).intValue();
+		int data = ((Integer)this.getDataManager().get(QUEST)).intValue();
 		data &= 0x000000FF;
 		data |= (ticks << 8);
-		this.dataWatcher.set(QUEST, Integer.valueOf(data));
+		this.getDataManager().set(QUEST, Integer.valueOf(data));
 	}
 	
 	public int getCurrentQuestTicksLeft(){
@@ -558,7 +558,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	@Override
 	public void writeEntityToNBT(NBTTagCompound tagCompound) {
 		super.writeEntityToNBT(tagCompound);
-		tagCompound.setInteger("proid", ((Integer)this.dataWatcher.get(PROFESSIONID)).intValue());
+		tagCompound.setInteger("proid", ((Integer)this.getDataManager().get(PROFESSIONID)).intValue());
 		tagCompound.setBoolean("gender", this.isMale());
 		//home
 		if(this.home != null){
@@ -577,7 +577,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			tagCompound.setIntArray("upgrades", upgrades);
 		}
 		//quest
-		tagCompound.setInteger("questinfo", ((Integer)this.dataWatcher.get(QUEST)).intValue());
+		tagCompound.setInteger("questinfo", ((Integer)this.getDataManager().get(QUEST)).intValue());
 	}
 
 	@Override
@@ -601,7 +601,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		this.setUpgradingHistory(arr);
 		//quest
 		if(tagCompund.hasKey("questinfo")){
-			this.dataWatcher.set(QUEST, Integer.valueOf(tagCompund.getInteger("questinfo")));
+			this.getDataManager().set(QUEST, Integer.valueOf(tagCompund.getInteger("questinfo")));
 		}
 	}
 

@@ -13,7 +13,7 @@ public class TileEntityWaterTotem extends TileEntityTotem{
 		List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, this.getEffectField(16, 10));
 		if(list != null){
 			for(EntityPlayer player : list){
-				player.addPotionEffect(new PotionEffect(MobEffects.moveSpeed,100,1));
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED,100,1));
 			}
 		}
 	}

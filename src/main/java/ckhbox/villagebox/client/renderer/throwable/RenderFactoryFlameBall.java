@@ -14,7 +14,7 @@ public class RenderFactoryFlameBall implements IRenderFactory<EntityFlameBall>{
 
 	@Override
 	public Render<? super EntityFlameBall> createRenderFor(RenderManager manager) {
-		return new RenderFlameBall(manager, Items.blaze_powder, Minecraft.getMinecraft().getRenderItem());
+		return new RenderFlameBall(manager, Items.BLAZE_POWDER, Minecraft.getMinecraft().getRenderItem());
 	}
 
 }

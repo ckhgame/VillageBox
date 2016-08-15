@@ -51,7 +51,7 @@ public class Quest {
 			for(int i =0;i<rewards.length;i++){
 				ItemStack reward = rewards[i].copy();
 				if(!player.inventory.addItemStackToInventory(reward)){
-					player.dropPlayerItemWithRandomChoice(reward, false);
+					player.dropItem(reward, false);
 				}
 			}	
 		}

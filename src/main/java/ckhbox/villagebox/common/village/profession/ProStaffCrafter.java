@@ -15,7 +15,7 @@ public class ProStaffCrafter extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,10), new ItemStack(Items.stick), new ItemStack(Blocks.glass)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,10), new ItemStack(Items.STICK), new ItemStack(Blocks.GLASS)},
 				new ItemStack(ModItems.staff)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,10), new ItemStack(ModItems.staff), new ItemStack(ModItems.fireShard,2)},
@@ -47,7 +47,7 @@ public class ProStaffCrafter extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.stick,1),
+				new ItemStack(Items.STICK,1),
 				new ItemStack(ModItems.silverCoin,15)
 		};
 		
@@ -65,7 +65,7 @@ public class ProStaffCrafter extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.stick,16)},
+				new ItemStack[]{new ItemStack(Items.STICK,16)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 	}
 	

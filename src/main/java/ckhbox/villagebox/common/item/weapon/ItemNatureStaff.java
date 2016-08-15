@@ -49,7 +49,7 @@ public class ItemNatureStaff extends Item
             {
                 if (!worldIn.isRemote)
                 {
-                    worldIn.playAuxSFX(2005, pos, 0);
+                	worldIn.playEvent(2005, pos, 0);
                     stack.stackSize = stacksize; // ItemDye.applyBonemeal consumes 1 item but we don't want it to happen.
                     this.damageStaff(playerIn, stack, hand);
                 }

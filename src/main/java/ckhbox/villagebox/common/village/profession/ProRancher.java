@@ -24,7 +24,7 @@ public class ProRancher extends Profession{
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
 				new ItemStack(ModItems.ballOfWool)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5),new ItemStack(Blocks.wool,1)},
+				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5),new ItemStack(Blocks.WOOL,1)},
 				new ItemStack(ModItems.ballOfWool)));
 	}
 
@@ -42,8 +42,8 @@ public class ProRancher extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.silverCoin,1),
-				new ItemStack(Items.bucket,1),
-				new ItemStack(Items.shears,1)
+				new ItemStack(Items.BUCKET,1),
+				new ItemStack(Items.SHEARS,1)
 		};
 		
 		this.upgradeToNextOptionClasses = null;
@@ -52,8 +52,8 @@ public class ProRancher extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.bucket),
-				new ItemStack(Items.shears)
+				new ItemStack(Items.BUCKET),
+				new ItemStack(Items.SHEARS)
 		};
 	}
 	
@@ -61,22 +61,22 @@ public class ProRancher extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.bucket,1)},
+				new ItemStack[]{new ItemStack(Items.BUCKET,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,12)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.shears,1)},
+				new ItemStack[]{new ItemStack(Items.SHEARS,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,12)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.wheat_seeds,10)},
+				new ItemStack[]{new ItemStack(Items.WHEAT_SEEDS,10)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,6)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.wheat,10)},
+				new ItemStack[]{new ItemStack(Items.WHEAT,10)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.bucket,1)},
+				new ItemStack[]{new ItemStack(Items.BUCKET,1)},
 				new ItemStack[]{new ItemStack(ModItems.mayonnaise,2)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.shears,1)},
+				new ItemStack[]{new ItemStack(Items.SHEARS,1)},
 				new ItemStack[]{new ItemStack(ModItems.ballOfWool,3)}));
 	}
 }

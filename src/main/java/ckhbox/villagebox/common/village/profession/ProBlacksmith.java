@@ -15,7 +15,7 @@ public class ProBlacksmith extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1),new ItemStack(Items.iron_ingot,3)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1),new ItemStack(Items.IRON_INGOT,3)},
 				new ItemStack(ModItems.steelIngot)));
 	}
 
@@ -32,8 +32,8 @@ public class ProBlacksmith extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.coal,10),
-				new ItemStack(Items.iron_ingot,2),
+				new ItemStack(Items.COAL,10),
+				new ItemStack(Items.IRON_INGOT,2),
 				new ItemStack(ModItems.silverCoin, 2)
 		};
 		
@@ -47,8 +47,8 @@ public class ProBlacksmith extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.coal),
-				new ItemStack(Items.lava_bucket)
+				new ItemStack(Items.COAL),
+				new ItemStack(Items.LAVA_BUCKET)
 		};
 	}
 	
@@ -56,13 +56,13 @@ public class ProBlacksmith extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.coal,8)},
+				new ItemStack[]{new ItemStack(Items.COAL,8)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.furnace,1)},
+				new ItemStack[]{new ItemStack(Blocks.FURNACE,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.furnace,1)},
+				new ItemStack[]{new ItemStack(Blocks.FURNACE,1)},
 				new ItemStack[]{new ItemStack(ModItems.steelIngot)}));
 	}
 

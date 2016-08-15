@@ -15,12 +15,12 @@ public class ProScholar extends Profession{
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)},
-				new ItemStack(Items.book)));
+				new ItemStack(Items.BOOK)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)},
-				new ItemStack(Items.paper)));
+				new ItemStack(Items.PAPER)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,1),new ItemStack(Items.paper)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,1),new ItemStack(Items.PAPER)},
 				new ItemStack(ModItems.resetScroll)));
 	}
 
@@ -38,7 +38,7 @@ public class ProScholar extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.book,1),
+				new ItemStack(Items.BOOK,1),
 				new ItemStack(ModItems.silverCoin,1)
 		};
 		
@@ -52,7 +52,7 @@ public class ProScholar extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.book),
+				new ItemStack(Items.BOOK),
 				new ItemStack(ModItems.resetScroll)
 		};
 	}
@@ -61,10 +61,10 @@ public class ProScholar extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.book,1)},
+				new ItemStack[]{new ItemStack(Items.BOOK,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.book,5)},
+				new ItemStack[]{new ItemStack(Items.BOOK,5)},
 				new ItemStack[]{new ItemStack(ModItems.resetScroll,1)}));
 	}
 }

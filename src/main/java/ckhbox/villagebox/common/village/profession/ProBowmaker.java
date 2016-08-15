@@ -19,7 +19,7 @@ public class ProBowmaker extends Profession{
 				new ItemStack(ModItems.efficientBow,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
-				new ItemStack(Items.arrow,20)));
+				new ItemStack(Items.ARROW,20)));
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class ProBowmaker extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.string,10),
+				new ItemStack(Items.STRING,10),
 				new ItemStack(ModItems.silverCoin,12)
 		};
 		
@@ -45,7 +45,7 @@ public class ProBowmaker extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.string)
+				new ItemStack(Items.STRING)
 		};
 	}
 	
@@ -53,13 +53,13 @@ public class ProBowmaker extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.string,5)},
+				new ItemStack[]{new ItemStack(Items.STRING,5)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.stick,20)},
+				new ItemStack[]{new ItemStack(Items.STICK,20)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.feather,5)},
+				new ItemStack[]{new ItemStack(Items.FEATHER,5)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
 	}
 }

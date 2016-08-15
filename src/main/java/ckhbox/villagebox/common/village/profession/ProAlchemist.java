@@ -20,22 +20,22 @@ public class ProAlchemist extends Profession{
 		
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
-				new ItemStack(Items.potionitem,1,8193)));
+				new ItemStack(Items.POTIONITEM,1,8193)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
-				new ItemStack(Items.potionitem,1,8194)));
+				new ItemStack(Items.POTIONITEM,1,8194)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
-				new ItemStack(Items.potionitem,1,8197)));
+				new ItemStack(Items.POTIONITEM,1,8197)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
-				new ItemStack(Items.potionitem,1,8201)));
+				new ItemStack(Items.POTIONITEM,1,8201)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
-				new ItemStack(Items.potionitem,1,8203)));
+				new ItemStack(Items.POTIONITEM,1,8203)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,1)},
-				new ItemStack(Items.potionitem,1,8205)));
+				new ItemStack(Items.POTIONITEM,1,8205)));
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class ProAlchemist extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.cauldron,1),
+				new ItemStack(Items.CAULDRON,1),
 				new ItemStack(ModItems.silverCoin,15)
 		};
 		
@@ -61,8 +61,8 @@ public class ProAlchemist extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.glass_bottle),
-				new ItemStack(Items.spider_eye)
+				new ItemStack(Items.GLASS_BOTTLE),
+				new ItemStack(Items.SPIDER_EYE)
 		};
 	}
 
@@ -70,7 +70,7 @@ public class ProAlchemist extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.glass_bottle,16)},
+				new ItemStack[]{new ItemStack(Items.GLASS_BOTTLE,16)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 	}
 }

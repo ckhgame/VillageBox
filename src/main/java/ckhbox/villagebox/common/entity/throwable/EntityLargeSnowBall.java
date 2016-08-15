@@ -89,21 +89,21 @@ public class EntityLargeSnowBall extends EntityThrowable
     			if(dx * dx + dz * dz <= r2){
             		for(int y = h; y >= -h; y--){
             			BlockPos p = new BlockPos(center.getX() + x, center.getY() + y, center.getZ() + z);
-            			if (worldObj.getBlockState(p).getMaterial() == Material.air && Blocks.snow_layer.canPlaceBlockAt(worldObj, p))
+            			if (worldObj.getBlockState(p).getMaterial() == Material.AIR && Blocks.SNOW_LAYER.canPlaceBlockAt(worldObj, p))
             	        {
-            	            worldObj.setBlockState(p, Blocks.snow_layer.getDefaultState());           
+            	            worldObj.setBlockState(p, Blocks.SNOW_LAYER.getDefaultState());           
             	        }
-            			else if (worldObj.getBlockState(p).getMaterial() == Material.water)
+            			else if (worldObj.getBlockState(p).getMaterial() == Material.WATER)
             	        {
-            	            worldObj.setBlockState(p, Blocks.ice.getDefaultState());           
+            	            worldObj.setBlockState(p, Blocks.ICE.getDefaultState());           
             	        }
-            			else if (worldObj.getBlockState(p).getBlock() == Blocks.lava)
+            			else if (worldObj.getBlockState(p).getBlock() == Blocks.LAVA)
             	        {
-            	            worldObj.setBlockState(p, Blocks.obsidian.getDefaultState());           
+            	            worldObj.setBlockState(p, Blocks.OBSIDIAN.getDefaultState());           
             	        }
-            			else if (worldObj.getBlockState(p).getMaterial() == Material.fire)
+            			else if (worldObj.getBlockState(p).getMaterial() == Material.FIRE)
             	        {
-            				this.worldObj.setBlockState(p, Blocks.air.getDefaultState());
+            				this.worldObj.setBlockState(p, Blocks.AIR.getDefaultState());
             	        }
             		}
     			}

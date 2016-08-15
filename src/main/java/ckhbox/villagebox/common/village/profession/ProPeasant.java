@@ -16,16 +16,16 @@ public class ProPeasant extends Profession{
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Items.wheat,10)));
+				new ItemStack(Items.WHEAT,10)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Items.carrot,3)));
+				new ItemStack(Items.CARROT,3)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Items.potato,3)));
+				new ItemStack(Items.POTATO,3)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Blocks.pumpkin,1)));
+				new ItemStack(Blocks.PUMPKIN,1)));
 	}
 
 
@@ -43,7 +43,7 @@ public class ProPeasant extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.bronzeCoin,20),
-				new ItemStack(Items.iron_hoe,1)
+				new ItemStack(Items.IRON_HOE,1)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
@@ -59,7 +59,7 @@ public class ProPeasant extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.iron_hoe)
+				new ItemStack(Items.IRON_HOE)
 		};
 	}
 
@@ -67,10 +67,10 @@ public class ProPeasant extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.iron_hoe,1)},
+				new ItemStack[]{new ItemStack(Items.IRON_HOE,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.wheat_seeds,16)},
+				new ItemStack[]{new ItemStack(Items.WHEAT_SEEDS,16)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 	}
 }

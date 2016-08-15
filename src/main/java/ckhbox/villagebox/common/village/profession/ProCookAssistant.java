@@ -34,7 +34,7 @@ public class ProCookAssistant extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,10),
-						new ItemStack(Items.wheat,5)
+						new ItemStack(Items.WHEAT,5)
 						},
 				new ItemStack(ModItems.wheatFlour)));
 		this.tradingRecipeList.add(new TradingRecipe(
@@ -46,7 +46,7 @@ public class ProCookAssistant extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,5),
-						new ItemStack(Items.egg,1)
+						new ItemStack(Items.EGG,1)
 						},
 				new ItemStack(ModItems.boiledEgg)));
 		this.tradingRecipeList.add(new TradingRecipe(
@@ -70,8 +70,8 @@ public class ProCookAssistant extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.wheat,10),
-				new ItemStack(Items.chicken,3),
+				new ItemStack(Items.WHEAT,10),
+				new ItemStack(Items.CHICKEN,3),
 				new ItemStack(ModItems.silverCoin,2),
 		};
 		
@@ -84,8 +84,8 @@ public class ProCookAssistant extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.chicken),
-				new ItemStack(Items.wheat)
+				new ItemStack(Items.CHICKEN),
+				new ItemStack(Items.WHEAT)
 		};
 	}
 	
@@ -93,10 +93,10 @@ public class ProCookAssistant extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.wheat,3)},
+				new ItemStack[]{new ItemStack(Items.WHEAT,3)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.chicken,1)},
+				new ItemStack[]{new ItemStack(Items.CHICKEN,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
 	}
 }

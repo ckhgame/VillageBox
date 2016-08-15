@@ -24,13 +24,13 @@ public class BlockTotem extends BlockFacing implements ITileEntityProvider{
 	private Class<? extends TileEntityTotem> classTotem;
 	
 	public BlockTotem(String name, Class<? extends TileEntityTotem> classTotem) {
-		super(Material.wood);
+		super(Material.WOOD);
 		this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(ModItems.tabVB);
         this.classTotem = classTotem;
         this.isBlockContainer = true;
 		this.setHardness(2.5F);
-        this.setStepSound(SoundType.WOOD);
+        this.setSoundType(SoundType.WOOD);
 	}
 		
 	@Override
@@ -50,13 +50,6 @@ public class BlockTotem extends BlockFacing implements ITileEntityProvider{
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
         super.breakBlock(world, pos, state);
         world.removeTileEntity(pos);
-    }
-
-    @Override
-    public boolean onBlockEventReceived(World worldIn, BlockPos pos, IBlockState state, int eventID, int eventParam) {
-        super.onBlockEventReceived(worldIn, pos, state, eventID, eventParam);
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-        return tileentity == null ? false : tileentity.receiveClientEvent(eventID, eventParam);
     }
     
 	@Override

@@ -68,9 +68,9 @@ public class ModItems {
 	}
 	
 	public static class ArmorMaterials{
-		public static ArmorMaterial WOOD = EnumHelper.addArmorMaterial("VB:WOOD", PathHelper.full("wooden"), 7, new int[]{2, 4, 3, 2}, 10, SoundEvents.item_armor_equip_leather);
-		public static ArmorMaterial STEEL = EnumHelper.addArmorMaterial("VB:STEEL", PathHelper.full("steel"), 15, new int[]{3, 7, 6, 3}, 12, SoundEvents.item_armor_equip_iron);
-		public static ArmorMaterial RUNESTEEL = EnumHelper.addArmorMaterial("VB:RUNESTEEL", PathHelper.full("steel"), 30, new int[]{3, 8, 7, 3}, 15, SoundEvents.item_armor_equip_diamond);
+		public static ArmorMaterial WOOD = EnumHelper.addArmorMaterial("VB:WOOD", PathHelper.full("wooden"), 7, new int[]{2, 4, 3, 2}, 10, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0.0F);
+		public static ArmorMaterial STEEL = EnumHelper.addArmorMaterial("VB:STEEL", PathHelper.full("steel"), 15, new int[]{3, 7, 6, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON,2.0F);
+		public static ArmorMaterial RUNESTEEL = EnumHelper.addArmorMaterial("VB:RUNESTEEL", PathHelper.full("steel"), 30, new int[]{3, 8, 7, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND,2.0F);
 	}
 	
 	public static ItemTreasureBook treasureHuntBookI;

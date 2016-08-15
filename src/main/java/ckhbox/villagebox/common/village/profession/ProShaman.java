@@ -16,22 +16,22 @@ public class ProShaman extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.fireShard,5),new ItemStack(Blocks.log,1)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.fireShard,5),new ItemStack(Blocks.LOG,1)},
 				new ItemStack(ModBlocks.fireTotem)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.waterShard,5),new ItemStack(Blocks.log,1)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.waterShard,5),new ItemStack(Blocks.LOG,1)},
 				new ItemStack(ModBlocks.waterTotem)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.natureShard,5),new ItemStack(Blocks.log,1)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,15),new ItemStack(ModItems.natureShard,5),new ItemStack(Blocks.LOG,1)},
 				new ItemStack(ModBlocks.natureTotem)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.log,1)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.LOG,1)},
 				new ItemStack(ModBlocks.totempole0)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.log,1)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.LOG,1)},
 				new ItemStack(ModBlocks.totempole1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.log,1)},
+				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(Blocks.LOG,1)},
 				new ItemStack(ModBlocks.totempole2)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,3),new ItemStack(ModItems.fireShard)},
@@ -54,8 +54,8 @@ public class ProShaman extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.lava_bucket),
-				new ItemStack(Items.water_bucket),
+				new ItemStack(Items.LAVA_BUCKET),
+				new ItemStack(Items.WATER_BUCKET),
 				new ItemStack(ModItems.silverCoin,12)
 		};
 		
@@ -74,7 +74,7 @@ public class ProShaman extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.log,8)},
+				new ItemStack[]{new ItemStack(Blocks.LOG,8)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 	}
 }

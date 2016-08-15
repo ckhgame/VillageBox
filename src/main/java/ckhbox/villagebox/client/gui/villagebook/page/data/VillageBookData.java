@@ -23,7 +23,7 @@ public class VillageBookData{
 	public void generate(){
 		//items
 		this.itemstacks.clear();
-		for (Item item : Item.itemRegistry){
+		for (Item item : Item.REGISTRY){
             if (item == null){
                 continue;
             }

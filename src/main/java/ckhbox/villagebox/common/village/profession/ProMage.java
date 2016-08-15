@@ -15,19 +15,19 @@ public class ProMage extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.blaze_rod,3),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{new ItemStack(Items.BLAZE_ROD,3),new ItemStack(ModItems.silverCoin,1)},
 				new ItemStack(ModItems.fireShard)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.snowball,16),new ItemStack(Items.snowball,16),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{new ItemStack(Items.SNOWBALL,16),new ItemStack(Items.SNOWBALL,16),new ItemStack(ModItems.silverCoin,1)},
 				new ItemStack(ModItems.waterShard)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.wheat_seeds,32),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{new ItemStack(Items.WHEAT_SEEDS,32),new ItemStack(ModItems.silverCoin,1)},
 				new ItemStack(ModItems.natureShard)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Items.glowstone_dust,32),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{new ItemStack(Items.GLOWSTONE_DUST,32),new ItemStack(ModItems.silverCoin,1)},
 				new ItemStack(ModItems.lightShard)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.obsidian,5),new ItemStack(ModItems.silverCoin,1)},
+				new ItemStack[]{new ItemStack(Blocks.OBSIDIAN,5),new ItemStack(ModItems.silverCoin,1)},
 				new ItemStack(ModItems.darkShard)));
 	}
 
@@ -44,7 +44,7 @@ public class ProMage extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.book,1),
+				new ItemStack(Items.BOOK,1),
 				new ItemStack(ModItems.silverCoin,3)
 		};
 		
@@ -67,10 +67,10 @@ public class ProMage extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.sand,16)},
+				new ItemStack[]{new ItemStack(Blocks.SAND,16)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.book,1)},
+				new ItemStack[]{new ItemStack(Items.BOOK,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 	}
 

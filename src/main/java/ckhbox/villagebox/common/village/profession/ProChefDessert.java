@@ -17,15 +17,15 @@ public class ProChefDessert extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,20),
-						new ItemStack(Items.carrot,1),
+						new ItemStack(Items.CARROT,1),
 						new ItemStack(ModItems.wheatFlour,1)
 						},
 				new ItemStack(ModItems.carrotCake)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,10),
-						new ItemStack(Items.apple,1),
-						new ItemStack(Items.sugar,1)
+						new ItemStack(Items.APPLE,1),
+						new ItemStack(Items.SUGAR,1)
 						},
 				new ItemStack(ModItems.appleCandy)));
 		this.tradingRecipeList.add(new TradingRecipe(
@@ -38,14 +38,14 @@ public class ProChefDessert extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,15),
-						new ItemStack(Items.dye, 1, EnumDyeColor.BROWN.getDyeDamage()),
+						new ItemStack(Items.DYE, 1, EnumDyeColor.BROWN.getDyeDamage()),
 						new ItemStack(ModItems.banana,1)},
 				new ItemStack(ModItems.chocolateBanana)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.silverCoin,20),
 						new ItemStack(ModItems.orange,1),
-						new ItemStack(Items.sugar,1)
+						new ItemStack(Items.SUGAR,1)
 						},
 				new ItemStack(ModItems.cannedOranges)));
 		this.tradingRecipeList.add(new TradingRecipe(
@@ -53,12 +53,12 @@ public class ProChefDessert extends Profession{
 						new ItemStack(ModItems.bronzeCoin,30),
 						new ItemStack(ModItems.mayonnaise,1),
 						new ItemStack(ModItems.strawberry,1),
-						new ItemStack(Items.snowball,2)},
+						new ItemStack(Items.SNOWBALL,2)},
 				new ItemStack(ModItems.strawberryIcecream)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,10),
-						new ItemStack(Items.sugar,1),
+						new ItemStack(Items.SUGAR,1),
 						new ItemStack(ModItems.lemon,1)
 						},
 				new ItemStack(ModItems.honeyTea)));
@@ -66,21 +66,21 @@ public class ProChefDessert extends Profession{
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,10),
 						new ItemStack(ModItems.pineapple,1),
-						new ItemStack(Items.sugar,1)
+						new ItemStack(Items.SUGAR,1)
 						},
 				new ItemStack(ModItems.pineappleCanday)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,30),
-						new ItemStack(Items.melon,1),
+						new ItemStack(Items.MELON,1),
 						new ItemStack(ModItems.mayonnaise,1),
-						new ItemStack(Items.snowball,2)},
+						new ItemStack(Items.SNOWBALL,2)},
 				new ItemStack(ModItems.melonIcecream)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,15),
 						new ItemStack(ModItems.melon,1),
-						new ItemStack(Items.sugar,1)},
+						new ItemStack(Items.SUGAR,1)},
 				new ItemStack(ModItems.melonIcebar)));
 	}
 
@@ -97,7 +97,7 @@ public class ProChefDessert extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.sugar,20),
+				new ItemStack(Items.SUGAR,20),
 				new ItemStack(ModItems.wheatFlour,5),
 				new ItemStack(ModItems.silverCoin,10),
 		};
@@ -108,7 +108,7 @@ public class ProChefDessert extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.sugar),
+				new ItemStack(Items.SUGAR),
 				new ItemStack(ModItems.wheatFlour)
 		};
 	}
@@ -117,13 +117,13 @@ public class ProChefDessert extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.sugar,3)},
+				new ItemStack[]{new ItemStack(Items.SUGAR,3)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
 		this.quests.add(new Quest(
 				new ItemStack[]{new ItemStack(ModItems.wheatFlour,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.sugar,3)},
+				new ItemStack[]{new ItemStack(Items.SUGAR,3)},
 				new ItemStack[]{new ItemStack(ModItems.strawberryIcecream,1)}));
 	}
 }

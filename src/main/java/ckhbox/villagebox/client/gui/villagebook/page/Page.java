@@ -117,7 +117,7 @@ public abstract class Page {
 		for(Link link : this.links){
 			if(link.isMouseHover(mouseX, mouseY)){
 				if(link.link != null){
-					this.guiVillageBook.mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.ui_button_click, 1.0F));
+					this.guiVillageBook.mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 					this.guiVillageBook.gotoLink(link.link);
 					break;
 				}

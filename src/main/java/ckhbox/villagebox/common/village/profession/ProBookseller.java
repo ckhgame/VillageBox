@@ -49,7 +49,7 @@ public class ProBookseller extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.silverCoin,1),
-				new ItemStack(Items.book,10)
+				new ItemStack(Items.BOOK,10)
 		};
 		
 		this.upgradeToNextOptionClasses = null;
@@ -58,7 +58,7 @@ public class ProBookseller extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.book)
+				new ItemStack(Items.BOOK)
 		};
 	}
 	

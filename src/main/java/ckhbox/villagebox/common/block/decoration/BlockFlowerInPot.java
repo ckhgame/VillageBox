@@ -19,10 +19,10 @@ public class BlockFlowerInPot extends Block{
 	private static final AxisAlignedBB FLOWER_POT_AABB = new AxisAlignedBB(0.3125D, 0.0D, 0.3125D, 0.6875D, 0.375D, 0.6875D);
 	
 	public BlockFlowerInPot(String name){
-		super(Material.circuits);
+		super(Material.CIRCUITS);
 		this.setUnlocalizedName(PathHelper.full(name));
 		this.setCreativeTab(ModItems.tabVB);
-		this.setStepSound(SoundType.WOOD);
+		this.setSoundType(SoundType.WOOD);
 	}
 	
 	@Override

@@ -36,12 +36,12 @@ public class BlockBuildBox extends Block{
 	private BuildSize size;
 	
 	public BlockBuildBox(BuildSize size) {
-		super(Material.wood);
+		super(Material.WOOD);
 		this.size = size;
 		this.setUnlocalizedName(PathHelper.full(size.name));
 		this.setHardness(1.0F);
 		this.setCreativeTab(ModItems.tabVB);
-        this.setStepSound(SoundType.WOOD);
+        this.setSoundType(SoundType.WOOD);
 	}
 	
 	@Override
@@ -67,9 +67,9 @@ public class BlockBuildBox extends Block{
 		int ymin = pos.getY() - 1;
 		int ymax = pos.getY() - 1 + size.height;
 		
-		IBlockState bsp = Blocks.planks.getDefaultState();
-		IBlockState bss = Blocks.stonebrick.getDefaultState();
-		IBlockState bsw = Blocks.glass_pane.getDefaultState();
+		IBlockState bsp = Blocks.PLANKS.getDefaultState();
+		IBlockState bss = Blocks.STONEBRICK.getDefaultState();
+		IBlockState bsw = Blocks.GLASS_PANE.getDefaultState();
 //		BlockPlanks.EnumType ptRoof = BlockPlanks.EnumType.DARK_OAK;
 //		BlockPlanks.EnumType ptWall = BlockPlanks.EnumType.BIRCH;
 //		BlockPlanks.EnumType ptFloor = BlockPlanks.EnumType.OAK;

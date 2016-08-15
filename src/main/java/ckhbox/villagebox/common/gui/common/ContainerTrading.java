@@ -6,7 +6,6 @@ import ckhbox.villagebox.common.village.trading.SlotTradingOutput;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -49,11 +48,6 @@ public class ContainerTrading extends Container
     public InventoryTrading getTradingInventory()
     {
         return this.tradingInventory;
-    }
-
-    public void onCraftGuiOpened(ICrafting listener)
-    {
-        super.onCraftGuiOpened(listener);
     }
 
     /**
@@ -161,7 +155,7 @@ public class ContainerTrading extends Container
         		if (this.tradingInventory.getStackInSlot(i) != null)
                 {
         			if(!playerIn.inventory.addItemStackToInventory(this.tradingInventory.getStackInSlot(i)))
-        				playerIn.dropPlayerItemWithRandomChoice(this.tradingInventory.getStackInSlot(i), false);
+        				playerIn.dropItem(this.tradingInventory.getStackInSlot(i), false);
                 }
         	}
         	playerIn.inventoryContainer.detectAndSendChanges();

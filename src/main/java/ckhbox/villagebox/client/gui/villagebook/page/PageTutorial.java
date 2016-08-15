@@ -28,17 +28,17 @@ public class PageTutorial extends Page{
 		
 		int top = this.guiVillageBook.getContentTop() + 16;
 		int left = this.guiVillageBook.getContentLeft() + 20;
-		this.addLinkAt(new LinkItem(this,new ItemStack(Items.paper),null,null), top, left);
-		this.addLinkAt(new LinkItem(this,new ItemStack(Items.feather),null,null), top, left + 20);
-		this.addLinkAt(new LinkItem(this,new ItemStack(Items.dye),null,null), top, left + 40);
+		this.addLinkAt(new LinkItem(this,new ItemStack(Items.PAPER),null,null), top, left);
+		this.addLinkAt(new LinkItem(this,new ItemStack(Items.FEATHER),null,null), top, left + 20);
+		this.addLinkAt(new LinkItem(this,new ItemStack(Items.DYE),null,null), top, left + 40);
 		this.addLinkAt(new LinkItem(this,new ItemStack(ModItems.invitation),null,null), top, left + 80);
 		this.addLinkAt(new LinkImg(this, this.guiVillageBook.guiBookGuiTextures, 192,54,0,0,16,16,null,null), top, left + 60);
 		this.addLinkAt(new LinkImg(this, this.guiVillageBook.guiBookGuiTextures, 176,54,0,0,16,16,null,null), top + 20, left + 80);
 		
 		top = this.guiVillageBook.getContentTop() + 56;
 		left = this.guiVillageBook.getContentLeft() + 20;
-		this.addLinkAt(new LinkItem(this,new ItemStack(Items.paper),null,null), top, left + 20);
-		this.addLinkAt(new LinkItem(this,new ItemStack(Blocks.planks),null,null), top, left + 40);
+		this.addLinkAt(new LinkItem(this,new ItemStack(Items.PAPER),null,null), top, left + 20);
+		this.addLinkAt(new LinkItem(this,new ItemStack(Blocks.PLANKS),null,null), top, left + 40);
 		this.addLinkAt(new LinkItem(this,new ItemStack(ModBlocks.mailbox),null,null), top, left + 80);
 		this.addLinkAt(new LinkImg(this, this.guiVillageBook.guiBookGuiTextures, 192,54,0,0,16,16,null,null), top, left + 60);
 		this.addLinkAt(new LinkImg(this, this.guiVillageBook.guiBookGuiTextures, 176,54,0,0,16,16,null,null), top + 20, left + 80);

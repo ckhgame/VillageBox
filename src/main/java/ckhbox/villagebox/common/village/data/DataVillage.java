@@ -25,7 +25,7 @@ public class DataVillage extends WorldSavedData{
 		if(world.isRemote)
 			return null;
 		
-		DataVillage data = (DataVillage)world.getPerWorldStorage().loadData(DataVillage.class, key);
+		DataVillage data = (DataVillage)world.getPerWorldStorage().getOrLoadData(DataVillage.class, key);
 		if(data == null){
 			//first time creating...
 			data = new DataVillage(key);
@@ -136,7 +136,7 @@ public class DataVillage extends WorldSavedData{
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound nbt) {
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		
 		//home list
 		NBTTagList taglist = new NBTTagList();
@@ -155,6 +155,8 @@ public class DataVillage extends WorldSavedData{
 			taglist.appendTag(compound);
 		}
 		nbt.setTag("deadvlgs", taglist);
+		
+		return nbt;
 	}
 
 	static class HomeBoundary{

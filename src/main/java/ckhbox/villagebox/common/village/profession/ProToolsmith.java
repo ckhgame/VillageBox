@@ -51,8 +51,8 @@ public class ProToolsmith extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.coal),
-				new ItemStack(Items.lava_bucket)
+				new ItemStack(Items.COAL),
+				new ItemStack(Items.LAVA_BUCKET)
 		};
 	}
 	
@@ -60,13 +60,13 @@ public class ProToolsmith extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.crafting_table,1)},
+				new ItemStack[]{new ItemStack(Blocks.CRAFTING_TABLE,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.coal,8)},
+				new ItemStack[]{new ItemStack(Items.COAL,8)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.furnace,1)},
+				new ItemStack[]{new ItemStack(Blocks.FURNACE,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)}));
 	}
 

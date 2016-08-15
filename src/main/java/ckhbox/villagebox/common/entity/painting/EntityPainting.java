@@ -3,24 +3,19 @@ package ckhbox.villagebox.common.entity.painting;
 import java.util.List;
 import java.util.UUID;
 
-import org.lwjgl.BufferUtils;
-
 import com.google.common.collect.Lists;
-import com.sun.prism.impl.BufferUtil;
 
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.BufferHelper;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
@@ -145,7 +140,7 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
     {
         if (this.worldObj.getGameRules().getBoolean("doEntityDrops"))
         {
-            this.playSound(SoundEvents.entity_painting_break, 1.0F, 1.0F);
+            this.playSound(SoundEvents.ENTITY_PAINTING_BREAK, 1.0F, 1.0F);
 
             if (brokenEntity instanceof EntityPlayer)
             {
@@ -161,9 +156,9 @@ public class EntityPainting extends EntityHanging implements IEntityAdditionalSp
         }
     }
 
-    public void func_184523_o()
+    public void playPlaceSound()
     {
-        this.playSound(SoundEvents.entity_painting_place, 1.0F, 1.0F);
+        this.playSound(SoundEvents.ENTITY_PAINTING_PLACE, 1.0F, 1.0F);
     }
 
     /**

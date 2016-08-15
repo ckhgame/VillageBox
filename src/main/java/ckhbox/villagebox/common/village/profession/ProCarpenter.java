@@ -27,23 +27,23 @@ public class ProCarpenter extends Profession{
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)},
 				new ItemStack(ModItems.woodenBoots)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.log,5,0),new ItemStack(ModItems.bronzeCoin,2)},
-				new ItemStack(Blocks.planks,30,0)));
+				new ItemStack[]{new ItemStack(Blocks.LOG,5,0),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.PLANKS,30,0)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.log,5,1),new ItemStack(ModItems.bronzeCoin,2)},
-				new ItemStack(Blocks.planks,30,1)));
+				new ItemStack[]{new ItemStack(Blocks.LOG,5,1),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.PLANKS,30,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.log,5,2),new ItemStack(ModItems.bronzeCoin,2)},
-				new ItemStack(Blocks.planks,30,2)));
+				new ItemStack[]{new ItemStack(Blocks.LOG,5,2),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.PLANKS,30,2)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.log,5,3),new ItemStack(ModItems.bronzeCoin,2)},
-				new ItemStack(Blocks.planks,30,3)));
+				new ItemStack[]{new ItemStack(Blocks.LOG,5,3),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.PLANKS,30,3)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.log2,5,0),new ItemStack(ModItems.bronzeCoin,2)},
-				new ItemStack(Blocks.planks,30,4)));
+				new ItemStack[]{new ItemStack(Blocks.LOG2,5,0),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.PLANKS,30,4)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.log2,5,1),new ItemStack(ModItems.bronzeCoin,2)},
-				new ItemStack(Blocks.planks,30,5)));
+				new ItemStack[]{new ItemStack(Blocks.LOG2,5,1),new ItemStack(ModItems.bronzeCoin,2)},
+				new ItemStack(Blocks.PLANKS,30,5)));
 		
 	}
 
@@ -60,7 +60,7 @@ public class ProCarpenter extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.iron_axe),
+				new ItemStack(Items.IRON_AXE),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		
@@ -73,7 +73,7 @@ public class ProCarpenter extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Blocks.log)
+				new ItemStack(Blocks.LOG)
 		};
 	}
 	
@@ -81,10 +81,10 @@ public class ProCarpenter extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.iron_axe,1)},
+				new ItemStack[]{new ItemStack(Items.IRON_AXE,1)},
 				new ItemStack[]{new ItemStack(ModItems.woodenChestplate,1)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.iron_axe,1)},
+				new ItemStack[]{new ItemStack(Items.IRON_AXE,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)}));
 	}
 

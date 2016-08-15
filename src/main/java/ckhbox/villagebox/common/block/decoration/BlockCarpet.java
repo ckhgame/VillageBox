@@ -22,11 +22,11 @@ public class BlockCarpet extends Block{
 	
 	public BlockCarpet(String name)
 	{
-        super(Material.carpet);
+        super(Material.CARPET);
         this.setUnlocalizedName(PathHelper.full(name));
         this.setCreativeTab(ModItems.tabVB);
         this.setHardness(0.1F);
-        this.setStepSound(SoundType.WOOD);
+        this.setSoundType(SoundType.WOOD);
         this.setLightOpacity(0);
     }
 	

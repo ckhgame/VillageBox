@@ -72,13 +72,13 @@ public class ProVintner extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,16)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,16)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.glass_bottle,8)},
+				new ItemStack[]{new ItemStack(Items.GLASS_BOTTLE,8)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.glass_bottle,8)},
+				new ItemStack[]{new ItemStack(Items.GLASS_BOTTLE,8)},
 				new ItemStack[]{new ItemStack(ModItems.beer,1)}));
 	}
 	

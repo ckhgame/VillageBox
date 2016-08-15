@@ -33,7 +33,7 @@ public class ProPainter extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.silverCoin, 2),
-				new ItemStack(Items.paper,64),
+				new ItemStack(Items.PAPER,64),
 		};
 		
 		this.upgradeToNextOptionClasses = null;
@@ -42,9 +42,9 @@ public class ProPainter extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.dye,1,10),
-				new ItemStack(Items.dye,1,11),
-				new ItemStack(Items.dye,1,14)
+				new ItemStack(Items.DYE,1,10),
+				new ItemStack(Items.DYE,1,11),
+				new ItemStack(Items.DYE,1,14)
 		};
 	}
 	
@@ -52,7 +52,7 @@ public class ProPainter extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.paper,16)},
+				new ItemStack[]{new ItemStack(Items.PAPER,16)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 	}
 }

@@ -25,8 +25,8 @@ public class ItemNatureSword extends ItemSword{
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
 		if(!target.worldObj.isRemote){		
 			if(target instanceof EntityMob){
-				target.addPotionEffect(new PotionEffect(MobEffects.moveSlowdown,160,2));
-				target.addPotionEffect(new PotionEffect(MobEffects.poison,160,2));
+				target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS,160,2));
+				target.addPotionEffect(new PotionEffect(MobEffects.POISON,160,2));
 			}
 		}
 		return super.hitEntity(stack, target, attacker);

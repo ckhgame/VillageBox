@@ -20,11 +20,11 @@ public class BlockTotemPole extends BlockFacing{
 	private static final AxisAlignedBB TOTEMPOLE_AABB = new AxisAlignedBB(0.25F, 0.0F, 0.25F, 0.75F, 1.0F, 0.75F);
 	
 	public BlockTotemPole(String name) {
-		super(Material.wood);
+		super(Material.WOOD);
 		this.setUnlocalizedName(PathHelper.full(name));
 		this.setCreativeTab(ModItems.tabVB);
 		this.setHardness(2.5F);
-        this.setStepSound(SoundType.WOOD);
+        this.setSoundType(SoundType.WOOD);
 	}
     
 	@Override

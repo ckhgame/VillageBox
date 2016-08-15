@@ -21,10 +21,10 @@ import net.minecraft.world.World;
 public class BlockMailBox extends BlockFacing{
 	
 	public BlockMailBox() {
-		super(Material.wood);
+		super(Material.WOOD);
 		this.setUnlocalizedName(PathHelper.full("mailbox"));
 		this.setHardness(2.5F);
-		this.setStepSound(SoundType.WOOD);
+		this.setSoundType(SoundType.WOOD);
 		this.setCreativeTab(ModItems.tabVB);
 	}
 

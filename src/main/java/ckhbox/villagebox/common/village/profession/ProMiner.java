@@ -16,19 +16,19 @@ public class ProMiner extends Profession{
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,5)},
-				new ItemStack(Items.coal,8)));
+				new ItemStack(Items.COAL,8)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)},
-				new ItemStack(Blocks.iron_ore,1)));
+				new ItemStack(Blocks.IRON_ORE,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,32)},
-				new ItemStack(Blocks.gold_ore,1)));
+				new ItemStack(Blocks.GOLD_ORE,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
-				new ItemStack(Items.redstone,8)));
+				new ItemStack(Items.REDSTONE,8)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.silverCoin,3)},
-				new ItemStack(Items.diamond,1)));
+				new ItemStack(Items.DIAMOND,1)));
 	}
 
 
@@ -45,8 +45,8 @@ public class ProMiner extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.iron_pickaxe),
-				new ItemStack(Blocks.torch,12),
+				new ItemStack(Items.IRON_PICKAXE),
+				new ItemStack(Blocks.TORCH,12),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		
@@ -56,7 +56,7 @@ public class ProMiner extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.iron_pickaxe)
+				new ItemStack(Items.IRON_PICKAXE)
 		};
 	}
 	
@@ -64,13 +64,13 @@ public class ProMiner extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.iron_pickaxe,1)},
+				new ItemStack[]{new ItemStack(Items.IRON_PICKAXE,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.torch,16)},
+				new ItemStack[]{new ItemStack(Blocks.TORCH,16)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,8)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.minecart,1)},
+				new ItemStack[]{new ItemStack(Items.MINECART,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,20)}));
 	}
 }

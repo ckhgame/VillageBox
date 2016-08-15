@@ -85,7 +85,7 @@ public class ProFurnituremaker extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Blocks.planks,64),
+				new ItemStack(Blocks.PLANKS,64),
 				new ItemStack(ModItems.silverCoin,10)
 		};
 		
@@ -95,7 +95,7 @@ public class ProFurnituremaker extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Blocks.planks),
+				new ItemStack(Blocks.PLANKS),
 				new ItemStack(ModBlocks.chairOak)
 		};
 	}
@@ -104,25 +104,25 @@ public class ProFurnituremaker extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,32,0)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,32,0)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,32,1)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,32,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,32,2)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,32,2)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,32,3)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,32,3)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,32,4)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,32,4)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,32,5)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,32,5)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,32,0)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,32,0)},
 				new ItemStack[]{new ItemStack(ModBlocks.chairOak,1)}));
 	}
 }

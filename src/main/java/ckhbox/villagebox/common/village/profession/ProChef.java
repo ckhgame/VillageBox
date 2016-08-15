@@ -17,7 +17,7 @@ public class ProChef extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.silverCoin,1),
-						new ItemStack(Items.porkchop,1),
+						new ItemStack(Items.PORKCHOP,1),
 						new ItemStack(ModItems.wheatFlour,1),
 						new ItemStack(ModItems.soySauce,1)
 						},
@@ -25,7 +25,7 @@ public class ProChef extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.silverCoin,1),
-						new ItemStack(Items.beef,1),
+						new ItemStack(Items.BEEF,1),
 						new ItemStack(ModItems.wheatFlour,1)
 						},
 				new ItemStack(ModItems.beefNoodleSoup)));
@@ -39,7 +39,7 @@ public class ProChef extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,50),
-						new ItemStack(Items.beef,1),
+						new ItemStack(Items.BEEF,1),
 						new ItemStack(ModItems.cheese,1),
 						new ItemStack(ModItems.cabbage,1)
 						},
@@ -54,14 +54,14 @@ public class ProChef extends Profession{
 				new ItemStack[]{
 						new ItemStack(ModItems.silverCoin,1),
 						new ItemStack(ModItems.chili,1),
-						new ItemStack(Items.fish,1),
+						new ItemStack(Items.FISH,1),
 						new ItemStack(ModItems.cookingOil,1)
 						},
 				new ItemStack(ModItems.boiledFish)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.bronzeCoin,30),
-						new ItemStack(Items.potato,1),
+						new ItemStack(Items.POTATO,1),
 						new ItemStack(ModItems.cookingOil,1)
 						},
 				new ItemStack(ModItems.fries)));
@@ -83,7 +83,7 @@ public class ProChef extends Profession{
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{
 						new ItemStack(ModItems.silverCoin,1),
-						new ItemStack(Items.mutton,1),
+						new ItemStack(Items.MUTTON,1),
 						new ItemStack(ModItems.cookingWine,1),
 						new ItemStack(ModItems.cookingOil,1)
 						},
@@ -93,7 +93,7 @@ public class ProChef extends Profession{
 						new ItemStack(ModItems.bronzeCoin,50),
 						new ItemStack(ModItems.rice,1),
 						new ItemStack(ModItems.soySauce,1),
-						new ItemStack(Items.fish,1)},
+						new ItemStack(Items.FISH,1)},
 				new ItemStack(ModItems.nigiri)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{

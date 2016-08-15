@@ -69,7 +69,7 @@ public class EventEntity {
 			if(!p.receivedVillagebook){
 				ItemStack villageBook = new ItemStack(ModItems.villageBook);
 				if (!player.inventory.addItemStackToInventory(villageBook)) {
-					player.dropPlayerItemWithRandomChoice(villageBook, false);
+					player.dropItem(villageBook, false);
 				}
 				p.receivedVillagebook = true;
 			}

@@ -34,7 +34,7 @@ public class ItemTreasureBook extends Item{
 		if(!worldIn.isRemote){
 			//increase treasure hunt level
 			if(ExtendedPlayerProperties.get(playerIn).upgradeTreasureHuntLevelTo(this.level)){
-				playerIn.playSound(SoundEvents.entity_player_levelup, 1.0F, 1.0F);
+				playerIn.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
 				playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.treasurelvlupgrade.success"),this.level));
 				itemStackIn.stackSize -= 1;
 				return new ActionResult(EnumActionResult.SUCCESS,itemStackIn);

@@ -45,7 +45,7 @@ public class ProFarmer extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.silverCoin,1),
-				new ItemStack(Items.golden_hoe,1)
+				new ItemStack(Items.GOLDEN_HOE,1)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
@@ -56,7 +56,7 @@ public class ProFarmer extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.golden_hoe)
+				new ItemStack(Items.GOLDEN_HOE)
 		};
 	}
 	
@@ -64,13 +64,13 @@ public class ProFarmer extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.golden_hoe,1)},
+				new ItemStack[]{new ItemStack(Items.GOLDEN_HOE,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,24)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.golden_hoe,1)},
+				new ItemStack[]{new ItemStack(Items.GOLDEN_HOE,1)},
 				new ItemStack[]{new ItemStack(ModItems.corn,3)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.golden_hoe,1)},
+				new ItemStack[]{new ItemStack(Items.GOLDEN_HOE,1)},
 				new ItemStack[]{new ItemStack(ModItems.soybean,3)}));
 	}
 }

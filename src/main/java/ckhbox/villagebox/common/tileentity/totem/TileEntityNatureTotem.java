@@ -16,7 +16,7 @@ public class TileEntityNatureTotem extends TileEntityTotem{
 			for(EntityLivingBase l : list){
 				if(l instanceof EntityMob)
 					continue;
-				l.addPotionEffect(new PotionEffect(MobEffects.regeneration,100,0));
+				l.addPotionEffect(new PotionEffect(MobEffects.REGENERATION,100,0));
 			}
 		}
 	}

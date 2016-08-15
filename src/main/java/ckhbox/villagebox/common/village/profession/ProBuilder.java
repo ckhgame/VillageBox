@@ -42,8 +42,8 @@ public class ProBuilder extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Blocks.stonebrick,32),
-				new ItemStack(Blocks.planks,32),
+				new ItemStack(Blocks.STONEBRICK,32),
+				new ItemStack(Blocks.PLANKS,32),
 				new ItemStack(ModItems.silverCoin,2)
 		};
 		
@@ -53,8 +53,8 @@ public class ProBuilder extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Blocks.planks),
-				new ItemStack(Blocks.stonebrick)
+				new ItemStack(Blocks.PLANKS),
+				new ItemStack(Blocks.STONEBRICK)
 		};
 	}
 	
@@ -62,13 +62,13 @@ public class ProBuilder extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.planks,32)},
+				new ItemStack[]{new ItemStack(Blocks.PLANKS,32)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.cobblestone,32)},
+				new ItemStack[]{new ItemStack(Blocks.COBBLESTONE,32)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.glass,10)},
+				new ItemStack[]{new ItemStack(Blocks.GLASS,10)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 	}
 

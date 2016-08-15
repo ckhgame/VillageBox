@@ -42,7 +42,7 @@ public class ItemLightStaff extends Item
 	@Override
 	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        Item itemTorch = Item.getItemFromBlock(Blocks.torch);
+        Item itemTorch = Item.getItemFromBlock(Blocks.TORCH);
         if(!(itemTorch instanceof ItemBlock)){
         	return EnumActionResult.FAIL;
         }
@@ -57,14 +57,14 @@ public class ItemLightStaff extends Item
             pos = pos.offset(facing);
         }
 
-        if (stack.stackSize != 0 && playerIn.canPlayerEdit(pos, facing, stack) && worldIn.canBlockBePlaced(Blocks.torch, pos, false, facing, (Entity)null, stack))
+        if (stack.stackSize != 0 && playerIn.canPlayerEdit(pos, facing, stack) && worldIn.canBlockBePlaced(Blocks.TORCH, pos, false, facing, (Entity)null, stack))
         {
             int i = this.getMetadata(stack.getMetadata());
-            IBlockState iblockstate1 = Blocks.torch.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, i, playerIn);
+            IBlockState iblockstate1 = Blocks.TORCH.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, i, playerIn);
             
             if (itemBlockTorch.placeBlockAt(stack, playerIn, worldIn, pos, facing, hitX, hitY, hitZ, iblockstate1))
             {
-                SoundType soundtype = Blocks.torch.getStepSound();
+                SoundType soundtype = Blocks.TORCH.getSoundType();
                 worldIn.playSound(playerIn, pos, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                 this.damageStaff(playerIn, stack, hand);
             }

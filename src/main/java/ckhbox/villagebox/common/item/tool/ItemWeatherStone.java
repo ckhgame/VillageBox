@@ -39,7 +39,7 @@ public class ItemWeatherStone extends Item{
         	}
         }
         
-        playerIn.playSound(SoundEvents.entity_player_levelup, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+        playerIn.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
         
       //changes weather
         if(!worldIn.isRemote){       	

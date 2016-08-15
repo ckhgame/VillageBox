@@ -15,10 +15,10 @@ public class ProCaveman extends Profession{
 	@Override
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.cobblestone,10)},
-				new ItemStack(Items.bone)));
+				new ItemStack[]{new ItemStack(Blocks.COBBLESTONE,10)},
+				new ItemStack(Items.BONE)));
 		this.tradingRecipeList.add(new TradingRecipe(
-				new ItemStack[]{new ItemStack(Blocks.cobblestone,64)},
+				new ItemStack[]{new ItemStack(Blocks.COBBLESTONE,64)},
 				new ItemStack(ModItems.woodenClub)));
 	}
 
@@ -55,19 +55,19 @@ public class ProCaveman extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.cooked_chicken,1)},
-				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+				new ItemStack[]{new ItemStack(Items.COOKED_CHICKEN,1)},
+				new ItemStack[]{new ItemStack(Blocks.COBBLESTONE,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.cooked_fish,1)},
-				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+				new ItemStack[]{new ItemStack(Items.COOKED_FISH,1)},
+				new ItemStack[]{new ItemStack(Blocks.COBBLESTONE,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.cooked_porkchop,1)},
-				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+				new ItemStack[]{new ItemStack(Items.COOKED_PORKCHOP,1)},
+				new ItemStack[]{new ItemStack(Blocks.COBBLESTONE,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.cooked_rabbit,1)},
-				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+				new ItemStack[]{new ItemStack(Items.COOKED_RABBIT,1)},
+				new ItemStack[]{new ItemStack(Blocks.COBBLESTONE,16)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.beef,1)},
-				new ItemStack[]{new ItemStack(Blocks.cobblestone,16)}));
+				new ItemStack[]{new ItemStack(Items.BEEF,1)},
+				new ItemStack[]{new ItemStack(Blocks.COBBLESTONE,16)}));
 	}
 }

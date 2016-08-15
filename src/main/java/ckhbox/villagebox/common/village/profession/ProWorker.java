@@ -16,19 +16,19 @@ public class ProWorker extends Profession{
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,16)},
-				new ItemStack(Items.iron_sword,1)));
+				new ItemStack(Items.IRON_SWORD,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
-				new ItemStack(Items.iron_pickaxe,1)));
+				new ItemStack(Items.IRON_PICKAXE,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,15)},
-				new ItemStack(Items.iron_axe,1)));
+				new ItemStack(Items.IRON_AXE,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
-				new ItemStack(Items.iron_hoe,1)));
+				new ItemStack(Items.IRON_HOE,1)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)},
-				new ItemStack(Items.iron_shovel,1)));
+				new ItemStack(Items.IRON_SHOVEL,1)));
 	}
 
 
@@ -46,7 +46,7 @@ public class ProWorker extends Profession{
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
 				new ItemStack(ModItems.bronzeCoin,25),
-				new ItemStack(Blocks.crafting_table)
+				new ItemStack(Blocks.CRAFTING_TABLE)
 		};
 		
 		this.upgradeToNextOptionClasses = new Class[]{
@@ -61,7 +61,7 @@ public class ProWorker extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Blocks.crafting_table)
+				new ItemStack(Blocks.CRAFTING_TABLE)
 		};
 	}
 	
@@ -69,7 +69,7 @@ public class ProWorker extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();	
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Blocks.crafting_table,1)},
+				new ItemStack[]{new ItemStack(Blocks.CRAFTING_TABLE,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,10)}));
 	}
 }

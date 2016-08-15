@@ -29,7 +29,7 @@ public class ItemDrink extends ItemFood{
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
-		player.addPotionEffect(new PotionEffect(MobEffects.confusion,this.drunkticks));
+		player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS,this.drunkticks));
 	}
 	
 	

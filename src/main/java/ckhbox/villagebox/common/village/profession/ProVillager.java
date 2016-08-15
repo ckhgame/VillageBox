@@ -15,10 +15,10 @@ public abstract class ProVillager extends Profession{
 	protected void initTradingRecipeList() {
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)},
-				new ItemStack(Items.apple)));
+				new ItemStack(Items.APPLE)));
 		this.tradingRecipeList.add(new TradingRecipe(
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)},
-				new ItemStack(Items.egg)));
+				new ItemStack(Items.EGG)));
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public abstract class ProVillager extends Profession{
 	@Override
 	protected void initUpgradeOptions() {
 		this.upgradeToCurentNeeds = new ItemStack[]{
-				new ItemStack(Items.book)
+				new ItemStack(Items.BOOK)
 		};
 		this.upgradeToNextOptionClasses = new Class[]{
 				ProPeasant.class,
@@ -42,8 +42,8 @@ public abstract class ProVillager extends Profession{
 	@Override
 	protected void initHoldItems() {
 		this.holdItems = new ItemStack[]{
-				new ItemStack(Items.apple),
-				new ItemStack(Items.egg)
+				new ItemStack(Items.APPLE),
+				new ItemStack(Items.EGG)
 		};
 	}
 	
@@ -51,20 +51,20 @@ public abstract class ProVillager extends Profession{
 	protected void initQuests() {
 		this.quests = new ArrayList<Quest>();		
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.bread,1)},
+				new ItemStack[]{new ItemStack(Items.BREAD,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.cooked_chicken,1)},
+				new ItemStack[]{new ItemStack(Items.COOKED_CHICKEN,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,4)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.cooked_fish,1)},
+				new ItemStack[]{new ItemStack(Items.COOKED_FISH,1)},
 				new ItemStack[]{new ItemStack(ModItems.bronzeCoin,3)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.cooked_fish,1)},
-				new ItemStack[]{new ItemStack(Items.apple,2)}));
+				new ItemStack[]{new ItemStack(Items.COOKED_FISH,1)},
+				new ItemStack[]{new ItemStack(Items.APPLE,2)}));
 		this.quests.add(new Quest(
-				new ItemStack[]{new ItemStack(Items.cooked_chicken,1)},
-				new ItemStack[]{new ItemStack(Items.apple,2)}));
+				new ItemStack[]{new ItemStack(Items.COOKED_CHICKEN,1)},
+				new ItemStack[]{new ItemStack(Items.APPLE,2)}));
 	}
 
 }
