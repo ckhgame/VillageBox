@@ -1,30 +1,41 @@
 package ckhbox.villagebox.common.village.profession;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ckhbox.villagebox.common.config.VBConfig;
+import ckhbox.villagebox.common.config.jsonData.JsonDataManager;
+import ckhbox.villagebox.common.config.jsonData.JsonHelper;
+import ckhbox.villagebox.common.config.jsonData.JsonProfession;
+import ckhbox.villagebox.common.config.jsonData.JsonQuest;
+import ckhbox.villagebox.common.config.jsonData.JsonTradingRecipe;
+import ckhbox.villagebox.common.config.jsonData.JsonVBData;
+import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.util.math.Rand;
 import ckhbox.villagebox.common.util.registry.IRegistrable;
 import ckhbox.villagebox.common.util.registry.Registry;
 import ckhbox.villagebox.common.village.quest.Quest;
+import ckhbox.villagebox.common.village.trading.TradingRecipe;
 import ckhbox.villagebox.common.village.trading.TradingRecipeList;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 
-public abstract class Profession implements IRegistrable{
+public class Profession implements IRegistrable{
 	
 	private int regID;
 	//trading recipe list
-	protected TradingRecipeList tradingRecipeList = new TradingRecipeList();
+	protected TradingRecipeList tradingRecipeList;
 	//texture
 	protected ResourceLocation texturem;
 	protected ResourceLocation texturef;
 	
 	//what professions can upgrade from this profession
-	protected Class<? extends Profession>[] upgradeToNextOptionClasses;
+	protected int[] upgradeToNextOptionIDs;
 	protected Profession[] upgradeToNextOptions;//this will be automatically generated based on option classes
 	//what items are needed to upgrade to this profession(usually only gems, maximum: 3 stacks)
 	protected ItemStack[] upgradeToCurentNeeds;
@@ -32,6 +43,8 @@ public abstract class Profession implements IRegistrable{
 	protected ItemStack[] holdItems;
 	//quests
 	protected List<Quest> quests;
+	//unlocalized name
+	protected String unlocalized;
 	
 	@Override
 	public int getRegID() {
@@ -43,24 +56,57 @@ public abstract class Profession implements IRegistrable{
 		this.regID = regID;
 	}
 	
-	public Profession(){
-		this.initTradingRecipeList();
-		this.initTexture();
-		this.initUpgradeOptions();
-		this.initHoldItems();
-		this.initQuests();
+	public Profession(String professionName, JsonProfession proData){
+		unlocalized = PathHelper.full("profession." + professionName);
+		loadProfessionData(proData);
+	}
+	
+	private void loadProfessionData(JsonProfession proData)
+	{
+		//skin texture
+		this.createTextures(proData.texture);
+		
+		//trading
+		tradingRecipeList = new TradingRecipeList();
+		if(proData.tradingRecipes != null)
+		{
+			for(JsonTradingRecipe recipe : proData.tradingRecipes)
+			{
+				this.tradingRecipeList.add(new TradingRecipe(
+						JsonHelper.stringsToItemStacks(recipe.inputs),
+						JsonHelper.stringToItemStack(recipe.output)));
+			}	
+		}
+		
+		//upgrading
+		upgradeToNextOptionIDs = proData.UpgradeProfessionIDs == null?null:proData.UpgradeProfessionIDs.clone();
+		upgradeToCurentNeeds = JsonHelper.stringsToItemStacks(proData.upgradeRequirements);
+		
+		//items on hands
+		this.holdItems = JsonHelper.stringsToItemStacks(proData.holdItems);
+		
+		//quests
+		this.quests = new ArrayList<Quest>();	
+		if(proData.quests != null)
+		{
+			for(JsonQuest quest : proData.quests)
+			{
+				this.quests.add(new Quest(
+						JsonHelper.stringsToItemStacks(quest.objectives),
+						JsonHelper.stringsToItemStacks(quest.rewards)));
+			}	
+		}
 	}
 	
 	public Profession[] getUpgradeToNextOptions(){
 		if(this.upgradeToNextOptions == null){
-			if(this.upgradeToNextOptionClasses != null && this.upgradeToNextOptionClasses.length > 0){
+			if(this.upgradeToNextOptionIDs != null && this.upgradeToNextOptionIDs.length > 0){
 				ArrayList<Profession> list = new ArrayList<Profession>();
-				for(int i = 0;i<this.upgradeToNextOptionClasses.length;i++){
-					Profession p = Profession.registry.get(this.upgradeToNextOptionClasses[i]);		
+				for(int i = 0;i<this.upgradeToNextOptionIDs.length;i++){
+					Profession p = registry.get(this.upgradeToNextOptionIDs[i]);		
 					if(!isProIDBanned(p.getRegID())){
 						list.add(p);
 					}
-
 				}
 				if(list.size() > 0){
 					this.upgradeToNextOptions = list.toArray(new Profession[list.size()]);
@@ -120,13 +166,10 @@ public abstract class Profession implements IRegistrable{
 		return this.quests;
 	}
 	
-	//abstract functions
-	protected abstract void initTradingRecipeList();
-	protected abstract void initTexture();
-	protected abstract void initUpgradeOptions();
-	protected abstract void initHoldItems();
-	protected abstract void initQuests();
-	protected abstract String getUnlocalized();
+	protected String getUnlocalized()
+	{
+		return unlocalized;
+	}
 	
 	
 	//---------------------------------
@@ -134,51 +177,13 @@ public abstract class Profession implements IRegistrable{
 	public static Registry<Profession> registry = new Registry<Profession>();
 	
 	public static void init(){
-		//rank 0
-		registry.register(0, new ProVillager0());
-		registry.register(1, new ProVillager1());
-		registry.register(2, new ProVillager2());
 		
-		//rank 1
-		registry.register(3, new ProPeasant());
-		registry.register(25, new ProWorker());
-		registry.register(29, new ProBanker());
-		registry.register(21, new ProScholar());
+		JsonVBData data = JsonDataManager.GetVBData();
 		
-		//rank 2
-		registry.register(11, new ProCarpenter());
-		registry.register(14, new ProCarpetmaker());
-		registry.register(32, new ProBuilder());
-		registry.register(8, new ProBlacksmith());
-		registry.register(4, new ProMiner());
-		registry.register(15, new ProFisherman());
-		registry.register(16, new ProFlorist());		
-		registry.register(27, new ProFarmer());
-		registry.register(18, new ProOrchardist());	
-		registry.register(20, new ProRancher());
-		registry.register(26, new ProCookAssistant());
-		registry.register(28, new ProBookseller());
-		registry.register(24, new ProMage());
-		registry.register(19, new ProPainter());
-		
-		//rank 3
-		registry.register(5, new ProAlchemist());
-		registry.register(6, new ProShaman());
-		registry.register(7, new ProArmorsmith());
-		registry.register(9, new ProToolsmith());
-		registry.register(10, new ProBowmaker());
-		registry.register(12, new ProCarpetMakerAdevanced());
-		registry.register(13, new ProCarpetMakerCartoony());
-		registry.register(17, new ProFurnituremaker());
-		registry.register(22, new ProVintner());
-		registry.register(23, new ProWeaponsmith());
-		registry.register(30, new ProChef());
-		registry.register(31, new ProChefDessert());
-		registry.register(33, new ProStaffCrafter());
-		
-				
-		//caveman
-		registry.register(99999, new ProCaveman());
+		for(Map.Entry<String, JsonProfession> pair : data.professions.entrySet())
+		{
+			registry.register(pair.getValue().ID, new Profession(pair.getKey(), pair.getValue()));
+		}
 	}
 
 }
