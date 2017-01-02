@@ -10,9 +10,10 @@ import ckhbox.villagebox.common.village.trading.TradingRecipe;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 
 public class VillageBookData{
-	public List<ItemStack> itemstacks = new ArrayList<ItemStack>();
+	public NonNullList<ItemStack> itemstacks;
 	public List<Profession> pros = new ArrayList<Profession>();
 	public HashMap<String,ItemStack> mapNamesToItemStacks = new HashMap<String,ItemStack>();
 	
@@ -22,7 +23,7 @@ public class VillageBookData{
 	
 	public void generate(){
 		//items
-		this.itemstacks.clear();
+		this.itemstacks = NonNullList.func_191196_a();
 		for (Item item : Item.REGISTRY){
             if (item == null){
                 continue;

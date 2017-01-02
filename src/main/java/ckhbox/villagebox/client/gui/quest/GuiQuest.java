@@ -161,9 +161,9 @@ public abstract class GuiQuest extends GuiContainer{
 		if(this.cacheProgressItem != itemstack){
 			this.cacheProgressItem = itemstack;
 			int num = this.quest.getItemNum(this.cacheProgressItem, this.player);
-			String state = num >= itemstack.stackSize?"meet":"unmeet";
+			String state = num >= itemstack.func_190916_E()?"meet":"unmeet";
 			this.cacheProgressString.clear();
-			this.cacheProgressString.add(I18n.format(PathHelper.full("gui.quest.progress." + state),num,itemstack.stackSize));
+			this.cacheProgressString.add(I18n.format(PathHelper.full("gui.quest.progress." + state),num,itemstack.func_190916_E()));
 		}
 		this.drawHoveringText(this.cacheProgressString, mouseX, mouseY);
 	}

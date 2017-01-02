@@ -43,7 +43,7 @@ public class InventoryTrading implements IInventory{
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		return index >= this.getSizeInventory() ? null : this.inventoryItems[index];
+		return index >= this.getSizeInventory() ? ItemStack.field_190927_a : this.inventoryItems[index];
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class InventoryTrading implements IInventory{
                 this.inventoryItems[index] = null;
                 return take;
             }
-            else if (this.inventoryItems[index].stackSize <= count)
+            else if (this.inventoryItems[index].func_190916_E() <= count)
             {
                 ItemStack take = this.inventoryItems[index];
                 this.inventoryItems[index] = null;
@@ -74,7 +74,7 @@ public class InventoryTrading implements IInventory{
             {
                 ItemStack take = this.inventoryItems[index].splitStack(count);
 
-                if (this.inventoryItems[index].stackSize == 0)
+                if (this.inventoryItems[index].func_190916_E() == 0)
                 {
                     this.inventoryItems[index] = null;
                 }
@@ -110,9 +110,9 @@ public class InventoryTrading implements IInventory{
 		
  		this.inventoryItems[index] = stack;
 		
-		if (stack != null && stack.stackSize > this.getInventoryStackLimit())
+		if (stack != null && stack.func_190916_E() > this.getInventoryStackLimit())
         {
-            stack.stackSize = this.getInventoryStackLimit();
+            stack.func_190920_e(this.getInventoryStackLimit());
         }
 
         if (this.inventoryResetNeededOnSlotChange(index))
@@ -207,4 +207,10 @@ public class InventoryTrading implements IInventory{
         this.currentRecipeIndex = currentRecipeIndexIn;
         this.resetRecipeAndSlots();
     }
+
+	@Override
+	public boolean func_191420_l() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

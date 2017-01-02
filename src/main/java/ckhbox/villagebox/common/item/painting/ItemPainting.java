@@ -42,7 +42,7 @@ public class ItemPainting extends Item{
                     worldIn.spawnEntityInWorld(entityhanging);
                 }
 
-                --stack.stackSize;
+                stack.func_190917_f(-1);
             }
 
             return EnumActionResult.SUCCESS;

@@ -29,23 +29,25 @@ public class ItemTreasureBook extends Item{
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		
+		ItemStack itemstack = playerIn.getHeldItem(hand);
 		
 		if(!worldIn.isRemote){
 			//increase treasure hunt level
 			if(ExtendedPlayerProperties.get(playerIn).upgradeTreasureHuntLevelTo(this.level)){
 				playerIn.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
 				playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.treasurelvlupgrade.success"),this.level));
-				itemStackIn.stackSize -= 1;
-				return new ActionResult(EnumActionResult.SUCCESS,itemStackIn);
+				itemstack.func_190917_f(-1);
+				return new ActionResult(EnumActionResult.SUCCESS,itemstack);
 			}
 			else{
 				playerIn.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.treasurelvlupgrade.failed")));
-				return new ActionResult(EnumActionResult.FAIL,itemStackIn);
+				return new ActionResult(EnumActionResult.FAIL,itemstack);
 			}
 		}
 		
-		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
+		return super.onItemRightClick(worldIn, playerIn, hand);
 	}
 
 	@Override

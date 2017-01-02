@@ -30,14 +30,16 @@ public class ItemFireStaff extends Item
     }
 	
     @Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn,
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn,
 			EnumHand hand) {
 
+		ItemStack itemstack = playerIn.getHeldItem(hand);
+    	
     	if (!playerIn.capabilities.isCreativeMode)
         {
-        	itemStackIn.damageItem(1, playerIn);
-        	if(itemStackIn.getItemDamage() == 0){
-        		itemStackIn = new ItemStack(ModItems.staff);
+    		itemstack.damageItem(1, playerIn);
+        	if(itemstack.getItemDamage() == 0){
+        		itemstack = new ItemStack(ModItems.staff);
         	}
         }
     	
@@ -50,7 +52,7 @@ public class ItemFireStaff extends Item
             worldIn.spawnEntityInWorld(flameball);
         }
         
-        return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+        return new ActionResult(EnumActionResult.SUCCESS, itemstack);
     	
 	}
 	

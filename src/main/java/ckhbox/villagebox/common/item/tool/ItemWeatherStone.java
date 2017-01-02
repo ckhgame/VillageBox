@@ -30,12 +30,14 @@ public class ItemWeatherStone extends Item{
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
+		ItemStack itemstack = playerIn.getHeldItem(hand);
+		
         if (!playerIn.capabilities.isCreativeMode)
         {
         	if(this.sunny == worldIn.isRaining()){
-        		itemStackIn.damageItem(2, playerIn);
+        		itemstack.damageItem(2, playerIn);
         	}
         }
         
@@ -71,6 +73,6 @@ public class ItemWeatherStone extends Item{
            
         }
 
-        return new ActionResult(EnumActionResult.PASS, itemStackIn);
+        return new ActionResult(EnumActionResult.PASS, itemstack);
     }
 }

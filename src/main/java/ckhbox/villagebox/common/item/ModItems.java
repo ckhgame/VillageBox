@@ -40,6 +40,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
@@ -51,9 +52,9 @@ public class ModItems {
 	
 	public static final CreativeTabs tabVB = new CreativeTabs("tabVillageBox") {
 		@SideOnly(Side.CLIENT)
-        public Item getTabIconItem()
+        public ItemStack getTabIconItem()
         {
-            return Item.getItemFromBlock(ModBlocks.mailbox);
+            return new ItemStack(Item.getItemFromBlock(ModBlocks.mailbox));
         }
         @SideOnly(Side.CLIENT)
         public int getIconItemDamage()

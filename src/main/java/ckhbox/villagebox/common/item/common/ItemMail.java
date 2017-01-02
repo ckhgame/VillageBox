@@ -28,13 +28,15 @@ public class ItemMail extends Item{
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		
+		ItemStack itemstack = playerIn.getHeldItem(hand);
 		
 		if(!worldIn.isRemote){
 			playerIn.openGui(VillageBoxMod.instance, GuiIDs.Mail, worldIn, 0, 0, 0);
 		}
 		
-		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
+		return super.onItemRightClick(worldIn, playerIn, hand);
 	}
 
 	@Override

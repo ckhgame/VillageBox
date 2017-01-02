@@ -37,7 +37,7 @@ public class SlotTradingOutput extends Slot
     public ItemStack decrStackSize(int amount)
     {
         if (this.getHasStack()){
-            this.field_75231_g += Math.min(amount, this.getStack().stackSize);
+            this.field_75231_g += Math.min(amount, this.getStack().func_190916_E());
         }
 
         return super.decrStackSize(amount);

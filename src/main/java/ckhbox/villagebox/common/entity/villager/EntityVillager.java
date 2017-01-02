@@ -146,8 +146,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 
 	
 	@Override
-	protected boolean processInteract(EntityPlayer player, EnumHand hand, ItemStack stack) {
-		
+	protected boolean processInteract(EntityPlayer player, EnumHand hand) {
 		if(!player.worldObj.isRemote){
 			if(	(this.isInteracting() && this.interacting.isEntityAlive() && this.interacting != player) ||
 				(this.isFollowing() && this.following.isEntityAlive() && this.following != player)){
@@ -155,7 +154,7 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 			}
 			else{
 				ItemStack itemstack = player.inventory.getCurrentItem();
-				if(itemstack != null && (itemstack.getItem() == ModItems.resetScroll || itemstack.getItem() == ModItems.dismissalScroll) && itemstack.stackSize > 0){
+				if(itemstack != null && (itemstack.getItem() == ModItems.resetScroll || itemstack.getItem() == ModItems.dismissalScroll) && player.getHeldItem(hand).func_190916_E() > 0){
 					//if the player is using a reset or a dismissal scroll
 					if((itemstack.getItem() == ModItems.resetScroll && this.downgrade()) || 
 						(itemstack.getItem() == ModItems.dismissalScroll && this.dismiss(player))){
@@ -177,9 +176,9 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
     {
         if (!player.capabilities.isCreativeMode)
         {
-            --stack.stackSize;
+            stack.func_190917_f(-1);
 
-            if (stack.stackSize <= 0)
+            if (stack.func_190916_E() <= 0)
             {
                 player.inventory.setInventorySlotContents(player.inventory.currentItem, (ItemStack)null);
             }
@@ -430,8 +429,8 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		this.profession = Profession.registry.get(proid);
 		if(!this.worldObj.isRemote){
 			//clear both hands
-			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, null);
-			this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, null);
+			this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, ItemStack.field_190927_a);
+			this.setItemStackToSlot(EntityEquipmentSlot.OFFHAND, ItemStack.field_190927_a);
 			//get the item on either left hand or right hand
 			this.setItemStackToSlot(Rand.get().nextBoolean()?EntityEquipmentSlot.MAINHAND:EntityEquipmentSlot.OFFHAND, this.profession.getRandomHoldItem());
 		}

@@ -30,7 +30,7 @@ public class BlockMailBox extends BlockFacing{
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		
 		if(!worldIn.isRemote){		
 			if(playerIn.getHeldItem(hand) != null && playerIn.getHeldItem(hand).getItem() == ModItems.invitation){
@@ -41,9 +41,9 @@ public class BlockMailBox extends BlockFacing{
 					if (!playerIn.capabilities.isCreativeMode)
 					{
 						ItemStack stack= playerIn.getHeldItem(hand);
-						--stack.stackSize;
+						stack.func_190917_f(-1);
 					
-					    if (stack.stackSize <= 0)
+					    if (stack.func_190916_E() <= 0)
 					    {
 					        playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem, (ItemStack)null);
 					    }

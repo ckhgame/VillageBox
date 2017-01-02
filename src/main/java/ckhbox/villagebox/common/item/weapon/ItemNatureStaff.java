@@ -36,22 +36,24 @@ public class ItemNatureStaff extends Item
 	}
     
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        if (!playerIn.canPlayerEdit(pos.offset(facing), facing, stack))
+		ItemStack itemstack = playerIn.getHeldItem(hand);
+		
+        if (!playerIn.canPlayerEdit(pos.offset(facing), facing, itemstack))
         {
             return EnumActionResult.FAIL;
         }
         else
         {
-        	int stacksize = stack.stackSize;
-        	if (ItemDye.applyBonemeal(stack, worldIn, pos, playerIn))
+        	int stacksize = itemstack.func_190916_E();
+        	if (ItemDye.applyBonemeal(itemstack, worldIn, pos, playerIn))
             {
                 if (!worldIn.isRemote)
                 {
                 	worldIn.playEvent(2005, pos, 0);
-                    stack.stackSize = stacksize; // ItemDye.applyBonemeal consumes 1 item but we don't want it to happen.
-                    this.damageStaff(playerIn, stack, hand);
+                	itemstack.func_190920_e(stacksize); // ItemDye.applyBonemeal consumes 1 item but we don't want it to happen.
+                    this.damageStaff(playerIn, itemstack, hand);
                 }
 
                 return EnumActionResult.SUCCESS;

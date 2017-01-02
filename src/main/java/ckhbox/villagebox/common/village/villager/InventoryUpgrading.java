@@ -56,7 +56,7 @@ public class InventoryUpgrading implements IInventory{
 	public ItemStack decrStackSize(int index, int count) {
 		if (this.inventoryItems[index] != null)
         {
-			if (this.inventoryItems[index].stackSize <= count)
+			if (this.inventoryItems[index].func_190916_E() <= count)
             {
                 ItemStack take = this.inventoryItems[index];
                 this.inventoryItems[index] = null;
@@ -70,7 +70,7 @@ public class InventoryUpgrading implements IInventory{
             {
                 ItemStack take = this.inventoryItems[index].splitStack(count);
 
-                if (this.inventoryItems[index].stackSize == 0)
+                if (this.inventoryItems[index].func_190916_E() == 0)
                 {
                     this.inventoryItems[index] = null;
                 }
@@ -103,9 +103,9 @@ public class InventoryUpgrading implements IInventory{
 		
  		this.inventoryItems[index] = stack;
 		
-		if (stack != null && stack.stackSize > this.getInventoryStackLimit())
+		if (stack != null && stack.func_190916_E() > this.getInventoryStackLimit())
         {
-            stack.stackSize = this.getInventoryStackLimit();
+            stack.func_190920_e(this.getInventoryStackLimit());
         }
 
         this.resetUpgradeOptionAndSlots();
@@ -196,4 +196,10 @@ public class InventoryUpgrading implements IInventory{
         this.currentUpgradeOptionIndex = currentUpgradeOptionIndex;
         this.resetUpgradeOptionAndSlots();
     }
+
+	@Override
+	public boolean func_191420_l() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

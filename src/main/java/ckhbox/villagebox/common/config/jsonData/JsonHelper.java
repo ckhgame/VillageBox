@@ -38,7 +38,7 @@ public class JsonHelper {
 	public static String itemStackToString(ItemStack stack)
 	{
 		ResourceLocation location = Item.REGISTRY.getNameForObject(stack.getItem());
-		return String.format("%s,%s,%d,%d", location.getResourceDomain(), location.getResourcePath(), stack.stackSize, stack.getItemDamage());
+		return String.format("%s,%s,%d,%d", location.getResourceDomain(), location.getResourcePath(), stack.func_190916_E(), stack.getItemDamage());
 	}
 	
 	public static String[] itemStacksToStrings(ItemStack[] stacks)

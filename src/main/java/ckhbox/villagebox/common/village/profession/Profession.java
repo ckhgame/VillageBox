@@ -141,7 +141,7 @@ public class Profession implements IRegistrable{
 	
 	public ItemStack getRandomHoldItem(){
 		if(Rand.get().nextFloat() < 0.6F || this.holdItems == null || this.holdItems.length < 1)
-			return null;
+			return ItemStack.field_190927_a;
 		else
 			return this.holdItems[Rand.get().nextInt(this.holdItems.length)];
 	}

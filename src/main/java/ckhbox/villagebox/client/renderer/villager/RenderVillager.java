@@ -22,7 +22,7 @@ public class RenderVillager extends RenderBiped<EntityVillager>{
 	private AxisAlignedBB questMarkBoundTop = new AxisAlignedBB(-0.05D,2.5D,-0.05D,0.05D,2.8D,0.05D);
 	
 	public RenderVillager(RenderManager renderManagerIn) {
-		super(renderManagerIn, new ModelVillager(), 0.5F, 1.0F);
+		super(renderManagerIn, new ModelVillager(), 0.5F);
 		this.addLayer(new LayerVillagerHeldItem(this));
 	}
 

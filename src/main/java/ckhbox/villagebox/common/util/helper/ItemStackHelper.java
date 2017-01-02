@@ -39,10 +39,10 @@ public class ItemStackHelper {
 				continue;
 			for(int j = 0;j < waitForMatching.size();j++){
 				target = waitForMatching.get(j);
-				if(item.isItemEqual(target) && item.stackSize >= target.stackSize){
+				if(item.isItemEqual(target) && item.func_190916_E() >= target.func_190916_E()){
 					found = true;
 					if(consume){
-						tempStackSizes[i] = item.stackSize - target.stackSize;
+						tempStackSizes[i] = item.func_190916_E() - target.func_190916_E();
 					}
 					waitForMatching.remove(j);
 					break;
@@ -63,7 +63,7 @@ public class ItemStackHelper {
 						items[i] = null;
 					}
 					else{
-						items[i].stackSize = tempStackSizes[i];
+						items[i].func_190920_e(tempStackSizes[i]);
 					}
 				}
 			}

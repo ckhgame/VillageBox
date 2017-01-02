@@ -6,6 +6,7 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.resources.I18n;
@@ -35,7 +36,7 @@ public class Quest {
 	public boolean canComplete(EntityPlayer player){
 		if(required == null) return true;
 		for(int i = 0;i<required.length;i++){
-			if(this.getItemNum(required[i], player) < required[i].stackSize){
+			if(this.getItemNum(required[i], player) < required[i].func_190916_E()){
 				return false;
 			}
 		}
@@ -74,33 +75,32 @@ public class Quest {
 	}
 	
 	public int getItemNum(ItemStack itemstack, EntityPlayer player){
-		ItemStack[] stacks = player.inventory.mainInventory;
+		NonNullList<ItemStack> stacks = player.inventory.mainInventory;
 		int count = 0;
-		for (int i = 0; i < stacks.length; ++i)
+		for (int i = 0; i < stacks.size(); ++i)
         {
-            if (stacks[i] != null && stacks[i].isItemEqual(itemstack))
+            if (stacks.get(i) != null && stacks.get(i).isItemEqual(itemstack))
             {
-                count += stacks[i].stackSize;
+                count += stacks.get(i).func_190916_E();
             }
         }
 		return count;
 	}
 	
 	private void consumeItems(ItemStack itemstack, EntityPlayer player){
-		ItemStack[] stacks = player.inventory.mainInventory;
-
-		for (int i = 0; i < stacks.length; ++i)
+		NonNullList<ItemStack> stacks = player.inventory.mainInventory;
+		for (int i = 0; i < stacks.size(); ++i)
         {
-            if (stacks[i] != null && stacks[i].isItemEqual(itemstack))
+            if (stacks.get(i) != null && stacks.get(i).isItemEqual(itemstack))
             {
-            	if(stacks[i].stackSize >= itemstack.stackSize){
-            		stacks[i].stackSize -= itemstack.stackSize;
-            		if(stacks[i].stackSize == 0) stacks[i] = null;
+            	if(stacks.get(i).func_190916_E() >= itemstack.func_190916_E()){
+            		stacks.get(i).func_190920_e(stacks.get(i).func_190916_E() - itemstack.func_190916_E());
+            		if(stacks.get(i).func_190916_E() == 0) stacks.set(i, ItemStack.field_190927_a);
             		break;
             	}
             	else{
-            		itemstack.stackSize -= stacks[i].stackSize;
-            		stacks[i] = null;
+            		itemstack.func_190920_e(itemstack.func_190916_E() - stacks.get(i).func_190916_E());
+            		stacks.set(i, ItemStack.field_190927_a);
             	}
             }
         }
