@@ -14,7 +14,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.world.World;
 
 public class ItemTreasureBook extends Item{
@@ -51,7 +51,7 @@ public class ItemTreasureBook extends Item{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.translateToLocalFormatted(PathHelper.full("book.treasure.item.info"), this.level);
+		String info = I18n.format(PathHelper.full("book.treasure.item.info"), this.level);
 		tooltip.add(info);
 	}
 	

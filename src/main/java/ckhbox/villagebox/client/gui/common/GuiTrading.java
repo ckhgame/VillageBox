@@ -18,7 +18,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -123,7 +123,7 @@ public class GuiTrading extends GuiContainer{
             	int py = (this.height - this.heightAllRecpiesPanel) / 2;  
             	
             	//title
-            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, I18n.translateToLocal(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
+            	GuiHelper.drawCenteredStringNoshadow(this.fontRendererObj, I18n.format(PathHelper.full("gui.trading.allrecipes")), px + this.widthAllRecpiesPanel / 2, py + 6, 6316128);       	
 
             	int rx,ry;
             	//recipes

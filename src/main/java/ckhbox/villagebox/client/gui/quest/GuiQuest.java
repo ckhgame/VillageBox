@@ -22,7 +22,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 
 public abstract class GuiQuest extends GuiContainer{
 	
@@ -55,7 +55,7 @@ public abstract class GuiQuest extends GuiContainer{
         int y = (this.height - this.ySize) / 2;
         
         if(this.quest != null){
-            this.btnComplate = new GuiButton(100,x + this.xSize/2 - 50, y + 136, 100,20,I18n.translateToLocalFormatted(PathHelper.full("gui.quest.complete")));
+            this.btnComplate = new GuiButton(100,x + this.xSize/2 - 50, y + 136, 100,20,I18n.format(PathHelper.full("gui.quest.complete")));
             this.buttonList.add(this.btnComplate);
             
             text = this.quest.getText(player);
@@ -103,7 +103,7 @@ public abstract class GuiQuest extends GuiContainer{
 		int left = this.provider.getCurrentQuestTicksLeft();
 		if(left > 6000) tt = "long";
 		else tt = "short";
-		String tickstext = I18n.translateToLocalFormatted(PathHelper.full("gui.quest.timeleft." + tt), left / 1000 + 1);
+		String tickstext = I18n.format(PathHelper.full("gui.quest.timeleft." + tt), left / 1000 + 1);
 		if(VBConfig.displayExtraInfo) tickstext += "(" + left + ")";
 		this.fontRendererObj.drawString(tickstext, x, y, 0xFFFFFFFF,false);
 		y += 16;
@@ -115,7 +115,7 @@ public abstract class GuiQuest extends GuiContainer{
 		
 		//quest requirements
         GlStateManager.disableLighting();
-		this.fontRendererObj.drawString(I18n.translateToLocal(PathHelper.full("gui.quest.requirements")), x, y, 0xFFFFFFFF);
+		this.fontRendererObj.drawString(I18n.format(PathHelper.full("gui.quest.requirements")), x, y, 0xFFFFFFFF);
         GlStateManager.enableLighting();
 		y+= 12;
 		int y1 = y - this.guiTop;
@@ -127,7 +127,7 @@ public abstract class GuiQuest extends GuiContainer{
 		
 		//quest rewards
 		GlStateManager.disableLighting();
-		this.fontRendererObj.drawString(I18n.translateToLocal(PathHelper.full("gui.quest.rewards")), x, y, 0xFFFFFFFF);
+		this.fontRendererObj.drawString(I18n.format(PathHelper.full("gui.quest.rewards")), x, y, 0xFFFFFFFF);
 		GlStateManager.enableLighting();
 		y+= 12;
 		int y2 = y - this.guiTop;
@@ -163,7 +163,7 @@ public abstract class GuiQuest extends GuiContainer{
 			int num = this.quest.getItemNum(this.cacheProgressItem, this.player);
 			String state = num >= itemstack.stackSize?"meet":"unmeet";
 			this.cacheProgressString.clear();
-			this.cacheProgressString.add(I18n.translateToLocalFormatted(PathHelper.full("gui.quest.progress." + state),num,itemstack.stackSize));
+			this.cacheProgressString.add(I18n.format(PathHelper.full("gui.quest.progress." + state),num,itemstack.stackSize));
 		}
 		this.drawHoveringText(this.cacheProgressString, mouseX, mouseY);
 	}

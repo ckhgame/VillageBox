@@ -9,7 +9,7 @@ import ckhbox.villagebox.client.gui.villagebook.page.link.LinkText;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 
 public class PagePro extends Page{
 	
@@ -26,7 +26,7 @@ public class PagePro extends Page{
 		
 		//this.addLink(new LinkItem(this,this.itemstack.getItem(),null,null),top,1);
 		int top = this.guiVillageBook.getContentTop() + 90;
-		String trading = "> " + I18n.translateToLocal(PathHelper.full("villageBook.tradingList"));
+		String trading = "> " + I18n.format(PathHelper.full("villageBook.tradingList"));
 		this.addLink(new LinkText(this,trading,">trading=" + this.pro.getRegID() + ",0",null),top,1);
 		
 		top = this.guiVillageBook.getContentTop() + this.guiVillageBook.getContentHeight() - 16;

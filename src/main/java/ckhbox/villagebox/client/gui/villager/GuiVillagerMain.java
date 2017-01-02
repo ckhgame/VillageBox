@@ -20,10 +20,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -83,8 +82,8 @@ public class GuiVillagerMain extends GuiContainer{
         int x = (this.width - this.xSize) / 2;
         int y = (this.height - this.ySize) / 2;  
         
-        String strUpgrade = I18n.translateToLocal(PathHelper.full("gui.villagermain.menu.upgrade"));
-        String strTrade = I18n.translateToLocal(PathHelper.full("gui.villagermain.menu.trade"));
+        String strUpgrade = I18n.format(PathHelper.full("gui.villagermain.menu.upgrade"));
+        String strTrade = I18n.format(PathHelper.full("gui.villagermain.menu.trade"));
         
         this.buttonList.add(buttonTrade = new GuiTextButton(this.mc, 0, x + offsetX, y + playerChatOptionsOffsetY + 0 * playerChatOptionHeight, strTrade));
         this.buttonList.add(buttonUpgrade = new GuiTextButton(this.mc, 1, x + offsetX, y + playerChatOptionsOffsetY + 1 * playerChatOptionHeight, strUpgrade));
@@ -103,10 +102,10 @@ public class GuiVillagerMain extends GuiContainer{
 
     private void refreshButtons(){
     	String f = this.villager.isFollowing()?"stop":"start";
-    	buttonFollow.setText(I18n.translateToLocal(PathHelper.full("gui.villagermain.menu.follow." + f)));
+    	buttonFollow.setText(I18n.format(PathHelper.full("gui.villagermain.menu.follow." + f)));
     	
     	f = this.villager.hasHome()?"moveout":"movein";
-    	buttonHome.setText(I18n.translateToLocal(PathHelper.full("gui.villagermain.menu.home." + f)));
+    	buttonHome.setText(I18n.format(PathHelper.full("gui.villagermain.menu.home." + f)));
     	
     	Profession[] upgradeOptions = this.villager.getProfession().getUpgradeToNextOptions();
     	buttonUpgrade.enabled = this.villager.hasHome() && (upgradeOptions != null && upgradeOptions.length > 0);
@@ -123,11 +122,11 @@ public class GuiVillagerMain extends GuiContainer{
     	ArrayList<String> list = new ArrayList<String>();
     	//common
     	for(int i =0;i<3;i++){
-    		list.add(I18n.translateToLocalFormatted(PathHelper.full("gui.villagermain.menu.chat.common" + i), player.getName()));
+    		list.add(I18n.format(PathHelper.full("gui.villagermain.menu.chat.common" + i), player.getName()));
     	}
     	String home = villager.hasHome()?"hashome":"nohome";
     	for(int i =0;i<2;i++){
-    		list.add(I18n.translateToLocal(PathHelper.full("gui.villagermain.menu.chat."+ home + i)));
+    		list.add(I18n.format(PathHelper.full("gui.villagermain.menu.chat."+ home + i)));
     	}
     	
     	this.chatContent = list.get(Rand.get().nextInt(list.size()));
@@ -137,7 +136,7 @@ public class GuiVillagerMain extends GuiContainer{
     }
     
     private void setChatContent(String type){
-    	this.chatContent = I18n.translateToLocal(PathHelper.full("gui.villagermain.menu.chat." + type));
+    	this.chatContent = I18n.format(PathHelper.full("gui.villagermain.menu.chat." + type));
     	this.chatContentDisplay = "";
     	
     	this.calculateChatSpeed();
@@ -192,25 +191,25 @@ public class GuiVillagerMain extends GuiContainer{
         
         if(!this.buttonTrade.enabled){
     		this.drawButtonHoverText(this.buttonTrade, mouseX, mouseY, 
-    			I18n.translateToLocal(PathHelper.full("gui.villagermain.button.lock.title")), 
-    			I18n.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
+    			I18n.format(PathHelper.full("gui.villagermain.button.lock.title")), 
+    			I18n.format(PathHelper.full("gui.villagermain.button.lock.desc")));
         }
         
         if(!this.buttonUpgrade.enabled){
         	if(!this.villager.hasHome())
         		this.drawButtonHoverText(this.buttonUpgrade, mouseX, mouseY, 
-        			I18n.translateToLocal(PathHelper.full("gui.villagermain.button.lock.title")), 
-        			I18n.translateToLocal(PathHelper.full("gui.villagermain.button.lock.desc")));
+        			I18n.format(PathHelper.full("gui.villagermain.button.lock.title")), 
+        			I18n.format(PathHelper.full("gui.villagermain.button.lock.desc")));
         	else
         		this.drawButtonHoverText(this.buttonUpgrade, mouseX, mouseY, 
-        				I18n.translateToLocal(PathHelper.full("gui.villagermain.button.maxupgrade.title")), 
-        				I18n.translateToLocal(PathHelper.full("gui.villagermain.button.maxupgrade.desc")));
+        				I18n.format(PathHelper.full("gui.villagermain.button.maxupgrade.title")), 
+        				I18n.format(PathHelper.full("gui.villagermain.button.maxupgrade.desc")));
         }
         
         if(this.buttonQuest.enabled){
     		this.drawButtonHoverText(this.buttonQuest, mouseX, mouseY, 
-    				I18n.translateToLocal(PathHelper.full("gui.villagermain.button.newquest.title")), 
-    				I18n.translateToLocal(PathHelper.full("gui.villagermain.button.newquest.desc")));
+    				I18n.format(PathHelper.full("gui.villagermain.button.newquest.title")), 
+    				I18n.format(PathHelper.full("gui.villagermain.button.newquest.desc")));
         }
 
 	}

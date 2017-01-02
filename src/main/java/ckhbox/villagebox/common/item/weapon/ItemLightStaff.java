@@ -19,7 +19,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.world.World;
 
 public class ItemLightStaff extends Item
@@ -35,7 +35,7 @@ public class ItemLightStaff extends Item
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.translateToLocal(PathHelper.full("info.item.lightStaff"));
+		String info = I18n.format(PathHelper.full("info.item.lightStaff"));
 		tooltip.add(info);
 	}
     
