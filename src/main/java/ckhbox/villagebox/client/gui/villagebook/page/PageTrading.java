@@ -9,6 +9,7 @@ import ckhbox.villagebox.client.gui.villagebook.page.link.LinkItem;
 import ckhbox.villagebox.client.gui.villagebook.page.link.LinkText;
 import ckhbox.villagebox.common.village.profession.Profession;
 import ckhbox.villagebox.common.village.trading.TradingRecipe;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 
 public class PageTrading extends Page{
@@ -18,7 +19,7 @@ public class PageTrading extends Page{
 	private static int itemsPerPage = 30;
 	
 	public PageTrading(GuiVillageBook guiVillageBook, Profession pro, int pageIdx) {
-		super(guiVillageBook, pro.getDisplayName());
+		super(guiVillageBook, I18n.format(pro.getUnloalizedDisplayName()));
 		this.pageIdx = pageIdx;
 		this.pro = pro;
 	}

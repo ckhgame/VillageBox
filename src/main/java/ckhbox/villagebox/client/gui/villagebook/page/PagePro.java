@@ -17,7 +17,7 @@ public class PagePro extends Page{
 	private static int itemsPerPage = 30;
 	
 	public PagePro(GuiVillageBook guiVillageBook, Profession pro) {
-		super(guiVillageBook, pro.getDisplayName());
+		super(guiVillageBook, I18n.format(pro.getUnloalizedDisplayName()));
 		this.pro = pro;
 	}
 
@@ -42,7 +42,7 @@ public class PagePro extends Page{
 		this.guiVillageBook.drawProEntity(this.guiVillageBook.getContentLeft() + 90, top, pro, false);
 		
 		top+=10;
-		String des = this.pro.getDescription();
+		String des = I18n.format(this.pro.getUnloalizedDescription());
 		int left = this.guiVillageBook.getContentLeft() + (this.guiVillageBook.getContentWidth() - this.guiVillageBook.mc.fontRendererObj.getStringWidth(des)) / 2;
 		this.guiVillageBook.mc.fontRendererObj.drawString(des, left, top, 0xFF888888, false);
 	}

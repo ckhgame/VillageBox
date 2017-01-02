@@ -114,7 +114,9 @@ public class ExtendedPlayerProperties{
 			if(profession != null && !this.proIDs.contains(profession.getRegID())){
 				this.proIDs.add(profession.getRegID());
 				ItemStack villageBook = new ItemStack(ModItems.villageBook);
-				this.player.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.collections.addproid"),profession.getDisplayName(),villageBook.getDisplayName()));
+				this.player.addChatMessage(new TextComponentTranslation(PathHelper.full("message.player.collections.addproid"),
+						new TextComponentTranslation(profession.getUnloalizedDisplayName()),
+						new TextComponentTranslation(villageBook.getUnlocalizedName() + ".name")));
 			}
 		}
 		

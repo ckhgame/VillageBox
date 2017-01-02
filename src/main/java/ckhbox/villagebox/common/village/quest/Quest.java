@@ -6,6 +6,8 @@ import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.client.resources.I18n;
 
 public class Quest {
@@ -25,6 +27,7 @@ public class Quest {
 		return this.rewards;
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public String getText(EntityPlayer player){
 		return I18n.format(PathHelper.full("quest.text"),player.getName());
 	}

@@ -355,10 +355,10 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	
 	public void upgrade(int pid){
 		if(!this.worldObj.isRemote){
-			String oldProName = this.getProfession().getDisplayName();
+			TextComponentTranslation oldProName = new TextComponentTranslation(this.getProfession().getUnloalizedDisplayName());
 			this.upgradingHistory.add(this.getProfession().getRegID());
 			this.setProfession(pid);
-			String newProName = this.getProfession().getDisplayName();		
+			TextComponentTranslation newProName = new TextComponentTranslation(this.getProfession().getUnloalizedDisplayName());	
 			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.upgrade"),this.getName(),oldProName,newProName));
 			//quest
 			this.removeCurrentQuest();
@@ -367,10 +367,10 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 	
 	public boolean downgrade(){
 		if(!this.worldObj.isRemote && this.upgradingHistory.size() > 0){
-			String oldProName = this.getProfession().getDisplayName();
+			TextComponentTranslation oldProName = new TextComponentTranslation(this.getProfession().getUnloalizedDisplayName());
 			int last = this.upgradingHistory.remove(this.upgradingHistory.size() - 1);
 			this.setProfession(last);
-			String newProName = this.getProfession().getDisplayName();
+			TextComponentTranslation newProName = new TextComponentTranslation(this.getProfession().getUnloalizedDisplayName());	
 			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.downgrade"),this.getName(),oldProName,newProName));
 			//quest
 			this.removeCurrentQuest();
@@ -385,7 +385,8 @@ public class EntityVillager extends EntityCreature implements ITrading, IQuestPr
 		if(!this.worldObj.isRemote){
 			this.moveOutHome(player);
 			this.worldObj.removeEntity(this);
-			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.dismiss"), player.getName(),this.getName(),this.getProfession().getDisplayName()));
+			this.getServer().getPlayerList().sendChatMsg(new TextComponentTranslation(PathHelper.full("message.villager.dismiss"), player.getName(),this.getName(),
+					new TextComponentTranslation(this.getProfession().getUnloalizedDisplayName())));
 			return true;
 		}
 		else{

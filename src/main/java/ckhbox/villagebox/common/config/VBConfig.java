@@ -11,7 +11,7 @@ public class VBConfig {
 	public static int[] proIDBanList;					//banned profession IDs
 	public static boolean destroyBlocksDropCoins;		//ture: destroy blocks can drop coins
 	public static boolean killMobsDropCoins;			//true: kill mobs can drop coins
-	public static boolean displayExtraInfo;				//true: will display extra information in game like the profession id
+	public static boolean displayExtraInfo;				//true: (not working)will display extra information in game like the profession id
 	public static boolean freeUpgrading;				//set to ture when you want nothing be cunsumed on upgrading villagers
 	public static int reviveTicks;						//how many ticks to revive a villager
 	public static boolean oneVillagerPerRoom;			//don't allow more than one villagers live in the same room
@@ -44,7 +44,7 @@ public class VBConfig {
 		
 		//display extra information
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "displayExtraInfo", false);
-		pt.setComment("Set to true when you want to view extra information such as the profession id of a villager");
+		pt.setComment("removed");
 		displayExtraInfo = pt.getBoolean();
 		
 		//villager revive ticks
