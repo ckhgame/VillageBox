@@ -58,7 +58,7 @@ public class JsonDataManager {
 		//save to file
 		FileWriter writter = new FileWriter(file);
 		String json = new GsonBuilder().setPrettyPrinting().create().toJson(vbData);
-		System.out.println(json);
+		//System.out.println(json);
 		writter.write(json);
 		writter.close();
 	}
