@@ -146,8 +146,8 @@ public class GuiVillagerUpgrading extends GuiContainer{
             RenderHelper.enableStandardItemLighting();
             
             //profession hover text
-            String proname = I18n.format(PathHelper.full("gui.villagerupgrade.proname"),currentOption.getDisplayName());
-            this.drawFieldHoverText(i + 122, j + 27, 35, 49, mouseX, mouseY, proname, currentOption.getDescription());
+            String proname = I18n.format(PathHelper.full("gui.villagerupgrade.proname"),I18n.format(currentOption.getUnloalizedDisplayName()));
+            this.drawFieldHoverText(i + 122, j + 27, 35, 49, mouseX, mouseY, proname, I18n.format(currentOption.getUnloalizedDescription()));
             
             //upgrade button hover text
             ArrayList<String> list = new ArrayList<String>();

@@ -20,7 +20,7 @@ public class LinkPro extends Link{
 	public LinkPro(Page page, Profession pro, String link, List<String> tooltips){
 		super(page,link,tooltips);
 		this.pro = pro;
-		this.width = this.mc.fontRendererObj.getStringWidth(this.pro.getDisplayName()) + 20;
+		this.width = this.mc.fontRendererObj.getStringWidth(I18n.format(this.pro.getUnloalizedDisplayName())) + 20;
 		this.height = 16;
 		this.unknownPro = !ExtendedPlayerProperties.get(page.guiVillageBook.mc.thePlayer).collections.hasProfession(this.pro.getRegID());
 		if(this.unknownPro){
@@ -34,7 +34,7 @@ public class LinkPro extends Link{
 			mc.fontRendererObj.drawString("????", this.left, this.top, 0xFF000000, false);
 		}
 		else{
-			mc.fontRendererObj.drawString(this.pro.getDisplayName(), this.left + 18, this.top, 0xFF000000, false);
+			mc.fontRendererObj.drawString(I18n.format(this.pro.getUnloalizedDisplayName()), this.left + 18, this.top, 0xFF000000, false);
 			this.page.guiVillageBook.drawProHead(this.left, this.top, pro, false);
 			this.page.guiVillageBook.drawProHead(this.left + 8, this.top + 2, pro, true);
 		}
@@ -47,7 +47,7 @@ public class LinkPro extends Link{
 			mc.fontRendererObj.drawString("????", this.left + 2, this.top, 0xFF000000, false);
 		}
 		else{
-			mc.fontRendererObj.drawString(this.pro.getDisplayName(), this.left + 20, this.top, 0xFF555555, false);
+			mc.fontRendererObj.drawString(I18n.format(this.pro.getUnloalizedDisplayName()), this.left + 20, this.top, 0xFF555555, false);
 			this.page.guiVillageBook.drawProHead(this.left, this.top + 2, pro, false);
 			this.page.guiVillageBook.drawProHead(this.left + 8, this.top, pro, true);
 		}

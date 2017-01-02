@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.resources.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -12,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiHelper {
 	public static void drawNameAndProfession(FontRenderer fontRendererIn, EntityVillager villager, int x, int y){
 		drawCenteredStringNoshadow(fontRendererIn, villager.getName(), x, y, 6316128);
-        drawCenteredStringNoshadow(fontRendererIn, villager.getProfession().getDisplayName(), x, y + 10, 8421504);
+        drawCenteredStringNoshadow(fontRendererIn, I18n.format(villager.getProfession().getUnloalizedDisplayName()), x, y + 10, 8421504);
 	}
 	
 	public static void drawCenteredStringNoshadow(FontRenderer fontRendererIn, String text, int x, int y, int color)

@@ -23,7 +23,6 @@ import ckhbox.villagebox.common.village.trading.TradingRecipeList;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.client.resources.I18n;
 
 public class Profession implements IRegistrable{
 	
@@ -147,14 +146,13 @@ public class Profession implements IRegistrable{
 			return this.holdItems[Rand.get().nextInt(this.holdItems.length)];
 	}
 	
-	public String getDisplayName(){
-		String name = I18n.format(this.getUnlocalized() + ".name");
-		if(VBConfig.displayExtraInfo) name = "(" + this.getRegID() + ")" + name;
-		return name;
+	public String getUnloalizedDisplayName()
+	{
+		return this.getUnlocalized() + ".name";
 	}
 	
-	public String getDescription(){
-		return I18n.format(this.getUnlocalized() + ".desc");
+	public String getUnloalizedDescription(){
+		return this.getUnlocalized() + ".desc";
 	}
 	
 	protected void createTextures(String name){
