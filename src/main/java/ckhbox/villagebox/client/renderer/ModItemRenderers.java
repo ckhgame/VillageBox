@@ -112,7 +112,7 @@ public class ModItemRenderers {
 		registerModel(ModItems.beefNoodleSoup, 0, "beef_noodle_soup");
 		registerModel(ModItems.noodleSoup, 0, "noodle_soup");
 		registerModel(ModItems.carrotCake, 0, "carrot_cake");
-		registerModel(ModItems.hambuger, 0, "hambuger");
+		registerModel(ModItems.hamburger, 0, "hamburger");
 		registerModel(ModItems.congee, 0, "congee");
 		registerModel(ModItems.boiledFish, 0, "boiled_fish");
 		registerModel(ModItems.appleCandy, 0, "apple_candy");
