@@ -56,8 +56,8 @@ public class Profession implements IRegistrable{
 		this.regID = regID;
 	}
 	
-	public Profession(String professionName, JsonProfession proData){
-		unlocalized = PathHelper.full("profession." + professionName);
+	public Profession(JsonProfession proData){
+		unlocalized = PathHelper.full("profession." + proData.name);
 		loadProfessionData(proData);
 	}
 	
@@ -79,7 +79,7 @@ public class Profession implements IRegistrable{
 		}
 		
 		//upgrading
-		upgradeToNextOptionIDs = proData.UpgradeProfessionIDs == null?null:proData.UpgradeProfessionIDs.clone();
+		upgradeToNextOptionIDs = proData.upgradeProfessionIDs == null?null:proData.upgradeProfessionIDs.clone();
 		upgradeToCurentNeeds = JsonHelper.stringsToItemStacks(proData.upgradeRequirements);
 		
 		//items on hands
@@ -180,9 +180,9 @@ public class Profession implements IRegistrable{
 		
 		JsonVBData data = JsonDataManager.GetVBData();
 		
-		for(Map.Entry<String, JsonProfession> pair : data.professions.entrySet())
+		for(JsonProfession pro : data.professions)
 		{
-			registry.register(pair.getValue().ID, new Profession(pair.getKey(), pair.getValue()));
+			registry.register(pro.id, new Profession(pro));
 		}
 	}
 

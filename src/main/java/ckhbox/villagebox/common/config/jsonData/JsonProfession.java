@@ -5,12 +5,13 @@ import java.util.List;
 
 public class JsonProfession {
 	
-	public int ID;
+	public int id;
+	public String name;
 	
 	public ArrayList<JsonTradingRecipe> tradingRecipes;
 	public ArrayList<JsonQuest> quests;
 	
-	public int[] UpgradeProfessionIDs;
+	public int[] upgradeProfessionIDs;
 	public String[] upgradeRequirements;
 	public String[] holdItems;
 	public String texture;
