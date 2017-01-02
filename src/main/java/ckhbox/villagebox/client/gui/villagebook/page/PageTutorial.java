@@ -5,9 +5,9 @@ import ckhbox.villagebox.client.gui.villagebook.page.link.LinkImg;
 import ckhbox.villagebox.client.gui.villagebook.page.link.LinkItem;
 import ckhbox.villagebox.client.gui.villagebook.page.link.LinkText;
 import ckhbox.villagebox.common.block.ModBlocks;
+import ckhbox.villagebox.common.config.jsonData.JsonProfession;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import ckhbox.villagebox.common.village.profession.ProVillager0;
 import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -16,11 +16,17 @@ import net.minecraft.util.text.translation.I18n;
 
 public class PageTutorial extends Page{
 	
-	private Profession expample;
+	private Profession expample = null;
 	
 	public PageTutorial(GuiVillageBook guiVillageBook) {
 		super(guiVillageBook,I18n.translateToLocal(PathHelper.full("villageBook.tutorial")));
-		expample = Profession.registry.get(ProVillager0.class);
+		if(expample == null)
+		{
+			//fake a profession data
+			JsonProfession proData = new JsonProfession();
+			proData.texture = "villager0";		
+			expample = new Profession("",proData);
+		}
 	}
 
 	@Override
