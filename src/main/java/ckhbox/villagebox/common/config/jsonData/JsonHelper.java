@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.config.jsonData;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -16,7 +17,12 @@ public class JsonHelper {
 	public static ItemStack stringToItemStack(String text)
 	{
 		String[] arrs = text.split(",");
-		return new ItemStack(Item.REGISTRY.getObject(new ResourceLocation(arrs[0],arrs[1])),Integer.valueOf(arrs[2]),Integer.valueOf(arrs[3]));
+		Item item = Item.REGISTRY.getObject(new ResourceLocation(arrs[0],arrs[1]));
+		if(item == null)
+		{
+			item = Items.EGG;//if we can't find the item, simply replace it with eggs.....
+		}
+		return new ItemStack(item, Integer.valueOf(arrs[2]),Integer.valueOf(arrs[3]));
 	}
 	
 	public static ItemStack[] stringsToItemStacks(String[] texts)
