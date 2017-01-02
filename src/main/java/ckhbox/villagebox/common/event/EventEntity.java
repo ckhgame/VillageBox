@@ -1,5 +1,6 @@
 package ckhbox.villagebox.common.event;
 
+import ckhbox.villagebox.common.config.VBConfig;
 import ckhbox.villagebox.common.entity.villager.EntityVillager;
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.player.CapExPlayerPropertiesProvider;
@@ -66,7 +67,7 @@ public class EventEntity {
 
 			ExtendedPlayerProperties p = ExtendedPlayerProperties.get(player);
 			
-			if(!p.receivedVillagebook){
+			if(!p.receivedVillagebook && !VBConfig.disableBookAtStarting){
 				ItemStack villageBook = new ItemStack(ModItems.villageBook);
 				if (!player.inventory.addItemStackToInventory(villageBook)) {
 					player.dropItem(villageBook, false);
