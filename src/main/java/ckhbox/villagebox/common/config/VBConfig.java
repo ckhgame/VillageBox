@@ -20,6 +20,7 @@ public class VBConfig {
 														//24000 means one new quest per day in average, 
 														//72000 means one new quest every three days in average
 	public static int questLifetime;					//the life time of a quest. e.g. 48000 means the quest will exist 2 minecraft days
+	public static boolean disableBookAtStarting;			////disable the village box at starting
 	
 	public static void load(File file){
 		Configuration conf = new Configuration(file, VillageBoxMod.VERSION);
@@ -70,6 +71,11 @@ public class VBConfig {
 		pt = conf.get(Configuration.CATEGORY_GENERAL, "QuestLifetime", 48000);
 		pt.setComment("The life time of a quest. e.g. 48000 means the quest will exist 2 minecraft days");
 		questLifetime = pt.getInt();
+		
+		//disable the village box at starting
+		pt = conf.get(Configuration.CATEGORY_GENERAL, "DisableBookAtStarting", false);
+		pt.setComment("Disable the village box at starting");
+		disableBookAtStarting = pt.getBoolean();
 		
 		conf.save();
 	}
