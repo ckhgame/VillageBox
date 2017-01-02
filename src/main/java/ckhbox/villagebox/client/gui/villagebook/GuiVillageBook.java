@@ -69,10 +69,6 @@ public class GuiVillageBook extends GuiContainer{
 		return this.ySize - offsety * 2;
 	}
 	
-	public void addButton(GuiButton button){
-		this.buttonList.add(button);
-	}
-	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
