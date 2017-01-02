@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "villagebox:items/hambuger"
+        "layer0": "villagebox:items/hamburger"
     }
 }

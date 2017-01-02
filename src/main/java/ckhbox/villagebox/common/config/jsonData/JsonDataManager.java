@@ -640,7 +640,7 @@ public class JsonDataManager {
 		profession.tradingRecipes.add(new JsonTradingRecipe(new String[]{"villagebox,silver_coin,1,0", "minecraft,porkchop,1,0", "villagebox,wheat_flour,1,0", "villagebox,soy_sauce,1,0"}, "villagebox,pork_ramen,1,0"));
 		profession.tradingRecipes.add(new JsonTradingRecipe(new String[]{"villagebox,silver_coin,1,0", "minecraft,beef,1,0", "villagebox,wheat_flour,1,0"}, "villagebox,beef_noodle_soup,1,0"));
 		profession.tradingRecipes.add(new JsonTradingRecipe(new String[]{"villagebox,silver_coin,1,0", "villagebox,wheat_flour,1,0", "villagebox,salt,1,0"}, "villagebox,noodle_soup,1,0"));
-		profession.tradingRecipes.add(new JsonTradingRecipe(new String[]{"villagebox,bronze_coin,50,0", "minecraft,beef,1,0", "villagebox,cheese,1,0", "villagebox,cabbage,1,0"}, "villagebox,hambuger,1,0"));
+		profession.tradingRecipes.add(new JsonTradingRecipe(new String[]{"villagebox,bronze_coin,50,0", "minecraft,beef,1,0", "villagebox,cheese,1,0", "villagebox,cabbage,1,0"}, "villagebox,hamburger,1,0"));
 		profession.tradingRecipes.add(new JsonTradingRecipe(new String[]{"villagebox,bronze_coin,40,0", "villagebox,rice,1,0", "villagebox,salt,1,0"}, "villagebox,congee,1,0"));
 		profession.tradingRecipes.add(new JsonTradingRecipe(new String[]{"villagebox,silver_coin,1,0", "villagebox,chili,1,0", "minecraft,fish,1,0", "villagebox,cooking_oil,1,0"}, "villagebox,boiled_fish,1,0"));
 		profession.tradingRecipes.add(new JsonTradingRecipe(new String[]{"villagebox,bronze_coin,30,0", "minecraft,potato,1,0", "villagebox,cooking_oil,1,0"}, "villagebox,fries,1,0"));

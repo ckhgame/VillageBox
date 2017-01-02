@@ -171,7 +171,7 @@ public class ModItems {
 	public static Item beefNoodleSoup;
 	public static Item noodleSoup;
 	public static Item carrotCake;
-	public static Item hambuger;
+	public static Item hamburger;
 	public static Item congee;
 	public static Item boiledFish;
 	public static Item appleCandy;
@@ -314,7 +314,7 @@ public class ModItems {
 		register(beefNoodleSoup=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("beefNoodleSoup")),"beef_noodle_soup");
 		register(noodleSoup=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("noodleSoup")),"noodle_soup");
 		register(carrotCake=(new ItemFood(6, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("carrotCake")),"carrot_cake");
-		register(hambuger=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("hambuger")),"hambuger");
+		register(hamburger=(new ItemFood(8, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("hamburger")),"hamburger");
 		register(congee=(new ItemFood(4, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("congee")),"congee");
 		register(boiledFish=(new ItemFood(6, 0.8F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("boiledFish")),"boiled_fish");
 		register(appleCandy=(new ItemFood(4, 0.3F, false)).setCreativeTab(ModItems.tabVB).setUnlocalizedName(PathHelper.full("appleCandy")),"apple_candy");
