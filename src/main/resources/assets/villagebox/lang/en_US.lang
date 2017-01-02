@@ -3,8 +3,12 @@ language.region=US
 language.code=en_US
 
 # Professions
-villagebox:profession.villager.name=Villager
-villagebox:profession.villager.desc=A common villager
+villagebox:profession.villager0.name=Villager
+villagebox:profession.villager0.desc=A common villager
+villagebox:profession.villager1.name=Villager
+villagebox:profession.villager1.desc=A common villager
+villagebox:profession.villager2.name=Villager
+villagebox:profession.villager2.desc=A common villager
 villagebox:profession.peasant.name=Peasant
 villagebox:profession.peasant.desc=Have basic farming skills
 villagebox:profession.worker.name=Worker

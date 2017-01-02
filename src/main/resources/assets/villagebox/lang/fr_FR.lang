@@ -3,8 +3,12 @@ language.region=FR
 language.code=fr_FR
 
 # Professions
-villagebox:profession.villager.name=Villageois
-villagebox:profession.villager.desc=Un villageois ordinaire
+villagebox:profession.villager0.name=Villageois
+villagebox:profession.villager0.desc=Un villageois ordinaire
+villagebox:profession.villager1.name=Villageois
+villagebox:profession.villager1.desc=Un villageois ordinaire
+villagebox:profession.villager2.name=Villageois
+villagebox:profession.villager2.desc=Un villageois ordinaire
 villagebox:profession.peasant.name=Paysan
 villagebox:profession.peasant.desc=Possède des compétences agricoles de base
 villagebox:profession.worker.name=Forgeron

@@ -3,8 +3,12 @@ language.region=CN
 language.code=zh_CN
 
 # Professions
-villagebox:profession.villager.name=村民
-villagebox:profession.villager.desc=一个普通村民
+villagebox:profession.villager0.name=村民
+villagebox:profession.villager0.desc=一个普通村民
+villagebox:profession.villager1.name=村民
+villagebox:profession.villager1.desc=一个普通村民
+villagebox:profession.villager2.name=村民
+villagebox:profession.villager2.desc=一个普通村民
 villagebox:profession.peasant.name=农民
 villagebox:profession.peasant.desc=拥有基本农业技能
 villagebox:profession.worker.name=工人

@@ -3,8 +3,12 @@ language.region=RU
 language.code=ru_RU
 
 # Professions
-villagebox:profession.villager.name=Деревенщина
-villagebox:profession.villager.desc=Обычный деревенщина
+villagebox:profession.villager0.name=Деревенщина
+villagebox:profession.villager0.desc=Обычный деревенщина
+villagebox:profession.villager1.name=Деревенщина
+villagebox:profession.villager1.desc=Обычный деревенщина
+villagebox:profession.villager2.name=Деревенщина
+villagebox:profession.villager2.desc=Обычный деревенщина
 villagebox:profession.peasant.name=Крестьянин
 villagebox:profession.peasant.desc=Владеет базовыми навыками земледелия
 villagebox:profession.worker.name=Рабочий
