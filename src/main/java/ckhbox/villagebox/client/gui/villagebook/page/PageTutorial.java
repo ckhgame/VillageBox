@@ -25,7 +25,7 @@ public class PageTutorial extends Page{
 			//fake a profession data
 			JsonProfession proData = new JsonProfession();
 			proData.texture = "villager0";		
-			expample = new Profession("",proData);
+			expample = new Profession(proData);
 		}
 	}
 

@@ -1,15 +1,16 @@
 package ckhbox.villagebox.common.config.jsonData;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class JsonVBData {
 	
-	public HashMap<String,JsonProfession> professions;
+	public ArrayList<JsonProfession> professions;
 	
 	public JsonVBData()
 	{
-		professions = new HashMap<String, JsonProfession>();
+		professions = new ArrayList<JsonProfession>();
 	}
 }
