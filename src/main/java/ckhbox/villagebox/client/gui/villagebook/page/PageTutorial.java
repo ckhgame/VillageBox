@@ -12,14 +12,14 @@ import ckhbox.villagebox.common.village.profession.Profession;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 
 public class PageTutorial extends Page{
 	
 	private Profession expample = null;
 	
 	public PageTutorial(GuiVillageBook guiVillageBook) {
-		super(guiVillageBook,I18n.translateToLocal(PathHelper.full("villageBook.tutorial")));
+		super(guiVillageBook,I18n.format(PathHelper.full("villageBook.tutorial")));
 		if(expample == null)
 		{
 			//fake a profession data

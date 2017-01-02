@@ -17,7 +17,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.world.World;
 
 public class ItemDarkStaff extends Item
@@ -85,8 +85,8 @@ public class ItemDarkStaff extends Item
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.translateToLocal(PathHelper.full("info.item.darkStaff"));
-		String info1 = I18n.translateToLocal(PathHelper.full("info.item.darkStaff_1"));
+		String info = I18n.format(PathHelper.full("info.item.darkStaff"));
+		String info1 = I18n.format(PathHelper.full("info.item.darkStaff_1"));
 		tooltip.add(info);
 		tooltip.add(info1);
 	}

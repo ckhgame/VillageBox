@@ -4,12 +4,11 @@ import java.util.List;
 
 import ckhbox.villagebox.common.item.ModItems;
 import ckhbox.villagebox.common.util.helper.PathHelper;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.util.text.translation.I18n;
 
 public class ItemFireSword extends ItemSword{
 
@@ -30,7 +29,7 @@ public class ItemFireSword extends ItemSword{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.translateToLocal(PathHelper.full("info.item.fireSword"));
+		String info = I18n.format(PathHelper.full("info.item.fireSword"));
 		tooltip.add(info);
 	}
 }

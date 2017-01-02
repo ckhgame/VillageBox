@@ -8,7 +8,7 @@ import ckhbox.villagebox.client.gui.villagebook.page.link.LinkItem;
 import ckhbox.villagebox.client.gui.villagebook.page.link.LinkText;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 
 public class PageItemList extends Page{
 	
@@ -16,7 +16,7 @@ public class PageItemList extends Page{
 	private static int itemsPerPage = 30;
 	
 	public PageItemList(GuiVillageBook guiVillageBook, int pageIdx) {
-		super(guiVillageBook, I18n.translateToLocal(PathHelper.full("villageBook.itemList")));
+		super(guiVillageBook, I18n.format(PathHelper.full("villageBook.itemList")));
 		this.pageIdx = pageIdx;
 	}
 

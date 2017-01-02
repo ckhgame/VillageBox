@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.world.World;
 
 public class ItemMail extends Item{
@@ -40,7 +40,7 @@ public class ItemMail extends Item{
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, playerIn, tooltip, advanced);
-		String info = I18n.translateToLocalFormatted(PathHelper.full("mail.item.info"), getMailSender(stack));
+		String info = I18n.format(PathHelper.full("mail.item.info"), getMailSender(stack));
 		tooltip.add(info);
 	}
 	

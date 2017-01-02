@@ -13,7 +13,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.world.World;
 
 public class ItemWaterStaff extends Item
@@ -53,7 +53,7 @@ public class ItemWaterStaff extends Item
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-		String info = I18n.translateToLocal(PathHelper.full("info.item.waterStaff"));
+		String info = I18n.format(PathHelper.full("info.item.waterStaff"));
 		tooltip.add(info);
 	}
     

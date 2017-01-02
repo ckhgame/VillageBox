@@ -8,20 +8,20 @@ import ckhbox.villagebox.client.gui.villagebook.page.link.LinkText;
 import ckhbox.villagebox.common.util.helper.PathHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 
 public class PageHome extends Page{
 
 	public PageHome(GuiVillageBook guiVillageBook) {
-		super(guiVillageBook,I18n.translateToLocal(PathHelper.full("villageBook.title")));
+		super(guiVillageBook,I18n.format(PathHelper.full("villageBook.title")));
 	}
 
 	@Override
 	public void onInit() {
 		int top = this.guiVillageBook.getContentTop();
 		//this.addLink(new LinkText(this,"> " + I18n.translateToLocal(PathHelper.full("villageBook.itemList")),">itemlist=0",null),top + 80,1);
-		this.addLink(new LinkText(this,"> " + I18n.translateToLocal(PathHelper.full("villageBook.professions")),">prolist=0",null),top + 90,1);
-		this.addLink(new LinkText(this,"> " + I18n.translateToLocal(PathHelper.full("villageBook.tutorial")),">tutorial=",null),top + 110,1);
+		this.addLink(new LinkText(this,"> " + I18n.format(PathHelper.full("villageBook.professions")),">prolist=0",null),top + 90,1);
+		this.addLink(new LinkText(this,"> " + I18n.format(PathHelper.full("villageBook.tutorial")),">tutorial=",null),top + 110,1);
 	}
 
 	@Override
